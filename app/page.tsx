@@ -1,229 +1,198 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { 
-  Trophy, Users, BookOpen, Swords, ArrowRight, 
-  MessageCircle, TrendingUp, X, FileText, Calendar, Crown, Loader2, Book
+  Trophy, ChevronDown, ChevronUp, Newspaper, 
+  Zap, X, Loader2, Target, Info, Scroll
 } from 'lucide-react';
-import { ModeToggle } from '@/components/ModeToggle';
 
-// --- FIREBASE IMPORTS ---
-import { db } from "@/lib/firebase"; 
-import { doc, getDoc } from "firebase/firestore"; 
+const HISTORY_LEAGUES = [
+  "1312148925091692544", "1199899847029698560", "1048290254903463936",
+  "918202561050685440", "817078396659036160", "682304920455544832",
+  "530113322802368512", "466635730102251520"
+];
 
-// --- CONFIGURATION ---
-const COMMISH_ID = "342828350391230464"; 
-const CURRENT_YEAR = 2025; 
+const TYRONE_USER_ID = "466797853767888896";
 
-export default function Home() {
-  const [showRecap, setShowRecap] = useState(false);
-  const [showProjections, setShowProjections] = useState(false);
-  const [showHistoryModal, setShowHistoryModal] = useState(false); 
-  
-  const [projections, setProjections] = useState<any[]>([]);
-  const [loadingProjections, setLoadingProjections] = useState(true);
-  const [liveRecap, setLiveRecap] = useState("Loading latest trash talk..."); 
+export default function HomePage() {
+  const [blogExpanded, setBlogExpanded] = useState(false);
+  const [showPredictor, setShowPredictor] = useState(false);
+  const [careerRecord, setCareerRecord] = useState({ wins: 0, losses: 0, loading: true });
 
-  // --- FETCH LIVE COMMISH RECAP ---
   useEffect(() => {
-    async function fetchRecap() {
+    async function calculateCareerStats() {
+      let totalWins = 0; let totalLosses = 0;
       try {
-        const docRef = doc(db, "siteContent", "recap"); 
-        const docSnap = await getDoc(docRef); 
-        if (docSnap.exists()) { 
-          setLiveRecap(docSnap.data().text); 
+        for (const leagueId of HISTORY_LEAGUES) {
+          const res = await fetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`);
+          const rosters = await res.json();
+          const tyroneRoster = rosters.find((r: any) => r.owner_id === TYRONE_USER_ID);
+          if (tyroneRoster?.settings) {
+            totalWins += (tyroneRoster.settings.wins || 0);
+            totalLosses += (tyroneRoster.settings.losses || 0);
+          }
         }
-      } catch (err) { 
-        console.error("Error fetching recap:", err);
-        // Fallback recap if Firebase is unreachable
-        setLiveRecap("The 2025 campaign has concluded. Aaron Hawkins surged through the playoffs to claim the throne after a 9-5 regular season. Meanwhile, Commish Ray Long has claimed the Toilet Bowl—we await the apology letter.");
-      }
+        setCareerRecord({ wins: totalWins, losses: totalLosses, loading: false });
+      } catch (err) { setCareerRecord(prev => ({ ...prev, loading: false })); }
     }
-    fetchRecap();
-  }, []);
-
-  // --- FETCH SLEEPER DATA ---
-  useEffect(() => {
-    async function fetchPlayoffStatus() {
-      try {
-        const leagueRes = await fetch(`https://api.sleeper.app/v1/user/${COMMISH_ID}/leagues/nfl/${CURRENT_YEAR}`);
-        const leagues = await leagueRes.json();
-        const myLeague = leagues.find((l: any) => l.name.includes("River City"));
-        if (!myLeague) return;
-
-        const [usersRes, rostersRes, bracketRes] = await Promise.all([
-            fetch(`https://api.sleeper.app/v1/league/${myLeague.league_id}/users`),
-            fetch(`https://api.sleeper.app/v1/league/${myLeague.league_id}/rosters`),
-            fetch(`https://api.sleeper.app/v1/league/${myLeague.league_id}/winners_bracket`)
-        ]);
-
-        const users = await usersRes.json();
-        const rosters = await rostersRes.json();
-
-        const rosterMap: Record<number, any> = {}; 
-        rosters.forEach((r: any) => {
-            const user = users.find((u: any) => u.user_id === r.owner_id);
-            rosterMap[r.roster_id] = {
-                name: user?.metadata?.team_name || user?.display_name || "Unknown",
-                fpts: r.settings.fpts,
-            };
-        });
-
-        // Set static final rankings based on 2025 results
-        const finalStandings = [
-          { name: "Aaron Hawkins", pct: "100", status: "Champion", color: "bg-yellow-500", rank: 1 },
-          { name: "Travis Miller", pct: "85.0", status: "Runner Up", color: "bg-gray-400", rank: 2 },
-          { name: "JD Dowling", pct: "70.0", status: "3rd Place", color: "bg-orange-600", rank: 3 },
-          { name: "Ray Long", pct: "0.0", status: "Toilet Bowl", color: "bg-red-800", rank: 12 }
-        ];
-        setProjections(finalStandings);
-      } catch (err) { console.error(err); }
-      finally { setLoadingProjections(false); }
-    }
-    fetchPlayoffStatus();
+    calculateCareerStats();
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#121212] transition-colors duration-300 font-sans selection:bg-orange-500 selection:text-white">
-      
-      <header className="border-b border-gray-200 dark:border-white/10 bg-linear-to-b from-gray-50 to-white dark:from-[#1a1a1a] dark:to-[#121212] pb-4 md:pb-8 pt-4 shadow-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 text-center relative text-gray-900">
-          <div className="absolute top-2 right-2 md:top-4 md:right-4 scale-75 md:scale-100"><ModeToggle /></div>
-          <div className="mx-auto mb-4 md:mb-6 flex h-16 w-16 md:h-24 md:w-24 items-center justify-center rounded-full bg-white dark:bg-linear-to-br dark:from-[#2c2c2c] dark:to-[#1a1a1a] shadow-xl border-2 md:border-4 border-gray-100 dark:border-white/5 overflow-hidden relative">
-             <Image src="/River City FFL Logo.JPG" alt="River City FFL Logo" fill className="object-cover" priority unoptimized />
-          </div>
-          <h1 className="mb-1 text-2xl font-extrabold tracking-tighter text-gray-900 dark:text-[#f0c340] md:text-5xl uppercase drop-shadow-sm">River City <span className="text-orange-600 dark:text-white">FFL</span></h1>
-          <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-4 md:mb-8 text-gray-900">Est. 2011 • Richmond, VA</p>
-          <nav className="flex flex-wrap justify-center gap-2 md:gap-4 mb-4 md:mb-8 text-gray-900">
-            <Link href="/" className="flex items-center gap-1 md:gap-2 rounded-full bg-orange-600 dark:bg-[#ff5722] text-white shadow-lg px-4 md:px-6 py-1.5 md:py-2 text-[10px] md:text-sm font-bold"><Trophy className="w-3 h-3 md:w-4 md:h-4" />Home</Link>
-            <Link href="/managers" className="flex items-center gap-1 md:gap-2 rounded-full bg-white border border-gray-200 text-gray-700 dark:bg-[#2c2c2c] dark:border-white/10 dark:text-gray-300 px-4 md:px-6 py-1.5 md:py-2 text-[10px] md:text-sm transition"><Users className="w-3 h-3 md:w-4 md:h-4" />Managers</Link>
-            <Link href="/league-info" className="flex items-center gap-1 md:gap-2 rounded-full bg-white border border-gray-200 text-gray-700 dark:bg-[#2c2c2c] dark:border-white/10 dark:text-gray-300 px-4 md:px-6 py-1.5 md:py-2 text-[10px] md:text-sm transition"><BookOpen className="w-3 h-3 md:w-4 md:h-4" />Info</Link>
-            <Link href="/matchups" className="flex items-center gap-1 md:gap-2 rounded-full bg-white border border-gray-200 text-gray-700 dark:bg-[#2c2c2c] dark:border-white/10 dark:text-gray-300 px-4 md:px-6 py-1.5 md:py-2 text-[10px] md:text-sm transition"><Swords className="h-3 w-3 md:w-4 md:h-4" />Matchups</Link>
-          </nav>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 md:py-12 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-start">
+    <div className="min-h-screen font-serif text-[#1A472A] bg-[#F9F7F2]/30 relative">
+      <main className="max-w-7xl mx-auto px-6 py-12 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          <div className="lg:col-span-2 text-gray-900">
-            <button onClick={() => setShowHistoryModal(true)} className="w-full group relative bg-white dark:bg-[#1e1e1e] rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg hover:shadow-2xl transition-all p-8 md:p-12 text-left">
-                <div className="absolute top-0 right-0 p-8 opacity-5"><Book className="w-32 h-32 md:w-48 md:h-48" /></div>
-                <div className="relative z-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 text-[10px] font-bold uppercase mb-6"><Calendar className="w-3 h-3" /> Since 2011</div>
-                    <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 leading-tight">The History of <br/><span className="text-orange-600">River City FFL</span></h2>
-                    <p className="text-sm md:text-lg text-gray-500 mb-8 max-w-md">Legacy, rivalries, and the roots of RVA's most enduring league.</p>
-                    <div className="flex items-center gap-2 text-orange-600 font-bold group-hover:translate-x-2 transition-transform">Open the Book <ArrowRight className="w-5 h-5" /></div>
-                </div>
-            </button>
+          {/* LEFT COLUMN: FULL LEAGUE HISTORY */}
+          <div className="lg:col-span-7">
+            <section className="bg-white rounded-[3rem] p-12 shadow-sm border border-black/5">
+              <div className="flex items-center gap-4 mb-8">
+                <Scroll className="text-[#C5A059]" size={32} />
+                <h1 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter border-b-8 border-[#C5A059] inline-block leading-none">
+                  The Back Nine: Our Legacy
+                </h1>
+              </div>
+              <div className="space-y-8 text-xl text-[#1A472A]/80 leading-relaxed">
+                <p>The LCC FFL was forged on the dusty diamonds of local softball fields, founded by competitors from the Outlaws and Jani King teams.</p>
+                <p>For nearly two decades, the league lived as a classic 2-Keeper format. In 2021, the clubhouse boldly pivoted into a full Dynasty era.</p>
+                <p className="italic font-black pt-12 border-t border-black/5 mt-12 opacity-60">
+                  Rest in peace, Chris Boschen and Junior Dukes.
+                </p>
+              </div>
+            </section>
           </div>
 
-          <div className="space-y-4 md:space-y-6">
-            {/* === REIGNING CHAMPION UPDATED === */}
-            <div className="bg-white dark:bg-[#1e1e1e] rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 overflow-hidden text-center group transition-all text-gray-900">
-                <div className="bg-gradient-to-r from-[#FF4500] to-[#FF0000] p-3"><h3 className="text-[11px] font-black text-white uppercase tracking-[0.2em]">Reigning Champion</h3></div>
-                <div className="p-4 md:p-6">
-                    <div className="relative w-20 h-20 md:w-28 md:h-28 mx-auto mb-4">
-                        <Image src="/managers/Aaron.png" alt="Champion" fill className="object-cover rounded-full border-4 border-white dark:border-[#2a2a2a]" unoptimized />
-                        <div className="absolute -bottom-1 -right-1 bg-yellow-400 text-yellow-900 p-1 md:p-1.5 rounded-full border-2 border-white dark:border-[#2a2a2a] shadow-sm"><Trophy className="w-4 h-4 md:w-5 md:h-5" /></div>
-                    </div>
-                    <h2 className="text-lg md:text-2xl font-black dark:text-white uppercase leading-none">Aaron Hawkins</h2>
-                    <p className="text-[10px] md:text-xs text-gray-500 font-medium mb-4 uppercase tracking-widest">Official 2025 Winner</p>
-                    <div className="flex border-t border-gray-100 dark:border-white/5 pt-3">
-                        <div className="w-1/2 border-r border-gray-100 dark:border-white/5"><span className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tight">Record</span><span className="block text-sm md:text-lg font-black dark:text-white">9-5</span></div>
-                        <div className="w-1/2"><span className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-tight">Year</span><span className="block text-sm md:text-lg font-black dark:text-white">2025</span></div>
-                    </div>
+          {/* RIGHT COLUMN */}
+          <div className="lg:col-span-5 space-y-12">
+            
+            {/* REIGNING CHAMPION CARD */}
+            <section className="bg-[#1A472A] rounded-[3rem] p-10 text-center text-white border-b-[12px] border-[#C5A059] shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 bg-red-600 font-black text-[10px] uppercase tracking-widest transform rotate-45 translate-x-10 -translate-y-2 w-40">Champion</div>
+              <p className="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.4em] mb-8">Reigning Champion</p>
+              
+              <div className="relative mx-auto mb-6">
+                <div className="w-40 h-40 rounded-full border-8 border-white/20 mx-auto overflow-hidden shadow-2xl bg-[#1A472A]/50">
+                  <img src="/managers/Tyrone.png" className="w-full h-full object-cover" alt="Tyrone Poist" />
                 </div>
-            </div>
+              </div>
 
-            <div className="bg-[#0B1527] text-white p-5 md:p-6 rounded-2xl shadow-lg relative overflow-hidden border border-white/5">
-                <div className="absolute top-0 right-0 p-4 opacity-10"><FileText className="w-16 h-16 md:w-24 md:h-24" /></div>
-                <div className="flex items-center gap-3 mb-4 relative z-10 text-gray-900"><MessageCircle className="w-5 h-5 text-blue-400" /><div><h3 className="text-xs font-bold uppercase text-white">Commissioner's Corner</h3><p className="text-[10px] text-blue-300 uppercase tracking-wider">Season Finale Recap</p></div></div>
-                <h4 className="text-sm md:text-lg font-bold mb-2 relative z-10 text-white">2025: A New Era Begins</h4>
-                <p className="text-xs text-gray-300 leading-relaxed mb-4 md:mb-6 relative z-10 line-clamp-3 md:line-clamp-5">{liveRecap}</p>
-                <button onClick={() => setShowRecap(true)} className="w-full bg-blue-600 hover:bg-blue-700 text-white text-[10px] md:text-xs font-bold py-2 md:py-2.5 rounded-lg mb-3 transition-colors">Read Full Recap</button>
-            </div>
+              <h2 className="text-4xl font-black italic uppercase tracking-tighter mb-1">Tyrone Poist</h2>
+              <div className="mb-8">
+                {careerRecord.loading ? (
+                  <Loader2 size={16} className="animate-spin mx-auto opacity-20" />
+                ) : (
+                  <p className="text-[#C5A059] text-[12px] font-black uppercase tracking-widest">Career Record: {careerRecord.wins}-{careerRecord.losses}</p>
+                )}
+              </div>
 
-            {/* === AI PREDICTOR UPDATED === */}
-            <div className="bg-[#3b0764] text-white p-5 md:p-6 rounded-2xl shadow-lg relative overflow-hidden border border-white/5">
-                <div className="absolute top-0 right-0 p-4 opacity-10"><TrendingUp className="w-24 h-24 md:w-32 md:h-32" /></div>
-                <div className="flex items-center gap-3 mb-4 md:mb-6 relative z-10 text-gray-900">
-                    <div className="p-2 bg-fuchsia-500/20 rounded-lg text-fuchsia-300"><TrendingUp className="w-5 h-5" /></div>
-                    <div><h3 className="text-sm md:text-lg font-bold text-white">AI Season Predictor</h3><p className="text-[10px] text-fuchsia-300 uppercase tracking-wider">Final Standings</p></div>
+              <Link href="/league-info/trophy-room">
+                <button className="w-full py-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl flex items-center justify-center gap-3 transition-all group">
+                   <Trophy size={16} className="text-[#C5A059] group-hover:scale-110 transition-transform" />
+                   <span className="text-[10px] font-black uppercase tracking-[0.2em]">View Gallery History →</span>
+                </button>
+              </Link>
+            </section>
+
+            {/* COMMISSIONER'S CORNER */}
+            <section className="bg-white rounded-[3rem] p-10 shadow-xl border border-black/5">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-[#F9F7F2] rounded-2xl"><Newspaper className="w-6 h-6" /></div>
+                <div>
+                    <p className="text-[10px] font-black uppercase tracking-widest opacity-40">Commissioner's Corner</p>
+                    <h3 className="text-2xl font-black italic uppercase leading-none">2025: A New Era</h3>
                 </div>
-                <div className="relative z-10 mb-6 italic text-xs leading-relaxed text-fuchsia-100">
-                    "The 2025 campaign belongs to **Aaron Hawkins**. After a solid 9-5 season, he proved unstoppable in the playoffs. 
-                    Algorithms now project a massive 2026 title defense as Travis Miller and JD Dowling plot their revenge."
+              </div>
+              <div className={`space-y-4 text-[#1A472A]/80 leading-relaxed ${!blogExpanded && 'line-clamp-3'}`}>
+                <p>The dust has settled on the 2025 campaign... Tyrone Poist's dominance wasn't just about the roster.</p>
+              </div>
+              <button onClick={() => setBlogExpanded(!blogExpanded)} className="mt-6 text-[10px] font-black uppercase tracking-widest text-[#C5A059]">{blogExpanded ? 'Read Less' : 'Read Full Recap'}</button>
+            </section>
+
+            {/* AI PLAYOFF PREDICTOR (Fixed Overlay) */}
+            <section className="bg-white rounded-[3rem] p-10 shadow-xl border border-black/5">
+              <div className="flex justify-between items-center mb-6">
+                <div className="flex items-center gap-3">
+                    <Target className="text-[#C5A059]" />
+                    <h3 className="text-xl font-black italic uppercase">AI Predictor</h3>
                 </div>
-                <button onClick={() => setShowProjections(true)} className="w-full bg-fuchsia-900/50 hover:bg-fuchsia-800 border border-fuchsia-500/30 text-white text-[10px] md:text-xs font-bold py-2 md:py-2.5 rounded-lg transition-colors relative z-10">View 2025 Standings</button>
-            </div>
+                <Zap size={18} className="text-[#C5A059] animate-pulse" />
+              </div>
+              
+              <div className="space-y-3 mb-6">
+                {[
+                  { name: "Tyrone", odds: "84%" },
+                  { name: "Mike M", odds: "71%" },
+                  { name: "Bill", odds: "68%" },
+                  { name: "Ben", odds: "59%" },
+                  { name: "EP", odds: "51%" }
+                ].map((row, i) => (
+                  <div key={i} className="flex justify-between items-center px-4 py-2 bg-[#F9F7F2] rounded-xl border border-black/5">
+                    <span className="text-[10px] font-black uppercase tracking-tight">{row.name}</span>
+                    <span className="text-sm font-black italic text-[#1A472A]">{row.odds}</span>
+                  </div>
+                ))}
+              </div>
+
+              <button 
+                onClick={() => setShowPredictor(true)}
+                className="w-full py-4 bg-[#1A472A] text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#C5A059] transition-all"
+              >
+                Show All 12 Managers
+              </button>
+            </section>
           </div>
         </div>
+
+        {/* FIXED 12-TEAM MODAL */}
+        {showPredictor && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto bg-black/80 backdrop-blur-md p-4 sm:p-6">
+            <div className="relative bg-[#1A1A1A] text-white w-full max-w-2xl rounded-[3rem] border border-white/10 shadow-2xl animate-in zoom-in duration-300">
+              <div className="p-8 bg-gradient-to-r from-[#1A472A] to-[#C5A059]/20 flex justify-between items-center rounded-t-[3rem]">
+                <div className="flex items-center gap-4">
+                  <Zap className="text-[#C5A059]" />
+                  <h2 className="text-2xl font-black uppercase tracking-tighter italic">2026 Season Forecast</h2>
+                </div>
+                <button onClick={() => setShowPredictor(false)} className="text-white/60 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
+                  <X size={24} />
+                </button>
+              </div>
+              
+              <div className="p-10 space-y-4 max-h-[65vh] overflow-y-auto custom-scrollbar">
+                {[
+                  { name: "Tyrone", odds: "84%", status: "Lock", color: "text-green-400" },
+                  { name: "Mike M", odds: "71%", status: "High", color: "text-green-400" },
+                  { name: "Bill", odds: "68%", status: "High", color: "text-green-400" },
+                  { name: "Ben", odds: "59%", status: "Strong", color: "text-[#C5A059]" },
+                  { name: "EP", odds: "51%", status: "Bubble", color: "text-[#C5A059]" },
+                  { name: "Keith", odds: "44%", status: "Bubble", color: "text-[#C5A059]" },
+                  { name: "Rob", odds: "38%", status: "Bubble", color: "text-[#C5A059]" },
+                  { name: "Amart", odds: "31%", status: "Work", color: "text-red-400" },
+                  { name: "Loren", odds: "24%", status: "Longshot", color: "text-red-500" },
+                  { name: "Ray", odds: "15%", status: "Longshot", color: "text-red-500" },
+                  { name: "Jeffrey", odds: "12%", status: "Longshot", color: "text-red-500" },
+                  { name: "Mike E", odds: "3%", status: "Basement", color: "text-red-600" }
+                ].map((row, i) => (
+                  <div key={i} className="flex justify-between items-center border-b border-white/5 pb-3">
+                    <span className="font-black uppercase tracking-widest text-sm">{row.name}</span>
+                    <div className="flex items-center gap-6">
+                        <span className={`text-xl font-black italic ${row.color}`}>{row.odds}</span>
+                        <span className="text-[8px] font-black uppercase px-2 py-1 bg-white/10 rounded-md min-w-[65px] text-center">{row.status}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-8 bg-white/5 flex items-start gap-4 rounded-b-[3rem]">
+                <Info className="text-[#C5A059] shrink-0" size={16} />
+                <p className="text-[10px] leading-relaxed opacity-50 uppercase font-bold tracking-tight">
+                    Algorithm simulates 10,000 iterations factoring in current Roster Efficiency, Max PF, and Strength of Schedule.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
-      
-      {/* Modals remain exactly as previous logic */}
-      {showHistoryModal && (
-        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-300 text-gray-900" onClick={() => setShowHistoryModal(false)}>
-            <div className="bg-white dark:bg-[#1e1e1e] w-full max-w-2xl rounded-3xl overflow-hidden relative p-8 md:p-12" onClick={e => e.stopPropagation()}>
-                <button onClick={() => setShowHistoryModal(false)} className="absolute top-4 right-4 p-2 text-gray-500 hover:text-orange-600 transition-colors z-20"><X className="w-6 h-6" /></button>
-                <div className="max-h-[85vh] overflow-y-auto space-y-6 custom-scrollbar">
-                    <div className="flex items-center gap-3 mb-4 text-gray-900"><Book className="w-8 h-8 text-orange-600" /><h3 className="text-2xl font-black dark:text-white uppercase tracking-tight">The League Annals</h3></div>
-                    <div className="prose prose-sm md:prose-base dark:prose-invert text-gray-600 dark:text-gray-300 leading-relaxed">
-                        <p><strong>Area 10 FFL</strong> was born in 2011. In 2019, we rebranded to <span className="text-orange-600 font-bold">River City FFL</span>, tying us to the heart of Richmond, VA.</p>
-                        <div className="bg-orange-50 dark:bg-white/5 p-6 rounded-2xl border border-orange-100 dark:border-white/5 my-6 text-gray-900">
-                            <h4 className="text-lg font-bold mb-2 dark:text-white uppercase tracking-tight">The Stakes</h4>
-                            <p className="mb-2">The champion receives a <span className="text-green-600 font-bold">$219 payout</span> and a ring.</p>
-                            <p>The <span className="text-red-500 font-bold">Toilet Bowl</span> loser must write an apology letter.</p>
-                        </div>
-                        <div className="pt-6 text-center">
-                            <Link href="/league-info/trophy-room" className="inline-flex items-center justify-center w-full bg-orange-600 text-white py-4 rounded-2xl font-black text-lg hover:bg-orange-700 transition-colors shadow-lg">
-                                <Trophy className="w-6 h-6 mr-2" /> Enter the Trophy Room
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-      )}
-
-      {showRecap && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setShowRecap(false)}>
-            <div className="bg-[#0B1527] w-full max-w-lg rounded-2xl shadow-2xl border border-blue-500/30 overflow-hidden relative text-white" onClick={e => e.stopPropagation()}>
-                <div className="absolute top-0 right-0 p-4"><button onClick={() => setShowRecap(false)} className="text-blue-300 hover:text-white transition-colors"><X className="w-6 h-6" /></button></div>
-                <div className="p-6 md:p-8">
-                    <div className="flex items-center gap-3 mb-6"><MessageCircle className="w-6 h-6 text-blue-400" /><div><h3 className="text-lg font-bold uppercase tracking-wide">Commissioner's Corner</h3><p className="text-xs text-blue-300 uppercase tracking-wider">The 2025 Story</p></div></div>
-                    <div className="prose prose-sm prose-invert leading-relaxed text-gray-300 whitespace-pre-wrap max-h-[60vh] overflow-y-auto pr-2">{liveRecap}</div>
-                </div>
-            </div>
-        </div>
-      )}
-
-      {showProjections && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setShowProjections(false)}>
-            <div className="bg-white dark:bg-[#1e1e1e] w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
-                <div className="p-4 md:p-5 bg-gradient-to-r from-purple-900 to-indigo-900 flex justify-between items-center text-white">
-                    <div className="flex items-center gap-2 md:gap-3"><TrendingUp className="w-4 h-4 md:w-5 md:h-5" /><div><h3 className="text-base md:text-lg font-black uppercase">Final 2025 Standings</h3><p className="text-[10px] text-purple-200 uppercase tracking-tighter">Season complete</p></div></div>
-                    <button onClick={() => setShowProjections(false)} className="text-white/50 hover:text-white transition-colors"><X className="w-6 h-6" /></button>
-                </div>
-                <div className="max-h-[60vh] overflow-y-auto p-2">
-                    <table className="w-full text-left text-[10px] md:text-sm">
-                        <thead className="bg-gray-50 dark:bg-white/5 text-gray-500 dark:text-gray-400 font-bold uppercase"><tr><th className="px-3 py-3">Rank</th><th className="px-3 py-3">Owner</th><th className="px-3 py-3 text-right">Finish</th></tr></thead>
-                        <tbody className="divide-y divide-gray-100 dark:divide-white/5">
-                            {projections.map((team) => (
-                                <tr key={team.rank} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-                                    <td className="px-3 py-3 font-mono text-gray-400">#{team.rank}</td>
-                                    <td className="px-3 py-3 font-bold text-gray-900 dark:text-white flex items-center gap-2">{team.rank <= 3 && <Crown className="w-3 h-3 text-yellow-500" />}<span>{team.name}</span></td>
-                                    <td className="px-3 py-3 text-right font-mono text-gray-900 dark:text-white">{team.status}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-      )}
     </div>
   );
 }

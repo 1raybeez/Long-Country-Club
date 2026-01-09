@@ -1,194 +1,244 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Trophy, Users, BookOpen, Swords, TrendingUp, ArrowLeft, RotateCw, X, UserPlus, Crown, Briefcase, Medal, Gavel } from 'lucide-react';
-import { managers, retiredManagers, HISTORY_MAPPING } from '@/lib/managersData';
-import { ModeToggle } from '@/components/ModeToggle';
-import { getLeagueRosters, getLeagueUsers } from '@/lib/sleeper';
 
-// --- 1. MASTER HISTORY (Updated with 2025 Results) ---
-const MASTER_HISTORY = [
-  { year: 2025, type: 'champion', manager: 'Aaron Dogg' },
-  { year: 2025, type: 'runner_up', manager: 'Travis Miller' },
-  { year: 2025, type: 'third_place', manager: 'JD Dowling' },
-  { year: 2025, type: 'toilet_bowl', manager: 'Ray Long' },
-  { year: 2024, type: 'champion', manager: 'Jordan Maslyn' }, { year: 2024, type: 'runner_up', manager: 'Wade Cameron' }, { year: 2024, type: 'third_place', manager: 'Doug Fordham' }, { year: 2024, type: 'toilet_bowl', manager: 'Rashad Gresham' },
-  { year: 2023, type: 'champion', manager: 'Tommy Moore' }, { year: 2023, type: 'runner_up', manager: 'Brian Stevens' }, { year: 2023, type: 'third_place', manager: 'Ray Long' }, { year: 2023, type: 'toilet_bowl', manager: 'Landon Elliott' },
-  { year: 2022, type: 'champion', manager: 'Tommy Moore' }, { year: 2022, type: 'runner_up', manager: 'David Besedich' }, { year: 2022, type: 'third_place', manager: 'Brian Stevens' }, { year: 2022, type: 'toilet_bowl', manager: 'JD Dowling' },
-  { year: 2021, type: 'champion', manager: 'David Besedich' }, { year: 2021, type: 'runner_up', manager: 'JD Dowling' }, { year: 2021, type: 'third_place', manager: 'Adam Lind' }, { year: 2021, type: 'toilet_bowl', manager: 'Jordan Maslyn' },
-  { year: 2020, type: 'champion', manager: 'JD Dowling' }, { year: 2020, type: 'runner_up', manager: 'Landon Elliott' }, { year: 2020, type: 'third_place', manager: 'David Besedich' }, { year: 2020, type: 'toilet_bowl', manager: 'Tommy Moore' },
-  { year: 2019, type: 'champion', manager: 'Wade Cameron' }, { year: 2019, type: 'runner_up', manager: 'Travis Miller' }, { year: 2019, type: 'third_place', manager: 'Brian Stevens' }, { year: 2019, type: 'toilet_bowl', manager: 'David Besedich' },
-  { year: 2018, type: 'champion', manager: 'Brian Stevens' }, { year: 2018, type: 'runner_up', manager: 'Tommy Moore' }, { year: 2018, type: 'third_place', manager: 'Ray Long' }, { year: 2018, type: 'toilet_bowl', manager: 'Wade Cameron' },
-  { year: 2017, type: 'champion', manager: 'Tommy Moore' }, { year: 2017, type: 'runner_up', manager: 'JD Dowling' }, { year: 2017, type: 'third_place', manager: 'James Minnix' }, { year: 2017, type: 'toilet_bowl', manager: 'Brian Stevens' },
-  { year: 2016, type: 'champion', manager: 'Tommy Moore' }, { year: 2016, type: 'runner_up', manager: 'James Minnix' }, { year: 2016, type: 'third_place', manager: 'Ray Long' }, { year: 2016, type: 'toilet_bowl', manager: 'Wade Cameron' },
-  { year: 2015, type: 'champion', manager: 'Keith' }, { year: 2015, type: 'runner_up', manager: 'JD Dowling' }, { year: 2015, type: 'third_place', manager: 'Tommy Moore' }, { year: 2015, type: 'toilet_bowl', manager: 'Travis Miller' },
-  { year: 2014, type: 'champion', manager: 'Garet Prior' }, { year: 2014, type: 'runner_up', manager: 'Gordie Gahagan' }, { year: 2014, type: 'third_place', manager: 'Keith' }, { year: 2014, type: 'toilet_bowl', manager: 'Landon Elliott' },
-  { year: 2013, type: 'champion', manager: 'Tommy Moore' }, { year: 2013, type: 'runner_up', manager: 'James Minnix' }, { year: 2013, type: 'third_place', manager: 'Bryan' }, { year: 2013, type: 'toilet_bowl', manager: 'Travis Miller' },
-  { year: 2012, type: 'champion', manager: 'Bryan' }, { year: 2012, type: 'runner_up', manager: 'Chris Barras' }, { year: 2012, type: 'third_place', manager: 'Nicholas' }, { year: 2012, type: 'toilet_bowl', manager: 'Zach' },
-  { year: 2011, type: 'champion', manager: 'Gordie Gahagan' }, { year: 2011, type: 'runner_up', manager: 'Wade Cameron' }, { year: 2011, type: 'third_place', manager: 'Zach' }, { year: 2011, type: 'toilet_bowl', manager: 'Darren' }
+// Official Toned-Down Themes
+const TEAM_THEMES: Record<string, { bg: string; border: string }> = {
+  atl: { bg: 'bg-[#a71930]', border: 'border-[#000000]' }, 
+  chi: { bg: 'bg-[#0B162A]', border: 'border-[#C83803]' },
+  dal: { bg: 'bg-[#003594]', border: 'border-[#869397]' },
+  det: { bg: 'bg-[#0076B6]', border: 'border-[#B0B7BC]' },
+  nyg: { bg: 'bg-[#0B2265]', border: 'border-[#A71930]' },
+  phi: { bg: 'bg-[#004C54]', border: 'border-[#A5ACAF]' },
+  pit: { bg: 'bg-[#101820]', border: 'border-[#FFB612]' },
+  was: { bg: 'bg-[#5a1414]', border: 'border-[#2b0808]' },
+  mia: { bg: 'bg-[#008E97]', border: 'border-[#F26722]' },
+  car: { bg: 'bg-[#0085CA]', border: 'border-[#101820]' },
+  buf: { bg: 'bg-[#00338D]', border: 'border-[#C60C30]' },
+};
+
+const ACTIVE_MANAGERS = [
+  { name: "Ray", sleeper: "Bower Rangers", joined: 2003, div: "OG", status: "FOUNDER", isCommish: true, team: "atl", rival: "Jeffrey", cell: "8046471100", aggro: 10, titles: 1, podiums: { first: ["2007"], second: ["2005", "2008", "2014"], third: ["2009", "2021"] } },
+  { name: "Bill", sleeper: "Chicago Cutlers", joined: 2003, div: "OG", status: "FOUNDER", isCommish: false, team: "chi", rival: "Ray", cell: "8043077897", aggro: 3, titles: 4, podiums: { first: ["2003", "2005", "2006", "2018"], second: ["2016", "2024"], third: ["2013"] } },
+  { name: "KW", sleeper: "Off Constantly", joined: 2003, div: "OG", status: "FOUNDER", isCommish: false, team: "was", rival: "Bill", cell: "8048526684", aggro: 3, titles: 1, podiums: { first: ["2020"], second: ["2004", "2017"], third: ["2015", "2023"] } },
+  { name: "Rob", sleeper: "Roaring 20", joined: 2004, div: "OG", status: "OG", isCommish: false, team: "det", rival: "Ray", cell: "8044008140", aggro: 9, titles: 2, podiums: { first: ["2014"], second: ["2005", "2009", "2017", "2021"], third: ["2015", "2016", "2020"] } },
+  { name: "EP", sleeper: "The People's Team", joined: 2004, div: "OG", status: "OG", isCommish: false, team: "phi", rival: "Bill", cell: "447825990288", aggro: 9, titles: 1, podiums: { first: ["2022"], second: ["2020"], third: ["2006", "2008", "2018", "2023"] } },
+  { name: "Jeffrey", sleeper: "CeeDees....Cousins", joined: 2007, div: "OG", status: "OG", isCommish: false, team: "atl", rival: "Ray", cell: "4049318499", aggro: 6, titles: 1, podiums: { first: ["2024"], second: ["2013", "2019"], third: ["2023"] } },
+  { name: "Tyrone", sleeper: "Won't You be my Nabers", joined: 2004, div: "NEWBIE", status: "CHAMP", isCommish: false, team: "nyg", rival: "Ben", cell: "7577617610", aggro: 5, titles: 2, podiums: { first: ["2015", "2025"], second: ["2016"], third: ["2004"] } },
+  { name: "Ben", sleeper: "Benl", joined: 2008, div: "NEWBIE", status: "VET", isCommish: false, team: "dal", rival: "Tyrone", cell: "8043146253", aggro: 3, titles: 2, podiums: { first: ["2011", "2016"], second: ["2015", "2022", "2023", "2024"], third: ["2025"] } },
+  { name: "Loren", sleeper: "ICOR 4 Lyfe", joined: 2011, div: "NEWBIE", status: "VET", isCommish: false, team: "atl", rival: "Ben", cell: "8285459802", aggro: 8, titles: 1, podiums: { first: ["2021"], second: ["2011", "2023"], third: ["2012", "2024"] } },
+  { name: "Mike M", sleeper: "CookieMonsters", joined: 2018, div: "NEWBIE", status: "VET", isCommish: false, team: "phi", rival: "Ray", cell: "8042399371", aggro: 5, titles: 1, podiums: { first: ["2019", "2023"], second: ["2020", "2025"], third: [] } },
+  { name: "Amart", sleeper: "Sycamore Bishops", joined: 2020, div: "NEWBIE", status: "ACTIVE", isCommish: false, team: "pit", rival: "Mike E", cell: "8048524252", aggro: 8, titles: 0, podiums: { first: [], second: [], third: ["2021"] } },
+  { name: "Mike E", sleeper: "Redneck Rebels", joined: 2022, div: "NEWBIE", status: "ACTIVE", isCommish: false, team: "was", rival: "Amart", cell: "8044024955", aggro: 9, titles: 0, podiums: { first: [], second: [], third: ["2025"] } }
 ];
 
-// --- MAPPINGS ---
-const RETIRED_TRADE_SCORES: Record<string, number> = { "Landon": 6, "Gordie": 0, "Chris": 6, "Garet": 7, "James": 6, "Rachel": 9.5, "Zach": 10.5, "Ricky": 4, "Patrick": 7, "Bryan": 6, "Keith": 4, "Darren": 2, "Nicholas": 3, "Billy": 7, "Adam": 6 };
-const NORM_NAME: Record<string, string> = { "Aaron": "Aaron Dogg", "Minnix": "James Minnix", "Gordie": "Gordie Gahagan", "Chris": "Chris Barras", "Tommy": "Tommy Moore", "Travis": "Travis Miller", "Landon": "Landon Elliott", "Wade": "Wade Cameron", "Ray": "Ray Long", "Brian": "Brian Stevens", "JD": "JD Dowling", "Zach": "Zach", "Bryan": "Bryan", "Keith": "Keith", "Nicholas": "Nicholas", "Garet": "Garet Prior", "Darren": "Darren", "Rachel": "Rachel Woolard", "Dave": "David Besedich", "Doug": "Doug Fordham", "Adam": "Adam Lind", "Billy": "Billy Biddle", "Patrick": "Patrick Leahey", "Jordan": "Jordan Maslyn", "Rashad": "Rashad Gresham", "Ricky": "Ricky Taylor" };
-const HIST_MAP: Record<string, string> = { "Aaron": "Aaron Dogg", "Ray": "Ray Long", "JD": "JD Dowling", "Tommy": "Tommy Moore", "Travis": "Travis Miller", "Wade": "Wade Cameron", "Brian": "Brian Stevens", "Doug": "Doug Fordham", "Jordan": "Jordan Maslyn", "David": "David Besedich", "Landon": "Landon Elliott", "Chris": "Chris Barras", "Gordie": "Gordie Gahagan", "James": "James Minnix", "Garet": "Garet Prior", "Adam": "Adam Lind", "Billy": "Billy Biddle", "Patrick": "Patrick Leahey", "Ricky": "Ricky Taylor", "Rachel": "Rachel Woolard", "Rashad": "Rashad Gresham", "Stan": "Stan Schoppe" };
-const SLEEPER_ID_MAP: Record<string, string> = { "73400761740312576": "Doug Fordham", "341412060426436608": "Jordan Maslyn", "469199353672626176": "Landon Elliott", "342828350391230464": "Ray Long", "356621920969555968": "Jeffrey Hudgins", "342831451382841344": "Travis Miller", "342838548870762496": "Wade Cameron", "342849293037608960": "Tommy Moore", "342850391018356736": "JD Dowling", "343129212162523136": "Brian Stevens", "466663208728391680": "David Besedich", "583513420586848256": "Aaron Dogg", "864186418971418624": "Rashad Gresham", "1260048448384667648": "Stan Schoppe", "737878619958947840": "Damon Davis", "556676922517524480": "Adam Lind", "470428278931320832": "Billy Biddle", "345934777502699520": "Chris Barras", "98907192333582336":  "Ricky Taylor", "342831898403377152": "Patrick Leahey" };
-
-const TEAM_THEMES: Record<string, string> = { atl: "bg-gradient-to-br from-[#a71930] to-[#000000]", nyj: "bg-gradient-to-br from-[#125740] to-[#0b3326]", min: "bg-gradient-to-br from-[#4f2683] to-[#250e42]", no: "bg-gradient-to-br from-[#d3bc8d] to-[#8e7846]", gb: "bg-gradient-to-br from-[#203731] to-[#101e1a]", car: "bg-gradient-to-br from-[#0085ca] to-[#00466c]", nyg: "bg-gradient-to-br from-[#0b2265] to-[#030b21]", was: "bg-gradient-to-br from-[#5a1414] to-[#2b0808]", cle: "bg-gradient-to-br from-[#311d00] to-[#1a0f00]", sf: "bg-gradient-to-br from-[#aa0000] to-[#4d0000]", det: "bg-gradient-to-br from-[#0076b6] to-[#002f4a]", tb: "bg-gradient-to-br from-[#d50a0a] to-[#520303]", dal: "bg-gradient-to-br from-[#003594] to-[#041e42]", pit: "bg-gradient-to-br from-black to-[#101820]" };
+const RETIRED_MANAGERS = [
+  { name: "Dan", sleeper: "Ridiculousville Quicksand", joined: 2006, status: "RETIRED", team: "atl", titles: 3, podiums: { first: ["2012", "2013", "2017"], second: [], third: [] } },
+  { name: "Chris H", sleeper: "Boss Hogg is Back Baby!", joined: 2005, status: "RETIRED", team: "was", titles: 1, podiums: { first: ["2008"], second: ["2006", "2007"], third: ["2005"] } },
+  { name: "DJ", sleeper: "H.S. Serial Killers", joined: 2006, status: "RETIRED", team: "was", titles: 1, podiums: { first: ["2010"], second: [], third: [] } },
+  { name: "JD", sleeper: "JD", joined: 2003, status: "FOUNDER", team: "mia", titles: 0, podiums: { first: [], second: ["2013"], third: ["2007"] } },
+  { name: "David G", sleeper: "British Bulldogs", joined: 2006, status: "RETIRED", team: "chi", titles: 0, podiums: { first: [], second: [], third: ["2008"] } },
+  { name: "Matt", sleeper: "Matt H", joined: 2008, status: "RETIRED", team: "was", titles: 0, podiums: { first: [], second: ["2012", "2020"], third: ["2010", "2011", "2014"] } },
+  { name: "David B", sleeper: "CAM You Dig It?!", joined: 2006, status: "RETIRED", team: "car", titles: 0, podiums: { first: [], second: [], third: ["2013"] } },
+  { name: "KD", sleeper: "KD", joined: 2003, status: "FOUNDER", team: "buf", titles: 0, podiums: { first: [], second: ["2005"], third: ["2003", "2004", "2006"] } },
+  { name: "Bernie", sleeper: "Bernie", joined: 2003, status: "FOUNDER", team: "was", titles: 0, podiums: { first: [], second: [], third: ["2003"] } },
+  { name: "BJ", sleeper: "BJ", joined: 2003, status: "FOUNDER", team: "was", titles: 0, podiums: { first: [], second: [], third: [] } },
+  { name: "Chris B", sleeper: "Chris B", joined: 2003, status: "MEMORIAL", team: "mia", titles: 0, podiums: { first: [], second: ["2012"], third: [] } },
+  { name: "Junior", sleeper: "Junior", joined: 2003, status: "MEMORIAL", team: "was", titles: 0, podiums: { first: [], second: [], third: [] } },
+  { name: "Chris M", sleeper: "Chris M", joined: 2005, status: "RETIRED", team: "dal", titles: 0, podiums: { first: [], second: [], third: [] } },
+  { name: "Jay", sleeper: "Vitamin J", joined: 2003, status: "FOUNDER", team: "mia", titles: 0, podiums: { first: [], second: [], third: [] } },
+  { name: "Tommy", sleeper: "Tommy", joined: 2008, status: "RETIRED", team: "dal", titles: 0, podiums: { first: [], second: [], third: [] } },
+  { name: "Mike L", sleeper: "Mike L", joined: 2008, status: "RETIRED", team: "nyg", titles: 0, podiums: { first: [], second: [], third: [] } }
+];
 
 export default function ManagersPage() {
   const [activeTab, setActiveTab] = useState<'active' | 'retired'>('active');
-  const [flippedId, setFlippedId] = useState<number | null>(null);
-  const [teamNames, setTeamNames] = useState<Record<number, string>>({});
-  
-  let fullRet = [...retiredManagers];
-  if (!fullRet.find(m => m.name === "Adam Lind")) {
-    fullRet.push({ roster: 999, name: "Adam Lind", teamName: "Hotub Jellyfish", photo: "/managers/Adam.png", location: "Richmond", fantasyStart: 2012, favoriteTeam: "min", mode: "Retired", bio: "The Jellyfish legend.", rival: { name: "Everyone" }, tradingScale: 6, valuePosition: "RB", rookieOrVets: "Vets", philosophy: "Sting like a jellyfish.", preferredContact: "Sleeper" } as any);
-  }
-  const awards = MASTER_HISTORY.map(a => ({ ...a, manager: NORM_NAME[a.manager] || a.manager }));
-  const displayed = activeTab === 'active' ? managers : fullRet;
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const [u, r] = await Promise.all([getLeagueUsers(), getLeagueRosters()]);
-        const uMap: Record<string, string> = { ...SLEEPER_ID_MAP };
-        u.forEach((user: any) => { if (!uMap[user.user_id]) uMap[user.user_id] = user.metadata?.team_name || user.display_name; });
-        const rNames: Record<number, string> = {};
-        r.forEach((ros: any) => { rNames[ros.roster_id] = uMap[ros.owner_id] || "Unknown Team"; });
-        setTeamNames(rNames);
-      } catch (e) { console.error(e); }
-    }
-    fetchData();
-  }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#121212] pb-20 font-sans transition-colors">
-      <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur-md pt-4 pb-6 dark:bg-[#121212]/80 dark:border-white/10 text-center">
-        <div className="container mx-auto px-4 relative">
-          <Link href="/" className="absolute top-4 left-2 md:left-4 flex items-center gap-1 md:gap-2 text-[10px] md:text-sm font-bold text-gray-500 hover:text-orange-600 transition-colors uppercase tracking-widest"><ArrowLeft className="h-3 w-3 md:h-4 md:w-4" /> Back</Link>
-          <div className="absolute top-4 right-2 md:right-4"><ModeToggle /></div>
-          <div className="relative mx-auto mb-4 h-16 w-16 md:h-24 md:w-24 overflow-hidden rounded-full border-2 md:border-4 bg-white shadow-xl dark:border-white/5"><Image src="/River City FFL Logo.JPG" alt="Logo" fill className="object-cover" priority unoptimized /></div>
-          <h1 className="mb-4 text-2xl md:text-4xl font-extrabold uppercase dark:text-[#f0c340]">League <span className="text-orange-600 dark:text-white">Managers</span></h1>
-          
-          {/* RESPONSIVE NAV: flex-wrap for mobile screens */}
-          <nav className="mb-6 flex flex-wrap justify-center gap-2 md:gap-4 px-2">
-            {[
-              { label: 'Home', href: '/', icon: Trophy },
-              { label: 'Managers', href: '/managers', icon: Users },
-              { label: 'League Info', href: '/league-info', icon: BookOpen },
-              { label: 'Matchups', href: '/matchups', icon: Swords }
-            ].map((item, i) => (
-              <Link key={i} href={item.href} className={`flex items-center gap-1 md:gap-2 rounded-full px-4 md:px-6 py-1.5 md:py-2 text-[10px] md:text-xs transition ${item.label === 'Managers' ? 'bg-orange-600 text-white font-bold shadow-lg' : 'border border-gray-200 bg-white text-gray-700 dark:bg-[#2c2c2c] dark:text-gray-300'}`}>
-                <item.icon className="w-3 h-3 md:w-4 md:h-4" />{item.label}
-              </Link>
-            ))}
-          </nav>
-          
-          <div className="flex justify-center gap-2">
-            <button onClick={() => setActiveTab('active')} className={`rounded-full px-5 py-1.5 text-[10px] md:text-sm font-bold transition ${activeTab === 'active' ? 'bg-orange-600 text-white shadow-lg' : 'bg-white text-gray-500 dark:bg-white/5'}`}>Active</button>
-            <button onClick={() => setActiveTab('retired')} className={`rounded-full px-5 py-1.5 text-[10px] md:text-sm font-bold transition ${activeTab === 'retired' ? 'bg-gray-800 text-white shadow-lg' : 'bg-white text-gray-500 dark:bg-white/5'}`}>Retired</button>
-          </div>
+    <div className="min-h-screen p-6 md:p-12 bg-[#F9F7F2]">
+      <header className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-black italic uppercase text-[#1A472A] tracking-tighter underline decoration-[#C5A059] underline-offset-8">Clubhouse Directory</h1>
+        
+        {/* TABS */}
+        <div className="mt-12 flex justify-center gap-2">
+          <button 
+            onClick={() => setActiveTab('active')}
+            className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === 'active' ? 'bg-[#1A472A] text-white shadow-lg' : 'bg-gray-200 text-gray-500 hover:bg-gray-300'}`}
+          >Active Owners</button>
+          <button 
+            onClick={() => setActiveTab('retired')}
+            className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === 'retired' ? 'bg-[#1A472A] text-white shadow-lg' : 'bg-gray-200 text-gray-500 hover:bg-gray-300'}`}
+          >Retired Legends</button>
         </div>
+
+        <nav className="mt-8 flex justify-center gap-4">
+          <Link href="/"><button className="px-5 py-2 rounded-full border border-gray-300 text-[10px] font-black uppercase tracking-widest hover:bg-[#1A472A] hover:text-white transition-all">Home</button></Link>
+        </nav>
       </header>
 
-      <main className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
-        {/* RESPONSIVE GRID: 1 column on mobile, 2 on tablet, 3 on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {displayed.map((m) => {
-            const isF = flippedId === m.roster;
-            const resName = HIST_MAP[m.name] || m.name;
-            const myA = awards.filter(a => a.manager === resName);
-            const co = m.name === 'Ray' ? "Jeffrey" : (m.name === 'Jordan' ? "Landon" : null);
-            const tradeScore = activeTab === 'retired' ? (RETIRED_TRADE_SCORES[m.name] ?? m.tradingScale) : m.tradingScale;
-
-            return (
-              <div key={m.roster} className="relative h-[550px] md:h-[620px] w-full group [perspective:1000px]">
-                <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${isF ? '[transform:rotateY(180deg)]' : ''}`}>
-                  {/* FRONT: Using w-full and max-w for mobile flexibility */}
-                  <div className={`absolute inset-0 [backface-visibility:hidden] flex flex-col overflow-hidden rounded-[2rem] shadow-xl border-4 ${TEAM_THEMES[m.favoriteTeam] || "bg-gray-900"} text-white ${isF ? 'pointer-events-none' : ''}`}>
-                    <div className="absolute top-0 right-0 p-4 font-black text-4xl md:text-6xl uppercase opacity-20 select-none tracking-tighter">{m.favoriteTeam}</div>
-                    <div className="absolute top-4 right-4 z-20"><button onClick={(e) => { e.stopPropagation(); setFlippedId(isF ? null : m.roster); }} className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20"><RotateCw className="w-4 h-4 md:w-5 md:h-5" /></button></div>
-                    
-                    <div className="relative p-6 md:p-8 pb-0 mt-4 md:mt-8 flex flex-col">
-                      <h2 className="text-2xl md:text-3xl font-black leading-tight truncate mb-1 uppercase tracking-tight">{teamNames[m.roster] || m.teamName}</h2>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <div className="text-base md:text-lg font-medium opacity-90">{m.name}</div>
-                        {co && <div className="flex items-center gap-1.5"><span className="text-white/40 text-[10px] font-bold uppercase">w/</span><div className="text-base md:text-lg font-medium text-orange-400">{co}</div><UserPlus className="h-3 w-3 md:h-4 md:w-4 text-orange-400/80" /></div>}
-                      </div>
-                      <div className="text-[10px] font-bold uppercase opacity-50 mt-2 tracking-widest">{m.location} • Est {m.fantasyStart}</div>
-                    </div>
-
-                    <div className="flex items-center gap-4 md:gap-5 px-6 md:px-8 py-4 md:py-6">
-                      <div className="flex shrink-0 flex-col items-center gap-2 md:gap-3">
-                        <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-full border-2 overflow-hidden bg-gray-800 shadow-xl"><Image src={m.photo || "/River City FFL Logo.JPG"} alt={m.name} fill className="object-cover" unoptimized /></div>
-                        {myA.filter(a => a.type === 'champion').length > 0 && <div className="bg-yellow-400 text-yellow-900 border border-white px-2 py-0.5 rounded-full text-[8px] md:text-[10px] font-black z-30 shadow-lg">x{myA.filter(a => a.type === 'champion').length}🏆</div>}
-                      </div>
-                      <div className="w-full rounded-2xl bg-white/10 p-3 italic text-[10px] md:text-xs leading-relaxed border border-white/5">"{m.bio}"</div>
-                    </div>
-
-                    <div className="px-6 md:px-8 mb-4">
-                      <div className="flex justify-between text-[8px] md:text-[10px] font-black uppercase mb-1 tracking-widest"><span>{activeTab === 'retired' ? 'Trade Aggression' : 'Trade Aggression'}</span><span>{tradeScore}/10</span></div>
-                      <div className="h-2 w-full rounded-full bg-black/40 border border-white/10"><div className="h-full rounded-full bg-gradient-to-r from-red-500 via-yellow-400 to-green-500 shadow-[0_0_12px_rgba(255,255,255,0.2)]" style={{ width: `${tradeScore * 10}%` }}></div></div>
-                    </div>
-
-                    <div className="px-6 md:px-8 grid grid-cols-4 gap-2 mb-4 h-14 md:h-16 text-center">
-                        {[
-                          { label: 'Value Pos', val: m.valuePosition },
-                          { label: 'Draft', val: m.rookieOrVets === 'Rookies' ? 'Rook' : 'Vet' },
-                          { label: 'Team', val: m.favoriteTeam.toUpperCase() }
-                        ].map((stat, idx) => (
-                          <div key={idx} className="bg-black/30 backdrop-blur-md rounded-xl border border-white/5 flex flex-col justify-center"><span className="text-[6px] md:text-[7px] uppercase opacity-50 font-bold">{stat.label}</span><span className="text-[9px] md:text-[10px] font-black uppercase">{stat.val}</span></div>
-                        ))}
-                        <div className="bg-black/30 rounded-xl border border-white/5 overflow-hidden relative">{m.favoritePlayer ? <Image src={`https://sleepercdn.com/content/nfl/players/${m.favoritePlayer}.jpg`} alt="P" fill className="object-cover opacity-90 grayscale hover:grayscale-0 transition-all" unoptimized /> : <div className="text-[8px] flex items-center justify-center h-full opacity-30">N/A</div>}</div>
-                    </div>
-
-                    <div className="px-6 md:px-8 grow mb-4 relative">
-                        <div className="h-full rounded-[1.5rem] bg-white/5 p-4 border border-white/5 relative flex items-center"><div className="absolute -top-2 left-4 rounded-lg bg-gray-200 px-2 py-0.5 text-[8px] font-black text-black uppercase shadow-sm">Philosophy</div><p className="mt-1 text-[10px] md:text-xs italic opacity-80 leading-relaxed font-medium">"{m.philosophy}"</p></div>
-                    </div>
-
-                    <div className="mt-auto bg-black/40 p-4 md:p-6 border-t border-white/10 flex items-center justify-between backdrop-blur-lg">
-                        <div className="flex items-center gap-2"><Swords className="h-4 w-4 text-red-400" /><span className="text-[10px] font-black uppercase opacity-80 tracking-widest">Rival</span></div>
-                        <div className="flex items-center gap-3"><span className="text-xs md:text-sm font-black text-right leading-tight tracking-tight">{m.rival.name || "River City FFL"}</span><div className="relative h-8 w-8 md:h-10 md:w-10 overflow-hidden rounded-full bg-gray-700 shadow-lg border border-white/20">{m.rival.image ? <Image src={m.rival.image} alt="R" fill className="object-cover" unoptimized /> : <Image src="/River City FFL Logo.JPG" alt="L" fill className="object-cover" unoptimized />}</div></div>
-                    </div>
-                  </div>
-
-                  {/* BACK: Responsive scrollable area for history */}
-                  <div className={`absolute inset-0 [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col overflow-hidden rounded-[2rem] shadow-xl bg-[#0f0f0f] text-white border-2 border-white/10 ${isF ? '' : 'pointer-events-none'}`}>
-                     <div className="flex items-center justify-between p-6 md:p-8 border-b border-white/10">
-                         <div className="flex items-center gap-2 text-orange-500 uppercase tracking-[0.2em] font-black text-xs md:text-sm"><BookOpen className="h-4 w-4 md:h-5 md:w-5" /> History & Legacy</div>
-                         <button onClick={(e) => { e.stopPropagation(); setFlippedId(null); }} className="rounded-full bg-white/10 p-2 transition hover:bg-white/20"><X className="h-4 w-4" /></button>
-                     </div>
-                     <div className="flex-grow overflow-y-auto p-6 md:p-8 space-y-4 custom-scrollbar">
-                        {[
-                          { t: 'League Champion', l: myA.filter(a=>a.type==='champion').map(a=>a.year), c: 'yellow', i: Trophy },
-                          { t: 'Runner Up', l: myA.filter(a => a.type === 'runner_up').map(a => a.year), c: 'gray', i: Medal },
-                          { t: 'Third Place', l: myA.filter(a => a.type === 'third_place').map(a => a.year), c: 'orange', i: Medal },
-                          { t: 'Toilet Bowl', l: myA.filter(a => a.type === 'toilet_bowl').map(a => a.year), c: 'red', i: null }
-                        ].map((g, i) => (
-                           g.l.length > 0 && (
-                             <div key={i} className={`bg-white/5 border border-white/10 p-4 md:p-5 rounded-[1.5rem] transition-all hover:bg-white/10`}>
-                               <div className="flex items-center gap-2 mb-3 text-[10px] font-black uppercase tracking-widest text-orange-500">{g.i && <g.i className="w-4 h-4 text-orange-500"/>}{g.t}</div>
-                               <div className="flex flex-wrap gap-2">{g.l.sort((a,b)=>b-a).map(y => <span key={y} className="px-3 py-1 bg-white/10 text-white text-[10px] md:text-xs font-black rounded-lg border border-white/10">{y}</span>)}</div>
-                             </div>
-                           )
-                        ))}
-                        {myA.length === 0 && <div className="py-20 text-center opacity-20 text-xs font-black uppercase tracking-widest">NO TITLES YET</div>}
-                     </div>
-                     <div className="grid grid-cols-2 gap-4 border-t border-white/10 bg-black/40 p-6 md:p-8 text-center backdrop-blur-xl">
-                         <div><div className="mb-1 text-[8px] md:text-[10px] font-black uppercase opacity-40 tracking-widest text-orange-400">Best Finish</div><div className="text-xl md:text-2xl font-black text-green-400">{myA.filter(a=>a.type==='champion').length>0?'1st':(myA.filter(a=>a.type==='runner_up').length>0?'2nd':'N/A')}</div></div>
-                         <div><div className="mb-1 text-[8px] md:text-[10px] font-black uppercase opacity-40 tracking-widest text-orange-400">Podiums</div><div className="text-xl md:text-2xl font-black text-orange-500">{myA.filter(a=>['champion','runner_up','third_place'].includes(a.type)).length}</div></div>
-                     </div>
-                  </div>
-                </div>
+      <main className="max-w-6xl mx-auto">
+        {activeTab === 'active' ? (
+          <div className="space-y-24">
+            <section>
+              <h2 className="text-2xl font-black italic uppercase text-[#1A472A] mb-12 border-b-8 border-[#C5A059] inline-block px-2 tracking-widest leading-none">The Founders & OG's</h2>
+              <div className="clubhouse-grid">
+                {ACTIVE_MANAGERS.filter(m => m.div === "OG").map((m, i) => <ButtonFlipCard key={i} manager={m} />)}
               </div>
-            );
-          })}
-        </div>
+            </section>
+            <section>
+              <h2 className="text-2xl font-black italic uppercase text-[#1A472A] mb-12 border-b-8 border-[#1A472A] inline-block px-2 tracking-widest leading-none">The Newbie Division</h2>
+              <div className="clubhouse-grid">
+                {ACTIVE_MANAGERS.filter(m => m.div === "NEWBIE").map((m, i) => <ButtonFlipCard key={i} manager={m} />)}
+              </div>
+            </section>
+          </div>
+        ) : (
+          <section>
+            <h2 className="text-2xl font-black italic uppercase text-[#1A472A] mb-12 border-b-8 border-gray-400 inline-block px-2 tracking-widest leading-none">Hall of Fame</h2>
+            <div className="clubhouse-grid">
+              {RETIRED_MANAGERS.map((m, i) => <ButtonFlipCard key={i} manager={m} isRetired={true} />)}
+            </div>
+          </section>
+        )}
       </main>
-      <style jsx global>{`.custom-scrollbar::-webkit-scrollbar{width:4px}.custom-scrollbar::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:10px}.perspective-1000{perspective:1000px}.preserve-3d{transform-style:preserve-3d}.backface-hidden{backface-visibility:hidden}.rotate-y-180{transform:rotateY(180deg)}`}</style>
+    </div>
+  );
+}
+
+function ButtonFlipCard({ manager, isRetired = false }: any) {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const theme = TEAM_THEMES[manager.team] || { bg: 'bg-[#420d09]', border: 'border-white/10' };
+  const titles = manager.titles || 0;
+  const totalPodiums = (manager.podiums.first?.length || 0) + (manager.podiums.second?.length || 0) + (manager.podiums.third?.length || 0);
+
+  return (
+    <div className={`flip-card ${isRetired ? 'grayscale-[0.4] hover:grayscale-0 transition-all duration-500' : ''}`}>
+      <div className={`flip-card-inner ${isFlipped ? 'is-flipped' : ''}`}>
+        
+        {/* FRONT SIDE */}
+        <div className={`flip-card-front flex flex-col p-6 text-white ${theme.bg} border-4 ${theme.border} shadow-2xl relative overflow-hidden`}>
+          
+          <div className="w-full flex justify-between items-start mb-6">
+             <div className="flex flex-col gap-1">
+                {manager.isCommish && <span className="bg-[#C5A059] text-black text-[7px] font-black px-2 py-0.5 rounded uppercase tracking-widest w-fit border border-white/20 shadow-md">👑 COMMISH</span>}
+                <span className={`${manager.status === 'MEMORIAL' ? 'bg-white text-black' : 'bg-black/40 text-white'} text-[7px] font-black px-2 py-0.5 rounded uppercase tracking-widest w-fit border border-white/10`}>
+                   {manager.status === 'MEMORIAL' ? '🕊️ IN MEMORIAM' : manager.status}
+                </span>
+             </div>
+             <button onClick={() => setIsFlipped(true)} className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all cursor-pointer">🔄</button>
+          </div>
+
+          <h2 className="text-2xl font-black uppercase tracking-tighter leading-tight mb-1">{manager.sleeper}</h2>
+          <p className="text-[10px] font-bold text-white/60 mb-6">{manager.name} • EST {manager.joined}</p>
+
+          <div className="flex items-center gap-6 mb-6">
+             <div className="relative shrink-0">
+                <div className="w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-2xl bg-white/5">
+                   <img src={`/managers/${manager.name}.png`} className="w-full h-full object-cover" onError={(e)=>e.currentTarget.src="/logos/Sleeper.png"} alt={manager.name} />
+                </div>
+                {titles > 0 && (
+                   <div className="absolute -top-1 -right-1 bg-[#C5A059] text-black w-10 h-10 rounded-full flex flex-col items-center justify-center border-4 border-white shadow-xl z-20">
+                      <span className="text-[14px] leading-none mb-0.5">🏆</span>
+                      <span className="text-[10px] font-black leading-none uppercase">x{titles}</span>
+                   </div>
+                )}
+             </div>
+             <div className="flex flex-col gap-3">
+                {!isRetired && (
+                  <a href={`sms:${manager.cell}`}><img src="/logos/iMessage.png" className="w-9 h-9 hover:scale-110 transition-transform shadow-lg" alt="iMessage" /></a>
+                )}
+                <img src="/logos/Sleeper.png" className="w-6 h-6 opacity-40" alt="Sleeper" />
+             </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 mb-6">
+            <StatBox label="Favorite Team" val={manager.team.toUpperCase()} color="bg-black/30" />
+            <StatBox label="Status" val={isRetired ? "Legend" : manager.status} color="bg-black/30" />
+          </div>
+
+          {!isRetired && (
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-[8px] uppercase font-black tracking-widest text-white/50 italic leading-none">Trade Aggression</span>
+                <span className="text-[9px] font-black text-[#C5A059]">{manager.aggro}/10</span>
+              </div>
+              <div className="h-2 w-full bg-black/30 rounded-full overflow-hidden border border-white/5">
+                <div 
+                  className="h-full bg-gradient-to-r from-red-600 via-yellow-400 to-green-500 rounded-full" 
+                  style={{ width: `${manager.aggro * 10}%` }} 
+                />
+              </div>
+            </div>
+          )}
+
+          <div className="mt-auto pt-4 border-t border-white/10 flex justify-between items-end">
+             <div className="flex flex-col">
+                <div className="flex items-center gap-1 mb-1 text-[8px] uppercase font-black text-white/40 tracking-widest italic leading-none">
+                   <span>{isRetired ? '📜' : '⚔️'}</span> {isRetired ? 'Legacy' : 'Rivalry'}
+                </div>
+                <div className="flex items-center gap-2">
+                   {manager.rival ? (
+                     <>
+                        <div className="w-8 h-8 rounded-full border-2 border-white/20 overflow-hidden bg-white/5">
+                           <img src={`/managers/${manager.rival}.png`} className="w-full h-full object-cover" onError={(e)=>e.currentTarget.src="/logos/Sleeper.png"} alt="Rival" />
+                        </div>
+                        <span className="text-[11px] font-black uppercase italic tracking-tighter leading-none">{manager.rival}</span>
+                     </>
+                   ) : (
+                     <span className="text-[11px] font-black uppercase italic tracking-tighter text-white/30 whitespace-nowrap overflow-hidden leading-none">Retired Legend</span>
+                   )}
+                </div>
+             </div>
+             <div className="opacity-20 font-black text-3xl italic tracking-tighter select-none leading-none">LCC</div>
+          </div>
+        </div>
+
+        {/* BACK SIDE */}
+        <div className={`flip-card-back flex flex-col p-8 text-white bg-[#111] border-4 border-[#C5A059] shadow-2xl`}>
+          <div className="w-full flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+            <h4 className="text-[12px] font-black uppercase tracking-[0.2em] text-[#C5A059]">🏆 {isRetired ? 'Career History' : 'History & Legacy'}</h4>
+            <button onClick={() => setIsFlipped(false)} className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all cursor-pointer">❌</button>
+          </div>
+          <div className="space-y-6 flex-grow overflow-y-auto pr-2 custom-scrollbar">
+            <PodiumRow label="League Champion" years={manager.podiums.first || []} icon="🥇" color="text-yellow-400" />
+            <PodiumRow label="Runner Up" years={manager.podiums.second || []} icon="🥈" color="text-gray-400" />
+            <PodiumRow label="Third Place" years={manager.podiums.third || []} icon="🥉" color="text-amber-700" />
+          </div>
+          <div className="mt-auto pt-6 border-t border-white/10 flex justify-between items-center">
+             <div className="text-center bg-white/5 px-4 py-2 rounded-xl">
+               <p className="text-[10px] text-[#C5A059] uppercase font-black tracking-widest leading-none">Total Podiums</p>
+               <p className="text-3xl font-black leading-none mt-1">{totalPodiums}</p>
+             </div>
+             <div className="text-white/10 font-black text-5xl italic leading-none">LCC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StatBox({ label, val, color }: { label: string, val: string, color: string }) {
+  return (
+    <div className={`${color} rounded-xl p-3 border border-white/10 flex flex-col shadow-inner`}>
+      <p className="text-[7px] uppercase font-black text-white/40 tracking-widest mb-0.5 leading-none">{label}</p>
+      <p className="text-[11px] font-black italic uppercase text-[#C5A059] tracking-tighter leading-none">{val}</p>
+    </div>
+  );
+}
+
+function PodiumRow({ label, years, icon, color }: any) {
+  if (!years || years.length === 0) return null;
+  return (
+    <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+      <p className={`text-[10px] uppercase font-black mb-2 flex items-center gap-2 ${color} leading-none`}>
+        <span>{icon}</span> {label}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {years.map((y: string) => (
+          <span key={y} className="bg-white/10 px-3 py-1 rounded-lg text-[10px] font-bold border border-white/10 leading-none">{y}</span>
+        ))}
+      </div>
     </div>
   );
 }

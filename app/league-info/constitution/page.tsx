@@ -2,459 +2,818 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { 
-  ArrowLeft, Scale, ChevronDown, ChevronUp, Search, 
-  ClipboardList, Settings, Zap, CheckCircle2, 
-  AlertCircle, Handshake, Trophy, Siren, History,
-  Diamond
-} from 'lucide-react';
-import { ModeToggle } from '@/components/ModeToggle';
 
-export default function ConstitutionPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [openSections, setOpenSections] = useState<number[]>([]);
-
-  const toggleSection = (id: number) => {
-    setOpenSections(prev => 
-      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
-    );
-  };
-
-  const sections = [
-    {
-      title: "1. League Governance & Membership",
-      icon: <Scale className="text-blue-500" size={20} />,
-      content: (
-        <div className="space-y-6 text-gray-900 dark:text-white">
-          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500 shadow-sm">
-            <p className="text-xs sm:text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-              <span className="font-black text-gray-900 dark:text-white">Commissioner Authority:</span> The Commissioner (The Commish) retains final authority over all disputes, rule interpretations, and disciplinary actions not explicitly covered here. The Commish will always act to preserve the league's longevity and competitive fairness.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-black text-sm sm:text-base">1.1 Entry Fees & Deadlines</h4>
-              <ul className="mt-2 space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Entry Fee:</span> $50.00 per team.</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Auctioneer Fee:</span> $5.00 per team (Cash/Venmo to Commish for draft day food/drinks).</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Deadline:</span> All fees are due <span className="text-red-600 font-black italic underline decoration-red-600 underline-offset-2">one week prior to the draft</span>.</li>
-                <li className="pl-4 border-l-2 border-gray-200 dark:border-white/10 italic">
-                  <span className="font-bold text-gray-900 dark:text-white not-italic">Loophole Closure:</span> Failure to pay by the deadline will result in a <span className="font-bold text-gray-900 dark:text-white">locked roster</span> (no moves allowed). If fees remain unpaid by kickoff of Week 1, the team forfeits all games until payment is received. Retroactive wins will <span className="italic">not</span> be awarded.
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base">1.2 Spring Owners Meeting</h4>
-              <p className="mt-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                Held annually in late March/Early April (In-person/Zoom). A minimum of 8 owners is required for a quorum. Rule changes proposed here are voted on immediately via Google Form.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base">1.3 Leaving the League</h4>
-              <p className="mt-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                Owners must provide 30 days' notice prior to the draft if leaving. Abandoning a team mid-season results in a permanent ban and forfeiture of all fees.
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "2. The Draft & Keepers",
-      icon: <ClipboardList className="text-orange-500" size={20} />,
-      content: (
-        <div className="space-y-6 text-gray-900 dark:text-white">
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-black text-sm sm:text-base">2.1 Draft Logistics</h4>
-              <ul className="mt-2 space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Date:</span> Labor Day Weekend (Friday @ 5:00 PM est typically).</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Location:</span> The Answer Brewpub (or designated venue).</li>
-                <li>
-                  • <span className="font-bold text-gray-900 dark:text-white">Format:</span> Snake Draft. 2 minutes per pick. 
-                  <span className="ml-2 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500 border border-gray-200 uppercase tracking-tighter">
-                    <CheckCircle2 size={10} /> Sleeper Setting
-                  </span>
-                </li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Attendance:</span> Mandatory. If you cannot attend, you must find a proxy drafter or you forfeit your spot in the league.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base">2.2 Draft Order</h4>
-              <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                <span className="font-bold text-gray-900 dark:text-white">Non-Playoff Teams (1-6):</span> Determined by the inverse of Regular Season standings (Toilet Bowl winner gets 1.01).
-              </p>
-              <p className="mt-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                <span className="font-bold text-gray-900 dark:text-white">Playoff Teams (7-12):</span> Determined by Playoff finish (Champion picks 1.12).
-              </p>
-            </div>
-
-            <hr className="border-gray-100 dark:border-white/5" />
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base">2.3 Keeper Rules (Dynasty Hybrid)</h4>
-              <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                Teams may keep a maximum of <span className="font-bold text-gray-900 dark:text-white">2 players</span> (1 per position maximum). Keepers lock at the start of the draft.
-              </p>
-
-              <div className="mt-4 p-4 sm:p-5 bg-yellow-50 dark:bg-yellow-900/10 rounded-xl border border-yellow-100 dark:border-yellow-800/30 shadow-sm text-xs sm:text-sm">
-                <h5 className="font-black text-xs sm:text-sm text-yellow-800 dark:text-yellow-500 uppercase tracking-tight mb-3">Eligibility "Loophole Closure": <span className="text-[10px] font-normal capitalize">To be eligible as a keeper, a player MUST:</span></h5>
-                <ol className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li className="flex gap-2">1. <span>Have been in your <span className="font-bold text-gray-900 dark:text-white uppercase">starting lineup</span> at least once during the Regular Season.</span></li>
-                  <li className="flex gap-2">2. <span><span className="font-bold text-gray-900 dark:text-white uppercase">NOT</span> be on IR when started.</span></li>
-                  <li className="flex gap-2">3. <span><span className="font-bold text-gray-900 dark:text-white uppercase">NOT</span> have been dropped to waivers by another owner due to season-ending injury.</span></li>
-                </ol>
-              </div>
-
-              <p className="mt-4 font-bold text-xs sm:text-sm">
-                Cost: <span className="font-normal text-gray-600 dark:text-gray-400">A keeper's draft cost increases by <span className="font-black text-gray-900 dark:text-white">$10</span> (Auction value equivalent) from the prior year.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "3. Roster & Scoring Settings",
-      icon: <Settings className="text-gray-500" size={20} />,
-      content: (
-        <div className="space-y-6 text-gray-900 dark:text-white">
-          <div className="space-y-6">
-            <div>
-              <h4 className="font-black text-sm sm:text-base flex items-center gap-2 flex-wrap">
-                3.1 Roster Composition
-                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500 border border-gray-200 uppercase tracking-tighter">
-                  <CheckCircle2 size={10} /> Sleeper Setting
-                </span>
-              </h4>
-              <p className="mt-1 text-xs sm:text-sm font-bold text-gray-900 dark:text-white">16 Total Players + 2 IR Slots</p>
-              
-              <div className="mt-3 p-3 sm:p-4 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/10">
-                <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  <div className="flex justify-between px-2"><span>1 QB</span><span>2 RB</span></div>
-                  <div className="flex justify-between px-2"><span>2 WR</span><span>1 TE</span></div>
-                  <div className="flex justify-between px-2"><span>2 FLEX</span><span>1 K</span></div>
-                  <div className="flex justify-between px-2"><span>1 DEF</span><span>6 BN</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base">3.2 IR Slot Usage</h4>
-              <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed italic">
-                Only players designated as IR, OUT, or PUP by the NFL are eligible.
-              </p>
-              <p className="mt-1 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
-                <span className="font-bold text-gray-900 dark:text-white">Loophole Closure:</span> If a player loses their IR status, you must remove them from the slot by <span className="font-bold text-orange-600 underline decoration-orange-500 underline-offset-2 italic">Tuesday morning</span>. Failure to do so will result in a <span className="font-bold text-gray-900 dark:text-white">locked roster</span>.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base flex items-center gap-2 flex-wrap">
-                3.3 Scoring (Half-PPR)
-                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500 border border-gray-200 uppercase tracking-tighter">
-                  <CheckCircle2 size={10} /> Sleeper Setting
-                </span>
-              </h4>
-              <ul className="mt-3 space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Passing:</span> 4pts per TD, 1pt per 25 yards, -2pts per INT.</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Rushing/Receiving:</span> 6pts per TD, 1pt per 10 yards.</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Receptions:</span> 0.5 points.</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Kicking:</span> Fractional scoring. Missed kicks under 30 yards = -2pts.</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Defense:</span> Standard scoring (Points Allowed + Sacks/Turnovers).</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "4. In-Season Operations",
-      icon: <Zap className="text-yellow-600" size={20} />,
-      content: (
-        <div className="space-y-6 text-gray-900 dark:text-white text-xs sm:text-sm">
-          <div className="space-y-6">
-            <div>
-              <h4 className="font-black text-sm sm:text-base flex items-center gap-2 flex-wrap">
-                4.1 Waivers (FAAB)
-                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500 border border-gray-200 uppercase tracking-tighter">
-                  <CheckCircle2 size={10} /> Sleeper Setting
-                </span>
-              </h4>
-              <ul className="mt-2 space-y-2 text-gray-600 dark:text-gray-400">
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Budget:</span> $200 for the season (Regular + Playoffs).</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Process:</span> Daily at 12:00 PM EST (except Tuesday).</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">$0 Bids:</span> Allowed.</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Tiebreaker:</span> Rolling waiver priority.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base">4.2 Trading</h4>
-              <ul className="mt-2 space-y-2 text-gray-600 dark:text-gray-400 leading-relaxed">
-                <li className="flex items-center gap-2 flex-wrap">
-                  • <span className="font-bold text-gray-900 dark:text-white">Deadline:</span> Week 10.
-                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500 border border-gray-200 uppercase tracking-tighter">
-                    <CheckCircle2 size={10} /> Sleeper Setting
-                  </span>
-                </li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Vetoes:</span> Trades process <span className="font-bold text-gray-900 dark:text-white">immediately</span>. The Commissioner will only reverse a trade in cases of clear collusion. Owners have 1 "Veto Flag" per season to trigger a league vote (Simple majority required to overturn).</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">FAAB Trading:</span> Allowed.</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Loophole Closure:</span> You cannot trade FAAB for players during the offseason.</li>
-              </ul>
-            </div>
-
-            <div className="mt-6 p-4 sm:p-5 bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-100 dark:border-red-800/30 shadow-sm relative overflow-hidden">
-               <div className="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
-               <h5 className="font-black text-xs sm:text-sm text-red-600 dark:text-red-500 uppercase tracking-tight mb-2 flex items-center gap-2">
-                 <AlertCircle size={16} /> Anti-Tanking Protocol
-               </h5>
-               <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
-                 <span className="font-bold text-gray-900 dark:text-white">Definition:</span> Starting inactive players (Bye week, Injury, Free Agents) or benching obvious starters to intentionally lose.
-               </p>
-               <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                 <span className="font-bold text-gray-900 dark:text-white">Penalty:</span> Second offense results in <span className="font-bold text-gray-900 dark:text-white">forfeiture of your highest draft pick</span> next season.
-               </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "5. Dispute Resolution Protocol",
-      icon: <Handshake className="text-yellow-600" size={20} />,
-      content: (
-        <div className="space-y-6 text-gray-900 dark:text-white text-xs sm:text-sm">
-          <div className="p-4 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm">
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed italic text-center">
-              Disputes follow a 3-Step process to ensure democracy and fairness.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            <div>
-              <h4 className="font-black text-sm sm:text-base">Step 1: Mediation</h4>
-              <p className="mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
-                Any member may initiate a dispute by notifying the Commish. Mediators schedule an informal discussion. If <span className="font-bold text-gray-900 dark:text-white">50% (6 members)</span> are present, it proceeds.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base">Step 2: Group Vote</h4>
-              <p className="mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
-                If Step 1 fails, the issue goes to a league-wide vote.
-              </p>
-              <ul className="mt-2 space-y-1 text-gray-600 dark:text-gray-400">
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Quorum:</span> Minimum <span className="font-bold text-gray-900 dark:text-white">8 members</span> required.</li>
-                <li>• <span className="font-bold text-gray-900 dark:text-white">Threshold:</span> Simple majority <span className="font-bold text-gray-900 dark:text-white">(7/12)</span> wins.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-black text-sm sm:text-base">Step 3: Leadership Decision</h4>
-              <p className="mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
-                If no quorum in Step 2, leaders make a final binding decision.
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "6. Postseason & Payouts",
-      icon: <Trophy className="text-yellow-600" size={20} />,
-      content: (
-        <div className="space-y-8 text-gray-900 dark:text-white text-xs sm:text-sm">
-          <div>
-            <h4 className="font-black text-sm sm:text-base flex items-center gap-2 flex-wrap">
-              6.1 Playoff Bracket
-              <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500 border border-gray-200 uppercase tracking-tighter">
-                <CheckCircle2 size={10} /> Sleeper Setting
-              </span>
-            </h4>
-            <p className="mt-2 text-xs sm:text-sm font-bold text-gray-900 dark:text-white">Weeks 15-17. 6 Teams advance.</p>
-            <ul className="mt-2 space-y-2 text-gray-600 dark:text-gray-400">
-              <li>• <span className="font-bold text-gray-900 dark:text-white">Seeds 1-3:</span> Division Winners.</li>
-              <li>• <span className="font-bold text-gray-900 dark:text-white">Seed 4:</span> Next best record.</li>
-              <li>• <span className="font-bold text-gray-900 dark:text-white">Seeds 5-6:</span> Highest <span className="font-bold text-gray-900 dark:text-white">Points For</span> remaining.</li>
-            </ul>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 sm:p-5 bg-green-50 dark:bg-green-900/10 rounded-xl border border-green-100 dark:border-green-800/30">
-              <h5 className="font-black text-xs sm:text-sm text-green-700 dark:text-green-500 uppercase tracking-tight mb-4 flex items-center gap-2">
-                💰 Prize Pool
-              </h5>
-              <div className="space-y-3 text-xs sm:text-sm">
-                <div className="flex justify-between border-b border-green-200/50 pb-1">
-                  <span className="text-gray-600 dark:text-gray-400">1st Place:</span>
-                  <span className="font-bold text-gray-900 dark:text-white">$219 + Ring*</span>
-                </div>
-                <div className="flex justify-between border-b border-green-200/50 pb-1">
-                  <span className="text-gray-600 dark:text-gray-400">2nd Place:</span>
-                  <span className="font-bold text-gray-900 dark:text-white">$100</span>
-                </div>
-                <div className="flex justify-between border-b border-green-200/50 pb-1">
-                  <span className="text-gray-600 dark:text-gray-400">3rd Place:</span>
-                  <span className="font-bold text-gray-900 dark:text-white">$50</span>
-                </div>
-                <div className="flex justify-between border-b border-green-200/50 pb-1">
-                  <span className="text-gray-600 dark:text-gray-400">Weekly High:</span>
-                  <span className="font-bold text-gray-900 dark:text-white">$10/wk</span>
-                </div>
-                <div className="flex justify-between border-b border-green-200/50 pb-1">
-                  <span className="text-gray-600 dark:text-gray-400">Div Winner:</span>
-                  <span className="font-bold text-gray-900 dark:text-white">$25 ea</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400 flex items-center gap-1.5 text-[10px] sm:text-xs"><Diamond size={12} className="text-cyan-500" /> Ring Cost:</span>
-                  <span className="font-bold text-gray-900 dark:text-white">$16</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-4 sm:p-5 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/10 text-gray-900 dark:text-white leading-relaxed">
-              <h5 className="font-black text-xs sm:text-sm text-gray-700 dark:text-gray-400 uppercase tracking-tight mb-4 flex items-center gap-2">
-                🚽 The Toilet Bowl
-              </h5>
-              <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                The bottom 6 teams enter the consolation bracket. The last place game loser is the Toilet Bowl Champion.
-              </p>
-              <div className="p-3 bg-white dark:bg-black/20 rounded-lg border border-red-100 dark:border-red-900/30">
-                <p className="text-[10px] sm:text-xs leading-relaxed">
-                  <span className="text-red-600 font-black uppercase block mb-1">Punishment:</span>
-                  <span className="text-red-600 font-bold">Must write a 500-word apology letter to the league.</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "7. Emergency Protocols",
-      icon: <Siren className="text-red-600" size={20} />,
-      content: (
-        <div className="space-y-6 text-gray-900 dark:text-white text-xs sm:text-sm">
-          <div className="space-y-4">
-            <p className="leading-relaxed">
-              <span className="font-bold text-gray-900 dark:text-white text-sm sm:text-base block mb-1 underline decoration-red-500/30 uppercase tracking-tight">Official Season:</span>
-              A season is "Official" if <span className="font-bold text-gray-900 dark:text-white">9 Weeks</span> are played. Payouts prorated by current standings.
-            </p>
-            <p className="leading-relaxed">
-              <span className="font-bold text-gray-900 dark:text-white text-sm sm:text-base block mb-1 underline decoration-red-500/30 uppercase tracking-tight">Unofficial Season:</span>
-              Fewer than 9 weeks = void. Entry fees carry over to the next year.
-            </p>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "8. Revision History",
-      icon: <History className="text-gray-500" size={20} />,
-      content: (
-        <div className="space-y-8 text-gray-900 dark:text-white text-[10px] sm:text-xs">
-          <div className="relative border-l-2 border-gray-100 dark:border-white/5 ml-2 sm:ml-3 space-y-8 sm:space-y-10">
-            {/* 2025 LOG */}
-            <div className="relative pl-6 sm:pl-8">
-              <div className="absolute -left-[7px] sm:-left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-orange-600 border-2 sm:border-4 border-white dark:border-[#1e1e1e]" />
-              <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                <span className="text-base sm:text-lg font-black tracking-tighter uppercase">V7</span>
-                <span className="text-[9px] sm:text-[10px] font-bold bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded text-gray-500">03/22/25</span>
-              </div>
-              <div className="space-y-1 text-gray-600 dark:text-gray-400">
-                <p>• Rule 2.1.3: Rookie hazing modified (Passed 12-0).</p>
-                <p>• Rule 4.2: Prohibited offseason FAAB trading (Passed 12-0).</p>
-              </div>
-            </div>
-
-            {/* 2024 LOG */}
-            <div className="relative pl-6 sm:pl-8">
-              <div className="absolute -left-[7px] sm:-left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gray-300 dark:bg-white/20 border-2 sm:border-4 border-white dark:border-[#1e1e1e]" />
-              <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                <span className="text-base sm:text-lg font-black tracking-tighter uppercase">V6</span>
-                <span className="text-[9px] sm:text-[10px] font-bold bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded text-gray-500">03/03/24</span>
-              </div>
-              <div className="space-y-1 text-gray-600 dark:text-gray-400">
-                <p>• Rule 4.2: Keeper cap (Passed 7-5).</p>
-                <p>• Rule 2.2.1: Toilet Bowl punishment changed to apology letter (Passed 12-0).</p>
-                <p>• Rule 5.2.1: Trade deadline Week 10 (Passed 9-1).</p>
-              </div>
-            </div>
-
-            {/* 2019 LOG */}
-            <div className="relative pl-6 sm:pl-8 pb-4">
-              <div className="absolute -left-[7px] sm:-left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gray-300 dark:bg-white/20 border-2 sm:border-4 border-white dark:border-[#1e1e1e]" />
-              <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                <span className="text-base sm:text-lg font-black tracking-tighter uppercase">V1</span>
-                <span className="text-[9px] sm:text-[10px] font-bold bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded text-gray-500">08/14/19</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400">• Initial rebrand rules (Passed 7-4).</p>
-            </div>
-          </div>
-        </div>
-      )
-    }
-  ];
+export default function RulesOfPlay() {
+  const [activeChapter, setActiveChapter] = useState<string | null>(null);
+  const toggleChapter = (id: string) => setActiveChapter(activeChapter === id ? null : id);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#121212] transition-colors duration-300 font-sans pb-20 selection:bg-orange-500 selection:text-white">
-      
-      {/* HEADER: Fluid scale for phone */}
-      <div className="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-white/5 pb-6 sm:pb-8 pt-4 sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4 text-center relative">
-            <Link href="/league-info" className="absolute top-4 left-2 sm:left-4 flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-orange-600 transition-colors font-bold text-[10px] sm:text-sm z-50 uppercase tracking-tight">
-                <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4" /> Hub
-            </Link>
-            <div className="absolute top-4 right-2 sm:right-4 z-50"><ModeToggle /></div>
-            
-            <h1 className="mt-2 text-lg sm:text-2xl md:text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tighter flex items-center justify-center gap-2 sm:gap-3 relative z-10">
-                <span className="p-1.5 sm:p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400"><Scale className="w-5 h-5 sm:w-8 sm:h-8" /></span>
-                Constitution
-            </h1>
-        </div>
-      </div>
+    <div
+      style={{
+        backgroundColor: '#F9F7F2',
+        minHeight: '100vh',
+        paddingBottom: '80px',
+        fontFamily: 'Georgia, ui-serif, serif',
+      }}
+    >
+      {/* HEADER */}
+      <header
+        style={{
+          textAlign: 'center',
+          padding: '40px 16px 32px',
+        }}
+      >
+        <Link
+          href="/league-info"
+          style={{
+            textDecoration: 'none',
+            color: '#1A472A',
+            fontWeight: 'bold',
+            fontSize: '0.9rem',
+          }}
+        >
+          ← Back to Clubhouse
+        </Link>
+        <h1
+          style={{
+            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            color: '#1A472A',
+            margin: '16px 0 8px',
+          }}
+        >
+          The Rules of Play
+        </h1>
+        <p
+          style={{
+            color: '#C5A059',
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            letterSpacing: '0.18em',
+            fontSize: '0.75rem',
+          }}
+        >
+          Official Long Country Club FFL Bylaws
+        </p>
+      </header>
 
-      <main className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-4xl">
-        {/* SEARCH BAR: Responsive padding */}
-        <div className="relative mb-6 sm:mb-8 text-gray-900 dark:text-white">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-          <input 
-            type="text" 
-            placeholder="Search regulations..." 
-            className="w-full pl-10 pr-4 py-3 sm:py-4 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#1e1e1e] focus:ring-2 focus:ring-orange-500 outline-none transition text-sm sm:text-base placeholder:text-gray-400 shadow-sm"
-            onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
-          />
-        </div>
+      <main
+        style={{
+          maxWidth: '1000px',
+          margin: '0 auto',
+          padding: '0 16px',
+        }}
+      >
+        {/* HOLE 1 */}
+        <RuleSection
+          id="h1"
+          title="Hole 1: Ownership Expectations"
+          isOpen={activeChapter === 'h1'}
+          toggle={() => toggleChapter('h1')}
+        >
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="1.1 League Fees">
+            <p>
+              The standard entry fee is <strong>$50</strong> for the current season. New owners pay{' '}
+              <strong>$75</strong> in their first year, which represents $50 for the current season plus{' '}
+              <strong>$25</strong> as a future-season commitment deposit (half of a future entry fee).
+            </p>
+            <p>
+              The extra $25 is a security deposit to discourage abandonment. If an owner leaves at any point before or
+              during the following season, the $25 is forfeited and awarded to the Champion of that upcoming season in
+              addition to the standard 1st-place payout and ring structure.
+            </p>
+          </RuleBlock>
 
-        {/* SECTIONS: Fully fluid containers */}
-        <div className="space-y-3 sm:space-y-4">
-          {sections.filter(s => s.title.toLowerCase().includes(searchQuery)).map((section, idx) => (
-            <div key={idx} className="bg-white dark:bg-[#1e1e1e] rounded-2xl border border-gray-200 dark:border-white/10 overflow-hidden shadow-sm transition-all">
-              <button 
-                onClick={() => toggleSection(idx)} 
-                className="w-full flex items-center justify-between p-4 sm:p-6 text-left hover:bg-gray-50 dark:hover:bg-white/5 transition"
-              >
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="p-1.5 sm:p-2 bg-gray-100 dark:bg-black/20 rounded-lg shrink-0">{section.icon}</div>
-                  <h3 className="text-sm sm:text-lg font-black text-gray-900 dark:text-white uppercase tracking-tight leading-tight">{section.title}</h3>
-                </div>
-                {openSections.includes(idx) ? <ChevronUp className="text-gray-400 shrink-0" size={18}/> : <ChevronDown className="text-gray-400 shrink-0" size={18}/>}
-              </button>
-              {openSections.includes(idx) && (
-                <div className="px-4 sm:px-6 pb-6 pt-2 border-t dark:border-white/10 animate-in slide-in-from-top-2 duration-200">
-                  {section.content}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="1.2 Team Abandonment">
+            <p>
+              Owners must provide at least <strong>30 days&apos; notice before the draft</strong> if they plan to leave
+              the league in good standing.
+            </p>
+            <p>
+              Any departure after the draft is considered <strong>mid-season abandonment</strong>, even if it occurs
+              before Week 1. Mid-season abandonment results in a permanent ban from the league, forfeiture of all fees,
+              and the roster being transferred to Commissioner control until a replacement owner is found.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="1.3 Winter Owner's Meeting">
+            <p>
+              Any rule changes or votes for the upcoming season must be voted on after the Champion is crowned and
+              before the NFL Draft. This Winter Owner&apos;s Meeting is typically held in late March or early April.
+            </p>
+            <p>
+              Meetings may take place at a brewery, someone&apos;s home, via Zoom, or by Google Form. Rule changes may
+              be nominated during the season, but cannot be voted on until the Winter Owner&apos;s Meeting. Mid-season
+              proposals are collected in a running document for discussion at that meeting.
+            </p>
+            <p>
+              Emergency Summer Meetings may occur only to vote on new owners if someone leaves the league, or to address
+              a pandemic or natural disaster situation that impacts the season.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="1.4 Prize Money">
+            <p>Current payout structure:</p>
+            <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
+              <li>$10 to the high scorer each week during the regular season (14 weeks = $140 total).</li>
+              <li>$25 to 4th place.</li>
+              <li>$50 to 3rd place.</li>
+              <li>$100 to 2nd place.</li>
+              <li>
+                $205 to 1st place <em>plus</em> any money remaining after purchasing the Championship Ring.
+              </li>
+              <li>$80 is budgeted for the Championship Ring.</li>
+            </ul>
+            <p>
+              If the ring costs less than the $80 budget (for example, $16), the remaining amount is added to the
+              Champion&apos;s payout. The Champion may also receive forfeited future-year fees from departing owners.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="1.5 Rookie Hazing">
+            <p>
+              The rest of the league chooses the team name for any first-year owner before the season begins. If the
+              Sleeper platform allows the name, the league allows the name—no additional veto process is required.
+            </p>
+          </RuleBlock>
+        </RuleSection>
+
+        {/* HOLE 2 */}
+        <RuleSection
+          id="h2"
+          title="Hole 2: Roster & Trade Standards"
+          isOpen={activeChapter === 'h2'}
+          toggle={() => toggleChapter('h2')}
+        >
+          <Tag type="hybrid">Hybrid Rule</Tag>
+          <RuleBlock title="2.1 Divisions">
+            <p>The league consists of two divisions:</p>
+            <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
+              <li>OG Division — longest tenure.</li>
+              <li>Newbie Division — shortest tenure.</li>
+            </ul>
+          </RuleBlock>
+
+          <Tag type="hybrid">Hybrid Rule</Tag>
+          <RuleBlock title="2.2 Roster Composition">
+            <p>
+              Each team maintains a <strong>23-player roster</strong>.
+            </p>
+            <p>A valid starting lineup must include:</p>
+            <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
+              <li>1 Quarterback (QB)</li>
+              <li>2 Running Backs (RB)</li>
+              <li>3 Wide Receivers (WR)</li>
+              <li>1 Tight End (TE)</li>
+              <li>2 FLEX (RB/WR/TE)</li>
+              <li>1 Defense/Special Teams (D/ST)</li>
+              <li>1 Kicker (K)</li>
+            </ul>
+            <p>
+              There are <strong>9 bench spots</strong> with no positional restrictions, and <strong>3 IR slots</strong>{' '}
+              for players with eligible NFL designations.
+            </p>
+          </RuleBlock>
+
+          <Tag type="hybrid">Hybrid Rule</Tag>
+          <RuleBlock title="2.3 Injured Reserve (IR)">
+            <p>
+              The league uses <strong>3 IR spots</strong>. Only players designated by the NFL or Sleeper as IR, OUT, or
+              PUP are eligible for IR placement.
+            </p>
+            <p>
+              If a player becomes ineligible for IR, the owner has until <strong>Tuesday morning</strong> to move them
+              back to the active roster. Repeated violations are handled at the Commissioner&apos;s discretion and may
+              result in lineup changes, roster locks, or other remedies deemed fair.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="2.4 Taxi Squad">
+            <p>
+              Each team has a <strong>5-player Taxi Squad</strong>. Eligible players are rookies or sophomores after the
+              inaugural rookie draft.
+            </p>
+            <p>
+              Taxi players may be promoted or demoted between the Taxi Squad and active roster <strong>without limit</strong>,
+              with no penalties. After a player&apos;s sophomore season, they must either be permanently promoted to the
+              main roster or dropped to free agency.
+            </p>
+          </RuleBlock>
+
+          <Tag type="hybrid">Hybrid Rule</Tag>
+          <RuleBlock title="2.5 Trading">
+            <p>
+              Trading is allowed during the offseason and throughout the season until the trade deadline. The regular
+              season trade deadline is the end of the last game of <strong>Week 10</strong>. Trades may resume when the
+              new season begins on <strong>March 1st</strong>.
+            </p>
+            <p>
+              Sleeper automatically approves trades once both parties accept. If any owner believes a trade is unfair,
+              the Commissioner will post an <strong>8-hour poll</strong> in Sleeper. Owners involved in the trade are
+              not allowed to vote, and a simple majority of votes cast determines the outcome.
+            </p>
+            <p>
+              <strong>Start-Status Trade Rule:</strong> If you trade away a player whose NFL game has started or locked
+              and receive a player who has not yet played, you cannot start the incoming player until the following
+              week. This prevents owners from gaining a &quot;double-start&quot; in the same scoring period.
+            </p>
+            <p>
+              If Sleeper does not enforce any trading or lineup rule correctly, the Commissioner may manually adjust
+              rosters or lineups to preserve fairness.
+            </p>
+          </RuleBlock>
+
+          <Tag type="hybrid">Hybrid Rule</Tag>
+          <RuleBlock title="2.6 Free Agency (FAAB)">
+            <p>
+              Each team receives a <strong>$100 FAAB budget</strong> to use during the regular season and postseason.
+              FAAB resets on the same day NFL Free Agency begins.
+            </p>
+            <p>
+              Waiver wire acquisition processing begins at <strong>12 PM ET on Wednesday</strong> after the draft. During
+              the season, waivers process daily at 12 PM ET, except on Tuesday, which is a locked day. If the NFL plays
+              on a Tuesday, the league will allow waiver bids that day.
+            </p>
+            <p>
+              A rolling waiver priority is used as a tiebreaker. Whenever you successfully claim a player, you move to
+              the bottom of the waiver priority list. <strong>$0 bids</strong> are allowed.
+            </p>
+            <p>
+              During the playoffs, only teams still competing may make waiver claims. Once your team is eliminated, you
+              may no longer pick up players from waivers.
+            </p>
+          </RuleBlock>
+        </RuleSection>
+
+        {/* HOLE 3 */}
+        <RuleSection
+          id="h3"
+          title="Hole 3: Tee Time Draft Rules"
+          isOpen={activeChapter === 'h3'}
+          toggle={() => toggleChapter('h3')}
+        >
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="3.1 Inaugural Draft">
+            <p>
+              The inaugural draft is split into two parts: a Veterans Draft and a Rookie Draft. The Veterans Draft takes
+              place in <strong>April</strong> before the NFL Draft and consists of <strong>19 rounds</strong>.
+            </p>
+            <p>
+              All 19 picks must be used to fill your starting lineup; you cannot neglect a starting position. Each
+              player has <strong>8 hours</strong> to make their pick or work out a trade. The Commissioner pauses the
+              draft between <strong>10 PM and 11 PM ET</strong> and resumes at <strong>8 AM ET</strong>.
+            </p>
+            <p>
+              The Year One Rookie Draft is held in <strong>May</strong> after the NFL Rookie Draft. It consists of{' '}
+              <strong>4 rounds</strong>. Selected rookies may be added to your active roster or placed on your Taxi
+              Squad. Each owner has 8 hours to make their pick or work out a trade, and the Commissioner pauses and
+              resumes the draft at the same times as the Veterans Draft.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="3.2 Future Rookie Drafts">
+            <p>
+              Beginning in Year Two and beyond, the annual Rookie Draft will occur approximately{' '}
+              <strong>one month after the NFL Draft</strong>.
+            </p>
+            <p>
+              The Rookie Draft consists of <strong>4 rounds</strong>. Drafted players may be placed either on the active
+              roster or the Taxi Squad. Each owner has <strong>8 hours</strong> to make their pick or negotiate a trade.
+              The Commissioner will pause the draft around <strong>10 PM ET</strong> and resume around{' '}
+              <strong>8 AM ET</strong>.
+            </p>
+          </RuleBlock>
+
+          <Tag type="hybrid">Hybrid Rule</Tag>
+          <RuleBlock title="3.3 Draft Order">
+            <p>
+              Draft order is determined by both regular season and playoff performance and follows a{' '}
+              <strong>linear</strong> format, not a snake draft. If you have the 3rd pick, you will pick 3rd in every
+              round.
+            </p>
+            <p>
+              Teams finishing <strong>12th through 7th</strong> in the regular season determine picks 1–6 in the
+              following draft. Teams finishing <strong>1st through 6th</strong> in the playoffs determine picks 7–12.
+            </p>
+            <p>Nomination mapping examples:</p>
+            <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
+              <li>7th place = #6 nomination</li>
+              <li>12th place = #1 nomination</li>
+              <li>6th place = #7 nomination</li>
+              <li>1st place = #12 nomination</li>
+            </ul>
+          </RuleBlock>
+        </RuleSection>
+
+        {/* HOLE 4 */}
+        <RuleSection
+          id="h4"
+          title="Hole 4: The Official Scorecard"
+          isOpen={activeChapter === 'h4'}
+          toggle={() => toggleChapter('h4')}
+        >
+          <Tag type="sleeper">Sleeper Automated (Scoring Settings)</Tag>
+          <RuleBlock title="4.1 Offensive Scoring">
+            <p>
+              The league uses a <strong>Half-Point PPR</strong> scoring system. Offensive scoring is as follows:
+            </p>
+            <p>
+              <strong>Passing:</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>+0.04 per passing yard (25 yards = 1 point)</li>
+              <li>+4 per passing TD</li>
+              <li>+2 per 2-point conversion</li>
+              <li>-1 per interception thrown</li>
+              <li>+0.01 per completion</li>
+              <li>-0.01 per incompletion</li>
+              <li>+2 bonus for 40+ yard passing TD</li>
+            </ul>
+            <p>
+              <strong>Rushing:</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>+0.1 per rushing yard (10 yards = 1 point)</li>
+              <li>+6 per rushing TD</li>
+              <li>+2 per 2-point conversion</li>
+              <li>+2 bonus for 40+ yard rushing TD</li>
+            </ul>
+            <p>
+              <strong>Receiving:</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>+0.50 per reception</li>
+              <li>+0.1 per receiving yard (10 yards = 1 point)</li>
+              <li>+6 per receiving TD</li>
+              <li>+2 per 2-point conversion</li>
+              <li>+2 bonus for 40+ yard receiving TD</li>
+            </ul>
+          </RuleBlock>
+
+          <Tag type="sleeper">Sleeper Automated</Tag>
+          <RuleBlock title="4.2 Kicking & Defense/Special Teams">
+            <p>
+              <strong>Kicking:</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>+3 for FG made (0–19 yards)</li>
+              <li>+3 for FG made (20–29 yards)</li>
+              <li>+3 for FG made (30–39 yards)</li>
+              <li>+4 for FG made (40–49 yards)</li>
+              <li>+5 for FG made (50+ yards)</li>
+              <li>+1 per PAT made</li>
+              <li>-2 for FG missed (0–19 yards)</li>
+              <li>-2 for FG missed (20–29 yards)</li>
+              <li>-2 for FG missed (30–39 yards)</li>
+              <li>-1 for FG missed (40–49 yards)</li>
+              <li>-2 per missed PAT</li>
+            </ul>
+            <p>
+              <strong>Defense:</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>+6 per defensive TD</li>
+              <li>+10 for 0 points allowed</li>
+              <li>+7 for 1–6 points allowed</li>
+              <li>+4 for 7–13 points allowed</li>
+              <li>+1 for 14–20 points allowed</li>
+              <li>-1 for 21–27 points allowed</li>
+              <li>-2 for 28–34 points allowed</li>
+              <li>-5 for 35+ points allowed</li>
+              <li>+1 per sack</li>
+              <li>+2 per interception</li>
+              <li>+2 per fumble recovery</li>
+              <li>+0.50 per tackle for loss</li>
+              <li>+2 per safety</li>
+              <li>+1 per forced fumble</li>
+              <li>+2 per blocked kick</li>
+              <li>+1 per pass defended</li>
+            </ul>
+            <p>
+              <strong>Special Teams Defense:</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>+6 per special teams TD</li>
+              <li>+1 per special teams forced fumble</li>
+              <li>+1 per special teams fumble recovery</li>
+              <li>+0.08 per punt return yard (12 yards = 1 point)</li>
+              <li>+0.04 per kick return yard (25 yards = 1 point)</li>
+            </ul>
+          </RuleBlock>
+
+          <Tag type="sleeper">Sleeper Automated</Tag>
+          <RuleBlock title="4.3 Miscellaneous & Bonus Scoring">
+            <p>
+              <strong>Miscellaneous:</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>-1 per fumble</li>
+              <li>-2 per fumble lost</li>
+              <li>+6 per fumble recovery TD</li>
+            </ul>
+            <p>
+              <strong>Bonus Points:</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>+2 for 100–199 yard rushing game</li>
+              <li>+4 for 200+ yard rushing game</li>
+              <li>+2 for 100–199 yard receiving game</li>
+              <li>+4 for 200+ yard receiving game</li>
+              <li>+2 for 300–399 yard passing game</li>
+              <li>+3 for 400+ yard passing game</li>
+            </ul>
+          </RuleBlock>
+        </RuleSection>
+
+        {/* HOLE 5 */}
+        <RuleSection
+          id="h5"
+          title="Hole 5: Postseason & The Purse"
+          isOpen={activeChapter === 'h5'}
+          toggle={() => toggleChapter('h5')}
+        >
+          <Tag type="hybrid">Hybrid Rule</Tag>
+          <RuleBlock title="5.1 Playoff Format">
+            <p>
+              The postseason begins in <strong>Week 15</strong>. A total of <strong>6 teams</strong> advance to the
+              playoffs.
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>Seeds 1 &amp; 2: Division winners with the best overall records.</li>
+              <li>Seeds 3 &amp; 4: Next two best records (regardless of division).</li>
+              <li>Seeds 5 &amp; 6: Two highest-scoring teams not already seeded.</li>
+            </ul>
+            <p>
+              Each round, the highest remaining seed plays the lowest remaining seed. This structure ensures that both
+              win–loss record and total points scored are rewarded.
+            </p>
+          </RuleBlock>
+
+          <Tag type="hybrid">Hybrid Rule</Tag>
+          <RuleBlock title="5.2 Regular Season Tiebreakers">
+            <p>If two teams finish with the same record, the following tiebreakers are applied in order:</p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>Points For (most total points scored).</li>
+              <li>Higher Points Against (tougher schedule).</li>
+              <li>Head-to-head record.</li>
+              <li>
+                If still tied, the Commissioner may use a coin toss or another fair metric at their discretion as a
+                final tiebreaker.
+              </li>
+            </ul>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="5.3 Playoff Game Tiebreakers">
+            <p>
+              If a playoff matchup ends in a tie, the winner is determined by the team with the{' '}
+              <strong>highest bench score</strong>.
+            </p>
+            <p>
+              If bench scores are also tied, the <strong>higher seed automatically advances</strong> to the next round.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="5.4 Prize Money & The Ring">
+            <p>Payouts are as follows:</p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>$10 to the highest scorer each week during the regular season (14 weeks = $140 total).</li>
+              <li>$25 to 4th place.</li>
+              <li>$50 to 3rd place.</li>
+              <li>$100 to 2nd place.</li>
+              <li>
+                $205 to 1st place, plus the Championship Ring (budgeted at $80), plus any remaining ring budget if the
+                cost is lower, and any forfeited future-year fees from departing owners.
+              </li>
+            </ul>
+          </RuleBlock>
+        </RuleSection>
+
+        {/* HOLE 6 */}
+        <RuleSection
+          id="h6"
+          title="Hole 6: Mulligans & Emergency Protocols"
+          isOpen={activeChapter === 'h6'}
+          toggle={() => toggleChapter('h6')}
+        >
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="6.1 Official Season Determination">
+            <p>
+              A season is considered <strong>official</strong> if <strong>9 weeks</strong> of NFL games are completed.
+              This aligns with the trade deadline and allows teams enough time to demonstrate competitiveness.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="6.2 Entry Fees During Emergency Seasons">
+            <p>
+              Entry fees are effectively tied to the season&apos;s official status. If the season does not reach the
+              official threshold (fewer than 9 weeks), the season is considered unofficial and fees are handled
+              according to the emergency payout and carryover rules.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="6.3 Emergency Payout Structure">
+            <p>
+              If an <strong>unofficial season</strong> occurs (fewer than 9 weeks played), the season is null and void.
+              No payouts are awarded, and any entry fees carry over to the following season. Weekly high-score payouts
+              are canceled.
+            </p>
+            <p>
+              If an <strong>official but shortened season</strong> occurs (9+ weeks but the fantasy playoffs or
+              championship are not completed), payouts are based on playoff seeding and standard rules at the time the
+              season ends.
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>Only teams in playoff positions 1–6 are eligible for shortened-season payouts.</li>
+              <li>Teams not yet eliminated from the playoffs receive payouts.</li>
+              <li>No shortened-season payout will be less than $50.</li>
+              <li>
+                Payouts are based on a $600 pot, minus $5 (Sleeper fee), minus $10 times the number of completed weeks
+                of weekly high-score payouts.
+              </li>
+            </ul>
+            <p>
+              Detailed week-by-week payout tables (for seasons ending between Weeks 10–18) are defined in the official
+              document and can be referenced by the Commissioner when needed.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="6.4 Emergency IR Expansion">
+            <p>
+              For any season affected by a pandemic or natural disaster, a <strong>second IR spot</strong> is added
+              specifically for players impacted by such events, allowing an additional player to be added to a roster.
+            </p>
+            <p>
+              Owners are responsible for self-policing their use of the emergency IR slot and must ensure it is used
+              only for pandemic or disaster-related designations. Abuse of this slot may result in ridicule from other
+              owners or Commissioner intervention.
+            </p>
+            <p>
+              The Commissioner may evaluate a <strong>third IR spot</strong> during the season depending on NFL testing
+              protocols and the impact of the event. No special preference is given to any owner impacted by players on
+              IR, as all owners share the same waiver and roster tools.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="6.5 Game Postponement or Cancellation">
+            <p>
+              If the NFL postpones or cancels games for specific teams due to a pandemic or natural disaster, the
+              default approach is that <strong>no special action</strong> will be taken. Owners must use IR, bench
+              depth, and waivers to manage their rosters and field legal lineups.
+            </p>
+            <p>
+              If a <strong>mass amount of games</strong> are postponed or canceled, the Commissioner and league will
+              discuss potential responses and determine a fair and reasonable course of action, if one can be agreed
+              upon.
+            </p>
+          </RuleBlock>
+        </RuleSection>
+
+        {/* HOLE 7 */}
+        <RuleSection
+          id="h7"
+          title="Hole 7: The Scorekeeper’s Ledger"
+          isOpen={activeChapter === 'h7'}
+          toggle={() => toggleChapter('h7')}
+        >
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="7.1 Revision History">
+            <p>
+              The Long Country Club FFL maintains a revision history to track rule changes voted on by the league. This
+              ensures transparency and preserves the historical accuracy of the bylaws.
+            </p>
+            <p>
+              <strong>Version 1 — 08/07/19</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>
+                Top 4 teams with the best record and top 2 teams with the most points scored make the playoffs (6 total
+                teams). (Passed 6–5)
+              </li>
+              <li>
+                Owners must be online or in-person at the draft; auto-drafting is not allowed. (Passed 6–5)
+              </li>
+              <li>
+                The Commissioner can immediately approve a trade unless someone voices concern; then it must go to a
+                league poll in Sleeper and be voted on within 8 hours. (Passed 8–3)
+              </li>
+              <li>
+                The league gets to pick the team name for any new team in their first year. In Year 2, that owner may
+                pick their own name. (Passed 6–3–2)
+              </li>
+            </ul>
+
+            <p>
+              <strong>Version 2 — 02/07/20</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>Payouts changed so that only 4th place or higher receives money. (Passed 10–1)</li>
+              <li>High score payouts were removed from the playoffs. (Passed 10–1)</li>
+            </ul>
+
+            <p>
+              <strong>Version 3 — 04/20/21</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>Full document overhauled based on the 03/29/21 Winter Owner&apos;s Meeting.</li>
+            </ul>
+
+            <p>
+              <strong>Version 4 — 03/27/22</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>
+                Rule 2.1: Two divisions created, decided by oldest tenure vs. shortest tenure. (Passed 10–0)
+              </li>
+              <li>Rule 2.2.3: Added one additional bench spot. (Passed 10–0)</li>
+              <li>Rule 2.2.5: Added one additional Taxi Squad spot. (Passed 10–0)</li>
+              <li>Rule 2.2.4: Added one additional IR spot. (Passed 10–0)</li>
+              <li>
+                Rule 2.4.1: Free Agency budget and season will reset on the same day as NFL Free Agency. (Passed 10–0)
+              </li>
+              <li>
+                Rule 3.2: Rookie Draft will take place one month after the NFL Rookie Draft. (Passed 10–0)
+              </li>
+              <li>
+                Rule 5.1.1: Playoff seeds updated to be the 2 division winners, the next 2 best records, and the top 2
+                teams in points not in the first 4 seeds. (Passed 10–0)
+              </li>
+            </ul>
+
+            <p>
+              <strong>Version 5 — 10/27/22</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>
+                Rules 1.4.5 &amp; 1.4.6: The league decided to award the winner a Championship Ring instead of a trophy.
+                The Champion&apos;s payout changed to $205 plus any remaining funds from the cost of buying and shipping
+                the ring. (Passed 10–0; 7 members voted to institute beginning that year.)
+              </li>
+            </ul>
+
+            <p>
+              <strong>Version 6 — 03/03/24</strong>
+            </p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>
+                Rule 2.3.2.1: Trade deadline moved to Week 10 to match the NFL&apos;s trade deadline. (League voted 8–2
+                in favor)
+              </li>
+            </ul>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="7.2 Document Approval Log">
+            <p>The following approvals certify the revisions to the Long Country Club FFL Rule Book:</p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>
+                Raymond Long — Commish — (804) 647-1100 — Approved 08/31/19
+              </li>
+              <li>
+                Raymond Long — Commish — (804) 647-1100 — Approved 08/31/20
+              </li>
+              <li>
+                Raymond Long — Commish — (804) 647-1100 — Approved 04/20/21
+              </li>
+              <li>
+                Raymond Long — Commish — (804) 647-1100 — Approved 03/27/22
+              </li>
+              <li>
+                Raymond Long — Commish — (804) 647-1100 — Approved 10/27/22
+              </li>
+              <li>
+                Raymond Long — Commish — (804) 647-1100 — Approved 03/03/24
+              </li>
+            </ul>
+          </RuleBlock>
+        </RuleSection>
       </main>
     </div>
+  );
+}
+
+// COMPONENTS
+function RuleSection({
+  id,
+  title,
+  children,
+  isOpen,
+  toggle,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+  isOpen: boolean;
+  toggle: () => void;
+}) {
+  return (
+    <section
+      id={id}
+      style={{
+        marginBottom: '16px',
+        backgroundColor: 'white',
+        borderRadius: '14px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
+      }}
+    >
+      <button
+        onClick={toggle}
+        style={{
+          width: '100%',
+          padding: '18px 18px',
+          border: 'none',
+          backgroundColor: 'white',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          cursor: 'pointer',
+          fontWeight: 700,
+          fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)',
+          color: '#1A472A',
+          textAlign: 'left',
+        }}
+        aria-expanded={isOpen}
+        aria-controls={`${id}-content`}
+      >
+        <span>{title}</span>
+        <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>{isOpen ? '−' : '+'}</span>
+      </button>
+      {isOpen && (
+        <div
+          id={`${id}-content`}
+          style={{
+            padding: '0 18px 22px',
+            borderTop: '1px solid #eee',
+          }}
+        >
+          {children}
+        </div>
+      )}
+    </section>
+  );
+}
+
+function RuleBlock({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div style={{ marginTop: '20px' }}>
+      <h4
+        style={{
+          margin: '0 0 6px 0',
+          color: '#C5A059',
+          textTransform: 'uppercase',
+          fontSize: '0.85rem',
+          letterSpacing: '0.12em',
+        }}
+      >
+        {title}
+      </h4>
+      <div
+        style={{
+          color: '#333',
+          fontSize: '0.98rem',
+          lineHeight: 1.7,
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function Tag({ type, children }: { type: 'sleeper' | 'club' | 'hybrid'; children: React.ReactNode }) {
+  let bg = '#C5A059';
+  if (type === 'sleeper') bg = '#2e7d32';
+  if (type === 'hybrid') bg = '#003366';
+
+  return (
+    <span
+      style={{
+        display: 'inline-block',
+        backgroundColor: bg,
+        color: 'white',
+        padding: '4px 10px',
+        borderRadius: '999px',
+        fontSize: '0.7rem',
+        fontWeight: 700,
+        textTransform: 'uppercase',
+        marginTop: '10px',
+        marginRight: '8px',
+        letterSpacing: '0.08em',
+      }}
+    >
+      {children}
+    </span>
   );
 }
