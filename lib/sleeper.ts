@@ -1,6 +1,8 @@
 // lib/sleeper.ts
 
-export const LEAGUE_ID = '1199749375539027968'; 
+import { LCC_CURRENT_LEAGUE_ID } from './leagueConstants';
+
+export const LEAGUE_ID = LCC_CURRENT_LEAGUE_ID;
 
 // --- TYPES ---
 export interface Transaction {
@@ -49,6 +51,23 @@ export interface Award {
   type: 'champion' | 'runner_up' | 'third_place' | 'toilet_bowl';
   manager: string; 
   avatar?: string; 
+}
+
+export interface Matchup {
+  matchup_id: number;
+  roster_id: number;
+  points: number;
+  starters?: string[];
+  players_points?: Record<string, number>;
+}
+
+export interface BracketMatch {
+  r: number;
+  p?: number;
+  t1?: number;
+  t2?: number;
+  w?: number;
+  l?: number;
 }
 
 // --- CACHE BUSTING CONSTANT ---
@@ -132,6 +151,24 @@ export async function getLeagueUsers(leagueId: string = LEAGUE_ID) {
 export const getRosters = getLeagueRosters;
 export const getUsers = getLeagueUsers;
 
+export async function getLeagueInfo(leagueId: string = LEAGUE_ID) {
+  const response = await fetch(`https://api.sleeper.app/v1/league/${leagueId}`, CACHE_OPTIONS);
+  if (!response.ok) throw new Error('Failed to fetch league info');
+  return response.json();
+}
+
+export async function getLeagueManagers(leagueId: string = LEAGUE_ID) {
+  const users = await getLeagueUsers(leagueId);
+
+  return users.reduce((acc: Record<string, any>, user: any) => {
+    acc[user.user_id] = {
+      name: user.metadata?.team_name || user.display_name || 'Unknown',
+      avatar: user.avatar ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : null,
+    };
+    return acc;
+  }, {});
+}
+
 export const getWinnersBracket = async (leagueId: string = LEAGUE_ID) => {
   // UPDATED: Use CACHE_OPTIONS
   const res = await fetch(`https://api.sleeper.app/v1/league/${leagueId}/winners_bracket`, CACHE_OPTIONS);
@@ -153,6 +190,17 @@ export const getMatchups = async (week: number, leagueId: string = LEAGUE_ID) =>
   return res.json();
 };
 
+export const getMatchupsForWeek = getMatchups;
+
+export async function getPlayoffBrackets(leagueId: string = LEAGUE_ID) {
+  const [winners, losers] = await Promise.all([
+    getWinnersBracket(leagueId),
+    getLosersBracket(leagueId),
+  ]);
+
+  return { winners, losers };
+}
+
 export const getTransactions = async (week: number, leagueId: string = LEAGUE_ID) => {
   // UPDATED: Use CACHE_OPTIONS
   const res = await fetch(`https://api.sleeper.app/v1/league/${leagueId}/transactions/${week}`, CACHE_OPTIONS);
@@ -172,6 +220,21 @@ async function fetchUserAvatar(userId: string) {
         console.error(`Error fetching avatar for ${userId}:`, error);
         return "";
     }
+}
+
+export async function getChampionDetails(leagueId: string = LEAGUE_ID) {
+  const { winnersBracket, rosters, users } = await fetchLeagueYear(leagueId) || {};
+  const champMatch = winnersBracket?.find((m: any) => m.p === 1);
+  const champRoster = rosters?.find((r: any) => r.roster_id === champMatch?.w);
+  const champUser = users?.find((u: any) => u.user_id === champRoster?.owner_id);
+
+  return {
+    name: champUser?.display_name || 'Unknown Champion',
+    teamName: champUser?.metadata?.team_name || champUser?.display_name || 'Unknown Team',
+    avatar: champUser?.avatar
+      ? `https://sleepercdn.com/avatars/thumbs/${champUser.avatar}`
+      : '/managers/default.png',
+  };
 }
 
 // --- HARDCODED STATS ---

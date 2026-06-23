@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Image from 'next/image';
 import Link from 'next/link';
+import { LCC_PRIMARY_NAV_ROUTES } from '@/lib/routeConfig';
 
 export const metadata: Metadata = {
   title: "Long Country Club FFL",
@@ -31,10 +32,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Link>
           
           <nav className="mt-6 flex justify-center gap-4">
-            <Link href="/"><button className="px-5 py-2 rounded-full border border-gray-200 text-[9px] font-black uppercase tracking-widest bg-white hover:bg-gray-50 transition-all">Home</button></Link>
-            <Link href="/league-info"><button className="px-5 py-2 rounded-full border border-gray-200 text-[9px] font-black uppercase tracking-widest bg-white hover:bg-gray-50 transition-all">Info</button></Link>
-            <Link href="/managers"><button className="px-5 py-2 rounded-full border border-gray-200 text-[9px] font-black uppercase tracking-widest bg-white hover:bg-gray-50 transition-all">Managers</button></Link>
-            <Link href="/matchups"><button className="px-5 py-2 rounded-full border border-gray-200 text-[9px] font-black uppercase tracking-widest bg-white hover:bg-gray-50 transition-all">Matchups</button></Link>
+            {LCC_PRIMARY_NAV_ROUTES.map((route) => (
+              <Link key={route.id} href={route.href}>
+                <button className="px-5 py-2 rounded-full border border-gray-200 text-[9px] font-black uppercase tracking-widest bg-white hover:bg-gray-50 transition-all">
+                  {route.navLabel || route.label}
+                </button>
+              </Link>
+            ))}
           </nav>
         </div>
         {children}

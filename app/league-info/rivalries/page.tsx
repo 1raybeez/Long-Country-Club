@@ -2,13 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Loader2, Info, X, Calendar } from 'lucide-react';
+import { LCC_LEAGUE_HISTORY } from '@/lib/leagueConstants';
 
-const LEAGUE_HISTORY = [
-  { year: 2026, id: "1312148925091692544" }, { year: 2025, id: "1199899847029698560" },
-  { year: 2024, id: "1048290254903463936" }, { year: 2023, id: "918202561050685440" },
-  { year: 2022, id: "817078396659036160" }, { year: 2021, id: "682304920455544832" },
-  { year: 2020, id: "530113322802368512" }, { year: 2019, id: "466635730102251520" },
-];
+const LEAGUE_HISTORY = LCC_LEAGUE_HISTORY;
 
 const MANAGER_MAP: Record<string, { name: string; image: string }> = {
   "467786127214899200": { name: "Rob Jenkins", image: "/managers/Rob.png" },

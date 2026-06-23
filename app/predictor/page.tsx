@@ -5,8 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Skull, Trophy, BrainCircuit, Loader2 } from 'lucide-react';
 import { ModeToggle } from '@/components/ModeToggle';
+import { LCC_CURRENT_LEAGUE_ID } from '@/lib/leagueConstants';
 
-const LEAGUE_ID = "1199749375539027968"; 
+const LEAGUE_ID = LCC_CURRENT_LEAGUE_ID;
 
 // --- TYPES ---
 interface TeamData {

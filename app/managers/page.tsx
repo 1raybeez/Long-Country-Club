@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { LCC_LEAGUE_HISTORY_IDS } from '@/lib/leagueConstants';
 
 // Official Toned-Down Themes
 const TEAM_THEMES: Record<string, { bg: string; border: string }> = {
@@ -19,18 +20,18 @@ const TEAM_THEMES: Record<string, { bg: string; border: string }> = {
 };
 
 const ACTIVE_MANAGERS = [
-  { name: "Ray", sleeper: "Bower Rangers", joined: 2003, div: "OG", status: "FOUNDER", isCommish: true, team: "atl", rival: "Jeffrey", cell: "8046471100", aggro: 10, titles: 1, podiums: { first: ["2007"], second: ["2005", "2008", "2014"], third: ["2009", "2021"] } },
-  { name: "Bill", sleeper: "Chicago Cutlers", joined: 2003, div: "OG", status: "FOUNDER", isCommish: false, team: "chi", rival: "Ray", cell: "8043077897", aggro: 3, titles: 4, podiums: { first: ["2003", "2005", "2006", "2018"], second: ["2016", "2024"], third: ["2013"] } },
-  { name: "KW", sleeper: "Off Constantly", joined: 2003, div: "OG", status: "FOUNDER", isCommish: false, team: "was", rival: "Bill", cell: "8048526684", aggro: 3, titles: 1, podiums: { first: ["2020"], second: ["2004", "2017"], third: ["2015", "2023"] } },
-  { name: "Rob", sleeper: "Roaring 20", joined: 2004, div: "OG", status: "OG", isCommish: false, team: "det", rival: "Ray", cell: "8044008140", aggro: 9, titles: 2, podiums: { first: ["2014"], second: ["2005", "2009", "2017", "2021"], third: ["2015", "2016", "2020"] } },
-  { name: "EP", sleeper: "The People's Team", joined: 2004, div: "OG", status: "OG", isCommish: false, team: "phi", rival: "Bill", cell: "447825990288", aggro: 9, titles: 1, podiums: { first: ["2022"], second: ["2020"], third: ["2006", "2008", "2018", "2023"] } },
-  { name: "Jeffrey", sleeper: "CeeDees....Cousins", joined: 2007, div: "OG", status: "OG", isCommish: false, team: "atl", rival: "Ray", cell: "4049318499", aggro: 6, titles: 1, podiums: { first: ["2024"], second: ["2013", "2019"], third: ["2023"] } },
-  { name: "Tyrone", sleeper: "Won't You be my Nabers", joined: 2004, div: "NEWBIE", status: "CHAMP", isCommish: false, team: "nyg", rival: "Ben", cell: "7577617610", aggro: 5, titles: 2, podiums: { first: ["2015", "2025"], second: ["2016"], third: ["2004"] } },
-  { name: "Ben", sleeper: "Benl", joined: 2008, div: "NEWBIE", status: "VET", isCommish: false, team: "dal", rival: "Tyrone", cell: "8043146253", aggro: 3, titles: 2, podiums: { first: ["2011", "2016"], second: ["2015", "2022", "2023", "2024"], third: ["2025"] } },
-  { name: "Loren", sleeper: "ICOR 4 Lyfe", joined: 2011, div: "NEWBIE", status: "VET", isCommish: false, team: "atl", rival: "Ben", cell: "8285459802", aggro: 8, titles: 1, podiums: { first: ["2021"], second: ["2011", "2023"], third: ["2012", "2024"] } },
-  { name: "Mike M", sleeper: "CookieMonsters", joined: 2018, div: "NEWBIE", status: "VET", isCommish: false, team: "phi", rival: "Ray", cell: "8042399371", aggro: 5, titles: 1, podiums: { first: ["2019", "2023"], second: ["2020", "2025"], third: [] } },
-  { name: "Amart", sleeper: "Sycamore Bishops", joined: 2020, div: "NEWBIE", status: "ACTIVE", isCommish: false, team: "pit", rival: "Mike E", cell: "8048524252", aggro: 8, titles: 0, podiums: { first: [], second: [], third: ["2021"] } },
-  { name: "Mike E", sleeper: "Redneck Rebels", joined: 2022, div: "NEWBIE", status: "ACTIVE", isCommish: false, team: "was", rival: "Amart", cell: "8044024955", aggro: 9, titles: 0, podiums: { first: [], second: [], third: ["2025"] } }
+  { id: "342828350391230464", name: "Ray", sleeper: "Bower Rangers", joined: 2003, div: "OG", status: "FOUNDER", isCommish: true, team: "atl", rival: "Jeffrey", cell: "8046471100", aggro: 10, titles: 1, podiums: { first: ["2007"], second: ["2005", "2008", "2014"], third: ["2009", "2021"] } },
+  { id: "466780021365665792", name: "Bill", sleeper: "Chicago Cutlers", joined: 2003, div: "OG", status: "FOUNDER", isCommish: false, team: "chi", rival: "Ray", cell: "8043077897", aggro: 3, titles: 4, podiums: { first: ["2003", "2005", "2006", "2018"], second: ["2016", "2024"], third: ["2013"] } },
+  { id: "466638004102885376", name: "KW", sleeper: "Off Constantly", joined: 2003, div: "OG", status: "FOUNDER", isCommish: false, team: "was", rival: "Bill", cell: "8048526684", aggro: 3, titles: 1, podiums: { first: ["2020"], second: ["2004", "2017"], third: ["2015", "2023"] } },
+  { id: "467786127214899200", name: "Rob", sleeper: "Roaring 20", joined: 2004, div: "OG", status: "OG", isCommish: false, team: "det", rival: "Ray", cell: "8044008140", aggro: 9, titles: 2, podiums: { first: ["2014"], second: ["2005", "2009", "2017", "2021"], third: ["2015", "2016", "2020"] } },
+  { id: "466645286870052864", name: "EP", sleeper: "The People's Team", joined: 2004, div: "OG", status: "OG", isCommish: false, team: "phi", rival: "Bill", cell: "447825990288", aggro: 9, titles: 1, podiums: { first: ["2022"], second: ["2020"], third: ["2006", "2008", "2018", "2023"] } },
+  { id: "356621920969555968", name: "Jeffrey", sleeper: "CeeDees....Cousins", joined: 2007, div: "OG", status: "OG", isCommish: false, team: "atl", rival: "Ray", cell: "4049318499", aggro: 6, titles: 1, podiums: { first: ["2024"], second: ["2013", "2019"], third: ["2023"] } },
+  { id: "466797853767888896", name: "Tyrone", sleeper: "Won't You be my Nabers", joined: 2004, div: "NEWBIE", status: "CHAMP", isCommish: false, team: "nyg", rival: "Ben", cell: "7577617610", aggro: 5, titles: 2, podiums: { first: ["2015", "2025"], second: ["2016"], third: ["2004"] } },
+  { id: "346727603970973696", name: "Ben", sleeper: "Benl", joined: 2008, div: "NEWBIE", status: "VET", isCommish: false, team: "dal", rival: "Tyrone", cell: "8043146253", aggro: 3, titles: 2, podiums: { first: ["2011", "2016"], second: ["2015", "2022", "2023", "2024"], third: ["2025"] } },
+  { id: "466645950710935552", name: "Loren", sleeper: "ICOR 4 Lyfe", joined: 2011, div: "NEWBIE", status: "VET", isCommish: false, team: "atl", rival: "Ben", cell: "8285459802", aggro: 8, titles: 1, podiums: { first: ["2021"], second: ["2011", "2023"], third: ["2012", "2024"] } },
+  { id: "466659300316540928", name: "Mike M", sleeper: "CookieMonsters", joined: 2018, div: "NEWBIE", status: "VET", isCommish: false, team: "phi", rival: "Ray", cell: "8042399371", aggro: 5, titles: 1, podiums: { first: ["2019", "2023"], second: ["2020", "2025"], third: [] } },
+  { id: "468192726756618240", name: "Amart", sleeper: "Sycamore Bishops", joined: 2020, div: "NEWBIE", status: "ACTIVE", isCommish: false, team: "pit", rival: "Mike E", cell: "8048524252", aggro: 8, titles: 0, podiums: { first: [], second: [], third: ["2021"] } },
+  { id: "817056809218080768", name: "Mike E", sleeper: "Redneck Rebels", joined: 2022, div: "NEWBIE", status: "ACTIVE", isCommish: false, team: "was", rival: "Amart", cell: "8044024955", aggro: 9, titles: 0, podiums: { first: [], second: [], third: ["2025"] } }
 ];
 
 const RETIRED_MANAGERS = [
@@ -60,7 +61,6 @@ export default function ManagersPage() {
       <header className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-black italic uppercase text-[#1A472A] tracking-tighter underline decoration-[#C5A059] underline-offset-8">Clubhouse Directory</h1>
         
-        {/* TABS */}
         <div className="mt-12 flex justify-center gap-2">
           <button 
             onClick={() => setActiveTab('active')}
@@ -108,9 +108,32 @@ export default function ManagersPage() {
 
 function ButtonFlipCard({ manager, isRetired = false }: any) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [record, setRecord] = useState({ wins: 0, losses: 0, loading: !isRetired });
   const theme = TEAM_THEMES[manager.team] || { bg: 'bg-[#420d09]', border: 'border-white/10' };
   const titles = manager.titles || 0;
   const totalPodiums = (manager.podiums.first?.length || 0) + (manager.podiums.second?.length || 0) + (manager.podiums.third?.length || 0);
+
+  // FETCH CAREER RECORD
+  useEffect(() => {
+    if (isRetired || !manager.id) return;
+    
+    async function fetchStats() {
+      let w = 0; let l = 0;
+      try {
+        for (const leagueId of LCC_LEAGUE_HISTORY_IDS) {
+          const res = await fetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`);
+          const rosters = await res.json();
+          const roster = rosters.find((r: any) => r.owner_id === manager.id);
+          if (roster?.settings) {
+            w += (roster.settings.wins || 0);
+            l += (roster.settings.losses || 0);
+          }
+        }
+        setRecord({ wins: w, losses: l, loading: false });
+      } catch (err) { setRecord(prev => ({ ...prev, loading: false })); }
+    }
+    fetchStats();
+  }, [manager.id, isRetired]);
 
   return (
     <div className={`flip-card ${isRetired ? 'grayscale-[0.4] hover:grayscale-0 transition-all duration-500' : ''}`}>
@@ -144,11 +167,25 @@ function ButtonFlipCard({ manager, isRetired = false }: any) {
                    </div>
                 )}
              </div>
-             <div className="flex flex-col gap-3">
+
+             {/* DATA AREA: STATS AND ICONS */}
+             <div className="flex flex-col gap-2">
                 {!isRetired && (
-                  <a href={`sms:${manager.cell}`}><img src="/logos/iMessage.png" className="w-9 h-9 hover:scale-110 transition-transform shadow-lg" alt="iMessage" /></a>
+                  <div className="bg-black/40 px-3 py-2 rounded-xl border border-white/10">
+                    <p className="text-[7px] font-black uppercase tracking-widest text-[#C5A059] mb-1 leading-none">Career Record</p>
+                    {record.loading ? (
+                      <Loader2 size={12} className="animate-spin opacity-40" />
+                    ) : (
+                      <p className="text-lg font-black italic tracking-tighter leading-none">{record.wins}-{record.losses}</p>
+                    )}
+                  </div>
                 )}
-                <img src="/logos/Sleeper.png" className="w-6 h-6 opacity-40" alt="Sleeper" />
+                <div className="flex items-center gap-3 mt-1">
+                  {!isRetired && (
+                    <a href={`sms:${manager.cell}`}><img src="/logos/iMessage.png" className="w-9 h-9 hover:scale-110 transition-transform shadow-lg" alt="iMessage" /></a>
+                  )}
+                  <img src="/logos/Sleeper.png" className="w-6 h-6 opacity-40" alt="Sleeper" />
+                </div>
              </div>
           </div>
 
@@ -215,6 +252,19 @@ function ButtonFlipCard({ manager, isRetired = false }: any) {
         </div>
       </div>
     </div>
+  );
+}
+
+// LOADER COMPONENT FOR DATA FETCHING
+function Loader2({ size, className }: { size: number, className: string }) {
+  return (
+    <svg 
+      width={size} height={size} viewBox="0 0 24 24" fill="none" 
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" 
+      className={className}
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
   );
 }
 

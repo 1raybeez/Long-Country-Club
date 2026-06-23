@@ -2,12 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Trophy, Swords, Skull, Loader2, ChevronDown, X } from 'lucide-react';
+import { LCC_MATCHUP_LEAGUE_IDS } from '@/lib/leagueConstants';
 
-const LEAGUES = { 
-  2026: "1312148925091692544", 
-  2025: "1199899847029698560",
-  2024: "1048290254903463936" 
-};
+const LEAGUES = LCC_MATCHUP_LEAGUE_IDS;
 
 export default function MatchupsPage() {
   const [activeTab, setActiveTab] = useState<'regular' | 'playoffs'>('regular');

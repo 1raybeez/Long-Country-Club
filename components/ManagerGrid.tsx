@@ -1,7 +1,11 @@
 // components/ManagerGrid.tsx
 import React from 'react';
-// We import the data from the lib folder we just made
-import { teams } from '../lib/managersData'; 
+import { managers } from '../lib/managersData'; 
+
+const teams = managers.map((manager) => ({
+  name: manager.name,
+  images: [manager.photo],
+}));
 
 const ManagerGrid = () => {
   return (

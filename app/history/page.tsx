@@ -48,7 +48,7 @@ export default function HistoryHub() {
             title="The Pro Shop" 
             desc="Historical draft boards and active team rosters since the Dynasty transition."
             icon="⛳"
-            link="/league-info/draft"
+            link="/league-info/drafts"
             btnText="View Board"
           />
 
@@ -80,7 +80,7 @@ export default function HistoryHub() {
             title="Caddy Fees" 
             desc="League financials, dues tracking, and season prize distributions."
             icon="💰"
-            link="/league-info/payouts"
+            link="/league-info/fees"
             btnText="Check Vault"
           />
 

@@ -6,12 +6,7 @@ import {
   Trophy, ChevronDown, ChevronUp, Newspaper, 
   Zap, X, Loader2, Target, Info, Scroll
 } from 'lucide-react';
-
-const HISTORY_LEAGUES = [
-  "1312148925091692544", "1199899847029698560", "1048290254903463936",
-  "918202561050685440", "817078396659036160", "682304920455544832",
-  "530113322802368512", "466635730102251520"
-];
+import { LCC_LEAGUE_HISTORY_IDS } from '@/lib/leagueConstants';
 
 const TYRONE_USER_ID = "466797853767888896";
 
@@ -24,7 +19,7 @@ export default function HomePage() {
     async function calculateCareerStats() {
       let totalWins = 0; let totalLosses = 0;
       try {
-        for (const leagueId of HISTORY_LEAGUES) {
+        for (const leagueId of LCC_LEAGUE_HISTORY_IDS) {
           const res = await fetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`);
           const rosters = await res.json();
           const tyroneRoster = rosters.find((r: any) => r.owner_id === TYRONE_USER_ID);
@@ -44,7 +39,7 @@ export default function HomePage() {
       <main className="max-w-7xl mx-auto px-6 py-12 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* LEFT COLUMN: FULL LEAGUE HISTORY */}
+          {/* LEFT COLUMN: THE LCC ORIGIN STORY */}
           <div className="lg:col-span-7">
             <section className="bg-white rounded-[3rem] p-12 shadow-sm border border-black/5">
               <div className="flex items-center gap-4 mb-8">
@@ -53,12 +48,46 @@ export default function HomePage() {
                   The Back Nine: Our Legacy
                 </h1>
               </div>
+              
               <div className="space-y-8 text-xl text-[#1A472A]/80 leading-relaxed">
-                <p>The LCC FFL was forged on the dusty diamonds of local softball fields, founded by competitors from the Outlaws and Jani King teams.</p>
-                <p>For nearly two decades, the league lived as a classic 2-Keeper format. In 2021, the clubhouse boldly pivoted into a full Dynasty era.</p>
-                <p className="italic font-black pt-12 border-t border-black/5 mt-12 opacity-60">
-                  Rest in peace, Chris Boschen and Junior Dukes.
+                <p>
+                  The LCC FFL was forged on the diamonds of local softball fields, born from the 
+                  rivalry and respect between the Outlaws and Jani King. Co-created by 
+                  Ray, Bill, and KW, the league’s legendary start began the night Ray 
+                  drafted Bill’s entire squad.
                 </p>
+
+                <div className="bg-[#F9F7F2] p-8 rounded-3xl border-l-8 border-[#C5A059] my-8">
+                  <p className="font-black italic text-2xl text-[#1A472A]">
+                    "The Culpepper & Moss Connection"
+                  </p>
+                  <p className="mt-2 text-lg">
+                    That fateful draft night led to a dominant back-to-back championship run that 
+                    set the standard for the decades to follow.
+                  </p>
+                </div>
+
+                <p>
+                  After Year 1, Ray, Bill, and KW expanded the clubhouse, building a community around 
+                  friends from **Paramount Kings Dominion** and a tight-knit circle of outsiders. 
+                  While faces have changed over 22 years, the core of this league has remained 
+                  unshakable.
+                </p>
+
+                <p>
+                  In 2021, we made our most significant strategic shift, transitioning from a 
+                  traditional **2-Keeper format** into a **Full Dynasty era**. It has been a 
+                  massive hit, raising the stakes and the competition to an all-time high.
+                </p>
+
+                <div className="pt-12 border-t border-black/5 mt-12">
+                  <p className="text-sm font-black uppercase tracking-[0.3em] text-red-800/60 mb-4">In Memoriam</p>
+                  <p className="italic font-black text-[#1A472A]/60">
+                    We have lost two of our original members to cancer over these 22 years. 
+                    Though they are no longer in the draft room, they will forever be part 
+                    of the Long Country Club FFL.
+                  </p>
+                </div>
               </div>
             </section>
           </div>

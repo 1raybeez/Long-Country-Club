@@ -218,7 +218,8 @@ export default function TrophyRoomPage() {
 
                 </div>
               </div>
-            ))
+            );
+          })
         )}
       </div>
     </main>

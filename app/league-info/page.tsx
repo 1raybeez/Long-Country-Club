@@ -2,15 +2,13 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { LCC_LEAGUE_INFO_CARD_ROUTES } from '@/lib/routeConfig';
 
-const INFO_CARDS = [
-  { title: "THE RULES OF PLAY", icon: "⚖️", link: "/league-info/constitution" },
-  { title: "CHAMPIONS GALLERY", icon: "🏆", link: "/league-info/trophy-room" },
-  { title: "RIVALRY HUB", icon: "⚔️", link: "/league-info/rivalries" }, // New Tab Added
-  { title: "LEAGUE ARCHIVES", icon: "📊", link: "/league-info/archives" },
-  { title: "DRAFT ROOM", icon: "🏈", link: "/league-info/drafts" },
-  { title: "CADDY FEES", icon: "💰", link: "/league-info/fees" },
-];
+const INFO_CARDS = LCC_LEAGUE_INFO_CARD_ROUTES.map((route) => ({
+  title: route.label.toUpperCase(),
+  icon: route.icon,
+  link: route.href,
+}));
 
 export default function ClubhouseInfoPage() {
   return (
