@@ -16,6 +16,7 @@ export const LCC_ERA_MODEL = {
 
 export type LccOwnerStatus = "active" | "retired";
 export type LccOwnerDivision = "OG" | "NEWBIE";
+export type LccOwnerActiveDivision = "OGs" | "Newbies";
 export type LccOwnerEraKey = keyof typeof LCC_ERA_MODEL;
 
 export interface LccOwnerPodiums {
@@ -59,6 +60,7 @@ export interface LccOwner {
   readonly commissioner: boolean;
   readonly original2003Owner: boolean;
   readonly inMemoriam: boolean;
+  readonly activeDivision?: LccOwnerActiveDivision;
   readonly joinedYear?: number;
   readonly lastSeason?: number | "present";
   readonly eraTags: readonly LccOwnerEraKey[];
@@ -86,6 +88,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: true,
     original2003Owner: true,
     inMemoriam: false,
+    activeDivision: "OGs",
     joinedYear: 2003,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -123,6 +126,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: true,
     inMemoriam: false,
+    activeDivision: "OGs",
     joinedYear: 2003,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -160,6 +164,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: true,
     inMemoriam: false,
+    activeDivision: "OGs",
     joinedYear: 2003,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -197,6 +202,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "OGs",
     joinedYear: 2004,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -234,6 +240,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "OGs",
     joinedYear: 2004,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -271,6 +278,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "OGs",
     joinedYear: 2007,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -308,6 +316,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "Newbies",
     joinedYear: 2004,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -345,6 +354,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "Newbies",
     joinedYear: 2008,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -382,6 +392,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "Newbies",
     joinedYear: 2011,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -419,6 +430,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "Newbies",
     joinedYear: 2018,
     lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
@@ -456,6 +468,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "Newbies",
     joinedYear: 2020,
     lastSeason: "present",
     eraTags: ["twoKeeper", "dynasty"],
@@ -493,6 +506,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     commissioner: false,
     original2003Owner: false,
     inMemoriam: false,
+    activeDivision: "Newbies",
     joinedYear: 2022,
     lastSeason: "present",
     eraTags: ["dynasty"],
@@ -851,10 +865,10 @@ export const RETIRED_LCC_OWNERS: readonly LccOwner[] = [
   {
     id: "junior",
     status: "retired",
-    displayName: "Junior",
+    displayName: "Junior Duke",
     nickname: "Junior",
     avatarFilename: "Junior.png",
-    aliases: ["Junior"],
+    aliases: ["Junior", "Junior Duke"],
     displayNameHistory: ["Junior"],
     founder: false,
     commissioner: false,
@@ -903,10 +917,10 @@ export const RETIRED_LCC_OWNERS: readonly LccOwner[] = [
   {
     id: "jay",
     status: "retired",
-    displayName: "Jay",
+    displayName: "Jay G",
     nickname: "Jay",
     avatarFilename: "Jay.png",
-    aliases: ["Jay", "Vitamin J"],
+    aliases: ["Jay", "Jay G", "Vitamin J"],
     displayNameHistory: ["Vitamin J"],
     founder: false,
     commissioner: false,
