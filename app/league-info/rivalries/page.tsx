@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Loader2, Info, X, Calendar } from 'lucide-react';
+import React, { useState } from 'react';
+import { Loader2, X } from 'lucide-react';
 import { LCC_LEAGUE_HISTORY } from '@/lib/leagueConstants';
 
 const LEAGUE_HISTORY = LCC_LEAGUE_HISTORY;
@@ -21,6 +21,43 @@ const MANAGER_MAP: Record<string, { name: string; image: string }> = {
   "468192726756618240": { name: "Anthony Martinez", image: "/managers/Amart.png" }
 };
 
+interface SleeperRoster {
+  roster_id: number;
+  owner_id: string;
+}
+
+interface SleeperMatchup {
+  matchup_id?: number;
+  roster_id: number;
+  points?: number;
+}
+
+interface RivalryGame {
+  year: number;
+  week: number;
+  a: SleeperMatchup;
+  b: SleeperMatchup;
+  diff: number;
+}
+
+interface RivalryStats {
+  aWins: number;
+  bWins: number;
+  aPoints: number;
+  bPoints: number;
+  totalGames: number;
+  blowout?: RivalryGame;
+  shave?: RivalryGame;
+}
+
+const INITIAL_STATS: RivalryStats = {
+  aWins: 0,
+  bWins: 0,
+  aPoints: 0,
+  bPoints: 0,
+  totalGames: 0,
+};
+
 const GolfClubsVS = () => (
   <div className="relative flex items-center justify-center w-24 h-24">
     <div className="absolute inset-0 border-2 border-[#C5A059]/10 rounded-full" />
@@ -38,41 +75,40 @@ export default function RivalryHub() {
   const [playerA, setPlayerA] = useState('');
   const [playerB, setPlayerB] = useState('');
   const [loading, setLoading] = useState(false);
-  const [selectedMatch, setSelectedMatch] = useState<any | null>(null);
-  const [stats, setStats] = useState<any>({
-    aWins: 0, bWins: 0, aPoints: 0, bPoints: 0, totalGames: 0,
-    blowout: null, shave: null
-  });
+  const [selectedMatch, setSelectedMatch] = useState<RivalryGame | null>(null);
+  const [stats, setStats] = useState<RivalryStats>(INITIAL_STATS);
 
-  const scanHistory = async () => {
-    if (!playerA || !playerB) return;
+  const scanHistory = async (nextPlayerA: string, nextPlayerB: string) => {
+    if (!nextPlayerA || !nextPlayerB) return;
     setLoading(true);
-    let h2h = { aWins: 0, bWins: 0, aPoints: 0, bPoints: 0, totalGames: 0 };
-    let games: any[] = [];
+    const h2h = { aWins: 0, bWins: 0, aPoints: 0, bPoints: 0, totalGames: 0 };
+    const games: RivalryGame[] = [];
 
     for (const season of LEAGUE_HISTORY) {
       try {
         const rosterRes = await fetch(`https://api.sleeper.app/v1/league/${season.id}/rosters`);
-        const rosters = await rosterRes.json();
-        const ridA = rosters.find((r: any) => r.owner_id === playerA)?.roster_id;
-        const ridB = rosters.find((r: any) => r.owner_id === playerB)?.roster_id;
+        const rosters = await rosterRes.json() as SleeperRoster[];
+        const ridA = rosters.find((r) => r.owner_id === nextPlayerA)?.roster_id;
+        const ridB = rosters.find((r) => r.owner_id === nextPlayerB)?.roster_id;
         if (!ridA || !ridB) continue;
 
         for (let w = 1; w <= 17; w++) {
           const mRes = await fetch(`https://api.sleeper.app/v1/league/${season.id}/matchups/${w}`);
-          const matchups = await mRes.json();
-          const matchA = matchups.find((m: any) => m.roster_id === ridA);
-          const matchB = matchups.find((m: any) => m.roster_id === ridB);
+          const matchups = await mRes.json() as SleeperMatchup[];
+          const matchA = matchups.find((m) => m.roster_id === ridA);
+          const matchB = matchups.find((m) => m.roster_id === ridB);
 
           if (matchA?.matchup_id === matchB?.matchup_id && matchA && matchB) {
-            const diff = Math.abs(matchA.points - matchB.points);
+            const aPoints = matchA.points || 0;
+            const bPoints = matchB.points || 0;
+            const diff = Math.abs(aPoints - bPoints);
             games.push({ year: season.year, week: w, a: matchA, b: matchB, diff });
             
             h2h.totalGames++;
-            h2h.aPoints += (matchA.points || 0);
-            h2h.bPoints += (matchB.points || 0);
-            if (matchA.points > matchB.points) h2h.aWins++;
-            else if (matchB.points > matchA.points) h2h.bWins++;
+            h2h.aPoints += aPoints;
+            h2h.bPoints += bPoints;
+            if (aPoints > bPoints) h2h.aWins++;
+            else if (bPoints > aPoints) h2h.bWins++;
           }
         }
       } catch (err) { console.error(err); }
@@ -85,7 +121,15 @@ export default function RivalryHub() {
     setLoading(false);
   };
 
-  useEffect(() => { scanHistory(); }, [playerA, playerB]);
+  const handlePlayerAChange = (nextPlayerA: string) => {
+    setPlayerA(nextPlayerA);
+    void scanHistory(nextPlayerA, playerB);
+  };
+
+  const handlePlayerBChange = (nextPlayerB: string) => {
+    setPlayerB(nextPlayerB);
+    void scanHistory(playerA, nextPlayerB);
+  };
 
   const managerA = MANAGER_MAP[playerA];
   const managerB = MANAGER_MAP[playerB];
@@ -94,9 +138,9 @@ export default function RivalryHub() {
   return (
     <div className="min-h-screen bg-[#F9F7F2] font-serif text-[#1A472A] p-8 pb-32">
       <div className="flex justify-center items-center gap-12 mb-16">
-        <ManagerProfile id={playerA} manager={managerA} setPlayer={setPlayerA} hasLead={stats.aWins > stats.bWins} />
+        <ManagerProfile id={playerA} manager={managerA} setPlayer={handlePlayerAChange} hasLead={stats.aWins > stats.bWins} />
         <GolfClubsVS />
-        <ManagerProfile id={playerB} manager={managerB} setPlayer={setPlayerB} hasLead={stats.bWins > stats.aWins} />
+        <ManagerProfile id={playerB} manager={managerB} setPlayer={handlePlayerBChange} hasLead={stats.bWins > stats.aWins} />
       </div>
 
       {loading ? (
@@ -125,12 +169,12 @@ export default function RivalryHub() {
           </div>
 
           <div className="grid grid-cols-2 gap-8">
-             <button onClick={() => setSelectedMatch(stats.blowout)} className="bg-white p-8 rounded-[2.5rem] border border-black/5 shadow-sm text-center hover:scale-[1.02] transition-transform">
+             <button onClick={() => setSelectedMatch(stats.blowout || null)} className="bg-white p-8 rounded-[2.5rem] border border-black/5 shadow-sm text-center hover:scale-[1.02] transition-transform">
                 <p className="text-[10px] font-black uppercase opacity-40 mb-2">Biggest Blowout</p>
                 <p className="text-2xl font-black italic">± {stats.blowout?.diff.toFixed(1)} Pts</p>
                 <span className="text-[8px] font-black uppercase opacity-30 mt-4 block tracking-widest">Click to View Archive</span>
              </button>
-             <button onClick={() => setSelectedMatch(stats.shave)} className="bg-white p-8 rounded-[2.5rem] border border-black/5 shadow-sm text-center hover:scale-[1.02] transition-transform">
+             <button onClick={() => setSelectedMatch(stats.shave || null)} className="bg-white p-8 rounded-[2.5rem] border border-black/5 shadow-sm text-center hover:scale-[1.02] transition-transform">
                 <p className="text-[10px] font-black uppercase opacity-40 mb-2">Closest Shave</p>
                 <p className="text-2xl font-black italic">± {stats.shave?.diff.toFixed(1)} Pts</p>
                 <span className="text-[8px] font-black uppercase opacity-30 mt-4 block tracking-widest">Click to View Archive</span>
@@ -152,12 +196,12 @@ export default function RivalryHub() {
             <h2 className="text-2xl font-black italic uppercase mb-8 border-b pb-4 text-center">{selectedMatch.year} Week {selectedMatch.week}</h2>
             <div className="space-y-6">
                 <div className="flex justify-between items-center text-xl font-black">
-                    <span className={selectedMatch.a.points > selectedMatch.b.points ? 'text-[#1A472A]' : 'opacity-30'}>{managerA.name}</span>
-                    <span>{selectedMatch.a.points.toFixed(1)}</span>
+                    <span className={(selectedMatch.a.points || 0) > (selectedMatch.b.points || 0) ? 'text-[#1A472A]' : 'opacity-30'}>{managerA?.name}</span>
+                    <span>{(selectedMatch.a.points || 0).toFixed(1)}</span>
                 </div>
                 <div className="flex justify-between items-center text-xl font-black">
-                    <span className={selectedMatch.b.points > selectedMatch.a.points ? 'text-[#C5A059]' : 'opacity-30'}>{managerB.name}</span>
-                    <span>{selectedMatch.b.points.toFixed(1)}</span>
+                    <span className={(selectedMatch.b.points || 0) > (selectedMatch.a.points || 0) ? 'text-[#C5A059]' : 'opacity-30'}>{managerB?.name}</span>
+                    <span>{(selectedMatch.b.points || 0).toFixed(1)}</span>
                 </div>
             </div>
           </div>
@@ -167,11 +211,21 @@ export default function RivalryHub() {
   );
 }
 
-function ManagerProfile({ manager, id, setPlayer, hasLead }: any) {
+function ManagerProfile({
+  manager,
+  id,
+  setPlayer,
+  hasLead,
+}: {
+  manager?: { name: string; image: string };
+  id: string;
+  setPlayer: (value: string) => void;
+  hasLead: boolean;
+}) {
   return (
     <div className="flex flex-col items-center gap-6">
       <div className="w-28 h-28 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-white">
-        <img src={manager?.image || '/managers/default.png'} className="w-full h-full object-cover" />
+        <img src={manager?.image || '/managers/default.png'} className="w-full h-full object-cover" alt={manager?.name || 'Manager'} />
       </div>
       <div className="text-center">
         <div className="flex items-center justify-center gap-2 mb-4">

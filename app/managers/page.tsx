@@ -19,7 +19,37 @@ const TEAM_THEMES: Record<string, { bg: string; border: string }> = {
   buf: { bg: 'bg-[#00338D]', border: 'border-[#C60C30]' },
 };
 
-const ACTIVE_MANAGERS = [
+interface ManagerPodiums {
+  first: string[];
+  second: string[];
+  third: string[];
+}
+
+interface ManagerRecord {
+  id?: string;
+  name: string;
+  sleeper: string;
+  joined: number;
+  div?: 'OG' | 'NEWBIE';
+  status: string;
+  isCommish?: boolean;
+  team: string;
+  rival?: string;
+  cell?: string;
+  aggro?: number;
+  titles: number;
+  podiums: ManagerPodiums;
+}
+
+interface SleeperRoster {
+  owner_id?: string;
+  settings?: {
+    wins?: number;
+    losses?: number;
+  };
+}
+
+const ACTIVE_MANAGERS: ManagerRecord[] = [
   { id: "342828350391230464", name: "Ray", sleeper: "Bower Rangers", joined: 2003, div: "OG", status: "FOUNDER", isCommish: true, team: "atl", rival: "Jeffrey", cell: "8046471100", aggro: 10, titles: 1, podiums: { first: ["2007"], second: ["2005", "2008", "2014"], third: ["2009", "2021"] } },
   { id: "466780021365665792", name: "Bill", sleeper: "Chicago Cutlers", joined: 2003, div: "OG", status: "FOUNDER", isCommish: false, team: "chi", rival: "Ray", cell: "8043077897", aggro: 3, titles: 4, podiums: { first: ["2003", "2005", "2006", "2018"], second: ["2016", "2024"], third: ["2013"] } },
   { id: "466638004102885376", name: "KW", sleeper: "Off Constantly", joined: 2003, div: "OG", status: "FOUNDER", isCommish: false, team: "was", rival: "Bill", cell: "8048526684", aggro: 3, titles: 1, podiums: { first: ["2020"], second: ["2004", "2017"], third: ["2015", "2023"] } },
@@ -34,7 +64,7 @@ const ACTIVE_MANAGERS = [
   { id: "817056809218080768", name: "Mike E", sleeper: "Redneck Rebels", joined: 2022, div: "NEWBIE", status: "ACTIVE", isCommish: false, team: "was", rival: "Amart", cell: "8044024955", aggro: 9, titles: 0, podiums: { first: [], second: [], third: ["2025"] } }
 ];
 
-const RETIRED_MANAGERS = [
+const RETIRED_MANAGERS: ManagerRecord[] = [
   { name: "Dan", sleeper: "Ridiculousville Quicksand", joined: 2006, status: "RETIRED", team: "atl", titles: 3, podiums: { first: ["2012", "2013", "2017"], second: [], third: [] } },
   { name: "Chris H", sleeper: "Boss Hogg is Back Baby!", joined: 2005, status: "RETIRED", team: "was", titles: 1, podiums: { first: ["2008"], second: ["2006", "2007"], third: ["2005"] } },
   { name: "DJ", sleeper: "H.S. Serial Killers", joined: 2006, status: "RETIRED", team: "was", titles: 1, podiums: { first: ["2010"], second: [], third: [] } },
@@ -81,7 +111,7 @@ export default function ManagersPage() {
         {activeTab === 'active' ? (
           <div className="space-y-24">
             <section>
-              <h2 className="text-2xl font-black italic uppercase text-[#1A472A] mb-12 border-b-8 border-[#C5A059] inline-block px-2 tracking-widest leading-none">The Founders & OG's</h2>
+              <h2 className="text-2xl font-black italic uppercase text-[#1A472A] mb-12 border-b-8 border-[#C5A059] inline-block px-2 tracking-widest leading-none">The Founders & OG&apos;s</h2>
               <div className="clubhouse-grid">
                 {ACTIVE_MANAGERS.filter(m => m.div === "OG").map((m, i) => <ButtonFlipCard key={i} manager={m} />)}
               </div>
@@ -106,11 +136,12 @@ export default function ManagersPage() {
   );
 }
 
-function ButtonFlipCard({ manager, isRetired = false }: any) {
+function ButtonFlipCard({ manager, isRetired = false }: { manager: ManagerRecord; isRetired?: boolean }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [record, setRecord] = useState({ wins: 0, losses: 0, loading: !isRetired });
   const theme = TEAM_THEMES[manager.team] || { bg: 'bg-[#420d09]', border: 'border-white/10' };
   const titles = manager.titles || 0;
+  const tradeAggression = manager.aggro || 0;
   const totalPodiums = (manager.podiums.first?.length || 0) + (manager.podiums.second?.length || 0) + (manager.podiums.third?.length || 0);
 
   // FETCH CAREER RECORD
@@ -122,15 +153,15 @@ function ButtonFlipCard({ manager, isRetired = false }: any) {
       try {
         for (const leagueId of LCC_LEAGUE_HISTORY_IDS) {
           const res = await fetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`);
-          const rosters = await res.json();
-          const roster = rosters.find((r: any) => r.owner_id === manager.id);
+          const rosters = await res.json() as SleeperRoster[];
+          const roster = rosters.find((r) => r.owner_id === manager.id);
           if (roster?.settings) {
             w += (roster.settings.wins || 0);
             l += (roster.settings.losses || 0);
           }
         }
         setRecord({ wins: w, losses: l, loading: false });
-      } catch (err) { setRecord(prev => ({ ...prev, loading: false })); }
+      } catch { setRecord(prev => ({ ...prev, loading: false })); }
     }
     fetchStats();
   }, [manager.id, isRetired]);
@@ -198,12 +229,12 @@ function ButtonFlipCard({ manager, isRetired = false }: any) {
             <div className="mb-8">
               <div className="flex justify-between items-center mb-1">
                 <span className="text-[8px] uppercase font-black tracking-widest text-white/50 italic leading-none">Trade Aggression</span>
-                <span className="text-[9px] font-black text-[#C5A059]">{manager.aggro}/10</span>
+	                <span className="text-[9px] font-black text-[#C5A059]">{tradeAggression}/10</span>
               </div>
               <div className="h-2 w-full bg-black/30 rounded-full overflow-hidden border border-white/5">
                 <div 
                   className="h-full bg-gradient-to-r from-red-600 via-yellow-400 to-green-500 rounded-full" 
-                  style={{ width: `${manager.aggro * 10}%` }} 
+	                  style={{ width: `${tradeAggression * 10}%` }} 
                 />
               </div>
             </div>
@@ -277,7 +308,7 @@ function StatBox({ label, val, color }: { label: string, val: string, color: str
   );
 }
 
-function PodiumRow({ label, years, icon, color }: any) {
+function PodiumRow({ label, years, icon, color }: { label: string; years: string[]; icon: string; color: string }) {
   if (!years || years.length === 0) return null;
   return (
     <div className="bg-white/5 p-3 rounded-xl border border-white/5">

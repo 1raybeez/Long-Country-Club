@@ -91,7 +91,19 @@ export default function HistoryHub() {
 }
 
 // Reusable Tile Component
-function InfoCard({ title, desc, icon, link, btnText }: any) {
+function InfoCard({
+  title,
+  desc,
+  icon,
+  link,
+  btnText,
+}: {
+  title: string;
+  desc: string;
+  icon: string;
+  link: string;
+  btnText: string;
+}) {
   return (
     <div style={{
       backgroundColor: 'white',

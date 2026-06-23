@@ -22,6 +22,32 @@ interface TeamData {
   winProb: number;
 }
 
+interface SleeperUser {
+  user_id: string;
+  display_name?: string;
+  avatar: string | null;
+  metadata?: {
+    team_name?: string;
+  };
+}
+
+interface SleeperRoster {
+  roster_id: number;
+  owner_id: string;
+  settings?: {
+    fpts?: number;
+    ppts?: number;
+    wins?: number;
+    losses?: number;
+  };
+}
+
+interface SleeperBracketMatch {
+  t1?: number;
+  t2?: number;
+  l?: number;
+}
+
 export default function PredictorPage() {
   const [teams, setTeams] = useState<TeamData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -36,15 +62,15 @@ export default function PredictorPage() {
           fetch(`https://api.sleeper.app/v1/league/${LEAGUE_ID}/winners_bracket`)
         ]);
 
-        const users = await usersRes.json();
-        const rosters = await rostersRes.json();
-        const bracket = await bracketRes.json();
+        const users = await usersRes.json() as SleeperUser[];
+        const rosters = await rostersRes.json() as SleeperRoster[];
+        const bracket = await bracketRes.json() as SleeperBracketMatch[];
 
         // 2. Map User Details
-        const userMap: Record<string, { name: string; avatar: string }> = {};
-        users.forEach((u: any) => {
+        const userMap: Record<string, { name: string; avatar: string | null }> = {};
+        users.forEach((u) => {
           userMap[u.user_id] = {
-            name: u.metadata?.team_name || u.display_name,
+            name: u.metadata?.team_name || u.display_name || 'Unknown',
             avatar: u.avatar
           };
         });
@@ -55,7 +81,7 @@ export default function PredictorPage() {
         const eliminatedRosterIds = new Set<number>();
         const bracketParticipants = new Set<number>();
 
-        bracket.forEach((match: any) => {
+        bracket.forEach((match) => {
           if (match.t1) bracketParticipants.add(match.t1);
           if (match.t2) bracketParticipants.add(match.t2);
           if (match.l) eliminatedRosterIds.add(match.l);
@@ -63,8 +89,13 @@ export default function PredictorPage() {
 
         // 4. Build Team Objects & Calculate Raw Power Score
         let totalPowerScore = 0;
-        const processedTeams: TeamData[] = rosters.map((r: any) => {
+        const processedTeams: TeamData[] = rosters.map((r) => {
           const owner = userMap[r.owner_id] || { name: 'Unknown', avatar: null };
+          const settings = r.settings || {};
+          const wins = settings.wins || 0;
+          const losses = settings.losses || 0;
+          const fpts = settings.fpts || 0;
+          const ppts = settings.ppts || 0;
           
           const madePlayoffs = bracketParticipants.has(r.roster_id);
           const isEliminated = !madePlayoffs || eliminatedRosterIds.has(r.roster_id);
@@ -72,8 +103,8 @@ export default function PredictorPage() {
           // Power Score Algorithm (60% Points / 20% Ceiling / 20% Record)
           let powerScore = 0;
           if (!isEliminated) {
-             const winPct = r.settings.wins / (r.settings.wins + r.settings.losses || 1);
-             powerScore = (r.settings.fpts * 0.6) + (r.settings.ppts * 0.2) + (winPct * 500); 
+             const winPct = wins / (wins + losses || 1);
+             powerScore = (fpts * 0.6) + (ppts * 0.2) + (winPct * 500); 
              totalPowerScore += powerScore;
           }
 
@@ -81,10 +112,10 @@ export default function PredictorPage() {
             rosterId: r.roster_id,
             name: owner.name,
             avatar: owner.avatar,
-            fpts: r.settings.fpts,
-            ppts: r.settings.ppts,
-            wins: r.settings.wins,
-            losses: r.settings.losses,
+            fpts,
+            ppts,
+            wins,
+            losses,
             status: isEliminated ? 'Eliminated' : 'Alive',
             winProb: powerScore
           };

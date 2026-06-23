@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Trophy, Crown, Medal, Award, User, Loader2 } from 'lucide-react';
-import { getLeagueHistoryAwards } from '@/lib/sleeper';
+import { getLeagueHistoryAwards, type Award as LeagueAward } from '@/lib/sleeper';
 
 // --- CENTRAL MANAGER MAP (for names/avatars) ---
 // In a real application, this would come from a separate imported file.
@@ -45,8 +45,18 @@ const getManagerDetails = (rawName: string | undefined) => {
     return { name: rawName.split(' ')[0] || rawName, avatar: null };
 };
 
+interface TrophySeason {
+    year: number;
+    leagueName: string;
+    champion: string;
+    runnerUp: string;
+    thirdPlace: string;
+    notes: string;
+    avatar?: string | null;
+}
+
 // --- RESTORED MANUAL DATA (2011-2018) ---
-const MANUAL_ARCHIVES_OLD = [
+const MANUAL_ARCHIVES_OLD: TrophySeason[] = [
     { year: 2018, leagueName: "Area 10 FFL", champion: "Brian Stevens", runnerUp: "Tommy Moore", thirdPlace: "Ray Long", notes: "Final season as Area 10 FFL." },
     { year: 2017, leagueName: "Area 10 FFL", champion: "Tommy Moore", runnerUp: "JD Dowling", thirdPlace: "Minnix", notes: "" },
     { year: 2016, leagueName: "Area 10 FFL", champion: "Tommy Moore", runnerUp: "Minnix", thirdPlace: "Ray Long", notes: "" },
@@ -58,11 +68,11 @@ const MANUAL_ARCHIVES_OLD = [
 ];
 
 export default function TrophyRoomPage() {
-    const [fullHistory, setFullHistory] = useState<any[]>([]);
+    const [fullHistory, setFullHistory] = useState<TrophySeason[]>([]);
     const [loading, setLoading] = useState(true);
 
     // Helper to get award manager from API results
-    const getApiManager = (year: number, type: 'runner_up' | 'third_place', apiAwards: any[]) => {
+    const getApiManager = (year: number, type: 'runner_up' | 'third_place', apiAwards: LeagueAward[]) => {
         return apiAwards.find(a => a.year === year && a.type === type)?.manager || 'Unknown';
     };
 
@@ -74,7 +84,7 @@ export default function TrophyRoomPage() {
                 const apiAwards = await getLeagueHistoryAwards();
 
                 // 2. Format the API results (2018-Present)
-                const modernHistory = apiAwards
+                const modernHistory: TrophySeason[] = apiAwards
                     .filter(a => a.type === 'champion')
                     .map(champ => {
                         const champDetails = getManagerDetails(champ.manager);
@@ -192,9 +202,9 @@ export default function TrophyRoomPage() {
                             </div>
                         </div>
                         
-                        {season.notes && (
+                            {season.notes && (
                             <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 italic border-l-2 border-gray-200 dark:border-white/10 pl-3">
-                                "{season.notes}"
+                                &quot;{season.notes}&quot;
                             </p>
                         )}
                     </div>

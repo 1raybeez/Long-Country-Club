@@ -62,6 +62,37 @@ interface FinanceEntry {
     divisionId: number;
 }
 
+interface SleeperUser {
+    user_id: string;
+    display_name?: string;
+    avatar?: string | null;
+}
+
+interface SleeperRoster {
+    roster_id: number;
+    owner_id: string;
+    metadata?: {
+        nickname?: string;
+    };
+    settings?: {
+        fpts?: number;
+        fpts_decimal?: number;
+        wins?: number;
+        division?: number;
+    };
+}
+
+interface MatchupEntry {
+    roster_id: number;
+    points?: number;
+}
+
+interface BracketMatch {
+    p?: number;
+    w?: number;
+    l?: number;
+}
+
 export default function Treasury() {
   const [financials, setFinancials] = useState<FinanceEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -72,17 +103,18 @@ export default function Treasury() {
       try {
         // 1. Fetch data safely. Catch errors individually so one failure doesn't break everything.
         const [rosters, users, bracket, ...weeksData] = await Promise.all([
-            getRosters().catch((err: any) => { console.error("Rosters error:", err); return []; }),
-            getUsers().catch((err: any) => { console.error("Users error:", err); return []; }),
-            getWinnersBracket().catch((err: any) => { console.error("Bracket error:", err); return []; }),
-            ...Array.from({ length: 14 }, (_, i) => getMatchups(i + 1).catch(() => [])) 
+            getRosters().catch((err: unknown) => { console.error("Rosters error:", err); return [] as SleeperRoster[]; }),
+            getUsers().catch((err: unknown) => { console.error("Users error:", err); return [] as SleeperUser[]; }),
+            getWinnersBracket().catch((err: unknown) => { console.error("Bracket error:", err); return [] as BracketMatch[]; }),
+            ...Array.from({ length: 14 }, (_, i) => getMatchups(i + 1).catch(() => [] as MatchupEntry[])) 
         ]);
 
         // 2. Map Users
-        const ownerMap: any = {};
-        const avatarMap: any = {};
+        const ownerMap: Record<string, string | undefined> = {};
+        const avatarMap: Record<string, string | null | undefined> = {};
+        const userList = users as SleeperUser[];
         if (Array.isArray(users)) {
-            users.forEach((u: any) => { 
+            userList.forEach((u) => { 
                 if (u && u.user_id) {
                     ownerMap[u.user_id] = u.display_name;
                     avatarMap[u.user_id] = u.avatar;
@@ -97,7 +129,8 @@ export default function Treasury() {
             return;
         }
 
-        const financeData: FinanceEntry[] = rosters.map((roster: any) => {
+        const rosterList = rosters as SleeperRoster[];
+        const financeData: FinanceEntry[] = rosterList.map((roster) => {
             const sleeperName = ownerMap[roster.owner_id] || "Unknown";
             const teamName = roster.metadata?.nickname || ""; 
             const avatarId = avatarMap[roster.owner_id];
@@ -123,7 +156,8 @@ export default function Treasury() {
 
         // 4. WEEKLY HIGH SCORERS (Weeks 1-14)
         if (Array.isArray(weeksData)) {
-            weeksData.forEach((weekMatchups: any, index) => {
+            const weekMatchupSets = weeksData as MatchupEntry[][];
+            weekMatchupSets.forEach((weekMatchups, index) => {
                 const weekNum = index + 1;
                 // CRITICAL CHECK: Ensure we actually have an array of matchups
                 if (!Array.isArray(weekMatchups) || weekMatchups.length === 0) return;
@@ -131,7 +165,7 @@ export default function Treasury() {
                 let highRosterId: number | null = null;
                 let highScore = -1;
 
-                weekMatchups.forEach((m: any) => {
+                weekMatchups.forEach((m) => {
                     // Ensure match object exists and has points
                     if (m && typeof m.points === 'number' && m.points > highScore) {
                         highScore = m.points;
@@ -174,8 +208,9 @@ export default function Treasury() {
 
         // 7. BRACKET WINNERS
         if (Array.isArray(bracket) && bracket.length > 0) {
-            const champMatch = bracket.find((m: any) => m.p === 1); 
-            const thirdMatch = bracket.find((m: any) => m.p === 3); 
+            const bracketMatches = bracket as BracketMatch[];
+            const champMatch = bracketMatches.find((m) => m.p === 1); 
+            const thirdMatch = bracketMatches.find((m) => m.p === 3); 
 
             if (champMatch) {
                 const winner = financeData.find((f) => f.rosterId === champMatch.w);

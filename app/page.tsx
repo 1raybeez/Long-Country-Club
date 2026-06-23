@@ -3,12 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
-  Trophy, ChevronDown, ChevronUp, Newspaper, 
+  Trophy, Newspaper, 
   Zap, X, Loader2, Target, Info, Scroll
 } from 'lucide-react';
 import { LCC_LEAGUE_HISTORY_IDS } from '@/lib/leagueConstants';
 
 const TYRONE_USER_ID = "466797853767888896";
+
+interface SleeperRoster {
+  owner_id?: string;
+  settings?: {
+    wins?: number;
+    losses?: number;
+  };
+}
 
 export default function HomePage() {
   const [blogExpanded, setBlogExpanded] = useState(false);
@@ -21,15 +29,15 @@ export default function HomePage() {
       try {
         for (const leagueId of LCC_LEAGUE_HISTORY_IDS) {
           const res = await fetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`);
-          const rosters = await res.json();
-          const tyroneRoster = rosters.find((r: any) => r.owner_id === TYRONE_USER_ID);
+          const rosters = await res.json() as SleeperRoster[];
+          const tyroneRoster = rosters.find((r) => r.owner_id === TYRONE_USER_ID);
           if (tyroneRoster?.settings) {
             totalWins += (tyroneRoster.settings.wins || 0);
             totalLosses += (tyroneRoster.settings.losses || 0);
           }
         }
         setCareerRecord({ wins: totalWins, losses: totalLosses, loading: false });
-      } catch (err) { setCareerRecord(prev => ({ ...prev, loading: false })); }
+      } catch { setCareerRecord(prev => ({ ...prev, loading: false })); }
     }
     calculateCareerStats();
   }, []);
@@ -59,7 +67,7 @@ export default function HomePage() {
 
                 <div className="bg-[#F9F7F2] p-8 rounded-3xl border-l-8 border-[#C5A059] my-8">
                   <p className="font-black italic text-2xl text-[#1A472A]">
-                    "The Culpepper & Moss Connection"
+                    &quot;The Culpepper & Moss Connection&quot;
                   </p>
                   <p className="mt-2 text-lg">
                     That fateful draft night led to a dominant back-to-back championship run that 
@@ -128,12 +136,12 @@ export default function HomePage() {
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-[#F9F7F2] rounded-2xl"><Newspaper className="w-6 h-6" /></div>
                 <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest opacity-40">Commissioner's Corner</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest opacity-40">Commissioner&apos;s Corner</p>
                     <h3 className="text-2xl font-black italic uppercase leading-none">2025: A New Era</h3>
                 </div>
               </div>
               <div className={`space-y-4 text-[#1A472A]/80 leading-relaxed ${!blogExpanded && 'line-clamp-3'}`}>
-                <p>The dust has settled on the 2025 campaign... Tyrone Poist's dominance wasn't just about the roster.</p>
+                <p>The dust has settled on the 2025 campaign... Tyrone Poist&apos;s dominance wasn&apos;t just about the roster.</p>
               </div>
               <button onClick={() => setBlogExpanded(!blogExpanded)} className="mt-6 text-[10px] font-black uppercase tracking-widest text-[#C5A059]">{blogExpanded ? 'Read Less' : 'Read Full Recap'}</button>
             </section>

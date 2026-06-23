@@ -6,6 +6,50 @@ import { LCC_MATCHUP_LEAGUE_IDS } from '@/lib/leagueConstants';
 
 const LEAGUES = LCC_MATCHUP_LEAGUE_IDS;
 
+interface SleeperUser {
+  user_id: string;
+  display_name?: string;
+  avatar?: string | null;
+  metadata?: {
+    team_name?: string;
+  };
+}
+
+interface SleeperRoster {
+  roster_id: number;
+  owner_id: string;
+}
+
+interface SleeperPlayer {
+  first_name?: string;
+  last_name?: string;
+  position?: string;
+}
+
+interface MatchupEntry {
+  matchup_id: number;
+  roster_id: number;
+  points?: number;
+  week?: number;
+  starters?: string[];
+  players_points?: Record<string, number>;
+}
+
+interface PlayoffMatch {
+  r: number;
+  t1?: number;
+  t2?: number;
+  w?: number;
+}
+
+interface RosterMeta {
+  name: string;
+  teamName: string;
+  avatar: string | null;
+}
+
+type MatchupPair = Array<MatchupEntry | undefined>;
+
 export default function MatchupsPage() {
   const [activeTab, setActiveTab] = useState<'regular' | 'playoffs'>('regular');
   const [bracketType, setBracketType] = useState<'winners' | 'losers'>('winners');
@@ -13,12 +57,12 @@ export default function MatchupsPage() {
   const [week, setWeek] = useState(1);
   const [loading, setLoading] = useState(true);
   
-  const [matchups, setMatchups] = useState<any[]>([]);
-  const [bracket, setBracket] = useState<any[]>([]);
-  const [playoffScores, setPlayoffScores] = useState<any[]>([]);
-  const [rosterMap, setRosterMap] = useState<Record<number, any>>({});
-  const [playerMap, setPlayerMap] = useState<Record<string, any>>({});
-  const [selectedMatchup, setSelectedMatchup] = useState<any | null>(null);
+  const [matchups, setMatchups] = useState<MatchupPair[]>([]);
+  const [bracket, setBracket] = useState<PlayoffMatch[]>([]);
+  const [playoffScores, setPlayoffScores] = useState<MatchupEntry[]>([]);
+  const [rosterMap, setRosterMap] = useState<Record<number, RosterMeta>>({});
+  const [playerMap, setPlayerMap] = useState<Record<string, SleeperPlayer>>({});
+  const [selectedMatchup, setSelectedMatchup] = useState<MatchupPair | null>(null);
 
   const leagueId = LEAGUES[season as keyof typeof LEAGUES];
 
@@ -32,17 +76,17 @@ export default function MatchupsPage() {
           fetch(`https://api.sleeper.app/v1/players/nfl`)
         ]);
         
-        const users = await uRes.json();
-        const rosters = await rRes.json();
-        const players = await pRes.json();
+        const users = await uRes.json() as SleeperUser[];
+        const rosters = await rRes.json() as SleeperRoster[];
+        const players = await pRes.json() as Record<string, SleeperPlayer>;
         setPlayerMap(players);
 
-        const map: any = {};
-        rosters.forEach((r: any) => {
-          const user = users.find((u: any) => u.user_id === r.owner_id);
+        const map: Record<number, RosterMeta> = {};
+        rosters.forEach((r) => {
+          const user = users.find((u) => u.user_id === r.owner_id);
           map[r.roster_id] = {
             name: user?.display_name || "Unknown",
-            teamName: user?.metadata?.team_name || user?.display_name,
+            teamName: user?.metadata?.team_name || user?.display_name || "Unknown",
             avatar: user?.avatar ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : null
           };
         });
@@ -59,9 +103,9 @@ export default function MatchupsPage() {
       try {
         if (activeTab === 'regular') {
           const res = await fetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/${week}`);
-          const data = await res.json();
-          const pairs: any = {};
-          data.forEach((m: any) => {
+          const data = await res.json() as MatchupEntry[];
+          const pairs: Record<number, MatchupPair> = {};
+          data.forEach((m) => {
             if (!pairs[m.matchup_id]) pairs[m.matchup_id] = [];
             pairs[m.matchup_id].push(m);
           });
@@ -70,11 +114,11 @@ export default function MatchupsPage() {
           const bUrl = `https://api.sleeper.app/v1/league/${leagueId}/${bracketType === 'winners' ? 'winners_bracket' : 'losers_bracket'}`;
           const [bRes, w15, w16, w17] = await Promise.all([
             fetch(bUrl),
-            fetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/15`).then(r => r.json()),
-            fetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/16`).then(r => r.json()),
-            fetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/17`).then(r => r.json())
+            fetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/15`).then(r => r.json() as Promise<MatchupEntry[]>),
+            fetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/16`).then(r => r.json() as Promise<MatchupEntry[]>),
+            fetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/17`).then(r => r.json() as Promise<MatchupEntry[]>)
           ]);
-          setBracket(await bRes.json());
+          setBracket(await bRes.json() as PlayoffMatch[]);
           setPlayoffScores([...w15, ...w16, ...w17]);
         }
       } catch (err) { console.error("Load error:", err); }
@@ -114,8 +158,8 @@ export default function MatchupsPage() {
 
         {activeTab === 'playoffs' && (
           <div className="flex gap-4">
-            <button onClick={() => setBracketType('winners')} className={`px-4 py-1 border rounded-xl text-[9px] font-black uppercase ${bracketType === 'winners' ? 'border-[#C5A059] bg-white shadow-sm' : 'opacity-40'}`}>Champions' Bracket</button>
-            <button onClick={() => setBracketType('losers')} className={`px-4 py-1 border rounded-xl text-[9px] font-black uppercase ${bracketType === 'losers' ? 'border-red-200 bg-white shadow-sm' : 'opacity-40'}`}>Losers' Bracket</button>
+            <button onClick={() => setBracketType('winners')} className={`px-4 py-1 border rounded-xl text-[9px] font-black uppercase ${bracketType === 'winners' ? 'border-[#C5A059] bg-white shadow-sm' : 'opacity-40'}`}>Champions&apos; Bracket</button>
+            <button onClick={() => setBracketType('losers')} className={`px-4 py-1 border rounded-xl text-[9px] font-black uppercase ${bracketType === 'losers' ? 'border-red-200 bg-white shadow-sm' : 'opacity-40'}`}>Losers&apos; Bracket</button>
           </div>
         )}
       </header>
@@ -126,15 +170,19 @@ export default function MatchupsPage() {
         ) : (
           <div className="grid gap-8">
             {activeTab === 'regular' ? (
-              matchups.map((pair: any, i) => (
-                <button key={i} onClick={() => setSelectedMatchup(pair)} className="bg-white p-10 rounded-[3rem] border border-black/5 flex items-center justify-between shadow-xl hover:scale-[1.01] transition-transform">
-                  <TeamDisplay meta={rosterMap[pair[0]?.roster_id]} points={pair[0]?.points} />
-                  <Swords size={32} className="opacity-10" />
-                  <TeamDisplay meta={rosterMap[pair[1]?.roster_id]} points={pair[1]?.points} />
-                </button>
-              ))
+              matchups.map((pair, i) => {
+                const firstTeam = pair[0];
+                const secondTeam = pair[1];
+                return (
+                  <button key={i} onClick={() => setSelectedMatchup(pair)} className="bg-white p-10 rounded-[3rem] border border-black/5 flex items-center justify-between shadow-xl hover:scale-[1.01] transition-transform">
+                    <TeamDisplay meta={firstTeam ? rosterMap[firstTeam.roster_id] : undefined} points={firstTeam?.points} />
+                    <Swords size={32} className="opacity-10" />
+                    <TeamDisplay meta={secondTeam ? rosterMap[secondTeam.roster_id] : undefined} points={secondTeam?.points} />
+                  </button>
+                );
+              })
             ) : (
-              bracket.filter(m => (14 + m.r) === week).map((match: any, i) => {
+              bracket.filter(m => (14 + m.r) === week).map((match, i) => {
                 const s1 = playoffScores.find(s => s.roster_id === match.t1 && s.week === week);
                 const s2 = playoffScores.find(s => s.roster_id === match.t2 && s.week === week);
                 return (
@@ -142,9 +190,9 @@ export default function MatchupsPage() {
                     <span className="absolute -top-3 left-10 bg-[#F9F7F2] px-3 py-1 text-[8px] font-black uppercase border border-black/5 rounded-full">
                       {week === 15 ? 'Quarterfinals' : week === 16 ? 'Semifinals' : 'Championship'}
                     </span>
-                    <PlayoffTeam meta={rosterMap[match.t1]} score={s1?.points} isWinner={match.w === match.t1} isFinals={week === 17} type={bracketType} />
+                    <PlayoffTeam meta={match.t1 ? rosterMap[match.t1] : undefined} score={s1?.points} isWinner={match.w === match.t1} isFinals={week === 17} type={bracketType} />
                     {bracketType === 'winners' ? <Trophy size={32} className="opacity-10" /> : <Skull size={32} className="opacity-10" />}
-                    <PlayoffTeam meta={rosterMap[match.t2]} score={s2?.points} isWinner={match.w === match.t2} isFinals={week === 17} type={bracketType} />
+                    <PlayoffTeam meta={match.t2 ? rosterMap[match.t2] : undefined} score={s2?.points} isWinner={match.w === match.t2} isFinals={week === 17} type={bracketType} />
                   </button>
                 );
               })
@@ -159,22 +207,25 @@ export default function MatchupsPage() {
             <button onClick={() => setSelectedMatchup(null)} className="absolute top-8 right-8"><X /></button>
             <h2 className="text-2xl font-black italic uppercase mb-12 border-b pb-4 text-center">Box Score</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-              {selectedMatchup.map((team: any, idx: number) => (
-                <div key={idx}>
-                  <div className="flex items-center gap-4 mb-6 border-b pb-4">
-                    <img src={rosterMap[team?.roster_id]?.avatar || '/managers/default.png'} className="w-12 h-12 rounded-full border-2 border-[#C5A059]" />
-                    <div className="flex-1"><p className="font-black uppercase text-sm leading-none">{rosterMap[team?.roster_id]?.teamName}</p><p className="text-2xl font-black italic text-green-600">{team?.points?.toFixed(2)}</p></div>
+              {selectedMatchup.map((team, idx) => {
+                const teamMeta = rosterMap[team?.roster_id || 0];
+                return (
+                  <div key={idx}>
+                    <div className="flex items-center gap-4 mb-6 border-b pb-4">
+                      <img src={teamMeta?.avatar || '/managers/default.png'} className="w-12 h-12 rounded-full border-2 border-[#C5A059]" alt={teamMeta?.teamName || 'Team'} />
+                      <div className="flex-1"><p className="font-black uppercase text-sm leading-none">{teamMeta?.teamName}</p><p className="text-2xl font-black italic text-green-600">{team?.points?.toFixed(2)}</p></div>
+                    </div>
+                    <div className="space-y-2">
+                      {team?.starters?.map((pid: string) => (
+                        <div key={pid} className="flex justify-between items-center bg-[#F9F7F2] p-3 rounded-xl border border-black/5 text-[11px] font-black uppercase">
+                          <div className="flex gap-3"><span>{playerMap[pid]?.position}</span><span>{playerMap[pid]?.first_name?.[0] || ''}. {playerMap[pid]?.last_name}</span></div>
+                          <span>{(team?.players_points?.[pid] || 0).toFixed(1)}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    {team?.starters?.map((pid: string) => (
-                      <div key={pid} className="flex justify-between items-center bg-[#F9F7F2] p-3 rounded-xl border border-black/5 text-[11px] font-black uppercase">
-                        <div className="flex gap-3"><span>{playerMap[pid]?.position}</span><span>{playerMap[pid]?.first_name[0]}. {playerMap[pid]?.last_name}</span></div>
-                        <span>{(team?.players_points?.[pid] || 0).toFixed(1)}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -184,21 +235,33 @@ export default function MatchupsPage() {
 }
 
 // Sub-components for cleaner rendering
-function TeamDisplay({ meta, points }: any) {
+function TeamDisplay({ meta, points }: { meta?: RosterMeta; points?: number }) {
   return (
     <div className="flex-1 flex flex-col items-center">
-      <img src={meta?.avatar || '/managers/default.png'} className="w-16 h-16 rounded-full mb-2 border-2 border-[#C5A059]" />
+      <img src={meta?.avatar || '/managers/default.png'} className="w-16 h-16 rounded-full mb-2 border-2 border-[#C5A059]" alt={meta?.teamName || 'Team'} />
       <p className="text-[9px] font-black uppercase opacity-40 h-6">{meta?.teamName}</p>
       <p className="text-3xl font-black italic">{(points || 0).toFixed(2)}</p>
     </div>
   );
 }
 
-function PlayoffTeam({ meta, score, isWinner, isFinals, type }: any) {
+function PlayoffTeam({
+  meta,
+  score,
+  isWinner,
+  isFinals,
+  type,
+}: {
+  meta?: RosterMeta;
+  score?: number;
+  isWinner: boolean;
+  isFinals: boolean;
+  type: 'winners' | 'losers';
+}) {
   return (
     <div className="flex-1 flex flex-col items-center relative">
       {isFinals && isWinner && (type === 'winners' ? <Trophy className="absolute -top-8 text-[#C5A059] animate-bounce" size={24} /> : <span className="absolute -top-10 text-2xl">💩</span>)}
-      <img src={meta?.avatar || '/managers/default.png'} className="w-14 h-14 rounded-full mb-2 border border-black/10" />
+      <img src={meta?.avatar || '/managers/default.png'} className="w-14 h-14 rounded-full mb-2 border border-black/10" alt={meta?.teamName || 'Team'} />
       <p className="text-[10px] font-black uppercase opacity-40">{meta?.teamName}</p>
       <p className="text-3xl font-black italic">{(score || 0).toFixed(2)}</p>
     </div>
