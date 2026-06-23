@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {
   ACTIVE_LCC_OWNERS,
   RETIRED_LCC_OWNERS,
+  getLccOwnerProfileHref,
   type LccOwner,
 } from '@/lib/lccOwners';
 import { LCC_LEAGUE_HISTORY_IDS } from '@/lib/leagueConstants';
@@ -133,7 +134,14 @@ function ButtonFlipCard({ manager, isRetired = false }: { manager: LccOwner; isR
              <button onClick={() => setIsFlipped(true)} className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all cursor-pointer">🔄</button>
           </div>
 
-          <h2 className="text-2xl font-black uppercase tracking-tighter leading-tight mb-1">{card.sleeperName}</h2>
+          <h2 className="text-2xl font-black uppercase tracking-tighter leading-tight mb-1">
+            <Link
+              href={getLccOwnerProfileHref(manager)}
+              className="transition-colors hover:text-[#C5A059] focus:outline-none focus:ring-2 focus:ring-[#C5A059]"
+            >
+              {card.sleeperName}
+            </Link>
+          </h2>
           <p className="text-[10px] font-bold text-white/60 mb-6">{manager.nickname} • EST {manager.joinedYear}</p>
 
           <div className="flex items-center gap-6 mb-6">

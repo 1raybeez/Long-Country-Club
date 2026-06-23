@@ -60,6 +60,7 @@ export interface LccOwner {
   readonly original2003Owner: boolean;
   readonly inMemoriam: boolean;
   readonly joinedYear?: number;
+  readonly lastSeason?: number | "present";
   readonly eraTags: readonly LccOwnerEraKey[];
   readonly managerPage: LccOwnerManagerCard;
   readonly profile?: LccOwnerProfile;
@@ -86,6 +87,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: true,
     inMemoriam: false,
     joinedYear: 2003,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "Bower Rangers",
@@ -122,6 +124,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: true,
     inMemoriam: false,
     joinedYear: 2003,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "Chicago Cutlers",
@@ -158,6 +161,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: true,
     inMemoriam: false,
     joinedYear: 2003,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "Off Constantly",
@@ -194,6 +198,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2004,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "Roaring 20",
@@ -230,6 +235,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2004,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "The People's Team",
@@ -266,6 +272,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2007,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "CeeDees....Cousins",
@@ -302,6 +309,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2004,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "Won't You be my Nabers",
@@ -338,6 +346,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2008,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "Benl",
@@ -374,6 +383,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2011,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "ICOR 4 Lyfe",
@@ -410,6 +420,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2018,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "CookieMonsters",
@@ -446,6 +457,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2020,
+    lastSeason: "present",
     eraTags: ["twoKeeper", "dynasty"],
     managerPage: {
       sleeperName: "Sycamore Bishops",
@@ -482,6 +494,7 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     original2003Owner: false,
     inMemoriam: false,
     joinedYear: 2022,
+    lastSeason: "present",
     eraTags: ["dynasty"],
     managerPage: {
       sleeperName: "Redneck Rebels",
@@ -981,5 +994,19 @@ export function getLccOwnerBySleeperUserId(
 ): LccOwner | undefined {
   return ALL_LCC_OWNERS.find(
     (owner) => owner.sleeperUserId === sleeperUserId
+  );
+}
+
+export function getLccOwnerProfileSlug(owner: LccOwner): string {
+  return owner.profile?.profileSlug ?? owner.id;
+}
+
+export function getLccOwnerProfileHref(owner: LccOwner): string {
+  return `/managers/owners/${getLccOwnerProfileSlug(owner)}`;
+}
+
+export function getLccOwnerByProfileSlug(slug: string): LccOwner | undefined {
+  return ALL_LCC_OWNERS.find(
+    (owner) => getLccOwnerProfileSlug(owner) === slug
   );
 }
