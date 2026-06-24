@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { LCC_CURRENT_SEASON } from "@/lib/leagueConstants";
 import {
   ALL_LCC_OWNERS,
   LCC_ERA_MODEL,
@@ -10,6 +11,47 @@ import {
   getLccOwnerProfileSlug,
   type LccOwner,
 } from "@/lib/lccOwners";
+
+const TEAM_COLOR_STYLES: Record<
+  string,
+  {
+    backgroundColor: string;
+    borderColor: string;
+    color: string;
+    accentColor: string;
+  }
+> = {
+  UGA: {
+    backgroundColor: "#fff1f2",
+    borderColor: "#ba0c2f",
+    color: "#1f1f1f",
+    accentColor: "#ba0c2f",
+  },
+  UVA: {
+    backgroundColor: "#eef6ff",
+    borderColor: "#232d4b",
+    color: "#232d4b",
+    accentColor: "#e57200",
+  },
+  ATL: {
+    backgroundColor: "#fff1f2",
+    borderColor: "#a71930",
+    color: "#111827",
+    accentColor: "#a71930",
+  },
+  WAS: {
+    backgroundColor: "#fff7ed",
+    borderColor: "#5a1414",
+    color: "#5a1414",
+    accentColor: "#ffb612",
+  },
+  PIT: {
+    backgroundColor: "#fffbeb",
+    borderColor: "#ffb612",
+    color: "#101820",
+    accentColor: "#ffb612",
+  },
+};
 
 export function generateStaticParams() {
   return ALL_LCC_OWNERS.map((owner) => ({
@@ -34,11 +76,13 @@ export default async function OwnerProfilePage({
   }
 
   const teamLabel = owner.status === "active" ? "Current team" : "Last team";
-  const lastSeason = formatLastSeason(owner);
+  const tenure = formatTenure(owner);
   const almanacProfile = owner.almanacProfile;
-  const rivalOwner = almanacProfile?.rivalOwnerId
-    ? getLccOwnerById(almanacProfile.rivalOwnerId)
-    : undefined;
+  const rivalOwners = getRivalOwnerIds(almanacProfile)
+    .map((ownerId) => getLccOwnerById(ownerId))
+    .filter((rivalOwner): rivalOwner is LccOwner => Boolean(rivalOwner));
+  const rivalSectionTitle =
+    rivalOwners.length === 1 ? "Primary Rival" : "Rivals";
   const hasFanProfile = Boolean(
     almanacProfile?.favoriteCollegeTeam ||
       almanacProfile?.favoriteNFLTeam ||
@@ -101,9 +145,7 @@ export default async function OwnerProfilePage({
 
         <section className="grid gap-4 py-8 md:grid-cols-2">
           <ProfileFact label={teamLabel} value={owner.managerPage.sleeperName} />
-          <ProfileFact label="First season" value={owner.joinedYear ?? "Unknown"} />
-          <ProfileFact label="Last season" value={lastSeason} />
-          <ProfileFact label="Sleeper ID" value={owner.sleeperUserId ?? "None"} />
+          <ProfileFact label="LCC Tenure" value={tenure} />
           <ProfileFact
             label="Era tags"
             value={owner.eraTags.map((key) => LCC_ERA_MODEL[key].label).join(", ")}
@@ -139,11 +181,11 @@ export default async function OwnerProfilePage({
             {hasFanProfile && (
               <ProfileSection title="Fan Profile">
                 <div className="grid gap-3 md:grid-cols-3">
-                  <AlmanacFact
+                  <TeamFact
                     label="College Team"
                     value={almanacProfile.favoriteCollegeTeam}
                   />
-                  <AlmanacFact
+                  <TeamFact
                     label="NFL Team"
                     value={almanacProfile.favoriteNFLTeam}
                   />
@@ -191,14 +233,13 @@ export default async function OwnerProfilePage({
               </ProfileSection>
             )}
 
-            {rivalOwner && (
-              <ProfileSection title="Primary Rival">
-                <Link
-                  href={getLccOwnerProfileHref(rivalOwner)}
-                  className="inline-flex border border-[#1A472A]/20 bg-white px-4 py-3 text-sm font-black uppercase italic tracking-tight text-[#1A472A] transition-all hover:bg-[#1A472A] hover:text-white"
-                >
-                  {rivalOwner.displayName}
-                </Link>
+            {rivalOwners.length > 0 && (
+              <ProfileSection title={rivalSectionTitle}>
+                <div className="grid gap-3 md:grid-cols-2">
+                  {rivalOwners.map((rivalOwner) => (
+                    <RivalCard key={rivalOwner.id} rivalOwner={rivalOwner} />
+                  ))}
+                </div>
               </ProfileSection>
             )}
           </section>
@@ -275,16 +316,115 @@ function AlmanacFact({
   );
 }
 
+function TeamFact({
+  label,
+  value,
+}: {
+  label: string;
+  value?: string;
+}) {
+  if (!value) {
+    return null;
+  }
+
+  const teamStyle = TEAM_COLOR_STYLES[value];
+
+  if (!teamStyle) {
+    return <AlmanacFact label={label} value={value} />;
+  }
+
+  return (
+    <div
+      className="border p-4"
+      style={{
+        backgroundColor: teamStyle.backgroundColor,
+        borderColor: teamStyle.borderColor,
+        color: teamStyle.color,
+      }}
+    >
+      <p className="mb-2 text-[9px] font-black uppercase tracking-widest opacity-60">
+        {label}
+      </p>
+      <div className="flex items-center gap-2">
+        <span
+          className="h-2.5 w-2.5 shrink-0 rounded-full"
+          style={{ backgroundColor: teamStyle.accentColor }}
+        />
+        <p className="text-sm font-black uppercase italic tracking-tight">
+          {value}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function getRivalOwnerIds(profile: LccOwner["almanacProfile"]) {
+  if (!profile) {
+    return [];
+  }
+
+  if (profile.rivalOwnerIds && profile.rivalOwnerIds.length > 0) {
+    return [...new Set(profile.rivalOwnerIds)];
+  }
+
+  return profile.rivalOwnerId ? [profile.rivalOwnerId] : [];
+}
+
+function RivalCard({ rivalOwner }: { rivalOwner: LccOwner }) {
+  const rivalTeamLabel =
+    rivalOwner.status === "active" ? "Current LCC Team" : "Last LCC Team";
+
+  return (
+    <Link
+      href={getLccOwnerProfileHref(rivalOwner)}
+      className="flex items-center gap-4 border border-[#1A472A]/15 bg-white p-4 text-[#1A472A] shadow-sm transition-all hover:border-[#C5A059] hover:shadow-md"
+    >
+      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full border-4 border-[#F9F7F2] bg-white shadow-sm">
+        <img
+          src={`/managers/${rivalOwner.avatarFilename}`}
+          alt={rivalOwner.nickname}
+          className="h-full w-full object-cover"
+          style={{ objectPosition: "center 32%" }}
+        />
+      </div>
+      <div className="min-w-0">
+        <p className="text-[9px] font-black uppercase tracking-widest text-[#1A472A]/45">
+          {rivalTeamLabel}
+        </p>
+        <h3 className="mt-1 text-xl font-black uppercase italic leading-tight tracking-tight">
+          {rivalOwner.displayName}
+        </h3>
+        <p className="mt-1 truncate text-[10px] font-black uppercase tracking-widest text-[#1A472A]/55">
+          {rivalOwner.managerPage.sleeperName}
+        </p>
+      </div>
+    </Link>
+  );
+}
+
 function formatStatus(status: LccOwner["status"]) {
   return status === "active" ? "Active" : "Retired";
 }
 
-function formatLastSeason(owner: LccOwner) {
-  if (owner.lastSeason === "present") {
-    return "Present";
+function formatTenure(owner: LccOwner) {
+  if (!owner.joinedYear) {
+    return "Unknown";
   }
 
-  return owner.lastSeason ?? "Unknown";
+  const endSeason = owner.lastSeason ?? "unknown";
+  const tenureRange = `${owner.joinedYear}-${endSeason}`;
+
+  // TODO: Replace this single-span formatter when LCC owner season spans support
+  // interrupted tenures, e.g. 2004-2007, 2010-present.
+  if (owner.lastSeason === "present") {
+    return `${tenureRange} (${LCC_CURRENT_SEASON - owner.joinedYear} yrs)`;
+  }
+
+  if (typeof owner.lastSeason === "number") {
+    return `${tenureRange} (${owner.lastSeason - owner.joinedYear} yrs)`;
+  }
+
+  return tenureRange;
 }
 
 function formatRating(value: number | undefined, max: number) {
