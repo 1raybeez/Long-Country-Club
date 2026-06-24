@@ -23,7 +23,6 @@ export const LCC_ROUTES: Record<string, LccRoute> = {
   leagueInfo: {
     id: "league-info",
     label: "League Info",
-    navLabel: "Info",
     href: "/league-info",
     status: "active",
     showInPrimaryNav: true,
@@ -121,9 +120,16 @@ export const LCC_ROUTES: Record<string, LccRoute> = {
   },
 };
 
-export const LCC_PRIMARY_NAV_ROUTES = Object.values(LCC_ROUTES).filter(
-  (route) => route.showInPrimaryNav && route.status === "active"
-);
+const LCC_PRIMARY_NAV_ROUTE_IDS = [
+  "home",
+  "managers",
+  "leagueInfo",
+  "matchups",
+] as const;
+
+export const LCC_PRIMARY_NAV_ROUTES = LCC_PRIMARY_NAV_ROUTE_IDS.map(
+  (routeId) => LCC_ROUTES[routeId]
+).filter((route) => route.showInPrimaryNav && route.status === "active");
 
 export const LCC_LEAGUE_INFO_CARD_ROUTES = Object.values(LCC_ROUTES).filter(
   (route) => route.showInLeagueInfoHub && route.status === "active"

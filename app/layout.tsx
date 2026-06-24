@@ -26,10 +26,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   unoptimized
                 />
               </div>
-              <h1 className="lcc-site-brand__title">
-                Long Country Club{" "}
-                <span className="lcc-site-brand__accent">FFL</span>
-              </h1>
+              <div>
+                <h1 className="lcc-site-brand__title">
+                  Long Country Club{" "}
+                  <span className="lcc-site-brand__accent">FFL</span>
+                </h1>
+                <p className="lcc-site-brand__meta">Established 2003</p>
+              </div>
             </Link>
 
             <nav className="lcc-primary-nav" aria-label="Primary navigation">

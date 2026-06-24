@@ -129,6 +129,16 @@ body {
   color: var(--lcc-gold);
 }
 
+.lcc-site-brand__meta {
+  margin: 0.3rem 0 0;
+  color: var(--lcc-text-muted);
+  font-family: var(--lcc-font-ui);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .lcc-primary-nav {
   display: flex;
   width: 100%;
