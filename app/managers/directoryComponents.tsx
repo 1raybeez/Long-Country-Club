@@ -51,6 +51,7 @@ export function OwnerCard({ owner }: { owner: LccOwner }) {
               src={`/managers/${owner.avatarFilename}`}
               alt={owner.nickname}
               className="h-full w-full object-cover"
+              style={{ objectPosition: "center 32%" }}
             />
           </div>
 

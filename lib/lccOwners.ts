@@ -18,6 +18,7 @@ export type LccOwnerStatus = "active" | "retired";
 export type LccOwnerDivision = "OG" | "NEWBIE";
 export type LccOwnerActiveDivision = "OGs" | "Newbies";
 export type LccOwnerEraKey = keyof typeof LCC_ERA_MODEL;
+export type LccOwnerMode = "Rebuild" | "Win Now" | "Dynasty";
 
 export interface LccOwnerPodiums {
   readonly first: readonly string[];
@@ -32,6 +33,23 @@ export interface LccOwnerProfile {
   readonly almanacNotes?: string;
   readonly publicPageEnabled?: boolean;
   readonly profileSlug?: string;
+}
+
+export interface LccOwnerAlmanacProfile {
+  readonly bio?: string;
+  readonly philosophy?: string;
+  readonly mode?: LccOwnerMode;
+  readonly favoriteCollegeTeam?: string;
+  readonly favoriteNFLTeam?: string;
+  readonly favoritePlayer?: string;
+  readonly rivalOwnerId?: string;
+  readonly preferredDraftPosition?: string;
+  readonly tradeActivityScale?: number;
+  readonly preferredContactMethods?: readonly string[];
+  readonly draftingStrategy?: string;
+  readonly waiverWireAggression?: string;
+  readonly injuryManagement?: string;
+  readonly trashTalkRating?: number;
 }
 
 export interface LccOwnerManagerCard {
@@ -66,6 +84,7 @@ export interface LccOwner {
   readonly eraTags: readonly LccOwnerEraKey[];
   readonly managerPage: LccOwnerManagerCard;
   readonly profile?: LccOwnerProfile;
+  readonly almanacProfile?: LccOwnerAlmanacProfile;
 }
 
 const emptyPodiums: LccOwnerPodiums = {
@@ -111,6 +130,22 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     profile: {
       profileSlug: "ray-long",
       publicPageEnabled: false,
+    },
+    almanacProfile: {
+      bio: "Greatest Commish Ever (self-proclaimed). Wanna be paper champ.",
+      philosophy: "When I woke up this morning I dribbled Excellence",
+      mode: "Win Now",
+      favoriteCollegeTeam: "UGA",
+      favoriteNFLTeam: "ATL",
+      favoritePlayer: "Bijan Robinson",
+      rivalOwnerId: "earl-perkins",
+      preferredDraftPosition: "Wide Receiver (WR)",
+      tradeActivityScale: 10,
+      preferredContactMethods: ["Text Message", "Sleeper DM", "WhatsApp"],
+      draftingStrategy: "Balanced",
+      waiverWireAggression: "Very Aggressive",
+      injuryManagement: "Very Aggressive",
+      trashTalkRating: 5,
     },
   },
   {
@@ -187,6 +222,22 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     profile: {
       profileSlug: "keith-winder",
       publicPageEnabled: false,
+    },
+    almanacProfile: {
+      bio: "Coaching softball and going to concerts",
+      philosophy: "Tryin to make the playoffs",
+      mode: "Dynasty",
+      favoriteCollegeTeam: "UVA",
+      favoriteNFLTeam: "WAS",
+      favoritePlayer: "Dave Butz",
+      rivalOwnerId: "tyrone-poist",
+      preferredDraftPosition: "Wide Receiver (WR)",
+      tradeActivityScale: 1,
+      preferredContactMethods: ["Text Message"],
+      draftingStrategy: "Balanced",
+      waiverWireAggression: "Balanced",
+      injuryManagement: "Balanced",
+      trashTalkRating: 1,
     },
   },
   {
@@ -491,6 +542,22 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     profile: {
       profileSlug: "anthony-martinez",
       publicPageEnabled: false,
+    },
+    almanacProfile: {
+      bio: "Proud dad, who loves coaching and working with kids",
+      philosophy: "Anthony Martinez",
+      mode: "Dynasty",
+      favoriteCollegeTeam: "UVA",
+      favoriteNFLTeam: "PIT",
+      favoritePlayer: "Antonio Brown",
+      rivalOwnerId: "ray-long",
+      preferredDraftPosition: "Wide Receiver (WR)",
+      tradeActivityScale: 6,
+      preferredContactMethods: ["Text Message"],
+      draftingStrategy: "Balanced",
+      waiverWireAggression: "Balanced",
+      injuryManagement: "Balanced",
+      trashTalkRating: 5,
     },
   },
   {
