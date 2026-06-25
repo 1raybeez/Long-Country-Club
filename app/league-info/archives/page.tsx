@@ -1,38 +1,23 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { 
   ArrowLeft, Trophy, Loader2, Crown, TrendingUp, Zap, ChevronDown, ChevronUp,
   ArrowDown, History
 } from 'lucide-react';
+import { LCC_CURRENT_SEASON, LCC_LEAGUE_HISTORY } from '@/lib/leagueConstants';
+import { getLccOwnerBySleeperUserId } from '@/lib/lccOwners';
 
-const COMMISH_ID = "342828350391230464"; 
-const START_YEAR = 2011; 
-const END_YEAR = 2025; 
-
-const REAL_NAMES: Record<string, string> = {
-  "73400761740312576": "Doug Fordham",
-  "341412060426436608": "Jordan Maslyn",
-  "469199353672626176": "Landon Elliott",
-  "342828350391230464": "Ray Long",
-  "356621920969555968": "Jeffrey Hudgins",
-  "342831451382841344": "Travis Miller",
-  "342838548870762496": "Wade Cameron",
-  "342849293037608960": "Tommy Moore",
-  "342850391018356736": "JD Dowling",
-  "343129212162523136": "Brian Stevens",
-  "466663208728391680": "David Besedich",
-  "583513420586848256": "Aaron Dogg",
-  "864186418971418624": "Rashad Gresham",
-  "1260048448384667648": "Stan Schoppe",
-  "556676922517524480": "Adam Lind",
-  "470428278931320832": "Billy Biddle",
-  "345934777502699520": "Chris Barras",
-  "98907192333582336": "Ricky Taylor",
-  "342831898403377152": "Patrick Leahey"
-};
+const SLEEPER_ARCHIVE_SEASONS = LCC_LEAGUE_HISTORY.filter(
+  ({ year }) => year >= 2019 && year < LCC_CURRENT_SEASON
+);
+const ARCHIVE_START_YEAR = Math.min(
+  ...SLEEPER_ARCHIVE_SEASONS.map(({ year }) => year)
+);
+const ARCHIVE_END_YEAR = Math.max(
+  ...SLEEPER_ARCHIVE_SEASONS.map(({ year }) => year)
+);
 
 export default function ArchivesPage() {
   const [stats, setStats] = useState<any[]>([]);
@@ -42,43 +27,68 @@ export default function ArchivesPage() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
   useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    };
+
+    scrollToTop();
+    const frameId = window.requestAnimationFrame(scrollToTop);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      const frameId = window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      });
+
+      return () => window.cancelAnimationFrame(frameId);
+    }
+  }, [loading]);
+
+  useEffect(() => {
     async function fetchHistory() {
       setLoading(true);
       const aggregated: Record<string, any> = {};
       const allSeasonsList: any[] = [];
-      const masterUserMap: Record<string, any> = {};
       
       try {
-        for (let year = END_YEAR; year >= START_YEAR; year--) {
+        for (const { year, id: leagueId } of SLEEPER_ARCHIVE_SEASONS) {
           setProgress(`Analyzing ${year} Season...`);
-          const leagueRes = await fetch(`https://api.sleeper.app/v1/user/${COMMISH_ID}/leagues/nfl/${year}`);
-          const leagues = await leagueRes.json();
-          const myLeague = leagues.find((l: any) => l.name.toLowerCase().includes("long country") || l.name.toLowerCase().includes("lcc"));
-
-          if (!myLeague) continue;
 
           const [rostersRes, usersRes] = await Promise.all([
-            fetch(`https://api.sleeper.app/v1/league/${myLeague.league_id}/rosters`),
-            fetch(`https://api.sleeper.app/v1/league/${myLeague.league_id}/users`)
+            fetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`),
+            fetch(`https://api.sleeper.app/v1/league/${leagueId}/users`)
           ]);
+
+          if (!rostersRes.ok || !usersRes.ok) continue;
 
           const rosters = await rostersRes.json();
           const users = await usersRes.json();
-
-          users.forEach((u: any) => {
-            if (!masterUserMap[u.user_id]) {
-              masterUserMap[u.user_id] = { name: u.metadata?.team_name || u.display_name, avatar: u.avatar };
-            }
-          });
+          const userMap = users.reduce((map: Record<string, any>, user: any) => {
+            map[user.user_id] = user;
+            return map;
+          }, {});
 
           rosters.forEach((r: any) => {
             const uid = r.owner_id;
             if (!uid) return;
-            const profile = masterUserMap[uid] || { name: "Unknown", avatar: null };
-            const realName = REAL_NAMES[uid] || profile.name; 
+            const sleeperUser = userMap[uid];
+            const canonicalOwner = getLccOwnerBySleeperUserId(uid);
+            const sleeperTeamName = sleeperUser?.metadata?.team_name || sleeperUser?.display_name || "Unknown";
+            const realName = canonicalOwner?.displayName || sleeperTeamName;
+            const teamName = canonicalOwner?.managerPage.sleeperName || sleeperTeamName;
+            const avatar = sleeperUser?.avatar || null;
 
             if (!aggregated[uid]) {
-              aggregated[uid] = { id: uid, realName, teamName: profile.name, avatar: profile.avatar, wins: 0, losses: 0, ties: 0, fpts: 0, ppts: 0, seasons: 0 };
+              aggregated[uid] = { id: uid, realName, teamName, avatar, wins: 0, losses: 0, ties: 0, fpts: 0, ppts: 0, seasons: 0 };
             }
             
             aggregated[uid].wins += r.settings.wins || 0;
@@ -89,7 +99,7 @@ export default function ArchivesPage() {
             aggregated[uid].seasons += 1;
             
             if (r.settings.fpts > 0) {
-              allSeasonsList.push({ id: uid, realName, teamName: profile.name, avatar: profile.avatar, year, fpts: (r.settings.fpts || 0) + (r.settings.fpts_decimal || 0) / 100 });
+              allSeasonsList.push({ id: uid, realName, teamName, avatar, year, fpts: (r.settings.fpts || 0) + (r.settings.fpts_decimal || 0) / 100 });
             }
           });
         }
@@ -110,6 +120,9 @@ export default function ArchivesPage() {
           <div className="text-right">
              <h1 className="text-4xl font-black italic uppercase tracking-tighter leading-none">League <span className="text-[#C5A059]">Archives</span></h1>
              <p className="text-[10px] font-bold uppercase opacity-40 mt-1">LCC Statistical History</p>
+             <p className="text-[9px] font-bold uppercase opacity-40 mt-2 max-w-md">
+               Sleeper-powered stats cover {ARCHIVE_START_YEAR}-{ARCHIVE_END_YEAR} completed Sleeper seasons. Pre-2019 history lives in the LCC final placement ledger.
+             </p>
           </div>
         </div>
 
