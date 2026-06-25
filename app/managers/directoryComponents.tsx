@@ -1,8 +1,15 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowRight, Crown, Shield, Trophy } from "lucide-react";
-import { LCC_CURRENT_SEASON } from "@/lib/leagueConstants";
-import { getLccOwnerProfileHref, type LccOwner } from "@/lib/lccOwners";
+import { ArrowRight, Award, Crown, Medal, Shield, Skull, Trophy } from "lucide-react";
+import {
+  getLccOwnerProfileHref,
+  type LccOwner,
+} from "@/lib/lccOwners";
+import {
+  LCC_LATEST_COMPLETED_FINAL_PLACEMENT_SEASON,
+  getLccOwnerCareerSummary,
+  type LccOwnerCareerSummary,
+} from "@/lib/lccFinalPlacements";
 
 type DirectoryTone =
   | "default"
@@ -129,6 +136,8 @@ export function OwnerCard({
   const isActive = owner.status === "active";
   const cardTone = tone ?? getOwnerTone(owner);
   const toneClass = toneClasses[cardTone];
+  const careerSummary = getLccOwnerCareerSummary(owner.id);
+  const tenure = formatTenure(owner, careerSummary);
 
   return (
     <Link
@@ -174,13 +183,31 @@ export function OwnerCard({
             </p>
           </div>
 
-          <div className="mt-auto grid grid-cols-2 gap-3 border-t border-[var(--lcc-border)] pt-4">
-            <DirectoryFact label="Tenure" value={formatTenure(owner)} />
-            <DirectoryFact
-              label="Championships"
-              value={formatChampionships(owner.managerPage.titles)}
+          <div className="mt-auto grid grid-cols-2 gap-2 border-t border-[var(--lcc-border)] pt-4">
+            <DirectoryStat
+              label="Titles"
+              value={String(careerSummary.titleCount)}
               icon={<Trophy className="h-3.5 w-3.5" aria-hidden="true" />}
             />
+            <DirectoryStat
+              label="Podiums"
+              value={String(careerSummary.podiumCount)}
+              icon={<Award className="h-3.5 w-3.5" aria-hidden="true" />}
+            />
+            <DirectoryStat
+              label="Toilets"
+              value={String(careerSummary.toiletBowlCount)}
+              icon={<Skull className="h-3.5 w-3.5" aria-hidden="true" />}
+            />
+            <DirectoryStat
+              label="Best Finish"
+              value={formatBestFinish(careerSummary.bestFinish)}
+              icon={<Medal className="h-3.5 w-3.5" aria-hidden="true" />}
+            />
+          </div>
+
+          <div className="grid grid-cols-3 gap-3 border-t border-[var(--lcc-border)] pt-4">
+            <DirectoryFact label="Tenure" value={tenure} />
             <DirectoryFact
               label={isActive ? "Division" : "Status"}
               value={isActive ? owner.activeDivision ?? "Active" : "Retired"}
@@ -190,6 +217,30 @@ export function OwnerCard({
         </div>
       </article>
     </Link>
+  );
+}
+
+function DirectoryStat({
+  label,
+  value,
+  icon,
+}: {
+  label: string;
+  value: string;
+  icon: ReactNode;
+}) {
+  return (
+    <div className="min-h-[4.75rem] rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-3 text-center">
+      <div className="mx-auto mb-2 flex h-7 w-7 items-center justify-center rounded-md bg-[var(--lcc-surface)] text-[var(--lcc-gold)]">
+        {icon}
+      </div>
+      <p className="truncate font-serif text-lg font-black uppercase italic leading-none text-[var(--lcc-text)]">
+        {value}
+      </p>
+      <p className="mt-1 font-ui text-[0.6rem] font-black uppercase text-[var(--lcc-text-muted)]">
+        {label}
+      </p>
+    </div>
   );
 }
 
@@ -258,26 +309,61 @@ function getOwnerTone(owner: LccOwner): DirectoryTone {
   return owner.activeDivision === "OGs" ? "legacy" : "challenger";
 }
 
-function formatTenure(owner: LccOwner) {
-  if (!owner.joinedYear) {
+function formatTenure(owner: LccOwner, summary: LccOwnerCareerSummary) {
+  if (summary.tenureSpans.length === 0) {
     return "Unknown";
   }
 
-  if (owner.lastSeason === "present") {
-    return `${owner.joinedYear}-${LCC_CURRENT_SEASON}`;
-  }
+  const spanLabel = summary.tenureSpans
+    .map((span, index) => {
+      const isCurrentActiveSpan =
+        owner.status === "active" &&
+        index === summary.tenureSpans.length - 1 &&
+        span.endSeason === LCC_LATEST_COMPLETED_FINAL_PLACEMENT_SEASON;
+      const endSeason = isCurrentActiveSpan ? "present" : span.endSeason;
 
-  if (typeof owner.lastSeason === "number") {
-    return `${owner.joinedYear}-${owner.lastSeason}`;
-  }
+      return `${span.startSeason}-${endSeason}`;
+    })
+    .join(", ");
 
-  return `${owner.joinedYear}-present`;
+  return `${spanLabel} (${summary.activeSeasonCount} yrs)`;
 }
 
-function formatChampionships(titles: number) {
-  if (titles === 0) {
-    return "None";
+function formatBestFinish(place: number | undefined) {
+  if (place === undefined) {
+    return "";
   }
 
-  return `${titles} ${titles === 1 ? "Title" : "Titles"}`;
+  if (place === 1) {
+    return "Champion";
+  }
+
+  if (place === 2) {
+    return "Runner-Up";
+  }
+
+  if (place === 3) {
+    return "Third";
+  }
+
+  return `${place}${getOrdinalSuffix(place)}`;
+}
+
+function getOrdinalSuffix(value: number) {
+  const mod100 = value % 100;
+
+  if (mod100 >= 11 && mod100 <= 13) {
+    return "th";
+  }
+
+  switch (value % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
 }

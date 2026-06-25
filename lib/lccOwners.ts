@@ -1,3 +1,5 @@
+import { LCC_CURRENT_SEASON } from "./leagueConstants";
+
 export const LCC_ERA_MODEL = {
   twoKeeper: {
     label: "Two-Keeper Era",
@@ -24,6 +26,11 @@ export interface LccOwnerPodiums {
   readonly first: readonly string[];
   readonly second: readonly string[];
   readonly third: readonly string[];
+}
+
+export interface LccOwnerTenureSpan {
+  readonly startSeason: number;
+  readonly endSeason: number | "present";
 }
 
 export interface LccOwnerProfile {
@@ -82,10 +89,41 @@ export interface LccOwner {
   readonly activeDivision?: LccOwnerActiveDivision;
   readonly joinedYear?: number;
   readonly lastSeason?: number | "present";
+  readonly tenureSpans?: readonly LccOwnerTenureSpan[];
   readonly eraTags: readonly LccOwnerEraKey[];
+  // Legacy presentation metadata. Career stats should be derived from
+  // lccFinalPlacements.ts instead of managerPage titles/podiums.
   readonly managerPage: LccOwnerManagerCard;
   readonly profile?: LccOwnerProfile;
   readonly almanacProfile?: LccOwnerAlmanacProfile;
+}
+
+// TODO: Populate tenureSpans for every owner once the full LCC final-placement
+// history table is canonical in-repo. For now, only verified interrupted
+// tenures are represented here; owners without tenureSpans retain fallback
+// joinedYear/lastSeason behavior.
+export function countLccOwnerTenureSeasons(
+  tenureSpans: readonly LccOwnerTenureSpan[]
+) {
+  const lastCompletedSeason = LCC_CURRENT_SEASON - 1;
+
+  return tenureSpans.reduce((total, span) => {
+    const endSeason =
+      span.endSeason === "present" ? lastCompletedSeason : span.endSeason;
+
+    return total + Math.max(0, endSeason - span.startSeason + 1);
+  }, 0);
+}
+
+export function formatLccOwnerTenureSpans(
+  tenureSpans: readonly LccOwnerTenureSpan[]
+) {
+  const spanLabel = tenureSpans
+    .map((span) => `${span.startSeason}-${span.endSeason}`)
+    .join(", ");
+  const seasons = countLccOwnerTenureSeasons(tenureSpans);
+
+  return `${spanLabel} (${seasons} yrs)`;
 }
 
 const emptyPodiums: LccOwnerPodiums = {
@@ -273,6 +311,10 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     activeDivision: "OGs",
     joinedYear: 2004,
     lastSeason: "present",
+    tenureSpans: [
+      { startSeason: 2004, endSeason: 2010 },
+      { startSeason: 2013, endSeason: "present" },
+    ],
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "Roaring 20",
@@ -411,6 +453,10 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     activeDivision: "Newbies",
     joinedYear: 2004,
     lastSeason: "present",
+    tenureSpans: [
+      { startSeason: 2004, endSeason: 2005 },
+      { startSeason: 2014, endSeason: "present" },
+    ],
     eraTags: ["twoKeeper", "sleeperMigration", "dynasty"],
     managerPage: {
       sleeperName: "Won't You be my Nabers",
@@ -485,6 +531,22 @@ export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
     profile: {
       profileSlug: "ben-isbell",
       publicPageEnabled: false,
+    },
+    almanacProfile: {
+      bio: "I like piña coladas and gettin' caught in the rain. I like the feel of the ocean and the taste of champagne. I like making love at midnight In the dunes on the cape. I enjoy fantasy football cause it’s a fun escape. I’ve worked at Cap One for 30 years, think it’s about time to hit the beach and chug beers.",
+      philosophy: "If you’re not first, you’re last.",
+      mode: "Dynasty",
+      favoriteCollegeTeam: "VT",
+      favoriteNFLTeam: "DAL",
+      favoritePlayer: "Tony Dorsett",
+      rivalOwnerIds: ["ray-long", "jeffrey-hudgins", "ben-isbell"],
+      preferredDraftPosition: "Kicker (K)",
+      tradeActivityScale: 5,
+      preferredContactMethods: ["Sleeper DM"],
+      draftingStrategy: "Balanced",
+      waiverWireAggression: "Balanced",
+      injuryManagement: "Balanced",
+      trashTalkRating: 1,
     },
   },
   {
