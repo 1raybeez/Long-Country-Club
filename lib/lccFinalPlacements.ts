@@ -47,6 +47,41 @@ export interface LccSeasonChampion {
   readonly ownerId?: string;
 }
 
+export interface LccChampionshipGalleryEntry {
+  readonly season: number;
+  readonly era: LccFinalPlacementEra;
+  readonly championAlias: string;
+  readonly championOwnerId?: string;
+  readonly runnerUpAlias?: string;
+  readonly runnerUpOwnerId?: string;
+  readonly thirdPlaceAlias?: string;
+  readonly thirdPlaceOwnerId?: string;
+  readonly toiletBowlAlias?: string;
+  readonly toiletBowlOwnerId?: string;
+  readonly placementCount: number;
+}
+
+export interface LccOwnerPodiumTotals {
+  readonly ownerId?: string;
+  readonly primaryAlias: string;
+  readonly gold: number;
+  readonly silver: number;
+  readonly bronze: number;
+  readonly total: number;
+  readonly seasons: {
+    readonly gold: readonly number[];
+    readonly silver: readonly number[];
+    readonly bronze: readonly number[];
+  };
+}
+
+export interface LccOwnerToiletBowlTotals {
+  readonly ownerId?: string;
+  readonly primaryAlias: string;
+  readonly total: number;
+  readonly seasons: readonly number[];
+}
+
 export const LCC_FINAL_PLACEMENT_ALIAS_TO_OWNER_ID = {
   Ray: "ray-long",
   Bill: "bill-gross",
@@ -649,6 +684,155 @@ export function getLccChampionBySeason(
   };
 }
 
+export function getLccChampionsBySeason(): readonly LccSeasonChampion[] {
+  return LCC_FINAL_PLACEMENTS.flatMap(({ season }) => {
+    const champion = getLccChampionBySeason(season);
+
+    return champion ? [champion] : [];
+  });
+}
+
+export function getLccChampionshipGalleryBySeason(): readonly LccChampionshipGalleryEntry[] {
+  return LCC_FINAL_PLACEMENTS.flatMap((entry) => {
+    const [championAlias, runnerUpAlias, thirdPlaceAlias] = entry.placements;
+
+    if (!championAlias) {
+      return [];
+    }
+
+    const toiletBowlAlias = entry.placements.at(-1);
+
+    return [
+      {
+        season: entry.season,
+        era: entry.era,
+        championAlias,
+        championOwnerId: getLccOwnerIdByPlacementAlias(championAlias),
+        runnerUpAlias,
+        runnerUpOwnerId: runnerUpAlias
+          ? getLccOwnerIdByPlacementAlias(runnerUpAlias)
+          : undefined,
+        thirdPlaceAlias,
+        thirdPlaceOwnerId: thirdPlaceAlias
+          ? getLccOwnerIdByPlacementAlias(thirdPlaceAlias)
+          : undefined,
+        toiletBowlAlias,
+        toiletBowlOwnerId: toiletBowlAlias
+          ? getLccOwnerIdByPlacementAlias(toiletBowlAlias)
+          : undefined,
+        placementCount: entry.placements.length,
+      },
+    ];
+  });
+}
+
+export function getLccPodiumTotalsByOwner(): readonly LccOwnerPodiumTotals[] {
+  const totals = new Map<string, MutableLccOwnerPodiumTotals>();
+
+  LCC_FINAL_PLACEMENTS.forEach((entry) => {
+    entry.placements.slice(0, 3).forEach((alias, index) => {
+      const medal = LCC_PODIUM_MEDALS[index];
+
+      if (!medal) {
+        return;
+      }
+
+      const ownerId = getLccOwnerIdByPlacementAlias(alias);
+      const key = ownerId ?? alias;
+      const current =
+        totals.get(key) ??
+        ({
+          ownerId,
+          primaryAlias: alias,
+          gold: 0,
+          silver: 0,
+          bronze: 0,
+          seasons: {
+            gold: [],
+            silver: [],
+            bronze: [],
+          },
+        } satisfies MutableLccOwnerPodiumTotals);
+
+      current[medal] += 1;
+      current.seasons[medal].push(entry.season);
+      totals.set(key, current);
+    });
+  });
+
+  return Array.from(totals.values())
+    .map((entry) => ({
+      ownerId: entry.ownerId,
+      primaryAlias: entry.primaryAlias,
+      gold: entry.gold,
+      silver: entry.silver,
+      bronze: entry.bronze,
+      total: entry.gold + entry.silver + entry.bronze,
+      seasons: {
+        gold: sortSeasonsDescending(entry.seasons.gold),
+        silver: sortSeasonsDescending(entry.seasons.silver),
+        bronze: sortSeasonsDescending(entry.seasons.bronze),
+      },
+    }))
+    .sort(sortPodiumTotals);
+}
+
+export function getLccToiletBowlTotalsByOwner(): readonly LccOwnerToiletBowlTotals[] {
+  const totals = new Map<string, MutableLccOwnerToiletBowlTotals>();
+
+  LCC_FINAL_PLACEMENTS.forEach((entry) => {
+    const alias = entry.placements.at(-1);
+
+    if (!alias) {
+      return;
+    }
+
+    const ownerId = getLccOwnerIdByPlacementAlias(alias);
+    const key = ownerId ?? alias;
+    const current =
+      totals.get(key) ??
+      ({
+        ownerId,
+        primaryAlias: alias,
+        total: 0,
+        seasons: [],
+      } satisfies MutableLccOwnerToiletBowlTotals);
+
+    current.total += 1;
+    current.seasons.push(entry.season);
+    totals.set(key, current);
+  });
+
+  return Array.from(totals.values())
+    .map((entry) => ({
+      ownerId: entry.ownerId,
+      primaryAlias: entry.primaryAlias,
+      total: entry.total,
+      seasons: sortSeasonsDescending(entry.seasons),
+    }))
+    .sort(sortToiletBowlTotals);
+}
+
+const LCC_PODIUM_MEDALS = ["gold", "silver", "bronze"] as const;
+
+type LccPodiumMedal = (typeof LCC_PODIUM_MEDALS)[number];
+
+type MutableLccOwnerPodiumTotals = {
+  ownerId?: string;
+  primaryAlias: string;
+  gold: number;
+  silver: number;
+  bronze: number;
+  seasons: Record<LccPodiumMedal, number[]>;
+};
+
+type MutableLccOwnerToiletBowlTotals = {
+  ownerId?: string;
+  primaryAlias: string;
+  total: number;
+  seasons: number[];
+};
+
 function getLccOwnerIdByPlacementAlias(alias: string): string | undefined {
   return LCC_FINAL_PLACEMENT_ALIAS_TO_OWNER_ID[
     alias as keyof typeof LCC_FINAL_PLACEMENT_ALIAS_TO_OWNER_ID
@@ -666,4 +850,32 @@ function getSeasonsByPlace(
   return seasons
     .filter((seasonPlacement) => seasonPlacement.place === place)
     .map(({ season }) => season);
+}
+
+function sortSeasonsDescending(seasons: readonly number[]) {
+  return [...seasons].sort((a, b) => b - a);
+}
+
+function sortPodiumTotals(
+  left: LccOwnerPodiumTotals,
+  right: LccOwnerPodiumTotals
+) {
+  return (
+    right.gold - left.gold ||
+    right.silver - left.silver ||
+    right.bronze - left.bronze ||
+    right.total - left.total ||
+    left.primaryAlias.localeCompare(right.primaryAlias)
+  );
+}
+
+function sortToiletBowlTotals(
+  left: LccOwnerToiletBowlTotals,
+  right: LccOwnerToiletBowlTotals
+) {
+  return (
+    right.total - left.total ||
+    (right.seasons[0] ?? 0) - (left.seasons[0] ?? 0) ||
+    left.primaryAlias.localeCompare(right.primaryAlias)
+  );
 }
