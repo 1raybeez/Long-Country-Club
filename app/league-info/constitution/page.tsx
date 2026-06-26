@@ -63,6 +63,68 @@ export default function RulesOfPlay() {
           padding: '0 16px',
         }}
       >
+        <RuleSection
+          id="financial"
+          title="Financial Rules"
+          isOpen={activeChapter === 'financial'}
+          toggle={() => toggleChapter('financial')}
+        >
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="Financial Transparency">
+            <p>
+              Financial details are published on the official Caddy Fees page. That ledger is where the league tracks
+              current payments, balances, weekly highs, and payout notes.
+            </p>
+            <Link
+              href="/league-info/fees"
+              style={{
+                display: 'inline-flex',
+                marginTop: '8px',
+                color: '#1A472A',
+                fontWeight: 700,
+                textDecoration: 'none',
+                borderBottom: '2px solid #C5A059',
+              }}
+            >
+              View Caddy Fees Ledger
+            </Link>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="Website as Source of Truth">
+            <p>
+              The website is the source of truth for published league financial rules and the current ledger. If a
+              payment detail needs clarification, owners should reference the Caddy Fees ledger first.
+            </p>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="Ownership Expectations">
+            <p>
+              The annual league fee is <strong>$50</strong>. New owners pay <strong>$75</strong> in Year 1: $50 for the
+              current season plus a <strong>$25</strong> future-season deposit.
+            </p>
+            <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
+              <li>Entry fees must be paid before the start of each season.</li>
+              <li>If an owner leaves, they do not recoup the future-season fee.</li>
+              <li>The forfeited future-season fee is awarded to the next Champion.</li>
+            </ul>
+          </RuleBlock>
+
+          <Tag type="club">Club Rule</Tag>
+          <RuleBlock title="Prize Money">
+            <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
+              <li>$10 to the weekly high scorer during the 14-week regular season.</li>
+              <li>$25 to 4th place.</li>
+              <li>$50 to 3rd place.</li>
+              <li>$100 to the runner-up.</li>
+              <li>Champion receives $205 plus leftover ring reserve after actual ring cost.</li>
+              <li>Up to $80 is allocated to the Champion ring.</li>
+              <li>If the ring costs less, the remaining ring reserve goes to the Champion.</li>
+            </ul>
+          </RuleBlock>
+        </RuleSection>
+
         {/* HOLE 1 */}
         <RuleSection
           id="h1"
@@ -71,16 +133,23 @@ export default function RulesOfPlay() {
           toggle={() => toggleChapter('h1')}
         >
           <Tag type="club">Club Rule</Tag>
-          <RuleBlock title="1.1 League Fees">
+          <RuleBlock title="1.1 Owner Commitment">
             <p>
-              The standard entry fee is <strong>$50</strong> for the current season. New owners pay{' '}
-              <strong>$75</strong> in their first year, which represents $50 for the current season plus{' '}
-              <strong>$25</strong> as a future-season commitment deposit (half of a future entry fee).
+              Paying league dues is an ownership commitment, not just an entry transaction. Fee amounts, new-owner
+              deposits, forfeiture rules, and current balances are maintained in the{' '}
+              <Link href="#financial" style={{ color: '#1A472A', fontWeight: 700 }}>
+                Financial Rules
+              </Link>{' '}
+              section and on the{' '}
+              <Link href="/league-info/fees" style={{ color: '#1A472A', fontWeight: 700 }}>
+                Caddy Fees page
+              </Link>
+              .
             </p>
             <p>
-              The extra $25 is a security deposit to discourage abandonment. If an owner leaves at any point before or
-              during the following season, the $25 is forfeited and awarded to the Champion of that upcoming season in
-              addition to the standard 1st-place payout and ring structure.
+              Owners are expected to pay before the season begins, stay active through the full league year, and
+              communicate early if they may not return. New-owner future-season deposits exist to discourage
+              abandonment and are handled under the financial rules if an owner leaves.
             </p>
           </RuleBlock>
 
@@ -115,21 +184,19 @@ export default function RulesOfPlay() {
           </RuleBlock>
 
           <Tag type="club">Club Rule</Tag>
-          <RuleBlock title="1.4 Prize Money">
-            <p>Current payout structure:</p>
-            <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
-              <li>$10 to the high scorer each week during the regular season (14 weeks = $140 total).</li>
-              <li>$25 to 4th place.</li>
-              <li>$50 to 3rd place.</li>
-              <li>$100 to 2nd place.</li>
-              <li>
-                $205 to 1st place <em>plus</em> any money remaining after purchasing the Championship Ring.
-              </li>
-              <li>$80 is budgeted for the Championship Ring.</li>
-            </ul>
+          <RuleBlock title="1.4 Financial Rules Reference">
             <p>
-              If the ring costs less than the $80 budget (for example, $16), the remaining amount is added to the
-              Champion&apos;s payout. The Champion may also receive forfeited future-year fees from departing owners.
+              The official payout schedule lives in the Financial Rules section so the same dollar amounts are not
+              repeated in multiple chapters. Hole 1 governs owner obligations; Hole 5 explains how postseason results
+              establish prize eligibility.
+            </p>
+            <p>
+              The current payment ledger, owner balances, future-season deposits, and weekly high-score records are
+              maintained on the{' '}
+              <Link href="/league-info/fees" style={{ color: '#1A472A', fontWeight: 700 }}>
+                Caddy Fees page
+              </Link>
+              .
             </p>
           </RuleBlock>
 
@@ -434,7 +501,7 @@ export default function RulesOfPlay() {
         {/* HOLE 5 */}
         <RuleSection
           id="h5"
-          title="Hole 5: Postseason & The Purse"
+          title="Hole 5: Postseason"
           isOpen={activeChapter === 'h5'}
           toggle={() => toggleChapter('h5')}
         >
@@ -481,18 +548,19 @@ export default function RulesOfPlay() {
           </RuleBlock>
 
           <Tag type="club">Club Rule</Tag>
-          <RuleBlock title="5.4 Prize Money & The Ring">
-            <p>Payouts are as follows:</p>
-            <ul style={{ paddingLeft: '1.25rem' }}>
-              <li>$10 to the highest scorer each week during the regular season (14 weeks = $140 total).</li>
-              <li>$25 to 4th place.</li>
-              <li>$50 to 3rd place.</li>
-              <li>$100 to 2nd place.</li>
-              <li>
-                $205 to 1st place, plus the Championship Ring (budgeted at $80), plus any remaining ring budget if the
-                cost is lower, and any forfeited future-year fees from departing owners.
-              </li>
-            </ul>
+          <RuleBlock title="5.4 Prize Eligibility & The Ring">
+            <p>
+              Payout amounts, weekly high-score rules, forfeited future-season fees, and the Champion ring reserve are
+              defined in the Financial Rules section and reflected on the{' '}
+              <Link href="/league-info/fees" style={{ color: '#1A472A', fontWeight: 700 }}>
+                Caddy Fees ledger
+              </Link>
+              .
+            </p>
+            <p>
+              For postseason purposes, final playoff results establish 1st place, runner-up, 3rd place, and 4th place
+              prize eligibility. Weekly high-score payouts are regular-season awards only.
+            </p>
           </RuleBlock>
         </RuleSection>
 
@@ -514,9 +582,12 @@ export default function RulesOfPlay() {
           <Tag type="club">Club Rule</Tag>
           <RuleBlock title="6.2 Entry Fees During Emergency Seasons">
             <p>
-              Entry fees are effectively tied to the season&apos;s official status. If the season does not reach the
-              official threshold (fewer than 9 weeks), the season is considered unofficial and fees are handled
-              according to the emergency payout and carryover rules.
+              Entry fee amounts are defined in the Financial Rules section. Emergency seasons only affect whether
+              collected fees are paid out, partially paid out, or carried forward.
+            </p>
+            <p>
+              If the season does not reach the official threshold (fewer than 9 weeks), the season is considered
+              unofficial and fees are handled according to the emergency payout and carryover rules.
             </p>
           </RuleBlock>
 
@@ -537,8 +608,8 @@ export default function RulesOfPlay() {
               <li>Teams not yet eliminated from the playoffs receive payouts.</li>
               <li>No shortened-season payout will be less than $50.</li>
               <li>
-                Payouts are based on a $600 pot, minus $5 (Sleeper fee), minus $10 times the number of completed weeks
-                of weekly high-score payouts.
+                Payouts are based on the standard annual entry-fee pool, minus regular-season weekly high-score payouts
+                for completed weeks and any league-approved administrative costs.
               </li>
             </ul>
             <p>
@@ -550,18 +621,18 @@ export default function RulesOfPlay() {
           <Tag type="club">Club Rule</Tag>
           <RuleBlock title="6.4 Emergency IR Expansion">
             <p>
-              For any season affected by a pandemic or natural disaster, a <strong>second IR spot</strong> is added
-              specifically for players impacted by such events, allowing an additional player to be added to a roster.
+              The league&apos;s baseline IR settings are defined in Rule 2.3. For any season affected by a pandemic or
+              natural disaster, the Commissioner may evaluate temporary emergency IR relief for players impacted by the
+              event.
             </p>
             <p>
-              Owners are responsible for self-policing their use of the emergency IR slot and must ensure it is used
-              only for pandemic or disaster-related designations. Abuse of this slot may result in ridicule from other
-              owners or Commissioner intervention.
+              Owners are responsible for self-policing any emergency IR accommodation and must ensure it is used only
+              for pandemic or disaster-related designations. Abuse may result in ridicule from other owners or
+              Commissioner intervention.
             </p>
             <p>
-              The Commissioner may evaluate a <strong>third IR spot</strong> during the season depending on NFL testing
-              protocols and the impact of the event. No special preference is given to any owner impacted by players on
-              IR, as all owners share the same waiver and roster tools.
+              No special preference is given to any owner impacted by players on IR, as all owners share the same waiver
+              and roster tools.
             </p>
           </RuleBlock>
 

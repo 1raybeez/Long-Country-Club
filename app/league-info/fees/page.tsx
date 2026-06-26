@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
 import { 
-  DollarSign, ShieldCheck, Landmark, TrendingUp, CheckCircle2, AlertCircle 
+  Crown, DollarSign, Landmark, Medal, Receipt, ShieldCheck, TrendingUp, Trophy
 } from 'lucide-react';
+import { LeagueHero } from '@/components/league/LeagueHero';
+import { LeagueMetricCard } from '@/components/league/LeagueMetricCard';
+import { LeaguePageShell } from '@/components/league/LeaguePageShell';
+import { LeagueSection } from '@/components/league/LeagueSection';
 
 // DATA SOURCE: Manual Tracker
 const WEEKLY_DATA = [
@@ -38,43 +40,161 @@ export default function CaddyFees() {
   const duesCollected = OWNER_SUMMARY.reduce((acc, curr) => acc + curr.paid, 0); // $560
 
   return (
-    <div style={{ backgroundColor: '#F9F7F2', minHeight: '100vh', paddingBottom: '100px', fontFamily: 'Georgia, serif' }}>
-      
-      <header style={{ textAlign: 'center', padding: '60px 20px 40px' }}>
-        <Link href="/league-info" style={{ textDecoration: 'none', color: '#1A472A', fontWeight: 'bold', fontSize: '0.9rem' }}>
-          ← Back to Clubhouse Info
-        </Link>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', color: '#1A472A', margin: '20px 0 10px' }}>Caddy Fees</h1>
-        <p style={{ color: '#C5A059', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem' }}>
-          Official LCC Ledger & 2025 Payouts
-        </p>
-      </header>
+    <LeaguePageShell
+      topLabel="Payouts"
+      topIcon={<DollarSign className="h-3.5 w-3.5" aria-hidden="true" />}
+    >
+      <LeagueHero
+        icon={<DollarSign className="h-8 w-8" aria-hidden="true" />}
+        label="Official LCC Ledger"
+        title="Caddy Fees"
+        subtitle="League fee rules, prize money policy, and the currently shown 2025 ledger snapshot."
+      />
 
-      <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
-        
+      <div className="mx-auto mt-12 max-w-[1100px]">
+        <LeagueSection
+          eyebrow="Ownership Expectations"
+          title="Entry Fees & Future-Season Deposit"
+          action={<Receipt className="h-5 w-5 text-[var(--lcc-gold)]" aria-hidden="true" />}
+          className="mb-10"
+        >
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            <LeagueMetricCard
+              icon={<DollarSign className="h-5 w-5" aria-hidden="true" />}
+              label="League Fee"
+              value="$50"
+              helperText="Annual fee per owner"
+              tone="neutral"
+            />
+            <LeagueMetricCard
+              icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />}
+              label="New Owner Year 1"
+              value="$75"
+              helperText="$50 current year + $25 future-season deposit"
+              tone="warning"
+            />
+          </div>
+
+          <div style={policyCopyStyle}>
+            <p>
+              The annual league fee is <strong>$50 per owner</strong> and must be paid through Venmo before the start
+              of each season. Year 2 and future-season league fees remain <strong>$50</strong>.
+            </p>
+            <p>
+              New owners pay <strong>$75</strong> in Year 1: $50 for the current season plus a $25 future-season
+              deposit. If an owner leaves, they do not recoup that future-season fee. The forfeited future fee is awarded
+              to the Champion of the upcoming season.
+            </p>
+          </div>
+        </LeagueSection>
+
+        <LeagueSection
+          eyebrow="Prize Money"
+          title="Season Payout Rules"
+          action={<Trophy className="h-5 w-5 text-[var(--lcc-gold)]" aria-hidden="true" />}
+          className="mb-10"
+        >
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <LeagueMetricCard
+              icon={<TrendingUp className="h-5 w-5" aria-hidden="true" />}
+              label="Weekly High"
+              value="$10"
+              helperText="14 regular-season weeks, $140 total"
+              tone="neutral"
+            />
+            <LeagueMetricCard
+              icon={<Medal className="h-5 w-5" aria-hidden="true" />}
+              label="4th Place"
+              value="$25"
+              helperText="Fixed season payout"
+              tone="neutral"
+            />
+            <LeagueMetricCard
+              icon={<Medal className="h-5 w-5" aria-hidden="true" />}
+              label="3rd Place"
+              value="$50"
+              helperText="Fixed season payout"
+              tone="neutral"
+            />
+            <LeagueMetricCard
+              icon={<Medal className="h-5 w-5" aria-hidden="true" />}
+              label="Runner-Up"
+              value="$100"
+              helperText="Fixed season payout"
+              tone="neutral"
+            />
+            <LeagueMetricCard
+              icon={<Crown className="h-5 w-5" aria-hidden="true" />}
+              label="Champion Base"
+              value="$205"
+              helperText="Plus leftover ring reserve"
+              tone="positive"
+            />
+            <LeagueMetricCard
+              icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />}
+              label="Ring Reserve"
+              value="Up to $80"
+              helperText="Unused reserve returns to Champion"
+              tone="warning"
+            />
+          </div>
+
+          <div style={policyCopyStyle}>
+            <p>
+              Prize money pays <strong>$10</strong> to the weekly high scorer during the 14-week regular season,{' '}
+              <strong>$25</strong> to 4th place, <strong>$50</strong> to 3rd place, <strong>$100</strong> to 2nd place,
+              and a <strong>$205</strong> Champion base payout.
+            </p>
+            <p>
+              The Champion receives <strong>$205 plus the leftover ring reserve after actual ring cost</strong>. Up to
+              $80 is allocated to the ring; if the ring costs less, the remaining money goes to the Champion.
+            </p>
+            <p>
+              Example: if the ring costs about <strong>$16</strong>, the Champion receives{' '}
+              <strong>$205 + $64 leftover = about $269</strong>, before any weekly high payouts or forfeited future fees
+              are added.
+            </p>
+          </div>
+        </LeagueSection>
+
         {/* VAULT SECTION */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '40px' }}>
-          <div style={vaultCardStyle('#1A472A')}>
-            <DollarSign style={{ color: '#C5A059' }} />
-            <h3 style={vaultTitleStyle}>2025 Dues Collected</h3>
-            <p style={vaultValueStyle}>${duesCollected}.00</p>
-            <span style={vaultSubStyle}>Goal: $600.00 (Earl: $40 Balance)</span>
-          </div>
-          <div style={vaultCardStyle('#C5A059')}>
-            <ShieldCheck style={{ color: '#1A472A' }} />
-            <h3 style={{ ...vaultTitleStyle, color: '#1A472A' }}>Dynasty Deposit</h3>
-            <p style={{ ...vaultValueStyle, color: '#1A472A' }}>$300.00</p>
-            <span style={{ ...vaultSubStyle, color: '#1A472A', opacity: 0.8 }}>Escrow Protection Fund</span>
-          </div>
+        <div className="mb-5">
+          <p className="font-ui text-xs font-black uppercase text-[var(--lcc-gold)]">
+            2025 Ledger Snapshot
+          </p>
+          <p className="mt-2 font-ui text-sm font-medium leading-6 text-[var(--lcc-text-muted)]">
+            The ledger below is the currently shown 2025 tracker data. It is preserved as a historical/current ledger
+            view and should not be confused with 2026 season setup.
+          </p>
+        </div>
+
+        <div className="mb-10 grid grid-cols-1 gap-5 md:grid-cols-2">
+          <LeagueMetricCard
+            icon={<DollarSign className="h-5 w-5 text-[var(--lcc-gold)]" aria-hidden="true" />}
+            label="2025 Dues Collected"
+            value={`$${duesCollected}.00`}
+            helperText={`Goal: $${duesGoal}.00 (Earl: $40 Balance)`}
+            tone="positive"
+          />
+          <LeagueMetricCard
+            icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />}
+            label="Dynasty Deposit"
+            value="$300.00"
+            helperText="Escrow Protection Fund"
+            tone="warning"
+          />
         </div>
 
         {/* MANAGER VAULT LEDGER */}
-        <section style={sectionStyle}>
-          <h2 style={sectionHeaderStyle}><Landmark size={20} style={{marginRight: '10px'}}/> The Manager Vault</h2>
-          <div style={{ backgroundColor: 'white', borderRadius: '20px', overflow: 'hidden', border: '1px solid #ddd', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <LeagueSection
+          eyebrow="Ledger"
+          title="The Manager Vault"
+          action={<Landmark className="h-5 w-5 text-[var(--lcc-gold)]" aria-hidden="true" />}
+          contentClassName="overflow-x-auto p-0"
+        >
+            <table style={{ width: '100%', minWidth: '760px', borderCollapse: 'collapse' }}>
               <thead>
-                <tr style={{ backgroundColor: '#F9F7F2', textAlign: 'left', fontSize: '0.75rem' }}>
+                <tr style={{ backgroundColor: 'var(--lcc-surface-muted)', textAlign: 'left', fontSize: '0.75rem' }}>
                   <th style={tablePadding}>Manager</th>
                   <th style={tablePadding}>Paid Toward Dues</th>
                   <th style={tablePadding}>Highs</th>
@@ -105,16 +225,19 @@ export default function CaddyFees() {
                 ))}
               </tbody>
             </table>
-          </div>
-        </section>
+        </LeagueSection>
 
         {/* WEEKLY WINNERS LEDGER */}
-        <section style={sectionStyle}>
-          <h2 style={sectionHeaderStyle}><TrendingUp size={20} style={{marginRight: '10px'}}/> Weekly High Scorers ($10/wk)</h2>
-          <div style={{ backgroundColor: 'white', borderRadius: '20px', padding: '20px', border: '1px solid #ddd' }}>
+        <LeagueSection
+          eyebrow="Payouts"
+          title="Weekly High Scorers ($10/wk)"
+          action={<TrendingUp className="h-5 w-5 text-[var(--lcc-gold)]" aria-hidden="true" />}
+          className="mt-10"
+          contentClassName="overflow-x-auto p-0"
+        >
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr style={{ borderBottom: '2px solid #F9F7F2', textAlign: 'left', fontSize: '0.8rem', color: '#999' }}>
+                <tr style={{ borderBottom: '2px solid var(--lcc-surface-muted)', textAlign: 'left', fontSize: '0.8rem', color: '#999' }}>
                   <th style={{ padding: '10px' }}>WEEK</th>
                   <th style={{ padding: '10px' }}>OWNER</th>
                   <th style={{ padding: '10px' }}>PAYOUT</th>
@@ -132,21 +255,19 @@ export default function CaddyFees() {
                 ))}
               </tbody>
             </table>
-          </div>
-        </section>
-
-      </main>
-    </div>
+        </LeagueSection>
+      </div>
+    </LeaguePageShell>
   );
 }
 
 // STYLES
-const vaultCardStyle = (bg: string) => ({ backgroundColor: bg, padding: '30px', borderRadius: '25px', color: 'white', textAlign: 'center' as const });
-const vaultTitleStyle = { margin: '10px 0 5px', fontSize: '0.9rem', textTransform: 'uppercase' as const, letterSpacing: '1px' };
-const vaultValueStyle = { fontSize: '2.5rem', fontWeight: '900', margin: '0' };
-const vaultSubStyle = { fontSize: '0.75rem', opacity: 0.6, fontWeight: 'bold' };
-const sectionStyle = { marginBottom: '50px' };
-const sectionHeaderStyle = { display: 'flex', alignItems: 'center', color: '#1A472A', borderBottom: '2px solid #C5A059', paddingBottom: '10px', marginBottom: '20px', fontSize: '1.2rem' };
+const policyCopyStyle = {
+  color: 'var(--lcc-text-muted)',
+  fontSize: '0.98rem',
+  lineHeight: 1.7,
+  marginTop: '20px',
+};
 const tablePadding = { padding: '15px' };
 const statusBadgeStyle = (paid: boolean, partial: boolean) => ({
   fontSize: '0.6rem', fontWeight: 'bold', padding: '4px 10px', borderRadius: '10px',
