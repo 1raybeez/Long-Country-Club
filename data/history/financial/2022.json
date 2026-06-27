@@ -1,21 +1,240 @@
 {
   "season": 2022,
   "leagueRules": {
-    "entryFee": null,
+    "entryFee": 50,
     "newOwnerFee": null,
     "futureDeposit": null,
-    "weeklyHighPayout": null,
+    "weeklyHighPayout": 10,
     "regularSeasonWeeks": null,
     "playoffPayouts": {
-      "championBase": null,
-      "runnerUp": null,
-      "thirdPlace": null,
-      "fourthPlace": null
+      "championBase": 205,
+      "runnerUp": 100,
+      "thirdPlace": 50,
+      "fourthPlace": 25
     },
-    "ringReserve": null,
+    "ringReserve": 80,
     "actualRingCost": null
   },
-  "managers": [],
-  "awards": [],
-  "notes": []
+  "managers": [
+    {
+      "managerName": "Amart",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 25,
+      "balance": -25,
+      "notes": [
+        "Weekly: 2 ($20); Champ Ring: $0; 4th Place: $25; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $25; Total Earned: -$25."
+      ]
+    },
+    {
+      "managerName": "Ben",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 100,
+      "balance": 50,
+      "notes": [
+        "Weekly: 3 ($30); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $100; 1st Place: $0; Rollover to 2023: $0; Amount Won: $100; Total Earned: $50."
+      ]
+    },
+    {
+      "managerName": "Bill",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 1 ($10); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    },
+    {
+      "managerName": "Mike E",
+      "entryFeePaid": 75,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -75,
+      "notes": [
+        "Weekly: 3 ($30); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $25; Amount Won: $0; Total Earned: -$75."
+      ]
+    },
+    {
+      "managerName": "EP",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 285,
+      "balance": 235,
+      "notes": [
+        "Weekly: 2 ($20); Champ Ring: $80; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $205; Rollover to 2023: $0; Amount Won: $285; Total Earned: $235."
+      ]
+    },
+    {
+      "managerName": "Jeffrey",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    },
+    {
+      "managerName": "KW",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 50,
+      "balance": 0,
+      "notes": [
+        "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $50; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $50; Total Earned: $0."
+      ]
+    },
+    {
+      "managerName": "Loren",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    },
+    {
+      "managerName": "Mike M",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    },
+    {
+      "managerName": "Ray",
+      "entryFeePaid": null,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": 0,
+      "notes": [
+        "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Entry Fee Paid: blank in screenshot; Rollover to 2023: -$50; Amount Won: $0; Total Earned: $0."
+      ]
+    },
+    {
+      "managerName": "Rob",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 3 ($30); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    },
+    {
+      "managerName": "Tyrone",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "2022-amart-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Amart",
+      "amount": 20,
+      "description": "2 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+    },
+    {
+      "id": "2022-amart-fourth-place",
+      "type": "fourthPlace",
+      "managerName": "Amart",
+      "amount": 25,
+      "description": "4th Place payout."
+    },
+    {
+      "id": "2022-ben-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Ben",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+    },
+    {
+      "id": "2022-ben-second-place",
+      "type": "runnerUp",
+      "managerName": "Ben",
+      "amount": 100,
+      "description": "2nd Place payout."
+    },
+    {
+      "id": "2022-bill-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Bill",
+      "amount": 10,
+      "description": "1 weekly payout at $10; weekly payout shown separately from Amount Won."
+    },
+    {
+      "id": "2022-mike-e-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Mike E",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+    },
+    {
+      "id": "2022-ep-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "EP",
+      "amount": 20,
+      "description": "2 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+    },
+    {
+      "id": "2022-ep-champ-ring",
+      "type": "ringReserve",
+      "managerName": "EP",
+      "amount": 80,
+      "description": "Champ Ring amount shown in row."
+    },
+    {
+      "id": "2022-ep-first-place",
+      "type": "champion",
+      "managerName": "EP",
+      "amount": 205,
+      "description": "1st Place payout."
+    },
+    {
+      "id": "2022-kw-third-place",
+      "type": "thirdPlace",
+      "managerName": "KW",
+      "amount": 50,
+      "description": "3rd Place payout."
+    },
+    {
+      "id": "2022-rob-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Rob",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+    }
+  ],
+  "notes": [
+    "Source: data/history/source-screenshots/financial/2022.png.",
+    "The screenshot uses placement-based columns plus Champ Ring and Rollover to 2023.",
+    "Weekly payout totals are visible but are not included in the Amount Won column for this season.",
+    "Ray's Entry Fee Paid cell is blank in the screenshot; entryFeePaid is null for that row.",
+    "The footer shows Weekly Payout $140, Champ Ring $80, 4th Place $25, 3rd Place $50, 2nd Place $100, 1st Place $205, Amount Won $460, Entry Fee Paid $575, Rollover to 2023 -$25, and Total Earned -$115.",
+    "newOwnerFee and futureDeposit are null because the screenshot does not label any amount as a new-owner fee or future deposit; rollover values are captured in notes only.",
+    "regularSeasonWeeks and actualRingCost are null because they are not shown."
+  ]
 }

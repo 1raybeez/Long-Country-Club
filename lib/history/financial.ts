@@ -13,6 +13,7 @@ import season2025 from '../../data/history/financial/2025.json';
 import season2026 from '../../data/history/financial/2026.json';
 import type {
   AwardRecord,
+  AwardRecordType,
   FinancialAmount,
   LeagueFinancialTotals,
   ManagerFinancialHistoryEntry,
@@ -38,20 +39,32 @@ export const LCC_FINANCIAL_HISTORY_SEASONS = [
 export type LccFinancialHistorySeason =
   (typeof LCC_FINANCIAL_HISTORY_SEASONS)[number];
 
+const AWARD_RECORD_TYPES = new Set<string>([
+  'weeklyHigh',
+  'champion',
+  'runnerUp',
+  'thirdPlace',
+  'fourthPlace',
+  'ringReserve',
+  'futureDeposit',
+  'adjustment',
+  'other',
+] satisfies AwardRecordType[]);
+
 const FINANCIAL_DATA_BY_SEASON = {
-  2014: season2014,
-  2015: season2015,
-  2016: season2016,
-  2017: season2017,
-  2018: season2018,
-  2019: season2019,
-  2020: season2020,
-  2021: season2021,
-  2022: season2022,
-  2023: season2023,
-  2024: season2024,
-  2025: season2025,
-  2026: season2026,
+  2014: parseSeasonFinancialData(season2014),
+  2015: parseSeasonFinancialData(season2015),
+  2016: parseSeasonFinancialData(season2016),
+  2017: parseSeasonFinancialData(season2017),
+  2018: parseSeasonFinancialData(season2018),
+  2019: parseSeasonFinancialData(season2019),
+  2020: parseSeasonFinancialData(season2020),
+  2021: parseSeasonFinancialData(season2021),
+  2022: parseSeasonFinancialData(season2022),
+  2023: parseSeasonFinancialData(season2023),
+  2024: parseSeasonFinancialData(season2024),
+  2025: parseSeasonFinancialData(season2025),
+  2026: parseSeasonFinancialData(season2026),
 } satisfies Record<LccFinancialHistorySeason, SeasonFinancialData>;
 
 export function loadSeasonFinancialData(
@@ -133,6 +146,56 @@ function sumKnownAwards(awards: readonly AwardRecord[]): number {
 
 function sumKnownAmounts(amounts: readonly FinancialAmount[]): number {
   return amounts.reduce<number>((total, amount) => total + (amount ?? 0), 0);
+}
+
+function parseSeasonFinancialData(data: unknown): SeasonFinancialData {
+  if (!isRecord(data)) {
+    throw new Error('Season financial data must be an object.');
+  }
+
+  if (typeof data.season !== 'number') {
+    throw new Error('Season financial data is missing a numeric season.');
+  }
+
+  if (!isRecord(data.leagueRules)) {
+    throw new Error(`Financial data for ${data.season} is missing leagueRules.`);
+  }
+
+  if (!Array.isArray(data.managers)) {
+    throw new Error(`Financial data for ${data.season} is missing managers.`);
+  }
+
+  if (!Array.isArray(data.awards)) {
+    throw new Error(`Financial data for ${data.season} is missing awards.`);
+  }
+
+  if (!Array.isArray(data.notes)) {
+    throw new Error(`Financial data for ${data.season} is missing notes.`);
+  }
+
+  data.awards.forEach((award, index) => {
+    if (!isRecord(award)) {
+      throw new Error(
+        `Financial data for ${data.season} has a non-object award at index ${index}.`
+      );
+    }
+
+    if (!isAwardRecordType(award.type)) {
+      throw new Error(
+        `Financial data for ${data.season} has invalid award type at index ${index}.`
+      );
+    }
+  });
+
+  return data as unknown as SeasonFinancialData;
+}
+
+function isAwardRecordType(value: unknown): value is AwardRecordType {
+  return typeof value === 'string' && AWARD_RECORD_TYPES.has(value);
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
 }
 
 function matchesManager(

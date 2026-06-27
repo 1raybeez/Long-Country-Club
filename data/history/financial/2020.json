@@ -1,21 +1,237 @@
 {
   "season": 2020,
   "leagueRules": {
-    "entryFee": null,
+    "entryFee": 52,
     "newOwnerFee": null,
     "futureDeposit": null,
-    "weeklyHighPayout": null,
+    "weeklyHighPayout": 10,
     "regularSeasonWeeks": null,
     "playoffPayouts": {
-      "championBase": null,
-      "runnerUp": null,
-      "thirdPlace": null,
-      "fourthPlace": null
+      "championBase": 290,
+      "runnerUp": 100,
+      "thirdPlace": 50,
+      "fourthPlace": 25
     },
     "ringReserve": null,
     "actualRingCost": null
   },
-  "managers": [],
-  "awards": [],
-  "notes": []
+  "managers": [
+    {
+      "managerName": "Amart",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 25,
+      "balance": -27,
+      "notes": [
+        "Weekly: 0 ($0); 4th Place: $25; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $25; Total Earned: -$27."
+      ]
+    },
+    {
+      "managerName": "Ben",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -52,
+      "notes": [
+        "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $0; Total Earned: -$52."
+      ]
+    },
+    {
+      "managerName": "Bill",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -52,
+      "notes": [
+        "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $0; Total Earned: -$52."
+      ]
+    },
+    {
+      "managerName": "Dan",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 20,
+      "balance": -32,
+      "notes": [
+        "Weekly: 2 ($20); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $20; Total Earned: -$32."
+      ]
+    },
+    {
+      "managerName": "Earl",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 130,
+      "balance": 78,
+      "notes": [
+        "Weekly: 3 ($30); 4th Place: $0; 3rd Place: $0; 2nd Place: $100; 1st Place: $0; Amount Won: $130; Total Earned: $78."
+      ]
+    },
+    {
+      "managerName": "Jeffrey",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 10,
+      "balance": -42,
+      "notes": [
+        "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $10; Total Earned: -$42."
+      ]
+    },
+    {
+      "managerName": "KW",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 310,
+      "balance": 258,
+      "notes": [
+        "Weekly: 2 ($20); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $290; Amount Won: $310; Total Earned: $258."
+      ]
+    },
+    {
+      "managerName": "Loren",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 10,
+      "balance": -42,
+      "notes": [
+        "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $10; Total Earned: -$42."
+      ]
+    },
+    {
+      "managerName": "Mike",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 30,
+      "balance": -22,
+      "notes": [
+        "Weekly: 3 ($30); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $30; Total Earned: -$22."
+      ]
+    },
+    {
+      "managerName": "Ray",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -52,
+      "notes": [
+        "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $0; Total Earned: -$52."
+      ]
+    },
+    {
+      "managerName": "Rob",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 60,
+      "balance": 8,
+      "notes": [
+        "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $50; 2nd Place: $0; 1st Place: $0; Amount Won: $60; Total Earned: $8."
+      ]
+    },
+    {
+      "managerName": "Tyrone",
+      "entryFeePaid": 52,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -52,
+      "notes": [
+        "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $0; Total Earned: -$52."
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "2020-amart-fourth-place",
+      "type": "fourthPlace",
+      "managerName": "Amart",
+      "amount": 25,
+      "description": "4th Place payout."
+    },
+    {
+      "id": "2020-dan-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Dan",
+      "amount": 20,
+      "description": "2 weekly payouts at $10 each."
+    },
+    {
+      "id": "2020-earl-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Earl",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each."
+    },
+    {
+      "id": "2020-earl-second-place",
+      "type": "runnerUp",
+      "managerName": "Earl",
+      "amount": 100,
+      "description": "2nd Place payout."
+    },
+    {
+      "id": "2020-jeffrey-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Jeffrey",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2020-kw-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "KW",
+      "amount": 20,
+      "description": "2 weekly payouts at $10 each."
+    },
+    {
+      "id": "2020-kw-first-place",
+      "type": "champion",
+      "managerName": "KW",
+      "amount": 290,
+      "description": "1st Place payout."
+    },
+    {
+      "id": "2020-loren-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Loren",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2020-mike-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Mike",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each."
+    },
+    {
+      "id": "2020-rob-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Rob",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2020-rob-third-place",
+      "type": "thirdPlace",
+      "managerName": "Rob",
+      "amount": 50,
+      "description": "3rd Place payout."
+    }
+  ],
+  "notes": [
+    "Source: data/history/source-screenshots/financial/2020.png.",
+    "The screenshot uses placement-based columns: 4th Place, 3rd Place, 2nd Place, and 1st Place.",
+    "The footer shows Entry Fee Paid total as $625, while the visible manager rows each show $52.",
+    "regularSeasonWeeks, newOwnerFee, futureDeposit, ringReserve, and actualRingCost are null because they are not shown."
+  ]
 }

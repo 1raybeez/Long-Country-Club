@@ -1,10 +1,10 @@
 {
   "season": 2019,
   "leagueRules": {
-    "entryFee": null,
+    "entryFee": 50,
     "newOwnerFee": null,
     "futureDeposit": null,
-    "weeklyHighPayout": null,
+    "weeklyHighPayout": 10,
     "regularSeasonWeeks": null,
     "playoffPayouts": {
       "championBase": null,
@@ -15,7 +15,224 @@
     "ringReserve": null,
     "actualRingCost": null
   },
-  "managers": [],
-  "awards": [],
-  "notes": []
+  "managers": [
+    {
+      "managerName": "Matt",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    },
+    {
+      "managerName": "Ben",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 30,
+      "balance": -20,
+      "notes": [
+        "Weekly: 3 ($30); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $0; Win Finals: $0; Amount Won: $30; Total Earned: -$20."
+      ]
+    },
+    {
+      "managerName": "Jeffrey",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 105,
+      "balance": 55,
+      "notes": [
+        "Weekly: 3 ($30); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $75; Win Finals: blank in screenshot; Amount Won: $105; Total Earned: $55."
+      ]
+    },
+    {
+      "managerName": "Tyrone",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 10,
+      "balance": -40,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
+      ]
+    },
+    {
+      "managerName": "Ray",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    },
+    {
+      "managerName": "Loren",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 20,
+      "balance": -30,
+      "notes": [
+        "Weekly: 2 ($20); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $20; Total Earned: -$30."
+      ]
+    },
+    {
+      "managerName": "Rob",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 10,
+      "balance": -40,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
+      ]
+    },
+    {
+      "managerName": "Bill",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -50,
+      "notes": [
+        "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
+      ]
+    },
+    {
+      "managerName": "KW",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 10,
+      "balance": -40,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
+      ]
+    },
+    {
+      "managerName": "Mike",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 95,
+      "balance": 45,
+      "notes": [
+        "Weekly: 2 ($20); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $75; Win Finals: blank in screenshot; Amount Won: $95; Total Earned: $45."
+      ]
+    },
+    {
+      "managerName": "Earl",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 10,
+      "balance": -40,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
+      ]
+    },
+    {
+      "managerName": "Dan",
+      "entryFeePaid": 50,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 10,
+      "balance": -40,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "2019-ben-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Ben",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each."
+    },
+    {
+      "id": "2019-jeffrey-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Jeffrey",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each."
+    },
+    {
+      "id": "2019-jeffrey-advancing-to-finals",
+      "type": "other",
+      "managerName": "Jeffrey",
+      "amount": 75,
+      "description": "Advancing to Finals payout."
+    },
+    {
+      "id": "2019-tyrone-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Tyrone",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2019-loren-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Loren",
+      "amount": 20,
+      "description": "2 weekly payouts at $10 each."
+    },
+    {
+      "id": "2019-rob-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Rob",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2019-kw-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "KW",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2019-mike-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Mike",
+      "amount": 20,
+      "description": "2 weekly payouts at $10 each."
+    },
+    {
+      "id": "2019-mike-advancing-to-finals",
+      "type": "other",
+      "managerName": "Mike",
+      "amount": 75,
+      "description": "Advancing to Finals payout."
+    },
+    {
+      "id": "2019-earl-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Earl",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2019-dan-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Dan",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    }
+  ],
+  "notes": [
+    "Source: data/history/source-screenshots/financial/2019.png.",
+    "The screenshot uses advancement-based columns: Advance to Playoffs, Advancing to Finals, and Win Finals.",
+    "Several $25 Advance to Playoffs values are visible but are not included in the Amount Won totals; they are preserved in manager notes only.",
+    "Jeffrey and Mike have blank Win Finals cells in the screenshot; no championBase value is recorded.",
+    "regularSeasonWeeks, newOwnerFee, futureDeposit, ringReserve, and actualRingCost are null because they are not shown."
+  ]
 }

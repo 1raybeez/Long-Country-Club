@@ -1,13 +1,13 @@
 {
   "season": 2014,
   "leagueRules": {
-    "entryFee": null,
+    "entryFee": 40,
     "newOwnerFee": null,
     "futureDeposit": null,
-    "weeklyHighPayout": null,
+    "weeklyHighPayout": 10,
     "regularSeasonWeeks": null,
     "playoffPayouts": {
-      "championBase": null,
+      "championBase": 100,
       "runnerUp": null,
       "thirdPlace": null,
       "fourthPlace": null
@@ -15,7 +15,265 @@
     "ringReserve": null,
     "actualRingCost": null
   },
-  "managers": [],
-  "awards": [],
-  "notes": []
+  "managers": [
+    {
+      "managerName": "Matt",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 40,
+      "balance": 0,
+      "notes": [
+        "Weekly: 2 ($20); Advance to Playoffs: $20; Advancing to Finals: $0; Win Finals: $0; Amount Won: $40; Total Earned: $0."
+      ]
+    },
+    {
+      "managerName": "Ben",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -40,
+      "notes": [
+        "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$40."
+      ]
+    },
+    {
+      "managerName": "Jeffrey",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 30,
+      "balance": -10,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $20; Advancing to Finals: $0; Win Finals: $0; Amount Won: $30; Total Earned: -$10."
+      ]
+    },
+    {
+      "managerName": "Tyrone",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 30,
+      "balance": -10,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $20; Advancing to Finals: $0; Win Finals: $0; Amount Won: $30; Total Earned: -$10."
+      ]
+    },
+    {
+      "managerName": "Ray",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 110,
+      "balance": 70,
+      "notes": [
+        "Weekly: 4 ($40); Advance to Playoffs: $20; Advancing to Finals: $50; Win Finals: $0; Amount Won: $110; Total Earned: $70."
+      ]
+    },
+    {
+      "managerName": "Loren",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 30,
+      "balance": -10,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $20; Advancing to Finals: $0; Win Finals: $0; Amount Won: $30; Total Earned: -$10."
+      ]
+    },
+    {
+      "managerName": "Rob",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 200,
+      "balance": 160,
+      "notes": [
+        "Weekly: 3 ($30); Advance to Playoffs: $20; Advancing to Finals: $50; Win Finals: $100; Amount Won: $200; Total Earned: $160."
+      ]
+    },
+    {
+      "managerName": "Bill",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 10,
+      "balance": -30,
+      "notes": [
+        "Weekly: 1 ($10); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$30."
+      ]
+    },
+    {
+      "managerName": "KW",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -40,
+      "notes": [
+        "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$40."
+      ]
+    },
+    {
+      "managerName": "David B",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -40,
+      "notes": [
+        "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$40."
+      ]
+    },
+    {
+      "managerName": "Earl",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 30,
+      "balance": -10,
+      "notes": [
+        "Weekly: 3 ($30); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $30; Total Earned: -$10."
+      ]
+    },
+    {
+      "managerName": "Dan",
+      "entryFeePaid": 40,
+      "newOwnerFeePaid": null,
+      "futureDepositPaid": null,
+      "payoutsReceived": 0,
+      "balance": -40,
+      "notes": [
+        "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$40."
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "2014-matt-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Matt",
+      "amount": 20,
+      "description": "2 weekly payouts at $10 each."
+    },
+    {
+      "id": "2014-matt-advance-to-playoffs",
+      "type": "other",
+      "managerName": "Matt",
+      "amount": 20,
+      "description": "Advance to Playoffs payout."
+    },
+    {
+      "id": "2014-jeffrey-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Jeffrey",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2014-jeffrey-advance-to-playoffs",
+      "type": "other",
+      "managerName": "Jeffrey",
+      "amount": 20,
+      "description": "Advance to Playoffs payout."
+    },
+    {
+      "id": "2014-tyrone-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Tyrone",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2014-tyrone-advance-to-playoffs",
+      "type": "other",
+      "managerName": "Tyrone",
+      "amount": 20,
+      "description": "Advance to Playoffs payout."
+    },
+    {
+      "id": "2014-ray-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Ray",
+      "amount": 40,
+      "description": "4 weekly payouts at $10 each."
+    },
+    {
+      "id": "2014-ray-advance-to-playoffs",
+      "type": "other",
+      "managerName": "Ray",
+      "amount": 20,
+      "description": "Advance to Playoffs payout."
+    },
+    {
+      "id": "2014-ray-advancing-to-finals",
+      "type": "other",
+      "managerName": "Ray",
+      "amount": 50,
+      "description": "Advancing to Finals payout."
+    },
+    {
+      "id": "2014-loren-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Loren",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2014-loren-advance-to-playoffs",
+      "type": "other",
+      "managerName": "Loren",
+      "amount": 20,
+      "description": "Advance to Playoffs payout."
+    },
+    {
+      "id": "2014-rob-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Rob",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each."
+    },
+    {
+      "id": "2014-rob-advance-to-playoffs",
+      "type": "other",
+      "managerName": "Rob",
+      "amount": 20,
+      "description": "Advance to Playoffs payout."
+    },
+    {
+      "id": "2014-rob-advancing-to-finals",
+      "type": "other",
+      "managerName": "Rob",
+      "amount": 50,
+      "description": "Advancing to Finals payout."
+    },
+    {
+      "id": "2014-rob-win-finals",
+      "type": "champion",
+      "managerName": "Rob",
+      "amount": 100,
+      "description": "Win Finals payout."
+    },
+    {
+      "id": "2014-bill-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Bill",
+      "amount": 10,
+      "description": "1 weekly payout at $10."
+    },
+    {
+      "id": "2014-earl-weekly-payout",
+      "type": "weeklyHigh",
+      "managerName": "Earl",
+      "amount": 30,
+      "description": "3 weekly payouts at $10 each."
+    }
+  ],
+  "notes": [
+    "Source: data/history/source-screenshots/financial/2014.png.",
+    "The screenshot uses advancement-based columns: Advance to Playoffs, Advancing to Finals, and Win Finals.",
+    "Advancing to Finals is captured in manager notes and awards as an advancement payout, not as a runner-up-only league rule.",
+    "regularSeasonWeeks, newOwnerFee, futureDeposit, ringReserve, and actualRingCost are null because they are not shown."
+  ]
 }
