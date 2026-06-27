@@ -1,4 +1,4 @@
-export const DEFAULT_OWNER_IMAGE = "/logos/Long Country Club FFL.png";
+export const DEFAULT_OWNER_IMAGE = "/logos/long-country-club-ffl.png";
 
 const OWNER_IMAGE_ID_OVERRIDES: Record<string, string> = {
   jay: "jay-g",

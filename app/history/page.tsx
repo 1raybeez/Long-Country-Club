@@ -10,7 +10,7 @@ export default function HistoryHub() {
       {/* 1. CLUBHOUSE HEADER */}
       <header style={{ textAlign: 'center', padding: '60px 20px' }}>
         <img 
-          src="/Long Country Club FFL.png" 
+          src="/logos/long-country-club-ffl.png"
           alt="LCC Logo" 
           style={{ maxWidth: '350px', width: '100%', marginBottom: '20px' }} 
         />

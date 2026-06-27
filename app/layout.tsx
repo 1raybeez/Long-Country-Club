@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="lcc-site-brand">
               <div className="lcc-site-brand__mark">
                 <Image
-                  src="/Long Country Club FFL.png"
+                  src="/logos/long-country-club-ffl.png"
                   alt="LCC Logo"
                   fill
                   className="object-cover"

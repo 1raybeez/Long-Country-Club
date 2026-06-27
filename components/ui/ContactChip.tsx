@@ -37,7 +37,7 @@ function getContactMethodDisplay(method: string): ContactMethodDisplay {
   if (normalizedMethod.includes("sleeper")) {
     return {
       label: "Sleeper DM",
-      logoSrc: "/logos/Sleeper.png",
+      logoSrc: "/logos/sleeper.png",
       logoAlt: "Sleeper logo",
     };
   }
@@ -45,7 +45,7 @@ function getContactMethodDisplay(method: string): ContactMethodDisplay {
   if (normalizedMethod.includes("whatsapp")) {
     return {
       label: "WhatsApp",
-      logoSrc: "/logos/WhatsApp.png",
+      logoSrc: "/logos/whatsapp.png",
       logoAlt: "WhatsApp logo",
     };
   }
@@ -53,7 +53,7 @@ function getContactMethodDisplay(method: string): ContactMethodDisplay {
   if (normalizedMethod.includes("venmo")) {
     return {
       label: "Venmo",
-      logoSrc: "/logos/Venmo.png",
+      logoSrc: "/logos/venmo.png",
       logoAlt: "Venmo logo",
     };
   }
@@ -64,7 +64,7 @@ function getContactMethodDisplay(method: string): ContactMethodDisplay {
   ) {
     return {
       label: "Text / iMessage",
-      logoSrc: "/logos/iMessage.png",
+      logoSrc: "/logos/imessage.png",
       logoAlt: "iMessage logo",
     };
   }
