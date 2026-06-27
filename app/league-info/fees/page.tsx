@@ -16,6 +16,7 @@ import { LeagueMetricCard } from '@/components/league/LeagueMetricCard';
 import { LeaguePageShell } from '@/components/league/LeaguePageShell';
 import { LeagueSection } from '@/components/league/LeagueSection';
 import { LeagueTabBar } from '@/components/league/LeagueTabBar';
+import { getOwnerImagePath } from '@/lib/ownerImages';
 
 type LedgerTab = 'current' | 'history';
 
@@ -51,18 +52,18 @@ const DYNASTY_DEPOSIT = 300;
 const PAID_2026_MANAGERS = new Set(['Ray', 'Mike Estes', 'Tyrone']);
 
 const ACTIVE_OWNERS: readonly OwnerBase[] = [
-  { name: 'Ray', img: '/managers/Ray.png' },
-  { name: 'Mike Estes', img: '/managers/Mike E.png' },
-  { name: 'Tyrone', img: '/managers/Tyrone.png' },
-  { name: 'Amart', img: '/managers/Amart.png' },
-  { name: 'Ben', img: '/managers/Ben.png' },
-  { name: 'Bill', img: '/managers/Bill.png' },
-  { name: 'Earl', img: '/managers/EP.png' },
-  { name: 'Jeffrey', img: '/managers/Jeffrey.png' },
-  { name: 'Keith', img: '/managers/KW.png' },
-  { name: 'Loren', img: '/managers/Loren.png' },
-  { name: 'Mike M', img: '/managers/Mike M.png' },
-  { name: 'Rob', img: '/managers/Rob.png' },
+  { name: 'Ray', img: getOwnerImagePath('ray-long') },
+  { name: 'Mike Estes', img: getOwnerImagePath('mike-estes') },
+  { name: 'Tyrone', img: getOwnerImagePath('tyrone-poist') },
+  { name: 'Amart', img: getOwnerImagePath('anthony-martinez') },
+  { name: 'Ben', img: getOwnerImagePath('ben-isbell') },
+  { name: 'Bill', img: getOwnerImagePath('bill-gross') },
+  { name: 'Earl', img: getOwnerImagePath('earl-perkins') },
+  { name: 'Jeffrey', img: getOwnerImagePath('jeffrey-hudgins') },
+  { name: 'Keith', img: getOwnerImagePath('keith-winder') },
+  { name: 'Loren', img: getOwnerImagePath('loren-michaels') },
+  { name: 'Mike M', img: getOwnerImagePath('mike-mcburnie') },
+  { name: 'Rob', img: getOwnerImagePath('rob-jenkins') },
 ];
 
 const CURRENT_LEDGER: readonly CurrentLedgerRow[] = ACTIVE_OWNERS.map((owner) => ({
@@ -92,18 +93,18 @@ const WEEKLY_PAYOUT_HISTORY_2025: readonly WeeklyPayout[] = [
 ];
 
 const EARNINGS_HISTORY_2025: readonly HistoricalEarningsRow[] = [
-  { name: 'Tyrone', weeklyHighs: 3, finish: '1st', totalWon: 299, img: '/managers/Tyrone.png' },
-  { name: 'Mike M', weeklyHighs: 0, finish: '2nd', totalWon: 100, img: '/managers/Mike M.png' },
-  { name: 'Ben', weeklyHighs: 2, finish: '3rd', totalWon: 70, img: '/managers/Ben.png' },
-  { name: 'Ray', weeklyHighs: 3, finish: '4th', totalWon: 55, img: '/managers/Ray.png' },
-  { name: 'Jeffrey', weeklyHighs: 2, finish: '6th', totalWon: 20, img: '/managers/Jeffrey.png' },
-  { name: 'Amart', weeklyHighs: 2, finish: '9th', totalWon: 20, img: '/managers/Amart.png' },
-  { name: 'Earl', weeklyHighs: 1, finish: '5th', totalWon: 10, img: '/managers/EP.png' },
-  { name: 'Rob', weeklyHighs: 1, finish: '7th', totalWon: 10, img: '/managers/Rob.png' },
-  { name: 'Bill', weeklyHighs: 0, finish: '8th', totalWon: 0, img: '/managers/Bill.png' },
-  { name: 'Keith', weeklyHighs: 0, finish: '10th', totalWon: 0, img: '/managers/KW.png' },
-  { name: 'Loren', weeklyHighs: 0, finish: '11th', totalWon: 0, img: '/managers/Loren.png' },
-  { name: 'Mike Estes', weeklyHighs: 0, finish: '12th', totalWon: 0, img: '/managers/Mike E.png' },
+  { name: 'Tyrone', weeklyHighs: 3, finish: '1st', totalWon: 299, img: getOwnerImagePath('tyrone-poist') },
+  { name: 'Mike M', weeklyHighs: 0, finish: '2nd', totalWon: 100, img: getOwnerImagePath('mike-mcburnie') },
+  { name: 'Ben', weeklyHighs: 2, finish: '3rd', totalWon: 70, img: getOwnerImagePath('ben-isbell') },
+  { name: 'Ray', weeklyHighs: 3, finish: '4th', totalWon: 55, img: getOwnerImagePath('ray-long') },
+  { name: 'Jeffrey', weeklyHighs: 2, finish: '6th', totalWon: 20, img: getOwnerImagePath('jeffrey-hudgins') },
+  { name: 'Amart', weeklyHighs: 2, finish: '9th', totalWon: 20, img: getOwnerImagePath('anthony-martinez') },
+  { name: 'Earl', weeklyHighs: 1, finish: '5th', totalWon: 10, img: getOwnerImagePath('earl-perkins') },
+  { name: 'Rob', weeklyHighs: 1, finish: '7th', totalWon: 10, img: getOwnerImagePath('rob-jenkins') },
+  { name: 'Bill', weeklyHighs: 0, finish: '8th', totalWon: 0, img: getOwnerImagePath('bill-gross') },
+  { name: 'Keith', weeklyHighs: 0, finish: '10th', totalWon: 0, img: getOwnerImagePath('keith-winder') },
+  { name: 'Loren', weeklyHighs: 0, finish: '11th', totalWon: 0, img: getOwnerImagePath('loren-michaels') },
+  { name: 'Mike Estes', weeklyHighs: 0, finish: '12th', totalWon: 0, img: getOwnerImagePath('mike-estes') },
 ];
 
 export default function CaddyFees() {

@@ -3,22 +3,23 @@
 import React, { useState } from 'react';
 import { Loader2, X } from 'lucide-react';
 import { LCC_LEAGUE_HISTORY } from '@/lib/leagueConstants';
+import { DEFAULT_OWNER_IMAGE, getOwnerImagePath } from '@/lib/ownerImages';
 
 const LEAGUE_HISTORY = LCC_LEAGUE_HISTORY;
 
-const MANAGER_MAP: Record<string, { name: string; image: string }> = {
-  "467786127214899200": { name: "Rob Jenkins", image: "/managers/Rob.png" },
-  "342828350391230464": { name: "Ray Long", image: "/managers/Ray.png" },
-  "466780021365665792": { name: "Bill Gross", image: "/managers/Bill.png" },
-  "466659300316540928": { name: "Mike McBurnie", image: "/managers/Mike M.png" },
-  "817056809218080768": { name: "Mike Estes", image: "/managers/Mike E.png" },
-  "466645286870052864": { name: "Earl Perkins", image: "/managers/EP.png" },
-  "466645950710935552": { name: "Loren Michaels", image: "/managers/Loren.png" },
-  "356621920969555968": { name: "Jeffrey Hudgins", image: "/managers/Jeffrey.png" },
-  "346727603970973696": { name: "Ben Isbell", image: "/managers/Ben.png" },
-  "466638004102885376": { name: "Keith Winder", image: "/managers/KW.png" },
-  "466797853767888896": { name: "Tyrone Poist", image: "/managers/Tyrone.png" },
-  "468192726756618240": { name: "Anthony Martinez", image: "/managers/Amart.png" }
+const MANAGER_MAP: Record<string, { name: string; ownerId: string }> = {
+  "467786127214899200": { name: "Rob Jenkins", ownerId: "rob-jenkins" },
+  "342828350391230464": { name: "Ray Long", ownerId: "ray-long" },
+  "466780021365665792": { name: "Bill Gross", ownerId: "bill-gross" },
+  "466659300316540928": { name: "Mike McBurnie", ownerId: "mike-mcburnie" },
+  "817056809218080768": { name: "Mike Estes", ownerId: "mike-estes" },
+  "466645286870052864": { name: "Earl Perkins", ownerId: "earl-perkins" },
+  "466645950710935552": { name: "Loren Michaels", ownerId: "loren-michaels" },
+  "356621920969555968": { name: "Jeffrey Hudgins", ownerId: "jeffrey-hudgins" },
+  "346727603970973696": { name: "Ben Isbell", ownerId: "ben-isbell" },
+  "466638004102885376": { name: "Keith Winder", ownerId: "keith-winder" },
+  "466797853767888896": { name: "Tyrone Poist", ownerId: "tyrone-poist" },
+  "468192726756618240": { name: "Anthony Martinez", ownerId: "anthony-martinez" }
 };
 
 interface SleeperRoster {
@@ -217,7 +218,7 @@ function ManagerProfile({
   setPlayer,
   hasLead,
 }: {
-  manager?: { name: string; image: string };
+  manager?: { name: string; ownerId: string };
   id: string;
   setPlayer: (value: string) => void;
   hasLead: boolean;
@@ -225,7 +226,7 @@ function ManagerProfile({
   return (
     <div className="flex flex-col items-center gap-6">
       <div className="w-28 h-28 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-white">
-        <img src={manager?.image || '/managers/default.png'} className="w-full h-full object-cover" alt={manager?.name || 'Manager'} />
+        <img src={manager ? getOwnerImagePath(manager.ownerId) : DEFAULT_OWNER_IMAGE} className="w-full h-full object-cover" alt={manager?.name || 'Manager'} />
       </div>
       <div className="text-center">
         <div className="flex items-center justify-center gap-2 mb-4">

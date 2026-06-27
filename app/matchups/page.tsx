@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Trophy, Swords, Skull, Loader2, ChevronDown, X } from 'lucide-react';
 import { LCC_MATCHUP_LEAGUE_IDS } from '@/lib/leagueConstants';
+import { DEFAULT_OWNER_IMAGE } from '@/lib/ownerImages';
 
 const LEAGUES = LCC_MATCHUP_LEAGUE_IDS;
 
@@ -212,7 +213,7 @@ export default function MatchupsPage() {
                 return (
                   <div key={idx}>
                     <div className="flex items-center gap-4 mb-6 border-b pb-4">
-                      <img src={teamMeta?.avatar || '/managers/default.png'} className="w-12 h-12 rounded-full border-2 border-[#C5A059]" alt={teamMeta?.teamName || 'Team'} />
+                      <img src={teamMeta?.avatar || DEFAULT_OWNER_IMAGE} className="w-12 h-12 rounded-full border-2 border-[#C5A059]" alt={teamMeta?.teamName || 'Team'} />
                       <div className="flex-1"><p className="font-black uppercase text-sm leading-none">{teamMeta?.teamName}</p><p className="text-2xl font-black italic text-green-600">{team?.points?.toFixed(2)}</p></div>
                     </div>
                     <div className="space-y-2">
@@ -238,7 +239,7 @@ export default function MatchupsPage() {
 function TeamDisplay({ meta, points }: { meta?: RosterMeta; points?: number }) {
   return (
     <div className="flex-1 flex flex-col items-center">
-      <img src={meta?.avatar || '/managers/default.png'} className="w-16 h-16 rounded-full mb-2 border-2 border-[#C5A059]" alt={meta?.teamName || 'Team'} />
+      <img src={meta?.avatar || DEFAULT_OWNER_IMAGE} className="w-16 h-16 rounded-full mb-2 border-2 border-[#C5A059]" alt={meta?.teamName || 'Team'} />
       <p className="text-[9px] font-black uppercase opacity-40 h-6">{meta?.teamName}</p>
       <p className="text-3xl font-black italic">{(points || 0).toFixed(2)}</p>
     </div>
@@ -261,7 +262,7 @@ function PlayoffTeam({
   return (
     <div className="flex-1 flex flex-col items-center relative">
       {isFinals && isWinner && (type === 'winners' ? <Trophy className="absolute -top-8 text-[#C5A059] animate-bounce" size={24} /> : <span className="absolute -top-10 text-2xl">💩</span>)}
-      <img src={meta?.avatar || '/managers/default.png'} className="w-14 h-14 rounded-full mb-2 border border-black/10" alt={meta?.teamName || 'Team'} />
+      <img src={meta?.avatar || DEFAULT_OWNER_IMAGE} className="w-14 h-14 rounded-full mb-2 border border-black/10" alt={meta?.teamName || 'Team'} />
       <p className="text-[10px] font-black uppercase opacity-40">{meta?.teamName}</p>
       <p className="text-3xl font-black italic">{(score || 0).toFixed(2)}</p>
     </div>

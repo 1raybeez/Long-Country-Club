@@ -10,6 +10,7 @@ import {
   getLccOwnerCareerSummary,
   type LccOwnerCareerSummary,
 } from "@/lib/lccFinalPlacements";
+import { getOwnerImagePath } from "@/lib/ownerImages";
 
 type DirectoryTone =
   | "default"
@@ -150,7 +151,7 @@ export function OwnerCard({
       <article className="flex h-full flex-col">
         <div className="relative h-56 overflow-hidden bg-[var(--lcc-green-deep)]">
           <img
-            src={`/managers/${owner.avatarFilename}`}
+            src={getOwnerImagePath(owner.id)}
             alt={owner.nickname}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             style={{ objectPosition: "center 32%" }}

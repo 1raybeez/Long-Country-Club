@@ -1,6 +1,7 @@
 // lib/sleeper.ts
 
 import { LCC_CURRENT_LEAGUE_ID } from './leagueConstants';
+import { DEFAULT_OWNER_IMAGE } from './ownerImages';
 
 export const LEAGUE_ID = LCC_CURRENT_LEAGUE_ID;
 
@@ -275,7 +276,7 @@ export async function getChampionDetails(leagueId: string = LEAGUE_ID) {
     teamName: champUser?.metadata?.team_name || champUser?.display_name || 'Unknown Team',
     avatar: champUser?.avatar
       ? `https://sleepercdn.com/avatars/thumbs/${champUser.avatar}`
-      : '/managers/default.png',
+      : DEFAULT_OWNER_IMAGE,
   };
 }
 

@@ -5,34 +5,35 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Trophy, Crown, Medal, Award, User, Loader2 } from 'lucide-react';
 import { getLeagueHistoryAwards, type Award as LeagueAward } from '@/lib/sleeper';
+import { DEFAULT_OWNER_IMAGE, getOwnerImagePath } from '@/lib/ownerImages';
 
 // --- CENTRAL MANAGER MAP (for names/avatars) ---
 // In a real application, this would come from a separate imported file.
 const MANAGER_MAP = {
-    "Jordan Maslyn": { name: "Jordan", avatar: "/managers/Jordan.jpg" },
-    "Tommy Moore": { name: "Tommy", avatar: "/managers/Tommy.png" },
-    "Brian Stevens": { name: "Brian", avatar: "/managers/Brian.png" },
-    "Dave Besedich": { name: "Dave", avatar: "/managers/Dave.png" },
-    "JD Dowling": { name: "JD", avatar: "/managers/JD.png" },
-    "Wade Cameron": { name: "Wade", avatar: "/managers/Wade.png" },
-    "Ray Long": { name: "Ray", avatar: "/managers/Ray.png" }, 
-    "Doug Fordham": { name: "Doug", avatar: "/managers/Doug.png" }, 
-    "Gordie Gahagan": { name: "Gordie", avatar: "/managers/Gordie.png" }, 
-    "Bryan Doane": { name: "Bryan", avatar: "/managers/Bryan.png" }, 
-    "Keith Polarek": { name: "Keith", avatar: "/managers/Keith.png" }, 
+    "Jordan Maslyn": { name: "Jordan", avatar: DEFAULT_OWNER_IMAGE },
+    "Tommy Moore": { name: "Tommy", avatar: DEFAULT_OWNER_IMAGE },
+    "Brian Stevens": { name: "Brian", avatar: DEFAULT_OWNER_IMAGE },
+    "Dave Besedich": { name: "Dave", avatar: DEFAULT_OWNER_IMAGE },
+    "JD Dowling": { name: "JD", avatar: DEFAULT_OWNER_IMAGE },
+    "Wade Cameron": { name: "Wade", avatar: DEFAULT_OWNER_IMAGE },
+    "Ray Long": { name: "Ray", avatar: getOwnerImagePath("ray-long") },
+    "Doug Fordham": { name: "Doug", avatar: DEFAULT_OWNER_IMAGE },
+    "Gordie Gahagan": { name: "Gordie", avatar: DEFAULT_OWNER_IMAGE },
+    "Bryan Doane": { name: "Bryan", avatar: DEFAULT_OWNER_IMAGE },
+    "Keith Polarek": { name: "Keith", avatar: DEFAULT_OWNER_IMAGE },
     // Fallbacks
-    "Minnix": { name: "Minnix", avatar: null }, 
-    "Garet": { name: "Garet", avatar: null }, 
-    "Chris": { name: "Chris", avatar: null }, 
+    "Minnix": { name: "Minnix", avatar: null },
+    "Garet": { name: "Garet", avatar: null },
+    "Chris": { name: "Chris", avatar: null },
     "Nicholas": { name: "Nicholas", avatar: null },
     "Zach": { name: "Zach", avatar: null },
-    "Landon": { name: "Landon", avatar: null }, 
+    "Landon": { name: "Landon", avatar: null },
 };
 
 // Helper to safely get manager details (name/avatar)
 const getManagerDetails = (rawName: string | undefined) => {
     if (!rawName) return { name: 'Unknown', avatar: null };
-    
+
     // Check main names first (by lowercasing to handle minor variations)
     const exactMatch = Object.keys(MANAGER_MAP).find(k => k.toLowerCase() === rawName.toLowerCase());
     if (exactMatch) {
@@ -41,7 +42,7 @@ const getManagerDetails = (rawName: string | undefined) => {
 
     // Attempt to resolve known Sleeper display names to common names (e.g., Sleeper name "The Commish" -> "Ray")
     // NOTE: This logic needs to be robust, but here we just return the name for now.
-    
+
     return { name: rawName.split(' ')[0] || rawName, avatar: null };
 };
 
@@ -98,14 +99,14 @@ export default function TrophyRoomPage() {
                             notes: champ.year >= 2019 ? `Season ${champ.year} Champion.` : `Final A10 Season.`,
                         };
                     });
-                
+
                 // 3. Merge API history (newest) with manual history (oldest)
                 const mergedHistory = [...modernHistory, ...MANUAL_ARCHIVES_OLD]
                     .sort((a, b) => b.year - a.year); // Sort newest first
 
                 // 4. Deduplicate by year and set the final list
                 const finalHistory = Array.from(new Map(mergedHistory.map(item => [item.year, item])).values());
-                
+
                 setFullHistory(finalHistory);
 
             } catch (e) {
@@ -120,17 +121,17 @@ export default function TrophyRoomPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-[#121212] text-gray-900 dark:text-white p-6 pb-20 transition-colors duration-300">
-      
+
       {/* HEADER */}
       <div className="max-w-4xl mx-auto pt-6 mb-12">
-        <Link 
-          href="/league-info" 
+        <Link
+          href="/league-info"
           className="inline-flex items-center gap-2 text-gray-500 hover:text-orange-600 dark:text-gray-400 dark:hover:text-white transition mb-6 group"
         >
-           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition" /> 
+           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition" />
            Back to League Info
         </Link>
-        
+
         <div className="flex items-center gap-4">
             <div className="p-4 bg-orange-100 dark:bg-orange-600/20 rounded-2xl text-orange-600 dark:text-orange-500 border border-orange-200 dark:border-orange-500/30">
                 <Trophy size={40} />
@@ -154,9 +155,9 @@ export default function TrophyRoomPage() {
 
               // Use local avatar if present in map, otherwise use API/fallback path
               const finalAvatar = championDetails.avatar || season.avatar;
-              
+
               return (
-              <div 
+              <div
                 key={season.year}
                 className="group relative bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-white/5 rounded-3xl p-6 hover:border-orange-500/50 transition-all shadow-sm hover:shadow-md overflow-hidden"
               >
@@ -166,13 +167,13 @@ export default function TrophyRoomPage() {
                 </div>
 
                 <div className="relative z-10 flex flex-col md:flex-row gap-6 items-center md:items-start">
-                    
+
                     {/* YEAR & LOGO BLOCK */}
                     <div className="flex flex-col items-center justify-center min-w-[100px] text-center">
                         <span className="text-3xl font-black text-gray-900 dark:text-white">{season.year}</span>
                         <span className={`text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded-full mt-2 ${
-                            season.leagueName === "River City FFL" 
-                            ? "bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:border-orange-800/50" 
+                            season.leagueName === "River City FFL"
+                            ? "bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:border-orange-800/50"
                             : "bg-gray-100 text-gray-600 border-gray-200 dark:bg-white/10 dark:text-gray-400 dark:border-white/10"
                         }`}>
                             {season.leagueName === "River City FFL" ? "RC FFL" : "A10 FFL"}
@@ -185,7 +186,7 @@ export default function TrophyRoomPage() {
                             <Crown size={14} /> Champion
                         </div>
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{championDetails.name}</h3>
-                        
+
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-gray-500 dark:text-gray-400">
                             {/* Runner Up */}
                             <div className="flex items-center gap-1">
@@ -193,7 +194,7 @@ export default function TrophyRoomPage() {
                                 <span className="text-gray-500 dark:text-gray-500">2nd:</span>
                                 <span className="text-gray-700 dark:text-gray-300 font-medium">{runnerUpDetails.name}</span>
                             </div>
-                            
+
                             {/* 3rd Place */}
                             <div className="flex items-center gap-1">
                                 <Award size={16} className="text-amber-700" />
@@ -201,7 +202,7 @@ export default function TrophyRoomPage() {
                                 <span className="text-gray-700 dark:text-gray-300 font-medium">{thirdPlaceDetails.name}</span>
                             </div>
                         </div>
-                        
+
                             {season.notes && (
                             <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 italic border-l-2 border-gray-200 dark:border-white/10 pl-3">
                                 &quot;{season.notes}&quot;
@@ -213,11 +214,11 @@ export default function TrophyRoomPage() {
                     <div className="hidden sm:block">
                          <div className="w-20 h-20 rounded-full border-4 border-gray-100 dark:border-[#121212] overflow-hidden shadow-xl bg-gray-200 dark:bg-[#121212] relative flex items-center justify-center">
                             {finalAvatar ? (
-                                <Image 
-                                    src={finalAvatar} 
-                                    alt={championDetails.name} 
-                                    width={80} 
-                                    height={80} 
+                                <Image
+                                    src={finalAvatar}
+                                    alt={championDetails.name}
+                                    width={80}
+                                    height={80}
                                     className="object-cover w-full h-full"
                                 />
                             ) : (

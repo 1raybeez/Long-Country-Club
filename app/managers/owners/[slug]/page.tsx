@@ -28,6 +28,7 @@ import {
   getLccOwnerCareerSummary,
   type LccOwnerCareerSummary,
 } from "@/lib/lccFinalPlacements";
+import { getOwnerImagePath } from "@/lib/ownerImages";
 import { ContactChip } from "@/components/ui/ContactChip";
 import { ProfileStatCard } from "@/components/ui/ProfileStatCard";
 import {
@@ -123,7 +124,7 @@ export default async function OwnerProfilePage({
                     <RivalCard
                       key={rivalOwner.id}
                       href={getLccOwnerProfileHref(rivalOwner)}
-                      imageSrc={`/managers/${rivalOwner.avatarFilename}`}
+                      imageSrc={getOwnerImagePath(rivalOwner.id)}
                       imageAlt={rivalOwner.nickname}
                       ownerName={rivalOwner.displayName}
                       teamName={rivalOwner.managerPage.sleeperName}
@@ -240,7 +241,7 @@ function ProfileHero({
       <div className="grid gap-0 lg:grid-cols-[24rem_minmax(0,1fr)]">
         <div className="relative min-h-[24rem] overflow-hidden bg-[var(--lcc-green-deep)]">
           <img
-            src={`/managers/${owner.avatarFilename}`}
+            src={getOwnerImagePath(owner.id)}
             alt={owner.nickname}
             className="h-full min-h-[24rem] w-full object-cover"
             style={{ objectPosition: "center 32%" }}

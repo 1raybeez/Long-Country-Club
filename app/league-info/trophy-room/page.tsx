@@ -28,10 +28,11 @@ import {
   type LccFinalPlacementEra,
   type LccOwnerPodiumTotals,
 } from "@/lib/lccFinalPlacements";
+import { DEFAULT_OWNER_IMAGE, getOwnerImagePath } from "@/lib/ownerImages";
 
 type TrophyRoomTab = (typeof TROPHY_ROOM_TABS)[number]["id"];
 
-const FALLBACK_AVATAR_SRC = "/Long Country Club FFL.png";
+const FALLBACK_AVATAR_SRC = DEFAULT_OWNER_IMAGE;
 
 const TROPHY_ROOM_TABS = [
   { id: "champions", label: "Champions", icon: Crown },
@@ -736,7 +737,7 @@ function formatSeasonList(seasons: readonly number[]) {
 }
 
 function getOwnerImageSrc(owner: LccOwner | undefined) {
-  return owner ? `/managers/${owner.avatarFilename}` : FALLBACK_AVATAR_SRC;
+  return owner ? getOwnerImagePath(owner.id) : FALLBACK_AVATAR_SRC;
 }
 
 function handleImageError(event: SyntheticEvent<HTMLImageElement>) {

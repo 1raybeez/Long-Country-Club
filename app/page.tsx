@@ -13,6 +13,7 @@ import {
   Zap,
 } from "lucide-react";
 import { LCC_LEAGUE_HISTORY_IDS } from "@/lib/leagueConstants";
+import { getOwnerImagePath } from "@/lib/ownerImages";
 
 const TYRONE_USER_ID = "466797853767888896";
 
@@ -424,7 +425,7 @@ function ChampionCard({
       <div className="mt-6 flex flex-col items-center text-center">
         <div className="h-36 w-36 overflow-hidden rounded-full border-4 border-[var(--lcc-border-strong)] bg-[var(--lcc-surface-muted)] shadow-[var(--lcc-shadow-soft)]">
           <img
-            src="/managers/Tyrone.png"
+            src={getOwnerImagePath("tyrone-poist")}
             className="h-full w-full object-cover"
             style={{ objectPosition: "center 32%" }}
             alt="Tyrone Poist"
