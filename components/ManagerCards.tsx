@@ -3,6 +3,7 @@
 'use client'; // 👈 THIS IS THE CRITICAL FIX: It allows local styling and interactivity
 
 import React from 'react';
+import { getOwnerImagePath } from '@/lib/ownerImages';
 
 // 1. DATA INTERFACE (Keep this here for type safety)
 interface ManagerData {
@@ -26,8 +27,8 @@ interface ManagerData {
 // 2. LEAGUE DATA (Paste your full array here)
 const MANAGER_METADATA: ManagerData[] = [
   // Full 12 entries here
-  { userId: "342828350391230464", name: "Ray", coOwners: ["Jeffrey Hudgins"], roles: ["Commissioner"], championships: 0, location: "Richmond", bio: "Greatest Commish Ever (self-proclaimed)...", photo: "/managers/Ray.png", favoriteTeam: "atl", mode: "Rebuild", rival: { name: "Wade", userId: "342838548870762496" }, tradingScale: 8, preferredContact: "Text", phone: "8046471100", currentWinnings: 0 },
-  { userId: "342850391018356736", name: "JD", championships: 1, location: "Richmond", bio: "Husband, Father, Architect, Artist, DJ...", photo: "/managers/JD.png", favoriteTeam: "nyj", mode: "Win Now", rival: { name: "Tommy", userId: "342849293037608960" }, tradingScale: 5, preferredContact: "Sleeper", phone: "9174821170", currentWinnings: 30 },
+  { userId: "342828350391230464", name: "Ray", coOwners: ["Jeffrey Hudgins"], roles: ["Commissioner"], championships: 0, location: "Richmond", bio: "Greatest Commish Ever (self-proclaimed)...", photo: getOwnerImagePath("ray-long"), favoriteTeam: "atl", mode: "Rebuild", rival: { name: "Wade", userId: "342838548870762496" }, tradingScale: 8, preferredContact: "Text", phone: "8046471100", currentWinnings: 0 },
+  { userId: "342850391018356736", name: "JD", championships: 1, location: "Richmond", bio: "Husband, Father, Architect, Artist, DJ...", photo: getOwnerImagePath("jd-wylie"), favoriteTeam: "nyj", mode: "Win Now", rival: { name: "Tommy", userId: "342849293037608960" }, tradingScale: 5, preferredContact: "Sleeper", phone: "9174821170", currentWinnings: 30 },
   // ... rest of the managers
 ];
 

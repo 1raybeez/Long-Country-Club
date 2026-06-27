@@ -3,6 +3,7 @@
 import React from 'react';
 import { getChampionDetails } from '@/lib/sleeper';
 import { LCC_CURRENT_LEAGUE_ID } from '@/lib/leagueConstants';
+import { getOwnerImagePath } from '@/lib/ownerImages';
 
 const styles = {
   sidebarSection: 'home-sidebar-wrapper rounded-2xl bg-[#1A472A] p-6 text-white shadow-sm',
@@ -28,7 +29,7 @@ export default async function HomeSidebar() {
     champion = {
       name: "Tyrone Poist",
       teamName: "LCC Champion",
-      avatar: "/managers/Tyrone.png" 
+      avatar: getOwnerImagePath("tyrone-poist")
     };
   }
   
