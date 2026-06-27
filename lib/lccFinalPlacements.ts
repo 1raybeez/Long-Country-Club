@@ -1,3 +1,5 @@
+import { resolveOwnerId } from "./ownerRegistry";
+
 export type LccFinalPlacementEra = "two-keeper" | "dynasty";
 
 export interface LccFinalPlacementSeason {
@@ -82,41 +84,13 @@ export interface LccOwnerToiletBowlTotals {
   readonly seasons: readonly number[];
 }
 
-export const LCC_FINAL_PLACEMENT_ALIAS_TO_OWNER_ID = {
-  Ray: "ray-long",
-  Bill: "bill-gross",
-  KW: "keith-winder",
-  EP: "earl-perkins",
-  Rob: "rob-jenkins",
-  Jeffrey: "jeffrey-hudgins",
-  Ben: "ben-isbell",
-  Loren: "loren-michaels",
-  Amart: "anthony-martinez",
-  "Mike M": "mike-mcburnie",
-  "Mike E": "mike-estes",
-  Tyrone: "tyrone-poist",
-  Dan: "dan-lowery",
-  "Dave B": "david-beasley",
-  "Dave G": "david-gross",
-  "Chris H": "chris-hofstede",
-  "Chris M": "chris-morgan",
-  "Chris B": "chris-boschen",
-  Matt: "matt-hinkle",
-  DJ: "dj-king",
-  "Mike L": "mike-lastfogel",
-  Tommy: "tommy-eckert",
-  KD: "keith-douglas",
-  JD: "jd-wylie",
-  Junior: "junior-duke",
-  Jay: "jay-g",
-  Bernie: "bernie-stewart",
-  BJ: "bj",
-} as const satisfies Record<string, string>;
-
 // Compatibility only: current lccOwners.ts still uses shorter IDs for these
-// two retired owners. The canonical placement map above follows the history
-// source alias requirements.
-const LCC_OWNER_ID_COMPATIBILITY_ALIASES: Record<string, string> = {
+// two retired owners. Final-placement outputs keep the historical IDs used
+// before the shared registry existed.
+const LCC_FINAL_PLACEMENT_OWNER_ID_COMPATIBILITY_ALIASES: Record<
+  string,
+  string
+> = {
   junior: "junior-duke",
   jay: "jay-g",
 };
@@ -520,6 +494,9 @@ export const LCC_FINAL_PLACEMENTS = [
   },
 ] as const satisfies readonly LccFinalPlacementSeason[];
 
+export const LCC_FINAL_PLACEMENT_ALIAS_TO_OWNER_ID =
+  createFinalPlacementAliasMap();
+
 export const LCC_FINAL_PLACEMENT_SEASONS = LCC_FINAL_PLACEMENTS.map(
   ({ season }) => season
 );
@@ -834,13 +811,25 @@ type MutableLccOwnerToiletBowlTotals = {
 };
 
 function getLccOwnerIdByPlacementAlias(alias: string): string | undefined {
-  return LCC_FINAL_PLACEMENT_ALIAS_TO_OWNER_ID[
-    alias as keyof typeof LCC_FINAL_PLACEMENT_ALIAS_TO_OWNER_ID
-  ];
+  const ownerId = resolveOwnerId(alias);
+
+  return ownerId ? normalizeLccOwnerId(ownerId) : undefined;
 }
 
 function normalizeLccOwnerId(ownerId: string): string {
-  return LCC_OWNER_ID_COMPATIBILITY_ALIASES[ownerId] ?? ownerId;
+  return LCC_FINAL_PLACEMENT_OWNER_ID_COMPATIBILITY_ALIASES[ownerId] ?? ownerId;
+}
+
+function createFinalPlacementAliasMap(): Record<string, string> {
+  return Object.fromEntries(
+    Array.from(
+      new Set(LCC_FINAL_PLACEMENTS.flatMap(({ placements }) => placements))
+    ).flatMap((alias) => {
+      const ownerId = getLccOwnerIdByPlacementAlias(alias);
+
+      return ownerId ? [[alias, ownerId]] : [];
+    })
+  );
 }
 
 function getSeasonsByPlace(
