@@ -1,0 +1,21 @@
+{
+  "season": 2017,
+  "leagueRules": {
+    "entryFee": null,
+    "newOwnerFee": null,
+    "futureDeposit": null,
+    "weeklyHighPayout": null,
+    "regularSeasonWeeks": null,
+    "playoffPayouts": {
+      "championBase": null,
+      "runnerUp": null,
+      "thirdPlace": null,
+      "fourthPlace": null
+    },
+    "ringReserve": null,
+    "actualRingCost": null
+  },
+  "managers": [],
+  "awards": [],
+  "notes": []
+}
