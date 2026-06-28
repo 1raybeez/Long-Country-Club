@@ -1,7 +1,6 @@
 import standingsIndex from '../../data/history/standings/index.json';
 import type { SeasonStandingData, StandingRecord } from '../types/standing';
 
-// TODO: Migrate canonical final standings from data/history/lcc-final-standings.csv.
 const STANDINGS = standingsIndex as readonly SeasonStandingData[];
 
 export function loadAllStandings(): readonly SeasonStandingData[] {
