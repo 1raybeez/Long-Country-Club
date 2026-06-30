@@ -140,3 +140,8 @@ function uniqueAliases(values: readonly string[]): readonly string[] {
 function normalizeOwnerId(ownerId: string): string {
   return OWNER_ID_COMPATIBILITY_ALIASES[ownerId] ?? ownerId;
 }
+export function getOwnerById(
+  ownerId: string
+): OwnerRegistryEntry | null {
+  return OWNER_REGISTRY_BY_ID.get(normalizeOwnerId(ownerId)) ?? null;
+}
