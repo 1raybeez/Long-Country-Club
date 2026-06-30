@@ -1,4 +1,4 @@
-import { getOwnerTimeline } from "../lib/history/ownerTimeline";
+import { getOwnerTimeline } from "../lib/history/ownerHistory";
 import { getOwnerById } from "../lib/ownerRegistry";
 
 const ownerIds = ["ray-long", "bill-gross", "tyrone-poist", "mike-mcburnie"];
