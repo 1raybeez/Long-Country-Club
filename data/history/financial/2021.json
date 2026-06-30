@@ -25,7 +25,8 @@
       "balance": -15,
       "notes": [
         "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $50; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $60; Total Earned: -$15."
-      ]
+      ],
+      "managerId": "anthony-martinez"
     },
     {
       "managerName": "Ben",
@@ -36,7 +37,8 @@
       "balance": -25,
       "notes": [
         "Weekly: 5 ($50); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $50; Total Earned: -$25."
-      ]
+      ],
+      "managerId": "ben-isbell"
     },
     {
       "managerName": "Bill",
@@ -47,7 +49,8 @@
       "balance": -55,
       "notes": [
         "Weekly: 2 ($20); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $20; Total Earned: -$55."
-      ]
+      ],
+      "managerId": "bill-gross"
     },
     {
       "managerName": "Dan",
@@ -58,7 +61,8 @@
       "balance": -75,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $0; Total Earned: -$75."
-      ]
+      ],
+      "managerId": "dan-lowery"
     },
     {
       "managerName": "Earl",
@@ -69,7 +73,8 @@
       "balance": -40,
       "notes": [
         "Weekly: 1 ($10); 4th Place: $25; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $35; Total Earned: -$40."
-      ]
+      ],
+      "managerId": "earl-perkins"
     },
     {
       "managerName": "Jeffrey",
@@ -80,7 +85,8 @@
       "balance": -75,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $0; Total Earned: -$75."
-      ]
+      ],
+      "managerId": "jeffrey-hudgins"
     },
     {
       "managerName": "KW",
@@ -91,7 +97,8 @@
       "balance": -75,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $0; Total Earned: -$75."
-      ]
+      ],
+      "managerId": "keith-winder"
     },
     {
       "managerName": "Loren",
@@ -102,7 +109,8 @@
       "balance": 215,
       "notes": [
         "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $280; Rollover to 2022: $25; Amount Won: $290; Total Earned: $215."
-      ]
+      ],
+      "managerId": "loren-michaels"
     },
     {
       "managerName": "Mike",
@@ -113,7 +121,8 @@
       "balance": -75,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $0; Total Earned: -$75."
-      ]
+      ],
+      "managerId": "mike-mcburnie"
     },
     {
       "managerName": "Ray",
@@ -124,7 +133,8 @@
       "balance": -65,
       "notes": [
         "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $10; Total Earned: -$65."
-      ]
+      ],
+      "managerId": "ray-long"
     },
     {
       "managerName": "Rob",
@@ -135,7 +145,8 @@
       "balance": 55,
       "notes": [
         "Weekly: 3 ($30); 4th Place: $0; 3rd Place: $0; 2nd Place: $100; 1st Place: $0; Rollover to 2022: $25; Amount Won: $130; Total Earned: $55."
-      ]
+      ],
+      "managerId": "rob-jenkins"
     },
     {
       "managerName": "Tyrone",
@@ -146,7 +157,8 @@
       "balance": -75,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2022: $25; Amount Won: $0; Total Earned: -$75."
-      ]
+      ],
+      "managerId": "tyrone-poist"
     }
   ],
   "awards": [
@@ -155,77 +167,88 @@
       "type": "weeklyHigh",
       "managerName": "Amart",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "anthony-martinez"
     },
     {
       "id": "2021-amart-third-place",
       "type": "thirdPlace",
       "managerName": "Amart",
       "amount": 50,
-      "description": "3rd Place payout."
+      "description": "3rd Place payout.",
+      "managerId": "anthony-martinez"
     },
     {
       "id": "2021-ben-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Ben",
       "amount": 50,
-      "description": "5 weekly payouts at $10 each."
+      "description": "5 weekly payouts at $10 each.",
+      "managerId": "ben-isbell"
     },
     {
       "id": "2021-bill-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Bill",
       "amount": 20,
-      "description": "2 weekly payouts at $10 each."
+      "description": "2 weekly payouts at $10 each.",
+      "managerId": "bill-gross"
     },
     {
       "id": "2021-earl-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Earl",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "earl-perkins"
     },
     {
       "id": "2021-earl-fourth-place",
       "type": "fourthPlace",
       "managerName": "Earl",
       "amount": 25,
-      "description": "4th Place payout."
+      "description": "4th Place payout.",
+      "managerId": "earl-perkins"
     },
     {
       "id": "2021-loren-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Loren",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "loren-michaels"
     },
     {
       "id": "2021-loren-first-place",
       "type": "champion",
       "managerName": "Loren",
       "amount": 280,
-      "description": "1st Place payout."
+      "description": "1st Place payout.",
+      "managerId": "loren-michaels"
     },
     {
       "id": "2021-ray-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Ray",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "ray-long"
     },
     {
       "id": "2021-rob-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Rob",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each."
+      "description": "3 weekly payouts at $10 each.",
+      "managerId": "rob-jenkins"
     },
     {
       "id": "2021-rob-second-place",
       "type": "runnerUp",
       "managerName": "Rob",
       "amount": 100,
-      "description": "2nd Place payout."
+      "description": "2nd Place payout.",
+      "managerId": "rob-jenkins"
     }
   ],
   "notes": [

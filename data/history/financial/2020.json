@@ -25,7 +25,8 @@
       "balance": -27,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $25; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $25; Total Earned: -$27."
-      ]
+      ],
+      "managerId": "anthony-martinez"
     },
     {
       "managerName": "Ben",
@@ -36,7 +37,8 @@
       "balance": -52,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $0; Total Earned: -$52."
-      ]
+      ],
+      "managerId": "ben-isbell"
     },
     {
       "managerName": "Bill",
@@ -47,7 +49,8 @@
       "balance": -52,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $0; Total Earned: -$52."
-      ]
+      ],
+      "managerId": "bill-gross"
     },
     {
       "managerName": "Dan",
@@ -58,7 +61,8 @@
       "balance": -32,
       "notes": [
         "Weekly: 2 ($20); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $20; Total Earned: -$32."
-      ]
+      ],
+      "managerId": "dan-lowery"
     },
     {
       "managerName": "Earl",
@@ -69,7 +73,8 @@
       "balance": 78,
       "notes": [
         "Weekly: 3 ($30); 4th Place: $0; 3rd Place: $0; 2nd Place: $100; 1st Place: $0; Amount Won: $130; Total Earned: $78."
-      ]
+      ],
+      "managerId": "earl-perkins"
     },
     {
       "managerName": "Jeffrey",
@@ -80,7 +85,8 @@
       "balance": -42,
       "notes": [
         "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $10; Total Earned: -$42."
-      ]
+      ],
+      "managerId": "jeffrey-hudgins"
     },
     {
       "managerName": "KW",
@@ -91,7 +97,8 @@
       "balance": 258,
       "notes": [
         "Weekly: 2 ($20); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $290; Amount Won: $310; Total Earned: $258."
-      ]
+      ],
+      "managerId": "keith-winder"
     },
     {
       "managerName": "Loren",
@@ -102,7 +109,8 @@
       "balance": -42,
       "notes": [
         "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $10; Total Earned: -$42."
-      ]
+      ],
+      "managerId": "loren-michaels"
     },
     {
       "managerName": "Mike",
@@ -113,7 +121,8 @@
       "balance": -22,
       "notes": [
         "Weekly: 3 ($30); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $30; Total Earned: -$22."
-      ]
+      ],
+      "managerId": "mike-mcburnie"
     },
     {
       "managerName": "Ray",
@@ -124,7 +133,8 @@
       "balance": -52,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $0; Total Earned: -$52."
-      ]
+      ],
+      "managerId": "ray-long"
     },
     {
       "managerName": "Rob",
@@ -135,7 +145,8 @@
       "balance": 8,
       "notes": [
         "Weekly: 1 ($10); 4th Place: $0; 3rd Place: $50; 2nd Place: $0; 1st Place: $0; Amount Won: $60; Total Earned: $8."
-      ]
+      ],
+      "managerId": "rob-jenkins"
     },
     {
       "managerName": "Tyrone",
@@ -146,7 +157,8 @@
       "balance": -52,
       "notes": [
         "Weekly: 0 ($0); 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Amount Won: $0; Total Earned: -$52."
-      ]
+      ],
+      "managerId": "tyrone-poist"
     }
   ],
   "awards": [
@@ -155,77 +167,88 @@
       "type": "fourthPlace",
       "managerName": "Amart",
       "amount": 25,
-      "description": "4th Place payout."
+      "description": "4th Place payout.",
+      "managerId": "anthony-martinez"
     },
     {
       "id": "2020-dan-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Dan",
       "amount": 20,
-      "description": "2 weekly payouts at $10 each."
+      "description": "2 weekly payouts at $10 each.",
+      "managerId": "dan-lowery"
     },
     {
       "id": "2020-earl-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Earl",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each."
+      "description": "3 weekly payouts at $10 each.",
+      "managerId": "earl-perkins"
     },
     {
       "id": "2020-earl-second-place",
       "type": "runnerUp",
       "managerName": "Earl",
       "amount": 100,
-      "description": "2nd Place payout."
+      "description": "2nd Place payout.",
+      "managerId": "earl-perkins"
     },
     {
       "id": "2020-jeffrey-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Jeffrey",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "jeffrey-hudgins"
     },
     {
       "id": "2020-kw-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "KW",
       "amount": 20,
-      "description": "2 weekly payouts at $10 each."
+      "description": "2 weekly payouts at $10 each.",
+      "managerId": "keith-winder"
     },
     {
       "id": "2020-kw-first-place",
       "type": "champion",
       "managerName": "KW",
       "amount": 290,
-      "description": "1st Place payout."
+      "description": "1st Place payout.",
+      "managerId": "keith-winder"
     },
     {
       "id": "2020-loren-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Loren",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "loren-michaels"
     },
     {
       "id": "2020-mike-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Mike",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each."
+      "description": "3 weekly payouts at $10 each.",
+      "managerId": "mike-mcburnie"
     },
     {
       "id": "2020-rob-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Rob",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "rob-jenkins"
     },
     {
       "id": "2020-rob-third-place",
       "type": "thirdPlace",
       "managerName": "Rob",
       "amount": 50,
-      "description": "3rd Place payout."
+      "description": "3rd Place payout.",
+      "managerId": "rob-jenkins"
     }
   ],
   "notes": [

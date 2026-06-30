@@ -25,7 +25,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "matt-hinkle"
     },
     {
       "managerName": "Ben",
@@ -36,7 +37,8 @@
       "balance": -20,
       "notes": [
         "Weekly: 3 ($30); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $0; Win Finals: $0; Amount Won: $30; Total Earned: -$20."
-      ]
+      ],
+      "managerId": "ben-isbell"
     },
     {
       "managerName": "Jeffrey",
@@ -47,7 +49,8 @@
       "balance": 55,
       "notes": [
         "Weekly: 3 ($30); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $75; Win Finals: blank in screenshot; Amount Won: $105; Total Earned: $55."
-      ]
+      ],
+      "managerId": "jeffrey-hudgins"
     },
     {
       "managerName": "Tyrone",
@@ -58,7 +61,8 @@
       "balance": -40,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
-      ]
+      ],
+      "managerId": "tyrone-poist"
     },
     {
       "managerName": "Ray",
@@ -69,7 +73,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "ray-long"
     },
     {
       "managerName": "Loren",
@@ -80,7 +85,8 @@
       "balance": -30,
       "notes": [
         "Weekly: 2 ($20); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $20; Total Earned: -$30."
-      ]
+      ],
+      "managerId": "loren-michaels"
     },
     {
       "managerName": "Rob",
@@ -91,7 +97,8 @@
       "balance": -40,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
-      ]
+      ],
+      "managerId": "rob-jenkins"
     },
     {
       "managerName": "Bill",
@@ -102,7 +109,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "bill-gross"
     },
     {
       "managerName": "KW",
@@ -113,7 +121,8 @@
       "balance": -40,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
-      ]
+      ],
+      "managerId": "keith-winder"
     },
     {
       "managerName": "Mike",
@@ -124,7 +133,8 @@
       "balance": 45,
       "notes": [
         "Weekly: 2 ($20); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $75; Win Finals: blank in screenshot; Amount Won: $95; Total Earned: $45."
-      ]
+      ],
+      "managerId": "mike-mcburnie"
     },
     {
       "managerName": "Earl",
@@ -135,7 +145,8 @@
       "balance": -40,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
-      ]
+      ],
+      "managerId": "earl-perkins"
     },
     {
       "managerName": "Dan",
@@ -146,7 +157,8 @@
       "balance": -40,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $25 shown but excluded from Amount Won; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
-      ]
+      ],
+      "managerId": "dan-lowery"
     }
   ],
   "awards": [
@@ -155,77 +167,88 @@
       "type": "weeklyHigh",
       "managerName": "Ben",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each."
+      "description": "3 weekly payouts at $10 each.",
+      "managerId": "ben-isbell"
     },
     {
       "id": "2019-jeffrey-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Jeffrey",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each."
+      "description": "3 weekly payouts at $10 each.",
+      "managerId": "jeffrey-hudgins"
     },
     {
       "id": "2019-jeffrey-advancing-to-finals",
       "type": "other",
       "managerName": "Jeffrey",
       "amount": 75,
-      "description": "Advancing to Finals payout."
+      "description": "Advancing to Finals payout.",
+      "managerId": "jeffrey-hudgins"
     },
     {
       "id": "2019-tyrone-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Tyrone",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "tyrone-poist"
     },
     {
       "id": "2019-loren-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Loren",
       "amount": 20,
-      "description": "2 weekly payouts at $10 each."
+      "description": "2 weekly payouts at $10 each.",
+      "managerId": "loren-michaels"
     },
     {
       "id": "2019-rob-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Rob",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "rob-jenkins"
     },
     {
       "id": "2019-kw-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "KW",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "keith-winder"
     },
     {
       "id": "2019-mike-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Mike",
       "amount": 20,
-      "description": "2 weekly payouts at $10 each."
+      "description": "2 weekly payouts at $10 each.",
+      "managerId": "mike-mcburnie"
     },
     {
       "id": "2019-mike-advancing-to-finals",
       "type": "other",
       "managerName": "Mike",
       "amount": 75,
-      "description": "Advancing to Finals payout."
+      "description": "Advancing to Finals payout.",
+      "managerId": "mike-mcburnie"
     },
     {
       "id": "2019-earl-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Earl",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "earl-perkins"
     },
     {
       "id": "2019-dan-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Dan",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "dan-lowery"
     }
   ],
   "notes": [

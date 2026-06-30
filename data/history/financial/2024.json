@@ -25,7 +25,8 @@
       "balance": -25,
       "notes": [
         "Weekly: 2 ($20); Champ Ring: $0; 4th Place: $25; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $25; Total Earned: -$25."
-      ]
+      ],
+      "managerId": "anthony-martinez"
     },
     {
       "managerName": "Ben",
@@ -36,7 +37,8 @@
       "balance": 50,
       "notes": [
         "Weekly: 3 ($30); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $100; 1st Place: $0; Rollover to 2023: $0; Amount Won: $100; Total Earned: $50."
-      ]
+      ],
+      "managerId": "ben-isbell"
     },
     {
       "managerName": "Bill",
@@ -47,7 +49,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "bill-gross"
     },
     {
       "managerName": "Mike E",
@@ -59,7 +62,8 @@
       "notes": [
         "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $50; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50.",
         "The screenshot shows $50 in the 3rd Place column for Mike E, but the same row shows Amount Won as $0."
-      ]
+      ],
+      "managerId": "mike-estes"
     },
     {
       "managerName": "EP",
@@ -70,7 +74,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "earl-perkins"
     },
     {
       "managerName": "Jeffrey",
@@ -81,7 +86,8 @@
       "balance": 235,
       "notes": [
         "Weekly: 3 ($30); Champ Ring: $18; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $267; Rollover to 2023: $0; Amount Won: $285; Total Earned: $235."
-      ]
+      ],
+      "managerId": "jeffrey-hudgins"
     },
     {
       "managerName": "KW",
@@ -92,7 +98,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "keith-winder"
     },
     {
       "managerName": "Loren",
@@ -103,7 +110,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 3 ($30); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "loren-michaels"
     },
     {
       "managerName": "Mike M",
@@ -115,7 +123,8 @@
       "notes": [
         "Weekly: 1 ($10); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $205; Total Earned: $155.",
         "The screenshot shows Amount Won as $205 for Mike M while all visible placement and Champ Ring columns in that row show $0."
-      ]
+      ],
+      "managerId": "mike-mcburnie"
     },
     {
       "managerName": "Ray",
@@ -126,7 +135,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "ray-long"
     },
     {
       "managerName": "Rob",
@@ -137,7 +147,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "rob-jenkins"
     },
     {
       "managerName": "Tyrone",
@@ -148,7 +159,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 2 ($20); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "tyrone-poist"
     }
   ],
   "awards": [
@@ -157,77 +169,88 @@
       "type": "weeklyHigh",
       "managerName": "Amart",
       "amount": 20,
-      "description": "2 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+      "description": "2 weekly payouts at $10 each; weekly payout shown separately from Amount Won.",
+      "managerId": "anthony-martinez"
     },
     {
       "id": "2024-amart-fourth-place",
       "type": "fourthPlace",
       "managerName": "Amart",
       "amount": 25,
-      "description": "4th Place payout."
+      "description": "4th Place payout.",
+      "managerId": "anthony-martinez"
     },
     {
       "id": "2024-ben-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Ben",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won.",
+      "managerId": "ben-isbell"
     },
     {
       "id": "2024-ben-second-place",
       "type": "runnerUp",
       "managerName": "Ben",
       "amount": 100,
-      "description": "2nd Place payout."
+      "description": "2nd Place payout.",
+      "managerId": "ben-isbell"
     },
     {
       "id": "2024-jeffrey-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Jeffrey",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won.",
+      "managerId": "jeffrey-hudgins"
     },
     {
       "id": "2024-jeffrey-champ-ring",
       "type": "ringReserve",
       "managerName": "Jeffrey",
       "amount": 18,
-      "description": "Champ Ring amount shown in row."
+      "description": "Champ Ring amount shown in row.",
+      "managerId": "jeffrey-hudgins"
     },
     {
       "id": "2024-jeffrey-first-place",
       "type": "champion",
       "managerName": "Jeffrey",
       "amount": 267,
-      "description": "1st Place payout."
+      "description": "1st Place payout.",
+      "managerId": "jeffrey-hudgins"
     },
     {
       "id": "2024-loren-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Loren",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+      "description": "3 weekly payouts at $10 each; weekly payout shown separately from Amount Won.",
+      "managerId": "loren-michaels"
     },
     {
       "id": "2024-mike-m-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Mike M",
       "amount": 10,
-      "description": "1 weekly payout at $10; weekly payout shown separately from Amount Won."
+      "description": "1 weekly payout at $10; weekly payout shown separately from Amount Won.",
+      "managerId": "mike-mcburnie"
     },
     {
       "id": "2024-mike-m-amount-won",
       "type": "other",
       "managerName": "Mike M",
       "amount": 205,
-      "description": "Amount Won shown as $205 without a matching visible placement or Champ Ring column value."
+      "description": "Amount Won shown as $205 without a matching visible placement or Champ Ring column value.",
+      "managerId": "mike-mcburnie"
     },
     {
       "id": "2024-tyrone-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Tyrone",
       "amount": 20,
-      "description": "2 weekly payouts at $10 each; weekly payout shown separately from Amount Won."
+      "description": "2 weekly payouts at $10 each; weekly payout shown separately from Amount Won.",
+      "managerId": "tyrone-poist"
     }
   ],
   "notes": [

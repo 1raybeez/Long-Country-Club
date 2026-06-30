@@ -25,7 +25,8 @@
       "balance": 5,
       "notes": [
         "Weekly: 3 ($30); Advance to Playoffs: $25; Advancing to Finals: $0; Win Finals: $0; Amount Won: $55; Total Earned: $5."
-      ]
+      ],
+      "managerId": "matt-hinkle"
     },
     {
       "managerName": "Ben",
@@ -36,7 +37,8 @@
       "balance": 100,
       "notes": [
         "Weekly: 5 ($50); Advance to Playoffs: $25; Advancing to Finals: $75; Win Finals: blank in screenshot; Amount Won: $150; Total Earned: $100."
-      ]
+      ],
+      "managerId": "ben-isbell"
     },
     {
       "managerName": "Jeffrey",
@@ -47,7 +49,8 @@
       "balance": -20,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $20; Advancing to Finals: $0; Win Finals: $0; Amount Won: $30; Total Earned: -$20."
-      ]
+      ],
+      "managerId": "jeffrey-hudgins"
     },
     {
       "managerName": "Tyrone",
@@ -58,7 +61,8 @@
       "balance": 70,
       "notes": [
         "Weekly: 2 ($20); Advance to Playoffs: $25; Advancing to Finals: $75; Win Finals: blank in screenshot; Amount Won: $120; Total Earned: $70."
-      ]
+      ],
+      "managerId": "tyrone-poist"
     },
     {
       "managerName": "Ray",
@@ -69,7 +73,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "ray-long"
     },
     {
       "managerName": "Loren",
@@ -80,7 +85,8 @@
       "balance": -15,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $25; Advancing to Finals: $0; Win Finals: $0; Amount Won: $35; Total Earned: -$15."
-      ]
+      ],
+      "managerId": "loren-michaels"
     },
     {
       "managerName": "Rob",
@@ -91,7 +97,8 @@
       "balance": -15,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $25; Advancing to Finals: $0; Win Finals: $0; Amount Won: $35; Total Earned: -$15."
-      ]
+      ],
+      "managerId": "rob-jenkins"
     },
     {
       "managerName": "Bill",
@@ -102,7 +109,8 @@
       "balance": -15,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $25; Advancing to Finals: $0; Win Finals: $0; Amount Won: $35; Total Earned: -$15."
-      ]
+      ],
+      "managerId": "bill-gross"
     },
     {
       "managerName": "KW",
@@ -113,7 +121,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "keith-winder"
     },
     {
       "managerName": "David B",
@@ -124,7 +133,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "david-beasley"
     },
     {
       "managerName": "Earl",
@@ -135,7 +145,8 @@
       "balance": -50,
       "notes": [
         "Weekly: 0 ($0); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $0; Total Earned: -$50."
-      ]
+      ],
+      "managerId": "earl-perkins"
     },
     {
       "managerName": "Dan",
@@ -146,7 +157,8 @@
       "balance": -40,
       "notes": [
         "Weekly: 1 ($10); Advance to Playoffs: $0; Advancing to Finals: $0; Win Finals: $0; Amount Won: $10; Total Earned: -$40."
-      ]
+      ],
+      "managerId": "dan-lowery"
     }
   ],
   "awards": [
@@ -155,119 +167,136 @@
       "type": "weeklyHigh",
       "managerName": "Matt",
       "amount": 30,
-      "description": "3 weekly payouts at $10 each."
+      "description": "3 weekly payouts at $10 each.",
+      "managerId": "matt-hinkle"
     },
     {
       "id": "2016-matt-advance-to-playoffs",
       "type": "other",
       "managerName": "Matt",
       "amount": 25,
-      "description": "Advance to Playoffs payout."
+      "description": "Advance to Playoffs payout.",
+      "managerId": "matt-hinkle"
     },
     {
       "id": "2016-ben-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Ben",
       "amount": 50,
-      "description": "5 weekly payouts at $10 each."
+      "description": "5 weekly payouts at $10 each.",
+      "managerId": "ben-isbell"
     },
     {
       "id": "2016-ben-advance-to-playoffs",
       "type": "other",
       "managerName": "Ben",
       "amount": 25,
-      "description": "Advance to Playoffs payout."
+      "description": "Advance to Playoffs payout.",
+      "managerId": "ben-isbell"
     },
     {
       "id": "2016-ben-advancing-to-finals",
       "type": "other",
       "managerName": "Ben",
       "amount": 75,
-      "description": "Advancing to Finals payout."
+      "description": "Advancing to Finals payout.",
+      "managerId": "ben-isbell"
     },
     {
       "id": "2016-jeffrey-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Jeffrey",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "jeffrey-hudgins"
     },
     {
       "id": "2016-jeffrey-advance-to-playoffs",
       "type": "other",
       "managerName": "Jeffrey",
       "amount": 20,
-      "description": "Advance to Playoffs payout shown as $20."
+      "description": "Advance to Playoffs payout shown as $20.",
+      "managerId": "jeffrey-hudgins"
     },
     {
       "id": "2016-tyrone-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Tyrone",
       "amount": 20,
-      "description": "2 weekly payouts at $10 each."
+      "description": "2 weekly payouts at $10 each.",
+      "managerId": "tyrone-poist"
     },
     {
       "id": "2016-tyrone-advance-to-playoffs",
       "type": "other",
       "managerName": "Tyrone",
       "amount": 25,
-      "description": "Advance to Playoffs payout."
+      "description": "Advance to Playoffs payout.",
+      "managerId": "tyrone-poist"
     },
     {
       "id": "2016-tyrone-advancing-to-finals",
       "type": "other",
       "managerName": "Tyrone",
       "amount": 75,
-      "description": "Advancing to Finals payout."
+      "description": "Advancing to Finals payout.",
+      "managerId": "tyrone-poist"
     },
     {
       "id": "2016-loren-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Loren",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "loren-michaels"
     },
     {
       "id": "2016-loren-advance-to-playoffs",
       "type": "other",
       "managerName": "Loren",
       "amount": 25,
-      "description": "Advance to Playoffs payout."
+      "description": "Advance to Playoffs payout.",
+      "managerId": "loren-michaels"
     },
     {
       "id": "2016-rob-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Rob",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "rob-jenkins"
     },
     {
       "id": "2016-rob-advance-to-playoffs",
       "type": "other",
       "managerName": "Rob",
       "amount": 25,
-      "description": "Advance to Playoffs payout."
+      "description": "Advance to Playoffs payout.",
+      "managerId": "rob-jenkins"
     },
     {
       "id": "2016-bill-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Bill",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "bill-gross"
     },
     {
       "id": "2016-bill-advance-to-playoffs",
       "type": "other",
       "managerName": "Bill",
       "amount": 25,
-      "description": "Advance to Playoffs payout."
+      "description": "Advance to Playoffs payout.",
+      "managerId": "bill-gross"
     },
     {
       "id": "2016-dan-weekly-payout",
       "type": "weeklyHigh",
       "managerName": "Dan",
       "amount": 10,
-      "description": "1 weekly payout at $10."
+      "description": "1 weekly payout at $10.",
+      "managerId": "dan-lowery"
     }
   ],
   "notes": [
