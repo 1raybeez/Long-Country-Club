@@ -13,6 +13,7 @@ import {
   Swords,
   Trophy,
   UserRound,
+  WalletCards,
 } from "lucide-react";
 import {
   ALL_LCC_OWNERS,
@@ -23,11 +24,9 @@ import {
   getLccOwnerProfileSlug,
   type LccOwner,
 } from "@/lib/lccOwners";
-import {
-  LCC_LATEST_COMPLETED_FINAL_PLACEMENT_SEASON,
-  getLccOwnerCareerSummary,
-  type LccOwnerCareerSummary,
-} from "@/lib/lccFinalPlacements";
+import { getOwnerTimeline } from "@/lib/history/ownerHistory";
+import { getAwardsByOwner } from "@/lib/history/awards";
+import { getRecordsByOwner } from "@/lib/history/records";
 import { getOwnerImagePath } from "@/lib/ownerImages";
 import { ContactChip } from "@/components/ui/ContactChip";
 import { ProfileStatCard } from "@/components/ui/ProfileStatCard";
@@ -62,15 +61,27 @@ export default async function OwnerProfilePage({
   }
 
   const teamLabel = owner.status === "active" ? "Current Team" : "Last Team";
-  const careerSummary = getLccOwnerCareerSummary(owner.id);
-  const tenure = formatTenure(owner, careerSummary);
+  const ownerHistory = getOwnerTimeline(owner.id);
+  const careerSummary = ownerHistory.career;
+  const tenure = formatTenure(owner, careerSummary.activeSeasonCount);
   const almanacProfile = owner.almanacProfile;
+  const awards = getAwardsByOwner(owner.id);
+  const records = getRecordsByOwner(owner.id);
   const rivalOwners = getRivalOwnerIds(almanacProfile)
     .map((ownerId) => getLccOwnerById(ownerId))
     .filter((rivalOwner): rivalOwner is LccOwner => Boolean(rivalOwner));
   const rivalSectionTitle =
     rivalOwners.length === 1 ? "Primary Rival" : "Rivals";
-  const timelineItems = buildTimelineItems(owner, tenure, careerSummary);
+  const timelineItems = buildTimelineItems(owner, tenure, ownerHistory.seasons);
+  const totalPayouts = ownerHistory.seasons.reduce(
+    (total, season) => total + (season.payoutsReceived ?? 0),
+    0
+  );
+  const netTotal = ownerHistory.seasons.reduce(
+    (total, season) => total + (season.balance ?? 0),
+    0
+  );
+
   const hasFanProfile = Boolean(
     almanacProfile?.favoriteCollegeTeam ||
       almanacProfile?.favoriteNFLTeam ||
@@ -108,11 +119,36 @@ export default async function OwnerProfilePage({
         <section className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_22rem]">
           <div className="grid gap-5">
             <ProfileSection
-              title="Timeline / Legacy"
+              title="Almanac Timeline"
               icon={<History className="h-4 w-4" aria-hidden="true" />}
             >
               <ProfileTimeline items={timelineItems} />
             </ProfileSection>
+
+            <ProfileSection
+              title="Season-by-Season History"
+              icon={<Trophy className="h-4 w-4" aria-hidden="true" />}
+            >
+              <SeasonHistoryTable seasons={ownerHistory.seasons} />
+            </ProfileSection>
+
+            {awards.length > 0 && (
+              <ProfileSection
+                title="Awards"
+                icon={<Award className="h-4 w-4" aria-hidden="true" />}
+              >
+                <AwardGrid awards={awards.slice(0, 12)} />
+              </ProfileSection>
+            )}
+
+            {records.length > 0 && (
+              <ProfileSection
+                title="Records"
+                icon={<Medal className="h-4 w-4" aria-hidden="true" />}
+              >
+                <RecordGrid records={records} />
+              </ProfileSection>
+            )}
 
             {rivalOwners.length > 0 && (
               <ProfileSection
@@ -178,12 +214,33 @@ export default async function OwnerProfilePage({
                   />
                 )}
                 <ProfileStatCard
+                  label="Avg Finish"
+                  value={careerSummary.averageFinish?.toString() ?? "—"}
+                  icon={<History className="h-4 w-4" aria-hidden="true" />}
+                />
+                <ProfileStatCard
+                  label="Playoffs"
+                  value={String(careerSummary.playoffAppearances)}
+                  icon={<Trophy className="h-4 w-4" aria-hidden="true" />}
+                />
+                <ProfileStatCard
                   label="LCC Tenure"
                   value={tenure}
                   icon={<History className="h-4 w-4" aria-hidden="true" />}
                   wide
                   smallValue
                 />
+              </div>
+            </ProfileSection>
+
+            <ProfileSection
+              title="Financial Snapshot"
+              icon={<WalletCards className="h-4 w-4" aria-hidden="true" />}
+              compact
+            >
+              <div className="grid grid-cols-2 gap-2.5">
+                <SidebarFact label="Recorded Payouts" value={formatMoney(totalPayouts)} />
+                <SidebarFact label="Net" value={formatMoney(netTotal)} />
               </div>
             </ProfileSection>
 
@@ -290,6 +347,113 @@ function ProfileHero({
         </div>
       </div>
     </section>
+  );
+}
+
+function SeasonHistoryTable({
+  seasons,
+}: {
+  seasons: ReturnType<typeof getOwnerTimeline>["seasons"];
+}) {
+  return (
+    <div className="overflow-hidden rounded-[var(--lcc-radius)] border border-[var(--lcc-border)]">
+      <div className="grid grid-cols-[4.5rem_1fr_5rem_6rem] bg-[var(--lcc-surface-muted)] px-4 py-3 font-ui text-[0.68rem] font-black uppercase text-[var(--lcc-text-muted)]">
+        <div>Year</div>
+        <div>Result</div>
+        <div>Place</div>
+        <div>Net</div>
+      </div>
+
+      <div className="divide-y divide-[var(--lcc-border)]">
+        {seasons
+          .slice()
+          .sort((a, b) => b.season - a.season)
+          .map((season) => {
+            const result = [
+              season.isChampion ? "Champion" : null,
+              season.isRunnerUp ? "Runner-up" : null,
+              season.isThirdPlace ? "Third" : null,
+              season.isToiletBowl ? "Toilet Bowl" : null,
+            ].filter(Boolean)[0];
+
+            return (
+              <div
+                key={season.season}
+                className="grid grid-cols-[4.5rem_1fr_5rem_6rem] items-center px-4 py-3 font-ui text-sm"
+              >
+                <div className="font-black text-[var(--lcc-text)]">
+                  {season.season}
+                </div>
+                <div className="font-bold text-[var(--lcc-text-muted)]">
+                  {result ?? formatEra(season.era)}
+                </div>
+                <div className="font-black text-[var(--lcc-text)]">
+                  {season.finalPlace ? formatBestFinish(season.finalPlace) : "—"}
+                </div>
+                <div className="font-black text-[var(--lcc-text)]">
+                  {formatMoney(season.balance)}
+                </div>
+              </div>
+            );
+          })}
+      </div>
+    </div>
+  );
+}
+
+function AwardGrid({
+  awards,
+}: {
+  awards: ReturnType<typeof getAwardsByOwner>;
+}) {
+  return (
+    <div className="grid gap-3 md:grid-cols-2">
+      {awards.map((award) => (
+        <div
+          key={award.id}
+          className="rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-4"
+        >
+          <p className="font-ui text-[0.68rem] font-black uppercase text-[var(--lcc-gold)]">
+            {award.season} · {award.type}
+          </p>
+          <p className="mt-2 font-serif text-xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+            {award.label}
+          </p>
+          {award.value !== undefined && award.value !== null && (
+            <p className="mt-2 font-ui text-sm font-bold text-[var(--lcc-text-muted)]">
+              {award.value}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function RecordGrid({
+  records,
+}: {
+  records: ReturnType<typeof getRecordsByOwner>;
+}) {
+  return (
+    <div className="grid gap-3 md:grid-cols-2">
+      {records.map((record) => (
+        <div
+          key={record.id}
+          className="rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-4"
+        >
+          <p className="font-ui text-[0.68rem] font-black uppercase text-[var(--lcc-gold)]">
+            {record.category}
+          </p>
+          <p className="mt-2 font-serif text-xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+            {record.value ?? "—"}
+          </p>
+          <p className="mt-2 font-ui text-sm font-bold text-[var(--lcc-text-muted)]">
+            {record.label}
+          </p>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -558,51 +722,22 @@ function getRivalOwnerIds(profile: LccOwner["almanacProfile"]) {
   return profile.rivalOwnerId ? [profile.rivalOwnerId] : [];
 }
 
-function formatBestFinish(place: number | undefined) {
-  if (place === undefined) {
-    return "";
-  }
-
-  if (place === 1) {
-    return "Champion";
-  }
-
-  if (place === 2) {
-    return "Runner-Up";
-  }
-
-  if (place === 3) {
-    return "Third";
-  }
-
-  return `${place}${getOrdinalSuffix(place)}`;
-}
-
 function buildTimelineItems(
   owner: LccOwner,
   tenure: string,
-  careerSummary: LccOwnerCareerSummary
+  seasons: ReturnType<typeof getOwnerTimeline>["seasons"]
 ): TimelineItem[] {
   const items: TimelineItem[] = [];
-  const firstTenureSpan = careerSummary.tenureSpans[0];
-  const joinedYear = firstTenureSpan?.startSeason ?? owner.joinedYear;
-  const firstSeasonLabel = joinedYear ? String(joinedYear) : "LCC";
+
+  const firstSeason = seasons[0]?.season ?? owner.joinedYear ?? "LCC";
   const openingTitle = owner.founder
     ? "Founded Long Country Club"
     : "Joined Long Country Club";
 
   items.push({
-    year: firstSeasonLabel,
+    year: String(firstSeason),
     title: openingTitle,
     detail: `${owner.displayName} began this LCC tenure with ${owner.managerPage.sleeperName}. Recorded tenure: ${tenure}.`,
-  });
-
-  careerSummary.tenureSpans.slice(1).forEach((span) => {
-    items.push({
-      year: String(span.startSeason),
-      title: "Returned to Active Ownership",
-      detail: `${owner.displayName} rejoined the active owner pool for the ${span.startSeason} season.`,
-    });
   });
 
   if (owner.original2003Owner) {
@@ -615,7 +750,7 @@ function buildTimelineItems(
 
   if (owner.commissioner) {
     items.push({
-      year: firstSeasonLabel,
+      year: String(firstSeason),
       title: "League Commissioner",
       detail: "Serves as commissioner for Long Country Club FFL.",
     });
@@ -637,11 +772,21 @@ function buildTimelineItems(
     });
   }
 
-  const finalTenureSpan = careerSummary.tenureSpans.at(-1);
+  seasons
+    .filter((season) => season.isChampion)
+    .forEach((season) => {
+      items.push({
+        year: String(season.season),
+        title: "LCC Champion",
+        detail: `${owner.displayName} won the ${season.season} Long Country Club championship.`,
+      });
+    });
 
-  if (owner.status === "retired" && finalTenureSpan) {
+  if (owner.status === "retired") {
+    const lastSeason = seasons.at(-1)?.season ?? owner.lastSeason;
+
     items.push({
-      year: String(finalTenureSpan.endSeason),
+      year: String(lastSeason ?? "LCC"),
       title: "Retired From Active Ownership",
       detail: "Retired-owner legacy preserved in the LCC Almanac.",
     });
@@ -650,28 +795,47 @@ function buildTimelineItems(
   return items;
 }
 
+function formatEra(era: string | null) {
+  if (era === "dynasty") {
+    return "Dynasty";
+  }
+
+  if (era === "two-keeper") {
+    return "Two-Keeper";
+  }
+
+  return "Unknown";
+}
+
+function formatBestFinish(place: number | null | undefined) {
+  if (place === undefined || place === null) {
+    return "";
+  }
+
+  if (place === 1) {
+    return "Champion";
+  }
+
+  if (place === 2) {
+    return "Runner-Up";
+  }
+
+  if (place === 3) {
+    return "Third";
+  }
+
+  return `${place}${getOrdinalSuffix(place)}`;
+}
+
 function formatStatus(status: LccOwner["status"]) {
   return status === "active" ? "Active" : "Retired";
 }
 
-function formatTenure(owner: LccOwner, summary: LccOwnerCareerSummary) {
-  if (summary.tenureSpans.length === 0) {
-    return "Unknown";
-  }
+function formatTenure(owner: LccOwner, activeSeasonCount: number) {
+  const startSeason = owner.joinedYear ?? "Unknown";
+  const endSeason = owner.status === "active" ? "present" : owner.lastSeason ?? "Unknown";
 
-  const spanLabel = summary.tenureSpans
-    .map((span, index) => {
-      const isCurrentActiveSpan =
-        owner.status === "active" &&
-        index === summary.tenureSpans.length - 1 &&
-        span.endSeason === LCC_LATEST_COMPLETED_FINAL_PLACEMENT_SEASON;
-      const endSeason = isCurrentActiveSpan ? "present" : span.endSeason;
-
-      return `${span.startSeason}-${endSeason}`;
-    })
-    .join(", ");
-
-  return `${spanLabel} (${summary.activeSeasonCount} yrs)`;
+  return `${startSeason}-${endSeason} (${activeSeasonCount} yrs)`;
 }
 
 function formatRating(value: number | undefined, max: number) {
@@ -688,6 +852,14 @@ function formatChampionships(titles: number) {
   }
 
   return `${titles} ${titles === 1 ? "Title" : "Titles"}`;
+}
+
+function formatMoney(value: number | null | undefined) {
+  if (value === null || value === undefined) {
+    return "—";
+  }
+
+  return `$${value.toLocaleString()}`;
 }
 
 function getOrdinalSuffix(value: number) {
