@@ -1,15 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight, Award, Crown, Medal, Shield, Skull, Trophy } from "lucide-react";
-import {
-  getLccOwnerProfileHref,
-  type LccOwner,
-} from "@/lib/lccOwners";
-import {
-  LCC_LATEST_COMPLETED_FINAL_PLACEMENT_SEASON,
-  getLccOwnerCareerSummary,
-  type LccOwnerCareerSummary,
-} from "@/lib/lccFinalPlacements";
+import { getLccOwnerProfileHref, type LccOwner } from "@/lib/lccOwners";
+import { getOwnerCareerSummary } from "@/lib/history/career";
 import { getOwnerImagePath } from "@/lib/ownerImages";
 
 type DirectoryTone =
@@ -137,8 +130,8 @@ export function OwnerCard({
   const isActive = owner.status === "active";
   const cardTone = tone ?? getOwnerTone(owner);
   const toneClass = toneClasses[cardTone];
-  const careerSummary = getLccOwnerCareerSummary(owner.id);
-  const tenure = formatTenure(owner, careerSummary);
+  const careerSummary = getOwnerCareerSummary(owner.id);
+  const tenure = formatTenure(owner, careerSummary.activeSeasonCount);
 
   return (
     <Link
@@ -194,6 +187,16 @@ export function OwnerCard({
               label="Podiums"
               value={String(careerSummary.podiumCount)}
               icon={<Award className="h-3.5 w-3.5" aria-hidden="true" />}
+            />
+            <DirectoryStat
+              label="Seasons"
+              value={String(careerSummary.activeSeasonCount)}
+              icon={<Crown className="h-3.5 w-3.5" aria-hidden="true" />}
+            />
+            <DirectoryStat
+              label="Avg Finish"
+              value={careerSummary.averageFinish?.toString() ?? "—"}
+              icon={<Medal className="h-3.5 w-3.5" aria-hidden="true" />}
             />
             <DirectoryStat
               label="Toilets"
@@ -259,9 +262,15 @@ function OwnerBadges({ owner }: { owner: LccOwner }) {
   );
 }
 
-function Badge({ children, icon }: { children: ReactNode; icon?: ReactNode }) {
+function Badge({
+  children,
+  icon,
+}: {
+  children: ReactNode;
+  icon?: ReactNode;
+}) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full border border-[var(--lcc-border)] bg-[var(--lcc-surface)] px-2.5 py-1 font-ui text-[0.68rem] font-black uppercase leading-none text-[var(--lcc-text)]">
+    <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/35 px-2.5 py-1 font-ui text-[0.65rem] font-black uppercase text-white backdrop-blur-sm">
       {icon}
       {children}
     </span>
@@ -271,91 +280,57 @@ function Badge({ children, icon }: { children: ReactNode; icon?: ReactNode }) {
 function DirectoryFact({
   label,
   value,
-  icon,
   isAction = false,
 }: {
   label: string;
   value: string;
-  icon?: ReactNode;
   isAction?: boolean;
 }) {
   return (
     <div className="min-w-0">
-      <p className="font-ui text-[0.68rem] font-black uppercase text-[var(--lcc-text-muted)]">
+      <p className="font-ui text-[0.6rem] font-black uppercase text-[var(--lcc-text-muted)]">
         {label}
       </p>
       <p
         className={[
-          "mt-1 flex items-center gap-1 truncate font-serif text-base font-black uppercase italic leading-tight text-[var(--lcc-text)]",
-          isAction ? "text-[var(--lcc-gold)]" : "",
+          "mt-1 flex items-center gap-1 truncate font-serif text-sm font-black uppercase italic leading-tight",
+          isAction ? "text-[var(--lcc-green-deep)]" : "text-[var(--lcc-text)]",
         ].join(" ")}
       >
-        {icon}
         {value}
-        {isAction && <ArrowRight className="h-3.5 w-3.5 shrink-0" />}
+        {isAction && <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />}
       </p>
     </div>
   );
 }
 
 function getOwnerTone(owner: LccOwner): DirectoryTone {
-  if (owner.inMemoriam) {
-    return "memorial";
-  }
-
-  if (owner.status === "retired") {
-    return owner.original2003Owner ? "founding" : "retired";
-  }
-
-  return owner.activeDivision === "OGs" ? "legacy" : "challenger";
+  if (owner.inMemoriam) return "memorial";
+  if (owner.status === "retired") return "retired";
+  if (owner.founder || owner.original2003Owner) return "founding";
+  return "default";
 }
 
-function formatTenure(owner: LccOwner, summary: LccOwnerCareerSummary) {
-  if (summary.tenureSpans.length === 0) {
-    return "Unknown";
-  }
+function formatTenure(owner: LccOwner, activeSeasonCount: number) {
+  const startSeason = owner.joinedYear ?? "Unknown";
+  const endSeason =
+    owner.status === "active" ? "Present" : owner.lastSeason ?? "Unknown";
 
-  const spanLabel = summary.tenureSpans
-    .map((span, index) => {
-      const isCurrentActiveSpan =
-        owner.status === "active" &&
-        index === summary.tenureSpans.length - 1 &&
-        span.endSeason === LCC_LATEST_COMPLETED_FINAL_PLACEMENT_SEASON;
-      const endSeason = isCurrentActiveSpan ? "present" : span.endSeason;
-
-      return `${span.startSeason}-${endSeason}`;
-    })
-    .join(", ");
-
-  return `${spanLabel} (${summary.activeSeasonCount} yrs)`;
+  return `${startSeason}-${endSeason} (${activeSeasonCount})`;
 }
 
-function formatBestFinish(place: number | undefined) {
-  if (place === undefined) {
-    return "";
-  }
-
-  if (place === 1) {
-    return "Champion";
-  }
-
-  if (place === 2) {
-    return "Runner-Up";
-  }
-
-  if (place === 3) {
-    return "Third";
-  }
-
+function formatBestFinish(place: number | null | undefined) {
+  if (place === undefined || place === null) return "—";
+  if (place === 1) return "Champ";
+  if (place === 2) return "2nd";
+  if (place === 3) return "3rd";
   return `${place}${getOrdinalSuffix(place)}`;
 }
 
 function getOrdinalSuffix(value: number) {
   const mod100 = value % 100;
 
-  if (mod100 >= 11 && mod100 <= 13) {
-    return "th";
-  }
+  if (mod100 >= 11 && mod100 <= 13) return "th";
 
   switch (value % 10) {
     case 1:
