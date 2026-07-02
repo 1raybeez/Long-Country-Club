@@ -1,0 +1,231 @@
+[
+  {
+    "avatar": "49d1da970c204d456296aa18852cc1dd",
+    "display_name": "1RaybeeZ",
+    "is_bot": false,
+    "is_owner": true,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "mascot_message_leg_2": "The battle of the uglies!",
+      "allow_pn": "on",
+      "mascot_item_type_id_leg_13": "frog-fu",
+      "team_name_update": "on",
+      "transaction_free_agent": "on",
+      "mascot_item_type_id_leg_17": "frog-fu",
+      "mascot_item_type_id_leg_12": "frog-fu",
+      "mascot_item_type_id_leg_1": "clown",
+      "mascot_message_emotion_leg_4": "idle",
+      "mascot_message_emotion_leg_2": "action_hurt02",
+      "mascot_item_type_id_leg_9": "frog-fu",
+      "mascot_item_type_id_leg_4": "dirty-bird",
+      "transaction_commissioner": "on",
+      "mascot_item_type_id_leg_3": "frog-fu",
+      "mascot_item_type_id_leg_10": "frog-fu",
+      "mascot_item_type_id_leg_5": "frog-fu",
+      "mascot_message": "on",
+      "mascot_item_type_id_leg_7": "frog-fu",
+      "mascot_item_type_id_leg_14": "frog-fu",
+      "mascot_message_leg_1": "Your whole team takes Hims!",
+      "mascot_item_type_id_leg_6": "frog-fu",
+      "user_message_pn": "on",
+      "mascot_item_type_id_leg_11": "frog-fu",
+      "mascot_item_type_id_leg_2": "frog-fu",
+      "mention_pn": "on",
+      "player_nickname_update": "on",
+      "mascot_message_leg_4": "This is how I felt after learning Boyd wasn't gonna show up!",
+      "transaction_waiver": "on",
+      "mascot_item_type_id_leg_15": "frog-fu",
+      "mascot_message_emotion_leg_1": "idle_happy",
+      "team_name": "The Brees Knees",
+      "mascot_item_type_id_leg_8": "frog-fu",
+      "mascot_item_type_id_leg_16": "frog-fu",
+      "transaction_trade": "on"
+    },
+    "settings": null,
+    "user_id": "342828350391230464"
+  },
+  {
+    "avatar": "b5f980efc36001cb4e056a9e146d0ca0",
+    "display_name": "BenI",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mention_pn": "on"
+    },
+    "settings": null,
+    "user_id": "346727603970973696"
+  },
+  {
+    "avatar": "28c10cc8e49e9adaf274d5a0dcdbd767",
+    "display_name": "jeffhudge",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mascot_message": "off",
+      "mention_pn": "on",
+      "player_nickname_update": "off",
+      "team_name_update": "off",
+      "transaction_commissioner": "off",
+      "transaction_free_agent": "off",
+      "transaction_trade": "on",
+      "transaction_waiver": "off",
+      "user_message_pn": "on"
+    },
+    "settings": null,
+    "user_id": "356621920969555968"
+  },
+  {
+    "avatar": "269d0cfad82546e90a2e50c71be734fe",
+    "display_name": "bkwinder78",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mascot_message_emotion_leg_1": "idle_happy",
+      "mascot_message_leg_1": "",
+      "mascot_message_leg_4": "",
+      "mention_pn": "on",
+      "team_name": "Twenty-Eight2three"
+    },
+    "settings": null,
+    "user_id": "466638004102885376"
+  },
+  {
+    "avatar": "4fb394f49d806fbad75dd79ecc68f525",
+    "display_name": "Zordetto",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mascot_message_leg_1": "",
+      "mention_pn": "on"
+    },
+    "settings": null,
+    "user_id": "466639810480566272"
+  },
+  {
+    "avatar": "2a71e7d57dbfe54a9d2eafc8350a8103",
+    "display_name": "peoplesteam",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mascot_message_emotion_leg_1": "idle",
+      "mascot_message_leg_1": "",
+      "mention_pn": "on"
+    },
+    "settings": null,
+    "user_id": "466645286870052864"
+  },
+  {
+    "avatar": "58584521fbcbca515fca0b7590507519",
+    "display_name": "TheLowRider",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mention_pn": "on"
+    },
+    "settings": null,
+    "user_id": "466645950710935552"
+  },
+  {
+    "avatar": "67206d81d03c9ee856a4e7391699a24e",
+    "display_name": "newkidotb",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "off",
+      "mascot_message": "on",
+      "mention_pn": "on",
+      "player_nickname_update": "on",
+      "team_name_update": "on",
+      "transaction_commissioner": "off",
+      "transaction_free_agent": "on",
+      "transaction_trade": "on",
+      "transaction_waiver": "on",
+      "user_message_pn": "on"
+    },
+    "settings": null,
+    "user_id": "466659300316540928"
+  },
+  {
+    "avatar": "0e369add502e767a1378995a62bc0f85",
+    "display_name": "Bungholio79",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mascot_item_type_id_leg_10": "",
+      "mascot_item_type_id_leg_11": "",
+      "mascot_item_type_id_leg_12": "",
+      "mascot_item_type_id_leg_13": "",
+      "mascot_item_type_id_leg_14": "",
+      "mascot_item_type_id_leg_15": "",
+      "mascot_item_type_id_leg_16": "",
+      "mascot_item_type_id_leg_17": "",
+      "mascot_item_type_id_leg_2": "",
+      "mascot_item_type_id_leg_3": "",
+      "mascot_item_type_id_leg_4": "",
+      "mascot_item_type_id_leg_5": "",
+      "mascot_item_type_id_leg_6": "",
+      "mascot_item_type_id_leg_7": "",
+      "mascot_item_type_id_leg_8": "",
+      "mascot_item_type_id_leg_9": "",
+      "mascot_message_emotion_leg_2": "action_joy02",
+      "mascot_message_leg_2": "",
+      "mention_pn": "on"
+    },
+    "settings": null,
+    "user_id": "466772731602399232"
+  },
+  {
+    "avatar": "55d84a9842931cd39b70ed61cda09c06",
+    "display_name": "ChicagoCutlers",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mention_pn": "on"
+    },
+    "settings": null,
+    "user_id": "466780021365665792"
+  },
+  {
+    "avatar": "4c36f6cc68ca5fb2daae149ee6bbee44",
+    "display_name": "tpoist",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mention_pn": "on"
+    },
+    "settings": null,
+    "user_id": "466797853767888896"
+  },
+  {
+    "avatar": "4c36f6cc68ca5fb2daae149ee6bbee44",
+    "display_name": "iamaloser",
+    "is_bot": false,
+    "is_owner": null,
+    "league_id": "466635730102251520",
+    "metadata": {
+      "allow_pn": "on",
+      "mention_pn": "on"
+    },
+    "settings": null,
+    "user_id": "467786127214899200"
+  }
+]
