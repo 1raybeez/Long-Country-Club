@@ -13,8 +13,10 @@ export interface HistoricalMatchup {
   readonly notes?: readonly string[];
 }
 
+import { generateHistoricalMatchups } from "./generateMatchups";
+
 export function loadAllMatchups(): readonly HistoricalMatchup[] {
-  return [];
+  return generateHistoricalMatchups();
 }
 
 export function loadMatchupsBySeason(
