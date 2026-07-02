@@ -1,9 +1,15 @@
 import Link from "next/link";
-import { CalendarDays, Crown, Medal, Trophy, WalletCards } from "lucide-react";
+import {
+  CalendarDays,
+  Crown,
+  Medal,
+  Trophy,
+  WalletCards,
+} from "lucide-react";
 import { loadAllSeasonSummaries } from "@/lib/history/seasonSummary";
 import { getOwnerById } from "@/lib/ownerRegistry";
 
-function ownerName(ownerId: string | null) {
+function ownerName(ownerId?: string | null) {
   if (!ownerId) return "TBD";
   return getOwnerById(ownerId)?.displayName ?? ownerId;
 }
@@ -13,27 +19,42 @@ function formatMoney(value: number | null) {
   return `$${value.toLocaleString()}`;
 }
 
-function getTotalPayouts(season: ReturnType<typeof loadAllSeasonSummaries>[number]) {
+function getTotalPayouts(
+  season: ReturnType<typeof loadAllSeasonSummaries>[number]
+) {
   if (!season.financial) return null;
 
   return season.financial.managers.reduce((total, manager) => {
-    return total + (typeof manager.payoutsReceived === "number" ? manager.payoutsReceived : 0);
+    return (
+      total +
+      (typeof manager.payoutsReceived === "number"
+        ? manager.payoutsReceived
+        : 0)
+    );
   }, 0);
 }
 
-function formatEra(era: string | null) {
+function formatEra(era?: string | null) {
   if (era === "dynasty") return "Dynasty Era";
   if (era === "two-keeper") return "Two-Keeper Era";
   return "Unknown Era";
 }
 
 export default function HistoryPage() {
-  const seasons = loadAllSeasonSummaries().sort((a, b) => b.season - a.season);
+  const seasons = loadAllSeasonSummaries().sort(
+    (a, b) => b.season - a.season
+  );
 
   const totalSeasons = seasons.length;
-  const dynastySeasons = seasons.filter((season) => season.era === "dynasty").length;
-  const keeperSeasons = seasons.filter((season) => season.era === "two-keeper").length;
-  const seasonsWithFinancials = seasons.filter((season) => season.financial).length;
+  const dynastySeasons = seasons.filter(
+    (season) => season.era === "dynasty"
+  ).length;
+  const keeperSeasons = seasons.filter(
+    (season) => season.era === "two-keeper"
+  ).length;
+  const seasonsWithFinancials = seasons.filter(
+    (season) => season.financial
+  ).length;
 
   return (
     <main className="min-h-screen bg-[var(--lcc-page-bg)] px-4 py-8 text-[var(--lcc-text)] sm:px-6 lg:px-8">
@@ -165,6 +186,15 @@ export default function HistoryPage() {
                       </div>
                       <WalletCards className="h-7 w-7 text-[var(--lcc-gold)]" />
                     </div>
+                  </div>
+
+                  <div className="mt-5">
+                    <Link
+                      href={`/history/${season.season}`}
+                      className="lcc-button lcc-button-secondary"
+                    >
+                      View Season →
+                    </Link>
                   </div>
                 </article>
               );
