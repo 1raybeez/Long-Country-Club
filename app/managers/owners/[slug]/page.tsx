@@ -27,6 +27,7 @@ import {
 import { getOwnerTimeline } from "@/lib/history/ownerHistory";
 import { getAwardsByOwner } from "@/lib/history/awards";
 import { getRecordsByOwner } from "@/lib/history/records";
+import { getOwnerMatchupSummary } from "@/lib/history/ownerMatchupSummary";
 import { getOwnerImagePath } from "@/lib/ownerImages";
 import { ContactChip } from "@/components/ui/ContactChip";
 import { ProfileStatCard } from "@/components/ui/ProfileStatCard";
@@ -37,6 +38,7 @@ import {
 import { RivalCard } from "@/components/ui/RivalCard";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { TradeMeter } from "@/components/ui/TradeMeter";
+import { OwnerMatchupResumeCard } from "@/components/ui/OwnerMatchupResumeCard";
 
 export function generateStaticParams() {
   return ALL_LCC_OWNERS.map((owner) => ({
@@ -63,6 +65,7 @@ export default async function OwnerProfilePage({
   const teamLabel = owner.status === "active" ? "Current Team" : "Last Team";
   const ownerHistory = getOwnerTimeline(owner.id);
   const careerSummary = ownerHistory.career;
+  const matchupSummary = getOwnerMatchupSummary(owner.id);
   const tenure = formatTenure(owner, careerSummary.activeSeasonCount);
   const almanacProfile = owner.almanacProfile;
   const awards = getAwardsByOwner(owner.id);
@@ -231,6 +234,22 @@ export default async function OwnerProfilePage({
                   smallValue
                 />
               </div>
+            </ProfileSection>
+
+            <ProfileSection
+              title="Matchup Resume"
+              icon={<Swords className="h-4 w-4" aria-hidden="true" />}
+              compact
+            >
+              <OwnerMatchupResumeCard summary={matchupSummary} />
+            </ProfileSection>
+
+            <ProfileSection
+              title="Matchup Resume"
+              icon={<Swords className="h-4 w-4" aria-hidden="true" />}
+              compact
+            >
+              <OwnerMatchupResumeCard summary={matchupSummary} />
             </ProfileSection>
 
             <ProfileSection
