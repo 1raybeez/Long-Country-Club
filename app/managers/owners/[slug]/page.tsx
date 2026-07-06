@@ -245,14 +245,6 @@ export default async function OwnerProfilePage({
             </ProfileSection>
 
             <ProfileSection
-              title="Matchup Resume"
-              icon={<Swords className="h-4 w-4" aria-hidden="true" />}
-              compact
-            >
-              <OwnerMatchupResumeCard summary={matchupSummary} />
-            </ProfileSection>
-
-            <ProfileSection
               title="Financial Snapshot"
               icon={<WalletCards className="h-4 w-4" aria-hidden="true" />}
               compact
@@ -811,7 +803,16 @@ function buildTimelineItems(
     });
   }
 
-  return items;
+  return items.sort((a, b) => {
+    const yearA = Number(a.year);
+    const yearB = Number(b.year);
+
+    if (Number.isNaN(yearA) || Number.isNaN(yearB)) {
+      return a.year.localeCompare(b.year);
+    }
+
+    return yearA - yearB;
+  });
 }
 
 function formatEra(era: string | null) {
