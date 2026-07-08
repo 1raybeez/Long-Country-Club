@@ -201,7 +201,7 @@ export function generateHistoricalMatchups(): HistoricalMatchup[] {
   return readdirSync(DATA_ROOT)
     .filter((entry) => /^\d{4}$/.test(entry))
     .map((entry) => Number(entry))
-    .filter((season) => season < LCC_CURRENT_SEASON)
+    .filter((season) => season <= LCC_CURRENT_SEASON)
     .sort((a, b) => a - b)
     .flatMap((season) => generateSeasonMatchups(season));
 }
