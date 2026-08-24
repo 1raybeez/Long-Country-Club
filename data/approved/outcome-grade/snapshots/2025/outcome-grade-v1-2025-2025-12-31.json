@@ -1,0 +1,2823 @@
+{
+  "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+  "snapshotVersion": "outcome-grade-v1",
+  "methodologyVersion": "outcome-grade-v1",
+  "methodologyStatus": "APPROVED",
+  "ownershipLedgerVersion": "ownership-ledger-v1",
+  "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+  "season": 2025,
+  "maturity": "EARLY_OUTCOME_SNAPSHOT",
+  "immutable": true,
+  "appendOnly": true,
+  "noForecastComparison": true,
+  "noDraftDayGradeMutation": true,
+  "playerRecords": [
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12530",
+      "name": "Travis Hunter",
+      "position": "WR",
+      "draftingOwnerId": "keith-winder",
+      "draftingOwnerName": "Keith Winder",
+      "historicalTeamName": "LCC — Keith Winder",
+      "overallPick": 1,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 1,
+        "lineupImpact": 4,
+        "longevity": 3,
+        "valueRealized": 4
+      },
+      "overallScore": 2.75,
+      "grade": "C",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-1",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 50.8,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 7,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12527",
+      "name": "Ashton Jeanty",
+      "position": "RB",
+      "draftingOwnerId": "rob-jenkins",
+      "draftingOwnerName": "Rob Jenkins",
+      "historicalTeamName": "LCC — Rob Jenkins",
+      "overallPick": 2,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 5,
+        "capitalEfficiency": 5,
+        "lineupImpact": 5,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 5,
+      "grade": "A+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-2",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 214.7,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 16,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12507",
+      "name": "Omarion Hampton",
+      "position": "RB",
+      "draftingOwnerId": "earl-perkins",
+      "draftingOwnerName": "Earl Perkins",
+      "historicalTeamName": "LCC — Earl Perkins",
+      "overallPick": 3,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 2,
+        "lineupImpact": 4,
+        "longevity": 4,
+        "valueRealized": 5
+      },
+      "overallScore": 3.6,
+      "grade": "B",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-3",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 122.7,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 8,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12529",
+      "name": "TreVeyon Henderson",
+      "position": "RB",
+      "draftingOwnerId": "mike-mcburnie",
+      "draftingOwnerName": "Mike McBurnie",
+      "historicalTeamName": "LCC — Mike McBurnie",
+      "overallPick": 4,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 5,
+        "capitalEfficiency": 4,
+        "lineupImpact": 5,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 4.75,
+      "grade": "A+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-4",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 182.4,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 11,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12512",
+      "name": "Quinshon Judkins",
+      "position": "RB",
+      "draftingOwnerId": "ray-long",
+      "draftingOwnerName": "Ray Long",
+      "historicalTeamName": "LCC — Ray Long",
+      "overallPick": 5,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 5,
+        "capitalEfficiency": 3,
+        "lineupImpact": 5,
+        "longevity": 4,
+        "valueRealized": 5
+      },
+      "overallScore": 4.35,
+      "grade": "A-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-5",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 160.8,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 12,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12504",
+      "name": "Kaleb Johnson",
+      "position": "RB",
+      "draftingOwnerId": "bill-gross",
+      "draftingOwnerName": "Bill Gross",
+      "historicalTeamName": "LCC — Bill Gross",
+      "overallPick": 6,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 2,
+        "capitalEfficiency": 1,
+        "lineupImpact": 1,
+        "longevity": 2,
+        "valueRealized": 2
+      },
+      "overallScore": 1.6,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-6",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 7.3,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12526",
+      "name": "Tetairoa McMillan",
+      "position": "WR",
+      "draftingOwnerId": "tyrone-poist",
+      "draftingOwnerName": "Tyrone Poist",
+      "historicalTeamName": "LCC — Tyrone Poist",
+      "overallPick": 7,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 5,
+        "capitalEfficiency": 5,
+        "lineupImpact": 5,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 5,
+      "grade": "A+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-7",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 173.9,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 16,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12514",
+      "name": "Emeka Egbuka",
+      "position": "WR",
+      "draftingOwnerId": "loren-michaels",
+      "draftingOwnerName": "Loren Michaels",
+      "historicalTeamName": "LCC — Loren Michaels",
+      "overallPick": 8,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 5,
+        "capitalEfficiency": 4,
+        "lineupImpact": 4,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 4.6,
+      "grade": "A",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-8",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 170.9,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 7,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12489",
+      "name": "RJ Harvey",
+      "position": "RB",
+      "draftingOwnerId": "mike-mcburnie",
+      "draftingOwnerName": "Mike McBurnie",
+      "historicalTeamName": "LCC — Mike McBurnie",
+      "overallPick": 9,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 5,
+        "capitalEfficiency": 4,
+        "lineupImpact": 5,
+        "longevity": 4,
+        "valueRealized": 4
+      },
+      "overallScore": 4.5,
+      "grade": "A",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-9",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 180.2,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 10,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12518",
+      "name": "Tyler Warren",
+      "position": "TE",
+      "draftingOwnerId": "mike-estes",
+      "draftingOwnerName": "Mike Estes",
+      "historicalTeamName": "LCC — Mike Estes",
+      "overallPick": 10,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 5,
+        "capitalEfficiency": 4,
+        "lineupImpact": 5,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 4.75,
+      "grade": "A+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-10",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 144.3,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 16,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12457",
+      "name": "Jaydon Blue",
+      "position": "RB",
+      "draftingOwnerId": "ben-isbell",
+      "draftingOwnerName": "Ben Isbell",
+      "historicalTeamName": "LCC — Ben Isbell",
+      "overallPick": 11,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 2,
+        "capitalEfficiency": 1,
+        "lineupImpact": 1,
+        "longevity": 1,
+        "valueRealized": 2
+      },
+      "overallScore": 1.45,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-11",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 6.5,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12501",
+      "name": "Matthew Golden",
+      "position": "WR",
+      "draftingOwnerId": "jeffrey-hudgins",
+      "draftingOwnerName": "Jeffrey Hudgins",
+      "historicalTeamName": "LCC — Jeffrey Hudgins",
+      "overallPick": 12,
+      "round": 1,
+      "pickBand": "1-12",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 1,
+        "lineupImpact": 2,
+        "longevity": 2,
+        "valueRealized": 4
+      },
+      "overallScore": 2.3,
+      "grade": "C-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-12",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 54.2,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 1,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12481",
+      "name": "Cam Skattebo",
+      "position": "RB",
+      "draftingOwnerId": "keith-winder",
+      "draftingOwnerName": "Keith Winder",
+      "historicalTeamName": "LCC — Keith Winder",
+      "overallPick": 13,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 4,
+        "lineupImpact": 4,
+        "longevity": 4,
+        "valueRealized": 4
+      },
+      "overallScore": 4,
+      "grade": "B+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-13",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 114.7,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 6,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12517",
+      "name": "Colston Loveland",
+      "position": "TE",
+      "draftingOwnerId": "rob-jenkins",
+      "draftingOwnerName": "Rob Jenkins",
+      "historicalTeamName": "LCC — Rob Jenkins",
+      "overallPick": 14,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 5,
+        "lineupImpact": 4,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 4.5,
+      "grade": "A",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-14",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 120,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 10,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12522",
+      "name": "Cameron Ward",
+      "position": "QB",
+      "draftingOwnerId": "earl-perkins",
+      "draftingOwnerName": "Earl Perkins",
+      "historicalTeamName": "LCC — Earl Perkins",
+      "overallPick": 15,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 4,
+        "lineupImpact": 4,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 4.25,
+      "grade": "A-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-15",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 215.78,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 1,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12484",
+      "name": "Jayden Higgins",
+      "position": "WR",
+      "draftingOwnerId": "mike-mcburnie",
+      "draftingOwnerName": "Mike McBurnie",
+      "historicalTeamName": "LCC — Mike McBurnie",
+      "overallPick": 16,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 4,
+        "lineupImpact": 1,
+        "longevity": 4,
+        "valueRealized": 3
+      },
+      "overallScore": 3.45,
+      "grade": "B-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-16",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 101.7,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12509",
+      "name": "Tre Harris",
+      "position": "WR",
+      "draftingOwnerId": "ray-long",
+      "draftingOwnerName": "Ray Long",
+      "historicalTeamName": "LCC — Ray Long",
+      "overallPick": 17,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 3,
+        "lineupImpact": 1,
+        "longevity": 2,
+        "valueRealized": 2
+      },
+      "overallScore": 2.45,
+      "grade": "C-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-17",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 50.6,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12519",
+      "name": "Luther Burden",
+      "position": "WR",
+      "draftingOwnerId": "bill-gross",
+      "draftingOwnerName": "Bill Gross",
+      "historicalTeamName": "LCC — Bill Gross",
+      "overallPick": 18,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 4,
+        "lineupImpact": 4,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 4.25,
+      "grade": "A-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-18",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 104.4,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 8,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12483",
+      "name": "Jack Bech",
+      "position": "WR",
+      "draftingOwnerId": "tyrone-poist",
+      "draftingOwnerName": "Tyrone Poist",
+      "historicalTeamName": "LCC — Tyrone Poist",
+      "overallPick": 19,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 1,
+        "capitalEfficiency": 1,
+        "lineupImpact": 1,
+        "longevity": 1,
+        "valueRealized": 1
+      },
+      "overallScore": 1,
+      "grade": "F",
+      "confidence": "UNAVAILABLE",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade.",
+        "Required scoring evidence is unavailable."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-19",
+        "draftingOwnerAgreement": null,
+        "ownershipConfidence": "UNRESOLVED",
+        "ownershipIntervalCount": 0,
+        "originalOwnerFantasyPoints": 0,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": [
+          {
+            "eventType": "DROPPED",
+            "transactionId": "1268350055828430848",
+            "transactionType": "free_agent",
+            "transactionDate": "2025-09-01T21:05:27.416Z",
+            "season": 2025,
+            "playerId": "12483",
+            "fromOwnerId": "tyrone-poist",
+            "toOwnerId": null,
+            "otherAssets": [],
+            "draftPicks": [],
+            "sourceEvidence": "data/source/sleeper/transactions/2025/transactions.json#1268350055828430848",
+            "confidence": "LIMITED"
+          }
+        ]
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12490",
+      "name": "Bhayshul Tuten",
+      "position": "RB",
+      "draftingOwnerId": "loren-michaels",
+      "draftingOwnerName": "Loren Michaels",
+      "historicalTeamName": "LCC — Loren Michaels",
+      "overallPick": 20,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 4,
+        "lineupImpact": 4,
+        "longevity": 1,
+        "valueRealized": 4
+      },
+      "overallScore": 3.55,
+      "grade": "B",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-20",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 73.3,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 8,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12487",
+      "name": "Terrance Ferguson",
+      "position": "TE",
+      "draftingOwnerId": "mike-mcburnie",
+      "draftingOwnerName": "Mike McBurnie",
+      "historicalTeamName": "LCC — Mike McBurnie",
+      "overallPick": 21,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 3,
+        "lineupImpact": 1,
+        "longevity": 1,
+        "valueRealized": 2
+      },
+      "overallScore": 2.3,
+      "grade": "C-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-21",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 46.6,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12547",
+      "name": "Kyle Williams",
+      "position": "WR",
+      "draftingOwnerId": "mike-estes",
+      "draftingOwnerName": "Mike Estes",
+      "historicalTeamName": "LCC — Mike Estes",
+      "overallPick": 22,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 2,
+        "lineupImpact": 2,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 2.6,
+      "grade": "C-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-22",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 45.7,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12508",
+      "name": "Jaxson Dart",
+      "position": "QB",
+      "draftingOwnerId": "ben-isbell",
+      "draftingOwnerName": "Ben Isbell",
+      "historicalTeamName": "LCC — Ben Isbell",
+      "overallPick": 23,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 5,
+        "lineupImpact": 3,
+        "longevity": 4,
+        "valueRealized": 5
+      },
+      "overallScore": 4.2,
+      "grade": "A-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-23",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 260.28,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 1,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12498",
+      "name": "Mason Taylor",
+      "position": "TE",
+      "draftingOwnerId": "jeffrey-hudgins",
+      "draftingOwnerName": "Jeffrey Hudgins",
+      "historicalTeamName": "LCC — Jeffrey Hudgins",
+      "overallPick": 24,
+      "round": 2,
+      "pickBand": "13-24",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 4,
+        "lineupImpact": 3,
+        "longevity": 4,
+        "valueRealized": 5
+      },
+      "overallScore": 3.95,
+      "grade": "B+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-24",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 66.9,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 3,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12524",
+      "name": "Shedeur Sanders",
+      "position": "QB",
+      "draftingOwnerId": "keith-winder",
+      "draftingOwnerName": "Keith Winder",
+      "historicalTeamName": "LCC — Keith Winder",
+      "overallPick": 25,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 4,
+        "lineupImpact": 1,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 2.95,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-25",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 111.66,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12505",
+      "name": "Jalen Royals",
+      "position": "WR",
+      "draftingOwnerId": "rob-jenkins",
+      "draftingOwnerName": "Rob Jenkins",
+      "historicalTeamName": "LCC — Rob Jenkins",
+      "overallPick": 26,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 1,
+        "capitalEfficiency": 1,
+        "lineupImpact": 1,
+        "longevity": 2,
+        "valueRealized": 1
+      },
+      "overallScore": 1.15,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-26",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 0,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12536",
+      "name": "Jaylin Noel",
+      "position": "WR",
+      "draftingOwnerId": "earl-perkins",
+      "draftingOwnerName": "Earl Perkins",
+      "historicalTeamName": "LCC — Earl Perkins",
+      "overallPick": 27,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 4,
+        "lineupImpact": 1,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 2.95,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-27",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 55.6,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12510",
+      "name": "Jalen Milroe",
+      "position": "QB",
+      "draftingOwnerId": "mike-mcburnie",
+      "draftingOwnerName": "Mike McBurnie",
+      "historicalTeamName": "LCC — Mike McBurnie",
+      "overallPick": 28,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 1,
+        "capitalEfficiency": 1,
+        "lineupImpact": 1,
+        "longevity": 2,
+        "valueRealized": 1
+      },
+      "overallScore": 1.15,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-28",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": -2.6,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12469",
+      "name": "Dylan Sampson",
+      "position": "RB",
+      "draftingOwnerId": "bill-gross",
+      "draftingOwnerName": "Bill Gross",
+      "historicalTeamName": "LCC — Bill Gross",
+      "overallPick": 29,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 3,
+        "lineupImpact": 4,
+        "longevity": 1,
+        "valueRealized": 4
+      },
+      "overallScore": 2.95,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-29",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 29,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 3,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": [
+          {
+            "eventType": "DROPPED",
+            "transactionId": "1287226403355398144",
+            "transactionType": "free_agent",
+            "transactionDate": "2025-10-23T23:13:19.371Z",
+            "season": 2025,
+            "playerId": "12469",
+            "fromOwnerId": "bill-gross",
+            "toOwnerId": null,
+            "otherAssets": [],
+            "draftPicks": [],
+            "sourceEvidence": "data/source/sleeper/transactions/2025/transactions.json#1287226403355398144",
+            "confidence": "LIMITED"
+          }
+        ]
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12545",
+      "name": "Tyler Shough",
+      "position": "QB",
+      "draftingOwnerId": "bill-gross",
+      "draftingOwnerName": "Bill Gross",
+      "historicalTeamName": "LCC — Bill Gross",
+      "overallPick": 30,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 5,
+        "lineupImpact": 1,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 3.55,
+      "grade": "B",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-30",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 172.6,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12521",
+      "name": "Elijah Arroyo",
+      "position": "TE",
+      "draftingOwnerId": "tyrone-poist",
+      "draftingOwnerName": "Tyrone Poist",
+      "historicalTeamName": "LCC — Tyrone Poist",
+      "overallPick": 31,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 3,
+        "lineupImpact": 1,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 2.7,
+      "grade": "C",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-31",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 28.4,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": [
+          {
+            "eventType": "DROPPED",
+            "transactionId": "1299440071279149056",
+            "transactionType": "free_agent",
+            "transactionDate": "2025-11-26T16:06:04.723Z",
+            "season": 2025,
+            "playerId": "12521",
+            "fromOwnerId": "tyrone-poist",
+            "toOwnerId": null,
+            "otherAssets": [],
+            "draftPicks": [],
+            "sourceEvidence": "data/source/sleeper/transactions/2025/transactions.json#1299440071279149056",
+            "confidence": "LIMITED"
+          }
+        ]
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12506",
+      "name": "Harold Fannin",
+      "position": "TE",
+      "draftingOwnerId": "loren-michaels",
+      "draftingOwnerName": "Loren Michaels",
+      "historicalTeamName": "LCC — Loren Michaels",
+      "overallPick": 32,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 5,
+        "capitalEfficiency": 5,
+        "lineupImpact": 4,
+        "longevity": 4,
+        "valueRealized": 1
+      },
+      "overallScore": 4.3,
+      "grade": "A-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-32",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 2,
+        "originalOwnerFantasyPoints": 51.4,
+        "subsequentOwnerFantasyPoints": 100,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 7,
+        "transactionEvents": [
+          {
+            "eventType": "DROPPED",
+            "transactionId": "1287806605001236480",
+            "transactionType": "waiver",
+            "transactionDate": "2025-10-25T13:38:50.223Z",
+            "season": 2025,
+            "playerId": "12506",
+            "fromOwnerId": "loren-michaels",
+            "toOwnerId": null,
+            "otherAssets": [
+              {
+                "playerId": "3678",
+                "rosterId": 7
+              }
+            ],
+            "draftPicks": [],
+            "sourceEvidence": "data/source/sleeper/transactions/2025/transactions.json#1287806605001236480",
+            "confidence": "LIMITED"
+          },
+          {
+            "eventType": "WAIVER_ADDED",
+            "transactionId": "1287845992732844032",
+            "transactionType": "waiver",
+            "transactionDate": "2025-10-25T16:15:20.990Z",
+            "season": 2025,
+            "playerId": "12506",
+            "fromOwnerId": null,
+            "toOwnerId": "mike-mcburnie",
+            "otherAssets": [],
+            "draftPicks": [],
+            "sourceEvidence": "data/source/sleeper/transactions/2025/transactions.json#1287845992732844032",
+            "confidence": "LIMITED"
+          }
+        ]
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12523",
+      "name": "Jimmy Horn",
+      "position": "WR",
+      "draftingOwnerId": "anthony-martinez",
+      "draftingOwnerName": "Anthony Martinez",
+      "historicalTeamName": "LCC — Anthony Martinez",
+      "overallPick": 33,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 2,
+        "capitalEfficiency": 2,
+        "lineupImpact": 1,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 2.1,
+      "grade": "D",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-33",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 21.2,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12535",
+      "name": "Isaac TeSlaa",
+      "position": "WR",
+      "draftingOwnerId": "mike-estes",
+      "draftingOwnerName": "Mike Estes",
+      "historicalTeamName": "LCC — Mike Estes",
+      "overallPick": 34,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 4,
+        "lineupImpact": 1,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 2.95,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-34",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 65.6,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12492",
+      "name": "Pat Bryant",
+      "position": "WR",
+      "draftingOwnerId": "ben-isbell",
+      "draftingOwnerName": "Ben Isbell",
+      "historicalTeamName": "LCC — Ben Isbell",
+      "overallPick": 35,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 2,
+        "capitalEfficiency": 2,
+        "lineupImpact": 1,
+        "longevity": 1,
+        "valueRealized": 2
+      },
+      "overallScore": 1.7,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-35",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 2,
+        "originalOwnerFantasyPoints": 14.7,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": [
+          {
+            "eventType": "DROPPED",
+            "transactionId": "1274040070029967360",
+            "transactionType": "waiver",
+            "transactionDate": "2025-09-17T13:55:32.516Z",
+            "season": 2025,
+            "playerId": "12492",
+            "fromOwnerId": "ben-isbell",
+            "toOwnerId": null,
+            "otherAssets": [
+              {
+                "playerId": "1234",
+                "rosterId": 3
+              }
+            ],
+            "draftPicks": [],
+            "sourceEvidence": "data/source/sleeper/transactions/2025/transactions.json#1274040070029967360",
+            "confidence": "LIMITED"
+          },
+          {
+            "eventType": "REACQUIRED",
+            "transactionId": "1301777492733870080",
+            "transactionType": "waiver",
+            "transactionDate": "2025-12-03T02:54:09.426Z",
+            "season": 2025,
+            "playerId": "12492",
+            "fromOwnerId": null,
+            "toOwnerId": "ben-isbell",
+            "otherAssets": [],
+            "draftPicks": [],
+            "sourceEvidence": "data/source/sleeper/transactions/2025/transactions.json#1301777492733870080",
+            "confidence": "LIMITED"
+          }
+        ]
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12476",
+      "name": "Devin Neal",
+      "position": "RB",
+      "draftingOwnerId": "jeffrey-hudgins",
+      "draftingOwnerName": "Jeffrey Hudgins",
+      "historicalTeamName": "LCC — Jeffrey Hudgins",
+      "overallPick": 36,
+      "round": 3,
+      "pickBand": "25-36",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 4,
+        "lineupImpact": 3,
+        "longevity": 1,
+        "valueRealized": 4
+      },
+      "overallScore": 3.05,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-36",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 51.5,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 1,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12641",
+      "name": "Jaylin Lane",
+      "position": "WR",
+      "draftingOwnerId": "keith-winder",
+      "draftingOwnerName": "Keith Winder",
+      "historicalTeamName": "LCC — Keith Winder",
+      "overallPick": 37,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 2,
+        "capitalEfficiency": 4,
+        "lineupImpact": 2,
+        "longevity": 4,
+        "valueRealized": 3
+      },
+      "overallScore": 2.9,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-37",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 26.2,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12496",
+      "name": "Tai Felton",
+      "position": "WR",
+      "draftingOwnerId": "rob-jenkins",
+      "draftingOwnerName": "Rob Jenkins",
+      "historicalTeamName": "LCC — Rob Jenkins",
+      "overallPick": 38,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 1,
+        "capitalEfficiency": 2,
+        "lineupImpact": 1,
+        "longevity": 2,
+        "valueRealized": 2
+      },
+      "overallScore": 1.5,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-38",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 4,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12531",
+      "name": "Trevor Etienne",
+      "position": "RB",
+      "draftingOwnerId": "earl-perkins",
+      "draftingOwnerName": "Earl Perkins",
+      "historicalTeamName": "LCC — Earl Perkins",
+      "overallPick": 39,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 2,
+        "capitalEfficiency": 3,
+        "lineupImpact": 1,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 2.35,
+      "grade": "C-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-39",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 8.2,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12499",
+      "name": "Elic Ayomanor",
+      "position": "WR",
+      "draftingOwnerId": "mike-mcburnie",
+      "draftingOwnerName": "Mike McBurnie",
+      "historicalTeamName": "LCC — Mike McBurnie",
+      "overallPick": 40,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 5,
+        "lineupImpact": 3,
+        "longevity": 4,
+        "valueRealized": 5
+      },
+      "overallScore": 4.2,
+      "grade": "A-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-40",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 89.5,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 2,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12497",
+      "name": "Tory Horton",
+      "position": "WR",
+      "draftingOwnerId": "ray-long",
+      "draftingOwnerName": "Ray Long",
+      "historicalTeamName": "LCC — Ray Long",
+      "overallPick": 41,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 4,
+        "lineupImpact": 1,
+        "longevity": 2,
+        "valueRealized": 2
+      },
+      "overallScore": 2.7,
+      "grade": "C",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-41",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 52.6,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12495",
+      "name": "Ollie Gordon",
+      "position": "RB",
+      "draftingOwnerId": "bill-gross",
+      "draftingOwnerName": "Bill Gross",
+      "historicalTeamName": "LCC — Bill Gross",
+      "overallPick": 42,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 4,
+        "lineupImpact": 3,
+        "longevity": 2,
+        "valueRealized": 4
+      },
+      "overallScore": 3.2,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-42",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 49,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 1,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12462",
+      "name": "Damien Martinez",
+      "position": "RB",
+      "draftingOwnerId": "tyrone-poist",
+      "draftingOwnerName": "Tyrone Poist",
+      "historicalTeamName": "LCC — Tyrone Poist",
+      "overallPick": 43,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 1,
+        "capitalEfficiency": 2,
+        "lineupImpact": 1,
+        "longevity": 1,
+        "valueRealized": 1
+      },
+      "overallScore": 1.25,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-43",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 0,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": [
+          {
+            "eventType": "DROPPED",
+            "transactionId": "1276207273919647744",
+            "transactionType": "free_agent",
+            "transactionDate": "2025-09-23T13:27:14.189Z",
+            "season": 2025,
+            "playerId": "12462",
+            "fromOwnerId": "tyrone-poist",
+            "toOwnerId": null,
+            "otherAssets": [],
+            "draftPicks": [],
+            "sourceEvidence": "data/source/sleeper/transactions/2025/transactions.json#1276207273919647744",
+            "confidence": "LIMITED"
+          }
+        ]
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12500",
+      "name": "Quinn Ewers",
+      "position": "QB",
+      "draftingOwnerId": "loren-michaels",
+      "draftingOwnerName": "Loren Michaels",
+      "historicalTeamName": "LCC — Loren Michaels",
+      "overallPick": 44,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 2,
+        "capitalEfficiency": 3,
+        "lineupImpact": 1,
+        "longevity": 2,
+        "valueRealized": 2
+      },
+      "overallScore": 2.1,
+      "grade": "D",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-44",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 31.1,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12520",
+      "name": "Xavier Restrepo",
+      "position": "WR",
+      "draftingOwnerId": "anthony-martinez",
+      "draftingOwnerName": "Anthony Martinez",
+      "historicalTeamName": "LCC — Anthony Martinez",
+      "overallPick": 45,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 1,
+        "capitalEfficiency": 3,
+        "lineupImpact": 1,
+        "longevity": 2,
+        "valueRealized": 2
+      },
+      "overallScore": 1.75,
+      "grade": "D",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-45",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 5.6,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12533",
+      "name": "Jacory Croskey-Merritt",
+      "position": "RB",
+      "draftingOwnerId": "mike-estes",
+      "draftingOwnerName": "Mike Estes",
+      "historicalTeamName": "LCC — Mike Estes",
+      "overallPick": 46,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 5,
+        "lineupImpact": 5,
+        "longevity": 5,
+        "valueRealized": 5
+      },
+      "overallScore": 4.65,
+      "grade": "A",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-46",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 135.9,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 10,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "11569",
+      "name": "Jarquez Hunter",
+      "position": "RB",
+      "draftingOwnerId": "ben-isbell",
+      "draftingOwnerName": "Ben Isbell",
+      "historicalTeamName": "LCC — Ben Isbell",
+      "overallPick": 47,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 1,
+        "capitalEfficiency": 1,
+        "lineupImpact": 1,
+        "longevity": 1,
+        "valueRealized": 1
+      },
+      "overallScore": 1,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-47",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 0,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "season": 2025,
+      "draftId": "1199899847038087168",
+      "playerId": "12467",
+      "name": "Jordan James",
+      "position": "RB",
+      "draftingOwnerId": "jeffrey-hudgins",
+      "draftingOwnerName": "Jeffrey Hudgins",
+      "historicalTeamName": "LCC — Jeffrey Hudgins",
+      "overallPick": 48,
+      "round": 4,
+      "pickBand": "37-48",
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "scores": {
+        "playerOutcome": 1,
+        "capitalEfficiency": 2,
+        "lineupImpact": 1,
+        "longevity": 1,
+        "valueRealized": 1
+      },
+      "overallScore": 1.25,
+      "grade": "F",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; do not interpret as mature outcome grade."
+      ],
+      "ownershipProvenance": {
+        "ownershipLedgerVersion": "ownership-ledger-v1",
+        "draftingEvidence": "data/source/sleeper/drafts/2025/1199899847038087168/picks.json#pick-48",
+        "draftingOwnerAgreement": true,
+        "ownershipConfidence": "MEDIUM",
+        "ownershipIntervalCount": 1,
+        "originalOwnerFantasyPoints": 0,
+        "subsequentOwnerFantasyPoints": 0,
+        "originalOwnerStarterAppearances": 0,
+        "subsequentOwnerStarterAppearances": 0,
+        "transactionEvents": []
+      }
+    }
+  ],
+  "ownerClassRecords": [
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "anthony-martinez",
+      "managerName": "Anthony Martinez",
+      "historicalTeamName": "LCC — Anthony Martinez",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12523",
+          "name": "Jimmy Horn",
+          "position": "WR",
+          "overallPick": 33,
+          "scored": true
+        },
+        {
+          "playerId": "12520",
+          "name": "Xavier Restrepo",
+          "position": "WR",
+          "overallPick": 45,
+          "scored": true
+        }
+      ],
+      "selectionCount": 2,
+      "scoredSelectionCount": 2,
+      "componentScores": {
+        "playerOutcome": 1.5,
+        "capitalEfficiency": 2.5,
+        "lineupImpact": 1,
+        "longevity": 2.5,
+        "valueRealized": 2.5
+      },
+      "overallScore": 1.925,
+      "grade": "D",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "ben-isbell",
+      "managerName": "Ben Isbell",
+      "historicalTeamName": "LCC — Ben Isbell",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12457",
+          "name": "Jaydon Blue",
+          "position": "RB",
+          "overallPick": 11,
+          "scored": true
+        },
+        {
+          "playerId": "12508",
+          "name": "Jaxson Dart",
+          "position": "QB",
+          "overallPick": 23,
+          "scored": true
+        },
+        {
+          "playerId": "12492",
+          "name": "Pat Bryant",
+          "position": "WR",
+          "overallPick": 35,
+          "scored": true
+        },
+        {
+          "playerId": "11569",
+          "name": "Jarquez Hunter",
+          "position": "RB",
+          "overallPick": 47,
+          "scored": true
+        }
+      ],
+      "selectionCount": 4,
+      "scoredSelectionCount": 4,
+      "componentScores": {
+        "playerOutcome": 2.25,
+        "capitalEfficiency": 2.25,
+        "lineupImpact": 1.5,
+        "longevity": 1.75,
+        "valueRealized": 2.5
+      },
+      "overallScore": 2.088,
+      "grade": "D",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "bill-gross",
+      "managerName": "Bill Gross",
+      "historicalTeamName": "LCC — Bill Gross",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12504",
+          "name": "Kaleb Johnson",
+          "position": "RB",
+          "overallPick": 6,
+          "scored": true
+        },
+        {
+          "playerId": "12519",
+          "name": "Luther Burden",
+          "position": "WR",
+          "overallPick": 18,
+          "scored": true
+        },
+        {
+          "playerId": "12469",
+          "name": "Dylan Sampson",
+          "position": "RB",
+          "overallPick": 29,
+          "scored": true
+        },
+        {
+          "playerId": "12545",
+          "name": "Tyler Shough",
+          "position": "QB",
+          "overallPick": 30,
+          "scored": true
+        },
+        {
+          "playerId": "12495",
+          "name": "Ollie Gordon",
+          "position": "RB",
+          "overallPick": 42,
+          "scored": true
+        }
+      ],
+      "selectionCount": 5,
+      "scoredSelectionCount": 5,
+      "componentScores": {
+        "playerOutcome": 3.2,
+        "capitalEfficiency": 3.4,
+        "lineupImpact": 2.6,
+        "longevity": 2.6,
+        "valueRealized": 3.6
+      },
+      "overallScore": 3.11,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "earl-perkins",
+      "managerName": "Earl Perkins",
+      "historicalTeamName": "LCC — Earl Perkins",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12507",
+          "name": "Omarion Hampton",
+          "position": "RB",
+          "overallPick": 3,
+          "scored": true
+        },
+        {
+          "playerId": "12522",
+          "name": "Cameron Ward",
+          "position": "QB",
+          "overallPick": 15,
+          "scored": true
+        },
+        {
+          "playerId": "12536",
+          "name": "Jaylin Noel",
+          "position": "WR",
+          "overallPick": 27,
+          "scored": true
+        },
+        {
+          "playerId": "12531",
+          "name": "Trevor Etienne",
+          "position": "RB",
+          "overallPick": 39,
+          "scored": true
+        }
+      ],
+      "selectionCount": 4,
+      "scoredSelectionCount": 4,
+      "componentScores": {
+        "playerOutcome": 3.25,
+        "capitalEfficiency": 3.25,
+        "lineupImpact": 2.5,
+        "longevity": 3.75,
+        "valueRealized": 4
+      },
+      "overallScore": 3.288,
+      "grade": "B-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "jeffrey-hudgins",
+      "managerName": "Jeffrey Hudgins",
+      "historicalTeamName": "LCC — Jeffrey Hudgins",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12501",
+          "name": "Matthew Golden",
+          "position": "WR",
+          "overallPick": 12,
+          "scored": true
+        },
+        {
+          "playerId": "12498",
+          "name": "Mason Taylor",
+          "position": "TE",
+          "overallPick": 24,
+          "scored": true
+        },
+        {
+          "playerId": "12476",
+          "name": "Devin Neal",
+          "position": "RB",
+          "overallPick": 36,
+          "scored": true
+        },
+        {
+          "playerId": "12467",
+          "name": "Jordan James",
+          "position": "RB",
+          "overallPick": 48,
+          "scored": true
+        }
+      ],
+      "selectionCount": 4,
+      "scoredSelectionCount": 4,
+      "componentScores": {
+        "playerOutcome": 2.75,
+        "capitalEfficiency": 2.75,
+        "lineupImpact": 2.25,
+        "longevity": 2,
+        "valueRealized": 3.5
+      },
+      "overallScore": 2.638,
+      "grade": "C",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "keith-winder",
+      "managerName": "Keith Winder",
+      "historicalTeamName": "LCC — Keith Winder",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12530",
+          "name": "Travis Hunter",
+          "position": "WR",
+          "overallPick": 1,
+          "scored": true
+        },
+        {
+          "playerId": "12481",
+          "name": "Cam Skattebo",
+          "position": "RB",
+          "overallPick": 13,
+          "scored": true
+        },
+        {
+          "playerId": "12524",
+          "name": "Shedeur Sanders",
+          "position": "QB",
+          "overallPick": 25,
+          "scored": true
+        },
+        {
+          "playerId": "12641",
+          "name": "Jaylin Lane",
+          "position": "WR",
+          "overallPick": 37,
+          "scored": true
+        }
+      ],
+      "selectionCount": 4,
+      "scoredSelectionCount": 4,
+      "componentScores": {
+        "playerOutcome": 3,
+        "capitalEfficiency": 3.25,
+        "lineupImpact": 2.75,
+        "longevity": 3.5,
+        "valueRealized": 3.5
+      },
+      "overallScore": 3.15,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "loren-michaels",
+      "managerName": "Loren Michaels",
+      "historicalTeamName": "LCC — Loren Michaels",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12514",
+          "name": "Emeka Egbuka",
+          "position": "WR",
+          "overallPick": 8,
+          "scored": true
+        },
+        {
+          "playerId": "12490",
+          "name": "Bhayshul Tuten",
+          "position": "RB",
+          "overallPick": 20,
+          "scored": true
+        },
+        {
+          "playerId": "12506",
+          "name": "Harold Fannin",
+          "position": "TE",
+          "overallPick": 32,
+          "scored": true
+        },
+        {
+          "playerId": "12500",
+          "name": "Quinn Ewers",
+          "position": "QB",
+          "overallPick": 44,
+          "scored": true
+        }
+      ],
+      "selectionCount": 4,
+      "scoredSelectionCount": 4,
+      "componentScores": {
+        "playerOutcome": 4,
+        "capitalEfficiency": 4,
+        "lineupImpact": 3.25,
+        "longevity": 3,
+        "valueRealized": 3
+      },
+      "overallScore": 3.637,
+      "grade": "B",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "mike-estes",
+      "managerName": "Mike Estes",
+      "historicalTeamName": "LCC — Mike Estes",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12518",
+          "name": "Tyler Warren",
+          "position": "TE",
+          "overallPick": 10,
+          "scored": true
+        },
+        {
+          "playerId": "12547",
+          "name": "Kyle Williams",
+          "position": "WR",
+          "overallPick": 22,
+          "scored": true
+        },
+        {
+          "playerId": "12535",
+          "name": "Isaac TeSlaa",
+          "position": "WR",
+          "overallPick": 34,
+          "scored": true
+        },
+        {
+          "playerId": "12533",
+          "name": "Jacory Croskey-Merritt",
+          "position": "RB",
+          "overallPick": 46,
+          "scored": true
+        }
+      ],
+      "selectionCount": 4,
+      "scoredSelectionCount": 4,
+      "componentScores": {
+        "playerOutcome": 3.75,
+        "capitalEfficiency": 3.75,
+        "lineupImpact": 3.25,
+        "longevity": 4,
+        "valueRealized": 4
+      },
+      "overallScore": 3.738,
+      "grade": "B",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "mike-mcburnie",
+      "managerName": "Mike McBurnie",
+      "historicalTeamName": "LCC — Mike McBurnie",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12529",
+          "name": "TreVeyon Henderson",
+          "position": "RB",
+          "overallPick": 4,
+          "scored": true
+        },
+        {
+          "playerId": "12489",
+          "name": "RJ Harvey",
+          "position": "RB",
+          "overallPick": 9,
+          "scored": true
+        },
+        {
+          "playerId": "12484",
+          "name": "Jayden Higgins",
+          "position": "WR",
+          "overallPick": 16,
+          "scored": true
+        },
+        {
+          "playerId": "12487",
+          "name": "Terrance Ferguson",
+          "position": "TE",
+          "overallPick": 21,
+          "scored": true
+        },
+        {
+          "playerId": "12510",
+          "name": "Jalen Milroe",
+          "position": "QB",
+          "overallPick": 28,
+          "scored": true
+        },
+        {
+          "playerId": "12499",
+          "name": "Elic Ayomanor",
+          "position": "WR",
+          "overallPick": 40,
+          "scored": true
+        }
+      ],
+      "selectionCount": 6,
+      "scoredSelectionCount": 6,
+      "componentScores": {
+        "playerOutcome": 3.667,
+        "capitalEfficiency": 3.5,
+        "lineupImpact": 2.667,
+        "longevity": 3.333,
+        "valueRealized": 3.333
+      },
+      "overallScore": 3.392,
+      "grade": "B-",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "ray-long",
+      "managerName": "Ray Long",
+      "historicalTeamName": "LCC — Ray Long",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12512",
+          "name": "Quinshon Judkins",
+          "position": "RB",
+          "overallPick": 5,
+          "scored": true
+        },
+        {
+          "playerId": "12509",
+          "name": "Tre Harris",
+          "position": "WR",
+          "overallPick": 17,
+          "scored": true
+        },
+        {
+          "playerId": "12497",
+          "name": "Tory Horton",
+          "position": "WR",
+          "overallPick": 41,
+          "scored": true
+        }
+      ],
+      "selectionCount": 3,
+      "scoredSelectionCount": 3,
+      "componentScores": {
+        "playerOutcome": 3.667,
+        "capitalEfficiency": 3.333,
+        "lineupImpact": 2.333,
+        "longevity": 2.667,
+        "valueRealized": 3
+      },
+      "overallScore": 3.167,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "rob-jenkins",
+      "managerName": "Rob Jenkins",
+      "historicalTeamName": "LCC — Rob Jenkins",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12527",
+          "name": "Ashton Jeanty",
+          "position": "RB",
+          "overallPick": 2,
+          "scored": true
+        },
+        {
+          "playerId": "12517",
+          "name": "Colston Loveland",
+          "position": "TE",
+          "overallPick": 14,
+          "scored": true
+        },
+        {
+          "playerId": "12505",
+          "name": "Jalen Royals",
+          "position": "WR",
+          "overallPick": 26,
+          "scored": true
+        },
+        {
+          "playerId": "12496",
+          "name": "Tai Felton",
+          "position": "WR",
+          "overallPick": 38,
+          "scored": true
+        }
+      ],
+      "selectionCount": 4,
+      "scoredSelectionCount": 4,
+      "componentScores": {
+        "playerOutcome": 2.75,
+        "capitalEfficiency": 3.25,
+        "lineupImpact": 2.75,
+        "longevity": 3.5,
+        "valueRealized": 3.25
+      },
+      "overallScore": 3.038,
+      "grade": "C+",
+      "confidence": "MEDIUM",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    },
+    {
+      "snapshotId": "outcome-grade-v1:2025:2025-12-31T23:59:59.999Z",
+      "snapshotVersion": "outcome-grade-v1",
+      "ownerId": "tyrone-poist",
+      "managerName": "Tyrone Poist",
+      "historicalTeamName": "LCC — Tyrone Poist",
+      "season": 2025,
+      "maturity": "EARLY_OUTCOME_SNAPSHOT",
+      "evaluationAsOf": "2025-12-31T23:59:59.999Z",
+      "draftSelections": [
+        {
+          "playerId": "12526",
+          "name": "Tetairoa McMillan",
+          "position": "WR",
+          "overallPick": 7,
+          "scored": true
+        },
+        {
+          "playerId": "12483",
+          "name": "Jack Bech",
+          "position": "WR",
+          "overallPick": 19,
+          "scored": true
+        },
+        {
+          "playerId": "12521",
+          "name": "Elijah Arroyo",
+          "position": "TE",
+          "overallPick": 31,
+          "scored": true
+        },
+        {
+          "playerId": "12462",
+          "name": "Damien Martinez",
+          "position": "RB",
+          "overallPick": 43,
+          "scored": true
+        }
+      ],
+      "selectionCount": 4,
+      "scoredSelectionCount": 4,
+      "componentScores": {
+        "playerOutcome": 2.5,
+        "capitalEfficiency": 2.75,
+        "lineupImpact": 2,
+        "longevity": 2.5,
+        "valueRealized": 2.5
+      },
+      "overallScore": 2.488,
+      "grade": "C-",
+      "confidence": "UNAVAILABLE",
+      "limitations": [
+        "EARLY_OUTCOME_SNAPSHOT; class remains subject to future evaluation snapshots."
+      ]
+    }
+  ]
+}

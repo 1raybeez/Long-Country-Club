@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "format": "1QB_DYNASTY_ROOKIE",
+  "requiredFields": [
+    "season",
+    "snapshotId",
+    "source",
+    "sourceUrl",
+    "snapshotDate",
+    "retrievedAt",
+    "format",
+    "teams",
+    "sampleSize",
+    "marketMethodologyVersion",
+    "status",
+    "players"
+  ],
+  "statuses": ["CANDIDATE", "FROZEN_FOR_DRAFT", "SUPERSEDED", "INVALID"],
+  "compatibility": {
+    "teams": 12,
+    "format": "1QB_DYNASTY_ROOKIE",
+    "minimumSampleSize": 1,
+    "playersMustBeNonEmpty": true
+  },
+  "selectionPolicy": [
+    "latest compatible snapshot on or before draft start",
+    "nearest compatible snapshot after draft only when no valid pre-draft snapshot exists",
+    "unavailable when neither exists",
+    "FROZEN_FOR_DRAFT is immutable and cannot be replaced by later ADP"
+  ],
+  "storage": "data/source/market/dynasty-rookie/{season}/snapshots/YYYY-MM-DD/{raw.json,provenance.json}"
+}

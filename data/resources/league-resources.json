@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "id": "podcasts",
+      "label": "Podcasts & Shows",
+      "resources": [
+        { "id": "fantasy-footballers-podcast", "name": "The Fantasy Footballers", "description": "Award-winning analysis and entertaining start/sit advice.", "url": "https://music.apple.com/us/podcast/the-fantasy-footballers-fantasy-football-podcast/id1023761733", "type": "Free" },
+        { "id": "ringer-fantasy-show", "name": "The Ringer Fantasy Show", "description": "High-energy draft strategy and waiver wire deep dives.", "url": "https://music.apple.com/us/podcast/the-ringer-fantasy-football-show/id1524039715", "type": "Free" },
+        { "id": "fantasy-pros-podcast", "name": "Fantasy Pros Podcast", "description": "Consensus rankings and expert advice hub in audio form.", "url": "https://music.apple.com/us/podcast/fantasypros-fantasy-football-podcast/id1138942145", "type": "Free" },
+        { "id": "establish-the-run", "name": "Establish the Run", "description": "Elite analytics and projections from Evan Silva and Adam Levitan.", "url": "https://music.apple.com/us/podcast/establish-the-run-fantasy-football/id1473533244", "type": "Free" },
+        { "id": "late-round-podcast", "name": "The Late-Round Podcast", "description": "JJ Zachariason's data-driven approach to finding sleepers.", "url": "https://music.apple.com/us/podcast/the-late-round-fantasy-football-podcast/id1224964045", "type": "Free" },
+        { "id": "yahoo-fantasy-forecast", "name": "Yahoo Fantasy Forecast", "description": "Diverse insights and strategies for all play-styles.", "url": "https://music.apple.com/us/podcast/yahoo-fantasy-forecast/id1023761733", "type": "Free" }
+      ]
+    },
+    {
+      "id": "websites",
+      "label": "Research & Rankings",
+      "resources": [
+        { "id": "fantasy-footballers", "name": "Fantasy Footballers", "description": "Expert rankings and high-quality draft/in-season tools.", "type": "Premium", "url": "https://www.thefantasyfootballers.com" },
+        { "id": "fantasy-pros", "name": "Fantasy Pros", "description": "Consensus rankings and the MyPlaybook tool suite.", "type": "Freemium", "url": "https://www.fantasypros.com" },
+        { "id": "rotoballer", "name": "Rotoballer", "description": "Real-time news and expert start/sit recommendations.", "type": "Free", "url": "https://www.rotoballer.com" },
+        { "id": "sleeper-blog", "name": "Sleeper Blog", "description": "Official updates and strategy specifically for the Sleeper platform.", "type": "Free", "url": "https://blog.sleeper.app" },
+        { "id": "draft-sharks", "name": "Draft Sharks", "description": "Award-winning accuracy and personalized draft tools.", "type": "Premium", "url": "https://www.draftsharks.com" },
+        { "id": "fantasy-life", "name": "Fantasy Life", "description": "Quick news alerts and the famous 'Fantasy Life' newsletter tools.", "type": "Free", "url": "https://www.fantasylife.com" }
+      ]
+    },
+    {
+      "id": "analyzers",
+      "label": "Tools & Analyzers",
+      "resources": [
+        { "id": "fantasy-pros-trade", "name": "Fantasy Pros Trade", "description": "Syncs your Sleeper league for evaluation.", "type": "Freemium", "url": "https://www.fantasypros.com/nfl/myplaybook/trade-analyzer.php" },
+        { "id": "keeptradecut", "name": "KeepTradeCut", "description": "The market standard for dynasty and keeper values.", "type": "Free", "url": "https://keeptradecut.com/trade-calculator" },
+        { "id": "walterpicks", "name": "WalterPicks", "description": "AI-driven insights and trade evaluation tools.", "type": "Free", "url": "https://www.walterpicks.com" },
+        { "id": "fantasycalc", "name": "FantasyCalc", "description": "Real trade data from thousands of actual leagues.", "type": "Free", "url": "https://www.fantasycalc.com/trade-calculator" },
+        { "id": "trade-navigator", "name": "Trade Navigator", "description": "RotoWire's deep analytical breakdown of value exchanges.", "type": "Premium", "url": "https://www.rotowire.com/football/trade-analyzer.php" }
+      ]
+    }
+  ]
+}

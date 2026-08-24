@@ -1,0 +1,60 @@
+{
+  "version": "forecast-vs-reality-v1",
+  "status": "APPROVED",
+  "purpose": "Append-only diagnostic comparison of frozen Draft-Day class expectations to immutable Outcome class snapshots.",
+  "authorities": {
+    "draftDay": [
+      "draft-intelligence-v1.1",
+      "market-value-v1.1",
+      "overall-draft-day-v1"
+    ],
+    "outcome": [
+      "outcome-grade-v1",
+      "ownership-ledger-v1"
+    ],
+    "evaluationBoundary": "2025-12-31T23:59:59.999Z"
+  },
+  "scoreDelta": "outcomeScore - draftDayOverallScore; continuous and authoritative within the comparison layer.",
+  "magnitudeBands": {
+    "MATCHED_EXPECTATION": "absolute gradeDelta <= 0.316",
+    "MODEST_OUTPERFORMANCE": "gradeDelta > 0.316 and <= 0.969",
+    "MAJOR_OUTPERFORMANCE": "gradeDelta > 0.969",
+    "MODEST_UNDERPERFORMANCE": "gradeDelta < -0.316 and >= -0.969",
+    "MAJOR_UNDERPERFORMANCE": "gradeDelta < -0.969"
+  },
+  "letterMovement": "Preserve exact Draft-Day and Outcome letters plus movement; do not use threshold crossing as the primary accuracy metric.",
+  "rankMovement": "Ordinal within-season owner/class rank, stable ownerId tie-break; descriptive secondary context only.",
+  "maturity": {
+    "MATURE": "substantially established",
+    "DEVELOPING": "provisional",
+    "EARLY": "preliminary only"
+  },
+  "confidence": "Minimum of Draft-Day confidence, Outcome confidence, and maturity ceiling; 2025 is capped at LIMITED.",
+  "componentResiduals": {
+    "process": "outcomeScore - processScore; explanatory diagnostic",
+    "market": "outcomeScore - marketValueScore; explanatory diagnostic",
+    "overall": "outcomeScore - overallDraftDayScore; primary residual"
+  },
+  "outlookReadiness": {
+    "immediateImpact": "NOT_READY; stored forecast field is not consistently populated and no thresholds are approved.",
+    "longTermUpside": "NOT_READY; 2025 is excluded and no structured forecast field is consistently available.",
+    "trajectory": "NOT_READY; preserve prose, do not apply arbitrary NLP scoring."
+  },
+  "playerLevelRecommendation": "Do not publish player-level accuracy in V1; Market Value is cost context, not a player projection.",
+  "ownerClassRecommendation": "Use owner/class comparisons as the primary V1 unit; preserve player outcomes as explanatory evidence.",
+  "boundaries": {
+    "no2026Outcome": true,
+    "noTeamResults": true,
+    "noMutation": true,
+    "noPublicRecords": true,
+    "noUi": true,
+    "noPredictor": true
+  },
+  "snapshotIdentity": "draftSeason + outcomeEvaluationAsOf + forecastComparisonMethodologyVersion",
+  "approval": {
+    "approvalStatus": "APPROVED",
+    "approvedAt": "2026-08-21T00:00:00.000Z",
+    "immutableAfterApproval": true,
+    "futureChangeRule": "Threshold or rule changes require forecast-vs-reality-v1.1 or v2 with explicit supersession; v1 methodology and snapshots are never rewritten."
+  }
+}

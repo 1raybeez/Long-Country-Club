@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Flame, Swords } from "lucide-react";
 import { useState } from "react";
+import { LeagueInfoShell } from "@/components/league/LeagueInfoShell";
 
 type OwnerOption = {
   id: string;
@@ -70,21 +71,22 @@ export function RivalryHubClient({
   const featured = selectedRivalry ? [selectedRivalry] : rivalries.slice(0, 12);
 
   return (
-    <main className="lcc-page">
-      <div className="lcc-container py-8 sm:py-12 lg:py-14">
-        <header className="lcc-card p-6 sm:p-8">
-          <p className="font-ui text-xs font-black uppercase tracking-[0.25em] text-[var(--lcc-gold)]">
-            Long Country Club
-          </p>
-          <h1 className="mt-3 font-serif text-5xl font-black uppercase italic leading-none text-[var(--lcc-text)] sm:text-6xl">
-            Rivalry Hub
-          </h1>
-          <p className="mt-4 max-w-3xl font-ui text-sm font-medium leading-6 text-[var(--lcc-text-muted)] sm:text-base">
-            Pick any two owners or browse the most-played rivalries in LCC&apos;s Sleeper-era archive.
-          </p>
+    <LeagueInfoShell>
+      <main className="lcc2-page-shell">
+      <div className="lcc2-page-container">
+        <header className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="lcc2-label text-[var(--lcc-brand-primary)]">Rivalries</p>
+            <h1 className="mt-2 font-ui text-4xl font-black tracking-[-0.04em] text-[var(--lcc-color-text)] sm:text-5xl">
+              Rivalry Hub
+            </h1>
+            <p className="lcc2-body mt-3 max-w-2xl">
+              Explore LCC&apos;s most-played series, historic matchups, and owner-vs-owner records from the detailed Sleeper-era archive.
+            </p>
+          </div>
         </header>
 
-        <section className="mt-5 lcc-card p-5">
+        <section className="lcc2-card" aria-label="Owner pairing selector">
           <div className="grid gap-4 md:grid-cols-[1fr_1fr_auto] md:items-end">
             <OwnerSelect
               label="Owner A"
@@ -104,7 +106,7 @@ export function RivalryHubClient({
                 setOwnerAId("");
                 setOwnerBId("");
               }}
-              className="lcc-button lcc-button-secondary"
+              className="lcc2-button lcc2-button--secondary"
             >
               Reset
             </button>
@@ -114,7 +116,7 @@ export function RivalryHubClient({
             <div className="mt-5">
               <Link
                 href={`/matchups/head-to-head/${selectedRivalry.ownerA}-vs-${selectedRivalry.ownerB}`}
-                className="lcc-button"
+                className="lcc2-button lcc2-button--primary"
               >
                 View Full Head-to-Head →
               </Link>
@@ -143,32 +145,42 @@ export function RivalryHubClient({
           </div>
 
           <aside className="grid gap-5 self-start lg:sticky lg:top-32">
-            <SectionTitle
-              title="Game Records"
-              subtitle={selectedRivalry ? "For selected rivalry." : "Across all matchups."}
-            />
-
-            {biggestBlowout && (
-              <GameRecordCard
-                title="Biggest Blowout"
-                icon={<Flame className="h-4 w-4" />}
-                matchup={biggestBlowout}
-                owners={owners}
-              />
-            )}
-
-            {closestGame && (
-              <GameRecordCard
-                title="Closest Game"
-                icon={<Swords className="h-4 w-4" />}
-                matchup={closestGame}
-                owners={owners}
-              />
+            {selectedRivalry ? (
+              <>
+                <SectionTitle title="Game Records" subtitle="For selected rivalry." />
+                {biggestBlowout && (
+                  <GameRecordCard
+                    title="Biggest Blowout"
+                    icon={<Flame className="h-4 w-4" aria-hidden="true" />}
+                    matchup={biggestBlowout}
+                    owners={owners}
+                  />
+                )}
+                {closestGame && (
+                  <GameRecordCard
+                    title="Closest Game"
+                    icon={<Swords className="h-4 w-4" aria-hidden="true" />}
+                    matchup={closestGame}
+                    owners={owners}
+                  />
+                )}
+              </>
+            ) : (
+              <section className="lcc2-card" aria-label="Rivalry context">
+                <SectionTitle title="Rivalry context" subtitle="Select an owner pairing to see pair-specific game records." />
+                <Link
+                  href="/league-info/records"
+                  className="lcc2-button lcc2-button--secondary mt-4 w-full"
+                >
+                  Open League Record Book →
+                </Link>
+              </section>
             )}
           </aside>
         </section>
       </div>
-    </main>
+      </main>
+    </LeagueInfoShell>
   );
 }
 
@@ -191,7 +203,7 @@ function OwnerSelect({
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface)] px-4 py-3 font-ui text-sm font-black uppercase text-[var(--lcc-text)]"
+        className="min-h-11 rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] px-4 py-3 font-ui text-sm font-black uppercase text-[var(--lcc-color-text)] outline-none transition focus:border-[var(--lcc-interactive)] focus:ring-2 focus:ring-[var(--lcc-interactive)]/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lcc-interactive-focus)]"
       >
         <option value="">Select owner</option>
         {owners.map((owner) => (
@@ -215,20 +227,21 @@ function RivalryCard({
   const ownerB = owner(owners, rivalry.ownerB);
 
   return (
-    <article className="lcc-card overflow-hidden">
-      <div className="grid md:grid-cols-[1fr_12rem_1fr]">
+    <article className="lcc2-card lcc2-card--raised overflow-hidden p-0">
+      <div className="grid md:grid-cols-[minmax(0,1fr)_10rem_minmax(0,1fr)]">
         <OwnerSide owner={ownerA} wins={rivalry.winsA} points={rivalry.pointsA} />
 
-        <div className="flex flex-col items-center justify-center border-y border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-5 text-center md:border-x md:border-y-0">
-          <Swords className="mb-3 h-7 w-7 text-[var(--lcc-gold)]" />
-          <p className="font-serif text-4xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+        <div className="flex flex-col items-center justify-center border-y border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-5 text-center md:border-x md:border-y-0">
+          <p className="lcc2-section-heading__eyebrow">Series record</p>
+          <Swords className="my-3 h-6 w-6 text-[var(--lcc-brand-primary)]" aria-hidden="true" />
+          <p className="font-ui text-4xl font-black leading-none text-[var(--lcc-color-text)]">
             {rivalry.winsA}-{rivalry.winsB}
             {rivalry.ties > 0 ? `-${rivalry.ties}` : ""}
           </p>
-          <p className="mt-2 font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
+          <p className="mt-2 lcc2-label">
             {rivalry.meetings} meetings
           </p>
-          <p className="mt-1 font-ui text-xs font-bold uppercase text-[var(--lcc-text-muted)]">
+          <p className="mt-1 lcc2-label">
             {rivalry.firstSeason}-{rivalry.lastSeason}
           </p>
         </div>
@@ -236,7 +249,7 @@ function RivalryCard({
         <OwnerSide owner={ownerB} wins={rivalry.winsB} points={rivalry.pointsB} reverse />
       </div>
 
-      <div className="grid gap-3 border-t border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-4 sm:grid-cols-4">
+      <div className="grid gap-3 border-t border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-4 sm:grid-cols-4">
         <MiniFact label="Playoff Games" value={String(rivalry.playoffMeetings)} />
         <MiniFact label="Championship Games" value={String(rivalry.championshipMeetings)} />
         <MiniFact label="Total Points" value={(rivalry.pointsA + rivalry.pointsB).toFixed(1)} />
@@ -258,16 +271,17 @@ function OwnerSide({
   reverse?: boolean;
 }) {
   return (
-    <div className={`flex items-center gap-4 p-5 ${reverse ? "md:flex-row-reverse md:text-right" : ""}`}>
-      <img src={owner.imagePath} alt={owner.displayName} className="h-20 w-20 rounded-full border-4 border-white object-cover shadow-[var(--lcc-shadow-soft)]" />
-      <div>
-        <p className="font-serif text-2xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+    <div className={`min-w-0 flex items-center gap-4 p-5 sm:p-6 ${reverse ? "md:flex-row-reverse md:text-right" : ""}`}>
+      <img src={owner.imagePath} alt={owner.displayName} className="h-16 w-16 shrink-0 rounded-full border-2 border-[var(--lcc-color-border)] object-cover shadow-sm sm:h-20 sm:w-20" />
+      <div className="min-w-0">
+        <p className="lcc2-label">Owner</p>
+        <p className="mt-2 whitespace-normal break-words font-ui text-xl font-black uppercase leading-tight text-[var(--lcc-color-text)] sm:text-2xl">
           {owner.displayName}
         </p>
-        <p className="mt-2 font-ui text-xs font-black uppercase text-[var(--lcc-gold)]">
+        <p className="mt-2 lcc2-badge lcc2-badge--positive">
           {wins} wins
         </p>
-        <p className="mt-1 font-ui text-xs font-bold uppercase text-[var(--lcc-text-muted)]">
+        <p className="mt-2 lcc2-label">
           {points.toFixed(1)} points
         </p>
       </div>
@@ -287,17 +301,17 @@ function GameRecordCard({
   owners: readonly OwnerOption[];
 }) {
   return (
-    <article className="lcc-card p-5">
+    <article className="lcc2-card">
       <div className="mb-4 flex items-center gap-3">
-        <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--lcc-green-deep)] text-[var(--lcc-gold)]">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--lcc-color-surface-muted)] text-[var(--lcc-interactive)]">
           {icon}
         </span>
-        <h2 className="font-serif text-2xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+        <h2 className="font-ui text-xl font-black uppercase leading-none text-[var(--lcc-color-text)]">
           {title}
         </h2>
       </div>
 
-      <p className="font-ui text-xs font-black uppercase text-[var(--lcc-gold)]">
+      <p className={`lcc2-badge ${getTypeBadgeClass(matchup.type)}`}>
         {matchup.season} · Week {matchup.week} · {formatType(matchup.type)}
       </p>
 
@@ -323,11 +337,11 @@ function ScoreLine({
   winner: boolean;
 }) {
   return (
-    <div className="flex justify-between rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-3">
-      <span className={winner ? "font-black" : "font-bold text-[var(--lcc-text-muted)]"}>
+      <div className={`flex justify-between rounded-lg border p-3 ${winner ? "border-[var(--lcc-semantic-positive)]/30 bg-[var(--lcc-semantic-positive)]/10" : "border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)]"}`}>
+      <span className={winner ? "font-black text-[var(--lcc-semantic-positive)]" : "font-bold text-[var(--lcc-color-text-muted)]"}>
         {owner(owners, ownerId).displayName}
       </span>
-      <span className="font-serif font-black italic">
+      <span className="font-ui font-black text-[var(--lcc-color-text)]">
         {score?.toFixed(2) ?? "—"}
       </span>
     </div>
@@ -337,13 +351,11 @@ function ScoreLine({
 function SectionTitle({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <div>
-      <p className="font-ui text-xs font-black uppercase tracking-wide text-[var(--lcc-gold)]">
-        LCC Almanac
-      </p>
-      <h2 className="mt-2 font-serif text-3xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+      <p className="lcc2-section-heading__eyebrow">Rivalry discovery</p>
+      <h2 className="mt-2 lcc2-section-heading__title">
         {title}
       </h2>
-      <p className="mt-2 font-ui text-sm font-medium text-[var(--lcc-text-muted)]">
+      <p className="mt-2 lcc2-section-heading__supporting">
         {subtitle}
       </p>
     </div>
@@ -352,11 +364,11 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle: string }) 
 
 function MiniFact({ label, value }: { label: string; value: string }) {
   return (
-    <div className="mt-3 rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface)] p-3">
-      <p className="font-ui text-[0.65rem] font-black uppercase text-[var(--lcc-text-muted)]">
+    <div className="mt-3 rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3">
+      <p className="lcc2-label">
         {label}
       </p>
-      <p className="mt-1 font-serif text-lg font-black uppercase italic text-[var(--lcc-text)]">
+      <p className="mt-1 font-ui text-lg font-black text-[var(--lcc-color-text)]">
         {value}
       </p>
     </div>
@@ -393,4 +405,10 @@ function formatType(type: string) {
   if (type === "championship") return "Championship";
   if (type === "playoff") return "Playoff";
   return "Game";
+}
+
+function getTypeBadgeClass(type: string) {
+  if (type === "championship") return "lcc2-badge--achievement";
+  if (type === "playoff") return "lcc2-badge--info";
+  return "lcc2-badge--neutral";
 }

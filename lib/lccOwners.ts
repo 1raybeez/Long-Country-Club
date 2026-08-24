@@ -1,4 +1,5 @@
 import { LCC_CURRENT_SEASON } from "./leagueConstants";
+import managerProfileSurvey from "../data/current/manager-profiles.json";
 
 export const LCC_ERA_MODEL = {
   twoKeeper: {
@@ -96,6 +97,16 @@ export interface LccOwner {
   readonly almanacProfile?: LccOwnerAlmanacProfile;
 }
 
+export const LCC_CO_FOUNDER_OWNER_IDS = [
+  "ray-long",
+  "bill-gross",
+  "keith-winder",
+] as const;
+
+export function isLccCoFounder(ownerId: string) {
+  return (LCC_CO_FOUNDER_OWNER_IDS as readonly string[]).includes(ownerId);
+}
+
 // TODO: Populate tenureSpans for every owner once the full LCC final-placement
 // history table is canonical in-repo. For now, only verified interrupted
 // tenures are represented here; owners without tenureSpans retain fallback
@@ -130,7 +141,7 @@ const emptyPodiums: LccOwnerPodiums = {
   third: [],
 };
 
-export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
+const RAW_ACTIVE_LCC_OWNERS: readonly LccOwner[] = [
   {
     id: "ray-long",
     status: "active",
@@ -1153,6 +1164,26 @@ export const RETIRED_LCC_OWNERS: readonly LccOwner[] = [
     },
   },
 ];
+
+function applySurveyBackedProfiles(owners: readonly LccOwner[]): readonly LccOwner[] {
+  return owners.map((owner) => {
+    const response = managerProfileSurvey.responses.find(
+      (entry) => entry.canonicalOwnerId === owner.id && entry.isLatestResponse
+    );
+    if (!response) return owner;
+    return {
+      ...owner,
+      almanacProfile: {
+        ...owner.almanacProfile,
+        ...response.fields,
+      } as LccOwnerAlmanacProfile,
+    };
+  });
+}
+
+export const ACTIVE_LCC_OWNERS: readonly LccOwner[] = applySurveyBackedProfiles(
+  RAW_ACTIVE_LCC_OWNERS
+);
 
 export const ALL_LCC_OWNERS: readonly LccOwner[] = [
   ...ACTIVE_LCC_OWNERS,

@@ -1,0 +1,1285 @@
+{
+  "season": 2026,
+  "forecastType": "PRESEASON",
+  "modelName": "LCC Team Strength Forecast",
+  "modelVersion": "predictor-preseason-v1",
+  "generatedAt": "2026-08-24T14:29:48.328Z",
+  "dataCutoff": "2026-08-20T22:17:49.000Z",
+  "rosterCoverage": {
+    "ownerCount": 12,
+    "rosterCount": 12,
+    "uniquePlayerCount": 304,
+    "duplicateOwnershipCount": 0,
+    "unknownPlayerCount": 0
+  },
+  "methodology": {
+    "baseline": "Resolved expected-lineup slots use the existing preseason historical fallback: latest prior-season scored sample, then career historical scoring; unresolved players remain uncertainty.",
+    "positionNormalization": "Each position is normalized against the 12 current LCC rosters using a tied midrank percentile from 0 to 100; no cross-position fantasy-point thresholds are used.",
+    "composite": "Team Strength Index = 70% expected starting lineup strength + 20% active depth strength + 10% positional balance. Confidence never multiplies or penalizes this score.",
+    "depth": "Active depth is the average league-relative baseline of the best 6 usable bench options after expected starters, taxi, and reserve/IR players are excluded.",
+    "balance": "Positional balance is the mean available position index multiplied by the fraction of the six modeled position groups with usable baseline coverage, preventing one elite group from masking holes.",
+    "weights": {
+      "expectedLineup": 0.7,
+      "activeDepth": 0.2,
+      "positionalBalance": 0.1
+    },
+    "rookieTreatment": "No-history rookies with frozen position-aware market coverage receive a conservative ROOKIE_MARKET baseline anchored between the established position 25th and 75th historical percentiles. Unsupported or insufficiently sampled positions remain unresolved; rookie baselines never count as historical evidence for confidence.",
+    "taxiTreatment": "Taxi players are excluded from expected lineups and usable depth; taxi counts remain visible in coverage metadata.",
+    "reserveTreatment": "Reserve/IR players are excluded from expected lineups and usable depth without injury-return assumptions.",
+    "backtestDisclosure": "Historical validation supports broad relative tiers, not exact weekly scores, records, playoff odds, or championship odds.",
+    "futureInSeasonTransition": {
+      "early": {
+        "weeks": "1-3",
+        "rosterStrength": 0.55,
+        "actualScoring": 0.25,
+        "recordAndOpponent": 0.1,
+        "lineupEfficiency": 0.1
+      },
+      "mid": {
+        "weeks": "4-8",
+        "rosterStrength": 0.35,
+        "actualScoring": 0.35,
+        "recordAndOpponent": 0.15,
+        "lineupEfficiency": 0.15
+      },
+      "late": {
+        "weeks": "9+",
+        "rosterStrength": 0.2,
+        "actualScoring": 0.4,
+        "recordAndOpponent": 0.2,
+        "lineupEfficiency": 0.2
+      },
+      "status": "DOCUMENTED_ONLY_NOT_ACTIVE_IN_PRESEASON_V1"
+    },
+    "futureSimulationRequirement": "Before publishing future records or probabilities, use the future schedule, scoring distributions and variance, remaining opponents, and at least 10,000 simulations.",
+    "rookieMarketAdapter": "Position-relative market rank from data/source/market/dynasty-rookie/2026/snapshots/2026-08-19/provenance.json; market standing is not converted directly to fantasy points.",
+    "rookiePositionMinimumSample": 3
+  },
+  "snapshotStatus": "APPROVED",
+  "immutable": true,
+  "teams": [
+    {
+      "season": 2026,
+      "ownerId": "ben-isbell",
+      "ownerName": "Ben Isbell",
+      "teamName": "Benl",
+      "teamStrengthScore": 80.12,
+      "lineupStrengthScore": 90.91,
+      "depthStrengthScore": 45.45,
+      "balanceScore": 73.94,
+      "forecastOrder": 1,
+      "tier": "CONTENDER",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 24.84,
+          "relativeIndex": 81.82,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 12.57,
+          "relativeIndex": 27.27,
+          "sampledPlayerCount": 7,
+          "activePlayerCount": 7,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 10.91,
+          "relativeIndex": 72.73,
+          "sampledPlayerCount": 9,
+          "activePlayerCount": 9,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 9.24,
+          "relativeIndex": 81.82,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 10.62,
+          "relativeIndex": 80,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 23.58,
+          "relativeIndex": 100,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 24,
+        "totalPlayers": 24,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 21,
+      "historicalBaselineTotal": 24,
+      "playerBaselineResolved": 24,
+      "playerBaselineTotal": 24,
+      "usableDepthCoverage": {
+        "activePlayers": 24,
+        "usableDepthCount": 6,
+        "relativeIndex": 45.45
+      },
+      "coverage": {
+        "taxiCount": 5,
+        "reserveCount": 1,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 3,
+        "rookieMarketBaselineCount": 3,
+        "missingPositions": []
+      },
+      "confidence": "MEDIUM",
+      "keyStrength": "DST",
+      "keyConcern": "RB",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "tyrone-poist",
+      "ownerName": "Tyrone Poist",
+      "teamName": "Won't You be my Nabers",
+      "teamStrengthScore": 76.29,
+      "lineupStrengthScore": 100,
+      "depthStrengthScore": 0,
+      "balanceScore": 62.88,
+      "forecastOrder": 2,
+      "tier": "CONTENDER",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 24.62,
+          "relativeIndex": 72.73,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 15.98,
+          "relativeIndex": 72.73,
+          "sampledPlayerCount": 5,
+          "activePlayerCount": 5,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 14.31,
+          "relativeIndex": 100,
+          "sampledPlayerCount": 7,
+          "activePlayerCount": 7,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 6.31,
+          "relativeIndex": 9.09,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 8.12,
+          "relativeIndex": 50,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 20.96,
+          "relativeIndex": 72.73,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 18,
+        "totalPlayers": 18,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 18,
+      "historicalBaselineTotal": 18,
+      "playerBaselineResolved": 18,
+      "playerBaselineTotal": 18,
+      "usableDepthCoverage": {
+        "activePlayers": 18,
+        "usableDepthCount": 6,
+        "relativeIndex": 0
+      },
+      "coverage": {
+        "taxiCount": 5,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 0,
+        "rookieMarketBaselineCount": 0,
+        "missingPositions": []
+      },
+      "confidence": "HIGH",
+      "keyStrength": "WR",
+      "keyConcern": "TE",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "mike-mcburnie",
+      "ownerName": "Mike McBurnie",
+      "teamName": "CookieMonsters",
+      "teamStrengthScore": 71.65,
+      "lineupStrengthScore": 81.82,
+      "depthStrengthScore": 36.36,
+      "balanceScore": 71.06,
+      "forecastOrder": 3,
+      "tier": "CONTENDER",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 16.64,
+          "relativeIndex": 18.18,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 14.37,
+          "relativeIndex": 54.55,
+          "sampledPlayerCount": 5,
+          "activePlayerCount": 5,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 12.51,
+          "relativeIndex": 81.82,
+          "sampledPlayerCount": 7,
+          "activePlayerCount": 7,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 9.41,
+          "relativeIndex": 90.91,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 11.11,
+          "relativeIndex": 90,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 23.19,
+          "relativeIndex": 90.91,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 20,
+        "totalPlayers": 20,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 18,
+      "historicalBaselineTotal": 20,
+      "playerBaselineResolved": 20,
+      "playerBaselineTotal": 20,
+      "usableDepthCoverage": {
+        "activePlayers": 20,
+        "usableDepthCount": 6,
+        "relativeIndex": 36.36
+      },
+      "coverage": {
+        "taxiCount": 4,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 2,
+        "rookieMarketBaselineCount": 2,
+        "missingPositions": []
+      },
+      "confidence": "HIGH",
+      "keyStrength": "DST",
+      "keyConcern": "QB",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "rob-jenkins",
+      "ownerName": "Rob Jenkins",
+      "teamName": "Roaring 20",
+      "teamStrengthScore": 60.61,
+      "lineupStrengthScore": 54.55,
+      "depthStrengthScore": 81.82,
+      "balanceScore": 60.61,
+      "forecastOrder": 4,
+      "tier": "STRONG",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 21.92,
+          "relativeIndex": 45.45,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 16.59,
+          "relativeIndex": 81.82,
+          "sampledPlayerCount": 4,
+          "activePlayerCount": 4,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 8.08,
+          "relativeIndex": 0,
+          "sampledPlayerCount": 5,
+          "activePlayerCount": 5,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 8.47,
+          "relativeIndex": 54.55,
+          "sampledPlayerCount": 4,
+          "activePlayerCount": 4,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 12.27,
+          "relativeIndex": 100,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 22.08,
+          "relativeIndex": 81.82,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 20,
+        "totalPlayers": 20,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 18,
+      "historicalBaselineTotal": 20,
+      "playerBaselineResolved": 20,
+      "playerBaselineTotal": 20,
+      "usableDepthCoverage": {
+        "activePlayers": 20,
+        "usableDepthCount": 6,
+        "relativeIndex": 81.82
+      },
+      "coverage": {
+        "taxiCount": 4,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 2,
+        "rookieMarketBaselineCount": 2,
+        "missingPositions": []
+      },
+      "confidence": "HIGH",
+      "keyStrength": "K",
+      "keyConcern": "WR",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "anthony-martinez",
+      "ownerName": "Anthony Martinez",
+      "teamName": "Sycamore Bishops",
+      "teamStrengthScore": 59.3,
+      "lineupStrengthScore": 72.73,
+      "depthStrengthScore": 18.18,
+      "balanceScore": 47.57,
+      "forecastOrder": 5,
+      "tier": "STRONG",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 26.55,
+          "relativeIndex": 100,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 14.65,
+          "relativeIndex": 63.64,
+          "sampledPlayerCount": 4,
+          "activePlayerCount": 4,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 9.33,
+          "relativeIndex": 18.18,
+          "sampledPlayerCount": 8,
+          "activePlayerCount": 8,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 7.44,
+          "relativeIndex": 18.18,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 8,
+          "relativeIndex": 40,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 18.79,
+          "relativeIndex": 45.45,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 19,
+        "totalPlayers": 19,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 19,
+      "historicalBaselineTotal": 19,
+      "playerBaselineResolved": 19,
+      "playerBaselineTotal": 19,
+      "usableDepthCoverage": {
+        "activePlayers": 19,
+        "usableDepthCount": 6,
+        "relativeIndex": 18.18
+      },
+      "coverage": {
+        "taxiCount": 4,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 0,
+        "rookieMarketBaselineCount": 0,
+        "missingPositions": []
+      },
+      "confidence": "HIGH",
+      "keyStrength": "QB",
+      "keyConcern": "TE",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "earl-perkins",
+      "ownerName": "Earl Perkins",
+      "teamName": "The People's Team",
+      "teamStrengthScore": 49.26,
+      "lineupStrengthScore": 63.64,
+      "depthStrengthScore": 9.09,
+      "balanceScore": 28.94,
+      "forecastOrder": 6,
+      "tier": "IN THE MIX",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 21.67,
+          "relativeIndex": 36.36,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 13.16,
+          "relativeIndex": 45.45,
+          "sampledPlayerCount": 7,
+          "activePlayerCount": 7,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 10.38,
+          "relativeIndex": 45.45,
+          "sampledPlayerCount": 7,
+          "activePlayerCount": 7,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 5.69,
+          "relativeIndex": 0,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 7.76,
+          "relativeIndex": 10,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 18.71,
+          "relativeIndex": 36.36,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 19,
+        "totalPlayers": 19,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 18,
+      "historicalBaselineTotal": 19,
+      "playerBaselineResolved": 19,
+      "playerBaselineTotal": 19,
+      "usableDepthCoverage": {
+        "activePlayers": 19,
+        "usableDepthCount": 6,
+        "relativeIndex": 9.09
+      },
+      "coverage": {
+        "taxiCount": 5,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 1,
+        "rookieMarketBaselineCount": 1,
+        "missingPositions": []
+      },
+      "confidence": "HIGH",
+      "keyStrength": "RB",
+      "keyConcern": "TE",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "jeffrey-hudgins",
+      "ownerName": "Jeffrey Hudgins",
+      "teamName": "CeeDees....Cousins",
+      "teamStrengthScore": 48.18,
+      "lineupStrengthScore": 45.45,
+      "depthStrengthScore": 63.64,
+      "balanceScore": 36.36,
+      "forecastOrder": 7,
+      "tier": "IN THE MIX",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 13.96,
+          "relativeIndex": 9.09,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 16.61,
+          "relativeIndex": 90.91,
+          "sampledPlayerCount": 8,
+          "activePlayerCount": 8,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 10.85,
+          "relativeIndex": 63.64,
+          "sampledPlayerCount": 10,
+          "activePlayerCount": 10,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 7.7,
+          "relativeIndex": 27.27,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": null,
+          "relativeIndex": null,
+          "sampledPlayerCount": 0,
+          "activePlayerCount": 0,
+          "requiredSlots": 1,
+          "coverage": "none"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 18.45,
+          "relativeIndex": 27.27,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 10,
+        "projectedSlots": 10,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 10,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 22,
+        "totalPlayers": 22,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 18,
+      "historicalBaselineTotal": 22,
+      "playerBaselineResolved": 22,
+      "playerBaselineTotal": 22,
+      "usableDepthCoverage": {
+        "activePlayers": 22,
+        "usableDepthCount": 6,
+        "relativeIndex": 63.64
+      },
+      "coverage": {
+        "taxiCount": 5,
+        "reserveCount": 1,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 4,
+        "rookieMarketBaselineCount": 4,
+        "missingPositions": [
+          "K"
+        ]
+      },
+      "confidence": "MEDIUM",
+      "keyStrength": "RB",
+      "keyConcern": "K · NO EXPECTED STARTER",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "ray-long",
+      "ownerName": "Ray Long",
+      "teamName": "Bower Rangers",
+      "teamStrengthScore": 45.65,
+      "lineupStrengthScore": 36.36,
+      "depthStrengthScore": 72.73,
+      "balanceScore": 56.52,
+      "forecastOrder": 8,
+      "tier": "IN THE MIX",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 20.09,
+          "relativeIndex": 27.27,
+          "sampledPlayerCount": 4,
+          "activePlayerCount": 4,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 19.2,
+          "relativeIndex": 100,
+          "sampledPlayerCount": 7,
+          "activePlayerCount": 7,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 12.55,
+          "relativeIndex": 90.91,
+          "sampledPlayerCount": 9,
+          "activePlayerCount": 9,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 8.97,
+          "relativeIndex": 72.73,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 7.88,
+          "relativeIndex": 30,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 18.22,
+          "relativeIndex": 18.18,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 27,
+        "totalPlayers": 27,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 22,
+      "historicalBaselineTotal": 27,
+      "playerBaselineResolved": 27,
+      "playerBaselineTotal": 27,
+      "usableDepthCoverage": {
+        "activePlayers": 27,
+        "usableDepthCount": 6,
+        "relativeIndex": 72.73
+      },
+      "coverage": {
+        "taxiCount": 3,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 5,
+        "rookieMarketBaselineCount": 5,
+        "missingPositions": []
+      },
+      "confidence": "MEDIUM",
+      "keyStrength": "RB",
+      "keyConcern": "DST",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "bill-gross",
+      "ownerName": "Bill Gross",
+      "teamName": "Chicago Cutlers",
+      "teamStrengthScore": 44.48,
+      "lineupStrengthScore": 27.27,
+      "depthStrengthScore": 100,
+      "balanceScore": 53.94,
+      "forecastOrder": 9,
+      "tier": "IN THE MIX",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 22.86,
+          "relativeIndex": 63.64,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 4,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 11,
+          "relativeIndex": 18.18,
+          "sampledPlayerCount": 8,
+          "activePlayerCount": 8,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 9.68,
+          "relativeIndex": 27.27,
+          "sampledPlayerCount": 7,
+          "activePlayerCount": 7,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 14.64,
+          "relativeIndex": 100,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 9.25,
+          "relativeIndex": 60,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 19.59,
+          "relativeIndex": 54.55,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 24,
+        "totalPlayers": 25,
+        "relativeIndex": 96
+      },
+      "historicalBaselineResolved": 21,
+      "historicalBaselineTotal": 25,
+      "playerBaselineResolved": 24,
+      "playerBaselineTotal": 25,
+      "usableDepthCoverage": {
+        "activePlayers": 25,
+        "usableDepthCount": 6,
+        "relativeIndex": 100
+      },
+      "coverage": {
+        "taxiCount": 4,
+        "reserveCount": 1,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 4,
+        "rookieMarketBaselineCount": 3,
+        "missingPositions": []
+      },
+      "confidence": "MEDIUM",
+      "keyStrength": "TE",
+      "keyConcern": "RB",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "keith-winder",
+      "ownerName": "Keith Winder",
+      "teamName": "Off Constantly",
+      "teamStrengthScore": 35.26,
+      "lineupStrengthScore": 18.18,
+      "depthStrengthScore": 90.91,
+      "balanceScore": 43.48,
+      "forecastOrder": 10,
+      "tier": "IN THE MIX",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 25.92,
+          "relativeIndex": 90.91,
+          "sampledPlayerCount": 4,
+          "activePlayerCount": 4,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 13.1,
+          "relativeIndex": 36.36,
+          "sampledPlayerCount": 6,
+          "activePlayerCount": 6,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 8.1,
+          "relativeIndex": 9.09,
+          "sampledPlayerCount": 6,
+          "activePlayerCount": 6,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 8.42,
+          "relativeIndex": 45.45,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 9.88,
+          "relativeIndex": 70,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 17.07,
+          "relativeIndex": 9.09,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 23,
+        "totalPlayers": 23,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 19,
+      "historicalBaselineTotal": 23,
+      "playerBaselineResolved": 23,
+      "playerBaselineTotal": 23,
+      "usableDepthCoverage": {
+        "activePlayers": 23,
+        "usableDepthCount": 6,
+        "relativeIndex": 90.91
+      },
+      "coverage": {
+        "taxiCount": 1,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 4,
+        "rookieMarketBaselineCount": 4,
+        "missingPositions": []
+      },
+      "confidence": "MEDIUM",
+      "keyStrength": "QB",
+      "keyConcern": "DST",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "loren-michaels",
+      "ownerName": "Loren Michaels",
+      "teamName": "ICOR 4 Lyfe",
+      "teamStrengthScore": 19.55,
+      "lineupStrengthScore": 9.09,
+      "depthStrengthScore": 54.55,
+      "balanceScore": 22.73,
+      "forecastOrder": 11,
+      "tier": "QUESTION MARK",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 22.61,
+          "relativeIndex": 54.55,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 10.63,
+          "relativeIndex": 9.09,
+          "sampledPlayerCount": 5,
+          "activePlayerCount": 5,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 9.69,
+          "relativeIndex": 36.36,
+          "sampledPlayerCount": 7,
+          "activePlayerCount": 7,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 8.39,
+          "relativeIndex": 36.36,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 4.5,
+          "relativeIndex": 0,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 16.52,
+          "relativeIndex": 0,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 19,
+        "totalPlayers": 19,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 17,
+      "historicalBaselineTotal": 19,
+      "playerBaselineResolved": 19,
+      "playerBaselineTotal": 19,
+      "usableDepthCoverage": {
+        "activePlayers": 19,
+        "usableDepthCount": 6,
+        "relativeIndex": 54.55
+      },
+      "coverage": {
+        "taxiCount": 3,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 2,
+        "rookieMarketBaselineCount": 2,
+        "missingPositions": []
+      },
+      "confidence": "HIGH",
+      "keyStrength": "QB",
+      "keyConcern": "DST",
+      "modelVersion": "predictor-preseason-v1"
+    },
+    {
+      "season": 2026,
+      "ownerId": "mike-estes",
+      "ownerName": "Mike Estes",
+      "teamName": "Redneck Rebels",
+      "teamStrengthScore": 8.82,
+      "lineupStrengthScore": 0,
+      "depthStrengthScore": 27.27,
+      "balanceScore": 33.64,
+      "forecastOrder": 12,
+      "tier": "QUESTION MARK",
+      "positionStrengths": [
+        {
+          "position": "QB",
+          "baselineAverage": 13.65,
+          "relativeIndex": 0,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "RB",
+          "baselineAverage": 7.73,
+          "relativeIndex": 0,
+          "sampledPlayerCount": 3,
+          "activePlayerCount": 3,
+          "requiredSlots": 2,
+          "coverage": "full"
+        },
+        {
+          "position": "WR",
+          "baselineAverage": 10.65,
+          "relativeIndex": 54.55,
+          "sampledPlayerCount": 8,
+          "activePlayerCount": 8,
+          "requiredSlots": 3,
+          "coverage": "full"
+        },
+        {
+          "position": "TE",
+          "baselineAverage": 8.49,
+          "relativeIndex": 63.64,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "K",
+          "baselineAverage": 7.82,
+          "relativeIndex": 20,
+          "sampledPlayerCount": 1,
+          "activePlayerCount": 1,
+          "requiredSlots": 1,
+          "coverage": "full"
+        },
+        {
+          "position": "DST",
+          "baselineAverage": 19.81,
+          "relativeIndex": 63.64,
+          "sampledPlayerCount": 2,
+          "activePlayerCount": 2,
+          "requiredSlots": 1,
+          "coverage": "full"
+        }
+      ],
+      "expectedLineupCoverage": {
+        "resolvedSlots": 11,
+        "projectedSlots": 11,
+        "totalSlots": 11
+      },
+      "expectedLineupResolved": 11,
+      "expectedLineupRequired": 11,
+      "playerBaselineCoverage": {
+        "knownPlayers": 17,
+        "totalPlayers": 17,
+        "relativeIndex": 100
+      },
+      "historicalBaselineResolved": 16,
+      "historicalBaselineTotal": 17,
+      "playerBaselineResolved": 17,
+      "playerBaselineTotal": 17,
+      "usableDepthCoverage": {
+        "activePlayers": 17,
+        "usableDepthCount": 6,
+        "relativeIndex": 27.27
+      },
+      "coverage": {
+        "taxiCount": 5,
+        "reserveCount": 0,
+        "unresolvedPlayerCount": 0,
+        "rookieUncertaintyCount": 1,
+        "rookieMarketBaselineCount": 1,
+        "missingPositions": []
+      },
+      "confidence": "HIGH",
+      "keyStrength": "DST",
+      "keyConcern": "QB",
+      "modelVersion": "predictor-preseason-v1"
+    }
+  ],
+  "snapshotVersion": "preseason-team-strength-v1",
+  "approvedAt": "2026-08-24T14:29:48.330Z",
+  "teamCount": 12,
+  "provenance": {
+    "canonicalRosterSnapshot": "data/history/matchups/sleeper/2026/rosters.json",
+    "historicalPlayerBaselineEvidence": "lib/history/playerPerformance.ts + data/history/matchups/sleeper/",
+    "frozenRookieMarketSource": "data/source/market/dynasty-rookie/2026/snapshots/2026-08-19/provenance.json",
+    "expectedLineupEngine": "lib/history/expectedLineup.ts"
+  }
+}

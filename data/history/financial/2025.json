@@ -71,8 +71,15 @@
       "futureDepositPaid": null,
       "payoutsReceived": 10,
       "balance": 0,
+      "duesAssessed": 50,
+      "duesPaid": 50,
+      "duesBalance": 0,
+      "paymentStatus": "paid",
+      "paymentDate": "2026-08",
+      "paymentMethod": "PayPal",
       "notes": [
-        "Weekly: 1 ($10); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: -$40; Amount Won: $10; Total Earned: $0."
+        "Weekly: 1 ($10); Champ Ring: $0; 4th Place: $0; 3rd Place: $0; 2nd Place: $0; 1st Place: $0; Rollover to 2023: -$40; Amount Won: $10; Total Earned: $0.",
+        "Commissioner-confirmed remaining 2025 dues payment: $40 received by PayPal in August 2026; exact receipt day was not provided."
       ],
       "managerId": "earl-perkins"
     },
@@ -257,6 +264,20 @@
       "amount": 269,
       "description": "1st Place payout.",
       "managerId": "tyrone-poist"
+    }
+  ],
+  "payments": [
+    {
+      "id": "2025-earl-perkins-remaining-dues-2026-08",
+      "season": 2025,
+      "ownerId": "earl-perkins",
+      "amount": 40,
+      "paymentMethod": "PayPal",
+      "receivedAt": "2026-08",
+      "datePrecision": "month",
+      "source": "commissioner-confirmed payment closeout task",
+      "private": true,
+      "notes": ["Applied to the remaining 2025 dues balance; no 2026 operational ledger write."]
     }
   ],
   "notes": [

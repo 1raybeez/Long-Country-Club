@@ -1,4 +1,18 @@
-export type MatchupType = "regularSeason" | "playoff" | "championship" | "unknown";
+export type MatchupType =
+  | "regularSeason"
+  | "playoff"
+  | "championship"
+  | "unknown";
+
+export interface HistoricalLineupPlayer {
+  readonly playerId: string;
+  readonly name: string;
+  readonly position: string | null;
+  readonly nflTeam: string | null;
+  readonly points: number | null;
+  readonly imageUrl: string;
+  readonly isDefense: boolean;
+}
 
 export interface HistoricalMatchup {
   readonly season: number;
@@ -10,6 +24,12 @@ export interface HistoricalMatchup {
   readonly ownerBScore: number | null;
   readonly winnerOwnerId: string | null;
   readonly loserOwnerId: string | null;
+  readonly ownerAStarters?: readonly HistoricalLineupPlayer[];
+  readonly ownerBStarters?: readonly HistoricalLineupPlayer[];
+  readonly ownerABench?: readonly HistoricalLineupPlayer[];
+  readonly ownerBBench?: readonly HistoricalLineupPlayer[];
+  readonly ownerABenchDataAvailable?: boolean;
+  readonly ownerBBenchDataAvailable?: boolean;
   readonly notes?: readonly string[];
 }
 
@@ -29,6 +49,7 @@ export function getMatchupsByOwner(
   ownerId: string
 ): readonly HistoricalMatchup[] {
   return loadAllMatchups().filter(
-    (matchup) => matchup.ownerAId === ownerId || matchup.ownerBId === ownerId
+    (matchup) =>
+      matchup.ownerAId === ownerId || matchup.ownerBId === ownerId
   );
 }

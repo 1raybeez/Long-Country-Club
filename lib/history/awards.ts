@@ -51,17 +51,6 @@ function createPlacementAwards(): HistoricalAwardRecord[] {
       });
     }
 
-    if (season.toiletBowlOwnerId) {
-      awards.push({
-        season: season.season,
-        id: placementAwardId(season.season, "toiletBowl"),
-        type: "toiletBowl",
-        ownerId: season.toiletBowlOwnerId,
-        label: "Toilet Bowl",
-        notes: ["Generated from historical standings."],
-      });
-    }
-
     return awards;
   });
 }

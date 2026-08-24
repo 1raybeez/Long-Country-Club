@@ -2,70 +2,47 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { LeagueInfoShell } from '@/components/league/LeagueInfoShell';
 
 export default function RulesOfPlay() {
   const [activeChapter, setActiveChapter] = useState<string | null>(null);
   const toggleChapter = (id: string) => setActiveChapter(activeChapter === id ? null : id);
 
   return (
-    <div
-      style={{
-        backgroundColor: '#F9F7F2',
-        minHeight: '100vh',
-        paddingBottom: '80px',
-        fontFamily: 'Georgia, ui-serif, serif',
-      }}
-    >
+    <LeagueInfoShell>
       {/* HEADER */}
-      <header
-        style={{
-          textAlign: 'center',
-          padding: '40px 16px 32px',
-        }}
-      >
+      <header className="lcc2-page-container pb-5">
         <Link
           href="/league-info"
-          style={{
-            textDecoration: 'none',
-            color: '#1A472A',
-            fontWeight: 'bold',
-            fontSize: '0.9rem',
-          }}
+          className="lcc2-button lcc2-button--secondary"
         >
-          ← Back to Clubhouse
+          ← Back to League Info
         </Link>
-        <h1
-          style={{
-            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-            color: '#1A472A',
-            margin: '16px 0 8px',
-          }}
-        >
-          The Rules of Play
-        </h1>
-        <p
-          style={{
-            color: '#C5A059',
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            letterSpacing: '0.18em',
-            fontSize: '0.75rem',
-          }}
-        >
-          Official Long Country Club FFL Bylaws
+        <p className="mt-7 lcc2-label text-[var(--lcc-brand-primary)]">League Info</p>
+        <h1 className="lcc2-home-identity__title mt-2">Rules of Play</h1>
+        <p className="lcc2-home-identity__supporting max-w-3xl">
+          Official league constitution, roster standards, scoring, trades, fees, and governance.
         </p>
       </header>
 
-      <main
-        style={{
-          maxWidth: '1000px',
-          margin: '0 auto',
-          padding: '0 16px',
-        }}
-      >
+      <main className="lcc2-page-container pt-0">
+        <nav
+          aria-label="Constitution sections"
+          className="sticky top-3 z-10 mb-5 flex gap-1.5 overflow-x-auto rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-raised)]/95 p-1.5 shadow-[var(--lcc-shadow-soft)] backdrop-blur"
+        >
+          {CONSTITUTION_SECTIONS.map((section) => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className="inline-flex min-h-9 shrink-0 items-center rounded-md px-3 py-2 font-ui text-xs font-black uppercase tracking-[0.04em] text-[var(--lcc-color-text-muted)] transition-colors hover:bg-[var(--lcc-color-surface-muted)] hover:text-[var(--lcc-interactive)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lcc-interactive-focus)]"
+            >
+              {section.label}
+            </a>
+          ))}
+        </nav>
         <RuleSection
           id="financial"
-          title="Financial Rules"
+          title="League Fees & Financial Rules"
           isOpen={activeChapter === 'financial'}
           toggle={() => toggleChapter('financial')}
         >
@@ -77,14 +54,7 @@ export default function RulesOfPlay() {
             </p>
             <Link
               href="/league-info/fees"
-              style={{
-                display: 'inline-flex',
-                marginTop: '8px',
-                color: '#1A472A',
-                fontWeight: 700,
-                textDecoration: 'none',
-                borderBottom: '2px solid #C5A059',
-              }}
+              className="mt-2 inline-flex font-ui font-bold text-[var(--lcc-interactive)] underline decoration-[var(--lcc-interactive)] underline-offset-4"
             >
               View Caddy Fees Ledger
             </Link>
@@ -128,7 +98,7 @@ export default function RulesOfPlay() {
         {/* HOLE 1 */}
         <RuleSection
           id="h1"
-          title="Hole 1: Ownership Expectations"
+          title="Ownership & Member Expectations"
           isOpen={activeChapter === 'h1'}
           toggle={() => toggleChapter('h1')}
         >
@@ -137,11 +107,11 @@ export default function RulesOfPlay() {
             <p>
               Paying league dues is an ownership commitment, not just an entry transaction. Fee amounts, new-owner
               deposits, forfeiture rules, and current balances are maintained in the{' '}
-              <Link href="#financial" style={{ color: '#1A472A', fontWeight: 700 }}>
+              <Link href="#financial" className="font-bold text-[var(--lcc-interactive)] underline underline-offset-4">
                 Financial Rules
               </Link>{' '}
               section and on the{' '}
-              <Link href="/league-info/fees" style={{ color: '#1A472A', fontWeight: 700 }}>
+              <Link href="/league-info/fees" className="font-bold text-[var(--lcc-interactive)] underline underline-offset-4">
                 Caddy Fees page
               </Link>
               .
@@ -193,7 +163,7 @@ export default function RulesOfPlay() {
             <p>
               The current payment ledger, owner balances, future-season deposits, and weekly high-score records are
               maintained on the{' '}
-              <Link href="/league-info/fees" style={{ color: '#1A472A', fontWeight: 700 }}>
+              <Link href="/league-info/fees" className="font-bold text-[var(--lcc-interactive)] underline underline-offset-4">
                 Caddy Fees page
               </Link>
               .
@@ -212,7 +182,7 @@ export default function RulesOfPlay() {
         {/* HOLE 2 */}
         <RuleSection
           id="h2"
-          title="Hole 2: Roster & Trade Standards"
+          title="Rosters & Trades"
           isOpen={activeChapter === 'h2'}
           toggle={() => toggleChapter('h2')}
         >
@@ -320,7 +290,7 @@ export default function RulesOfPlay() {
         {/* HOLE 3 */}
         <RuleSection
           id="h3"
-          title="Hole 3: Tee Time Draft Rules"
+          title="Draft Rules"
           isOpen={activeChapter === 'h3'}
           toggle={() => toggleChapter('h3')}
         >
@@ -381,7 +351,7 @@ export default function RulesOfPlay() {
         {/* HOLE 4 */}
         <RuleSection
           id="h4"
-          title="Hole 4: The Official Scorecard"
+          title="Scoring Rules"
           isOpen={activeChapter === 'h4'}
           toggle={() => toggleChapter('h4')}
         >
@@ -501,7 +471,7 @@ export default function RulesOfPlay() {
         {/* HOLE 5 */}
         <RuleSection
           id="h5"
-          title="Hole 5: Postseason"
+          title="Playoffs & Postseason"
           isOpen={activeChapter === 'h5'}
           toggle={() => toggleChapter('h5')}
         >
@@ -552,7 +522,7 @@ export default function RulesOfPlay() {
             <p>
               Payout amounts, weekly high-score rules, forfeited future-season fees, and the Champion ring reserve are
               defined in the Financial Rules section and reflected on the{' '}
-              <Link href="/league-info/fees" style={{ color: '#1A472A', fontWeight: 700 }}>
+              <Link href="/league-info/fees" className="font-bold text-[var(--lcc-interactive)] underline underline-offset-4">
                 Caddy Fees ledger
               </Link>
               .
@@ -567,7 +537,7 @@ export default function RulesOfPlay() {
         {/* HOLE 6 */}
         <RuleSection
           id="h6"
-          title="Hole 6: Mulligans & Emergency Protocols"
+          title="Conduct & Commissioner Procedures"
           isOpen={activeChapter === 'h6'}
           toggle={() => toggleChapter('h6')}
         >
@@ -654,7 +624,7 @@ export default function RulesOfPlay() {
         {/* HOLE 7 */}
         <RuleSection
           id="h7"
-          title="Hole 7: The Scorekeeper’s Ledger"
+          title="Amendments & League Records"
           isOpen={activeChapter === 'h7'}
           toggle={() => toggleChapter('h7')}
         >
@@ -770,9 +740,20 @@ export default function RulesOfPlay() {
           </RuleBlock>
         </RuleSection>
       </main>
-    </div>
+    </LeagueInfoShell>
   );
 }
+
+const CONSTITUTION_SECTIONS = [
+  { id: 'financial', label: 'Fees' },
+  { id: 'h1', label: 'Ownership' },
+  { id: 'h2', label: 'Rosters & Trades' },
+  { id: 'h3', label: 'Draft' },
+  { id: 'h4', label: 'Scoring' },
+  { id: 'h5', label: 'Postseason' },
+  { id: 'h6', label: 'Conduct' },
+  { id: 'h7', label: 'Amendments' },
+] as const;
 
 // COMPONENTS
 function RuleSection({
@@ -789,46 +770,18 @@ function RuleSection({
   toggle: () => void;
 }) {
   return (
-    <section
-      id={id}
-      style={{
-        marginBottom: '16px',
-        backgroundColor: 'white',
-        borderRadius: '14px',
-        overflow: 'hidden',
-        boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
-      }}
-    >
+    <section id={id} className="mb-4 overflow-hidden rounded-xl border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-raised)] shadow-[var(--lcc-shadow-soft)] scroll-mt-24">
       <button
         onClick={toggle}
-        style={{
-          width: '100%',
-          padding: '18px 18px',
-          border: 'none',
-          backgroundColor: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          cursor: 'pointer',
-          fontWeight: 700,
-          fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)',
-          color: '#1A472A',
-          textAlign: 'left',
-        }}
+        className="flex w-full items-center justify-between gap-4 border-0 bg-transparent px-5 py-4 text-left font-ui text-lg font-black leading-tight text-[var(--lcc-color-text)] transition-colors hover:bg-[var(--lcc-color-surface-muted)] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-[var(--lcc-interactive-focus)] sm:px-6"
         aria-expanded={isOpen}
         aria-controls={`${id}-content`}
       >
         <span>{title}</span>
-        <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>{isOpen ? '−' : '+'}</span>
+        <span className="shrink-0 text-2xl font-normal leading-none text-[var(--lcc-interactive)]">{isOpen ? '−' : '+'}</span>
       </button>
       {isOpen && (
-        <div
-          id={`${id}-content`}
-          style={{
-            padding: '0 18px 22px',
-            borderTop: '1px solid #eee',
-          }}
-        >
+        <div id={`${id}-content`} className="border-t border-[var(--lcc-color-border)] px-5 pb-6 sm:px-6">
           {children}
         </div>
       )}
@@ -838,25 +791,11 @@ function RuleSection({
 
 function RuleBlock({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div style={{ marginTop: '20px' }}>
-      <h4
-        style={{
-          margin: '0 0 6px 0',
-          color: '#C5A059',
-          textTransform: 'uppercase',
-          fontSize: '0.85rem',
-          letterSpacing: '0.12em',
-        }}
-      >
+    <div className="mt-5">
+      <h4 className="mb-1.5 font-ui text-xs font-black uppercase tracking-[0.1em] text-[var(--lcc-brand-primary)]">
         {title}
       </h4>
-      <div
-        style={{
-          color: '#333',
-          fontSize: '0.98rem',
-          lineHeight: 1.7,
-        }}
-      >
+      <div className="max-w-4xl font-ui text-[0.95rem] leading-7 text-[var(--lcc-color-text-muted)]">
         {children}
       </div>
     </div>
@@ -864,26 +803,10 @@ function RuleBlock({ title, children }: { title: string; children: React.ReactNo
 }
 
 function Tag({ type, children }: { type: 'sleeper' | 'club' | 'hybrid'; children: React.ReactNode }) {
-  let bg = '#C5A059';
-  if (type === 'sleeper') bg = '#2e7d32';
-  if (type === 'hybrid') bg = '#003366';
+  const tone = type === 'sleeper' ? 'lcc2-badge--info' : 'lcc2-badge--neutral';
 
   return (
-    <span
-      style={{
-        display: 'inline-block',
-        backgroundColor: bg,
-        color: 'white',
-        padding: '4px 10px',
-        borderRadius: '999px',
-        fontSize: '0.7rem',
-        fontWeight: 700,
-        textTransform: 'uppercase',
-        marginTop: '10px',
-        marginRight: '8px',
-        letterSpacing: '0.08em',
-      }}
-    >
+    <span className={`lcc2-badge ${tone} mr-2 mt-2`}>
       {children}
     </span>
   );

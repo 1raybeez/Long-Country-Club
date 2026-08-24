@@ -18,12 +18,15 @@ export type HistoricalLineup = {
   readonly matchupId: number | null;
   readonly points: number | null;
   readonly starters: readonly HistoricalLineupPlayer[];
+  readonly bench: readonly HistoricalLineupPlayer[];
+  readonly benchDataAvailable: boolean;
 };
 
 type SleeperWeekRow = {
   points?: number | null;
   roster_id: number;
   matchup_id?: number | null;
+  players?: string[];
   starters?: string[];
   starters_points?: number[];
   players_points?: Record<string, number>;
@@ -80,6 +83,18 @@ export function loadLineupsBySeasonWeek(
       ? LCC_OWNER_ID_BY_SLEEPER_USER_ID.get(sleeperUserId) ?? null
       : null;
 
+    const starters = row.starters ?? [];
+    const starterIds = new Set(starters);
+    const playerIds = row.players ?? [];
+
+    const resolveLineupPlayers = (ids: readonly string[]) =>
+      ids.map((playerId, index) => ({
+        playerId,
+        slot: index + 1,
+        points: row.players_points?.[playerId] ?? null,
+        imageUrl: getSleeperPlayerImageUrl(playerId),
+      }));
+
     return {
       season,
       week,
@@ -88,15 +103,17 @@ export function loadLineupsBySeasonWeek(
       ownerId,
       matchupId: row.matchup_id ?? null,
       points: typeof row.points === "number" ? row.points : null,
-      starters: (row.starters ?? []).map((playerId, index) => ({
-        playerId,
-        slot: index + 1,
+      starters: starters.map((playerId, index) => ({
+        ...resolveLineupPlayers([playerId])[0],
         points:
           typeof row.starters_points?.[index] === "number"
             ? row.starters_points[index]
             : row.players_points?.[playerId] ?? null,
-        imageUrl: getSleeperPlayerImageUrl(playerId),
       })),
+      bench: resolveLineupPlayers(
+        playerIds.filter((playerId) => !starterIds.has(playerId))
+      ),
+      benchDataAvailable: Array.isArray(row.players),
     };
   });
 }

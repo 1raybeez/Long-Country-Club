@@ -15,11 +15,6 @@ export type SeasonSummary = {
   notes: string[];
 };
 
-type StandingRecordWithFinalPlace = SeasonStandingData["standings"][number] & {
-  finalPlace: number;
-  ownerId: string;
-};
-
 const financialBySeason = new Map<number, SeasonFinancialData>(
   loadAllSeasonFinancialData().map((financial) => [
     financial.season,
@@ -36,30 +31,6 @@ function getStandingByPlace(
   )?.ownerId;
 
   return typeof ownerId === "string" ? ownerId : null;
-}
-
-function getToiletBowlOwnerId(
-  standings: SeasonStandingData | null
-): string | null {
-  if (!standings?.standings.length) {
-    return null;
-  }
-
-  const recordsWithFinalPlace = standings.standings.filter(
-    (record): record is StandingRecordWithFinalPlace =>
-      typeof record.finalPlace === "number" &&
-      typeof record.ownerId === "string"
-  );
-
-  if (!recordsWithFinalPlace.length) {
-    return null;
-  }
-
-  const worstRecord = recordsWithFinalPlace.reduce((worst, record) =>
-    record.finalPlace > worst.finalPlace ? record : worst
-  );
-
-  return worstRecord.ownerId;
 }
 
 export function loadSeasonSummary(season: number): SeasonSummary {
@@ -84,7 +55,7 @@ export function loadSeasonSummary(season: number): SeasonSummary {
     championOwnerId: getStandingByPlace(standings, 1),
     runnerUpOwnerId: getStandingByPlace(standings, 2),
     thirdPlaceOwnerId: getStandingByPlace(standings, 3),
-    toiletBowlOwnerId: getToiletBowlOwnerId(standings),
+    toiletBowlOwnerId: null,
     notes,
   };
 }

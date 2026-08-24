@@ -1,0 +1,49 @@
+{
+  "version": "market-value-v1",
+  "status": "FROZEN_METHODOLOGY_ONLY",
+  "purpose": "Measure draft-pick efficiency against a dated 12-team 1QB dynasty rookie market reference.",
+  "excludedInputs": ["roster need", "roster construction", "player performance", "projected team strength", "championships", "outcome grades", "current market value", "later rankings", "injuries"],
+  "rawDelta": {
+    "field": "rawPickDelta",
+    "formula": "marketExpectedPick - lccOverallPick",
+    "positiveMeaning": "selected later than market expectation",
+    "negativeMeaning": "selected earlier than market expectation",
+    "interpretation": "descriptive only until round-sensitive normalization and aggregation are applied"
+  },
+  "roundExpectedDeviation": {
+    "source": "Historical market audit mean absolute pick delta across resolved picks",
+    "values": {"1": 2.58, "2": 4.178, "3": 5.374, "4": 8.896},
+    "formula": "normalizedDelta = rawPickDelta / roundExpectedDeviation[round]",
+    "reason": "The same raw difference is more informative early and less informative late."
+  },
+  "playerClassification": {
+    "thresholds": {"STRONG_VALUE": 1.5, "VALUE": 0.75, "MARKET_UPPER_BOUND": 0.75, "AGGRESSIVE": -0.75, "STRONG_AGGRESSIVE": -1.5},
+    "rules": ["normalizedDelta >= 1.5 => STRONG_VALUE", "normalizedDelta >= 0.75 and < 1.5 => VALUE", "normalizedDelta > -0.75 and < 0.75 => MARKET", "normalizedDelta > -1.5 and <= -0.75 => AGGRESSIVE", "normalizedDelta <= -1.5 => STRONG_AGGRESSIVE"]
+  },
+  "playerScore": {"STRONG_VALUE": 5, "VALUE": 4, "MARKET": 3, "AGGRESSIVE": 2, "STRONG_AGGRESSIVE": 1},
+  "capitalWeights": {"1": 1.25, "2": 1.1, "3": 1.0, "4": 0.9, "rule": "modest round weight; applied to owner aggregation and coverage only; no single pick can determine a class score"},
+  "ownerAggregation": {
+    "resolvedOnly": true,
+    "weightedMeanFormula": "sum(playerScore * capitalWeight) / sum(capitalWeight) over resolved picks",
+    "score5": "capitalWeightedCoverage >= 0.75, at least 2 VALUE-or-stronger picks, at least 1 VALUE-or-stronger pick in rounds 1-2, no STRONG_AGGRESSIVE picks, weighted mean >= 4.25",
+    "score4": "capitalWeightedCoverage >= 0.50, at least 1 VALUE-or-stronger pick, weighted mean >= 3.65, and not score 5",
+    "score3": "no meaningful aggregate positive or negative signal; otherwise the neutral band when weighted mean is >= 2.75",
+    "score2": "at least 1 AGGRESSIVE-or-stronger pick, weighted mean < 2.75, and not score 1",
+    "score1": "capitalWeightedCoverage >= 0.50, at least 2 STRONG_AGGRESSIVE picks or weighted mean <= 1.75"
+  },
+  "coverage": {
+    "rawFormula": "resolvedMarketPicks / totalPicks",
+    "capitalWeightedFormula": "sum(capitalWeight for resolved picks) / sum(capitalWeight for all picks)",
+    "missingPolicy": "unresolved picks are omitted from score math and lower coverage/confidence; they are never neutralized",
+    "availability": {
+      "GRADE_AVAILABLE_HIGH_CONFIDENCE": "resolvedPicks >= 3, rawCoverage >= 0.75, capitalWeightedCoverage >= 0.75, and source confidence HIGH",
+      "GRADE_AVAILABLE_MEDIUM": "resolvedPicks >= 2, rawCoverage >= 0.50, capitalWeightedCoverage >= 0.50",
+      "GRADE_AVAILABLE_LIMITED": "resolvedPicks >= 1",
+      "VALUE_GRADE_UNAVAILABLE": "no compatible primary snapshot or zero resolved picks"
+    }
+  },
+  "timing": {"allowed": ["PRE_DRAFT", "NEAR_DRAFT", "POST_DRAFT_PRESEASON"], "rule": "timing is retained as provenance and affects confidence only; it never changes a player delta"},
+  "letterScale": {"source": "Draft Intelligence Process 1-5 letter thresholds", "thresholds": [{"label":"A+","minimum":4.75},{"label":"A","minimum":4.4},{"label":"A-","minimum":4.15},{"label":"B+","minimum":3.85},{"label":"B","minimum":3.5},{"label":"B-","minimum":3.2},{"label":"C+","minimum":2.9},{"label":"C","minimum":2.6},{"label":"C-","minimum":2.3},{"label":"D","minimum":1.75},{"label":"F","minimum":0}], "curve": false, "neutralScore": 3},
+  "versioning": {"requiredEvaluationFields": ["marketMethodologyVersion", "marketSnapshotId", "marketSnapshotDate", "draftId", "draftDate", "predictionVersion", "forecastCreatedAt", "approvedAt"], "approvedOriginalImmutable": true},
+  "boundaries": {"processCombined": false, "overallGradeCombined": false, "outcomesUsed": false, "publicExposure": false, "predictorIntegration": false}
+}

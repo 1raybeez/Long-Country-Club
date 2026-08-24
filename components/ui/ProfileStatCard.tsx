@@ -18,24 +18,24 @@ export function ProfileStatCard({
   return (
     <div
       className={[
-        "rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-3",
+        "rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3",
         wide ? "col-span-2 min-h-[4.75rem]" : "min-h-[4.5rem]",
       ].join(" ")}
     >
-      <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-md bg-[var(--lcc-surface)] text-[var(--lcc-gold)]">
+      <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-md bg-[var(--lcc-color-surface-muted)] text-[var(--lcc-color-achievement)]">
         {icon}
       </div>
       <p
         className={[
-          "font-black uppercase leading-tight text-[var(--lcc-text)]",
+          "font-black leading-tight text-[var(--lcc-color-text)]",
           smallValue
             ? "font-ui text-xs tracking-wide"
-            : "font-serif text-xl italic",
+            : "font-ui text-xl",
         ].join(" ")}
       >
         {value}
       </p>
-      <p className="mt-1 font-ui text-[0.65rem] font-black uppercase text-[var(--lcc-text-muted)]">
+      <p className="mt-1 font-ui text-[0.65rem] font-black uppercase tracking-[0.06em] text-[var(--lcc-color-text-muted)]">
         {label}
       </p>
     </div>

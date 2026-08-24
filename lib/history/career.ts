@@ -56,6 +56,8 @@ export function getOwnerCareerSummary(ownerId: string): OwnerCareerSummary {
   const thirdPlaceFinishes = finishes.filter((place) => place === 3).length;
   const podiums = finishes.filter((place) => place >= 1 && place <= 3).length;
   const toiletBowls = finishes.filter((place) => place === 12).length;
+  // Canonical LCC standings rule: final places 1–6 are the six playoff teams.
+  // Places 7–12 are non-playoff standings ordered by regular-season points for.
   const playoffAppearances = finishes.filter((place) => place >= 1 && place <= 6).length;
 
   return {

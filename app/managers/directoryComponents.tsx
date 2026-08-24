@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight, Award, Crown, Medal, Shield, Skull, Trophy } from "lucide-react";
-import { getLccOwnerProfileHref, type LccOwner } from "@/lib/lccOwners";
+import { getLccOwnerProfileHref, isLccCoFounder, type LccOwner } from "@/lib/lccOwners";
 import { getOwnerCareerSummary } from "@/lib/history/career";
 import { getOwnerImagePath } from "@/lib/ownerImages";
 
@@ -68,14 +68,31 @@ export function SectionHeader({
   count,
   description,
   tone = "default",
+  application = false,
 }: {
   eyebrow: string;
   title: string;
   count: number;
   description?: string;
   tone?: DirectoryTone;
+  application?: boolean;
 }) {
   const toneClass = toneClasses[tone];
+
+  if (application) {
+    return (
+      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="lcc2-label text-[var(--lcc-brand-primary)]">{eyebrow}</p>
+          <h2 className="mt-2 font-ui text-2xl font-black tracking-[-0.03em] text-[var(--lcc-color-text)] sm:text-3xl">
+            {title}
+          </h2>
+          {description && <p className="lcc2-body mt-2 max-w-2xl">{description}</p>}
+        </div>
+        <p className="lcc2-label">{count} {count === 1 ? "Owner" : "Owners"}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -103,14 +120,18 @@ export function SectionHeader({
 export function OwnerGrid({
   children,
   compact = false,
+  directory = false,
 }: {
   children: ReactNode;
   compact?: boolean;
+  directory?: boolean;
 }) {
   return (
     <div
       className={
-        compact
+        directory
+          ? "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"
+          : compact
           ? "grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"
           : "grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
       }
@@ -123,10 +144,14 @@ export function OwnerGrid({
 export function OwnerCard({
   owner,
   tone,
+  compact = false,
 }: {
   owner: LccOwner;
   tone?: DirectoryTone;
+  compact?: boolean;
 }) {
+  if (compact) return <CompactOwnerCard owner={owner} />;
+
   const isActive = owner.status === "active";
   const cardTone = tone ?? getOwnerTone(owner);
   const toneClass = toneClasses[cardTone];
@@ -199,7 +224,7 @@ export function OwnerCard({
               icon={<Medal className="h-3.5 w-3.5" aria-hidden="true" />}
             />
             <DirectoryStat
-              label="Toilets"
+              label="Last-Place Finishes"
               value={String(careerSummary.toiletBowlCount)}
               icon={<Skull className="h-3.5 w-3.5" aria-hidden="true" />}
             />
@@ -221,6 +246,115 @@ export function OwnerCard({
         </div>
       </article>
     </Link>
+  );
+}
+
+function CompactOwnerCard({ owner }: { owner: LccOwner }) {
+  if (owner.status === "active") return <ActiveOwnerCard owner={owner} />;
+
+  return (
+    <Link
+      href={getLccOwnerProfileHref(owner)}
+      className="lcc2-card lcc2-card--interactive group flex flex-col overflow-hidden rounded-2xl p-0"
+    >
+      <article className="flex flex-col">
+        <div className="relative h-56 overflow-hidden bg-[var(--lcc-color-midnight)] sm:h-52 xl:h-56">
+          <img
+            src={getOwnerImagePath(owner.id)}
+            alt={owner.nickname}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            style={{ objectPosition: "center 30%" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+          <div className="absolute bottom-0 inset-x-0 p-4">
+            <p className="font-ui text-[0.65rem] font-black uppercase tracking-[0.08em] text-white/70">
+              Former LCC Team
+            </p>
+            <p className="mt-1 break-words font-ui text-lg font-black leading-tight text-white">
+              {owner.managerPage.sleeperName}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 p-4">
+          <div>
+            <div className="mb-3 flex flex-wrap gap-1.5">
+              <CompactBadge tone="neutral">Retired</CompactBadge>
+              {owner.inMemoriam && <CompactBadge tone="neutral">In Memoriam</CompactBadge>}
+              {isLccCoFounder(owner.id) && <CompactBadge tone="achievement" icon={<Crown className="h-3 w-3" />}>Co-Founder</CompactBadge>}
+              {owner.commissioner && <CompactBadge tone="info" icon={<Shield className="h-3 w-3" />}>Commissioner</CompactBadge>}
+              {owner.original2003Owner && <CompactBadge tone="achievement">Original 2003 Owner</CompactBadge>}
+            </div>
+            <h3 className="break-words font-ui text-xl font-black leading-tight tracking-[-0.02em] text-[var(--lcc-color-text)]">
+              {owner.displayName}
+            </h3>
+          </div>
+          <span className="inline-flex min-h-10 items-center gap-1 self-start font-ui text-xs font-black uppercase tracking-[0.06em] text-[var(--lcc-interactive)]">
+            View Profile <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </span>
+        </div>
+      </article>
+    </Link>
+  );
+}
+
+function ActiveOwnerCard({ owner }: { owner: LccOwner }) {
+  const isCoFounder = isLccCoFounder(owner.id);
+
+  return (
+    <Link
+      href={getLccOwnerProfileHref(owner)}
+      className="lcc2-card lcc2-card--interactive group flex h-full flex-col overflow-hidden rounded-2xl p-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lcc-interactive-focus)]"
+    >
+      <article className="flex h-full flex-col">
+        <div className="relative h-56 overflow-hidden bg-[var(--lcc-color-midnight)] sm:h-52 xl:h-56">
+          <img
+            src={getOwnerImagePath(owner.id)}
+            alt={`${owner.displayName} — ${owner.managerPage.sleeperName}`}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            style={{ objectPosition: "center 30%" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-4">
+            <p className="break-words font-ui text-lg font-black leading-tight text-white">
+              {owner.managerPage.sleeperName}
+            </p>
+            <p className="mt-1 font-ui text-xs font-black uppercase tracking-[0.08em] text-white/75">
+              {owner.activeDivision ?? "Active"}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 p-4">
+          <h3 className="break-words font-ui text-xl font-black leading-tight tracking-[-0.02em] text-[var(--lcc-color-text)]">
+            {owner.displayName}
+          </h3>
+          {(isCoFounder || owner.commissioner) && (
+            <div className="flex flex-wrap gap-1.5">
+              {isCoFounder && <CompactBadge tone="achievement" icon={<Crown className="h-3 w-3" />}>Co-Founder</CompactBadge>}
+              {owner.commissioner && <CompactBadge tone="info" icon={<Shield className="h-3 w-3" />}>Commissioner</CompactBadge>}
+            </div>
+          )}
+          <span className="inline-flex items-center gap-1 self-start font-ui text-xs font-black uppercase tracking-[0.06em] text-[var(--lcc-interactive)]">
+            View Profile <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </span>
+        </div>
+      </article>
+    </Link>
+  );
+}
+
+function CompactBadge({ children, icon, tone }: { children: ReactNode; icon?: ReactNode; tone: "achievement" | "info" | "neutral" }) {
+  return <span className={`lcc2-badge lcc2-badge--${tone} gap-1`}>{icon}{children}</span>;
+}
+
+function CompactStat({ label, value, icon, tone }: { label: string; value: string; icon: ReactNode; tone: "achievement" | "info" | "neutral" }) {
+  return (
+    <div className="rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] px-2 py-2.5 text-center">
+      <div className={`mx-auto mb-1 flex h-6 w-6 items-center justify-center rounded-md ${tone === "achievement" ? "bg-[var(--lcc-color-surface)] text-[var(--lcc-semantic-achievement)]" : tone === "info" ? "bg-[var(--lcc-color-surface)] text-[var(--lcc-interactive)]" : "bg-[var(--lcc-color-surface-muted)] text-[var(--lcc-color-text-muted)]"}`}>{icon}</div>
+      <p className="font-ui text-lg font-black leading-none text-[var(--lcc-color-text)]">{value}</p>
+      <p className="mt-1 font-ui text-[0.58rem] font-black uppercase tracking-[0.06em] text-[var(--lcc-color-text-muted)]">{label}</p>
+    </div>
   );
 }
 

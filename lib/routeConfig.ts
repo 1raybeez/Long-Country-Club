@@ -12,6 +12,17 @@ export type LccRoute = {
   staleReason?: string;
 };
 
+export type LccLeagueInfoAvailability = "active" | "future" | "inactive";
+
+export type LccLeagueInfoNavItem = {
+  id: string;
+  label: string;
+  href: string | null;
+  order: number;
+  availability: LccLeagueInfoAvailability;
+  parent?: "history";
+};
+
 export const LCC_ROUTES: Record<string, LccRoute> = {
   home: {
     id: "home",
@@ -122,9 +133,9 @@ export const LCC_ROUTES: Record<string, LccRoute> = {
 
 const LCC_PRIMARY_NAV_ROUTE_IDS = [
   "home",
+  "matchups",
   "managers",
   "leagueInfo",
-  "matchups",
 ] as const;
 
 export const LCC_PRIMARY_NAV_ROUTES = LCC_PRIMARY_NAV_ROUTE_IDS.map(
@@ -134,6 +145,48 @@ export const LCC_PRIMARY_NAV_ROUTES = LCC_PRIMARY_NAV_ROUTE_IDS.map(
 export const LCC_LEAGUE_INFO_CARD_ROUTES = Object.values(LCC_ROUTES).filter(
   (route) => route.showInLeagueInfoHub && route.status === "active"
 );
+
+export const LCC_LEAGUE_INFO_NAV_ITEMS: readonly LccLeagueInfoNavItem[] = [
+  { id: "overview", label: "Overview", href: "/league-info", order: 1, availability: "active" },
+  { id: "constitution", label: "Constitution", href: "/league-info/constitution", order: 2, availability: "active" },
+  { id: "history", label: "History", href: "/history", order: 3, availability: "active" },
+  { id: "records", label: "Records", href: "/league-info/records", order: 4, availability: "active" },
+  { id: "rivalries", label: "Rivalries", href: "/league-info/rivalries", order: 5, availability: "active" },
+  { id: "drafts", label: "Drafts", href: "/league-info/drafts", order: 6, availability: "active" },
+  { id: "payouts", label: "Payouts", href: "/league-info/fees", order: 7, availability: "active" },
+  { id: "resources", label: "Resources", href: "/league-info/resources", order: 8, availability: "active" },
+] as const;
+
+export const LCC_HISTORY_CHILD_ROUTES: readonly LccLeagueInfoNavItem[] = [
+  { id: "trophy-room", label: "Trophy Room", href: "/league-info/trophy-room", order: 1, availability: "active", parent: "history" },
+  { id: "archives", label: "Archives", href: "/league-info/archives", order: 2, availability: "active", parent: "history" },
+] as const;
+
+export const LCC_HISTORY_NAV_ITEMS: readonly LccLeagueInfoNavItem[] = [
+  { id: "history-overview", label: "Overview", href: "/history", order: 1, availability: "active" },
+  { id: "history-champions", label: "Champions", href: "/league-info/trophy-room", order: 2, availability: "active", parent: "history" },
+  { id: "history-seasons", label: "Seasons", href: "/history#season-explorer", order: 3, availability: "active" },
+  { id: "history-archives", label: "Archives", href: "/league-info/archives", order: 4, availability: "active", parent: "history" },
+] as const;
+
+export const LCC_VISIBLE_LEAGUE_INFO_NAV_ITEMS = LCC_LEAGUE_INFO_NAV_ITEMS.filter(
+  (item) => item.availability === "active" && item.href !== null
+);
+
+export function getLccLeagueInfoActiveTab(pathname: string): string {
+  if (pathname === "/league-info") return "overview";
+
+  const historyChildPath = LCC_HISTORY_CHILD_ROUTES.some(
+    (item) => item.href !== null && (pathname === item.href || pathname.startsWith(`${item.href}/`))
+  );
+  if (pathname === "/history" || pathname.startsWith("/history/") || historyChildPath) {
+    return "history";
+  }
+
+  return LCC_VISIBLE_LEAGUE_INFO_NAV_ITEMS.find(
+    (item) => item.id !== "overview" && item.href !== null && (pathname === item.href || pathname.startsWith(`${item.href}/`))
+  )?.id ?? "overview";
+}
 
 export const LCC_STALE_ROUTES = Object.values(LCC_ROUTES).filter(
   (route) => route.status === "stale"

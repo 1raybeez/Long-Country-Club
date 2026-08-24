@@ -1,0 +1,161 @@
+{
+  "version": "outcome-grade-v1",
+  "status": "APPROVED",
+  "purpose": "Hindsight evaluation of LCC rookie-draft player outcomes and owner-class outcomes, kept separate from Draft-Day Intelligence.",
+  "evidenceFoundation": {
+    "version": "ownership-ledger-v1",
+    "status": "APPROVED_OUTCOME_EVIDENCE_FOUNDATION",
+    "evaluationBoundary": "2025-12-31T23:59:59.999Z",
+    "selectionCount": 240,
+    "playerCount": 240,
+    "intervalCount": 606,
+    "unresolvedTransitions": 0
+  },
+  "components": {
+    "playerOutcome": {
+      "definition": "Objective fantasy production of the drafted player, independent of later LCC ownership.",
+      "primarySignals": ["weekly fantasy points", "season fantasy totals derived from weekly points", "multi-season production"],
+      "exclusions": ["championships", "standings", "team wins", "current rankings", "current ADP", "subjective reputation"]
+    },
+    "draftCapitalEfficiency": {
+      "definition": "Outcome relative to the acquisition cost represented by draft slot or broad pick band.",
+      "primarySignals": ["overall pick", "round", "position- and maturity-aware outcome percentile"],
+      "baselineRecommendation": "Use broad empirical pick bands with descriptive medians and quartiles; do not invent hit thresholds."
+    },
+    "lineupImpact": {
+      "definition": "How often the drafted player became a usable LCC starter or lineup contributor.",
+      "primarySignals": ["starter appearances", "starter appearance share", "starter points"],
+      "separationRule": "Player Outcome owns production magnitude; Lineup Impact owns deployment frequency and usability."
+    },
+    "longevity": {
+      "definition": "Sustained productive usefulness across post-draft seasons.",
+      "primarySignals": ["seasons with roster presence", "seasons with production", "seasons with starter usage"],
+      "minimumRule": "Roster survival alone is insufficient; a longevity season requires production or usage support."
+    },
+    "valueRealized": {
+      "definition": "Objective value retained, used, or directly converted by the original drafting owner.",
+      "primarySignals": ["original-owner fantasy points", "original-owner starter appearances", "original-owner starter points", "owned weeks", "documented trade/drop/reacquisition context"],
+      "tradeRule": "Trade events remain descriptive context in V1; received assets are not assigned retrospective numeric value without objective evidence.",
+      "successionRule": "Successor-franchise production is not silently assigned to the original drafting owner."
+    }
+  },
+  "approvedWeights": {
+    "playerOutcome": 0.35,
+    "capitalEfficiency": 0.25,
+    "lineupImpact": 0.15,
+    "longevity": 0.15,
+    "valueRealized": 0.10,
+    "total": 1
+  },
+  "scoreArchitecture": {
+    "dimensionScale": "INTEGER_1_TO_5",
+    "interpretation": {"5": "EXCEPTIONAL", "4": "STRONG", "3": "REASONABLE_EXPECTED", "2": "BELOW_EXPECTATION", "1": "POOR"},
+    "overallFormula": "playerOutcome*0.35 + capitalEfficiency*0.25 + lineupImpact*0.15 + longevity*0.15 + valueRealized*0.10",
+    "overallScore": "continuous weighted mean; no quantization before letter conversion",
+    "letterScale": "existing LCC Draft Intelligence A+ through F thresholds; no curve"
+  },
+  "deterministicScoringRules": {
+    "playerOutcome": "Position-specific empirical quintile rank of maturity-normalized per-observed-season fantasy production; score 1 through 5 by rank quintile, with stable player-ID tie breaking.",
+    "capitalEfficiency": "Position-normalized Player Outcome production percentile ranked within the same four 12-pick band distributions; score 1 through 5 by band-relative rank quintile.",
+    "lineupImpact": "Position-specific empirical quintile rank of starter appearances divided by rostered observation weeks; score 1 through 5 with stable tie breaking.",
+    "longevity": "Count seasons meeting the position-specific positive-season median production threshold, divided by seasonsElapsed; rank within maturity status by empirical quintile with stable tie breaking.",
+    "valueRealized": "Score a deterministic blend of original-owner production share (50%), original-owner starter-appearance share (30%), and original-owner productive-season share (20%) by empirical quintile rank; no trade-return value.",
+    "missingEvidence": "Missing required evidence produces UNAVAILABLE confidence and does not mechanically lower an otherwise calculated numeric dimension."
+  },
+  "maturity": {
+    "requiredFields": ["draftSeason", "evaluationAsOf", "seasonsElapsed", "maturityStatus"],
+    "rules": {
+      "2021": {"seasonsElapsed": 5, "maturityStatus": "MATURE"},
+      "2022": {"seasonsElapsed": 4, "maturityStatus": "MATURE"},
+      "2023": {"seasonsElapsed": 3, "maturityStatus": "DEVELOPING"},
+      "2024": {"seasonsElapsed": 2, "maturityStatus": "DEVELOPING"},
+      "2025": {"seasonsElapsed": 1, "maturityStatus": "EARLY"}
+    },
+    "2025Treatment": "EARLY_OUTCOME_SNAPSHOT_ONLY; no mature overall Outcome Grade.",
+    "developingTreatment": "Display DEVELOPING maturity and confidence disclosure; do not present as equivalent to mature classes."
+  },
+  "normalization": {
+    "production": "Use cohort- and maturity-aware per-season measures and empirical percentiles; raw multi-season totals are descriptive only.",
+    "position": "Use position-specific baselines for QB/RB/WR/TE before comparison; do not compare raw totals blindly across positions.",
+    "scoringAuthority": "Stored LCC matchup fantasy points are authoritative; do not substitute generic scoring.",
+    "smallSamples": "Sparse position or maturity cohorts remain descriptive and receive reduced confidence rather than invented thresholds."
+  },
+  "positionScope": {
+    "includedForV1Design": ["QB", "RB", "WR", "TE"],
+    "excludedFromV1Scoring": ["K", "DEF"],
+    "excludedTreatment": "Preserve as diagnostic evidence only until Rookie Draft scope and sample support are separately approved."
+  },
+  "aggregation": {
+    "playerRecord": "One record per drafted player per evaluation snapshot, with separate component evidence and confidence.",
+    "ownerClass": "Aggregate player records by drafting owner using a bounded contribution method; no single player should dominate without draft-cost and outcome support.",
+    "capitalWeighting": "Keep acquisition cost inside Draft Capital Efficiency; do not apply a second capital multiplier to the overall player aggregation.",
+    "succession": "Separate player outcome, original-owner value realized, and successor-franchise context."
+  },
+  "featureOwnership": {
+    "totalFantasyProduction": "PLAYER_OUTCOME",
+    "seasonProductionPercentile": "PLAYER_OUTCOME",
+    "draftSlotAndPickBand": "DRAFT_CAPITAL_EFFICIENCY",
+    "starterAppearances": "LINEUP_IMPACT",
+    "starterAppearanceShare": "LINEUP_IMPACT",
+    "starterPoints": "LINEUP_IMPACT",
+    "productiveSeasons": "LONGEVITY",
+    "rosteredSeasons": "LONGEVITY_CONTEXT_ONLY",
+    "originalOwnerProduction": "VALUE_REALIZED",
+    "originalOwnerStarterUsage": "VALUE_REALIZED",
+    "tradeEvent": "VALUE_REALIZED_CONTEXT",
+    "dropEvent": "VALUE_REALIZED_CONTEXT",
+    "reacquiredProduction": "VALUE_REALIZED_ONLY_DURING_ACTUAL_OWNED_INTERVALS"
+  },
+  "doubleCountingProtections": [
+    "Starter points cannot also be treated as full Player Outcome credit.",
+    "Starter appearances measure deployment frequency, not production magnitude.",
+    "Rostered seasons are context and cannot independently establish Longevity.",
+    "Capital Efficiency owns draft cost; no second overall capital multiplier is applied.",
+    "Original-owner production is Value Realized evidence and is not reassigned to Player Outcome."
+  ],
+  "scoreScale": {
+    "dimensionScale": "DETERMINISTIC_INTEGER_1_TO_5",
+    "overallScale": "CONTINUOUS_1.00_TO_5.00_WEIGHTED_SCORE",
+    "reason": "Preserves consistency with Draft-Day architecture while retaining precision in a future synthesis layer.",
+    "notGenerated": false
+  },
+  "letterScale": {
+    "reuse": "A+ through F Draft Intelligence thresholds",
+    "curve": false,
+    "notGenerated": false
+  },
+  "candidateWeights": {
+    "optionAPlayerFirst": {"playerOutcome": 0.35, "capitalEfficiency": 0.25, "lineupImpact": 0.15, "longevity": 0.15, "valueRealized": 0.10},
+    "optionBBalanced": {"playerOutcome": 0.30, "capitalEfficiency": 0.25, "lineupImpact": 0.20, "longevity": 0.15, "valueRealized": 0.10},
+    "optionCOwnerRealization": {"playerOutcome": 0.30, "capitalEfficiency": 0.20, "lineupImpact": 0.15, "longevity": 0.15, "valueRealized": 0.20}
+  },
+  "weightDecision": "FROZEN_FOR_CALIBRATION: Player Outcome 35%, Capital Efficiency 25%, Lineup Impact 15%, Longevity 15%, Value Realized 10%. Value Realized remains capped because trade-return valuation is not modeled.",
+  "confidence": {
+    "levels": ["HIGH", "MEDIUM", "LIMITED", "UNAVAILABLE"],
+    "rule": "Confidence is separate from numerical result and is constrained by the weakest materially required evidence component.",
+    "factors": ["identity resolution", "ownership confidence", "performance coverage", "maturity", "starter coverage", "transaction attribution", "Value Realized completeness"]
+  },
+  "snapshotVersioning": {
+    "identity": ["draftSeason", "evaluationAsOf", "methodologyVersion"],
+    "appendOnly": true,
+    "example": "2024 evaluated 2025-12-31 under outcome-grade-v1 remains separate from 2024 evaluated 2026-12-31 under outcome-grade-v1."
+  },
+  "boundaries": {
+    "outcomeGrades": true,
+    "forecastAccuracy": false,
+    "draftDayGrades": false,
+    "approved2026Forecast": false,
+    "draftRoomUi": false,
+    "predictor": false,
+    "teamSuccessSignals": false,
+    "kickerDefenseScope": false
+  },
+  "approval": {
+    "approvedAt": "2026-08-21T00:00:00.000Z",
+    "approvalStatus": "APPROVED",
+    "approvalScope": "Authoritative historical Outcome snapshots for draft seasons 2021–2025 only.",
+    "immutableAfterApproval": true,
+    "futureChangeRule": "Any methodology change requires a new outcome-grade-v1.1 or outcome-grade-v2 artifact; outcome-grade-v1 records are never rewritten."
+  },
+  "statusNote": "APPROVED — outcome-grade-v1 is immutable for authoritative 2021–2025 historical snapshots at the ownership-ledger-v1 evaluation boundary."
+}

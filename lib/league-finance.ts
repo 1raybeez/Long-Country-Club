@@ -1,8 +1,11 @@
-// lib/league-finance.ts
+// Legacy compatibility module. New finance code should import the structured
+// rules from financeRules.ts instead of maintaining a second source of truth.
+import { LCC_CURRENT_FINANCIAL_RULES } from './financeRules';
 
-export const LEAGUE_DUES = 50; 
+/** @deprecated Use LCC_CURRENT_FINANCIAL_RULES.entryFee. */
+export const LEAGUE_DUES = LCC_CURRENT_FINANCIAL_RULES.entryFee ?? 0;
 
-// The "Target" Real Names (Must match the right side of the map in Treasury.tsx)
+// Retained for legacy consumers until the old Treasury surface is retired.
 export const PAID_MANAGERS = [
   "JD Dowling",
   "Aaron Hawkins",
@@ -19,9 +22,9 @@ export const PAID_MANAGERS = [
 ];
 
 export const PAYOUTS = {
-  highScorer: 10,
-  divisionWinner: 25,
-  firstPlace: 219,
-  secondPlace: 100,
-  thirdPlace: 50
+  highScorer: LCC_CURRENT_FINANCIAL_RULES.weeklyHighPayout ?? 0,
+  divisionWinner: LCC_CURRENT_FINANCIAL_RULES.playoffPayouts.fourthPlace ?? 0,
+  firstPlace: LCC_CURRENT_FINANCIAL_RULES.playoffPayouts.championBase ?? 0,
+  secondPlace: LCC_CURRENT_FINANCIAL_RULES.playoffPayouts.runnerUp ?? 0,
+  thirdPlace: LCC_CURRENT_FINANCIAL_RULES.playoffPayouts.thirdPlace ?? 0,
 };

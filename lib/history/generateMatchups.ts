@@ -2,13 +2,21 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { LCC_CURRENT_SEASON } from "../leagueConstants";
 import { ALL_LCC_OWNERS } from "../lccOwners";
-import type { HistoricalMatchup, MatchupType } from "./matchups";
+import { resolvePlayer } from "./playerRegistry";
+import type {
+  HistoricalLineupPlayer,
+  HistoricalMatchup,
+  MatchupType,
+} from "./matchups";
 
 type SleeperMatchupEntry = {
   roster_id: number;
   matchup_id?: number | null;
   points?: number;
   custom_points?: number | null;
+  players?: readonly string[];
+  starters?: readonly string[];
+  players_points?: Record<string, number>;
 };
 
 type SleeperRoster = {
@@ -39,15 +47,60 @@ function getOwnerIdBySleeperUserId(sleeperUserId?: string | null) {
   if (!sleeperUserId) return null;
 
   return (
-    ALL_LCC_OWNERS.find((owner) => owner.sleeperUserId === sleeperUserId)?.id ??
-    null
+    ALL_LCC_OWNERS.find(
+      (owner) => owner.sleeperUserId === sleeperUserId
+    )?.id ?? null
   );
 }
 
 function getScore(entry: SleeperMatchupEntry) {
-  if (typeof entry.custom_points === "number") return entry.custom_points;
-  if (typeof entry.points === "number") return entry.points;
+  if (typeof entry.custom_points === "number") {
+    return entry.custom_points;
+  }
+
+  if (typeof entry.points === "number") {
+    return entry.points;
+  }
+
   return null;
+}
+
+function getResolvedLineup(
+  entry: SleeperMatchupEntry,
+  playerIds: readonly string[],
+): HistoricalLineupPlayer[] {
+  const playerPoints = entry.players_points ?? {};
+
+  return playerIds
+    .filter((playerId) => playerId && playerId !== "0")
+    .map((playerId) => {
+      const player = resolvePlayer(playerId);
+
+      return {
+        playerId,
+        name: player.name,
+        position: player.position,
+        nflTeam: player.team,
+        points: typeof playerPoints[playerId] === "number"
+          ? playerPoints[playerId]
+          : null,
+        imageUrl: player.imageUrl ?? "",
+        isDefense: player.isDefense,
+      };
+    });
+}
+
+function getStarterLineup(entry: SleeperMatchupEntry) {
+  return getResolvedLineup(entry, entry.starters ?? []);
+}
+
+function getBenchLineup(entry: SleeperMatchupEntry) {
+  const starters = new Set(entry.starters ?? []);
+  const benchPlayers = (entry.players ?? []).filter(
+    (playerId) => !starters.has(playerId)
+  );
+
+  return getResolvedLineup(entry, benchPlayers);
 }
 
 function getRosterPairKey(rosterA: number, rosterB: number) {
@@ -60,7 +113,9 @@ function getMatchupType(
   entryB: SleeperMatchupEntry,
   championshipRosterPairs: Set<string>
 ): MatchupType {
-  if (week <= 14) return "regularSeason";
+  if (week <= 14) {
+    return "regularSeason";
+  }
 
   const pairKey = getRosterPairKey(entryA.roster_id, entryB.roster_id);
 
@@ -77,7 +132,11 @@ function getWinnerLoser(
   ownerAScore: number | null,
   ownerBScore: number | null
 ) {
-  if (ownerAScore === null || ownerBScore === null || ownerAScore === ownerBScore) {
+  if (
+    ownerAScore === null ||
+    ownerBScore === null ||
+    ownerAScore === ownerBScore
+  ) {
     return {
       winnerOwnerId: null,
       loserOwnerId: null,
@@ -85,27 +144,46 @@ function getWinnerLoser(
   }
 
   return ownerAScore > ownerBScore
-    ? { winnerOwnerId: ownerAId, loserOwnerId: ownerBId }
-    : { winnerOwnerId: ownerBId, loserOwnerId: ownerAId };
+    ? {
+        winnerOwnerId: ownerAId,
+        loserOwnerId: ownerBId,
+      }
+    : {
+        winnerOwnerId: ownerBId,
+        loserOwnerId: ownerAId,
+      };
 }
 
 function getChampionshipRosterPairs(seasonDir: string) {
-  const winnersBracketPath = path.join(seasonDir, "winners-bracket.json");
+  const winnersBracketPath = path.join(
+    seasonDir,
+    "winners-bracket.json"
+  );
 
   if (!existsSync(winnersBracketPath)) {
     return new Set<string>();
   }
 
-  const bracket = readJson<SleeperBracketMatch[]>(winnersBracketPath);
+  const bracket =
+    readJson<SleeperBracketMatch[]>(winnersBracketPath);
 
   return new Set(
     bracket
-      .filter((match) => match.r === 3 && match.t1 && match.t2)
-      .map((match) => getRosterPairKey(match.t1 as number, match.t2 as number))
+      .filter(
+        (match) =>
+          match.r === 3 &&
+          typeof match.t1 === "number" &&
+          typeof match.t2 === "number"
+      )
+      .map((match) =>
+        getRosterPairKey(match.t1 as number, match.t2 as number)
+      )
   );
 }
 
-function generateSeasonMatchups(season: number): HistoricalMatchup[] {
+function generateSeasonMatchups(
+  season: number,
+): HistoricalMatchup[] {
   const seasonDir = path.join(DATA_ROOT, String(season));
   const rostersPath = path.join(seasonDir, "rosters.json");
 
@@ -124,7 +202,9 @@ function generateSeasonMatchups(season: number): HistoricalMatchup[] {
     }
   });
 
-  const championshipRosterPairs = getChampionshipRosterPairs(seasonDir);
+  const championshipRosterPairs =
+    getChampionshipRosterPairs(seasonDir);
+
   const matchups: HistoricalMatchup[] = [];
 
   for (let week = 1; week <= 17; week += 1) {
@@ -137,11 +217,18 @@ function generateSeasonMatchups(season: number): HistoricalMatchup[] {
       continue;
     }
 
-    const weekEntries = readJson<SleeperMatchupEntry[]>(weekPath);
-    const grouped = new Map<number, SleeperMatchupEntry[]>();
+    const weekEntries =
+      readJson<SleeperMatchupEntry[]>(weekPath);
+
+    const grouped = new Map<
+      number,
+      SleeperMatchupEntry[]
+    >();
 
     weekEntries.forEach((entry) => {
-      if (typeof entry.matchup_id !== "number") return;
+      if (typeof entry.matchup_id !== "number") {
+        return;
+      }
 
       const existing = grouped.get(entry.matchup_id) ?? [];
       existing.push(entry);
@@ -149,13 +236,18 @@ function generateSeasonMatchups(season: number): HistoricalMatchup[] {
     });
 
     grouped.forEach((entries) => {
-      if (entries.length !== 2) return;
+      if (entries.length !== 2) {
+        return;
+      }
 
       const [entryA, entryB] = entries;
+
       const ownerAId = rosterToOwnerId.get(entryA.roster_id);
       const ownerBId = rosterToOwnerId.get(entryB.roster_id);
 
-      if (!ownerAId || !ownerBId) return;
+      if (!ownerAId || !ownerBId) {
+        return;
+      }
 
       const ownerAScore = getScore(entryA);
       const ownerBScore = getScore(entryB);
@@ -168,24 +260,42 @@ function generateSeasonMatchups(season: number): HistoricalMatchup[] {
         return;
       }
 
-      const { winnerOwnerId, loserOwnerId } = getWinnerLoser(
-        ownerAId,
-        ownerBId,
-        ownerAScore,
-        ownerBScore
-      );
+      const { winnerOwnerId, loserOwnerId } =
+        getWinnerLoser(
+          ownerAId,
+          ownerBId,
+          ownerAScore,
+          ownerBScore
+        );
 
       matchups.push({
         season,
         week,
-        type: getMatchupType(week, entryA, entryB, championshipRosterPairs),
+        type: getMatchupType(
+          week,
+          entryA,
+          entryB,
+          championshipRosterPairs
+        ),
         ownerAId,
         ownerBId,
         ownerAScore,
         ownerBScore,
         winnerOwnerId,
         loserOwnerId,
-        notes: ["Generated from Sleeper matchup data."],
+        ownerAStarters: getStarterLineup(
+          entryA
+        ),
+        ownerBStarters: getStarterLineup(
+          entryB
+        ),
+        ownerABench: getBenchLineup(entryA),
+        ownerBBench: getBenchLineup(entryB),
+        ownerABenchDataAvailable: Array.isArray(entryA.players),
+        ownerBBenchDataAvailable: Array.isArray(entryB.players),
+        notes: [
+          "Generated from Sleeper matchup data.",
+        ],
       });
     });
   }
@@ -203,5 +313,7 @@ export function generateHistoricalMatchups(): HistoricalMatchup[] {
     .map((entry) => Number(entry))
     .filter((season) => season <= LCC_CURRENT_SEASON)
     .sort((a, b) => a - b)
-    .flatMap((season) => generateSeasonMatchups(season));
+    .flatMap((season) =>
+      generateSeasonMatchups(season)
+    );
 }

@@ -10,9 +10,17 @@ export function OwnerMatchupResumeCard({
 }) {
   return (
     <div className="grid gap-3">
+      <div>
+        <p className="lcc2-label text-[var(--lcc-brand-primary)]">
+          Recorded Matchup Resume
+        </p>
+        <p className="mt-1 font-ui text-xs font-black uppercase tracking-[0.06em] text-[var(--lcc-color-text-muted)]">
+          Sleeper Era · {formatCoverage(summary)}
+        </p>
+      </div>
       <div className="grid grid-cols-2 gap-2.5">
         <ProfileStatCard
-          label="Record"
+          label="Recorded Record"
           value={formatRecord(summary.wins, summary.losses, summary.ties)}
           icon={<Trophy className="h-4 w-4" aria-hidden="true" />}
         />
@@ -22,22 +30,22 @@ export function OwnerMatchupResumeCard({
           icon={<Medal className="h-4 w-4" aria-hidden="true" />}
         />
         <ProfileStatCard
-          label="Playoffs"
+          label="Postseason Record"
           value={formatRecord(summary.playoffWins, summary.playoffLosses, 0)}
           icon={<Crown className="h-4 w-4" aria-hidden="true" />}
         />
         <ProfileStatCard
-          label="Avg PF"
+          label="Avg Score"
           value={formatNumber(summary.averagePointsFor)}
           icon={<Award className="h-4 w-4" aria-hidden="true" />}
         />
         <ProfileStatCard
-          label="Biggest Win"
+          label="Largest Win Margin"
           value={formatMargin(summary.biggestWinMargin)}
           icon={<Shield className="h-4 w-4" aria-hidden="true" />}
         />
         <ProfileStatCard
-          label="Biggest Loss"
+          label="Largest Loss Margin"
           value={formatMargin(summary.biggestLossMargin)}
           icon={<Skull className="h-4 w-4" aria-hidden="true" />}
         />
@@ -51,11 +59,11 @@ export function OwnerMatchupResumeCard({
         />
         <ResumeFact
           label="Favorite Victim"
-          value={formatOwnerName(summary.favoriteVictimOwnerId)}
+          value={formatRivalValue(summary.favoriteVictimOwnerId)}
         />
         <ResumeFact
           label="Nemesis"
-          value={formatOwnerName(summary.nemesisOwnerId)}
+          value={formatRivalValue(summary.nemesisOwnerId)}
         />
       </div>
     </div>
@@ -72,12 +80,12 @@ function ResumeFact({
   icon?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-3">
-      <p className="flex items-center gap-1.5 font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
+    <div className="rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3">
+      <p className="flex items-center gap-1.5 lcc2-label">
         {icon}
         {label}
       </p>
-      <p className="mt-1 font-serif text-base font-black uppercase italic leading-tight text-[var(--lcc-text)]">
+      <p className="mt-1 break-words font-ui text-base font-black leading-tight text-[var(--lcc-color-text)]">
         {value}
       </p>
     </div>
@@ -97,7 +105,19 @@ function formatNumber(value: number | null) {
 }
 
 function formatMargin(value: number | null) {
-  return value === null ? "—" : `+${value.toFixed(2)}`;
+  return value === null ? "—" : value.toFixed(2);
+}
+
+function formatCoverage(summary: OwnerMatchupSummary) {
+  if (summary.coverageStartSeason === null || summary.coverageEndSeason === null) {
+    return "No recorded seasons";
+  }
+
+  return `${summary.coverageStartSeason}–${summary.coverageEndSeason}`;
+}
+
+function formatRivalValue(ownerId: string | null) {
+  return ownerId ? formatOwnerName(ownerId) : "Not enough recorded meetings";
 }
 
 function formatOwnerName(ownerId: string | null) {

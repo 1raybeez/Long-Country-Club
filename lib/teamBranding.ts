@@ -58,6 +58,15 @@ export const TEAM_BRANDING: readonly TeamBrandingEntry[] = [
     textColor: "#FFFFFF",
   },
   {
+    id: "jmu",
+    displayName: "James Madison Dukes",
+    shortName: "JMU",
+    type: "college",
+    primaryColor: "#450084",
+    secondaryColor: "#CBB677",
+    textColor: "#FFFFFF",
+  },
+  {
     id: "atl",
     displayName: "Atlanta Falcons",
     shortName: "Falcons",
@@ -91,6 +100,15 @@ export const TEAM_BRANDING: readonly TeamBrandingEntry[] = [
     type: "nfl",
     primaryColor: "#0076B6",
     secondaryColor: "#B0B7BC",
+    textColor: "#FFFFFF",
+  },
+  {
+    id: "phi",
+    displayName: "Philadelphia Eagles",
+    shortName: "Eagles",
+    type: "nfl",
+    primaryColor: "#004C54",
+    secondaryColor: "#A5ACAF",
     textColor: "#FFFFFF",
   },
   {
@@ -142,6 +160,9 @@ export const TEAM_BRANDING_ALIASES: Record<string, TeamBrandingEntry["id"]> = {
   HOKIES: "vt",
   "VIRGINIA TECH": "vt",
   "VIRGINIA TECH HOKIES": "vt",
+  JMU: "jmu",
+  "JAMES MADISON": "jmu",
+  "JAMES MADISON DUKES": "jmu",
   ATL: "atl",
   FALCONS: "atl",
   "ATLANTA FALCONS": "atl",
@@ -154,6 +175,9 @@ export const TEAM_BRANDING_ALIASES: Record<string, TeamBrandingEntry["id"]> = {
   DET: "det",
   LIONS: "det",
   "DETROIT LIONS": "det",
+  PHI: "phi",
+  EAGLES: "phi",
+  "PHILADELPHIA EAGLES": "phi",
   NYG: "nyg",
   GIANTS: "nyg",
   "NEW YORK GIANTS": "nyg",
@@ -174,6 +198,14 @@ export function getTeamBranding(value?: string): TeamBrandingEntry | undefined {
   const teamId = TEAM_BRANDING_ALIASES[normalizedValue];
 
   return TEAM_BRANDING.find((team) => team.id === teamId);
+}
+
+export function splitTeamSelections(value?: string): readonly string[] {
+  if (!value?.trim()) {
+    return [];
+  }
+
+  return [...new Set(value.split(/[\/,&;]/).map((token) => token.trim()).filter(Boolean))];
 }
 
 export function getUnknownTeamBrandingValues(

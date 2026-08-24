@@ -23,12 +23,13 @@ import {
   getLccChampionsBySeason,
   getLccChampionshipGalleryBySeason,
   getLccPodiumTotalsByOwner,
-  getLccToiletBowlTotalsByOwner,
+  getLccLastPlaceTotalsByOwner,
   type LccChampionshipGalleryEntry,
   type LccFinalPlacementEra,
   type LccOwnerPodiumTotals,
 } from "@/lib/lccFinalPlacements";
 import { DEFAULT_OWNER_IMAGE, getOwnerImagePath } from "@/lib/ownerImages";
+import { LeagueInfoShell } from "@/components/league/LeagueInfoShell";
 
 type TrophyRoomTab = (typeof TROPHY_ROOM_TABS)[number]["id"];
 
@@ -37,14 +38,14 @@ const FALLBACK_AVATAR_SRC = DEFAULT_OWNER_IMAGE;
 const TROPHY_ROOM_TABS = [
   { id: "champions", label: "Champions", icon: Crown },
   { id: "podiums", label: "Podiums", icon: Medal },
-  { id: "toilets", label: "Toilet Bowls", icon: Skull },
+  { id: "last-place", label: "Last Place", icon: Skull },
 ] as const;
 
 // TODO: Future: use Sleeper API to validate/import 2019-forward standings.
 const championsBySeason = getLccChampionsBySeason();
 const championshipGallery = [...getLccChampionshipGalleryBySeason()].reverse();
 const podiumTotals = getLccPodiumTotalsByOwner();
-const toiletBowlTotals = getLccToiletBowlTotalsByOwner();
+const lastPlaceTotals = getLccLastPlaceTotalsByOwner();
 const podiumFinishCount = podiumTotals.reduce(
   (total, owner) => total + owner.total,
   0
@@ -57,16 +58,19 @@ export default function TrophyRoom() {
   const [activeTab, setActiveTab] = useState<TrophyRoomTab>("champions");
 
   return (
-    <main className="lcc-page">
-      <div className="lcc-container py-8 sm:py-12 lg:py-14">
+    <LeagueInfoShell>
+      <main className="lcc2-page-shell">
+      <div className="lcc2-page-container">
         <nav className="mb-5">
-          <Link href="/league-info" className="lcc-button lcc-button-secondary">
+          <Link href="/league-info" className="lcc2-button lcc2-button--secondary">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            Back to Clubhouse
+            Back to League Info
           </Link>
         </nav>
 
         <TrophyRoomHero />
+
+        <TitleLeaders />
 
         <TrophyRoomTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
@@ -77,10 +81,11 @@ export default function TrophyRoom() {
         >
           {activeTab === "champions" && <ChampionsPanel />}
           {activeTab === "podiums" && <PodiumsPanel />}
-          {activeTab === "toilets" && <ToiletBowlsPanel />}
+          {activeTab === "last-place" && <LastPlacePanel />}
         </div>
       </div>
-    </main>
+      </main>
+    </LeagueInfoShell>
   );
 }
 
@@ -94,15 +99,14 @@ function TrophyRoomHero() {
     : undefined;
 
   return (
-    <header className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
+    <header className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
       <div>
-        <p className="lcc-page-kicker">Trophy Room</p>
-        <h1 className="lcc-page-title mt-3">
-          Champions <span className="text-[var(--lcc-gold)]">Gallery</span>
+        <p className="lcc2-label text-[var(--lcc-brand-primary)]">League Info</p>
+        <h1 className="lcc2-home-identity__title mt-2">
+          Trophy Room
         </h1>
-        <p className="mt-5 max-w-3xl font-ui text-sm font-medium leading-6 text-[var(--lcc-text-muted)] sm:text-base">
-          Champions, podium finishes, and last-place history are sourced from
-          the Long Country Club final placement ledger.
+        <p className="lcc2-home-identity__supporting max-w-3xl">
+          Champions, podium finishes, and infamous last-place history across every completed LCC season.
         </p>
 
         <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -123,7 +127,7 @@ function TrophyRoomHero() {
           />
           <HeroMetric
             label="Era Model"
-            value={`${LCC_ERA_MODEL.twoKeeper.startSeason}-${LCC_ERA_MODEL.twoKeeper.endSeason} / ${LCC_ERA_MODEL.dynasty.startSeason}-present`}
+            value="Two-Keeper → Dynasty"
             icon={<Shield className="h-4 w-4" aria-hidden="true" />}
             smallValue
           />
@@ -131,8 +135,8 @@ function TrophyRoomHero() {
       </div>
 
       {latestChampion && (
-        <article className="overflow-hidden rounded-[var(--lcc-radius)] border border-[#d1ae66]/35 bg-[#0f2a19] text-[#f8f4ea] shadow-[var(--lcc-shadow)]">
-          <div className="relative h-64 overflow-hidden bg-[#0f2a19]">
+        <article className="lcc2-card lcc2-card--raised overflow-hidden p-0">
+          <div className="relative h-56 overflow-hidden bg-[var(--lcc-color-midnight)]">
             <OwnerBackdropImage
               owner={latestChampionOwner}
               alias={latestChampion.championAlias}
@@ -144,13 +148,13 @@ function TrophyRoomHero() {
             </div>
           </div>
           <div className="p-5">
-            <p className="font-ui text-xs font-black uppercase text-[var(--lcc-gold)]">
-              Latest Completed Season
+            <p className="lcc2-label text-[var(--lcc-semantic-achievement)]">
+              Reigning Champion
             </p>
-            <h2 className="mt-2 font-serif text-3xl font-black uppercase italic leading-none">
+            <h2 className="mt-2 font-ui text-2xl font-black leading-tight text-[var(--lcc-color-text)]">
               {formatOwnerName(latestChampionOwner, latestChampion.championAlias)}
             </h2>
-            <p className="mt-3 font-ui text-xs font-black uppercase text-[#f8f4ea]/70">
+            <p className="mt-2 font-ui text-sm font-semibold text-[var(--lcc-color-text-muted)]">
               {formatOwnerTeam(latestChampionOwner)}
             </p>
           </div>
@@ -168,7 +172,7 @@ function TrophyRoomTabs({
   onTabChange: (tab: TrophyRoomTab) => void;
 }) {
   return (
-    <div className="mt-8 flex flex-wrap gap-2 rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface)] p-1 shadow-[var(--lcc-shadow-soft)]">
+    <div className="mt-6 flex flex-wrap gap-1 rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-raised)] p-1 shadow-[var(--lcc-shadow-soft)]" role="tablist">
       {TROPHY_ROOM_TABS.map((tab) => {
         const Icon = tab.icon;
         const isActive = tab.id === activeTab;
@@ -182,10 +186,10 @@ function TrophyRoomTabs({
             aria-controls={`trophy-panel-${tab.id}`}
             onClick={() => onTabChange(tab.id)}
             className={[
-              "inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-[var(--lcc-radius)] px-4 py-2 font-ui text-xs font-black uppercase transition-colors sm:flex-none",
+              "inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md px-4 py-2 font-ui text-xs font-black uppercase transition-colors sm:flex-none",
               isActive
-                ? "bg-[var(--lcc-green-deep)] text-[var(--lcc-surface)]"
-                : "text-[var(--lcc-text-muted)] hover:bg-[var(--lcc-surface-muted)] hover:text-[var(--lcc-text)]",
+                ? "bg-[var(--lcc-brand-primary)] text-white"
+                : "text-[var(--lcc-color-text-muted)] hover:bg-[var(--lcc-color-surface-muted)] hover:text-[var(--lcc-color-text)]",
             ].join(" ")}
           >
             <Icon className="h-4 w-4" aria-hidden="true" />
@@ -197,9 +201,40 @@ function TrophyRoomTabs({
   );
 }
 
+function TitleLeaders() {
+  const leaders = podiumTotals.filter((entry) => entry.gold > 0).slice(0, 5);
+
+  return (
+    <section className="lcc2-card mt-5" aria-labelledby="title-leaders-heading">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="lcc2-label text-[var(--lcc-semantic-achievement)]">All-time titles</p>
+          <h2 id="title-leaders-heading" className="mt-1 font-ui text-xl font-black text-[var(--lcc-color-text)]">Championship Leaders</h2>
+        </div>
+        <p className="lcc2-body">Gold totals from the final placement ledger.</p>
+      </div>
+      <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-5">
+        {leaders.map((entry, index) => {
+          const owner = getPlacementOwner(entry.ownerId, entry.primaryAlias);
+          return (
+            <div key={entry.ownerId ?? entry.primaryAlias} className="flex min-w-0 items-center gap-3 rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3">
+              <RankBadge rank={index + 1} />
+              <OwnerAvatar owner={owner} alias={entry.primaryAlias} />
+              <div className="min-w-0">
+                <p className="min-w-0 break-words whitespace-normal font-ui text-sm font-black leading-tight text-[var(--lcc-color-text)]">{formatOwnerName(owner, entry.primaryAlias)}</p>
+                <p className="mt-0.5 font-ui text-xs font-bold text-[var(--lcc-semantic-achievement)]">{entry.gold} {entry.gold === 1 ? "title" : "titles"}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function ChampionsPanel() {
   return (
-    <section className="grid gap-5">
+    <section className="grid gap-4">
       <SectionHeading
         eyebrow="Champions"
         title="Championship Gallery By Season"
@@ -207,7 +242,7 @@ function ChampionsPanel() {
         icon={<Crown className="h-4 w-4" aria-hidden="true" />}
       />
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {championshipGallery.map((entry) => (
           <ChampionSeasonCard key={entry.season} entry={entry} />
         ))}
@@ -233,8 +268,8 @@ function ChampionSeasonCard({
     : undefined;
 
   return (
-    <article className="lcc-card group overflow-hidden transition-all hover:-translate-y-1 hover:border-[var(--lcc-border-strong)] hover:shadow-[var(--lcc-shadow)]">
-      <div className="relative h-56 overflow-hidden bg-[var(--lcc-green-deep)]">
+    <article className="lcc2-card lcc2-card--interactive group overflow-hidden p-0">
+      <div className="relative h-48 overflow-hidden bg-[var(--lcc-color-midnight)]">
         <OwnerBackdropImage owner={champion} alias={entry.championAlias} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute left-4 top-4 flex flex-wrap gap-2">
@@ -245,19 +280,19 @@ function ChampionSeasonCard({
           )}
         </div>
         <div className="absolute inset-x-0 bottom-0 p-5">
-          <p className="font-ui text-xs font-black uppercase text-[var(--lcc-gold)]">
+          <p className="lcc2-label text-[var(--lcc-semantic-achievement)]">
             Champion
           </p>
-          <h2 className="mt-1 font-serif text-3xl font-black uppercase italic leading-none text-white">
+          <h2 className="mt-1 font-ui text-2xl font-black leading-tight text-white">
             {formatOwnerName(champion, entry.championAlias)}
           </h2>
-          <p className="mt-2 truncate font-ui text-xs font-black uppercase text-white/70">
+          <p className="mt-2 break-words whitespace-normal font-ui text-xs font-semibold leading-tight text-white/75">
             {formatOwnerTeam(champion)}
           </p>
         </div>
       </div>
 
-      <div className="grid gap-3 p-5">
+      <div className="grid gap-2 p-4">
         <div className="grid grid-cols-2 gap-3">
           <PodiumMiniFact
             label="Runner-Up"
@@ -270,11 +305,11 @@ function ChampionSeasonCard({
             tone="bronze"
           />
         </div>
-        <div className="border-t border-[var(--lcc-border)] pt-3">
-          <p className="font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
+        <div className="border-t border-[var(--lcc-color-border)] pt-3">
+          <p className="lcc2-label">
             Final Field
           </p>
-          <p className="mt-1 font-serif text-lg font-black uppercase italic leading-none text-[var(--lcc-text)]">
+          <p className="mt-1 font-ui text-lg font-black leading-none text-[var(--lcc-color-text)]">
             {entry.placementCount} owners
           </p>
         </div>
@@ -285,7 +320,7 @@ function ChampionSeasonCard({
 
 function PodiumsPanel() {
   return (
-    <section className="grid gap-5">
+    <section className="grid gap-4">
       <SectionHeading
         eyebrow="Podiums"
         title="Owner Medal Table"
@@ -293,10 +328,10 @@ function PodiumsPanel() {
         icon={<Medal className="h-4 w-4" aria-hidden="true" />}
       />
 
-      <div className="lcc-card overflow-hidden">
+      <div className="lcc2-card overflow-hidden p-0">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[820px] border-collapse">
-            <thead className="bg-[var(--lcc-green-deep)] text-[var(--lcc-surface)]">
+            <thead className="bg-[var(--lcc-color-midnight)] text-[var(--lcc-color-text-inverse)]">
               <tr className="font-ui text-[0.68rem] font-black uppercase">
                 <th className="w-16 px-4 py-3 text-left">Rank</th>
                 <th className="px-4 py-3 text-left">Owner</th>
@@ -307,7 +342,7 @@ function PodiumsPanel() {
                 <th className="px-4 py-3 text-left">Podium Seasons</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--lcc-border)] bg-[var(--lcc-surface)]">
+            <tbody className="divide-y divide-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-raised)]">
               {podiumTotals.map((entry, index) => {
                 const owner = getPlacementOwner(
                   entry.ownerId,
@@ -317,7 +352,7 @@ function PodiumsPanel() {
                 return (
                   <tr
                     key={entry.ownerId ?? entry.primaryAlias}
-                    className="align-middle transition-colors hover:bg-[var(--lcc-surface-muted)]"
+                    className="align-middle transition-colors hover:bg-[var(--lcc-color-surface-muted)]"
                   >
                     <td className="px-4 py-4">
                       <RankBadge rank={index + 1} />
@@ -333,7 +368,7 @@ function PodiumsPanel() {
                     <MedalTableCell value={entry.silver} tone="silver" />
                     <MedalTableCell value={entry.bronze} tone="bronze" />
                     <td className="px-4 py-4 text-center">
-                      <span className="font-serif text-2xl font-black italic leading-none text-[var(--lcc-text)]">
+                      <span className="font-ui text-2xl font-black leading-none text-[var(--lcc-color-text)]">
                         {entry.total}
                       </span>
                     </td>
@@ -351,39 +386,39 @@ function PodiumsPanel() {
   );
 }
 
-function ToiletBowlsPanel() {
+function LastPlacePanel() {
   const latestSeason = championshipGallery[0];
-  const latestToiletOwner =
-    latestSeason?.toiletBowlAlias !== undefined
+  const latestLastPlaceOwner =
+    latestSeason?.lastPlaceAlias !== undefined
       ? getPlacementOwner(
-          latestSeason.toiletBowlOwnerId,
-          latestSeason.toiletBowlAlias
+          latestSeason.lastPlaceOwnerId,
+          latestSeason.lastPlaceAlias
         )
       : undefined;
 
   return (
-    <section className="grid gap-5">
+    <section className="grid gap-4">
       <SectionHeading
-        eyebrow="Shame Wall"
-        title="Toilet Bowls / Last Place"
+        eyebrow="Last-Place Archive"
+        title="Last Place"
         description="Last-place totals are calculated from the final owner in each season placement list."
         icon={<Skull className="h-4 w-4" aria-hidden="true" />}
       />
 
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_21rem]">
-        <div className="lcc-card overflow-hidden">
+        <div className="lcc2-card overflow-hidden p-0">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[680px] border-collapse">
-              <thead className="bg-[var(--lcc-green-deep)] text-[var(--lcc-surface)]">
+            <thead className="bg-[var(--lcc-color-midnight)] text-[var(--lcc-color-text-inverse)]">
                 <tr className="font-ui text-[0.68rem] font-black uppercase">
                   <th className="w-16 px-4 py-3 text-left">Rank</th>
                   <th className="px-4 py-3 text-left">Owner</th>
-                  <th className="px-4 py-3 text-center">Toilets</th>
+                <th className="px-4 py-3 text-center">Last-Place Finishes</th>
                   <th className="px-4 py-3 text-left">Last Place Seasons</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[var(--lcc-border)] bg-[var(--lcc-surface)]">
-                {toiletBowlTotals.map((entry, index) => {
+            <tbody className="divide-y divide-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-raised)]">
+                {lastPlaceTotals.map((entry, index) => {
                   const owner = getPlacementOwner(
                     entry.ownerId,
                     entry.primaryAlias
@@ -392,7 +427,7 @@ function ToiletBowlsPanel() {
                   return (
                     <tr
                       key={entry.ownerId ?? entry.primaryAlias}
-                      className="align-middle transition-colors hover:bg-[var(--lcc-surface-muted)]"
+                      className="align-middle transition-colors hover:bg-[var(--lcc-color-surface-muted)]"
                     >
                       <td className="px-4 py-4">
                         <RankBadge rank={index + 1} subdued />
@@ -407,12 +442,12 @@ function ToiletBowlsPanel() {
                         />
                       </td>
                       <td className="px-4 py-4 text-center">
-                        <span className="inline-flex h-10 min-w-10 items-center justify-center rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] px-3 font-serif text-2xl font-black italic leading-none text-[var(--lcc-text)]">
+                        <span className="inline-flex h-10 min-w-10 items-center justify-center rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] px-3 font-ui text-2xl font-black leading-none text-[var(--lcc-color-text)]">
                           {entry.total}
                         </span>
                       </td>
                       <td className="px-4 py-4">
-                        <p className="font-ui text-sm font-bold leading-6 text-[var(--lcc-text)]">
+                        <p className="font-ui text-sm font-bold leading-6 text-[var(--lcc-color-text)]">
                           {formatSeasonList(entry.seasons)}
                         </p>
                       </td>
@@ -424,35 +459,35 @@ function ToiletBowlsPanel() {
           </div>
         </div>
 
-        {latestSeason?.toiletBowlAlias && (
-          <article className="overflow-hidden rounded-[var(--lcc-radius)] border border-[var(--lcc-border-strong)] bg-[var(--lcc-surface)] shadow-[var(--lcc-shadow-soft)]">
-            <div className="relative h-60 overflow-hidden bg-[var(--lcc-green-deep)]">
+        {latestSeason?.lastPlaceAlias && (
+          <article className="lcc2-card overflow-hidden p-0">
+            <div className="relative h-52 overflow-hidden bg-[var(--lcc-color-midnight)]">
               <OwnerBackdropImage
-                owner={latestToiletOwner}
-                alias={latestSeason.toiletBowlAlias}
+                owner={latestLastPlaceOwner}
+                alias={latestSeason.lastPlaceAlias}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
               <div className="absolute left-4 top-4">
-                <TrophyBadge>{latestSeason.season} Toilet Bowl</TrophyBadge>
+                <TrophyBadge>{latestSeason.season} Last Place</TrophyBadge>
               </div>
               <div className="absolute inset-x-0 bottom-0 p-5">
-                <p className="font-ui text-xs font-black uppercase text-[var(--lcc-gold)]">
+                <p className="lcc2-label text-[var(--lcc-color-text-inverse)]">
                   Latest Shame Wall Entry
                 </p>
-                <h3 className="mt-1 font-serif text-3xl font-black uppercase italic leading-none text-white">
+                <h3 className="mt-1 font-ui text-2xl font-black leading-tight text-white">
                   {formatOwnerName(
-                    latestToiletOwner,
-                    latestSeason.toiletBowlAlias
+                    latestLastPlaceOwner,
+                    latestSeason.lastPlaceAlias
                   )}
                 </h3>
               </div>
             </div>
-            <div className="p-5">
-              <p className="font-ui text-sm font-medium leading-6 text-[var(--lcc-text-muted)]">
+            <div className="p-4">
+              <p className="lcc2-body">
                 The final placement ledger puts{" "}
                 {formatOwnerName(
-                  latestToiletOwner,
-                  latestSeason.toiletBowlAlias
+                  latestLastPlaceOwner,
+                  latestSeason.lastPlaceAlias
                 )}{" "}
                 last in {latestSeason.season}.
               </p>
@@ -478,14 +513,14 @@ function SectionHeading({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div className="max-w-3xl">
-        <div className="lcc-badge gap-2">
+        <div className="lcc2-label flex items-center gap-2 text-[var(--lcc-brand-primary)]">
           {icon}
           {eyebrow}
         </div>
-        <h2 className="mt-3 font-serif text-3xl font-black uppercase italic leading-none text-[var(--lcc-text)] sm:text-4xl">
+        <h2 className="mt-2 font-ui text-2xl font-black leading-tight tracking-[-0.02em] text-[var(--lcc-color-text)] sm:text-3xl">
           {title}
         </h2>
-        <p className="mt-3 font-ui text-sm font-medium leading-6 text-[var(--lcc-text-muted)]">
+        <p className="lcc2-body mt-2">
           {description}
         </p>
       </div>
@@ -505,19 +540,19 @@ function HeroMetric({
   smallValue?: boolean;
 }) {
   return (
-    <div className="rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface)] p-4 shadow-[var(--lcc-shadow-soft)]">
-      <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-[var(--lcc-radius)] bg-[var(--lcc-gold-soft)] text-[var(--lcc-text)]">
+    <div className="lcc2-metric-card">
+      <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-md bg-[var(--lcc-color-surface-muted)] text-[var(--lcc-interactive)]">
         {icon}
       </div>
       <p
         className={[
-          "font-serif font-black uppercase italic leading-none text-[var(--lcc-text)]",
+          "font-ui font-black leading-none text-[var(--lcc-color-text)]",
           smallValue ? "text-lg" : "text-3xl",
         ].join(" ")}
       >
         {value}
       </p>
-      <p className="mt-2 font-ui text-[0.68rem] font-black uppercase text-[var(--lcc-text-muted)]">
+      <p className="lcc2-label mt-2">
         {label}
       </p>
     </div>
@@ -537,10 +572,10 @@ function OwnerIdentity({
     <div className="flex min-w-0 items-center gap-3">
       <OwnerAvatar owner={owner} alias={alias} />
       <div className="min-w-0">
-        <p className="truncate font-serif text-xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+        <p className="min-w-0 break-words whitespace-normal font-ui text-base font-black leading-tight text-[var(--lcc-color-text)]">
           {formatOwnerName(owner, alias)}
         </p>
-        <p className="mt-1 truncate font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
+        <p className="mt-1 min-w-0 break-words whitespace-normal font-ui text-xs font-semibold leading-tight text-[var(--lcc-color-text-muted)]">
           {formatOwnerTeam(owner)}
         </p>
       </div>
@@ -554,7 +589,7 @@ function OwnerIdentity({
   return (
     <Link
       href={href}
-      className="block rounded-[var(--lcc-radius)] focus:outline-none focus:ring-2 focus:ring-[var(--lcc-gold)]"
+      className="block rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--lcc-interactive-focus)]"
     >
       {content}
     </Link>
@@ -563,7 +598,7 @@ function OwnerIdentity({
 
 function OwnerAvatar({ owner, alias }: { owner?: LccOwner; alias: string }) {
   return (
-    <div className="h-12 w-12 shrink-0 overflow-hidden rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)]">
+    <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)]">
       <img
         src={getOwnerImageSrc(owner)}
         alt={formatOwnerName(owner, alias)}
@@ -608,7 +643,7 @@ function PodiumMiniFact({
       : "bg-[#8b5e34]/15 text-[#6f4525]";
 
   return (
-    <div className="min-w-0 rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-3">
+    <div className="min-w-0 rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-3">
       <span
         className={[
           "mb-2 inline-flex rounded-[var(--lcc-radius)] px-2 py-1 font-ui text-[0.62rem] font-black uppercase",
@@ -617,7 +652,7 @@ function PodiumMiniFact({
       >
         {label}
       </span>
-      <p className="truncate font-serif text-base font-black uppercase italic leading-none text-[var(--lcc-text)]">
+      <p className="min-w-0 break-words whitespace-normal font-ui text-base font-black leading-tight text-[var(--lcc-color-text)]">
         {value}
       </p>
     </div>
@@ -641,7 +676,7 @@ function MedalTableCell({
     <td className="px-4 py-4 text-center">
       <span
         className={[
-          "inline-flex h-10 min-w-10 items-center justify-center rounded-[var(--lcc-radius)] border px-3 font-serif text-2xl font-black italic leading-none",
+          "inline-flex h-10 min-w-10 items-center justify-center rounded-[var(--lcc-radius)] border px-3 font-ui text-2xl font-black leading-none",
           toneClass,
         ].join(" ")}
       >
@@ -657,17 +692,17 @@ function PodiumSeasonBreakdown({
   entry: LccOwnerPodiumTotals;
 }) {
   return (
-    <div className="grid gap-1 font-ui text-xs font-bold leading-5 text-[var(--lcc-text-muted)]">
+    <div className="grid gap-1 font-ui text-xs font-bold leading-5 text-[var(--lcc-color-text-muted)]">
       <p>
-        <span className="font-black uppercase text-[var(--lcc-text)]">Gold:</span>{" "}
+        <span className="font-black uppercase text-[var(--lcc-color-text)]">Gold:</span>{" "}
         {formatSeasonList(entry.seasons.gold)}
       </p>
       <p>
-        <span className="font-black uppercase text-[var(--lcc-text)]">Silver:</span>{" "}
+        <span className="font-black uppercase text-[var(--lcc-color-text)]">Silver:</span>{" "}
         {formatSeasonList(entry.seasons.silver)}
       </p>
       <p>
-        <span className="font-black uppercase text-[var(--lcc-text)]">Bronze:</span>{" "}
+        <span className="font-black uppercase text-[var(--lcc-color-text)]">Bronze:</span>{" "}
         {formatSeasonList(entry.seasons.bronze)}
       </p>
     </div>
@@ -686,8 +721,8 @@ function RankBadge({
       className={[
         "inline-flex h-8 min-w-8 items-center justify-center rounded-[var(--lcc-radius)] border px-2 font-ui text-xs font-black uppercase",
         subdued
-          ? "border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] text-[var(--lcc-text)]"
-          : "border-[var(--lcc-border-strong)] bg-[var(--lcc-gold-soft)] text-[var(--lcc-text)]",
+          ? "border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] text-[var(--lcc-color-text)]"
+          : "border-[color-mix(in_srgb,var(--lcc-semantic-achievement)_45%,transparent)] bg-[color-mix(in_srgb,var(--lcc-semantic-achievement)_12%,var(--lcc-color-surface))] text-[var(--lcc-color-text)]",
       ].join(" ")}
     >
       {rank}

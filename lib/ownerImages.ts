@@ -1,4 +1,6 @@
-export const DEFAULT_OWNER_IMAGE = "/logos/long-country-club-ffl.png";
+import { LCC_BRAND } from "@/lib/lccBrand";
+
+export const DEFAULT_OWNER_IMAGE = LCC_BRAND.assets.headerBadge;
 
 const OWNER_IMAGE_ID_OVERRIDES: Record<string, string> = {
   jay: "jay-g",

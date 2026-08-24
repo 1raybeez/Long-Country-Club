@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Crown, Medal, Skull, Trophy, WalletCards } from "lucide-react";
+import { Crown, Medal, Trophy, WalletCards } from "lucide-react";
 import {
   loadAllSeasonSummaries,
   loadSeasonSummary,
 } from "@/lib/history/seasonSummary";
 import { loadAwardsBySeason } from "@/lib/history/awards";
 import { getOwnerById } from "@/lib/ownerRegistry";
+import { LeagueInfoShell } from "@/components/league/LeagueInfoShell";
 
 export function generateStaticParams() {
   return loadAllSeasonSummaries().map((season) => ({
@@ -42,7 +43,8 @@ export default async function SeasonPage({ params }: SeasonPageProps) {
     ) ?? null;
 
   return (
-    <main className="lcc-page">
+    <LeagueInfoShell>
+      <main className="lcc-page">
       <div className="lcc-container py-8 sm:py-12 lg:py-14">
         <nav className="mb-5">
           <Link href="/history" className="lcc-button lcc-button-secondary">
@@ -66,7 +68,13 @@ export default async function SeasonPage({ params }: SeasonPageProps) {
           <HeroCard icon={<Crown />} label="Champion" value={ownerName(summary.championOwnerId ?? null)} />
           <HeroCard icon={<Medal />} label="Runner-up" value={ownerName(summary.runnerUpOwnerId ?? null)} />
           <HeroCard icon={<Medal />} label="Third Place" value={ownerName(summary.thirdPlaceOwnerId ?? null)} />
-          <HeroCard icon={<Skull />} label="Toilet Bowl" value={ownerName(summary.toiletBowlOwnerId ?? null)} />
+          <HeroCard
+            icon={<Medal />}
+            label="Last Place"
+            value={ownerName(
+              summary.standings.standings.find((record) => record.finalPlace === 12)?.ownerId ?? null
+            )}
+          />
         </section>
 
         <section className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_22rem]">
@@ -147,7 +155,8 @@ export default async function SeasonPage({ params }: SeasonPageProps) {
           </aside>
         </section>
       </div>
-    </main>
+      </main>
+    </LeagueInfoShell>
   );
 }
 

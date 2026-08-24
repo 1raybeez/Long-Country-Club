@@ -1,54 +1,46 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Image from "next/image";
-import Link from "next/link";
-import { LCC_PRIMARY_NAV_ROUTES } from "@/lib/routeConfig";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { OwnerFeedbackFooter } from "@/components/site/OwnerFeedbackFooter";
+import { getCurrentMemberSession } from "@/lib/auth/session";
+import { LCC_BRAND } from "@/lib/lccBrand";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Long Country Club FFL",
   description: "Official LCC Dynasty Clubhouse",
+  icons: {
+    icon: LCC_BRAND.assets.appIcon,
+    apple: LCC_BRAND.assets.appIcon,
+  },
+  openGraph: {
+    title: "Long Country Club FFL",
+    description: "Official LCC Dynasty Clubhouse",
+    images: [
+      {
+        url: LCC_BRAND.assets.social,
+        alt: "Long Country Club",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Long Country Club FFL",
+    description: "Official LCC Dynasty Clubhouse",
+    images: [LCC_BRAND.assets.social],
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await getCurrentMemberSession();
+
   return (
     <html lang="en">
       <body className="lcc-app-body">
-        <header className="lcc-site-header">
-          <div className="lcc-site-header__inner">
-            <Link href="/" className="lcc-site-brand">
-              <div className="lcc-site-brand__mark">
-                <Image
-                  src="/logos/long-country-club-ffl.png"
-                  alt="LCC Logo"
-                  fill
-                  className="object-cover"
-                  priority
-                  unoptimized
-                />
-              </div>
-              <div>
-                <h1 className="lcc-site-brand__title">
-                  Long Country Club{" "}
-                  <span className="lcc-site-brand__accent">FFL</span>
-                </h1>
-                <p className="lcc-site-brand__meta">Established 2003</p>
-              </div>
-            </Link>
-
-            <nav className="lcc-primary-nav" aria-label="Primary navigation">
-              {LCC_PRIMARY_NAV_ROUTES.map((route) => (
-                <Link
-                  key={route.id}
-                  href={route.href}
-                  className="lcc-primary-nav__link"
-                >
-                  {route.navLabel || route.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </header>
+        <SiteHeader session={session ? { authenticated: true, member: session.member } : null} />
         {children}
+        <OwnerFeedbackFooter member={session?.member ?? null} />
       </body>
     </html>
   );

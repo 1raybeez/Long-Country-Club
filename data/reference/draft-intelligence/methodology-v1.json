@@ -1,0 +1,72 @@
+{
+  "version": "draft-intelligence-v1",
+  "createdAt": "2026-08-20",
+  "status": "FROZEN_METHODOLOGY_ONLY",
+  "scope": {
+    "rookieEvents": "2021-2026 Rookie Drafts",
+    "standardEvents": "2022-2026 Rookie Drafts",
+    "excludedEvents": ["2019 Keeper/Veteran Draft", "2020 Keeper/Veteran Draft", "2021 Dynasty Startup"],
+    "outcomesAndForecastsGenerated": false
+  },
+  "dimensions": [
+    {
+      "id": "CAPITAL_DEPLOYMENT",
+      "label": "Capital Deployment",
+      "weight": 0.25,
+      "inputs": ["total selections", "round 1 picks", "round 2 picks", "round 3 picks", "round 4 picks", "acquired-slot count", "missing-round count", "capital available"],
+      "rules": ["Evaluate deployment of capital actually held, not raw pick volume alone.", "Reward complete use of verified owned capital, usable early capital, round distribution, and verified acquired capital.", "Do not penalize limited capital merely because the owner held few picks.", "Do not infer unverified capital availability."],
+      "scoreBands": {"5": "Verified capital is fully and deliberately deployed with strong usable-round distribution or supported additional capital.", "4": "Verified capital is substantially or fully deployed with no material underuse and reasonable distribution.", "3": "Capital is deployed without a material verified failure, but timing, availability, or distribution is neutral or limited.", "2": "Verified capital is materially underused or concentrated in a way that removes flexibility without supporting context.", "1": "Substantial verified capital is unused or deployment contains a material integrity failure."}
+    },
+    {
+      "id": "ROSTER_CONTEXT",
+      "label": "Roster Context",
+      "weight": 0.25,
+      "inputs": ["entering QB/RB/WR/TE counts", "event-level THIN/BALANCED/DEEP classifications", "capital available", "number of picks", "positional selections", "concentration"],
+      "rules": ["Use descriptive league-relative position context.", "Reward meaningful investment in verified THIN rooms when capital supports it.", "Treat untouched THIN rooms or heavy early investment in DEEP rooms as concerns only in combination with the full class shape.", "Do not automatically penalize investment in a DEEP position.", "Do not use unsupported language such as desperate or must-fill."],
+      "scoreBands": {"5": "Multiple supported roster-context interactions are positive and no material thin-room issue is ignored.", "4": "At least one supported thin-room interaction is positive, or the class avoids a material contextual conflict.", "3": "Context interaction is neutral, mixed, or limited by evidence.", "2": "A material thin-room issue is left untouched while early capital is concentrated elsewhere without supporting context.", "1": "Multiple material contextual conflicts are supported by the evidence."}
+    },
+    {
+      "id": "DRAFT_CONSTRUCTION",
+      "label": "Draft Construction",
+      "weight": 0.20,
+      "inputs": ["observable class shape", "round sequencing", "position diversification", "early-vs-late allocation", "capital distribution"],
+      "rules": ["Use observable draft-plan shape only.", "Allowed labels include BALANCED, CONCENTRATED, EARLY_POSITION_FOCUS, LATE_POSITION_FOCUS, WIDE_DIVERSIFICATION, EXTRA_CAPITAL_BUILD, and LIMITED_CAPITAL_CLASS.", "Do not infer manager intent.", "Score sequencing and construction consistency, not hindsight player quality."],
+      "scoreBands": {"5": "Class shape and sequencing are broad, coherent, and consistently supported by observable facts.", "4": "Class shape is coherent with only minor structural tension.", "3": "Class shape is understandable but neutral, mixed, or limited by available capital.", "2": "Sequencing or class shape has a material unexplained structural tension.", "1": "Class construction is materially incoherent or cannot be supported by the recorded facts."}
+    },
+    {
+      "id": "CONCENTRATION_BALANCE",
+      "label": "Concentration / Balance",
+      "weight": 0.15,
+      "inputs": ["position diversity count", "maximum same-position selections", "early-round same-position concentration", "total-position concentration percentage", "roster context"],
+      "rules": ["Calculate concentration structurally before interpreting it.", "Concentration is not automatically negative.", "Supported concentration in a THIN position may be reasonable.", "Concentration in a DEEP position while another position is THIN is more concerning.", "Do not apply fixed penalties without roster-context interaction."],
+      "scoreBands": {"5": "Breadth or context-supported concentration produces strong structural balance.", "4": "Structure is balanced or concentration is well supported by context.", "3": "Structure is neutral or mixed.", "2": "Concentration materially narrows the class without sufficient contextual support.", "1": "Extreme unsupported concentration materially removes positional balance and optionality."}
+    },
+    {
+      "id": "OPTIONALITY_DEPTH_BUILDING",
+      "label": "Optionality / Depth Building",
+      "weight": 0.15,
+      "inputs": ["positions strengthened", "breadth of roster additions", "later-round diversification", "capital breadth", "narrow-asset concentration"],
+      "rules": ["Evaluate structural breadth only.", "Reward multiple positions strengthened and later-round diversification.", "Treat limited capital as a fact, not an automatic failure.", "Do not use player success or projected value."],
+      "scoreBands": {"5": "Class creates broad, supported positional optionality across available selections.", "4": "Class adds useful breadth or depth across multiple positions.", "3": "Class adds neutral or limited optionality consistent with available capital.", "2": "Class adds narrow optionality with limited breadth despite available opportunities.", "1": "Class is narrowly concentrated and adds little structural optionality."}
+    }
+  ],
+  "scoringScale": {"scale": "1-5", "increments": "integer-only", "5": "Excellent", "4": "Strong", "3": "Reasonable / Neutral", "2": "Questionable", "1": "Poor", "narrativeMayAlterScore": false},
+  "weights": {"standard": {"CAPITAL_DEPLOYMENT": 0.25, "ROSTER_CONTEXT": 0.25, "DRAFT_CONSTRUCTION": 0.2, "CONCENTRATION_BALANCE": 0.15, "OPTIONALITY_DEPTH_BUILDING": 0.15}, "standardTotal": 1.0, "2021MissingRosterContext": {"CAPITAL_DEPLOYMENT": 0.333333333333, "DRAFT_CONSTRUCTION": 0.266666666667, "CONCENTRATION_BALANCE": 0.2, "OPTIONALITY_DEPTH_BUILDING": 0.2, "total": 1.0}},
+  "overallScore": {"formula": "sum(dimensionScore * applicableWeight)", "scale": "1-5", "label": "DRAFT-DAY CONTEXT GRADE", "notOutcomeGrade": true},
+  "letterThresholds": [
+    {"label":"A+","minimum":4.75,"maximum":5.0}, {"label":"A","minimum":4.4,"maximum":4.74}, {"label":"A-","minimum":4.15,"maximum":4.39},
+    {"label":"B+","minimum":3.85,"maximum":4.14}, {"label":"B","minimum":3.5,"maximum":3.84}, {"label":"B-","minimum":3.2,"maximum":3.49},
+    {"label":"C+","minimum":2.9,"maximum":3.19}, {"label":"C","minimum":2.6,"maximum":2.89}, {"label":"C-","minimum":2.3,"maximum":2.59},
+    {"label":"D","minimum":1.75,"maximum":2.29}, {"label":"F","minimum":0.0,"maximum":1.74}
+  ],
+  "missingContextTreatment": {"policy":"EXCLUDE_AND_RENORMALIZE", "neverSubstituteNeutralScore":true, "2021":"Roster-context dimension unavailable for this historical backtest.", "confidenceDowngradeRequired":true},
+  "marketValue": {"included":false,"excludedInputs":["ADP","current dynasty rankings","current player values","consensus rankings","market-relative reach/steal"] ,"reason":"Consistent dated historical market inputs are unavailable."},
+  "outcomeExclusions": ["fantasy production","games played","starts","post-draft roster tenure","championships","awards","post-draft injuries","later NFL success","current dynasty value","hindsight bust/steal labels"],
+  "narrative": {"sections":["GRADE","DIMENSION BREAKDOWN","STRENGTHS","CONCERNS","DRAFT-DAY OUTLOOK"],"strengthCount":"2-3","concernCount":"1-3","mayAlterScores":false},
+  "forecast": {"classification":"LIVE_FORECAST","immediateImpactOutlook":["LOW","MODERATE","HIGH"],"longTermUpsideOutlook":["LOW","MODERATE","HIGH"],"classShape":"deterministic descriptive labels","potentialOutperformer":"omit without dated draft-time evaluation data","2026Policy":"post-draft, pre-season; preserve draftDate, analysisAsOf, forecastCreatedAt, methodologyVersion, and predictionVersion"},
+  "backtest": {"classification":"BACKTEST_FORECAST","requiredStatement":"This is a retrospective simulation of what Methodology V1 would have produced using only information available at the draft-time boundary."},
+  "immutability": {"approvedOriginalImmutable":true,"requiredFields":["predictionVersion","methodologyVersion","createdAt","approvedAt","supersedes","correctionReason"],"correctionPolicy":"new version only; never overwrite approved original"},
+  "confidence": {"values":["HIGH","MEDIUM","LIMITED"],"rules":["confidence reflects evidence completeness, not score calculation success","2021 reflects unavailable roster context","2022-2026 reflect normalized roster evidence limitations"]},
+  "predictor": {"gradesSentToPredictor":false,"safeFacts":["pre-draft position counts","position classifications","position-selection frequency","round tendencies","first-round position tendencies","repeat-position count","position diversity","capital distribution","acquired-slot usage"],"outcomeDerivedFeaturesForbidden":true},
+  "validation": {"asOfRule":"Every Draft-Day input must be available at or before the declared draft-time boundary.","futureInformationForbidden":true,"keeperAndStartupExcludedFromRookieV1":true}
+}

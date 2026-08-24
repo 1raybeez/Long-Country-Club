@@ -1,0 +1,2622 @@
+{
+  "schemaVersion": 1,
+  "recordType": "DRAFT_INTELLIGENCE_HISTORICAL_BACKTEST",
+  "season": 2024,
+  "draftId": "1048290254903463937",
+  "forecastMode": "BACKTEST_FORECAST",
+  "predictionVersion": "v1",
+  "processMethodologyVersion": "draft-intelligence-v1.1",
+  "marketMethodologyVersion": "market-value-v1.1",
+  "overallMethodologyVersion": "overall-draft-day-v1",
+  "draftDate": "2024-06-06T14:20:29.349Z",
+  "analysisAsOf": "2024-06-06T14:20:29.349Z",
+  "historicalSimulationCreatedAt": "2026-08-21T13:26:46.042Z",
+  "approvedAt": "2026-08-21T00:00:00.000Z",
+  "approvalStatus": "APPROVED",
+  "immutable": true,
+  "supersedes": null,
+  "correctionReason": null,
+  "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+  "marketSnapshotDate": "2024-03-14",
+  "marketTimingClassification": "PRE_DRAFT",
+  "marketProvenance": {
+    "season": 2024,
+    "role": "PRIMARY",
+    "sourceName": "Fantasy Football Faceoff",
+    "sourceUrl": "https://fffaceoff.com/1qb-dynasty-rookie-adp-dynasty-league-football-2024/",
+    "sourceType": "PUBLIC_ARTICLE_TABLE",
+    "format": "Dynasty Rookie; explicit 1QB; 10-team article reference; no TEP statement",
+    "leagueSize": 10,
+    "scoringContext": "Not stated",
+    "oneQBStatus": "SUITABLE",
+    "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+    "snapshotDate": "2024-03-14",
+    "daysFromLccDraft": -85,
+    "timingClassification": "PRE_DRAFT",
+    "sourceWindow": null,
+    "retrievedAt": "2026-08-21T13:12:48.369Z",
+    "sampleSize": null,
+    "rawSourcePath": "data/source/market/dynasty-rookie/2024/primary.json",
+    "normalizationMethod": "Published overall rank was preserved as integer expected overall pick; no round-label conversion was applied. The source is explicitly 10-team, so its overall-pick expectation is compared directly against the 12-team LCC overall pick.",
+    "normalizationDisclosure": "Published overall rank was preserved as integer expected overall pick; no round-label conversion was applied. The source is explicitly 10-team, so its overall-pick expectation is compared directly against the 12-team LCC overall pick.",
+    "confidence": "MEDIUM",
+    "licensingUseNotes": "Public article table preserved from browser-accessible content; no paywall, authentication, or subscriber dataset was bypassed."
+  },
+  "disclosure": "This is a retrospective simulation of what the current Draft Intelligence methodology would have produced using the approved historical evidence and market references. It was not an actual forecast created in that season.",
+  "historicalEvidenceBoundary": "Each owner evaluation retains its original draft-time analysisAsOf and draft-time evidence boundary; no later Outcome, current roster, current market, or current ADP data is admitted.",
+  "evaluations": [
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "anthony-martinez",
+      "manager": "Anthony Martinez",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 18,
+          "round": 2,
+          "playerId": "11638",
+          "playerName": "Ricky Pearsall",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 25,
+          "round": 3,
+          "playerId": "11581",
+          "playerName": "MarShawn Lloyd",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 30,
+          "round": 3,
+          "playerId": "11563",
+          "playerName": "Bo Nix",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 42,
+          "round": 4,
+          "playerId": "11857",
+          "playerName": "Daijun Edwards",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 4,
+          "RB": 6,
+          "WR": 6,
+          "TE": 4
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "THIN",
+          "TE": "DEEP"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 4,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 1 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "1 early and 3 late selection(s) across 3 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 18,
+              "round": 2,
+              "player": "Ricky Pearsall",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 25,
+            "rawPickDelta": 7,
+            "normalizedDelta": 1.675,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 25,
+              "round": 3,
+              "player": "MarShawn Lloyd",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 22,
+            "rawPickDelta": -3,
+            "normalizedDelta": -0.558,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 30,
+              "round": 3,
+              "player": "Bo Nix",
+              "position": "QB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 42,
+              "round": 4,
+              "player": "Daijun Edwards",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 4.047619,
+        "grade": "B+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 4.0190476,
+        "displayScore": 4.02,
+        "grade": "B+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 1.6190476
+      },
+      "strengths": [
+        "Used 1 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Addressed entering THIN WR.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "ben-isbell",
+      "manager": "Ben Isbell",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 9,
+          "round": 1,
+          "playerId": "11635",
+          "playerName": "Ladd McConkey",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 21,
+          "round": 2,
+          "playerId": "11564",
+          "playerName": "Drake Maye",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 33,
+          "round": 3,
+          "playerId": "11647",
+          "playerName": "Kimani Vidal",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 45,
+          "round": 4,
+          "playerId": "11655",
+          "playerName": "Tyrone Tracy",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 4,
+          "RB": 11,
+          "WR": 7,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "DEEP",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 9,
+              "round": 1,
+              "player": "Ladd McConkey",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 8,
+            "rawPickDelta": -1,
+            "normalizedDelta": -0.388,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 21,
+              "round": 2,
+              "player": "Drake Maye",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 15,
+            "rawPickDelta": -6,
+            "normalizedDelta": -1.436,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 33,
+              "round": 3,
+              "player": "Kimani Vidal",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 45,
+              "round": 4,
+              "player": "Tyrone Tracy",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 2.531915,
+        "grade": "C-",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.262766,
+        "displayScore": 3.26,
+        "grade": "B-",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.25,
+        "marketValue": 1.012766
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. C-).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "bill-gross",
+      "manager": "Bill Gross",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 4,
+          "round": 1,
+          "playerId": "11632",
+          "playerName": "Malik Nabers",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 16,
+          "round": 2,
+          "playerId": "11643",
+          "playerName": "Jaylen Wright",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 28,
+          "round": 3,
+          "playerId": "11559",
+          "playerName": "Michael Penix",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 40,
+          "round": 4,
+          "playerId": "11597",
+          "playerName": "Theo Johnson",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 3,
+          "RB": 7,
+          "WR": 5,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "THIN",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 4,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 1 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 1/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "4 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 4,
+              "round": 1,
+              "player": "Malik Nabers",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 2,
+            "rawPickDelta": -2,
+            "normalizedDelta": -0.775,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 16,
+              "round": 2,
+              "player": "Jaylen Wright",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 21,
+            "rawPickDelta": 5,
+            "normalizedDelta": 1.197,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 28,
+              "round": 3,
+              "player": "Michael Penix",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 29,
+            "rawPickDelta": 1,
+            "normalizedDelta": 0.186,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 40,
+              "round": 4,
+              "player": "Theo Johnson",
+              "position": "TE"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 2.955224,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.5820895999999998,
+        "displayScore": 3.58,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 1.1820896
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 4 positions in the recorded class.",
+        "Addressed entering THIN WR.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. C+).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "earl-perkins",
+      "manager": "Earl Perkins",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 7,
+          "round": 1,
+          "playerId": "11583",
+          "playerName": "Jonathon Brooks",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 11,
+          "round": 1,
+          "playerId": "11589",
+          "playerName": "Trey Benson",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 17,
+          "round": 2,
+          "playerId": "11627",
+          "playerName": "Troy Franklin",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 19,
+          "round": 2,
+          "playerId": "11625",
+          "playerName": "Adonai Mitchell",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 27,
+          "round": 3,
+          "playerId": "11650",
+          "playerName": "Luke McCaffrey",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 31,
+          "round": 3,
+          "playerId": "11640",
+          "playerName": "Jermaine Burton",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 43,
+          "round": 4,
+          "playerId": "11618",
+          "playerName": "Jalen McMillan",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 3,
+          "RB": 6,
+          "WR": 10,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "DEEP",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 3,
+        "rosterContext": 3,
+        "draftConstruction": 5,
+        "concentrationBalance": 3,
+        "optionalityDepthBuilding": 3,
+        "score": 3.4,
+        "grade": "B-",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 7 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "4 early and 3 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 5/7; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 7,
+              "round": 1,
+              "player": "Jonathon Brooks",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 13,
+            "rawPickDelta": 6,
+            "normalizedDelta": 2.326,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 11,
+              "round": 1,
+              "player": "Trey Benson",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 11,
+            "rawPickDelta": 0,
+            "normalizedDelta": 0,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 17,
+              "round": 2,
+              "player": "Troy Franklin",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 9,
+            "rawPickDelta": -8,
+            "normalizedDelta": -1.915,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 19,
+              "round": 2,
+              "player": "Adonai Mitchell",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 7,
+            "rawPickDelta": -12,
+            "normalizedDelta": -2.872,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 27,
+              "round": 3,
+              "player": "Luke McCaffrey",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 31,
+              "round": 3,
+              "player": "Jermaine Burton",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 43,
+              "round": 4,
+              "player": "Jalen McMillan",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 26,
+            "rawPickDelta": -17,
+            "normalizedDelta": -1.911,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 2.339286,
+        "grade": "C-",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 2.9757144,
+        "displayScore": 2.98,
+        "grade": "C+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.04,
+        "marketValue": 0.9357144000000001
+      },
+      "strengths": [
+        "Used 4 early-round selection(s).",
+        "Represented 2 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "Had 5 selection(s) at WR.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B- vs. C-).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "jeffrey-hudgins",
+      "manager": "Jeffrey Hudgins",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 15,
+          "round": 2,
+          "playerId": "11631",
+          "playerName": "Brian Thomas",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 22,
+          "round": 2,
+          "playerId": "11619",
+          "playerName": "Ja'Lynn Polk",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 34,
+          "round": 3,
+          "playerId": "11584",
+          "playerName": "Bucky Irving",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 46,
+          "round": 4,
+          "playerId": "11595",
+          "playerName": "Jared Wiley",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 5,
+          "RB": 8,
+          "WR": 8,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "DEEP",
+          "RB": "DEEP",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 3 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 15,
+              "round": 2,
+              "player": "Brian Thomas",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 6,
+            "rawPickDelta": -9,
+            "normalizedDelta": -2.154,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 22,
+              "round": 2,
+              "player": "Ja'Lynn Polk",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 24,
+            "rawPickDelta": 2,
+            "normalizedDelta": 0.479,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 34,
+              "round": 3,
+              "player": "Bucky Irving",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 46,
+              "round": 4,
+              "player": "Jared Wiley",
+              "position": "TE"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 2,
+        "grade": "D",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.05,
+        "displayScore": 3.05,
+        "grade": "C+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.25,
+        "marketValue": 0.8
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. D).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "keith-winder",
+      "manager": "Keith Winder",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 8,
+          "round": 1,
+          "playerId": "11624",
+          "playerName": "Xavier Worthy",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 20,
+          "round": 2,
+          "playerId": "11565",
+          "playerName": "J.J. McCarthy",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 32,
+          "round": 3,
+          "playerId": "11576",
+          "playerName": "Braelon Allen",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 44,
+          "round": 4,
+          "playerId": "11616",
+          "playerName": "Jacob Cowing",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 3,
+          "RB": 4,
+          "WR": 8,
+          "TE": 5
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "THIN",
+          "WR": "BALANCED",
+          "TE": "DEEP"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 8,
+              "round": 1,
+              "player": "Xavier Worthy",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 10,
+            "rawPickDelta": 2,
+            "normalizedDelta": 0.775,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 20,
+              "round": 2,
+              "player": "J.J. McCarthy",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 28,
+            "rawPickDelta": 8,
+            "normalizedDelta": 1.915,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 32,
+              "round": 3,
+              "player": "Braelon Allen",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 19,
+            "rawPickDelta": -13,
+            "normalizedDelta": -2.419,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 44,
+              "round": 4,
+              "player": "Jacob Cowing",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3.432836,
+        "grade": "B-",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.6231344,
+        "displayScore": 3.62,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.25,
+        "marketValue": 1.3731344
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Addressed entering THIN RB.",
+        "Recorded 2 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "loren-michaels",
+      "manager": "Loren Michaels",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 23,
+          "round": 2,
+          "playerId": "11629",
+          "playerName": "Devontez Walker",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        },
+        {
+          "pick": 35,
+          "round": 3,
+          "playerId": "11575",
+          "playerName": "Ray Davis",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        },
+        {
+          "pick": 47,
+          "round": 4,
+          "playerId": "11792",
+          "playerName": "Will Reichard",
+          "position": "K",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 4,
+          "RB": 6,
+          "WR": 8,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 3,
+        "optionalityDepthBuilding": 4,
+        "score": 3.6,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 3 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "1 early and 2 late selection(s) across 3 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 1/3; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 23,
+              "round": 2,
+              "player": "Devontez Walker",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 23,
+            "rawPickDelta": 0,
+            "normalizedDelta": 0,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 35,
+              "round": 3,
+              "player": "Ray Davis",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 47,
+              "round": 4,
+              "player": "Will Reichard",
+              "position": "K"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_LIMITED",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.3600000000000003,
+        "displayScore": 3.36,
+        "grade": "B-",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.16,
+        "marketValue": 1.2000000000000002
+      },
+      "strengths": [
+        "Used 1 early-round selection(s).",
+        "Represented 3 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. C+).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "mike-estes",
+      "manager": "Mike Estes",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 10,
+          "round": 1,
+          "playerId": "11566",
+          "playerName": "Jayden Daniels",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "mike-estes"
+        },
+        {
+          "pick": 37,
+          "round": 4,
+          "playerId": "11645",
+          "playerName": "Javon Baker",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "mike-estes"
+        },
+        {
+          "pick": 39,
+          "round": 4,
+          "playerId": "11621",
+          "playerName": "Brenden Rice",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "mike-estes"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 2,
+          "RB": 7,
+          "WR": 8,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "THIN",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 3,
+        "rosterContext": 4,
+        "draftConstruction": 3,
+        "concentrationBalance": 3,
+        "optionalityDepthBuilding": 3,
+        "score": 3.25,
+        "grade": "B-",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 3 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 1 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "1 early and 2 late selection(s) across 2 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/3; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 10,
+              "round": 1,
+              "player": "Jayden Daniels",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 18,
+            "rawPickDelta": 8,
+            "normalizedDelta": 3.101,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 37,
+              "round": 4,
+              "player": "Javon Baker",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 39,
+              "round": 4,
+              "player": "Brenden Rice",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 30,
+            "rawPickDelta": -9,
+            "normalizedDelta": -1.012,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3.744186,
+        "grade": "B",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.4476744000000004,
+        "displayScore": 3.45,
+        "grade": "B-",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 1.95,
+        "marketValue": 1.4976744000000002
+      },
+      "strengths": [
+        "Used 1 early-round selection(s).",
+        "Represented 2 positions in the recorded class.",
+        "Addressed entering THIN QB.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s)."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "mike-mcburnie",
+      "manager": "Mike McBurnie",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 12,
+          "round": 1,
+          "playerId": "11637",
+          "playerName": "Keon Coleman",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        },
+        {
+          "pick": 24,
+          "round": 2,
+          "playerId": "11596",
+          "playerName": "Ben Sinnott",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        },
+        {
+          "pick": 36,
+          "round": 3,
+          "playerId": "11577",
+          "playerName": "Will Shipley",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        },
+        {
+          "pick": 48,
+          "round": 4,
+          "playerId": "11573",
+          "playerName": "Frank Gore",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 2,
+          "RB": 7,
+          "WR": 7,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "THIN",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 1 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 12,
+              "round": 1,
+              "player": "Keon Coleman",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 12,
+            "rawPickDelta": 0,
+            "normalizedDelta": 0,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 24,
+              "round": 2,
+              "player": "Ben Sinnott",
+              "position": "TE"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 36,
+              "round": 3,
+              "player": "Will Shipley",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 48,
+              "round": 4,
+              "player": "Frank Gore",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_LIMITED",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "3 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.45,
+        "displayScore": 3.45,
+        "grade": "B-",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.25,
+        "marketValue": 1.2000000000000002
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class."
+      ],
+      "concerns": [
+        "Left entering THIN QB untouched.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. C+).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "ray-long",
+      "manager": "Ray Long",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 1,
+          "round": 1,
+          "playerId": "11628",
+          "playerName": "Marvin Harrison",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 3,
+          "round": 1,
+          "playerId": "11620",
+          "playerName": "Rome Odunze",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 5,
+          "round": 1,
+          "playerId": "11604",
+          "playerName": "Brock Bowers",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 13,
+          "round": 2,
+          "playerId": "11630",
+          "playerName": "Roman Wilson",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 4,
+          "RB": 8,
+          "WR": 8,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "DEEP",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 2,
+        "rosterContext": 3,
+        "draftConstruction": 2,
+        "concentrationBalance": 2,
+        "optionalityDepthBuilding": 3,
+        "score": 2.4,
+        "grade": "C-",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "4 early and 0 late selection(s) across 2 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 3/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 0 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 1,
+              "round": 1,
+              "player": "Marvin Harrison",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 1,
+            "rawPickDelta": 0,
+            "normalizedDelta": 0,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 3,
+              "round": 1,
+              "player": "Rome Odunze",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 3,
+            "rawPickDelta": 0,
+            "normalizedDelta": 0,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 5,
+              "round": 1,
+              "player": "Brock Bowers",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 4,
+            "rawPickDelta": -1,
+            "normalizedDelta": -0.388,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 13,
+              "round": 2,
+              "player": "Roman Wilson",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 17,
+            "rawPickDelta": 4,
+            "normalizedDelta": 0.957,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3.226804,
+        "grade": "B-",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 2.7307216,
+        "displayScore": 2.73,
+        "grade": "C",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 1.44,
+        "marketValue": 1.2907216000000001
+      },
+      "strengths": [
+        "Used 4 early-round selection(s).",
+        "Represented 2 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "Had 3 selection(s) at WR.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Market Value outperformed Process because selections compared favorably with the archived market even though the class showed less structural breadth or roster alignment (B- vs. C-).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "rob-jenkins",
+      "manager": "Rob Jenkins",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 2,
+          "round": 1,
+          "playerId": "11560",
+          "playerName": "Caleb Williams",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 6,
+          "round": 1,
+          "playerId": "11626",
+          "playerName": "Xavier Legette",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 14,
+          "round": 2,
+          "playerId": "11586",
+          "playerName": "Blake Corum",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 26,
+          "round": 3,
+          "playerId": "11600",
+          "playerName": "Ja'Tavion Sanders",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 38,
+          "round": 4,
+          "playerId": "11651",
+          "playerName": "Isaac Guerendo",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 4,
+          "RB": 4,
+          "WR": 10,
+          "TE": 4
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "THIN",
+          "WR": "DEEP",
+          "TE": "DEEP"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 4,
+        "draftConstruction": 5,
+        "concentrationBalance": 5,
+        "optionalityDepthBuilding": 5,
+        "score": 4.5,
+        "grade": "A",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 5 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 1 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "3 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/5; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "4 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 2,
+              "round": 1,
+              "player": "Caleb Williams",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 5,
+            "rawPickDelta": 3,
+            "normalizedDelta": 1.163,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 6,
+              "round": 1,
+              "player": "Xavier Legette",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 16,
+            "rawPickDelta": 10,
+            "normalizedDelta": 3.876,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 14,
+              "round": 2,
+              "player": "Blake Corum",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 14,
+            "rawPickDelta": 0,
+            "normalizedDelta": 0,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 26,
+              "round": 3,
+              "player": "Ja'Tavion Sanders",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 20,
+            "rawPickDelta": -6,
+            "normalizedDelta": -1.116,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 38,
+              "round": 4,
+              "player": "Isaac Guerendo",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3.597826,
+        "grade": "B",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 4.1391304,
+        "displayScore": 4.14,
+        "grade": "B+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.6999999999999997,
+        "marketValue": 1.4391304
+      },
+      "strengths": [
+        "Used 3 early-round selection(s).",
+        "Represented 4 positions in the recorded class.",
+        "Addressed entering THIN RB.",
+        "Recorded 2 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (A vs. B).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2024,
+      "ownerId": "tyrone-poist",
+      "manager": "Tyrone Poist",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2024-06-06T14:20:29.349Z",
+      "analysisAsOf": "2024-06-06T14:20:29.349Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 29,
+          "round": 3,
+          "playerId": "11617",
+          "playerName": "Malachi Corley",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        },
+        {
+          "pick": 41,
+          "round": 4,
+          "playerId": "11579",
+          "playerName": "Audric Estime",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 2,
+          "RB": 5,
+          "WR": 8,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "THIN",
+          "RB": "THIN",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 3,
+        "rosterContext": 3,
+        "draftConstruction": 3,
+        "concentrationBalance": 3,
+        "optionalityDepthBuilding": 3,
+        "score": 3,
+        "grade": "C+",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 2 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 0 addressed with early capital; 1 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "0 early and 2 late selection(s) across 2 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 1/2; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 29,
+              "round": 3,
+              "player": "Malachi Corley",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 27,
+            "rawPickDelta": -2,
+            "normalizedDelta": -0.372,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": -85,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 41,
+              "round": 4,
+              "player": "Audric Estime",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2024-03-14",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_LIMITED",
+        "source": {
+          "sourceName": "Fantasy Football Faceoff",
+          "marketSnapshotId": "2024-fantasy-football-faceoff-2024-03-14",
+          "marketSnapshotDate": "2024-03-14",
+          "daysFromLccDraft": -85,
+          "timingClassification": "PRE_DRAFT",
+          "timingDisclosure": "PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3,
+        "displayScore": 3,
+        "grade": "C+",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 1.7999999999999998,
+        "marketValue": 1.2000000000000002
+      },
+      "strengths": [
+        "Represented 2 positions in the recorded class.",
+        "Addressed entering THIN RB."
+      ],
+      "concerns": [
+        "Left entering THIN QB untouched."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: PRE_DRAFT market snapshot dated 2024-03-14; 85 days before the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    }
+  ],
+  "evidence": {
+    "reviewedDiagnosticArtifact": "data/diagnostics/draft-intelligence/overall-v1/2024.json",
+    "reviewedSourceHash": "129cfe27bee2ee5b61a9af1ea994e9e88cfe5133248d53f7ffa1470e407c7026",
+    "noNewDataFetched": true,
+    "noRecalculationPerformed": true,
+    "noOutcomeData": true,
+    "noCurrentRosterState": true,
+    "noCurrentAdp": true,
+    "no2026Evidence": true
+  },
+  "boundaries": {
+    "outcome": false,
+    "currentRoster": false,
+    "currentMarket": false,
+    "currentAdp": false,
+    "season2026": false,
+    "forecastVsReality": false,
+    "draftRoomUi": false
+  }
+}

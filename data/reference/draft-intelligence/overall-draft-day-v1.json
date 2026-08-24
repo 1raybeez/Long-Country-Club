@@ -1,0 +1,72 @@
+{
+  "version": "overall-draft-day-v1",
+  "status": "FROZEN_METHODOLOGY",
+  "purpose": "Synthesis layer for independently visible Process V1.1 and Market Value V1.1 draft-day grades.",
+  "processMethodologyVersion": "draft-intelligence-v1.1",
+  "marketMethodologyVersion": "market-value-v1.1",
+  "weights": {
+    "process": 0.6,
+    "marketValue": 0.4,
+    "total": 1
+  },
+  "score": {
+    "formula": "overallDraftDayScore = (processScore * 0.60) + (marketValueScore * 0.40)",
+    "inputs": "Underlying continuous component scores; letter grades are never combined.",
+    "calculationPrecision": "No rounding before calculation; display may round to two decimals.",
+    "scale": "1-5"
+  },
+  "letterScale": {
+    "thresholds": [
+      { "label": "A+", "minimum": 4.75 },
+      { "label": "A", "minimum": 4.4 },
+      { "label": "A-", "minimum": 4.15 },
+      { "label": "B+", "minimum": 3.85 },
+      { "label": "B", "minimum": 3.5 },
+      { "label": "B-", "minimum": 3.2 },
+      { "label": "C+", "minimum": 2.9 },
+      { "label": "C", "minimum": 2.6 },
+      { "label": "C-", "minimum": 2.3 },
+      { "label": "D", "minimum": 1.75 },
+      { "label": "F", "minimum": 0 }
+    ],
+    "curve": false
+  },
+  "confidence": {
+    "rule": "Overall confidence is the weakest materially required component confidence.",
+    "ranking": ["UNAVAILABLE", "LIMITED", "MEDIUM", "HIGH"],
+    "normalization": {
+      "HIGH": "HIGH",
+      "MEDIUM": "MEDIUM",
+      "LIMITED": "LIMITED",
+      "UNAVAILABLE": "UNAVAILABLE",
+      "GRADE_AVAILABLE_HIGH": "HIGH",
+      "GRADE_AVAILABLE_MEDIUM": "MEDIUM",
+      "GRADE_AVAILABLE_LIMITED": "LIMITED"
+    }
+  },
+  "missingMarketPolicy": {
+    "status": "NO_OVERALL_DRAFT_DAY_GRADE",
+    "processStatus": "AVAILABLE",
+    "marketStatus": "UNAVAILABLE",
+    "reason": "No compatible primary 1QB historical rookie ADP dataset is currently registered.",
+    "neutralSubstitution": false,
+    "processOnlyFallback": false
+  },
+  "forecast": {
+    "historical": "BACKTEST_FORECAST",
+    "liveCandidate": "LIVE_FORECAST_CANDIDATE",
+    "approvalStatus": "PENDING_REVIEW",
+    "immutableBeforeApproval": false,
+    "autoPublish": false,
+    "outcomesIncluded": false
+  },
+  "boundaries": {
+    "processReplaced": false,
+    "marketReplaced": false,
+    "outcomeGrade": false,
+    "predictorIntegration": false,
+    "draftRoomUi": false,
+    "powerRanking": false,
+    "publicExposure": false
+  }
+}

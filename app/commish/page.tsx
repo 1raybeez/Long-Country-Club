@@ -1,75 +1,71 @@
-'use client';
-
-import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Newspaper } from 'lucide-react';
-import { ModeToggle } from '@/components/ModeToggle';
+import { ArrowLeft, Banknote, BrainCircuit, Home, MessageSquare, ShieldCheck } from 'lucide-react';
+import { redirect } from 'next/navigation';
+import { getCurrentMemberSession } from '@/lib/auth/session';
+import { getCommissionerFeedbackQueue } from '@/lib/feedbackServer';
 
-export default function CommishPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function CommissionerHubPage() {
+  const session = await getCurrentMemberSession();
+  if (!session?.member?.capabilities.includes('commissioner')) redirect('/?access=commissioner-required');
+
+  let feedbackSummary: { open: number; planned: number; total: number } | null = null;
+  try {
+    const queue = await getCommissionerFeedbackQueue();
+    if (queue.storageAvailable) {
+      feedbackSummary = {
+        open: queue.items.filter((item) => item.status === 'OPEN').length,
+        planned: queue.items.filter((item) => item.status === 'PLANNED').length,
+        total: queue.items.length,
+      };
+    }
+  } catch {
+    feedbackSummary = null;
+  }
+
   return (
-    // STANDARD BACKGROUND
-    <div className="min-h-screen bg-gray-50 dark:bg-[#121212] transition-colors duration-300 font-sans selection:bg-blue-500 selection:text-white">
-      
-      {/* BACK LINK */}
-      <div className="container mx-auto px-4 pt-6 flex justify-between items-center">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-          <ArrowLeft className="w-4 h-4" /> Back to Home
-        </Link>
-        <ModeToggle />
+    <main className="lcc2-page-shell">
+      <div className="lcc2-page-container">
+        <Link href="/" className="lcc2-button lcc2-button--secondary"><ArrowLeft className="h-4 w-4" aria-hidden="true" />Return to LCC Home</Link>
+        <header className="mt-8 max-w-3xl">
+          <p className="lcc2-label text-[var(--lcc-brand-primary)]">Commissioner Operations</p>
+          <h1 className="mt-2 font-ui text-4xl font-black tracking-[-0.04em] text-[var(--lcc-color-text)] sm:text-5xl">Commissioner Hub</h1>
+          <p className="lcc2-body mt-3">Private tools for league operations, finance, feedback, and administration.</p>
+        </header>
+
+        <section className="mt-8" aria-labelledby="needs-attention-heading">
+          <div className="mb-4"><p className="lcc2-label text-[var(--lcc-brand-secondary)]">Needs attention</p><h2 id="needs-attention-heading" className="mt-1 font-ui text-2xl font-black text-[var(--lcc-color-text)]">Operational snapshot</h2></div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <HubCard href="/commish/feedback" eyebrow="Owner Feedback" title={feedbackSummary ? `${feedbackSummary.open} open` : 'Status unavailable'} description={feedbackSummary ? `${feedbackSummary.planned} planned · ${feedbackSummary.total} total` : 'Open the queue to check current owner submissions.'} icon={<MessageSquare aria-hidden="true" />} cta="Review feedback" />
+            <HubCard href="/commish/finance" eyebrow="Finance" title="2026 operations" description="Open the finance workspace for assessments, payments, awards, and reconciliation." icon={<Banknote aria-hidden="true" />} cta="Open finance" />
+          </div>
+        </section>
+
+        <section className="mt-10" aria-labelledby="active-tools-heading">
+          <div className="mb-4"><p className="lcc2-label text-[var(--lcc-brand-primary)]">Active tools</p><h2 id="active-tools-heading" className="mt-1 font-ui text-2xl font-black text-[var(--lcc-color-text)]">Private operations</h2></div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <HubCard href="/commish/feedback" eyebrow="Owner Feedback" title="Feedback Queue" description="Review owner-submitted bugs and suggestions with private commissioner controls." icon={<MessageSquare aria-hidden="true" />} cta="Open queue" />
+            <HubCard href="/commish/finance" eyebrow="2026 Finance" title="Finance" description="Manage league assessments, payments, awards, settlements, corrections, and reconciliation." icon={<Banknote aria-hidden="true" />} cta="Open finance" />
+            <HubCard href="/war-room" eyebrow="War Room" title="Partial foundation" description="Open the authenticated owner workspace. Planning modules remain scheduled for later War Room work." icon={<ShieldCheck aria-hidden="true" />} cta="Open War Room" />
+          </div>
+        </section>
+
+        <section className="mt-10" aria-labelledby="future-tools-heading">
+          <div className="mb-4"><p className="lcc2-label text-[var(--lcc-color-text-muted)]">Future roadmap</p><h2 id="future-tools-heading" className="mt-1 font-ui text-2xl font-black text-[var(--lcc-color-text)]">Not active yet</h2></div>
+          <div className="max-w-xl"><FutureCard eyebrow="Post-Draft Intelligence" title="Coming later" description="Post-draft analysis is not enabled as a commissioner tool yet." icon={<BrainCircuit aria-hidden="true" />} /></div>
+        </section>
+
+        <Link href="/" className="mt-8 inline-flex font-ui text-xs font-black uppercase tracking-[0.1em] text-[var(--lcc-interactive)] hover:underline"><Home className="mr-2 h-4 w-4" aria-hidden="true" />Return to public site</Link>
       </div>
-
-      <main className="container mx-auto px-4 py-12 max-w-3xl">
-        
-        {/* ARTICLE CARD */}
-        <article className="bg-white dark:bg-[#1e1e1e] rounded-3xl shadow-xl border border-gray-200 dark:border-white/10 overflow-hidden">
-          
-          {/* HEADER IMAGE / BANNER */}
-          <div className="bg-blue-600 p-8 sm:p-12 text-center relative overflow-hidden">
-             <div className="relative z-10 flex flex-col items-center gap-4">
-                <div className="bg-white/20 p-4 rounded-2xl backdrop-blur-md shadow-lg">
-                   <Newspaper className="w-10 h-10 text-white" />
-                </div>
-                <div>
-                   <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-2 uppercase drop-shadow-md">Commissioner's Corner</h1>
-                   <p className="text-blue-100 font-bold uppercase tracking-[0.2em] text-sm">Week 15 • Playoff Edition</p>
-                </div>
-             </div>
-             {/* Background Decoration */}
-             <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-          </div>
-
-          {/* CONTENT BODY */}
-          <div className="p-8 sm:p-12 prose dark:prose-invert lg:prose-xl max-w-none text-gray-600 dark:text-gray-300 leading-relaxed">
-            
-            <h2 className="text-gray-900 dark:text-white font-bold text-2xl mb-4">Kyle Pitts Breaks the Slate</h2>
-            <p className="mb-6">
-              The playoffs kicked off with a bang on Thursday Night Football. <strong>Kyle Pitts</strong> silenced the doubters with a monster line: <span className="text-green-600 dark:text-green-400 font-bold font-mono">3 TDs, 166 YDS</span>. If you started him, you are likely cruising to Round 2. If you played against him, you better hope for a miracle on Sunday.
-            </p>
-            <p className="mb-8">
-              It was a masterclass in tight end efficiency, something we haven't seen in this league since the days of prime Gronk. The decision to start him over safer options likely won someone their matchup before the weekend even started.
-            </p>
-
-            <hr className="border-gray-100 dark:border-white/10 my-8" />
-
-            <h3 className="text-gray-900 dark:text-white font-bold text-xl mb-4">The Battle for the 6th Seed</h3>
-            <p className="mb-6">
-              Going into Monday night, the fight for the final playoff spot was tighter than a pair of skinny jeans on an offensive lineman. <strong>The Mad 'Panda'</strong> needed just 4 points from their kicker to clinch, but disaster struck with a missed field goal in the 4th quarter.
-            </p>
-            <p className="mb-8">
-              Meanwhile, <strong>Shake-n-Bakers</strong> snuck in through the back door thanks to a stat correction on Tuesday morning. Absolute heartbreak for one, jubilation for the other. This is why we play the game.
-            </p>
-
-            {/* COMMISSIONER NOTE BOX */}
-            <div className="bg-blue-50 dark:bg-blue-900/10 p-6 rounded-2xl border-l-4 border-blue-500 dark:border-blue-400">
-               <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2 uppercase text-xs tracking-wider">Official Commissioner's Note</h4>
-               <p className="text-blue-800 dark:text-blue-200 italic font-medium m-0">
-                  "Please remember to set your lineups for Saturday games. No excuses for empty roster spots in the playoffs!"
-               </p>
-            </div>
-
-          </div>
-        </article>
-      </main>
-    </div>
+    </main>
   );
+}
+
+function HubCard({ href, eyebrow, title, description, icon, cta }: { href: string; eyebrow: string; title: string; description: string; icon: React.ReactNode; cta: string }) {
+  return <Link href={href} className="lcc2-card lcc2-card--interactive block p-5"><div className="flex items-start justify-between gap-4"><div><p className="lcc2-label text-[var(--lcc-brand-secondary)]">{eyebrow}</p><h3 className="mt-2 font-ui text-2xl font-black text-[var(--lcc-color-text)]">{title}</h3></div><span className="text-[var(--lcc-brand-secondary)]">{icon}</span></div><p className="lcc2-body mt-4">{description}</p><span className="mt-5 inline-flex font-ui text-xs font-black uppercase tracking-[0.12em] text-[var(--lcc-interactive)]">{cta} →</span></Link>;
+}
+
+function FutureCard({ eyebrow, title, description, icon }: { eyebrow: string; title: string; description: string; icon: React.ReactNode }) {
+  return <article className="lcc2-card p-5 opacity-75"><div className="flex items-start justify-between gap-4"><div><p className="lcc2-label text-[var(--lcc-color-text-muted)]">{eyebrow}</p><h3 className="mt-2 font-ui text-2xl font-black text-[var(--lcc-color-text)]">{title}</h3></div><span className="text-[var(--lcc-color-text-muted)]">{icon}</span></div><p className="lcc2-body mt-4">{description}</p><span className="mt-5 inline-flex font-ui text-xs font-black uppercase tracking-[0.12em] text-[var(--lcc-color-text-muted)]">Not active</span></article>;
 }

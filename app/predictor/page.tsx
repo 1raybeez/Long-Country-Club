@@ -1,255 +1,74 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowLeft, Skull, Trophy, BrainCircuit, Loader2 } from 'lucide-react';
-import { ModeToggle } from '@/components/ModeToggle';
-import { LCC_CURRENT_LEAGUE_ID } from '@/lib/leagueConstants';
-
-const LEAGUE_ID = LCC_CURRENT_LEAGUE_ID;
-
-// --- TYPES ---
-interface TeamData {
-  rosterId: number;
-  name: string;
-  avatar: string | null;
-  fpts: number;
-  ppts: number;
-  wins: number;
-  losses: number;
-  status: 'Alive' | 'Eliminated';
-  winProb: number;
-}
-
-interface SleeperUser {
-  user_id: string;
-  display_name?: string;
-  avatar: string | null;
-  metadata?: {
-    team_name?: string;
-  };
-}
-
-interface SleeperRoster {
-  roster_id: number;
-  owner_id: string;
-  settings?: {
-    fpts?: number;
-    ppts?: number;
-    wins?: number;
-    losses?: number;
-  };
-}
-
-interface SleeperBracketMatch {
-  t1?: number;
-  t2?: number;
-  l?: number;
-}
+import Link from "next/link";
+import { ArrowLeft, TrendingUp } from "lucide-react";
+import { getApprovedPreseasonSnapshot } from "@/lib/predictor";
+import { ACTIVE_LCC_OWNERS, getLccOwnerProfileHref } from "@/lib/lccOwners";
+import { getOwnerImagePath } from "@/lib/ownerImages";
+import PredictorForecastList, { type PredictorForecastView } from "./PredictorForecastList";
 
 export default function PredictorPage() {
-  const [teams, setTeams] = useState<TeamData[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchPredictionData() {
-      try {
-        // 1. Fetch Core Data
-        const [usersRes, rostersRes, bracketRes] = await Promise.all([
-          fetch(`https://api.sleeper.app/v1/league/${LEAGUE_ID}/users`),
-          fetch(`https://api.sleeper.app/v1/league/${LEAGUE_ID}/rosters`),
-          fetch(`https://api.sleeper.app/v1/league/${LEAGUE_ID}/winners_bracket`)
-        ]);
-
-        const users = await usersRes.json() as SleeperUser[];
-        const rosters = await rostersRes.json() as SleeperRoster[];
-        const bracket = await bracketRes.json() as SleeperBracketMatch[];
-
-        // 2. Map User Details
-        const userMap: Record<string, { name: string; avatar: string | null }> = {};
-        users.forEach((u) => {
-          userMap[u.user_id] = {
-            name: u.metadata?.team_name || u.display_name || 'Unknown',
-            avatar: u.avatar
-          };
-        });
-
-        // 3. Identify Eliminated Teams from Bracket
-        // A team is eliminated if they have a 'l' (loss) in the bracket, 
-        // OR if they aren't in the bracket at all.
-        const eliminatedRosterIds = new Set<number>();
-        const bracketParticipants = new Set<number>();
-
-        bracket.forEach((match) => {
-          if (match.t1) bracketParticipants.add(match.t1);
-          if (match.t2) bracketParticipants.add(match.t2);
-          if (match.l) eliminatedRosterIds.add(match.l);
-        });
-
-        // 4. Build Team Objects & Calculate Raw Power Score
-        let totalPowerScore = 0;
-        const processedTeams: TeamData[] = rosters.map((r) => {
-          const owner = userMap[r.owner_id] || { name: 'Unknown', avatar: null };
-          const settings = r.settings || {};
-          const wins = settings.wins || 0;
-          const losses = settings.losses || 0;
-          const fpts = settings.fpts || 0;
-          const ppts = settings.ppts || 0;
-          
-          const madePlayoffs = bracketParticipants.has(r.roster_id);
-          const isEliminated = !madePlayoffs || eliminatedRosterIds.has(r.roster_id);
-
-          // Power Score Algorithm (60% Points / 20% Ceiling / 20% Record)
-          let powerScore = 0;
-          if (!isEliminated) {
-             const winPct = wins / (wins + losses || 1);
-             powerScore = (fpts * 0.6) + (ppts * 0.2) + (winPct * 500); 
-             totalPowerScore += powerScore;
-          }
-
-          return {
-            rosterId: r.roster_id,
-            name: owner.name,
-            avatar: owner.avatar,
-            fpts,
-            ppts,
-            wins,
-            losses,
-            status: isEliminated ? 'Eliminated' : 'Alive',
-            winProb: powerScore
-          };
-        });
-
-        // 5. Final Probability Normalization
-        const finalTeams = processedTeams.map(t => ({
-          ...t,
-          winProb: t.status === 'Alive' ? (t.winProb / totalPowerScore) * 100 : 0.0
-        })).sort((a, b) => b.winProb - a.winProb);
-
-        setTeams(finalTeams);
-        setLoading(false);
-
-      } catch (error) {
-        console.error("Error fetching predictor data:", error);
-        setLoading(false);
-      }
-    }
-
-    fetchPredictionData();
-  }, []);
+  const snapshot = getApprovedPreseasonSnapshot();
+  const forecasts = snapshot.teams;
+  const dataCutoff = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(snapshot.dataCutoff));
+  const views: readonly PredictorForecastView[] = forecasts.map((forecast) => {
+    const owner = ACTIVE_LCC_OWNERS.find((candidate) => candidate.id === forecast.ownerId);
+    return {
+      ...forecast,
+      ownerImagePath: getOwnerImagePath(forecast.ownerId),
+      managerProfileHref: owner ? getLccOwnerProfileHref(owner) : null,
+    };
+  });
 
   return (
-    // STANDARD BACKGROUND (Matches Managers/Matchups Pages)
-    <div className="min-h-screen bg-gray-50 dark:bg-[#121212] transition-colors duration-300 font-sans selection:bg-purple-500 selection:text-white">
-      
-      {/* BACK LINK */}
-      <div className="container mx-auto px-4 pt-6 flex justify-between items-center">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-          <ArrowLeft className="w-4 h-4" /> Back to Home
+    <main className="lcc2-page-shell">
+      <div className="lcc2-page-container">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 font-ui text-sm font-black uppercase text-[var(--lcc-color-text-muted)] transition-colors hover:text-[var(--lcc-interactive)]"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          Back to Home
         </Link>
-        <ModeToggle />
-      </div>
 
-      <main className="container mx-auto px-4 py-12 max-w-4xl">
-        
-        {/* HEADER */}
-        <div className="flex items-center gap-4 mb-8">
-           <div className="bg-purple-600 p-3 rounded-2xl shadow-lg shadow-purple-500/20">
-              <BrainCircuit className="w-8 h-8 text-white" />
-           </div>
-           <div>
-              <h1 className="text-3xl md:text-4xl font-black tracking-tight mb-1 text-gray-900 dark:text-white">AI Championship Predictor</h1>
-              <p className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">
-                 Live Odds • Powered by Sleeper Data
-              </p>
-           </div>
-        </div>
-
-        {/* PROJECTIONS CARD */}
-        <div className="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-xl">
-           
-           {loading ? (
-              <div className="flex flex-col items-center justify-center py-20 gap-4">
-                 <Loader2 className="w-10 h-10 animate-spin text-purple-500" />
-                 <p className="text-xs font-mono uppercase text-gray-400 animate-pulse">Crunching Playoff Scenarios...</p>
+        <header className="mt-4 lcc2-card lcc2-card--raised overflow-hidden">
+          <div className="grid gap-4 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-end">
+            <div>
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--lcc-color-midnight)] text-[var(--lcc-brand-primary)]"><TrendingUp className="h-5 w-5" aria-hidden="true" /></span>
+                <p className="lcc2-label text-[var(--lcc-brand-primary)]">Predictor</p>
               </div>
-           ) : (
-             <table className="w-full text-left">
-                <thead className="bg-gray-50 dark:bg-black/20 text-[10px] md:text-xs uppercase font-bold text-gray-500 dark:text-gray-400">
-                   <tr>
-                      <th className="px-4 md:px-6 py-4">Rank</th>
-                      <th className="px-4 md:px-6 py-4">Team</th>
-                      <th className="px-4 md:px-6 py-4 text-center hidden md:table-cell">Win Probability</th>
-                      <th className="px-4 md:px-6 py-4 text-center md:hidden">Odds</th>
-                      <th className="px-4 md:px-6 py-4 text-right">Status</th>
-                   </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100 dark:divide-white/5">
-                   {teams.map((team, index) => (
-                      <tr key={team.rosterId} className={`hover:bg-gray-50 dark:hover:bg-white/5 transition-colors ${team.status === 'Eliminated' ? 'bg-gray-50/50 dark:bg-black/10' : ''}`}>
-                         
-                         {/* Rank */}
-                         <td className="px-4 md:px-6 py-4 font-mono text-gray-400 text-sm w-12 md:w-16">
-                            #{index + 1}
-                         </td>
-                         
-                         {/* Team Name & Avatar */}
-                         <td className="px-4 md:px-6 py-4">
-                            <div className="flex items-center gap-3">
-                               <div className="relative w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 shrink-0">
-                                  {team.avatar ? (
-                                     <Image src={`https://sleepercdn.com/avatars/${team.avatar}`} alt={team.name} fill className="object-cover" />
-                                  ) : (
-                                     <div className="flex items-center justify-center w-full h-full text-xs font-bold text-gray-500">?</div>
-                                  )}
-                               </div>
-                               <span className={`text-sm md:text-lg font-bold truncate max-w-[120px] md:max-w-none ${team.status === 'Eliminated' ? 'text-gray-400 line-through decoration-gray-400/50' : 'text-gray-900 dark:text-white'}`}>
-                                  {team.name}
-                               </span>
-                            </div>
-                         </td>
-                         
-                         {/* Probability Bar */}
-                         <td className="px-4 md:px-6 py-4 align-middle">
-                            <div className="flex items-center gap-3">
-                               <div className="hidden md:block flex-grow h-2 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden w-24 md:w-auto">
-                                  <div 
-                                    className={`h-full ${team.status === 'Eliminated' ? 'bg-gray-300 dark:bg-gray-700' : 'bg-gradient-to-r from-purple-500 to-pink-500 shadow-[0_0_10px_rgba(168,85,247,0.4)]'}`} 
-                                    style={{ width: `${team.winProb}%` }}
-                                  ></div>
-                               </div>
-                               <span className={`font-mono font-bold text-sm md:text-base w-12 text-right ${team.status === 'Eliminated' ? 'text-gray-300' : 'text-purple-600 dark:text-purple-400'}`}>
-                                  {team.winProb.toFixed(1)}%
-                               </span>
-                            </div>
-                         </td>
-                         
-                         {/* Status Badge */}
-                         <td className="px-4 md:px-6 py-4 text-right">
-                            {team.status === 'Eliminated' ? (
-                               <span className="inline-flex items-center gap-1 text-[10px] font-black text-gray-400 bg-gray-100 dark:bg-white/5 px-2 py-1 rounded-full uppercase tracking-wider">
-                                  <Skull className="w-3 h-3" /> <span className="hidden md:inline">Eliminated</span>
-                               </span>
-                            ) : (
-                               <span className="inline-flex items-center gap-1 text-[10px] font-black text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full uppercase tracking-wider border border-green-200 dark:border-green-800">
-                                  <Trophy className="w-3 h-3" /> <span className="hidden md:inline">Contender</span>
-                               </span>
-                            )}
-                         </td>
-                      </tr>
-                   ))}
-                </tbody>
-             </table>
-           )}
-        </div>
+              <h1 className="lcc2-home-identity__title mt-3">2026 Team Strength Forecast</h1>
+              <p className="lcc2-home-identity__supporting mt-2 max-w-3xl">A league-relative preseason read of the current drafted LCC rosters using expected lineup strength, active depth, and positional balance.</p>
+            </div>
+            <div className="lcc2-metric-card"><p className="lcc2-metric-card__label">Teams ranked</p><p className="lcc2-metric-card__value">{views.length}</p><p className="mt-1 font-ui text-[0.65rem] font-black uppercase tracking-[0.08em] text-[var(--lcc-color-text-muted)]">Preseason forecast</p></div>
+          </div>
+          <div className="grid gap-3 border-t border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-4">
+            <div><p className="lcc2-label text-[var(--lcc-brand-secondary)]">Preseason forecast</p><p className="lcc2-body mt-1 max-w-3xl">No 2026 LCC games have been played. This forecast uses roster construction and available historical/player baseline evidence; it will evolve when 2026 scoring and matchup data exist.</p></div>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 font-ui text-[0.65rem] font-black uppercase tracking-[0.06em] text-[var(--lcc-color-text-muted)]"><span>Model · {snapshot.modelVersion}</span><span>Data cutoff · {dataCutoff}</span></div>
+          </div>
+        </header>
 
-        <div className="mt-6 text-center text-[10px] text-gray-400 uppercase tracking-widest flex items-center justify-center gap-2">
-           <BrainCircuit className="w-3 h-3" />
-           Based on Bracket Status & Season Performance
-        </div>
+        <section className="mt-8" aria-labelledby="forecast-order-heading">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"><div><p className="lcc2-label text-[var(--lcc-brand-primary)]">Comparative team strength</p><h2 id="forecast-order-heading" className="mt-2 font-ui text-2xl font-black tracking-[-0.03em] text-[var(--lcc-color-text)] sm:text-3xl">Preseason Forecast Order</h2></div><div className="space-y-1 sm:text-right"><p className="lcc2-body">Team Strength is not a playoff or championship probability.</p><p className="font-ui text-xs font-semibold text-[var(--lcc-color-text-muted)]">Close scores are clusters, not decisive rank gaps.</p></div></div>
+          <PredictorForecastList forecasts={views} />
+        </section>
 
-      </main>
-    </div>
+        <details className="mt-6 lcc2-card overflow-hidden">
+          <summary className="cursor-pointer list-none px-4 py-4 font-ui text-sm font-black uppercase tracking-[0.06em] text-[var(--lcc-interactive)] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--lcc-interactive-focus)]">Methodology and interpretation</summary>
+          <div className="grid gap-5 border-t border-[var(--lcc-color-border)] p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <div><p className="lcc2-label">Team Strength Index</p><div className="mt-3 grid gap-2 sm:grid-cols-3"><MethodologyWeight label="Expected starting lineup" value="70%" /><MethodologyWeight label="Active depth" value="20%" /><MethodologyWeight label="Positional balance" value="10%" /></div></div>
+            <div className="space-y-2"><p className="lcc2-label">Reading the forecast</p><p className="lcc2-body">All component scores are relative to the 12 current LCC rosters. Rookies without NFL history use a conservative position-relative rookie-market adapter and remain separate from historical evidence.</p><p className="lcc2-body">Evidence reflects how complete the model&apos;s roster, lineup, historical, and rookie inputs are. It is not the probability that a team will finish at its forecast position. Exact records, playoff odds, and championship odds are not part of preseason-v1.</p></div>
+          </div>
+        </details>
+      </div>
+    </main>
   );
+}
+
+function MethodologyWeight({ label, value }: { label: string; value: string }) {
+  return <div className="rounded-xl border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3"><p className="font-ui text-xl font-black text-[var(--lcc-color-text)]">{value}</p><p className="mt-1 font-ui text-[0.65rem] font-black uppercase leading-tight tracking-[0.05em] text-[var(--lcc-color-text-muted)]">{label}</p></div>;
 }

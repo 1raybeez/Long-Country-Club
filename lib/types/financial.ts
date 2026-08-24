@@ -1,5 +1,37 @@
 export type FinancialAmount = number | null;
 
+export type PaymentStatus = 'unpaid' | 'partial' | 'paid' | 'waived';
+
+export type ReconciliationStatus =
+  | 'reconciled'
+  | 'documented-discrepancy'
+  | 'unreconciled'
+  | 'pending';
+
+export type FinancialAdjustmentType =
+  | 'credit'
+  | 'rollover'
+  | 'commissionerAdjustment'
+  | 'other';
+
+export interface FinancialAdjustment {
+  readonly type: FinancialAdjustmentType;
+  readonly amount: FinancialAmount;
+  readonly managerId?: string;
+  readonly description?: string;
+  readonly notes?: readonly string[];
+}
+
+export type FinancialExpenseType = 'ring' | 'league' | 'commissioner' | 'other';
+
+export interface FinancialExpense {
+  readonly type: FinancialExpenseType;
+  readonly amount: FinancialAmount;
+  readonly description?: string;
+  readonly managerId?: string;
+  readonly notes?: readonly string[];
+}
+
 export type AwardRecordType =
   | 'weeklyHigh'
   | 'champion'
@@ -38,6 +70,32 @@ export interface ManagerFinancialRecord {
   readonly payoutsReceived: FinancialAmount;
   readonly balance: FinancialAmount;
   readonly notes?: readonly string[];
+  readonly duesAssessed?: FinancialAmount;
+  readonly duesPaid?: FinancialAmount;
+  readonly duesBalance?: FinancialAmount;
+  readonly paymentStatus?: PaymentStatus;
+  readonly paymentDate?: string | null;
+  readonly paymentMethod?: string | null;
+  readonly awardsEarned?: FinancialAmount;
+  readonly finishPayout?: FinancialAmount;
+  readonly cashPaid?: FinancialAmount;
+  readonly credits?: FinancialAmount;
+  readonly adjustments?: FinancialAmount;
+  readonly expenses?: FinancialAmount;
+  readonly recordedNet?: FinancialAmount;
+}
+
+export interface HistoricalPaymentRecord {
+  readonly id: string;
+  readonly season: number;
+  readonly ownerId: string;
+  readonly amount: FinancialAmount;
+  readonly paymentMethod?: string | null;
+  readonly receivedAt: string;
+  readonly datePrecision?: 'day' | 'month' | 'unknown';
+  readonly source: string;
+  readonly private?: boolean;
+  readonly notes?: readonly string[];
 }
 
 export interface AwardRecord {
@@ -47,6 +105,7 @@ export interface AwardRecord {
   readonly managerName: string;
   readonly amount: FinancialAmount;
   readonly week?: number;
+  readonly cashPaid?: FinancialAmount;
   readonly description?: string;
   readonly notes?: readonly string[];
 }
@@ -56,7 +115,12 @@ export interface SeasonFinancialData {
   readonly leagueRules: SeasonFinancialRules;
   readonly managers: readonly ManagerFinancialRecord[];
   readonly awards: readonly AwardRecord[];
+  readonly payments?: readonly HistoricalPaymentRecord[];
   readonly notes: readonly string[];
+  readonly expenses?: readonly FinancialExpense[];
+  readonly adjustments?: readonly FinancialAdjustment[];
+  readonly reconciliationStatus?: ReconciliationStatus;
+  readonly reconciliationNotes?: readonly string[];
 }
 
 export interface ManagerFinancialHistoryEntry {

@@ -64,43 +64,40 @@ export default function ManagersPage() {
   );
 
   return (
-    <main className="lcc-page">
-      <div className="lcc-container py-8 sm:py-12 lg:py-14">
-        <header className="lcc-card overflow-hidden">
+    <main className="lcc2-page-shell">
+      <div className="lcc2-page-container">
+        <header className="lcc2-card lcc2-card--raised overflow-hidden">
           <div className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
             <div>
-              <div className="lcc-badge">Long Country Club</div>
-              <h1 className="mt-4 font-serif text-5xl font-black uppercase italic leading-none text-[var(--lcc-text)] sm:text-6xl">
-                Member Directory
+              <p className="lcc2-label text-[var(--lcc-brand-primary)]">Managers</p>
+              <h1 className="lcc2-home-identity__title mt-2">
+                League Owners
               </h1>
-              <p className="mt-4 max-w-3xl font-ui text-sm font-medium leading-6 text-[var(--lcc-text-muted)] sm:text-base">
-                A premium clubhouse roster for LCC&apos;s active owners,
-                franchises, divisions, and member profile pages.
+              <p className="lcc2-home-identity__supporting max-w-3xl">
+                The current Long Country Club franchise directory, organized for quick owner and profile discovery.
               </p>
             </div>
 
-            <div className="rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-4">
-              <p className="font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
-                Active Owner Count
-              </p>
-              <p className="mt-2 font-serif text-5xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+            <div className="lcc2-metric-card">
+              <p className="lcc2-metric-card__label">Active owners</p>
+              <p className="lcc2-metric-card__value">
                 {activeOwners.length}
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 border-t border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 border-t border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-4 sm:flex-row sm:items-center sm:justify-between">
             <nav className="flex flex-wrap gap-2" aria-label="Manager sections">
-              <span className="lcc-button">Active Owners</span>
+              <span className="lcc2-button lcc2-button--primary">Active Owners</span>
               <Link
                 href="/managers/retired"
-                className="lcc-button lcc-button-secondary"
+                className="lcc2-button lcc2-button--secondary"
               >
                 Retired Owners
               </Link>
             </nav>
 
-            <div className="flex gap-2 rounded-full border border-[var(--lcc-border)] bg-[var(--lcc-surface)] p-1">
+            <div className="flex gap-1 rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-1">
               <ToggleButton
                 isActive={activeView === "all"}
                 onClick={() => setActiveView("all")}
@@ -124,10 +121,11 @@ export default function ManagersPage() {
               title="All Active Owners"
               count={activeOwners.length}
               description="Every current Long Country Club franchise in one polished member directory."
+              application
             />
-            <OwnerGrid>
+            <OwnerGrid directory>
               {activeOwners.map((owner) => (
-                <OwnerCard key={owner.id} owner={owner} />
+                <OwnerCard key={owner.id} owner={owner} compact />
               ))}
             </OwnerGrid>
           </section>
@@ -145,13 +143,15 @@ export default function ManagersPage() {
                     count={owners.length}
                     description={divisionCopy.description}
                     tone={divisionCopy.tone}
+                    application
                   />
-                  <OwnerGrid>
+                  <OwnerGrid directory>
                     {owners.map((owner) => (
                       <OwnerCard
                         key={owner.id}
                         owner={owner}
                         tone={divisionCopy.tone}
+                        compact
                       />
                     ))}
                   </OwnerGrid>

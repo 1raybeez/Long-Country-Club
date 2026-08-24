@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { Swords, Trophy, Medal, Flame } from "lucide-react";
 import { ALL_LCC_OWNERS } from "@/lib/lccOwners";
 import { getHeadToHead } from "@/lib/history/headToHead";
+import { buildMatchupTimeline } from "@/lib/history/matchupTimeline";
 import { getOwnerById } from "@/lib/ownerRegistry";
 import { getOwnerImagePath } from "@/lib/ownerImages";
+import { MatchupTimeline } from "@/components/matchups/MatchupTimeline";
 
 export function generateStaticParams() {
   const params: Array<{ pair: string }> = [];
@@ -48,29 +50,32 @@ export default async function HeadToHeadPage({ params }: PageProps) {
   }
 
   const latestGames = summary.matchups.slice().reverse().slice(0, 10);
+  const timeline = buildMatchupTimeline(summary);
 
   return (
-    <main className="lcc-page">
-      <div className="lcc-container py-8 sm:py-12 lg:py-14">
-        <nav className="mb-5 flex flex-wrap gap-3">
-          <Link href="/league-info/rivalries" className="lcc-button lcc-button-secondary">
+    <main className="lcc2-page-shell">
+      <div className="lcc2-page-container">
+        <nav className="mb-5 flex flex-wrap gap-3" aria-label="H2H navigation">
+          <Link href="/league-info/rivalries" className="lcc2-button lcc2-button--secondary">
             Back to Rivalries
           </Link>
-          <Link href="/matchups" className="lcc-button lcc-button-secondary">
+          <Link href="/matchups" className="lcc2-button lcc2-button--secondary">
             Matchups
           </Link>
         </nav>
 
-        <header className="lcc-card overflow-hidden">
+        <header className="lcc2-card lcc2-card--raised overflow-hidden p-0">
           <div className="grid gap-0 md:grid-cols-[1fr_14rem_1fr]">
             <OwnerHero ownerId={ownerAId} name={ownerA.displayName} wins={summary.ownerAWins} />
-            <div className="flex flex-col items-center justify-center border-y border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-6 text-center md:border-x md:border-y-0">
-              <Swords className="mb-3 h-8 w-8 text-[var(--lcc-gold)]" />
-              <p className="font-serif text-5xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+            <div className="flex flex-col items-center justify-center border-y border-slate-200 bg-slate-50 p-6 text-center md:border-x md:border-y-0">
+              <h1 className="sr-only">{ownerA.displayName} versus {ownerB.displayName}</h1>
+              <p className="lcc2-section-heading__eyebrow">Series record</p>
+              <Swords className="my-3 h-6 w-6 text-[var(--lcc-brand-primary)]" aria-hidden="true" />
+              <p className="font-ui text-4xl font-black leading-none text-[var(--lcc-color-text)]">
                 {summary.ownerAWins}-{summary.ownerBWins}
                 {summary.ties > 0 ? `-${summary.ties}` : ""}
               </p>
-              <p className="mt-2 font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
+              <p className="mt-2 lcc2-label">
                 {summary.games} Meetings
               </p>
             </div>
@@ -78,35 +83,46 @@ export default async function HeadToHeadPage({ params }: PageProps) {
           </div>
         </header>
 
-        <section className="mt-5 grid gap-5 md:grid-cols-4">
+        <section className="mt-5 grid gap-4 md:grid-cols-4" aria-label="Series metrics">
           <StatCard icon={<Trophy />} label="Regular Season" value={String(summary.regularSeasonGames)} />
           <StatCard icon={<Medal />} label="Playoff Games" value={String(summary.playoffGames)} />
           <StatCard icon={<Flame />} label="Championships" value={String(summary.championshipGames)} />
           <StatCard icon={<Swords />} label="Avg Margin" value={summary.averageMargin.toFixed(2)} />
         </section>
 
-        <section className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_22rem]">
-          <div className="lcc-card p-5 sm:p-6">
-            <h2 className="font-serif text-3xl font-black uppercase italic text-[var(--lcc-text)]">
-              Recent Meetings
-            </h2>
+        <div className="mt-5">
+          <MatchupTimeline
+            ownerAName={ownerA.displayName}
+            ownerBName={ownerB.displayName}
+            meetings={timeline}
+          />
+        </div>
 
-            <div className="mt-5 overflow-hidden rounded-[var(--lcc-radius)] border border-[var(--lcc-border)]">
+        <section className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_22rem]">
+          <div className="lcc2-card">
+            <div className="lcc2-section-heading">
+              <div>
+                <p className="lcc2-section-heading__eyebrow">Series log</p>
+                <h2 className="lcc2-section-heading__title">Recent Meetings</h2>
+              </div>
+            </div>
+
+            <div className="mt-5 overflow-hidden rounded-lg border border-slate-200">
               {latestGames.map((matchup) => (
                 <div
                   key={`${matchup.season}-${matchup.week}-${matchup.ownerAId}-${matchup.ownerBId}`}
-                  className="grid grid-cols-[5rem_1fr_5rem] items-center border-b border-[var(--lcc-border)] px-4 py-3 last:border-b-0"
+                  className="grid gap-2 border-b border-slate-200 px-4 py-3 last:border-b-0 sm:grid-cols-[5rem_1fr_auto] sm:items-center"
                 >
-                  <div className="font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
+                  <div className="lcc2-label">
                     {matchup.season}
                     <br />
                     Wk {matchup.week}
                   </div>
-                  <div className="font-ui text-sm font-bold text-[var(--lcc-text)]">
+                  <div className="font-ui text-sm font-bold text-[var(--lcc-color-text)]">
                     {ownerName(matchup.ownerAId)} {formatScore(matchup.ownerAScore)} vs{" "}
                     {ownerName(matchup.ownerBId)} {formatScore(matchup.ownerBScore)}
                   </div>
-                  <div className="text-right font-ui text-xs font-black uppercase text-[var(--lcc-gold)]">
+                  <div className={`lcc2-badge ${getTypeBadgeClass(matchup.type)}`}>
                     {formatType(matchup.type)}
                   </div>
                 </div>
@@ -114,10 +130,13 @@ export default async function HeadToHeadPage({ params }: PageProps) {
             </div>
           </div>
 
-          <aside className="lcc-card p-5">
-            <h2 className="font-serif text-2xl font-black uppercase italic text-[var(--lcc-text)]">
-              Points
-            </h2>
+          <aside className="lcc2-card">
+            <div className="lcc2-section-heading">
+              <div>
+                <p className="lcc2-section-heading__eyebrow">Series totals</p>
+                <h2 className="lcc2-section-heading__title">Points</h2>
+              </div>
+            </div>
             <div className="mt-4 grid gap-3">
               <SideFact label={ownerA.displayName} value={summary.ownerAPoints.toLocaleString()} />
               <SideFact label={ownerB.displayName} value={summary.ownerBPoints.toLocaleString()} />
@@ -145,19 +164,18 @@ function OwnerHero({
   reverse?: boolean;
 }) {
   return (
-    <div className={`flex items-center gap-5 p-6 ${reverse ? "md:flex-row-reverse md:text-right" : ""}`}>
+    <div className={`flex items-center gap-5 p-6 sm:p-8 ${reverse ? "md:flex-row-reverse md:text-right" : ""}`}>
       <img
         src={getOwnerImagePath(ownerId)}
         alt={name}
-        className="h-24 w-24 rounded-full border-4 border-white object-cover shadow-[var(--lcc-shadow-soft)]"
+        className="h-20 w-20 shrink-0 rounded-full border-2 border-slate-200 object-cover shadow-sm sm:h-24 sm:w-24"
       />
-      <div>
-        <p className="font-serif text-3xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+      <div className="min-w-0">
+        <p className="lcc2-label">Owner</p>
+        <p className="mt-2 truncate font-ui text-2xl font-black uppercase leading-none text-[var(--lcc-color-text)] sm:text-3xl">
           {name}
         </p>
-        <p className="mt-2 font-ui text-xs font-black uppercase text-[var(--lcc-gold)]">
-          {wins} wins
-        </p>
+        <p className="mt-3 lcc2-badge lcc2-badge--positive">{wins} wins</p>
       </div>
     </div>
   );
@@ -165,21 +183,21 @@ function OwnerHero({
 
 function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <article className="lcc-card p-5">
-      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-[var(--lcc-green-deep)] text-[var(--lcc-gold)]">
+    <article className="lcc2-metric-card">
+      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-blue-50 text-[var(--lcc-interactive)]">
         {icon}
       </div>
-      <p className="font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">{label}</p>
-      <p className="mt-2 font-serif text-3xl font-black uppercase italic text-[var(--lcc-text)]">{value}</p>
+      <p className="lcc2-metric-card__label">{label}</p>
+      <p className="lcc2-metric-card__value">{value}</p>
     </article>
   );
 }
 
 function SideFact({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-3">
-      <p className="font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">{label}</p>
-      <p className="mt-1 font-serif text-lg font-black uppercase italic text-[var(--lcc-text)]">{value}</p>
+    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+      <p className="lcc2-label truncate">{label}</p>
+      <p className="mt-1 font-ui text-lg font-black text-[var(--lcc-color-text)]">{value}</p>
     </div>
   );
 }
@@ -197,4 +215,10 @@ function formatType(type: string) {
   if (type === "championship") return "Title";
   if (type === "playoff") return "Playoff";
   return "Game";
+}
+
+function getTypeBadgeClass(type: string) {
+  if (type === "championship") return "lcc2-badge--achievement";
+  if (type === "playoff") return "lcc2-badge--info";
+  return "lcc2-badge--neutral";
 }

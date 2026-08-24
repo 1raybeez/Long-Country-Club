@@ -1,21 +1,49 @@
 {
   "season": 2026,
   "leagueRules": {
-    "entryFee": null,
-    "newOwnerFee": null,
-    "futureDeposit": null,
-    "weeklyHighPayout": null,
-    "regularSeasonWeeks": null,
+    "entryFee": 50,
+    "newOwnerFee": 75,
+    "futureDeposit": 25,
+    "weeklyHighPayout": 10,
+    "regularSeasonWeeks": 14,
     "playoffPayouts": {
-      "championBase": null,
-      "runnerUp": null,
-      "thirdPlace": null,
-      "fourthPlace": null
+      "championBase": 205,
+      "runnerUp": 100,
+      "thirdPlace": 50,
+      "fourthPlace": 25
     },
-    "ringReserve": null,
-    "actualRingCost": null
+    "ringReserve": 80,
+    "actualRingCost": 13.77
   },
-  "managers": [],
+  "managers": [
+    { "managerId": "ray-long", "managerName": "Ray Long", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "bill-gross", "managerName": "Bill Gross", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "keith-winder", "managerName": "Keith Winder", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "rob-jenkins", "managerName": "Rob Jenkins", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "earl-perkins", "managerName": "Earl Perkins", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "jeffrey-hudgins", "managerName": "Jeffrey Hudgins", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "tyrone-poist", "managerName": "Tyrone Poist", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "ben-isbell", "managerName": "Ben Isbell", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "loren-michaels", "managerName": "Loren Michaels", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "mike-mcburnie", "managerName": "Mike McBurnie", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "anthony-martinez", "managerName": "Anthony Martinez", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 },
+    { "managerId": "mike-estes", "managerName": "Mike Estes", "entryFeePaid": null, "newOwnerFeePaid": null, "futureDepositPaid": null, "payoutsReceived": null, "balance": null, "duesAssessed": 50 }
+  ],
   "awards": [],
-  "notes": []
+  "expenses": [
+    {
+      "type": "ring",
+      "amount": 13.77,
+      "description": "2026 Championship Ring",
+      "notes": ["Verified commissioner purchase"]
+    }
+  ],
+  "notes": [
+    "Canonical 2026 shell initialized from current owner IDs and Constitution-backed rules.",
+    "No commissioner-confirmed payments, awards, cash settlement, balances, or payment dates have been entered."
+  ],
+  "reconciliationStatus": "pending",
+  "reconciliationNotes": [
+    "Current-season finance is awaiting commissioner-maintained ledger data."
+  ]
 }

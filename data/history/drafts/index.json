@@ -1,1 +1,83 @@
-[]
+[
+  {
+    "season": 2019,
+    "leagueId": "466635730102251520",
+    "era": "sleeper-keeper",
+    "draftCount": 1,
+    "draftIds": [
+      "466635731935162368"
+    ],
+    "source": "data/history/drafts/2019/drafts.json"
+  },
+  {
+    "season": 2020,
+    "leagueId": "530113322802368512",
+    "era": "sleeper-keeper",
+    "draftCount": 1,
+    "draftIds": [
+      "530113322802368513"
+    ],
+    "source": "data/history/drafts/2020/drafts.json"
+  },
+  {
+    "season": 2021,
+    "leagueId": "682304920455544832",
+    "era": "dynasty-transition-startup",
+    "draftCount": 2,
+    "draftIds": [
+      "687103336805117952",
+      "688839693487374336"
+    ],
+    "source": "data/history/drafts/2021/drafts.json"
+  },
+  {
+    "season": 2022,
+    "leagueId": "817078396659036160",
+    "era": "dynasty-rookie",
+    "draftCount": 1,
+    "draftIds": [
+      "817078396659036161"
+    ],
+    "source": "data/history/drafts/2022/drafts.json"
+  },
+  {
+    "season": 2023,
+    "leagueId": "918202561050685440",
+    "era": "dynasty-rookie",
+    "draftCount": 1,
+    "draftIds": [
+      "918202561050685441"
+    ],
+    "source": "data/history/drafts/2023/drafts.json"
+  },
+  {
+    "season": 2024,
+    "leagueId": "1048290254903463936",
+    "era": "dynasty-rookie",
+    "draftCount": 1,
+    "draftIds": [
+      "1048290254903463937"
+    ],
+    "source": "data/history/drafts/2024/drafts.json"
+  },
+  {
+    "season": 2025,
+    "leagueId": "1199899847029698560",
+    "era": "dynasty-rookie",
+    "draftCount": 1,
+    "draftIds": [
+      "1199899847038087168"
+    ],
+    "source": "data/history/drafts/2025/drafts.json"
+  },
+  {
+    "season": 2026,
+    "leagueId": "1312148925091692544",
+    "era": "dynasty-rookie",
+    "draftCount": 1,
+    "draftIds": [
+      "1312148925104259072"
+    ],
+    "source": "data/history/drafts/2026/drafts.json"
+  }
+]

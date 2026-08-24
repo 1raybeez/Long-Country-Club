@@ -1,0 +1,2747 @@
+{
+  "schemaVersion": 1,
+  "recordType": "DRAFT_INTELLIGENCE_LIVE_FORECAST",
+  "season": 2026,
+  "draftId": "1312148925104259072",
+  "forecastMode": "LIVE_FORECAST",
+  "predictionVersion": "v1",
+  "processMethodologyVersion": "draft-intelligence-v1.1",
+  "marketMethodologyVersion": "market-value-v1.1",
+  "overallMethodologyVersion": "overall-draft-day-v1",
+  "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+  "marketSnapshotDate": "2026-08-19",
+  "draftDate": "2026-05-29T11:54:55.518Z",
+  "analysisAsOf": "2026-05-29T11:54:55.518Z",
+  "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+  "approvedAt": "2026-08-21T11:41:30.968Z",
+  "approvalStatus": "APPROVED",
+  "immutable": true,
+  "supersedes": null,
+  "correctionReason": null,
+  "rankingType": "2026 DRAFT-DAY GRADE RANKING",
+  "ranking": [
+    {
+      "ownerId": "loren-michaels",
+      "manager": "Loren Michaels",
+      "score": 4.23,
+      "grade": "A-"
+    },
+    {
+      "ownerId": "mike-estes",
+      "manager": "Mike Estes",
+      "score": 3.9770588,
+      "grade": "B+"
+    },
+    {
+      "ownerId": "ray-long",
+      "manager": "Ray Long",
+      "score": 3.936916,
+      "grade": "B+"
+    },
+    {
+      "ownerId": "anthony-martinez",
+      "manager": "Anthony Martinez",
+      "score": 3.75,
+      "grade": "B"
+    },
+    {
+      "ownerId": "rob-jenkins",
+      "manager": "Rob Jenkins",
+      "score": 3.7262616,
+      "grade": "B"
+    },
+    {
+      "ownerId": "keith-winder",
+      "manager": "Keith Winder",
+      "score": 3.4964703999999998,
+      "grade": "B-"
+    },
+    {
+      "ownerId": "tyrone-poist",
+      "manager": "Tyrone Poist",
+      "score": 3.4876472,
+      "grade": "B-"
+    },
+    {
+      "ownerId": "bill-gross",
+      "manager": "Bill Gross",
+      "score": 3.45,
+      "grade": "B-"
+    },
+    {
+      "ownerId": "ben-isbell",
+      "manager": "Ben Isbell",
+      "score": 3.275294,
+      "grade": "B-"
+    },
+    {
+      "ownerId": "jeffrey-hudgins",
+      "manager": "Jeffrey Hudgins",
+      "score": 3.0300000000000002,
+      "grade": "C+"
+    },
+    {
+      "ownerId": "mike-mcburnie",
+      "manager": "Mike McBurnie",
+      "score": 2.9744444,
+      "grade": "C+"
+    },
+    {
+      "ownerId": "earl-perkins",
+      "manager": "Earl Perkins",
+      "score": 2.9400000000000004,
+      "grade": "C+"
+    }
+  ],
+  "evaluations": [
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "anthony-martinez",
+      "manager": "Anthony Martinez",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 17,
+          "round": 2,
+          "playerId": "13274",
+          "playerName": "Germie Bernard",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 29,
+          "round": 3,
+          "playerId": "13421",
+          "playerName": "Eli Raridon",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 35,
+          "round": 3,
+          "playerId": "13423",
+          "playerName": "Eli Heidenreich",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 41,
+          "round": 4,
+          "playerId": "13289",
+          "playerName": "Drew Allar",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 2,
+          "RB": 5,
+          "WR": 10,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "THIN",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "1 early and 3 late selection(s) across 3 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 1/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "4 distinct positional path(s), with 3 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 17,
+              "round": 2,
+              "player": "Germie Bernard",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 17.8,
+            "rawPickDelta": 0.8,
+            "normalizedDelta": 0.191,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 29,
+              "round": 3,
+              "player": "Eli Raridon",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 41.1,
+            "rawPickDelta": 12.1,
+            "normalizedDelta": 2.252,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 35,
+              "round": 3,
+              "player": "Eli Heidenreich",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 39.9,
+            "rawPickDelta": 4.9,
+            "normalizedDelta": 0.912,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 41,
+              "round": 4,
+              "player": "Drew Allar",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 41.8,
+            "rawPickDelta": 0.8,
+            "normalizedDelta": 0.09,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.75,
+        "displayScore": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.25,
+        "marketValue": 1.5
+      },
+      "strengths": [
+        "Used 1 early-round selection(s).",
+        "Represented 4 positions in the recorded class.",
+        "Addressed entering THIN QB.",
+        "Recorded 2 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "HIGH",
+        "longTermUpsideOutlook": "HIGH",
+        "expectedClassTrajectory": "WIDE_DIVERSIFICATION + LATE_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 1 early-round selection(s).",
+        "primaryConcern": "No material structural concern was identified by the frozen draft-day rules."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "ben-isbell",
+      "manager": "Ben Isbell",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 10,
+          "round": 1,
+          "playerId": "13276",
+          "playerName": "Omar Cooper",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 22,
+          "round": 2,
+          "playerId": "13353",
+          "playerName": "Chris Brazzell",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 34,
+          "round": 3,
+          "playerId": "13347",
+          "playerName": "Demond Claiborne",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 46,
+          "round": 4,
+          "playerId": "13302",
+          "playerName": "Adam Randall",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 4,
+          "RB": 9,
+          "WR": 9,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "DEEP",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 3,
+        "score": 3.6,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 10,
+              "round": 1,
+              "player": "Omar Cooper",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 9.2,
+            "rawPickDelta": -0.8,
+            "normalizedDelta": -0.31,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 22,
+              "round": 2,
+              "player": "Chris Brazzell",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 23.1,
+            "rawPickDelta": 1.1,
+            "normalizedDelta": 0.263,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 34,
+              "round": 3,
+              "player": "Demond Claiborne",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 33.5,
+            "rawPickDelta": -0.5,
+            "normalizedDelta": -0.093,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 46,
+              "round": 4,
+              "player": "Adam Randall",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 33.1,
+            "rawPickDelta": -12.9,
+            "normalizedDelta": -1.45,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 2.788235,
+        "grade": "C",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.275294,
+        "displayScore": 3.28,
+        "grade": "B-",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.16,
+        "marketValue": 1.115294
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 2 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. C).",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "MODERATE",
+        "longTermUpsideOutlook": "MODERATE",
+        "expectedClassTrajectory": "EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 2 early-round selection(s).",
+        "primaryConcern": "No material structural concern was identified by the frozen draft-day rules."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "bill-gross",
+      "manager": "Bill Gross",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 5,
+          "round": 1,
+          "playerId": "13286",
+          "playerName": "Jadarian Price",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 28,
+          "round": 3,
+          "playerId": "13293",
+          "playerName": "Ja'Kobi Lane",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 40,
+          "round": 4,
+          "playerId": "13401",
+          "playerName": "Michael Trigg",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 47,
+          "round": 4,
+          "playerId": "13350",
+          "playerName": "Joe Fagnano",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 4,
+          "RB": 9,
+          "WR": 7,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "DEEP",
+          "WR": "THIN",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "1 early and 3 late selection(s) across 3 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 1/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "4 distinct positional path(s), with 3 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 5,
+              "round": 1,
+              "player": "Jadarian Price",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 4.9,
+            "rawPickDelta": -0.1,
+            "normalizedDelta": -0.039,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 28,
+              "round": 3,
+              "player": "Ja'Kobi Lane",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 28.3,
+            "rawPickDelta": 0.3,
+            "normalizedDelta": 0.056,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 40,
+              "round": 4,
+              "player": "Michael Trigg",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 38.5,
+            "rawPickDelta": -1.5,
+            "normalizedDelta": -0.169,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 47,
+              "round": 4,
+              "player": "Joe Fagnano",
+              "position": "QB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.45,
+        "displayScore": 3.45,
+        "grade": "B-",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.25,
+        "marketValue": 1.2000000000000002
+      },
+      "strengths": [
+        "Used 1 early-round selection(s).",
+        "Represented 4 positions in the recorded class.",
+        "Addressed entering THIN WR."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. C+).",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "HIGH",
+        "longTermUpsideOutlook": "HIGH",
+        "expectedClassTrajectory": "WIDE_DIVERSIFICATION + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 1 early-round selection(s).",
+        "primaryConcern": "No material structural concern was identified by the frozen draft-day rules."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "earl-perkins",
+      "manager": "Earl Perkins",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 3,
+          "round": 1,
+          "playerId": "13279",
+          "playerName": "Carnell Tate",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 27,
+          "round": 3,
+          "playerId": "13268",
+          "playerName": "Elijah Sarratt",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 39,
+          "round": 4,
+          "playerId": "13380",
+          "playerName": "Brenen Thompson",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 2,
+          "RB": 9,
+          "WR": 9,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "THIN",
+          "RB": "DEEP",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 3,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 2,
+        "optionalityDepthBuilding": 2,
+        "score": 2.9,
+        "grade": "C+",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 3 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 1 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "1 early and 2 late selection(s) across 3 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 3/3; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "1 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 3,
+              "round": 1,
+              "player": "Carnell Tate",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 2.7,
+            "rawPickDelta": -0.3,
+            "normalizedDelta": -0.116,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 27,
+              "round": 3,
+              "player": "Elijah Sarratt",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 23.1,
+            "rawPickDelta": -3.9,
+            "normalizedDelta": -0.726,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 39,
+              "round": 4,
+              "player": "Brenen Thompson",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 40.3,
+            "rawPickDelta": 1.3,
+            "normalizedDelta": 0.146,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 2.9400000000000004,
+        "displayScore": 2.94,
+        "grade": "C+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 1.74,
+        "marketValue": 1.2000000000000002
+      },
+      "strengths": [
+        "Used 1 early-round selection(s).",
+        "Deployed the recorded 3 selection(s) within the verified draft structure."
+      ],
+      "concerns": [
+        "Class was concentrated at one position.",
+        "Had 3 selection(s) at WR.",
+        "Left entering THIN QB untouched."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "LOW",
+        "longTermUpsideOutlook": "LOW",
+        "expectedClassTrajectory": "CONCENTRATED + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 1 early-round selection(s).",
+        "primaryConcern": "Class was concentrated at one position."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "jeffrey-hudgins",
+      "manager": "Jeffrey Hudgins",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 7,
+          "round": 1,
+          "playerId": "13298",
+          "playerName": "KC Concepcion",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 19,
+          "round": 2,
+          "playerId": "13301",
+          "playerName": "Antonio Williams",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 31,
+          "round": 3,
+          "playerId": "13414",
+          "playerName": "Kaelon Black",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 43,
+          "round": 4,
+          "playerId": "13420",
+          "playerName": "Bryce Lance",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 3,
+          "RB": 8,
+          "WR": 9,
+          "TE": 4
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "DEEP"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 3,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 2,
+        "optionalityDepthBuilding": 3,
+        "score": 3.05,
+        "grade": "C+",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 3/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 7,
+              "round": 1,
+              "player": "KC Concepcion",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 7,
+            "rawPickDelta": 0,
+            "normalizedDelta": 0,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 19,
+              "round": 2,
+              "player": "Antonio Williams",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 18.4,
+            "rawPickDelta": -0.6,
+            "normalizedDelta": -0.144,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 31,
+              "round": 3,
+              "player": "Kaelon Black",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 33.1,
+            "rawPickDelta": 2.1,
+            "normalizedDelta": 0.391,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 43,
+              "round": 4,
+              "player": "Bryce Lance",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 40.3,
+            "rawPickDelta": -2.7,
+            "normalizedDelta": -0.304,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.0300000000000002,
+        "displayScore": 3.03,
+        "grade": "C+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 1.8299999999999998,
+        "marketValue": 1.2000000000000002
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 2 positions in the recorded class."
+      ],
+      "concerns": [
+        "Had 3 selection(s) at WR."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "MODERATE",
+        "longTermUpsideOutlook": "MODERATE",
+        "expectedClassTrajectory": "CONCENTRATED + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 2 early-round selection(s).",
+        "primaryConcern": "Had 3 selection(s) at WR."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "keith-winder",
+      "manager": "Keith Winder",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 6,
+          "round": 1,
+          "playerId": "13294",
+          "playerName": "Makai Lemon",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 18,
+          "round": 2,
+          "playerId": "13345",
+          "playerName": "Jonah Coleman",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 30,
+          "round": 3,
+          "playerId": "13305",
+          "playerName": "Mike Washington",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 42,
+          "round": 4,
+          "playerId": "13404",
+          "playerName": "Garrett Nussmeier",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 4,
+          "RB": 6,
+          "WR": 6,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "THIN",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 4,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 1 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 6,
+              "round": 1,
+              "player": "Makai Lemon",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 5.1,
+            "rawPickDelta": -0.9,
+            "normalizedDelta": -0.349,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 18,
+              "round": 2,
+              "player": "Jonah Coleman",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 13,
+            "rawPickDelta": -5,
+            "normalizedDelta": -1.197,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 30,
+              "round": 3,
+              "player": "Mike Washington",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 26.6,
+            "rawPickDelta": -3.4,
+            "normalizedDelta": -0.633,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 42,
+              "round": 4,
+              "player": "Garrett Nussmeier",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 46.9,
+            "rawPickDelta": 4.9,
+            "normalizedDelta": 0.551,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 2.741176,
+        "grade": "C",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.4964703999999998,
+        "displayScore": 3.5,
+        "grade": "B-",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 1.0964704
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Addressed entering THIN WR."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. C).",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "HIGH",
+        "longTermUpsideOutlook": "HIGH",
+        "expectedClassTrajectory": "WIDE_DIVERSIFICATION + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 2 early-round selection(s).",
+        "primaryConcern": "No material structural concern was identified by the frozen draft-day rules."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "loren-michaels",
+      "manager": "Loren Michaels",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 1,
+          "round": 1,
+          "playerId": "13287",
+          "playerName": "Jeremiyah Love",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        },
+        {
+          "pick": 13,
+          "round": 2,
+          "playerId": "13320",
+          "playerName": "Zachariah Branch",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        },
+        {
+          "pick": 25,
+          "round": 3,
+          "playerId": "13272",
+          "playerName": "Carson Beck",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        },
+        {
+          "pick": 37,
+          "round": 4,
+          "playerId": "13282",
+          "playerName": "Jack Endries",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 5,
+          "RB": 4,
+          "WR": 7,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "DEEP",
+          "RB": "THIN",
+          "WR": "THIN",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 5,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4.25,
+        "grade": "A-",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "2 thin position(s) addressed; 2 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 1/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "4 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 1,
+              "round": 1,
+              "player": "Jeremiyah Love",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 1.9,
+            "rawPickDelta": 0.9,
+            "normalizedDelta": 0.349,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 13,
+              "round": 2,
+              "player": "Zachariah Branch",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 21.1,
+            "rawPickDelta": 8.1,
+            "normalizedDelta": 1.939,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 25,
+              "round": 3,
+              "player": "Carson Beck",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 36.7,
+            "rawPickDelta": 11.7,
+            "normalizedDelta": 2.177,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 37,
+              "round": 4,
+              "player": "Jack Endries",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 48.7,
+            "rawPickDelta": 11.7,
+            "normalizedDelta": 1.315,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 4.2,
+        "grade": "A-",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 4.23,
+        "displayScore": 4.23,
+        "grade": "A-",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.55,
+        "marketValue": 1.6800000000000002
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 4 positions in the recorded class.",
+        "Addressed entering THIN RB, WR.",
+        "Recorded 3 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "HIGH",
+        "longTermUpsideOutlook": "HIGH",
+        "expectedClassTrajectory": "WIDE_DIVERSIFICATION + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 2 early-round selection(s).",
+        "primaryConcern": "No material structural concern was identified by the frozen draft-day rules."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "mike-estes",
+      "manager": "Mike Estes",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 2,
+          "round": 1,
+          "playerId": "13269",
+          "playerName": "Fernando Mendoza",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "mike-estes"
+        },
+        {
+          "pick": 14,
+          "round": 2,
+          "playerId": "13417",
+          "playerName": "De'Zhaun Stribling",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "mike-estes"
+        },
+        {
+          "pick": 26,
+          "round": 3,
+          "playerId": "13405",
+          "playerName": "Kaytron Allen",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "mike-estes"
+        },
+        {
+          "pick": 38,
+          "round": 4,
+          "playerId": "13403",
+          "playerName": "Jam Miller",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "mike-estes"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 3,
+          "RB": 4,
+          "WR": 10,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "THIN",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "1 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 2,
+              "round": 1,
+              "player": "Fernando Mendoza",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 12.4,
+            "rawPickDelta": 10.4,
+            "normalizedDelta": 4.031,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 14,
+              "round": 2,
+              "player": "De'Zhaun Stribling",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 20.9,
+            "rawPickDelta": 6.9,
+            "normalizedDelta": 1.652,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 26,
+              "round": 3,
+              "player": "Kaytron Allen",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 26.9,
+            "rawPickDelta": 0.9,
+            "normalizedDelta": 0.167,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 38,
+              "round": 4,
+              "player": "Jam Miller",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 47.8,
+            "rawPickDelta": 9.8,
+            "normalizedDelta": 1.102,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 4.317647,
+        "grade": "A-",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.9770588,
+        "displayScore": 3.98,
+        "grade": "B+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.25,
+        "marketValue": 1.7270588
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Addressed entering THIN RB.",
+        "Recorded 3 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Market Value outperformed Process because selections compared favorably with the archived market even though the class showed less structural breadth or roster alignment (A- vs. B).",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "HIGH",
+        "longTermUpsideOutlook": "HIGH",
+        "expectedClassTrajectory": "WIDE_DIVERSIFICATION + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 2 early-round selection(s).",
+        "primaryConcern": "No material structural concern was identified by the frozen draft-day rules."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "mike-mcburnie",
+      "manager": "Mike McBurnie",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 4,
+          "round": 1,
+          "playerId": "13281",
+          "playerName": "Jordyn Tyson",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        },
+        {
+          "pick": 11,
+          "round": 1,
+          "playerId": "13349",
+          "playerName": "Eli Stowers",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        },
+        {
+          "pick": 23,
+          "round": 2,
+          "playerId": "13402",
+          "playerName": "Skyler Bell",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 3,
+          "RB": 7,
+          "WR": 10,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 2,
+        "rosterContext": 3,
+        "draftConstruction": 2,
+        "concentrationBalance": 3,
+        "optionalityDepthBuilding": 3,
+        "score": 2.55,
+        "grade": "C-",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 3 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "3 early and 0 late selection(s) across 2 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/3; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 0 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 4,
+              "round": 1,
+              "player": "Jordyn Tyson",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 4.1,
+            "rawPickDelta": 0.1,
+            "normalizedDelta": 0.039,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 11,
+              "round": 1,
+              "player": "Eli Stowers",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 12.3,
+            "rawPickDelta": 1.3,
+            "normalizedDelta": 0.504,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 23,
+              "round": 2,
+              "player": "Skyler Bell",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 29.4,
+            "rawPickDelta": 6.4,
+            "normalizedDelta": 1.532,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3.611111,
+        "grade": "B",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 2.9744444,
+        "displayScore": 2.97,
+        "grade": "C+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 1.5299999999999998,
+        "marketValue": 1.4444444
+      },
+      "strengths": [
+        "Used 3 early-round selection(s).",
+        "Represented 2 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Market Value outperformed Process because selections compared favorably with the archived market even though the class showed less structural breadth or roster alignment (B vs. C-).",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "MODERATE",
+        "longTermUpsideOutlook": "MODERATE",
+        "expectedClassTrajectory": "EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 3 early-round selection(s).",
+        "primaryConcern": "No material structural concern was identified by the frozen draft-day rules."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "ray-long",
+      "manager": "Ray Long",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 9,
+          "round": 1,
+          "playerId": "13288",
+          "playerName": "Nicholas Singleton",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 16,
+          "round": 2,
+          "playerId": "13346",
+          "playerName": "Denzel Boston",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 21,
+          "round": 2,
+          "playerId": "13275",
+          "playerName": "Ty Simpson",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 33,
+          "round": 3,
+          "playerId": "13319",
+          "playerName": "Oscar Delp",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 45,
+          "round": 4,
+          "playerId": "13416",
+          "playerName": "Roman Hemby",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 3,
+          "RB": 6,
+          "WR": 10,
+          "TE": 2
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 5,
+        "concentrationBalance": 5,
+        "optionalityDepthBuilding": 5,
+        "score": 4.25,
+        "grade": "A-",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 5 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "3 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/5; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "4 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 9,
+              "round": 1,
+              "player": "Nicholas Singleton",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 17.5,
+            "rawPickDelta": 8.5,
+            "normalizedDelta": 3.295,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 16,
+              "round": 2,
+              "player": "Denzel Boston",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 11.5,
+            "rawPickDelta": -4.5,
+            "normalizedDelta": -1.077,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 21,
+              "round": 2,
+              "player": "Ty Simpson",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 25.7,
+            "rawPickDelta": 4.7,
+            "normalizedDelta": 1.125,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 33,
+              "round": 3,
+              "player": "Oscar Delp",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 36.8,
+            "rawPickDelta": 3.8,
+            "normalizedDelta": 0.707,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 45,
+              "round": 4,
+              "player": "Roman Hemby",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 47.8,
+            "rawPickDelta": 2.8,
+            "normalizedDelta": 0.315,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3.46729,
+        "grade": "B-",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.936916,
+        "displayScore": 3.94,
+        "grade": "B+",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.55,
+        "marketValue": 1.3869160000000003
+      },
+      "strengths": [
+        "Used 3 early-round selection(s).",
+        "Represented 4 positions in the recorded class.",
+        "Recorded 2 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (A- vs. B-).",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "HIGH",
+        "longTermUpsideOutlook": "HIGH",
+        "expectedClassTrajectory": "WIDE_DIVERSIFICATION + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 3 early-round selection(s).",
+        "primaryConcern": "No material structural concern was identified by the frozen draft-day rules."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "rob-jenkins",
+      "manager": "Rob Jenkins",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 8,
+          "round": 1,
+          "playerId": "13330",
+          "playerName": "Kenyon Sadiq",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 15,
+          "round": 2,
+          "playerId": "13317",
+          "playerName": "Ted Hurst",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 20,
+          "round": 2,
+          "playerId": "13285",
+          "playerName": "Malachi Fields",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 32,
+          "round": 3,
+          "playerId": "13411",
+          "playerName": "Zavion Thomas",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 44,
+          "round": 4,
+          "playerId": "13303",
+          "playerName": "Cade Klubnik",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 3,
+          "RB": 5,
+          "WR": 9,
+          "TE": 3
+        },
+        "classifications": {
+          "QB": "BALANCED",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "BALANCED"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 3,
+        "rosterContext": 3,
+        "draftConstruction": 5,
+        "concentrationBalance": 3,
+        "optionalityDepthBuilding": 4,
+        "score": 3.55,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 5 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 0 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "3 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 3/5; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 8,
+              "round": 1,
+              "player": "Kenyon Sadiq",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 8.7,
+            "rawPickDelta": 0.7,
+            "normalizedDelta": 0.271,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 15,
+              "round": 2,
+              "player": "Ted Hurst",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 26.4,
+            "rawPickDelta": 11.4,
+            "normalizedDelta": 2.729,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 20,
+              "round": 2,
+              "player": "Malachi Fields",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 25,
+            "rawPickDelta": 5,
+            "normalizedDelta": 1.197,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 32,
+              "round": 3,
+              "player": "Zavion Thomas",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 45.3,
+            "rawPickDelta": 13.3,
+            "normalizedDelta": 2.475,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 44,
+              "round": 4,
+              "player": "Cade Klubnik",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 43.4,
+            "rawPickDelta": -0.6,
+            "normalizedDelta": -0.067,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3.990654,
+        "grade": "B+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.7262616,
+        "displayScore": 3.73,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.13,
+        "marketValue": 1.5962616
+      },
+      "strengths": [
+        "Used 3 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Recorded 3 market-value selection(s)."
+      ],
+      "concerns": [
+        "Had 3 selection(s) at WR."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "HIGH",
+        "longTermUpsideOutlook": "HIGH",
+        "expectedClassTrajectory": "WIDE_DIVERSIFICATION + CONCENTRATED + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 3 early-round selection(s).",
+        "primaryConcern": "Had 3 selection(s) at WR."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2026,
+      "ownerId": "tyrone-poist",
+      "manager": "Tyrone Poist",
+      "team": null,
+      "forecastMode": "LIVE_FORECAST",
+      "status": "APPROVED",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2026-05-29T11:54:55.518Z",
+      "analysisAsOf": "2026-05-29T11:54:55.518Z",
+      "forecastCreatedAt": "2026-08-21T11:16:43.813Z",
+      "predictionVersion": "v1",
+      "approvalStatus": "APPROVED",
+      "immutable": true,
+      "draftPicks": [
+        {
+          "pick": 12,
+          "round": 1,
+          "playerId": "13311",
+          "playerName": "Chris Bell",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        },
+        {
+          "pick": 24,
+          "round": 2,
+          "playerId": "13337",
+          "playerName": "Emmett Johnson",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        },
+        {
+          "pick": 36,
+          "round": 3,
+          "playerId": "13278",
+          "playerName": "Max Klare",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        },
+        {
+          "pick": 48,
+          "round": 4,
+          "playerId": "13348",
+          "playerName": "J'Mari Taylor",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        }
+      ],
+      "draftTimeRosterContext": {
+        "positions": {
+          "QB": 2,
+          "RB": 5,
+          "WR": 8,
+          "TE": 4
+        },
+        "classifications": {
+          "QB": "THIN",
+          "RB": "BALANCED",
+          "WR": "BALANCED",
+          "TE": "DEEP"
+        },
+        "evidenceStatus": "VISUAL_CONFIRMED_IDENTITY_BRIDGED_MANUAL_CONFIRMATION_PENDING"
+      },
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": 3,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 3.75,
+        "grade": "B",
+        "confidence": "MEDIUM",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": "0 thin position(s) addressed; 0 addressed with early capital; 1 thin position(s) untouched.",
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+          "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 12,
+              "round": 1,
+              "player": "Chris Bell",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 17.2,
+            "rawPickDelta": 5.2,
+            "normalizedDelta": 2.016,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 24,
+              "round": 2,
+              "player": "Emmett Johnson",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 20,
+            "rawPickDelta": -4,
+            "normalizedDelta": -0.957,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 36,
+              "round": 3,
+              "player": "Max Klare",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 31.6,
+            "rawPickDelta": -4.4,
+            "normalizedDelta": -0.819,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 48,
+              "round": 4,
+              "player": "J'Mari Taylor",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 45.8,
+            "rawPickDelta": -2.2,
+            "normalizedDelta": -0.247,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2026-08-19",
+            "daysFromLccDraft": 82,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 3.094118,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Orphans",
+          "marketSnapshotId": "2026-fantasy-orphans-2026-08-19",
+          "marketSnapshotDate": "2026-08-19",
+          "daysFromLccDraft": 82,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.4876472,
+        "displayScore": 3.49,
+        "grade": "B-",
+        "confidence": "MEDIUM",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.25,
+        "marketValue": 1.2376472
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "Left entering THIN QB untouched.",
+        "Recorded 2 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. C+).",
+      "draftDayForecast": {
+        "immediateImpactOutlook": "HIGH",
+        "longTermUpsideOutlook": "HIGH",
+        "expectedClassTrajectory": "WIDE_DIVERSIFICATION + EARLY_POSITION_FOCUS; trajectory is a structural draft-day projection only.",
+        "primaryStrength": "Used 2 early-round selection(s).",
+        "primaryConcern": "Left entering THIN QB untouched."
+      },
+      "limitations": [
+        "Roster context is an identity bridge from preserved prior-season snapshots and commissioner screenshot evidence; screenshot completeness is not proven.",
+        "Historical NFL team metadata and later transactions are excluded from this draft-day evaluation.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2026-08-19; 82 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ],
+      "teamName": null,
+      "approvedAt": "2026-08-21T11:41:30.968Z"
+    }
+  ],
+  "evidence": {
+    "reviewedCandidateArtifact": "data/diagnostics/draft-intelligence/overall-v1/2026.json",
+    "processArtifact": "data/diagnostics/draft-intelligence/evaluations-v1.1/2026.json",
+    "marketArtifact": "data/diagnostics/draft-intelligence/market-value/2026.json",
+    "marketSnapshotArtifact": "data/source/market/dynasty-rookie/2026/snapshots/2026-08-19/provenance.json",
+    "candidateHash": "36276ae3bac03249f7a429d6b051973dbff1d1d423c6c280b36712d4b523fa5c",
+    "marketTimingClassification": "POST_DRAFT_PRESEASON",
+    "marketDaysFromLccDraft": 82,
+    "noNewDataFetched": true
+  },
+  "boundaries": {
+    "outcomes": false,
+    "powerRanking": false,
+    "predictor": false,
+    "draftRoomUi": false,
+    "autoPublish": false
+  },
+  "outcomePolicy": "Future Year-One Outcome, later Outcome, and Forecast Accuracy records append by reference; this v1 record is never modified."
+}

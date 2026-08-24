@@ -11,6 +11,11 @@ import season2023 from '../../data/history/financial/2023.json';
 import season2024 from '../../data/history/financial/2024.json';
 import season2025 from '../../data/history/financial/2025.json';
 import season2026 from '../../data/history/financial/2026.json';
+import { LCC_CURRENT_SEASON } from '../leagueConstants';
+import { getFinancialRules } from '../financeRules';
+import {
+  withReconciliationMetadata,
+} from './financialReconciliation';
 import type {
   AwardRecord,
   AwardRecordType,
@@ -19,6 +24,8 @@ import type {
   ManagerFinancialHistoryEntry,
   SeasonFinancialData,
 } from '../types/financial';
+
+export { getSeasonReconciliation } from './financialReconciliation';
 
 export const LCC_FINANCIAL_HISTORY_SEASONS = [
   2014,
@@ -52,19 +59,19 @@ const AWARD_RECORD_TYPES = new Set<string>([
 ] satisfies AwardRecordType[]);
 
 const FINANCIAL_DATA_BY_SEASON = {
-  2014: parseSeasonFinancialData(season2014),
-  2015: parseSeasonFinancialData(season2015),
-  2016: parseSeasonFinancialData(season2016),
-  2017: parseSeasonFinancialData(season2017),
-  2018: parseSeasonFinancialData(season2018),
-  2019: parseSeasonFinancialData(season2019),
-  2020: parseSeasonFinancialData(season2020),
-  2021: parseSeasonFinancialData(season2021),
-  2022: parseSeasonFinancialData(season2022),
-  2023: parseSeasonFinancialData(season2023),
-  2024: parseSeasonFinancialData(season2024),
-  2025: parseSeasonFinancialData(season2025),
-  2026: parseSeasonFinancialData(season2026),
+  2014: withReconciliationMetadata(parseSeasonFinancialData(season2014)),
+  2015: withReconciliationMetadata(parseSeasonFinancialData(season2015)),
+  2016: withReconciliationMetadata(parseSeasonFinancialData(season2016)),
+  2017: withReconciliationMetadata(parseSeasonFinancialData(season2017)),
+  2018: withReconciliationMetadata(parseSeasonFinancialData(season2018)),
+  2019: withReconciliationMetadata(parseSeasonFinancialData(season2019)),
+  2020: withReconciliationMetadata(parseSeasonFinancialData(season2020)),
+  2021: withReconciliationMetadata(parseSeasonFinancialData(season2021)),
+  2022: withReconciliationMetadata(parseSeasonFinancialData(season2022)),
+  2023: withReconciliationMetadata(parseSeasonFinancialData(season2023)),
+  2024: withReconciliationMetadata(parseSeasonFinancialData(season2024)),
+  2025: withReconciliationMetadata(parseSeasonFinancialData(season2025)),
+  2026: withReconciliationMetadata(parseSeasonFinancialData(season2026)),
 } satisfies Record<LccFinancialHistorySeason, SeasonFinancialData>;
 
 export function loadSeasonFinancialData(
@@ -76,6 +83,32 @@ export function loadSeasonFinancialData(
 export function loadAllSeasonFinancialData(): readonly SeasonFinancialData[] {
   return LCC_FINANCIAL_HISTORY_SEASONS.map(loadSeasonFinancialData);
 }
+
+export function getSeasonFinance(season: number): SeasonFinancialData | null {
+  if (!LCC_FINANCIAL_HISTORY_SEASONS.includes(season as LccFinancialHistorySeason)) {
+    return null;
+  }
+
+  return loadSeasonFinancialData(season as LccFinancialHistorySeason);
+}
+
+export function getOwnerFinancialHistory(
+  ownerId: string
+): readonly ManagerFinancialHistoryEntry[] {
+  return getManagerFinancialHistory(ownerId);
+}
+
+export function getLeagueFinancialSummary(
+  seasons: readonly SeasonFinancialData[] = loadAllSeasonFinancialData()
+): LeagueFinancialTotals {
+  return getLeagueFinancialTotals(seasons);
+}
+
+export function getCurrentSeasonLedger(): SeasonFinancialData | null {
+  return getSeasonFinance(LCC_CURRENT_SEASON);
+}
+
+export { getFinancialRules };
 
 export function getManagerFinancialHistory(
   managerKey: string

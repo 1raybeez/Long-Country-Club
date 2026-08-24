@@ -39,7 +39,7 @@ export interface LccOwnerPlacementSummary {
 export interface LccOwnerCareerSummary extends LccOwnerPlacementSummary {
   readonly titleCount: number;
   readonly podiumCount: number;
-  readonly toiletBowlCount: number;
+  readonly lastPlaceCount: number;
 }
 
 export interface LccSeasonChampion {
@@ -58,8 +58,8 @@ export interface LccChampionshipGalleryEntry {
   readonly runnerUpOwnerId?: string;
   readonly thirdPlaceAlias?: string;
   readonly thirdPlaceOwnerId?: string;
-  readonly toiletBowlAlias?: string;
-  readonly toiletBowlOwnerId?: string;
+  readonly lastPlaceAlias?: string;
+  readonly lastPlaceOwnerId?: string;
   readonly placementCount: number;
 }
 
@@ -77,7 +77,7 @@ export interface LccOwnerPodiumTotals {
   };
 }
 
-export interface LccOwnerToiletBowlTotals {
+export interface LccOwnerLastPlaceTotals {
   readonly ownerId?: string;
   readonly primaryAlias: string;
   readonly total: number;
@@ -612,7 +612,7 @@ export function getLccOwnerPodiumCount(ownerId: string) {
   return getLccOwnerPlacementSummary(ownerId).podiumFinishes.length;
 }
 
-export function getLccOwnerToiletBowlCount(ownerId: string) {
+export function getLccOwnerLastPlaceCount(ownerId: string) {
   const normalizedOwnerId = normalizeLccOwnerId(ownerId);
 
   return LCC_FINAL_PLACEMENTS.filter((entry) => {
@@ -639,7 +639,7 @@ export function getLccOwnerCareerSummary(
     ...placementSummary,
     titleCount: placementSummary.championships.length,
     podiumCount: placementSummary.podiumFinishes.length,
-    toiletBowlCount: getLccOwnerToiletBowlCount(ownerId),
+    lastPlaceCount: getLccOwnerLastPlaceCount(ownerId),
   };
 }
 
@@ -677,7 +677,7 @@ export function getLccChampionshipGalleryBySeason(): readonly LccChampionshipGal
       return [];
     }
 
-    const toiletBowlAlias = entry.placements.at(-1);
+    const lastPlaceAlias = entry.placements.at(-1);
 
     return [
       {
@@ -693,9 +693,9 @@ export function getLccChampionshipGalleryBySeason(): readonly LccChampionshipGal
         thirdPlaceOwnerId: thirdPlaceAlias
           ? getLccOwnerIdByPlacementAlias(thirdPlaceAlias)
           : undefined,
-        toiletBowlAlias,
-        toiletBowlOwnerId: toiletBowlAlias
-          ? getLccOwnerIdByPlacementAlias(toiletBowlAlias)
+        lastPlaceAlias,
+        lastPlaceOwnerId: lastPlaceAlias
+          ? getLccOwnerIdByPlacementAlias(lastPlaceAlias)
           : undefined,
         placementCount: entry.placements.length,
       },
@@ -754,8 +754,8 @@ export function getLccPodiumTotalsByOwner(): readonly LccOwnerPodiumTotals[] {
     .sort(sortPodiumTotals);
 }
 
-export function getLccToiletBowlTotalsByOwner(): readonly LccOwnerToiletBowlTotals[] {
-  const totals = new Map<string, MutableLccOwnerToiletBowlTotals>();
+export function getLccLastPlaceTotalsByOwner(): readonly LccOwnerLastPlaceTotals[] {
+  const totals = new Map<string, MutableLccOwnerLastPlaceTotals>();
 
   LCC_FINAL_PLACEMENTS.forEach((entry) => {
     const alias = entry.placements.at(-1);
@@ -773,7 +773,7 @@ export function getLccToiletBowlTotalsByOwner(): readonly LccOwnerToiletBowlTota
         primaryAlias: alias,
         total: 0,
         seasons: [],
-      } satisfies MutableLccOwnerToiletBowlTotals);
+      } satisfies MutableLccOwnerLastPlaceTotals);
 
     current.total += 1;
     current.seasons.push(entry.season);
@@ -787,7 +787,7 @@ export function getLccToiletBowlTotalsByOwner(): readonly LccOwnerToiletBowlTota
       total: entry.total,
       seasons: sortSeasonsDescending(entry.seasons),
     }))
-    .sort(sortToiletBowlTotals);
+    .sort(sortLastPlaceTotals);
 }
 
 const LCC_PODIUM_MEDALS = ["gold", "silver", "bronze"] as const;
@@ -803,7 +803,7 @@ type MutableLccOwnerPodiumTotals = {
   seasons: Record<LccPodiumMedal, number[]>;
 };
 
-type MutableLccOwnerToiletBowlTotals = {
+type MutableLccOwnerLastPlaceTotals = {
   ownerId?: string;
   primaryAlias: string;
   total: number;
@@ -858,9 +858,9 @@ function sortPodiumTotals(
   );
 }
 
-function sortToiletBowlTotals(
-  left: LccOwnerToiletBowlTotals,
-  right: LccOwnerToiletBowlTotals
+function sortLastPlaceTotals(
+  left: LccOwnerLastPlaceTotals,
+  right: LccOwnerLastPlaceTotals
 ) {
   return (
     right.total - left.total ||

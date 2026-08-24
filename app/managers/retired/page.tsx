@@ -29,36 +29,33 @@ export default function RetiredManagersPage() {
   );
 
   return (
-    <main className="lcc-page">
-      <div className="lcc-container py-8 sm:py-12 lg:py-14">
-        <header className="lcc-card overflow-hidden">
+    <main className="lcc2-page-shell">
+      <div className="lcc2-page-container">
+        <header className="lcc2-card lcc2-card--raised overflow-hidden">
           <div className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
             <div>
-              <div className="lcc-badge">Long Country Club</div>
-              <h1 className="mt-4 font-serif text-5xl font-black uppercase italic leading-none text-[var(--lcc-text)] sm:text-6xl">
-                Retired Legends
+              <p className="lcc2-label text-[var(--lcc-brand-primary)]">Managers</p>
+              <h1 className="lcc2-home-identity__title mt-2">
+                Retired Owners
               </h1>
-              <p className="mt-4 max-w-3xl font-ui text-sm font-medium leading-6 text-[var(--lcc-text-muted)] sm:text-base">
-                Former owners, founding members, and memorial entries from the
-                league&apos;s continuous history since 2003.
+              <p className="lcc2-home-identity__supporting max-w-3xl">
+                Former LCC owners and franchises preserved in league history.
               </p>
             </div>
 
-            <div className="rounded-[var(--lcc-radius)] border border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-4">
-              <p className="font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
-                Retired Owner Count
-              </p>
-              <p className="mt-2 font-serif text-5xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+            <div className="lcc2-metric-card">
+              <p className="lcc2-metric-card__label">Retired owners</p>
+              <p className="lcc2-metric-card__value">
                 {retiredOwnerCount}
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 border-t border-[var(--lcc-border)] bg-[var(--lcc-surface-muted)] p-4">
-            <Link href="/managers" className="lcc-button lcc-button-secondary">
+          <div className="flex flex-wrap gap-2 border-t border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-4">
+            <Link href="/managers" className="lcc2-button lcc2-button--secondary">
               Active Owners
             </Link>
-            <span className="lcc-button">Retired Owners</span>
+            <span className="lcc2-button lcc2-button--primary">Retired Owners</span>
           </div>
         </header>
 
@@ -71,10 +68,11 @@ export default function RetiredManagersPage() {
                 count={group.owners.length}
                 description={group.description}
                 tone={group.tone}
+                application
               />
-              <OwnerGrid compact>
+              <OwnerGrid directory>
                 {group.owners.map((owner) => (
-                  <OwnerCard key={owner.id} owner={owner} tone={group.tone} />
+                  <OwnerCard key={owner.id} owner={owner} tone={group.tone} compact />
                 ))}
               </OwnerGrid>
             </section>

@@ -1,5 +1,9 @@
 import { loadAllMatchups, type HistoricalMatchup } from "./matchups";
 
+export function getHeadToHeadHref(ownerAId: string, ownerBId: string) {
+  return `/matchups/head-to-head/${ownerAId}-vs-${ownerBId}`;
+}
+
 export interface HeadToHeadSummary {
   ownerAId: string;
   ownerBId: string;

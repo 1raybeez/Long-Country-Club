@@ -6,6 +6,7 @@ export interface OwnerRegistryEntry {
   readonly ownerId: string;
   readonly displayName: string;
   readonly shortName: string;
+  readonly teamName: string;
   readonly status: OwnerRegistryStatus;
   readonly aliases: readonly string[];
 }
@@ -84,6 +85,7 @@ function createOwnerRegistryEntry(owner: LccOwner): OwnerRegistryEntry {
     ownerId: owner.id,
     displayName: owner.displayName,
     shortName: owner.nickname,
+    teamName: owner.managerPage.sleeperName,
     status: owner.status,
     aliases: uniqueAliases([
       owner.nickname,

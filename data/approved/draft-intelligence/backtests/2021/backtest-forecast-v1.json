@@ -1,0 +1,2434 @@
+{
+  "schemaVersion": 1,
+  "recordType": "DRAFT_INTELLIGENCE_HISTORICAL_BACKTEST",
+  "season": 2021,
+  "draftId": "688839693487374336",
+  "forecastMode": "BACKTEST_FORECAST",
+  "predictionVersion": "v1",
+  "processMethodologyVersion": "draft-intelligence-v1.1",
+  "marketMethodologyVersion": "market-value-v1.1",
+  "overallMethodologyVersion": "overall-draft-day-v1",
+  "draftDate": "2021-05-17T11:51:08.699Z",
+  "analysisAsOf": "2021-05-17T11:51:08.699Z",
+  "historicalSimulationCreatedAt": "2026-08-21T13:26:46.042Z",
+  "approvedAt": "2026-08-21T00:00:00.000Z",
+  "approvalStatus": "APPROVED",
+  "immutable": true,
+  "supersedes": null,
+  "correctionReason": null,
+  "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+  "marketSnapshotDate": "2021-09-01",
+  "marketTimingClassification": "POST_DRAFT_PRESEASON",
+  "marketProvenance": {
+    "sourceName": "Fantasy Football Calculator",
+    "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+    "marketSnapshotDate": "2021-09-01",
+    "daysFromLccDraft": 107,
+    "timingClassification": "POST_DRAFT_PRESEASON",
+    "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+  },
+  "disclosure": "This is a retrospective simulation of what the current Draft Intelligence methodology would have produced using the approved historical evidence and market references. It was not an actual forecast created in that season.",
+  "historicalEvidenceBoundary": "Each owner evaluation retains its original draft-time analysisAsOf and draft-time evidence boundary; no later Outcome, current roster, current market, or current ADP data is admitted.",
+  "evaluations": [
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "anthony-martinez",
+      "manager": "Anthony Martinez",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 12,
+          "round": 1,
+          "playerId": "7591",
+          "playerName": "Justin Fields",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 13,
+          "round": 2,
+          "playerId": "7594",
+          "playerName": "Chuba Hubbard",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 36,
+          "round": 3,
+          "playerId": "7581",
+          "playerName": "Kellen Mond",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        },
+        {
+          "pick": 37,
+          "round": 4,
+          "playerId": "7694",
+          "playerName": "Tommy Tremble",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "anthony-martinez"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 12,
+              "round": 1,
+              "player": "Justin Fields",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 7.2,
+            "rawPickDelta": -4.8,
+            "normalizedDelta": -1.86,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 13,
+              "round": 2,
+              "player": "Chuba Hubbard",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 22.2,
+            "rawPickDelta": 9.2,
+            "normalizedDelta": 2.202,
+            "classification": "STRONG_VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 36,
+              "round": 3,
+              "player": "Kellen Mond",
+              "position": "QB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 37,
+              "round": 4,
+              "player": "Tommy Tremble",
+              "position": "TE"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 2.87234,
+        "grade": "C",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.548936,
+        "displayScore": 3.55,
+        "grade": "B",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 1.148936
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. C).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "ben-isbell",
+      "manager": "Ben Isbell",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 1,
+          "round": 1,
+          "playerId": "7528",
+          "playerName": "Najee Harris",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 24,
+          "round": 2,
+          "playerId": "7569",
+          "playerName": "Nico Collins",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 25,
+          "round": 3,
+          "playerId": "7562",
+          "playerName": "Tutu Atwell",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        },
+        {
+          "pick": 48,
+          "round": 4,
+          "playerId": "7812",
+          "playerName": "Simi Fehoko",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ben-isbell"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 3,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 2,
+        "optionalityDepthBuilding": 3,
+        "score": 3.066667,
+        "grade": "C+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 3/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 1,
+              "round": 1,
+              "player": "Najee Harris",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 1.2,
+            "rawPickDelta": 0.2,
+            "normalizedDelta": 0.078,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 24,
+              "round": 2,
+              "player": "Nico Collins",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 25.9,
+            "rawPickDelta": 1.9,
+            "normalizedDelta": 0.455,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 25,
+              "round": 3,
+              "player": "Tutu Atwell",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 30.1,
+            "rawPickDelta": 5.1,
+            "normalizedDelta": 0.949,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 48,
+              "round": 4,
+              "player": "Simi Fehoko",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3.298507,
+        "grade": "B-",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.1594029999999997,
+        "displayScore": 3.16,
+        "grade": "C+",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 1.8400001999999998,
+        "marketValue": 1.3194028
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 2 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "Had 3 selection(s) at WR."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "bill-gross",
+      "manager": "Bill Gross",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 2,
+          "round": 1,
+          "playerId": "7523",
+          "playerName": "Trevor Lawrence",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 23,
+          "round": 2,
+          "playerId": "7540",
+          "playerName": "Amari Rodgers",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 26,
+          "round": 3,
+          "playerId": "7600",
+          "playerName": "Pat Freiermuth",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        },
+        {
+          "pick": 47,
+          "round": 4,
+          "playerId": "7537",
+          "playerName": "Jaret Patterson",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "bill-gross"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 1/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "4 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 2,
+              "round": 1,
+              "player": "Trevor Lawrence",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 4.7,
+            "rawPickDelta": 2.7,
+            "normalizedDelta": 1.047,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 23,
+              "round": 2,
+              "player": "Amari Rodgers",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 24.9,
+            "rawPickDelta": 1.9,
+            "normalizedDelta": 0.455,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 26,
+              "round": 3,
+              "player": "Pat Freiermuth",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 20.3,
+            "rawPickDelta": -5.7,
+            "normalizedDelta": -1.061,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 47,
+              "round": 4,
+              "player": "Jaret Patterson",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 30.7,
+            "rawPickDelta": -16.3,
+            "normalizedDelta": -1.832,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          }
+        ],
+        "score": 2.635294,
+        "grade": "C",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": []
+      },
+      "overall": {
+        "score": 3.4541176,
+        "displayScore": 3.45,
+        "grade": "B-",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 1.0541176
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 4 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. C).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "dan-lowery",
+      "manager": "Dan Lowery",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 4,
+          "round": 1,
+          "playerId": "7543",
+          "playerName": "Travis Etienne",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "dan-lowery"
+        },
+        {
+          "pick": 21,
+          "round": 2,
+          "playerId": "7547",
+          "playerName": "Amon-Ra St. Brown",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "dan-lowery"
+        },
+        {
+          "pick": 28,
+          "round": 3,
+          "playerId": "7612",
+          "playerName": "D'Wayne Eskridge",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "dan-lowery"
+        },
+        {
+          "pick": 45,
+          "round": 4,
+          "playerId": "7561",
+          "playerName": "Elijah Mitchell",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "dan-lowery"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 3,
+        "score": 3.8,
+        "grade": "B",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 4,
+              "round": 1,
+              "player": "Travis Etienne",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 21,
+              "round": 2,
+              "player": "Amon-Ra St. Brown",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 18.1,
+            "rawPickDelta": -2.9,
+            "normalizedDelta": -0.694,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 28,
+              "round": 3,
+              "player": "D'Wayne Eskridge",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 28.9,
+            "rawPickDelta": 0.9,
+            "normalizedDelta": 0.167,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 45,
+              "round": 4,
+              "player": "Elijah Mitchell",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_LIMITED",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.48,
+        "displayScore": 3.48,
+        "grade": "B-",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.28,
+        "marketValue": 1.2000000000000002
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 2 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. C+).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "earl-perkins",
+      "manager": "Earl Perkins",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 8,
+          "round": 1,
+          "playerId": "7526",
+          "playerName": "Jaylen Waddle",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 17,
+          "round": 2,
+          "playerId": "7601",
+          "playerName": "Rondale Moore",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 32,
+          "round": 3,
+          "playerId": "7611",
+          "playerName": "Rhamondre Stevenson",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        },
+        {
+          "pick": 41,
+          "round": 4,
+          "playerId": "7599",
+          "playerName": "Jermar Jefferson",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "earl-perkins"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 3,
+        "score": 3.8,
+        "grade": "B",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "2 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 8,
+              "round": 1,
+              "player": "Jaylen Waddle",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 11,
+            "rawPickDelta": 3,
+            "normalizedDelta": 1.163,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 17,
+              "round": 2,
+              "player": "Rondale Moore",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 17.3,
+            "rawPickDelta": 0.3,
+            "normalizedDelta": 0.072,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 32,
+              "round": 3,
+              "player": "Rhamondre Stevenson",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 27,
+            "rawPickDelta": -5,
+            "normalizedDelta": -0.93,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 41,
+              "round": 4,
+              "player": "Jermar Jefferson",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3.074627,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.5098507999999997,
+        "displayScore": 3.51,
+        "grade": "B",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.28,
+        "marketValue": 1.2298508000000001
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 2 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B vs. C+).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "jeffrey-hudgins",
+      "manager": "Jeffrey Hudgins",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 11,
+          "round": 1,
+          "playerId": "7607",
+          "playerName": "Michael Carter",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 14,
+          "round": 2,
+          "playerId": "7610",
+          "playerName": "Trey Lance",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 35,
+          "round": 3,
+          "playerId": "7533",
+          "playerName": "Anthony Schwartz",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        },
+        {
+          "pick": 44,
+          "round": 4,
+          "playerId": "7608",
+          "playerName": "Khalil Herbert",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "jeffrey-hudgins"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 11,
+              "round": 1,
+              "player": "Michael Carter",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 12.6,
+            "rawPickDelta": 1.6,
+            "normalizedDelta": 0.62,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 14,
+              "round": 2,
+              "player": "Trey Lance",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 6.6,
+            "rawPickDelta": -7.4,
+            "normalizedDelta": -1.771,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 35,
+              "round": 3,
+              "player": "Anthony Schwartz",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 44,
+              "round": 4,
+              "player": "Khalil Herbert",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 2.06383,
+        "grade": "D",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.225532,
+        "displayScore": 3.23,
+        "grade": "B-",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 0.8255319999999999
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. D).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "keith-winder",
+      "manager": "Keith Winder",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 6,
+          "round": 1,
+          "playerId": "7588",
+          "playerName": "Javonte Williams",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 19,
+          "round": 2,
+          "playerId": "7538",
+          "playerName": "Zach Wilson",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 30,
+          "round": 3,
+          "playerId": "7587",
+          "playerName": "Dyami Brown",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        },
+        {
+          "pick": 43,
+          "round": 4,
+          "playerId": "7729",
+          "playerName": "Dez Fitzpatrick",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "keith-winder"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 1 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 6,
+              "round": 1,
+              "player": "Javonte Williams",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 2.9,
+            "rawPickDelta": -3.1,
+            "normalizedDelta": -1.202,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 19,
+              "round": 2,
+              "player": "Zach Wilson",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 12.8,
+            "rawPickDelta": -6.2,
+            "normalizedDelta": -1.484,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 30,
+              "round": 3,
+              "player": "Dyami Brown",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 17.4,
+            "rawPickDelta": -12.6,
+            "normalizedDelta": -2.345,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 43,
+              "round": 4,
+              "player": "Dez Fitzpatrick",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 1.701493,
+        "grade": "F",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.0805971999999997,
+        "displayScore": 3.08,
+        "grade": "C+",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 0.6805972
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 2 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. F).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "loren-michaels",
+      "manager": "Loren Michaels",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 7,
+          "round": 1,
+          "playerId": "7525",
+          "playerName": "DeVonta Smith",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        },
+        {
+          "pick": 18,
+          "round": 2,
+          "playerId": "7567",
+          "playerName": "Kenneth Gainwell",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        },
+        {
+          "pick": 31,
+          "round": 3,
+          "playerId": "7595",
+          "playerName": "Tylan Wallace",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        },
+        {
+          "pick": 42,
+          "round": 4,
+          "playerId": "7568",
+          "playerName": "Brevin Jordan",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "loren-michaels"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 7,
+              "round": 1,
+              "player": "DeVonta Smith",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 9.9,
+            "rawPickDelta": 2.9,
+            "normalizedDelta": 1.124,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 18,
+              "round": 2,
+              "player": "Kenneth Gainwell",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 31,
+              "round": 3,
+              "player": "Tylan Wallace",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 42,
+              "round": 4,
+              "player": "Brevin Jordan",
+              "position": "TE"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 4,
+        "grade": "B+",
+        "confidence": "GRADE_AVAILABLE_LIMITED",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "3 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 4,
+        "displayScore": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 1.6
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "mike-mcburnie",
+      "manager": "Mike McBurnie",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 10,
+          "round": 1,
+          "playerId": "7593",
+          "playerName": "Trey Sermon",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        },
+        {
+          "pick": 15,
+          "round": 2,
+          "playerId": "7596",
+          "playerName": "Elijah Moore",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        },
+        {
+          "pick": 34,
+          "round": 3,
+          "playerId": "7574",
+          "playerName": "Larry Rountree",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        },
+        {
+          "pick": 39,
+          "round": 4,
+          "playerId": "7605",
+          "playerName": "Kyle Trask",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "mike-mcburnie"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 10,
+              "round": 1,
+              "player": "Trey Sermon",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 9.9,
+            "rawPickDelta": -0.1,
+            "normalizedDelta": -0.039,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 15,
+              "round": 2,
+              "player": "Elijah Moore",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 15.4,
+            "rawPickDelta": 0.4,
+            "normalizedDelta": 0.096,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 34,
+              "round": 3,
+              "player": "Larry Rountree",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 39,
+              "round": 4,
+              "player": "Kyle Trask",
+              "position": "QB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 3,
+        "grade": "C+",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.6,
+        "displayScore": 3.6,
+        "grade": "B",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 1.2000000000000002
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. C+).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "ray-long",
+      "manager": "Ray Long",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 5,
+          "round": 1,
+          "playerId": "7553",
+          "playerName": "Kyle Pitts",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 20,
+          "round": 2,
+          "playerId": "7565",
+          "playerName": "Terrace Marshall",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 29,
+          "round": 3,
+          "playerId": "7563",
+          "playerName": "Javian Hawkins",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        },
+        {
+          "pick": 38,
+          "round": 4,
+          "playerId": "7585",
+          "playerName": "Davis Mills",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "ray-long"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 1/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "4 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 5,
+              "round": 1,
+              "player": "Kyle Pitts",
+              "position": "TE"
+            },
+            "marketExpectedSelection": 2.6,
+            "rawPickDelta": -2.4,
+            "normalizedDelta": -0.93,
+            "classification": "AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 20,
+              "round": 2,
+              "player": "Terrace Marshall",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 13.7,
+            "rawPickDelta": -6.3,
+            "normalizedDelta": -1.508,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 29,
+              "round": 3,
+              "player": "Javian Hawkins",
+              "position": "RB"
+            },
+            "marketExpectedSelection": 26.4,
+            "rawPickDelta": -2.6,
+            "normalizedDelta": -0.484,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 38,
+              "round": 4,
+              "player": "Davis Mills",
+              "position": "QB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 1.970149,
+        "grade": "D",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "1 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.1880596,
+        "displayScore": 3.19,
+        "grade": "C+",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 0.7880596
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 4 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Recorded 1 market-aggressive selection(s).",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. D).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "rob-jenkins",
+      "manager": "Rob Jenkins",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 3,
+          "round": 1,
+          "playerId": "7564",
+          "playerName": "Ja'Marr Chase",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 22,
+          "round": 2,
+          "playerId": "7527",
+          "playerName": "Mac Jones",
+          "position": "QB",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 27,
+          "round": 3,
+          "playerId": "7670",
+          "playerName": "Josh Palmer",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        },
+        {
+          "pick": 46,
+          "round": 4,
+          "playerId": "7560",
+          "playerName": "Pooka Williams",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "rob-jenkins"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 3,
+              "round": 1,
+              "player": "Ja'Marr Chase",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 3.5,
+            "rawPickDelta": 0.5,
+            "normalizedDelta": 0.194,
+            "classification": "MARKET",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 22,
+              "round": 2,
+              "player": "Mac Jones",
+              "position": "QB"
+            },
+            "marketExpectedSelection": 15.5,
+            "rawPickDelta": -6.5,
+            "normalizedDelta": -1.556,
+            "classification": "STRONG_AGGRESSIVE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 27,
+              "round": 3,
+              "player": "Josh Palmer",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 46,
+              "round": 4,
+              "player": "Pooka Williams",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 2.06383,
+        "grade": "D",
+        "confidence": "GRADE_AVAILABLE_MEDIUM",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "2 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 3.225532,
+        "displayScore": 3.23,
+        "grade": "B-",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 0.8255319999999999
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules.",
+        "Process and Market Value materially disagree; review the component evidence separately."
+      ],
+      "componentDisagreement": "Process Grade is stronger than Market Value because the class shows stronger structural evidence while selections were more aggressive than the archived market reference (B+ vs. D).",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    },
+    {
+      "diagnosticOnly": true,
+      "season": 2021,
+      "ownerId": "tyrone-poist",
+      "manager": "Tyrone Poist",
+      "team": null,
+      "forecastMode": "BACKTEST_FORECAST",
+      "status": "REVIEW_ONLY",
+      "processMethodologyVersion": "draft-intelligence-v1.1",
+      "marketMethodologyVersion": "market-value-v1.1",
+      "overallMethodologyVersion": "overall-draft-day-v1",
+      "processStatus": "AVAILABLE",
+      "marketStatus": "AVAILABLE",
+      "draftDate": "2021-05-17T11:51:08.699Z",
+      "analysisAsOf": "2021-05-17T11:51:08.699Z",
+      "forecastCreatedAt": "2026-08-21T13:26:46.042Z",
+      "predictionVersion": null,
+      "approvalStatus": "REVIEW_ONLY",
+      "immutable": false,
+      "draftPicks": [
+        {
+          "pick": 9,
+          "round": 1,
+          "playerId": "7571",
+          "playerName": "Rashod Bateman",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        },
+        {
+          "pick": 16,
+          "round": 2,
+          "playerId": "7606",
+          "playerName": "Kadarius Toney",
+          "position": "WR",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        },
+        {
+          "pick": 33,
+          "round": 3,
+          "playerId": "7572",
+          "playerName": "Kylin Hill",
+          "position": "RB",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        },
+        {
+          "pick": 40,
+          "round": 4,
+          "playerId": "7554",
+          "playerName": "Tre' McKitty",
+          "position": "TE",
+          "originalSlot": null,
+          "actualDrafter": "tyrone-poist"
+        }
+      ],
+      "draftTimeRosterContext": null,
+      "process": {
+        "capitalDeployment": 4,
+        "rosterContext": null,
+        "draftConstruction": 4,
+        "concentrationBalance": 4,
+        "optionalityDepthBuilding": 4,
+        "score": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "evidence": {
+          "CAPITAL_DEPLOYMENT": "Deployment quality scored from use of the actual 4 selection(s); inventory facts are contextual only.",
+          "ROSTER_CONTEXT": null,
+          "DRAFT_CONSTRUCTION": "2 early and 2 late selection(s) across 4 used round(s); position diversity is excluded from this dimension.",
+          "CONCENTRATION_BALANCE": "Maximum same-position share was 2/4; structural concentration is scored here.",
+          "OPTIONALITY_DEPTH_BUILDING": "3 distinct positional path(s), with 2 late-round position(s); breadth is scored here."
+        },
+        "limitations": [
+          "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+          "This retrospective simulation uses only canonical draft-day facts."
+        ]
+      },
+      "marketValue": {
+        "selections": [
+          {
+            "lccSelection": {
+              "overallPick": 9,
+              "round": 1,
+              "player": "Rashod Bateman",
+              "position": "WR"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 16,
+              "round": 2,
+              "player": "Kadarius Toney",
+              "position": "WR"
+            },
+            "marketExpectedSelection": 19.7,
+            "rawPickDelta": 3.7,
+            "normalizedDelta": 0.886,
+            "classification": "VALUE",
+            "marketResolved": true,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": 107,
+            "marketConfidence": "MEDIUM"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 33,
+              "round": 3,
+              "player": "Kylin Hill",
+              "position": "RB"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          },
+          {
+            "lccSelection": {
+              "overallPick": 40,
+              "round": 4,
+              "player": "Tre' McKitty",
+              "position": "TE"
+            },
+            "marketExpectedSelection": null,
+            "rawPickDelta": null,
+            "normalizedDelta": null,
+            "classification": null,
+            "marketResolved": false,
+            "marketSnapshotDate": "2021-09-01",
+            "daysFromLccDraft": null,
+            "marketConfidence": "UNRESOLVED"
+          }
+        ],
+        "score": 4,
+        "grade": "B+",
+        "confidence": "GRADE_AVAILABLE_LIMITED",
+        "source": {
+          "sourceName": "Fantasy Football Calculator",
+          "marketSnapshotId": "2021-fantasy-football-calculator-2021-09-01",
+          "marketSnapshotDate": "2021-09-01",
+          "daysFromLccDraft": 107,
+          "timingClassification": "POST_DRAFT_PRESEASON",
+          "timingDisclosure": "POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+        },
+        "limitations": [
+          "3 pick(s) lack a compatible market identity and were omitted from score math."
+        ]
+      },
+      "overall": {
+        "score": 4,
+        "displayScore": 4,
+        "grade": "B+",
+        "confidence": "LIMITED",
+        "status": "AVAILABLE",
+        "reason": null
+      },
+      "componentContributions": {
+        "process": 2.4,
+        "marketValue": 1.6
+      },
+      "strengths": [
+        "Used 2 early-round selection(s).",
+        "Represented 3 positions in the recorded class.",
+        "Recorded 1 market-value selection(s)."
+      ],
+      "concerns": [
+        "No material structural concern was identified by the frozen draft-day rules."
+      ],
+      "componentDisagreement": "Process and Market Value are directionally aligned; neither component materially outweighs the other.",
+      "draftDayForecast": null,
+      "limitations": [
+        "Roster Context is excluded and weights are renormalized; no depth, thin/deep, or need-based claim is made.",
+        "This retrospective simulation uses only canonical draft-day facts.",
+        "Market timing: POST_DRAFT_PRESEASON market snapshot dated 2021-09-01; 107 days after the LCC Rookie Draft."
+      ],
+      "forbiddenInputsNotUsed": [
+        "NFL outcomes",
+        "fantasy production",
+        "player survival",
+        "championship impact",
+        "Forecast Accuracy",
+        "future transactions",
+        "future roster state"
+      ]
+    }
+  ],
+  "evidence": {
+    "reviewedDiagnosticArtifact": "data/diagnostics/draft-intelligence/overall-v1/2021.json",
+    "reviewedSourceHash": "6b8a3efd30f87a40d9457e4c8cfb3e7a253f749e12cf9fa068bed66c93bcbb72",
+    "noNewDataFetched": true,
+    "noRecalculationPerformed": true,
+    "noOutcomeData": true,
+    "noCurrentRosterState": true,
+    "noCurrentAdp": true,
+    "no2026Evidence": true
+  },
+  "boundaries": {
+    "outcome": false,
+    "currentRoster": false,
+    "currentMarket": false,
+    "currentAdp": false,
+    "season2026": false,
+    "forecastVsReality": false,
+    "draftRoomUi": false
+  }
+}

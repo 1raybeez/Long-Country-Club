@@ -1,0 +1,35 @@
+{
+  "version": "market-value-v1.1",
+  "status": "FROZEN_METHODOLOGY_ONLY",
+  "supersedes": "market-value-v1",
+  "supersessionReason": "Owner-level score is preserved as a continuous weighted market score rather than integer classification before letter conversion.",
+  "playerModel": {
+    "unchangedFrom": "market-value-v1",
+    "playerScore": {"STRONG_VALUE": 5, "VALUE": 4, "MARKET": 3, "AGGRESSIVE": 2, "STRONG_AGGRESSIVE": 1},
+    "roundExpectedDeviation": {"1": 2.58, "2": 4.178, "3": 5.374, "4": 8.896},
+    "classificationThresholds": {"STRONG_VALUE": 1.5, "VALUE": 0.75, "MARKET_LOWER_EXCLUSIVE": -0.75, "AGGRESSIVE_LOWER_EXCLUSIVE": -1.5}
+  },
+  "ownerAggregation": {
+    "formula": "valueScore = sum(playerScore * capitalWeight) / sum(capitalWeight) over resolved picks",
+    "continuousScale": "1.00-5.00",
+    "storedPrecision": "at least three decimal places",
+    "displayPrecision": "two decimal places",
+    "coverageIndependent": true,
+    "patternRules": "Retained as validation and interpretation signals only; they do not replace or round the continuous aggregate."
+  },
+  "capitalWeights": {"1": 1.25, "2": 1.1, "3": 1.0, "4": 0.9},
+  "coverage": {
+    "rawFormula": "resolvedMarketPicks / totalPicks",
+    "capitalWeightedFormula": "sum(capitalWeight for resolved picks) / sum(capitalWeight for all picks)",
+    "missingPolicy": "unresolved picks are omitted from score math and reduce coverage/confidence; never neutral",
+    "scoreCompensation": false
+  },
+  "letterScale": {
+    "source": "Draft Intelligence Process thresholds",
+    "curve": false,
+    "thresholds": [{"label":"A+","minimum":4.75},{"label":"A","minimum":4.4},{"label":"A-","minimum":4.15},{"label":"B+","minimum":3.85},{"label":"B","minimum":3.5},{"label":"B-","minimum":3.2},{"label":"C+","minimum":2.9},{"label":"C","minimum":2.6},{"label":"C-","minimum":2.3},{"label":"D","minimum":1.75},{"label":"F","minimum":0}],
+    "neutralScore": 3
+  },
+  "requiredEvaluationFields": ["marketMethodologyVersion", "marketSnapshotId", "marketSnapshotDate", "draftId", "draftDate", "predictionVersion", "forecastCreatedAt", "approvedAt"],
+  "boundaries": {"processCombined": false, "overallGradeCombined": false, "outcomesUsed": false, "publicExposure": false, "predictorIntegration": false}
+}

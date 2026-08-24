@@ -1,0 +1,18 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Operational finance is server-authoritative. Admin SDK calls are checked
+    // by the application session/capability boundary and bypass these rules.
+    match /financeSeasons/{season} {
+      allow read, write: if false;
+      match /{subcollection}/{document} {
+        allow read, write: if false;
+      }
+    }
+
+    match /site_feedback/{feedbackId} {
+      allow read, write: if false;
+    }
+  }
+}

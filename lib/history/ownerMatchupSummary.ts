@@ -1,8 +1,12 @@
 import { loadAllMatchups } from "./matchups";
 import { getRivalriesByOwner } from "./rivalries";
 
+export const MIN_PROFILE_RIVALRY_MEETINGS = 3;
+
 export interface OwnerMatchupSummary {
   readonly ownerId: string;
+  readonly coverageStartSeason: number | null;
+  readonly coverageEndSeason: number | null;
   readonly games: number;
   readonly wins: number;
   readonly losses: number;
@@ -29,6 +33,8 @@ export function getOwnerMatchupSummary(ownerId: string): OwnerMatchupSummary {
   const matchups = loadAllMatchups().filter(
     (matchup) => matchup.ownerAId === ownerId || matchup.ownerBId === ownerId
   );
+
+  const matchupSeasons = matchups.map((matchup) => matchup.season);
 
   let wins = 0;
   let losses = 0;
@@ -117,7 +123,11 @@ export function getOwnerMatchupSummary(ownerId: string): OwnerMatchupSummary {
           meetings: rivalry.meetings,
         };
       })
-      .filter((record) => record.margin > 0)
+      .filter(
+        (record) =>
+          record.margin > 0 &&
+          record.meetings >= MIN_PROFILE_RIVALRY_MEETINGS
+      )
       .sort((a, b) => {
         if (b.margin !== a.margin) return b.margin - a.margin;
         return b.meetings - a.meetings;
@@ -137,7 +147,11 @@ export function getOwnerMatchupSummary(ownerId: string): OwnerMatchupSummary {
           meetings: rivalry.meetings,
         };
       })
-      .filter((record) => record.margin > 0)
+      .filter(
+        (record) =>
+          record.margin > 0 &&
+          record.meetings >= MIN_PROFILE_RIVALRY_MEETINGS
+      )
       .sort((a, b) => {
         if (b.margin !== a.margin) return b.margin - a.margin;
         return b.meetings - a.meetings;
@@ -145,6 +159,8 @@ export function getOwnerMatchupSummary(ownerId: string): OwnerMatchupSummary {
 
   return {
     ownerId,
+    coverageStartSeason: matchupSeasons.length ? Math.min(...matchupSeasons) : null,
+    coverageEndSeason: matchupSeasons.length ? Math.max(...matchupSeasons) : null,
     games: wins + losses + ties,
     wins,
     losses,

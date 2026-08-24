@@ -16,15 +16,15 @@ export function ProfileTimeline({ items }: ProfileTimelineProps) {
           key={`${item.year}-${item.title}-${index}`}
           className="grid grid-cols-[5rem_1fr] gap-4"
         >
-          <p className="pt-1 font-ui text-xs font-black uppercase text-[var(--lcc-text-muted)]">
+          <p className="pt-1 lcc2-label">
             {item.year}
           </p>
-          <div className="relative border-l border-[var(--lcc-border)] pb-5 pl-5 last:pb-0">
-            <span className="absolute -left-[0.44rem] top-1 h-3.5 w-3.5 rounded-full border-2 border-[var(--lcc-surface)] bg-[var(--lcc-gold)]" />
-            <p className="font-serif text-xl font-black uppercase italic leading-none text-[var(--lcc-text)]">
+          <div className="relative border-l border-[var(--lcc-color-border)] pb-5 pl-5 last:pb-0">
+            <span className="absolute -left-[0.44rem] top-1 h-3.5 w-3.5 rounded-full border-2 border-[var(--lcc-color-surface-raised)] bg-[var(--lcc-color-achievement)]" />
+            <p className="font-ui text-lg font-black leading-tight text-[var(--lcc-color-text)]">
               {item.title}
             </p>
-            <p className="mt-2 font-ui text-sm font-medium leading-6 text-[var(--lcc-text-muted)]">
+            <p className="lcc2-body mt-2">
               {item.detail}
             </p>
           </div>

@@ -8,6 +8,8 @@ import {
 } from 'lucide-react';
 import { LCC_CURRENT_SEASON, LCC_LEAGUE_HISTORY } from '@/lib/leagueConstants';
 import { getLccOwnerBySleeperUserId } from '@/lib/lccOwners';
+import { getOwnerImagePath } from '@/lib/ownerImages';
+import { LeagueInfoShell } from '@/components/league/LeagueInfoShell';
 
 const SLEEPER_ARCHIVE_SEASONS = LCC_LEAGUE_HISTORY.filter(
   ({ year }) => year >= 2019 && year < LCC_CURRENT_SEASON
@@ -111,38 +113,64 @@ export default function ArchivesPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F9F7F2] text-[#1A472A] pb-24">
-      <div className="max-w-7xl mx-auto px-6 pt-12">
-        <div className="flex items-center justify-between mb-12">
-          <Link href="/league-info" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-[#C5A059] transition-all">
-            <ArrowLeft className="w-4 h-4" /> Clubhouse Hub
-          </Link>
-          <div className="text-right">
-             <h1 className="text-4xl font-black italic uppercase tracking-tighter leading-none">League <span className="text-[#C5A059]">Archives</span></h1>
-             <p className="text-[10px] font-bold uppercase opacity-40 mt-1">LCC Statistical History</p>
-             <p className="text-[9px] font-bold uppercase opacity-40 mt-2 max-w-md">
-               Sleeper-powered stats cover {ARCHIVE_START_YEAR}-{ARCHIVE_END_YEAR} completed Sleeper seasons. Pre-2019 history lives in the LCC final placement ledger.
-             </p>
+    <LeagueInfoShell>
+      <main className="lcc2-page-shell">
+      <div className="lcc2-page-container">
+        <div className="mb-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <Link href="/league-info" className="lcc2-button lcc2-button--secondary">
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to League Info
+            </Link>
+            <p className="lcc2-label mt-7 text-[var(--lcc-brand-primary)]">League Info</p>
+            <h1 className="lcc2-home-identity__title mt-2">League Archives</h1>
+            <p className="lcc2-home-identity__supporting max-w-3xl">
+              Detailed statistical leaderboards from LCC&apos;s Sleeper-era archive.
+            </p>
+          </div>
+          <div className="lcc2-badge lcc2-badge--info self-start lg:self-end">
+            Sleeper Era · {ARCHIVE_START_YEAR}–{ARCHIVE_END_YEAR}
           </div>
         </div>
 
+        <section className="mb-6 grid gap-3 md:grid-cols-2" aria-label="Archive coverage">
+          <div className="lcc2-card">
+            <p className="lcc2-label text-[var(--lcc-brand-primary)]">Detailed statistical coverage</p>
+            <p className="lcc2-body mt-2">
+              Roster, scoring, win percentage, and lineup-efficiency records cover completed Sleeper seasons from {ARCHIVE_START_YEAR}–{ARCHIVE_END_YEAR}.
+            </p>
+          </div>
+          <div className="lcc2-card">
+            <p className="lcc2-label text-[var(--lcc-brand-primary)]">Historical placements</p>
+            <p className="lcc2-body mt-2">
+              Champions, podiums, and last-place history from 2003–2025 are preserved in the{' '}
+              <Link href="/league-info/trophy-room" className="font-bold text-[var(--lcc-brand-primary)] underline decoration-[var(--lcc-color-accent)] underline-offset-4">
+                Trophy Room
+              </Link>.
+            </p>
+          </div>
+        </section>
+
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-32 space-y-4">
-            <Loader2 className="w-12 h-12 animate-spin text-[#1A472A]" />
-            <p className="font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">{progress}</p>
+          <div className="lcc2-card flex min-h-56 flex-col items-center justify-center gap-4 text-center">
+            <Loader2 className="h-10 w-10 animate-spin text-[var(--lcc-brand-primary)]" aria-hidden="true" />
+            <div>
+              <p className="lcc2-label text-[var(--lcc-brand-primary)]">Loading Sleeper-era archive</p>
+              <p className="lcc2-body mt-2">{progress || `Loading ${ARCHIVE_START_YEAR}–${ARCHIVE_END_YEAR} statistics…`}</p>
+            </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-             <LeaderCard id="wins" title="All-Time Wins" icon={Trophy} color="bg-yellow-500" data={[...stats].sort((a,b) => b.wins - a.wins)} val={(m: any) => m.wins} label="Wins" exp={expandedCard} setExp={setExpandedCard} />
-             <LeaderCard id="points" title="All-Time Points" icon={TrendingUp} color="bg-green-500" data={[...stats].sort((a,b) => b.fpts - a.fpts)} val={(m: any) => m.fpts.toLocaleString(undefined, { maximumFractionDigits: 0 })} label="Points" exp={expandedCard} setExp={setExpandedCard} />
-             <LeaderCard id="best_season" title="Best Season" icon={History} color="bg-orange-500" data={[...seasonRecords].sort((a,b) => b.fpts - a.fpts)} val={(m: any) => m.fpts.toLocaleString(undefined, { maximumFractionDigits: 0 })} label="Points" exp={expandedCard} setExp={setExpandedCard} />
-             <LeaderCard id="worst_season" title="Lowest Season" icon={ArrowDown} color="bg-red-500" data={[...seasonRecords].filter(m => m.fpts > 500).sort((a,b) => a.fpts - b.fpts)} val={(m: any) => m.fpts.toLocaleString(undefined, { maximumFractionDigits: 0 })} label="Points" exp={expandedCard} setExp={setExpandedCard} />
-             <LeaderCard id="winpct" title="Best Win %" icon={Crown} color="bg-purple-500" data={[...stats].filter(s => s.seasons >= 2).sort((a,b) => (b.wins/(b.wins+b.losses)) - (a.wins/(a.wins+a.losses)))} val={(m: any) => ((m.wins / (m.wins + m.losses)) * 100).toFixed(1) + "%"} label="Win Pct" exp={expandedCard} setExp={setExpandedCard} />
-             <LeaderCard id="efficiency" title="Lineup Efficiency" icon={Zap} color="bg-blue-500" data={[...stats].filter(s => s.ppts > 0).sort((a,b) => (b.fpts/b.ppts) - (a.fpts/a.ppts))} val={(m: any) => ((m.fpts / m.ppts) * 100).toFixed(1) + "%"} label="Start %" exp={expandedCard} setExp={setExpandedCard} />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <LeaderCard id="wins" title="All-Time Wins" icon={Trophy} color="" data={[...stats].sort((a,b) => b.wins - a.wins)} val={(m: any) => m.wins} label="Wins" exp={expandedCard} setExp={setExpandedCard} />
+            <LeaderCard id="points" title="All-Time Points" icon={TrendingUp} color="" data={[...stats].sort((a,b) => b.fpts - a.fpts)} val={(m: any) => m.fpts.toLocaleString(undefined, { maximumFractionDigits: 0 })} label="Points" exp={expandedCard} setExp={setExpandedCard} />
+            <LeaderCard id="best_season" title="Best Season" icon={History} color="" data={[...seasonRecords].sort((a,b) => b.fpts - a.fpts)} val={(m: any) => m.fpts.toLocaleString(undefined, { maximumFractionDigits: 0 })} label="Points" exp={expandedCard} setExp={setExpandedCard} />
+            <LeaderCard id="worst_season" title="Lowest Season" icon={ArrowDown} color="" data={[...seasonRecords].filter(m => m.fpts > 500).sort((a,b) => a.fpts - b.fpts)} val={(m: any) => m.fpts.toLocaleString(undefined, { maximumFractionDigits: 0 })} label="Points" exp={expandedCard} setExp={setExpandedCard} />
+            <LeaderCard id="winpct" title="Best Win %" icon={Crown} color="" data={[...stats].filter(s => s.seasons >= 2).sort((a,b) => (b.wins/(b.wins+b.losses)) - (a.wins/(a.wins+a.losses)))} val={(m: any) => ((m.wins / (m.wins + m.losses)) * 100).toFixed(1) + "%"} label="Win Pct" exp={expandedCard} setExp={setExpandedCard} />
+            <LeaderCard id="efficiency" title="Lineup Efficiency" icon={Zap} color="" data={[...stats].filter(s => s.ppts > 0).sort((a,b) => (b.fpts/b.ppts) - (a.fpts/a.ppts))} val={(m: any) => ((m.fpts / m.ppts) * 100).toFixed(1) + "%"} label="Start %" exp={expandedCard} setExp={setExpandedCard} />
           </div>
         )}
       </div>
-    </div>
+      </main>
+    </LeagueInfoShell>
   );
 }
 
@@ -150,34 +178,48 @@ function LeaderCard({ id, title, icon: Icon, color, data, val, label, exp, setEx
   const isExp = exp === id;
   const list = isExp ? data : data.slice(0, 5);
   return (
-    <div className="bg-white rounded-[2rem] border border-black/5 shadow-sm overflow-hidden flex flex-col h-full">
-      <div className={`p-6 ${color} text-white flex items-center gap-3`}>
-        <div className="p-2 bg-white/20 rounded-lg"><Icon className="w-5 h-5 text-white" /></div>
-        <h3 className="font-black uppercase tracking-widest text-xs leading-none">{title}</h3>
+    <section className="lcc2-card flex h-full flex-col overflow-hidden p-0" aria-labelledby={`${id}-heading`}>
+      <div className="border-b border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] px-4 py-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--lcc-color-surface-raised)] text-[var(--lcc-brand-primary)]">
+            <Icon className="h-5 w-5" aria-hidden="true" />
+          </div>
+          <h2 id={`${id}-heading`} className="font-ui text-sm font-black uppercase tracking-[0.06em] text-[var(--lcc-color-text)]">{title}</h2>
+        </div>
+        <p className="lcc2-label mt-3">Sleeper Era · {ARCHIVE_START_YEAR}–{ARCHIVE_END_YEAR}</p>
       </div>
-      <div className="divide-y divide-black/5 flex-grow">
+      <div className="flex-grow divide-y divide-[var(--lcc-color-border)]">
         {list.map((m: any, i: number) => (
-          <div key={`${m.id}-${m.year || 'all'}`} className="p-4 flex items-center justify-between hover:bg-gray-50 transition-all">
-            <div className="flex items-center gap-4 overflow-hidden">
-               <span className={`font-black text-sm w-4 text-center ${i === 0 ? 'text-[#C5A059]' : 'text-gray-300'}`}>{i + 1}</span>
-               <div className="w-10 h-10 rounded-full bg-[#1A472A]/5 overflow-hidden relative border border-black/5 shrink-0">
-                  {m.avatar ? <img src={`https://sleepercdn.com/avatars/thumbs/${m.avatar}`} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center font-black text-gray-400 text-xs">{m.realName.charAt(0)}</div>}
+          <div key={`${m.id}-${m.year || 'all'}`} className="flex items-center justify-between gap-3 p-3 transition-colors hover:bg-[var(--lcc-color-surface-muted)]">
+            <div className="flex min-w-0 items-center gap-3">
+               <span className={`w-4 shrink-0 text-center font-ui text-sm font-black ${i === 0 ? 'text-[var(--lcc-color-accent)]' : 'text-[var(--lcc-color-text-subtle)]'}`}>{i + 1}</span>
+               <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)]">
+                  {getArchiveAvatarSrc(m) ? <img src={getArchiveAvatarSrc(m) || undefined} alt="" className="h-full w-full object-cover" /> : <div className="flex h-full w-full items-center justify-center font-ui text-xs font-black text-[var(--lcc-color-text-muted)]">{m.realName.charAt(0)}</div>}
                </div>
-               <div className="flex flex-col min-w-0">
-                  <span className="font-black text-xs uppercase truncate leading-none mb-1">{m.realName}</span>
-                  <span className="text-[8px] font-bold text-gray-400 uppercase truncate italic leading-none">{m.teamName} {m.year && `• ${m.year}`}</span>
+               <div className="min-w-0">
+                  <span className="block break-words whitespace-normal font-ui text-xs font-black leading-tight text-[var(--lcc-color-text)]">{m.realName}</span>
+                  <span className="mt-1 block break-words whitespace-normal font-ui text-[0.65rem] font-semibold leading-tight text-[var(--lcc-color-text-muted)]">{m.teamName} {m.year && `• ${m.year}`}</span>
                </div>
             </div>
-            <div className="text-right">
-               <span className="block font-black text-sm leading-none">{val(m)}</span>
-               <span className="text-[7px] font-black uppercase text-gray-400 leading-none">{label}</span>
+            <div className="shrink-0 text-right">
+               <span className="block font-ui text-sm font-black leading-none text-[var(--lcc-color-text)]">{val(m)}</span>
+               <span className="font-ui text-[0.6rem] font-black uppercase leading-none text-[var(--lcc-color-text-muted)]">{label}</span>
             </div>
           </div>
         ))}
       </div>
-      <button onClick={() => setExp(isExp ? null : id)} className="w-full py-4 bg-gray-50 text-[9px] font-black uppercase tracking-[0.2em] hover:bg-gray-100 transition-all flex items-center justify-center gap-1">
+      <button type="button" onClick={() => setExp(isExp ? null : id)} aria-expanded={isExp} className="lcc2-button lcc2-button--secondary w-full rounded-none border-x-0 border-b-0">
         {isExp ? 'Show Less' : 'View Full Ranks'} {isExp ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
       </button>
-    </div>
+    </section>
   );
+}
+
+function getArchiveAvatarSrc(manager: any) {
+  const owner = getLccOwnerBySleeperUserId(manager.id);
+  return owner
+    ? getOwnerImagePath(owner.id)
+    : manager.avatar
+      ? `https://sleepercdn.com/avatars/thumbs/${manager.avatar}`
+      : null;
 }
