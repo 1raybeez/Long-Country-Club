@@ -5,6 +5,8 @@ import { getOwnerById } from '@/lib/ownerRegistry';
 import { hasCapability } from '@/lib/auth/memberResolver';
 import { getCurrentMemberSession } from '@/lib/auth/session';
 import { getWarRoomCurrentRoster, WAR_ROOM_ROSTER_POSITIONS, type WarRoomRosterPlayer, type WarRoomRosterPosition, type WarRoomRosterStatus } from '@/lib/warRoom/currentRoster';
+import { getWarRoomDraftCapital } from '@/lib/warRoom/draftCapital';
+import { DraftCapitalSection } from './DraftCapitalSection';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,6 +25,7 @@ export default async function WarRoomPage() {
   }
 
   const roster = getWarRoomCurrentRoster(owner.ownerId);
+  const draftCapital = getWarRoomDraftCapital(owner.ownerId);
 
   return (
     <main className="lcc2-page-shell">
@@ -61,12 +64,13 @@ export default async function WarRoomPage() {
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <FoundationCard icon={<Crosshair className="h-5 w-5" aria-hidden="true" />} title="Roster" status="Available" description="Your current 2026 roster is available below." />
-            <FoundationCard icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />} title="Draft Capital" status="Next Build" description="Canonical future-pick holdings will be connected later." />
+            <FoundationCard icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />} title="Draft Capital" status="Available" description="Verified future rookie-pick holdings are available below." />
             <FoundationCard icon={<Sparkles className="h-5 w-5" aria-hidden="true" />} title="Draft Strategy" status="Planned" description="Descriptive draft tendencies will be added after the shell is established." />
           </div>
         </section>
 
         <CurrentRosterSection roster={roster} teamName={owner.teamName} />
+        <DraftCapitalSection capital={draftCapital} />
       </div>
     </main>
   );
