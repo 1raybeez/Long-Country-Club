@@ -1,9 +1,10 @@
 import { cookies } from 'next/headers';
 import { getFirebaseAdminAuth } from './firebaseAdmin';
 import { resolveMemberSession } from './memberResolver';
+import { LCC_SESSION_COOKIE } from './cookie';
 import type { AuthenticatedIdentity, LccMemberSession } from './types';
 
-export const LCC_SESSION_COOKIE = 'lcc_session';
+export { LCC_LEGACY_SESSION_COOKIE, LCC_SESSION_COOKIE } from './cookie';
 
 export async function getAuthenticatedIdentity(): Promise<AuthenticatedIdentity | null> {
   const auth = getFirebaseAdminAuth();

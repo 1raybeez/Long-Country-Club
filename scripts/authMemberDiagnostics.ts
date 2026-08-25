@@ -1,6 +1,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { resolveLccMember, validateMemberDirectory } from '../lib/auth/memberResolver';
 import { getOwnerById } from '../lib/ownerRegistry';
+import { LCC_SESSION_COOKIE } from '../lib/auth/cookie';
 import type { AuthenticatedIdentity } from '../lib/auth/types';
 
 function readDirectoryRaw() {
@@ -18,6 +19,7 @@ const failures: string[] = [];
 const directory = validation.directory;
 const entries = Object.values(directory);
 
+if (LCC_SESSION_COOKIE !== '__session') failures.push('HOSTING_SESSION_COOKIE_NAME');
 if (validation.errors.length) failures.push(...validation.errors);
 if (entries.length !== 12) failures.push('ACTIVE_AUTHORIZED_COUNT');
 if (validation.normalizedEmailCount !== 12) failures.push('NORMALIZED_EMAIL_COUNT');
@@ -43,6 +45,7 @@ if (resolveLccMember({ uid: 'diagnostic-retired', email: 'retired@example.invali
 if (getOwnerById('dan-lowery')?.status !== 'retired') failures.push('RETIRED_FIXTURE');
 
 console.log('LCC Auth/Member Foundation Slice A diagnostics');
+console.log(`Hosting session cookie: ${LCC_SESSION_COOKIE === '__session' ? 'PASS (__session)' : 'FAIL'}`);
 console.log(`Directory parse: ${validation.errors.length ? 'FAIL' : 'PASS'} | active mappings=${entries.length} | normalized emails=${validation.normalizedEmailCount} | unique owners=${validation.uniqueOwnerMappingCount}`);
 console.log(`Retired mappings: ${validation.retiredOwnerCount} | unknown owners: ${validation.unknownOwnerCount} | capabilities: ${failures.includes('UNRECOGNIZED_CAPABILITY') ? 'FAIL' : 'recognized'}`);
 console.log(`Ray: ${ray ? 'active member' : 'rejected'} | commissioner=${ray?.capabilities.includes('commissioner') ? 'yes' : 'no'}`);

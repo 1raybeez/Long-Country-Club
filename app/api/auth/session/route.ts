@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getFirebaseAdminAuth } from '@/lib/auth/firebaseAdmin';
-import { LCC_SESSION_COOKIE } from '@/lib/auth/session';
+import { LCC_LEGACY_SESSION_COOKIE, LCC_SESSION_COOKIE } from '@/lib/auth/cookie';
 
 const SESSION_LENGTH_MS = 1000 * 60 * 60 * 24 * 5;
 
@@ -31,6 +31,13 @@ export async function POST(request: Request) {
       path: '/',
       maxAge: SESSION_LENGTH_MS / 1000,
     });
+    response.cookies.set(LCC_LEGACY_SESSION_COOKIE, '', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 0,
+    });
     console.info('LCC_AUTH_SET_COOKIE_ATTACHED', { attached: response.headers.has('set-cookie') });
     return response;
   } catch {
@@ -41,6 +48,13 @@ export async function POST(request: Request) {
 export async function DELETE() {
   const response = NextResponse.json({ ok: true });
   response.cookies.set(LCC_SESSION_COOKIE, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 0,
+  });
+  response.cookies.set(LCC_LEGACY_SESSION_COOKIE, '', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
