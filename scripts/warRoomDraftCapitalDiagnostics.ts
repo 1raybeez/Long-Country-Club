@@ -21,7 +21,7 @@ coverage.inventory.assets.forEach((asset) => {
 if (duplicateIds.size) errors.push(`DUPLICATE_PICK_IDS:${[...duplicateIds].join(",")}`);
 
 const ray = getWarRoomDraftCapital("ray-long");
-if (!ray || ray.picks.length !== 8 || ray.picksBySeason["2027"] !== 4 || ray.picksBySeason["2028"] !== 4) {
+if (!ray || ray.picks.length !== 12 || ray.picksBySeason["2027"] !== 4 || ray.picksBySeason["2028"] !== 4 || ray.picksBySeason["2029"] !== 4) {
   errors.push("RAY_DRAFT_CAPITAL");
 }
 if (ray && (ray.acquiredPicks.length !== 0 || ray.originalPicksTradedAway.length !== 0)) {

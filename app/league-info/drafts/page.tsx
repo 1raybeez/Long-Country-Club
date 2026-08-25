@@ -289,7 +289,7 @@ function FuturePicksPanel() {
   return (
     <DraftSection id="draft-panel-future" eyebrow="Dynasty assets" title="Future Picks" supporting="Track verified future rookie-pick ownership across the league." action={<CalendarDays className="h-5 w-5 text-[var(--lcc-brand-secondary)]" aria-hidden="true" />}>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <DraftMetricCard icon={<CalendarDays className="h-5 w-5" aria-hidden="true" />} label="Future Seasons Tracked" value={String(FUTURE_PICK_YEARS.length)} helperText="2027–2028 inventory" status="Available" />
+        <DraftMetricCard icon={<CalendarDays className="h-5 w-5" aria-hidden="true" />} label="Future Seasons Tracked" value={String(FUTURE_PICK_YEARS.length)} helperText="2027–2029 inventory" status="Available" />
         <DraftMetricCard icon={<PackageOpen className="h-5 w-5" aria-hidden="true" />} label="Total Future Assets" value={String(FUTURE_PICK_INVENTORY.assets.length)} helperText="Format-preserved assets" status="Available" />
         <DraftMetricCard icon={<GitCompareArrows className="h-5 w-5" aria-hidden="true" />} label="Verified Traded Assets" value={String(FUTURE_PICK_INVENTORY.assets.filter((asset) => asset.isTraded && asset.verificationStatus === 'verified').length)} helperText="Current Sleeper state" status="Available" />
         <DraftMetricCard icon={<ClipboardList className="h-5 w-5" aria-hidden="true" />} label="Current League Format" value={`${FUTURE_PICK_INVENTORY.rosterCount} teams`} helperText={`${FUTURE_PICK_INVENTORY.rookieDraftRounds} rookie rounds`} status="Available" />

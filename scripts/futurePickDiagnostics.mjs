@@ -29,12 +29,14 @@ const oneCurrentOwnerPerAsset = assets.every((asset) => Number.isInteger(asset.c
 const noHistoricalDraftMutation = !assets.some((asset) => Object.prototype.hasOwnProperty.call(asset, 'playerId') || Object.prototype.hasOwnProperty.call(asset, 'overallPick'));
 const assets2027 = assetsByYear[2027] ?? [];
 const assets2028 = assetsByYear[2028] ?? [];
+const assets2029 = assetsByYear[2029] ?? [];
 const anthony2027Held = assets2027.filter((asset) => asset.currentOwnerId === 'anthony-martinez');
 const mike2027Held = assets2027.filter((asset) => asset.currentOwnerId === 'mike-mcburnie');
 const anthony2027Round2 = assets2027.find((asset) => asset.originalOwnerId === 'anthony-martinez' && asset.round === 2);
 const ownerCounts2028 = new Map(assets2028.map((asset) => [asset.currentOwnerId, (assets2028.filter((candidate) => candidate.currentOwnerId === asset.currentOwnerId).length)]));
 const checks = {
   supportedFutureSeasonsFound: supportedYears.length > 0,
+  supportedFutureSeasonsAre2027To2029: JSON.stringify(supportedYears) === JSON.stringify([2027, 2028, 2029]),
   expectedAssetsPerYear: supportedYears.every((season) => assetsByYear[season].length === expectedAssetsPerYear),
   twelveAssetsPerRound: supportedYears.every((season) => Object.values(roundCounts[season]).every((count) => count === inventory.rosterCount)),
   uniqueDeterministicIds: duplicateIds.length === 0 && assets.every((asset) => asset.id === `${asset.season}-r${asset.round}-roster-${asset.originalRosterId}`),
@@ -47,6 +49,8 @@ const checks = {
   '2027MikeHoldsFive': mike2027Held.length === 5,
   '2027AnthonyRound2CurrentOwnerMike': anthony2027Round2?.currentOwnerId === 'mike-mcburnie',
   '2028TwelveOwnersFourAssetsEach': assets2028.length === 48 && ownerCounts2028.size === 12 && [...ownerCounts2028.values()].every((count) => count === 4),
+  '2029TwelveOwnersFourAssetsEach': assets2029.length === 48 && new Set(assets2029.map((asset) => asset.currentOwnerId)).size === 12 && Array.from({ length: inventory.rookieDraftRounds }, (_, index) => index + 1).every((round) => assets2029.filter((asset) => asset.round === round).length === inventory.rosterCount),
+  '2029NoTradedAssets': assets2029.every((asset) => !asset.isTraded && asset.verificationStatus === 'format-derived'),
 };
 
 console.log(JSON.stringify({
