@@ -36,9 +36,8 @@ export default async function CommissionerHubPage() {
 
         <section className="mt-8" aria-labelledby="needs-attention-heading">
           <div className="mb-4"><p className="lcc2-label text-[var(--lcc-brand-secondary)]">Needs attention</p><h2 id="needs-attention-heading" className="mt-1 font-ui text-2xl font-black text-[var(--lcc-color-text)]">Operational snapshot</h2></div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4">
             <HubCard href="/commish/feedback" eyebrow="Owner Feedback" title={feedbackSummary ? `${feedbackSummary.open} open` : 'Status unavailable'} description={feedbackSummary ? `${feedbackSummary.planned} planned · ${feedbackSummary.total} total` : 'Open the queue to check current owner submissions.'} icon={<MessageSquare aria-hidden="true" />} cta="Review feedback" />
-            <HubCard href="/commish/finance" eyebrow="Finance" title="2026 operations" description="Open the finance workspace for assessments, payments, awards, and reconciliation." icon={<Banknote aria-hidden="true" />} cta="Open finance" />
           </div>
         </section>
 
