@@ -5,6 +5,7 @@ import { LCC_SESSION_COOKIE } from '@/lib/auth/session';
 const SESSION_LENGTH_MS = 1000 * 60 * 60 * 24 * 5;
 
 export async function POST(request: Request) {
+  console.info('LCC_AUTH_SESSION_POST_START');
   const adminAuth = getFirebaseAdminAuth();
   if (!adminAuth) {
     return NextResponse.json({ error: 'Authentication is not configured.' }, { status: 503 });
@@ -17,9 +18,11 @@ export async function POST(request: Request) {
 
   try {
     const decoded = await adminAuth.verifyIdToken(body.idToken);
+    console.info('LCC_AUTH_ID_TOKEN_VERIFIED', { verified: true });
     const sessionCookie = await adminAuth.createSessionCookie(body.idToken, {
       expiresIn: SESSION_LENGTH_MS,
     });
+    console.info('LCC_AUTH_SESSION_COOKIE_CREATED', { created: true });
     const response = NextResponse.json({ ok: true, uid: decoded.uid });
     response.cookies.set(LCC_SESSION_COOKIE, sessionCookie, {
       httpOnly: true,
@@ -28,6 +31,7 @@ export async function POST(request: Request) {
       path: '/',
       maxAge: SESSION_LENGTH_MS / 1000,
     });
+    console.info('LCC_AUTH_SET_COOKIE_ATTACHED', { attached: response.headers.has('set-cookie') });
     return response;
   } catch {
     return NextResponse.json({ error: 'Invalid authentication token.' }, { status: 401 });
