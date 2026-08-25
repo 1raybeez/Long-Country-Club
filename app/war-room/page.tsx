@@ -53,20 +53,20 @@ export default async function WarRoomPage() {
             <ShieldCheck className="h-5 w-5 text-[var(--lcc-interactive)]" aria-hidden="true" />
             <p className="lcc2-label mt-3">Workspace status</p>
             <p className="mt-1 font-ui text-base font-black text-[var(--lcc-color-text)]">Private member access</p>
-            <p className="lcc2-body mt-2 text-sm">Only your canonical owner workspace is available in this foundation slice.</p>
+            <p className="lcc2-body mt-2 text-sm">Only your canonical owner workspace is available.</p>
           </aside>
         </section>
 
         <section className="mt-8" aria-labelledby="war-room-foundation-heading">
           <div className="mb-4">
-            <p className="lcc2-section-heading__eyebrow">Foundation roadmap</p>
+            <p className="lcc2-section-heading__eyebrow">Workspace modules</p>
             <h2 id="war-room-foundation-heading" className="lcc2-section-heading__title">Your War Room</h2>
-            <p className="lcc2-section-heading__supporting">The private workspace is ready for its data-driven modules.</p>
+            <p className="lcc2-section-heading__supporting">Your private data-driven workspace modules.</p>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <FoundationCard icon={<Crosshair className="h-5 w-5" aria-hidden="true" />} title="Roster" status="Available" description="Your current 2026 roster is available below." />
             <FoundationCard icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />} title="Draft Capital" status="Available" description="Verified future rookie-pick holdings are available below." />
-            <FoundationCard icon={<Sparkles className="h-5 w-5" aria-hidden="true" />} title="Draft Strategy" status="Planned" description="Descriptive draft tendencies will be added after the shell is established." />
+            <FoundationCard icon={<Sparkles className="h-5 w-5" aria-hidden="true" />} title="Draft Strategy" status="Planned" description="Descriptive draft tendencies remain deferred until after launch." />
           </div>
         </section>
 

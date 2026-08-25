@@ -70,8 +70,8 @@ export default function ClubhouseInfoPage() {
 
             <OverviewContextCard eyebrow="The record book" title="All-Time Records" icon={<Trophy className="h-5 w-5" aria-hidden="true" />}>
               <p>Historical placement, championship, matchup, draft, wins, points, and lineup-efficiency records are preserved across the LCC archive.</p>
-              <p className="mt-3 text-sm text-[var(--lcc-color-text-muted)]">A dedicated Records destination is planned; the existing Archives page is the current statistical reference.</p>
-              <ReferenceLink href="/league-info/archives" label="Explore the Archives" />
+              <p className="mt-3 text-sm text-[var(--lcc-color-text-muted)]">The dedicated Records destination is available for the current statistical reference.</p>
+              <ReferenceLink href="/league-info/records" label="Explore League Records" />
             </OverviewContextCard>
           </section>
         </div>

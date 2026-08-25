@@ -46,7 +46,7 @@ export default async function CommissionerHubPage() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <HubCard href="/commish/feedback" eyebrow="Owner Feedback" title="Feedback Queue" description="Review owner-submitted bugs and suggestions with private commissioner controls." icon={<MessageSquare aria-hidden="true" />} cta="Open queue" />
             <HubCard href="/commish/finance" eyebrow="2026 Finance" title="Finance" description="Manage league assessments, payments, awards, settlements, corrections, and reconciliation." icon={<Banknote aria-hidden="true" />} cta="Open finance" />
-            <HubCard href="/war-room" eyebrow="War Room" title="Partial foundation" description="Open the authenticated owner workspace. Planning modules remain scheduled for later War Room work." icon={<ShieldCheck aria-hidden="true" />} cta="Open War Room" />
+            <HubCard href="/war-room" eyebrow="War Room" title="Owner workspace" description="Open the authenticated owner workspace with current roster and verified draft-capital modules." icon={<ShieldCheck aria-hidden="true" />} cta="Open War Room" />
           </div>
         </section>
 
