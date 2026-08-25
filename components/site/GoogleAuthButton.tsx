@@ -1,7 +1,6 @@
 'use client';
 
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { auth } from '@/lib/firebase';
 
@@ -14,7 +13,6 @@ export function GoogleAuthButton({
   returnTo?: string;
   className?: string;
 }) {
-  const router = useRouter();
   const [busy, setBusy] = useState(false);
 
   async function handleClick() {
@@ -23,7 +21,7 @@ export function GoogleAuthButton({
       if (mode === 'sign-out') {
         await signOut(auth);
         await fetch('/api/auth/session', { method: 'DELETE' });
-        router.refresh();
+        window.location.reload();
         return;
       }
 
@@ -36,8 +34,7 @@ export function GoogleAuthButton({
       });
 
       if (!response.ok) throw new Error('Authentication is not configured for this deployment.');
-      router.push(returnTo || '/');
-      router.refresh();
+      window.location.assign(returnTo || '/');
     } catch (error) {
       if (error instanceof Error && error.message) window.alert(error.message);
     } finally {
