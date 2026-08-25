@@ -34,9 +34,6 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await getCurrentMemberSession();
-  const memberPresent = Boolean(session?.member);
-  console.info('LCC_AUTH_LAYOUT_MEMBER_PRESENT', { present: memberPresent });
-  console.info('LCC_AUTH_LAYOUT_HEADER_MEMBER_PRESENT', { present: memberPresent });
 
   return (
     <html lang="en">

@@ -11,13 +11,11 @@ export async function getAuthenticatedIdentity(): Promise<AuthenticatedIdentity 
   if (!auth) return null;
 
   const sessionCookie = (await cookies()).get(LCC_SESSION_COOKIE);
-  console.info('LCC_AUTH_FOLLOWUP_COOKIE_PRESENT', { present: Boolean(sessionCookie) });
   const token = sessionCookie?.value;
   if (!token) return null;
 
   try {
     const decoded = await auth.verifySessionCookie(token, true);
-    console.info('LCC_AUTH_SESSION_COOKIE_VERIFIED', { verified: true });
     return {
       uid: decoded.uid,
       email: decoded.email ?? null,
@@ -40,10 +38,8 @@ export async function getCurrentMemberSession(): Promise<LccMemberSession | null
   const identity = await getAuthenticatedIdentity();
   const session = identity ? resolveMemberSession(identity) : null;
   const memberResolved = Boolean(session?.member);
-  console.info('LCC_AUTH_MEMBER_RESOLVED', {
-    resolved: memberResolved,
-    commissioner: Boolean(session?.member?.capabilities.includes('commissioner')),
-  });
-  if (!memberResolved) console.info('LCC_AUTH_MEMBER_NOT_RESOLVED', { resolved: false });
+  if (identity && !memberResolved) {
+    console.warn('LCC_AUTH_MEMBER_NOT_RESOLVED', { resolved: false });
+  }
   return session;
 }
