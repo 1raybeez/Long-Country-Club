@@ -3,7 +3,6 @@ import path from 'node:path';
 
 const root = process.cwd();
 const draftRoot = path.join(root, 'data/history/drafts');
-const rawDraftRoot = path.join(root, 'data/source/sleeper/drafts');
 const workspaceSource = fs.readFileSync(path.join(root, 'app/league-info/drafts/page.tsx'), 'utf8');
 const seasons = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
 const expectedPickCounts = new Map([
@@ -40,6 +39,23 @@ const duplicateBoardCoordinates = records.flatMap((draft) => {
 const ownerResolved = picks.filter((pick) => pick.canonicalOwnerId).length;
 const playerNameResolved = picks.filter((pick) => pick.playerName).length;
 const playerPositionResolved = picks.filter((pick) => pick.position).length;
+const canonicalProvenance = records.every((draft) =>
+  draft.sourceProvenance?.rawSeasonDirectory &&
+  draft.sourceProvenance?.rawDraftDirectory &&
+  draft.sourceProvenance?.draftId === draft.draftId &&
+  draft.sourceProvenance?.manifestReference
+);
+const canonicalRuntimeData = seasons.every((season) =>
+  fs.existsSync(path.join(draftRoot, String(season), 'drafts.json'))
+);
+const invalidPickOrdering = records.flatMap((draft) => draft.picks.filter((pick, index) => {
+  const expectedOverallPick = index + 1;
+  const expectedPickInRound = ((pick.round - 1) * 12) + pick.pickInRound;
+  return pick.overallPick !== expectedOverallPick ||
+    pick.pickInRound < 1 ||
+    pick.pickInRound > 12 ||
+    pick.overallPick !== expectedPickInRound;
+}).map((pick) => `${draft.draftId}:${pick.overallPick}`));
 const ownerMismatches = records.flatMap((draft) => {
   const canonicalBySleeper = new Map(draft.picks.filter((pick) => pick.sleeperUserId && pick.canonicalOwnerId).map((pick) => [pick.sleeperUserId, pick.canonicalOwnerId]));
   const slotOwnerBySlot = new Map(Object.entries(draft.draftOrder).map(([sleeperUserId, slot]) => [Number(slot), canonicalBySleeper.get(sleeperUserId) ?? null]));
@@ -53,9 +69,11 @@ const ownerMismatches = records.flatMap((draft) => {
 const tradeEventCounts = records.filter((draft) => draft.tradedPicks.length > 0).map((draft) => ({ draftId: draft.draftId, season: draft.season, tradedPickRecords: draft.tradedPicks.length, ownerMismatches: ownerMismatches.filter((pick) => pick.draftId === draft.draftId).length }));
 const roster4Picks2021 = picks.filter((pick) => pick.season === 2021 && pick.rosterId === 4);
 const roster4Mapping = JSON.parse(fs.readFileSync(path.join(draftRoot, '2021', 'drafts.json'), 'utf8')).historicalRosterOwnership?.find((mapping) => mapping.rosterId === 4);
-const rawRoster4 = JSON.parse(fs.readFileSync(path.join(rawDraftRoot, '2021', 'rosters.json'), 'utf8')).find((roster) => roster.roster_id === 4);
 const eventPickCountsMatch = records.every((draft) => expectedPickCounts.get(draft.draftId) === draft.picks.length);
 const checks = {
+  expectedDynastySeasons: [2021, 2022, 2023, 2024, 2025, 2026].every((season) => records.some((draft) => draft.season === season)),
+  canonicalRuntimeData,
+  canonicalSourceProvenance: canonicalProvenance,
   canonicalSeasonCount: new Set(records.map((draft) => draft.season)).size === 8,
   canonicalEventCount: records.length === 9,
   canonicalPickCount: picks.length === 924,
@@ -66,6 +84,8 @@ const checks = {
   noDuplicateDraftIds: duplicateDraftIds.length === 0,
   noDuplicateOverallPickNumbers: duplicatePickNumbers.length === 0,
   boardPreservesEveryPick: records.every((draft) => draft.picks.length === new Set(draft.picks.map((pick) => `${pick.round}:${pick.draftSlot}`)).size),
+  validRoundAndPickOrdering: invalidPickOrdering.length === 0,
+  pickCountsMatchCanonicalRecords: records.every((draft) => draft.pickCount === draft.picks.length),
   boardActualOwnerLabelsMatchCanonical: picks.every((pick) => Boolean(pick.canonicalOwnerId)),
   tableActualOwnerLabelsMatchCanonical: picks.every((pick) => Boolean(pick.canonicalOwnerId)),
   expectedEventPickCounts: eventPickCountsMatch,
@@ -74,7 +94,7 @@ const checks = {
   historical2021Roster4Team: roster4Mapping?.historicalTeamName === 'Ridiculousville Quicksand',
   no2021Roster4MikeEstes: !roster4Picks2021.some((pick) => pick.canonicalOwnerId === 'mike-estes'),
   laterMikeEstesOwnershipPresent: picks.some((pick) => pick.season > 2021 && pick.canonicalOwnerId === 'mike-estes'),
-  rawRoster4OwnerStillNull: rawRoster4?.owner_id === null,
+  canonical2021RosterOverrideDocumented: roster4Mapping?.provenance === 'commissioner-verified historical ownership',
   supportedWorkspaceSeasons: JSON.stringify(seasons) === JSON.stringify([2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]),
   workspaceDefaultsTo2026: workspaceSource.includes("useState(2026)"),
   selectedSeasonWorkspace: workspaceSource.includes('id="draft-history-season"') && workspaceSource.includes('id="selected-draft-heading"'),
@@ -96,6 +116,11 @@ console.log(JSON.stringify({
   events: records.length,
   picks: picks.length,
   ownerResolution: { resolved: ownerResolved, unresolved: picks.length - ownerResolved },
+  canonical: {
+    runtimeDataAvailable: canonicalRuntimeData,
+    sourceProvenancePresent: canonicalProvenance,
+    invalidPickOrdering: invalidPickOrdering.length,
+  },
   historicalRoster4: { picks: roster4Picks2021.length, owner: roster4Mapping?.canonicalOwnerId ?? null, team: roster4Mapping?.historicalTeamName ?? null },
   playerMetadataResolution: {
     nameResolved: playerNameResolved,
