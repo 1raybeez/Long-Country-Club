@@ -53,6 +53,7 @@
     "market-data:diagnostics": "node scripts/marketDataDiagnostics.mjs",
     "resource:diagnostics": "node scripts/resourceDiagnostics.mjs",
     "war-room:auth-diagnostics": "node scripts/warRoomAuthDiagnostics.mjs",
+    "war-room-roster:diagnostics": "node scripts/warRoomRosterDiagnostics.mjs",
     "auth:member-diagnostics": "node scripts/authMemberDiagnostics.mjs",
     "feedback:diagnostics": "node scripts/feedbackDiagnostics.mjs",
     "commissioner-feedback:diagnostics": "node scripts/commissionerFeedbackDiagnostics.mjs",
