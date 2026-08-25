@@ -58,7 +58,9 @@
     "commissioner-feedback:diagnostics": "node scripts/commissionerFeedbackDiagnostics.mjs",
     "commissioner-hub:diagnostics": "node scripts/commissionerHubDiagnostics.mjs",
     "predictor:diagnostics": "node scripts/predictorDiagnostics.mjs",
-    "predictor:snapshot": "node scripts/predictorSnapshot.mjs"
+    "predictor:snapshot": "node scripts/predictorSnapshot.mjs",
+    "firebase:package-matchup-archive": "node scripts/packageMatchupArchive.mjs",
+    "records:diagnostics": "node scripts/recordsDiagnostics.mjs"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",

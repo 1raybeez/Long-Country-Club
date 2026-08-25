@@ -8,7 +8,10 @@
     ],
     "frameworksBackend": {
       "region": "us-central1"
-    }
+    },
+    "predeploy": [
+      "npm run firebase:package-matchup-archive"
+    ]
   },
   "firestore": {
     "rules": "firestore.rules"
