@@ -1,9 +1,9 @@
 import { ACTIVE_LCC_OWNERS } from "../lccOwners";
 import { LCC_CURRENT_SEASON } from "../leagueConstants";
 import {
-  getCurrentRosterSnapshot,
-  type HistoricalRosterSnapshot,
-} from "../history/rosterSnapshots";
+  getCurrentWarRoomRosterSnapshot,
+  type CurrentWarRoomRosterSnapshot,
+} from "./currentRosterSnapshot";
 import {
   getPlayersByIds,
   type HistoricalPlayerMetadata,
@@ -29,7 +29,9 @@ export type WarRoomCurrentRoster = {
   readonly season: number;
   readonly ownerId: string;
   readonly rosterId: number;
-  readonly snapshot: HistoricalRosterSnapshot;
+  readonly snapshot: CurrentWarRoomRosterSnapshot;
+  readonly capturedAt: string;
+  readonly sourcePath: "data/current/rosters/2026.json";
   readonly players: readonly WarRoomRosterPlayer[];
   readonly positionCounts: Readonly<Record<WarRoomRosterPosition, number>>;
   readonly statusCounts: Readonly<Record<WarRoomRosterStatus, number>>;
@@ -39,7 +41,7 @@ export type WarRoomCurrentRoster = {
 export function getWarRoomCurrentRoster(
   ownerId: string,
 ): WarRoomCurrentRoster | null {
-  const snapshot = getCurrentRosterSnapshot(ownerId);
+  const snapshot = getCurrentWarRoomRosterSnapshot(ownerId);
 
   if (!snapshot) {
     return null;
@@ -57,6 +59,8 @@ export function getWarRoomCurrentRoster(
     ownerId,
     rosterId: snapshot.rosterId,
     snapshot,
+    capturedAt: snapshot.capturedAt,
+    sourcePath: snapshot.sourcePath,
     players,
     positionCounts: countPositions(players),
     statusCounts: countStatuses(players),

@@ -198,7 +198,7 @@ export default function RulesOfPlay() {
           <Tag type="hybrid">Hybrid Rule</Tag>
           <RuleBlock title="2.2 Roster Composition">
             <p>
-              Each team maintains a <strong>23-player roster</strong>.
+              Each team maintains a <strong>20-player normal roster</strong>.
             </p>
             <p>A valid starting lineup must include:</p>
             <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
@@ -219,7 +219,7 @@ export default function RulesOfPlay() {
           <Tag type="hybrid">Hybrid Rule</Tag>
           <RuleBlock title="2.3 Injured Reserve (IR)">
             <p>
-              The league uses <strong>3 IR spots</strong>. Only players designated by the NFL or Sleeper as IR, OUT, or
+              Beginning with the 2023 season, the league uses <strong>3 IR spots</strong>. Only players designated by the NFL or Sleeper as IR, OUT, or
               PUP are eligible for IR placement.
             </p>
             <p>

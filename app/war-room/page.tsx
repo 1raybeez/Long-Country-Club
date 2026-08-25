@@ -6,6 +6,7 @@ import { hasCapability } from '@/lib/auth/memberResolver';
 import { getCurrentMemberSession } from '@/lib/auth/session';
 import { getWarRoomCurrentRoster, WAR_ROOM_ROSTER_POSITIONS, type WarRoomRosterPlayer, type WarRoomRosterPosition, type WarRoomRosterStatus } from '@/lib/warRoom/currentRoster';
 import { getWarRoomDraftCapital } from '@/lib/warRoom/draftCapital';
+import { WAR_ROOM_ROSTER_RULES } from '@/lib/warRoom/rosterRules';
 import { DraftCapitalSection } from './DraftCapitalSection';
 
 export const dynamic = 'force-dynamic';
@@ -86,6 +87,11 @@ function CurrentRosterSection({ roster, teamName }: { roster: ReturnType<typeof 
       <div><p className="lcc2-section-heading__eyebrow">2026 current roster</p><h2 id="current-roster-heading" className="lcc2-section-heading__title">{teamName}</h2><p className="lcc2-section-heading__supporting">Factual roster snapshot grouped by position.</p></div>
       <div className="flex flex-wrap gap-2" aria-label="Roster summary"><SummaryBadge label="Players" value={roster.players.length} /><SummaryBadge label="Active" value={roster.statusCounts.ACTIVE} /><SummaryBadge label="Taxi" value={roster.statusCounts.TAXI} />{roster.statusCounts.IR > 0 ? <SummaryBadge label="IR" value={roster.statusCounts.IR} /> : null}</div>
     </div>
+    <div className="mb-5 grid gap-2 sm:grid-cols-3" aria-label="Roster capacity">
+      <CapacityMetric label="Normal roster" current={roster.statusCounts.ACTIVE} limit={WAR_ROOM_ROSTER_RULES.normal} />
+      <CapacityMetric label="IR" current={roster.statusCounts.IR} limit={WAR_ROOM_ROSTER_RULES.reserve} />
+      <CapacityMetric label="Taxi" current={roster.statusCounts.TAXI} limit={WAR_ROOM_ROSTER_RULES.taxi} />
+    </div>
     <div className="mb-5 grid grid-cols-3 gap-2 sm:grid-cols-6">{WAR_ROOM_ROSTER_POSITIONS.map((position) => <div key={position} className="lcc2-card p-3 text-center"><p className="lcc2-label text-xs">{position}</p><p className="mt-1 font-ui text-xl font-black text-[var(--lcc-color-text)]">{roster.positionCounts[position]}</p></div>)}</div>
     <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{WAR_ROOM_ROSTER_POSITIONS.map((position) => <RosterPositionCard key={position} position={position} players={roster.players.filter((player) => normalizePosition(player.position) === position)} />)}</div>
   </section>;
@@ -96,6 +102,10 @@ function RosterPositionCard({ position, players }: { position: WarRoomRosterPosi
 }
 
 function SummaryBadge({ label, value }: { label: string; value: number }) { return <span className="lcc2-badge lcc2-badge--neutral"><span>{label}</span> <strong>{value}</strong></span>; }
+function CapacityMetric({ label, current, limit }: { label: string; current: number; limit: number }) {
+  const delta = current - limit;
+  return <div className="lcc2-card p-3"><p className="lcc2-label text-xs">{label}</p><p className="mt-1 font-ui text-xl font-black text-[var(--lcc-color-text)]">{current} / {limit}</p><p className="mt-1 text-xs font-bold text-[var(--lcc-color-text-muted)]">{delta > 0 ? `${delta} OVER` : `${Math.abs(delta)} REMAINING`}</p></div>;
+}
 function RosterStatus({ status }: { status: WarRoomRosterStatus }) { return <span className="shrink-0 text-[0.65rem] font-black tracking-[0.08em] text-[var(--lcc-color-text-muted)]">{status}</span>; }
 function normalizePosition(position: string | null): WarRoomRosterPosition | null { return position === "DEF" ? "DST" : WAR_ROOM_ROSTER_POSITIONS.includes(position as WarRoomRosterPosition) ? position as WarRoomRosterPosition : null; }
 
