@@ -27,6 +27,7 @@
     "historical-trade:diagnostics": "node scripts/historicalTradeDiagnostics.mjs",
     "trade-values:fantasycalc:snapshot": "node scripts/acquireFantasyCalcSnapshot.mjs",
     "trade-values:diagnostics": "node scripts/tradeValuesDiagnostics.mjs",
+    "trade-values:policy-diagnostics": "node scripts/tradeValuesPolicyDiagnostics.mjs",
     "draft-records:diagnostics": "node scripts/draftRecordsDiagnostics.mjs",
     "rookie-recap:diagnostics": "node scripts/rookieRecapDiagnostics.mjs",
     "draft-intelligence:diagnostics": "node scripts/draftIntelligenceDiagnostics.mjs",
