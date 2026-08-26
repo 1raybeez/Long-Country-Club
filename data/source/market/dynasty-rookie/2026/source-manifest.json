@@ -5,6 +5,29 @@
   "formatContract": "1QB_DYNASTY_NON_TEP",
   "sources": [
     {
+      "sourceId": "rotoballer-2026-05-13-top-100",
+      "provider": "RotoBaller",
+      "publishedAt": "2026-05-13",
+      "url": "https://www.rotoballer.com/dynasty-rookie-rankings-for-fantasy-football-post-nfl-draft-2026/1860143",
+      "format": "DYNASTY_FORMAT_NOT_EXPLICIT",
+      "coverage": 100,
+      "fields": ["ranking", "tier"],
+      "status": "ADOPTED_STRONG_DYNASTY_BOARD",
+      "decision": "Adopted as a cutoff-safe full board with provider tiers preserved. The article does not explicitly label the board 1QB, so it is not falsely classified as format-specific."
+    },
+    {
+      "sourceId": "sports-illustrated-2026-05-19-top-50",
+      "provider": "Sports Illustrated",
+      "publishedAt": "2026-04-29",
+      "modifiedAt": "2026-05-19",
+      "url": "https://www.si.com/fantasy/top-50-fantasy-dynasty-rookie-rankings",
+      "format": "DYNASTY_FORMAT_NOT_EXPLICIT",
+      "coverage": 50,
+      "fields": ["ranking", "position", "nfl_team", "age"],
+      "status": "ADOPTED_SECONDARY_DYNASTY_BOARD",
+      "decision": "Adopted as the accessible May 19 modified Top 50 dynasty board; no unsupported 1QB label added."
+    },
+    {
       "sourceId": "fantasypros-may-2026-1qb-pick-values",
       "provider": "FantasyPros",
       "publishedAt": "2026-05",
@@ -54,7 +77,7 @@
       "publishedAt": "2026-05-24",
       "url": "https://fantasyfootballnerds.org/dynasty-rookie-rankings",
       "format": "MIXED_DYNASTY",
-      "coverage": 13,
+      "coverage": 14,
       "fields": ["ranking", "draft_capital", "landing_spot"],
       "status": "SECONDARY_REVIEW",
       "decision": "Retained as dated secondary review evidence for the captured top 13 rows; mixed superflex/1QB framing and incomplete extractable coverage prevent primary-market admission."
@@ -94,9 +117,10 @@
     }
   ],
   "marketDecision": {
-    "cutoffSafePrimarySource": false,
-    "consensusReady": false,
-    "gradingReady": false,
-    "reason": "Only partial dated supporting evidence was found; no cutoff-safe, full-coverage 1QB market source or consensus was established."
+    "cutoffSafePrimarySource": true,
+    "consensusReady": true,
+    "gradingReady": true,
+    "status": "READY_WITH_ROSTER_FIT_EXCLUSION",
+    "reason": "Cutoff-safe player-ranking boards now cover all Round 1 and Round 2 selections with medium/high evidence; roster fit remains explicitly unavailable."
   }
 }

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "cutoff": "2026-05-29T11:54:55.518Z",
+  "formatContract": "1QB_DYNASTY_NON_TEP",
+  "methodology": "Provider ranks are preserved independently. The final market median uses only cutoff-safe player-ranking boards; supporting probability/talent sources remain separate. Missing source rows remain missing.",
+  "sources": [
+    {
+      "sourceId": "rotoballer-2026-05-13-top-100",
+      "provider": "RotoBaller",
+      "publishedAt": "2026-05-13",
+      "sourceType": "PLAYER_RANKING",
+      "role": "STRONG_DYNASTY_BOARD",
+      "format": "DYNASTY_FORMAT_NOT_EXPLICIT",
+      "url": "https://www.rotoballer.com/dynasty-rookie-rankings-for-fantasy-football-post-nfl-draft-2026/1860143",
+      "coverage": 100,
+      "tiersPreserved": true,
+      "tierRanges": [
+        { "tier": 1, "start": 1, "end": 1 }, { "tier": 2, "start": 2, "end": 4 }, { "tier": 3, "start": 5, "end": 8 },
+        { "tier": 4, "start": 9, "end": 13 }, { "tier": 5, "start": 14, "end": 19 }, { "tier": 6, "start": 20, "end": 24 },
+        { "tier": 7, "start": 25, "end": 31 }, { "tier": 8, "start": 32, "end": 39 }, { "tier": 9, "start": 40, "end": 51 },
+        { "tier": 10, "start": 52, "end": 64 }, { "tier": 11, "start": 65, "end": 71 }, { "tier": 10, "start": 72, "end": 72 },
+        { "tier": 11, "start": 73, "end": 79 }, { "tier": 12, "start": 80, "end": 91 }, { "tier": 13, "start": 92, "end": 100 }
+      ],
+      "rows": [
+        "Jeremiyah Love", "Carnell Tate", "Jordyn Tyson", "Makai Lemon", "Jadarian Price", "KC Concepcion", "Fernando Mendoza", "Omar Cooper Jr.", "Kenyon Sadiq", "Denzel Boston", "Eli Stowers", "Antonio Williams", "Germie Bernard", "Chris Bell", "Jonah Coleman", "De'Zhaun Stribling", "Ty Simpson", "Chris Brazzell II", "Kaelon Black", "Zachariah Branch", "Ted Hurst", "Nicholas Singleton", "Emmett Johnson", "Malachi Fields", "Mike Washington Jr.", "Elijah Sarratt", "Ja'Kobi Lane", "Brenen Thompson", "Kaytron Allen", "Demond Claiborne", "Skyler Bell", "Bryce Lance", "Adam Randall", "Max Klare", "Carson Beck", "Kevin Coleman Jr.", "Drew Allar", "Caleb Douglas", "Oscar Delp", "Zavion Thomas", "Eli Heidenreich", "Eli Raridon", "Taylen Green", "Seth McGowan", "Colbie Young", "Cole Payton", "Josh Cameron", "Deion Burks", "Cyrus Allen", "Justin Joly", "Jam Miller", "Cade Klubnik", "Tanner Koziol", "Roman Hemby", "CJ Daniels", "Matthew Hibner", "Marlin Klein", "Barion Brown", "Garrett Nussmeier", "Kendrick Law", "Sam Roush", "J'Mari Taylor", "Nate Boerkircher", "Malik Benson", "Reggie Virgil", "Jeff Caldwell", "Lewis Bond", "Eric Rivers", "Jack Endries", "Chase Roberts", "Michael Trigg", "Noah Whittington", "Emmanuel Henderson Jr.", "CJ Williams", "Jaydn Ott", "Kaden Wetjen", "Desmond Reid", "Dae'Quan Wright", "Terion Stewart", "Rahsul Faison", "CJ Donaldson", "Dallen Bentley", "Aaron Anderson", "Joe Royer", "Eric McAlister", "Jalon Daniels", "Robert Henry Jr.", "Jamal Haynes", "Tyren Montgomery", "Haynes King", "Harrison Wallace III", "Sawyer Robertson", "Anthony Smith", "J. Michael Sturdivant", "Athan Kaliakmanis", "Josh Cuevas", "Dillon Bell", "Romello Brinson", "Caullin Lacy", "T.J. Harden"
+      ]
+    },
+    {
+      "sourceId": "sports-illustrated-2026-05-19-top-50",
+      "provider": "Sports Illustrated",
+      "publishedAt": "2026-04-29",
+      "modifiedAt": "2026-05-19",
+      "sourceType": "PLAYER_RANKING",
+      "role": "SECONDARY_DYNASTY_BOARD",
+      "format": "DYNASTY_FORMAT_NOT_EXPLICIT",
+      "url": "https://www.si.com/fantasy/top-50-fantasy-dynasty-rookie-rankings",
+      "coverage": 50,
+      "rows": [
+        "Jeremiyah Love", "Carnell Tate", "Jordyn Tyson", "Jadarian Price", "Makai Lemon", "Kenyon Sadiq", "KC Concepcion", "Omar Cooper Jr.", "Denzel Boston", "Fernando Mendoza", "Nicholas Singleton", "Eli Stowers", "De'Zhaun Stribling", "Germie Bernard", "Kaytron Allen", "Jonah Coleman", "Chris Bell", "Antonio Williams", "Chris Brazzell II", "Malachi Fields", "Zachariah Branch", "Kaelon Black", "Mike Washington Jr.", "Ted Hurst", "Skyler Bell", "Ty Simpson", "Adam Randall", "Emmett Johnson", "Ja'Kobi Lane", "Caleb Douglas", "Elijah Sarratt", "Max Klare", "Marlin Klein", "Oscar Delp", "Carson Beck", "Drew Allar", "Brenen Thompson", "Bryce Lance", "Seth McGowan", "Demond Claiborne", "Zavion Thomas", "Nate Boerkircher", "Kevon Coleman Jr.", "Reggie Virgil", "Colbie Young", "Justin Joly", "Eli Raridon", "Michael Trigg", "Sam Roush", "Eli Heidenreich"
+      ]
+    },
+    {
+      "sourceId": "ffn-2026-05-24",
+      "provider": "Fantasy Football Nerds",
+      "publishedAt": "2026-05-24",
+      "sourceType": "PLAYER_RANKING",
+      "role": "PRIMARY_STRONG_CONTEXTUAL",
+      "format": "DYNASTY_WITH_1QB_SUPERFLEX_CONTEXT",
+      "url": "https://fantasyfootballnerds.org/dynasty-rookie-rankings",
+      "coverage": 14,
+      "rows": ["Jeremiyah Love", "Carnell Tate", "Jordyn Tyson", "Makai Lemon", "Fernando Mendoza", "Jadarian Price", "Kenyon Sadiq", "KC Concepcion", "Ty Simpson", "Omar Cooper Jr.", "Denzel Boston", "Kaelon Black", "Jonah Coleman", "Antonio Williams"]
+    },
+    {
+      "sourceId": "the-flex-spot-2026-05-14",
+      "provider": "The Flex Spot",
+      "publishedAt": "2026-05-14",
+      "sourceType": "PLAYER_RANKING",
+      "role": "PRIMARY_FORMAT_SPECIFIC",
+      "format": "1QB_PPR_DYNASTY",
+      "url": "https://theflexspot.com/articles/ppr-2026-dynasty-rookie-mock",
+      "coverage": 12,
+      "rows": ["Jeremiyah Love", "Carnell Tate", "Jordyn Tyson", "Makai Lemon", "Jadarian Price", "Kenyon Sadiq", "KC Concepcion", "Omar Cooper Jr.", "Denzel Boston", "Fernando Mendoza", "De'Zhaun Stribling", "Chris Brazzell II"]
+    }
+  ],
+  "supportingSources": [
+    { "sourceId": "dynastyodds-2026-v9b-may", "provider": "DynastyOdds", "role": "SUPPORTING_TALENT_PROBABILITY", "url": "https://www.dynastyodds.com/" },
+    { "sourceId": "first-down-studio-2026-05-06", "provider": "First Down Studio", "role": "SUPPORTING_TALENT", "url": "https://www.firstdown.studio/board" }
+  ]
+}
