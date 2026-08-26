@@ -30,6 +30,7 @@
     "trade-values:policy-diagnostics": "node scripts/tradeValuesPolicyDiagnostics.mjs",
     "trade-fairness:diagnostics": "node scripts/tradeFairnessDiagnostics.mjs",
     "trade-consolidation:diagnostics": "node scripts/tradeConsolidationDiagnostics.mjs",
+    "trade-model-spec:diagnostics": "node scripts/tradeModelSpecDiagnostics.mjs",
     "draft-records:diagnostics": "node scripts/draftRecordsDiagnostics.mjs",
     "rookie-recap:diagnostics": "node scripts/rookieRecapDiagnostics.mjs",
     "draft-intelligence:diagnostics": "node scripts/draftIntelligenceDiagnostics.mjs",
