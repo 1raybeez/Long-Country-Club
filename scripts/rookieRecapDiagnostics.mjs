@@ -18,6 +18,11 @@ check('gradesPreserved', owners.every((owner) => lockedByName.get(owner.owner)?.
 check('earlDraftGrade1', owners.find((owner) => owner.owner === 'Earl Perkins')?.draftGradeRank === 1);
 const lockedEfficiency = Object.values(intelligence.ownerMarketEfficiency);
 check('tyroneMarketEfficiency1', owners.find((owner) => owner.owner === 'Tyrone Poist')?.marketEfficiencyRank === 1 && lockedEfficiency.sort((a, b) => b.efficiencyPerCapital - a.efficiencyPerCapital)[0]?.ownerName === 'Tyrone Poist');
+const efficiencyOrder = lockedEfficiency.sort((a, b) => b.efficiencyPerCapital - a.efficiencyPerCapital).map((owner) => owner.ownerName);
+check('all12MarketEfficiencyRanksAvailable', efficiencyOrder.length === 12 && owners.every((owner) => efficiencyOrder.includes(owner.owner)));
+check('marketEfficiencyOrderingLocked', efficiencyOrder.join('|') === 'Tyrone Poist|Earl Perkins|Ben Isbell|Jeffrey Hudgins|Keith Winder|Mike McBurnie|Bill Gross|Ray Long|Loren Michaels|Mike Estes|Anthony Martinez|Rob Jenkins');
+check('earlMarketEfficiency2', efficiencyOrder[1] === 'Earl Perkins');
+check('robMarketEfficiency12', efficiencyOrder[11] === 'Rob Jenkins');
 check('tyroneClassImpact1', owners.find((owner) => owner.owner === 'Tyrone Poist')?.classImpactRank === 1);
 check('rayRanksPreserved', owners.find((owner) => owner.owner === 'Ray Long')?.draftGradeRank === 8 && owners.find((owner) => owner.owner === 'Ray Long')?.classImpactRank === 3);
 check('valuesPreserved', JSON.stringify(recap.valueLeaderboard.entries.map((entry) => [entry.player, entry.delta])) === JSON.stringify([['Adam Randall', 7], ['Max Klare', 5], ['Emmett Johnson', 4], ['Elijah Sarratt', 3], ['Brenen Thompson', 3], ['Denzel Boston', 3], ['Demond Claiborne', 2], ['Antonio Williams', 2]]));
@@ -31,6 +36,21 @@ check('receiptsSavedFutureRegradePresent', recap.futureRegrade.includes('permane
 check('noLiveMarketRuntimeFetch', !fs.readFileSync('components/drafts/RookieDraftRecap.tsx', 'utf8').includes('fetch('));
 check('frozenCheckpointArtifact', fs.readFileSync('components/drafts/RookieDraftRecap.tsx', 'utf8').includes("@/data/current/draft-intelligence/2026-recap-draft.json"));
 check('routePresent', fs.existsSync('app/league-info/drafts/2026-recap/page.tsx'));
+const recapComponent = fs.readFileSync('components/drafts/RookieDraftRecap.tsx', 'utf8');
+check('all48SelectionsRepresented', intelligence.picks.length === 48 && (recapComponent.match(/<PickList owner=\{card\.owner\} \/>/g) ?? []).length === 1 && recapComponent.includes('intelligence.picks.filter'));
+check('noDuplicatePickRendering', new Set(intelligence.picks.map((pick) => pick.actualOverallPick)).size === intelligence.picks.length);
+check('noDevelopmentTermsInReaderFacingComponent', !/N2\.\d|approved artifact|source artifact|publication status|diagnostic/i.test(recapComponent));
+check('awardWinnersUnchanged', JSON.stringify(recap.awards.map((award) => [award.award, award.winner, award.runnerUp])) === JSON.stringify([
+  ['🏆 Draft Champion', 'Earl Perkins', 'Ben Isbell'],
+  ['🚀 Best Pick', 'Adam Randall / Ben Isbell', 'Max Klare / Tyrone Poist'],
+  ['📈 Best Draft Capital Usage', 'Tyrone Poist', 'Earl Perkins'],
+  ['💥 Best Class Impact', 'Tyrone Poist', 'Earl Perkins'],
+  ['😬 Biggest Reach', 'Jack Endries / Loren Michaels and Roman Hemby / Ray Long', null],
+  ['🏃 WR Run Winner', 'Denzel Boston / Ray Long', null],
+  ['🧾 The Receipt', 'Zavion Thomas / Rob Jenkins', null],
+  ['😴 Most Boringly Competent Draft', 'Bill Gross', null],
+]));
+check('publicAwardCopyHasNoEngineJargon', !recapComponent.includes('capital-weighted result') && !recapComponent.includes('approved roast hook'));
 const passed = Object.values(checks).every(Boolean);
 console.log(JSON.stringify({ status: passed ? 'PASS' : 'FAIL', checks, recapPath, publicAwardCount: recap.awards.length }, null, 2));
 if (!passed) process.exit(1);
