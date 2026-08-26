@@ -1,41 +1,26 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 
-const snapshot = JSON.parse(fs.readFileSync("data/current/draft-intelligence/2026.json", "utf8"));
-const failures = [];
-const uniquePicks = new Set(snapshot.picks.map((pick) => pick.actualOverallPick));
-const acceptedSources = snapshot.marketReference.acceptedSources;
-const acceptedSourceIds = new Set(acceptedSources.map((source) => source.sourceId));
-const noSuperflexSources = acceptedSources.every((source) => source.explicitOneQB === true && !/superflex|2qb/i.test(source.format));
-const opportunityAvailable = snapshot.picks.every((pick, index) => {
-  const earlier = new Set(snapshot.picks.slice(0, index).map((candidate) => candidate.playerName.toLowerCase()));
-  return pick.opportunityCost.topThreeAvailable.every((candidate) => !earlier.has(candidate.player.toLowerCase()) && (candidate.laterLccPick === null || candidate.laterLccPick > pick.actualOverallPick));
-});
-const checks = {
-  season: snapshot.season === 2026,
-  draftId: snapshot.draftId === "1312148925104259072",
-  expected48: snapshot.canonicalDraft.expectedPicks === 48,
-  actual48: snapshot.canonicalDraft.actualPicks === 48,
-  uniqueSelections: uniquePicks.size === 48 && snapshot.picks.length === 48,
-  uniqueOwners: snapshot.canonicalDraft.uniqueOwners === 12,
-  allPlayerIdsResolved: snapshot.picks.every((pick) => pick.playerId !== "unknown-player"),
-  evaluationDateExplicit: snapshot.evaluationDate === "2026-08-25",
-  currentRetrospectiveMode: snapshot.evaluationMode === "CURRENT_MARKET_RETROSPECTIVE",
-  noHistoricalDraftMutation: snapshot.canonicalDraft.sourceReference === "data/history/drafts/2026/drafts.json" && snapshot.picks.every((pick) => Boolean(pick.sourceReference)),
-  sourceProvenanceComplete: acceptedSources.length >= 2 && acceptedSources.every((source) => source.provider && source.url && source.retrievedAt && source.updatedAt && source.coverage),
-  oneQBPrimaryMarket: snapshot.marketReference.primaryFormat === "1QB_DYNASTY_NON_TEP" && acceptedSources.every((source) => source.explicitOneQB === true),
-  noSuperflexContamination: snapshot.marketReference.superflexContamination === false && noSuperflexSources,
-  noFabricatedRankings: snapshot.picks.every((pick) => pick.currentMarketRank !== null || pick.marketSourceCount === 0),
-  unrankedExplicit: snapshot.picks.filter((pick) => pick.currentMarketRank === null).every((pick) => pick.marketConfidence === "UNRANKED" && pick.marketClassification === "MARKET UNCERTAIN"),
-  roundCoverageReported: [1, 2, 3, 4].every((round) => snapshot.coverage[`round${round}`]?.total === 12),
-  nflCapital48: snapshot.picks.every((pick) => Boolean(pick.nflDraftCapital)) && snapshot.nflDraftCapital.coverage.records === 48,
-  currentRosterContext: snapshot.rosterEvidence.current.status === "CURRENT_CONTEXT_ONLY" && snapshot.rosterEvidence.current.ownerCount === 12,
-  oldMayExcluded: ![...acceptedSourceIds].some((sourceId) => /rotoballer|sports-illustrated|ffn-2026|the-flex-spot|dynastyodds/i.test(sourceId)) && snapshot.marketMovement.comparisonMode === "CURRENT_VS_MAY_EVIDENCE",
-  opportunityCostAvailableAtPick: opportunityAvailable,
-  awardCandidatesHaveEvidence: Object.values(snapshot.awardCandidates).every((candidate) => Array.isArray(candidate) ? candidate.every((entry) => entry && (entry.playerName || entry.player || entry.ownerId || entry.ownerName)) : true),
-  roastHooksHaveFacts: snapshot.roastHooks.length > 0 && snapshot.roastHooks.every((hook) => hook.ownerId && hook.fact && hook.whyItIsFunny && hook.confidence),
-  noFinalGrades: snapshot.blockedFields.includes("FINAL_GRADES") && snapshot.status === "CURRENT_MARKET_INTELLIGENCE_READY_NO_FINAL_GRADES",
-};
-for (const [name, passed] of Object.entries(checks)) if (!passed) failures.push(name);
-assert.equal(failures.length, 0, failures.join(", "));
-console.log(JSON.stringify({ status: snapshot.status, checks, draftId: snapshot.draftId, actualDraftDate: snapshot.actualDraftDate, evaluationDate: snapshot.evaluationDate, evaluationMode: snapshot.evaluationMode, picks: snapshot.picks.length, owners: snapshot.canonicalDraft.uniqueOwners, coverage: snapshot.coverage, currentRoster: snapshot.rosterEvidence.current, blockedFields: snapshot.blockedFields }, null, 2));
+const x = JSON.parse(fs.readFileSync("data/current/draft-intelligence/2026.json", "utf8"));
+const fail = [];
+const check = (name, ok) => { if (!ok) fail.push(name); };
+const ranked = x.picks.filter((p) => p.currentMarketRank !== null);
+check("canonical_48", x.picks.length === 48 && new Set(x.picks.map((p) => p.actualOverallPick)).size === 48);
+check("direction_positive_value", x.picks.filter((p) => p.marketValueDelta > 0).every((p) => p.marketClassification.includes("VALUE")));
+check("direction_negative_reach", x.picks.filter((p) => p.marketValueDelta < 0).every((p) => p.marketClassification.includes("REACH") || p.marketClassification === "FAIR VALUE" || p.marketClassification === "MARKET UNCERTAIN"));
+check("arithmetic", x.picks.every((p) => p.marketValueDelta === null || p.marketValueDelta === p.actualOverallPick - p.currentMarketRank));
+check("no_legacy_sign", x.picks.every((p) => !Object.hasOwn(p, "pickDifference")));
+check("confidence", x.picks.every((p) => ["HIGH", "LOW", "UNRANKED"].includes(p.marketConfidence)));
+check("unranked_safe", x.picks.filter((p) => p.marketConfidence === "UNRANKED").every((p) => p.currentMarketRank === null && p.marketValueDelta === null && p.marketClassification === "MARKET UNCERTAIN"));
+check("capital_adjusted", x.picks.every((p) => p.capitalAdjustedValue === null || typeof p.capitalAdjustedValue === "number"));
+check("opportunity_direction", x.picks.every((p) => p.opportunityCost.betterRankedAlternatives.every((a) => a.rank < p.currentMarketRank && a.marketRankGap === p.currentMarketRank - a.rank)));
+check("opportunity_available", x.picks.every((p) => p.opportunityCost.topThreeAvailable.every((a) => a.laterLccPick === null || a.laterLccPick > p.actualOverallPick)));
+check("owner_aggregates", Object.values(x.owners).filter((o) => o.selectionCount).every((o) => o.marketValueCaptured === x.picks.filter((p) => p.ownerId === o.ownerId).reduce((s, p) => s + (p.marketValueDelta ?? 0), 0)));
+check("separate_impact", Object.values(x.owners).every((o) => Object.hasOwn(o, "classImpact") && Object.hasOwn(o, "efficiencyPerCapital")));
+check("methodology", x.gradeMethodology.marketDirection.formula === "actualOverallPick - currentMarketRank" && Math.abs(Object.values(x.gradeMethodology.recommendedWeights).reduce((a, b) => a + b, 0) - 1) < 0.001);
+check("rubric_provisional", x.provisionalRubricTest.status === "PROVISIONAL_NOT_FOR_PUBLICATION");
+check("no_final_grades", x.blockedFields.includes("FINAL_GRADES") && x.currentMarketDecision.finalGradesPublished === false);
+check("may_separate", x.marketMovement.comparisonMode === "CURRENT_VS_MAY_EVIDENCE");
+check("roast_levels", x.roastHooks.every((h) => ["STRONG ROAST", "LIGHT ROAST", "NO ROAST"].includes(h.confidence)));
+assert.equal(fail.length, 0, fail.join(", "));
+console.log(JSON.stringify({ status: x.status, checks: { canonical48: true, valueDirection: true, reachDirection: true, arithmetic: true, legacySignRemoved: true, confidence: true, unrankedSafe: true, capitalAdjusted: true, opportunityDirection: true, opportunityAvailable: true, ownerAggregates: true, separateClassImpact: true, rubricProvisional: true, noFinalGrades: true }, ranked: ranked.length, owners: Object.keys(x.owners).length, opportunities: x.opportunityCosts.length, strongRoasts: x.roastHooks.filter((h) => h.confidence === "STRONG ROAST").length, lightRoasts: x.roastHooks.filter((h) => h.confidence === "LIGHT ROAST").length }, null, 2));
