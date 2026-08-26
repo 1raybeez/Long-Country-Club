@@ -19,13 +19,17 @@ check("owner_aggregates", Object.values(x.owners).length === 12 && Object.values
 check("separate_impact", Object.values(x.owners).every((o) => Object.hasOwn(o, "capitalWeightedMarketResult")) && Object.keys(x.classImpactComponents ?? {}).length === 12);
 check("methodology", x.gradeMethodology.marketDirection.formula === "actualOverallPick - currentMarketRank" && Math.abs(Object.values(x.gradeMethodology.recommendedWeights).reduce((a, b) => a + b, 0) - 1) < 0.001);
 check("rubric_provisional", x.provisionalRubricTest.status === "PROVISIONAL_NOT_FOR_PUBLICATION");
-check("no_final_grades", x.blockedFields.includes("FINAL_GRADES") && x.currentMarketDecision.finalGradesPublished === false);
+check("no_final_grades", x.blockedFields.includes("FINAL_GRADES") && x.currentMarketDecision.finalGradesPublished === false && x.publicationStatus === "COMMISSIONER_REVIEW");
 check("may_separate", x.marketMovement.comparisonMode === "CURRENT_VS_MAY_EVIDENCE");
 check("roast_levels", x.roastHooks.every((h) => ["STRONG ROAST", "LIGHT ROAST", "NO ROAST"].includes(h.confidence)));
 check("normalized_primary", x.picks.every((p) => Object.hasOwn(p, "lccPoolCurrentMarketRank") && Object.hasOwn(p, "marketAgreement") && Object.hasOwn(p, "marketConfidenceMultiplier") && Object.hasOwn(p, "capitalWeightedMarketImpact") && Object.hasOwn(p, "normalizedOpportunityCost")));
 check("confidence_multiplier", x.picks.every((p) => [0, 0.35, 0.6, 1].includes(p.marketConfidenceMultiplier)));
 check("normalized_opportunity", x.opportunityCosts.every((o) => o.marketRankGap >= 8 && o.alternativeConfidence === "HIGH" && o.alternativeRank < o.selectedNormalizedRank));
 check("separate_grade_impact", x.provisionalRubricTest.provisionalDraftGradeOrdering.length === 12 && x.provisionalRubricTest.provisionalClassImpactOrdering.length === 12);
+check("commissioner_reviews", x.pickGrades?.length === 48 && x.ownerGrades?.length === 12 && x.ownerGrades.every((o) => Object.hasOwn(o, "draftGradeScore") && Object.hasOwn(o, "provisionalLetterGrade")));
+check("component_weights", Math.abs(Object.values(x.gradeMethodology.recommendedWeights).reduce((a, b) => a + b, 0) - 1) < 0.001);
+check("weighted_components", x.ownerGrades.every((o) => Math.abs(Object.values(o.componentScores).reduce((s, c) => s + c.weightedContribution, 0) - o.draftGradeScore) < 0.1));
+check("no_roster_fit_grade", !Object.keys(x.gradeMethodology.recommendedWeights).some((k) => /roster/i.test(k)));
 check("market_scale_audit", x.marketScaleAudit?.status === "N2.3A_MARKET_SCALE_AUDIT_COMPLETE_NO_RUBRIC_CHANGE");
 check("raw_universe_documented", x.marketScaleAudit?.rawUniverses?.fpTrack?.observedRows > 0 && x.marketScaleAudit?.rawUniverses?.fantasyOrphans?.observedRows > 0);
 check("normalized_universe_documented", x.marketScaleAudit?.normalizedBoard?.boardSize === x.marketScaleAudit?.rawUniverses?.combinedUniqueRows);
