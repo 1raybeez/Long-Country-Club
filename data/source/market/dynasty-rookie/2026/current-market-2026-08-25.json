@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "evaluationDate": "2026-08-25",
+  "formatContract": "1QB_DYNASTY_NON_TEP",
+  "sources": [
+    {
+      "sourceId": "fptrack-rookie-adp-2026-08-25",
+      "provider": "FPTrack",
+      "url": "https://fptrack.com/football/rookie-adp?qb=1qb",
+      "retrievedAt": "2026-08-25",
+      "updatedAt": "2026-08-25",
+      "format": "1QB_DYNASTY_ROOKIE",
+      "type": "ADP",
+      "coverage": 67,
+      "explicitOneQB": true,
+      "confidence": "HIGH",
+      "notes": "FPTrack exposes separate 1QB and 2QB/SF controls; this artifact uses the 1QB rookie ADP view."
+    },
+    {
+      "sourceId": "fantasy-orphans-2026-08-19",
+      "provider": "Fantasy Orphans",
+      "url": "https://www.fantasyorphans.com/rookie-draft-adp",
+      "retrievedAt": "2026-08-21",
+      "updatedAt": "2026-08-19",
+      "format": "1QB_DYNASTY_ROOKIE_NON_TEP",
+      "type": "ADP",
+      "coverage": 47,
+      "explicitOneQB": true,
+      "confidence": "HIGH",
+      "notes": "Existing frozen normalized snapshot; retained as a current-market comparison source, not as May draft-day evidence."
+    }
+  ],
+  "fptrackRows": [
+    "Jeremiyah Love", "Carnell Tate", "Jordyn Tyson", "Makai Lemon", "Jadarian Price", "KC Concepcion", "Kenyon Sadiq", "Fernando Mendoza", "Omar Cooper", "Denzel Boston", "Eli Stowers", "Jonah Coleman", "Antonio Williams", "Emmett Johnson", "Zachariah Branch", "Elijah Sarratt", "De'Zhaun Stribling", "Chris Brazzell II", "Mike Washington Jr.", "Ty Simpson", "Ted Hurst", "Kaytron Allen", "Ja'Kobi Lane", "Skyler Bell", "Max Klare", "Kaelon Black", "Adam Randall", "Demond Claiborne", "Oscar Delp", "Brenen Thompson", "Carson Beck", "Kevin Coleman Jr.", "Michael Trigg", "Eli Raridon", "Malik Benson", "Eli Heidenreich", "Bryce Lance", "Justin Joly", "Drew Allar", "Le'Veon Moss", "CJ Daniels", "J'Mari Taylor", "Jam Miller", "Deion Burks", "Caleb Douglas", "Zavion Thomas", "Jack Endries", "Seth McGowan", "Will Kacmarek", "Garrett Nussmeier", "Cyrus Allen", "Colbie Young", "Josh Cameron", "Cade Klubnik", "Roman Hemby", "Tanner Koziol", "Marlin Klein", "Eric Rivers", "Taylen Green", "Matthew Hibner", "Jeff Caldwell", "Sam Roush", "Robert Henry Jr."
+  ]
+}

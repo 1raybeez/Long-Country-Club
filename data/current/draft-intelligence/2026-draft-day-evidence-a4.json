@@ -1,0 +1,7083 @@
+{
+  "schemaVersion": 2,
+  "methodologyVersion": "rookie-draft-intelligence-slice-a4-v1",
+  "status": "READY_WITH_ROSTER_FIT_EXCLUSION",
+  "generatedAt": "2026-08-26T00:00:00.000Z",
+  "season": 2026,
+  "draftId": "1312148925104259072",
+  "draftDate": "2026-05-29T11:54:55.518Z",
+  "evaluationCutoff": "2026-05-29T11:54:55.518Z",
+  "dataFlow": [
+    "CANONICAL_DRAFT_DATA",
+    "OWNER_MAPPING",
+    "PLAYER_METADATA",
+    "INTELLIGENCE_ENGINE"
+  ],
+  "canonicalDraft": {
+    "expectedPicks": 48,
+    "actualPicks": 48,
+    "uniqueOwners": 12,
+    "rounds": 4,
+    "verificationStatus": "full",
+    "sourceReference": "data/history/drafts/2026/drafts.json"
+  },
+  "format": {
+    "teams": 12,
+    "dynasty": true,
+    "quarterbackFormat": "1QB",
+    "scoringContext": "NON_TEP",
+    "lineupSlots": [
+      "QB1",
+      "RB1",
+      "RB2",
+      "WR1",
+      "WR2",
+      "WR3",
+      "TE1",
+      "FLEX1",
+      "FLEX2",
+      "K1",
+      "DST1"
+    ],
+    "rookieRounds": 4,
+    "sourceReferences": [
+      "data/source/market/dynasty-rookie/2026/snapshots/2026-08-19/provenance.json",
+      "lib/history/expectedLineup.ts"
+    ]
+  },
+  "marketReference": {
+    "source": "Fantasy Orphans",
+    "snapshotDate": "2026-08-19",
+    "timingClassification": "POST_DRAFT_PRESEASON",
+    "daysFromDraft": 82,
+    "format": "1QB_DYNASTY_ROOKIE",
+    "playerCount": 47,
+    "resolvedPickCount": 47,
+    "tiersAvailable": false,
+    "adpAvailable": true,
+    "usableForDraftDayGrading": false,
+    "reason": "The only registered market snapshot is post-draft/preseason and cannot judge what was knowable at the draft cutoff."
+  },
+  "rosterEvidence": {
+    "preDraft": {
+      "coverage": 12,
+      "source": "data/source/sleeper-2026-roster-reconstruction-evidence.json",
+      "confidence": "LIMITED",
+      "status": "DIAGNOSTIC_ONLY_UNKNOWN_SNAPSHOT_BOUNDARY"
+    },
+    "postDraft": {
+      "coverage": 0,
+      "source": null,
+      "confidence": "NONE",
+      "status": "BLOCKED_NO_TIMESTAMPED_BOUNDARY_SNAPSHOT"
+    },
+    "currentRosterExcluded": true,
+    "reason": "The reconstruction is diagnostic-only because the baseline boundary is unknown and transaction replay has material ownership mismatches."
+  },
+  "playerMetadata": {
+    "resolvedPlayers": 48,
+    "totalPicks": 48,
+    "stableBirthDateCoverage": 47,
+    "sourceReference": "data/history/matchups/sleeper/players.json",
+    "cutoffSafeForRoleOrTeamContext": false
+  },
+  "picks": [
+    {
+      "actualOverallPick": 1,
+      "round": 1,
+      "pickInRound": 1,
+      "ownerId": "loren-michaels",
+      "playerId": "13287",
+      "playerName": "Jeremiyah Love",
+      "position": "RB",
+      "nflTeam": "ARI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-1",
+      "marketRank": 1,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 3,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 2,
+            "player": "Carnell Tate",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 3,
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 5,
+          "player": "Jadarian Price",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 1,
+        "max": 1
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 1,
+        "fantasy-football-nerds-2026-05-24": 1,
+        "dynastyodds-2026-v9b-may": 1,
+        "first-down-studio-2026-05-06": 1
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 1,
+        "sports-illustrated-2026-05-19-top-50": 1,
+        "ffn-2026-05-24": 1,
+        "the-flex-spot-2026-05-14": 1
+      },
+      "marketMeanRank": 1,
+      "marketLowRank": 1,
+      "marketHighRank": 1,
+      "marketDifference": 0,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 1,
+          "tier": 1
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 1,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Carnell Tate"
+      },
+      "marketMedianRank": 1
+    },
+    {
+      "actualOverallPick": 2,
+      "round": 1,
+      "pickInRound": 2,
+      "ownerId": "mike-estes",
+      "playerId": "13269",
+      "playerName": "Fernando Mendoza",
+      "position": "QB",
+      "nflTeam": "LV",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-2",
+      "marketRank": 10,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR REACH",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 1,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 2,
+            "player": "Carnell Tate",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 3,
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 17,
+          "player": "Ty Simpson",
+          "position": "QB",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 3,
+        "max": 10
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 10,
+        "fantasy-football-nerds-2026-05-24": 5,
+        "dynastyodds-2026-v9b-may": 6,
+        "first-down-studio-2026-05-06": 3
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 7,
+        "sports-illustrated-2026-05-19-top-50": 10,
+        "ffn-2026-05-24": 5,
+        "the-flex-spot-2026-05-14": 10
+      },
+      "marketMeanRank": 8,
+      "marketLowRank": 5,
+      "marketHighRank": 10,
+      "marketDifference": -8,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 7,
+          "tier": 3
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 3,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Carnell Tate"
+      },
+      "marketMedianRank": 10
+    },
+    {
+      "actualOverallPick": 3,
+      "round": 1,
+      "pickInRound": 3,
+      "ownerId": "earl-perkins",
+      "playerId": "13279",
+      "playerName": "Carnell Tate",
+      "position": "WR",
+      "nflTeam": "TEN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-3",
+      "marketRank": 2,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 4,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 3,
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 5,
+            "player": "Jadarian Price",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 3,
+          "player": "Jordyn Tyson",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 2,
+        "max": 8
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 2,
+        "fantasy-football-nerds-2026-05-24": 2,
+        "dynastyodds-2026-v9b-may": 8,
+        "first-down-studio-2026-05-06": 2
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 2,
+        "sports-illustrated-2026-05-19-top-50": 2,
+        "ffn-2026-05-24": 2,
+        "the-flex-spot-2026-05-14": 2
+      },
+      "marketMeanRank": 2,
+      "marketLowRank": 2,
+      "marketHighRank": 2,
+      "marketDifference": 1,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 2,
+          "tier": 2
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 2,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Jordyn Tyson"
+      },
+      "marketMedianRank": 2
+    },
+    {
+      "actualOverallPick": 4,
+      "round": 1,
+      "pickInRound": 4,
+      "ownerId": "mike-mcburnie",
+      "playerId": "13281",
+      "playerName": "Jordyn Tyson",
+      "position": "WR",
+      "nflTeam": "NO",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-4",
+      "marketRank": 3,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 8,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 5,
+            "player": "Jadarian Price",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 7,
+            "player": "KC Concepcion",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 4,
+          "player": "Makai Lemon",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 2,
+        "max": 4
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 3,
+        "fantasy-football-nerds-2026-05-24": 3,
+        "dynastyodds-2026-v9b-may": 2,
+        "first-down-studio-2026-05-06": 4
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 3,
+        "sports-illustrated-2026-05-19-top-50": 3,
+        "ffn-2026-05-24": 3,
+        "the-flex-spot-2026-05-14": 3
+      },
+      "marketMeanRank": 3,
+      "marketLowRank": 3,
+      "marketHighRank": 3,
+      "marketDifference": 1,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 3,
+          "tier": 2
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 2,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Makai Lemon"
+      },
+      "marketMedianRank": 3
+    },
+    {
+      "actualOverallPick": 5,
+      "round": 1,
+      "pickInRound": 5,
+      "ownerId": "bill-gross",
+      "playerId": "13286",
+      "playerName": "Jadarian Price",
+      "position": "RB",
+      "nflTeam": "SEA",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-5",
+      "marketRank": 5,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 32,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 7,
+            "player": "KC Concepcion",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 7,
+            "player": "Kenyon Sadiq",
+            "position": "TE",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 15,
+          "player": "Jonah Coleman",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 5,
+        "max": 12
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 5,
+        "fantasy-football-nerds-2026-05-24": 6,
+        "dynastyodds-2026-v9b-may": 12,
+        "first-down-studio-2026-05-06": 6
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 5,
+        "sports-illustrated-2026-05-19-top-50": 4,
+        "ffn-2026-05-24": 6,
+        "the-flex-spot-2026-05-14": 5
+      },
+      "marketMeanRank": 5,
+      "marketLowRank": 4,
+      "marketHighRank": 6,
+      "marketDifference": 0,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 5,
+          "tier": 3
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 3,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Makai Lemon"
+      },
+      "marketMedianRank": 5
+    },
+    {
+      "actualOverallPick": 6,
+      "round": 1,
+      "pickInRound": 6,
+      "ownerId": "keith-winder",
+      "playerId": "13294",
+      "playerName": "Makai Lemon",
+      "position": "WR",
+      "nflTeam": "PHI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-6",
+      "marketRank": 4,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 20,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 7,
+            "player": "KC Concepcion",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 7,
+            "player": "Kenyon Sadiq",
+            "position": "TE",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 8,
+            "player": "Omar Cooper Jr.",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 7,
+          "player": "KC Concepcion",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 4,
+        "max": 5
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 4,
+        "fantasy-football-nerds-2026-05-24": 4,
+        "dynastyodds-2026-v9b-may": 4,
+        "first-down-studio-2026-05-06": 5
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 4,
+        "sports-illustrated-2026-05-19-top-50": 5,
+        "ffn-2026-05-24": 4,
+        "the-flex-spot-2026-05-14": 4
+      },
+      "marketMeanRank": 4.25,
+      "marketLowRank": 4,
+      "marketHighRank": 5,
+      "marketDifference": 2,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 4,
+          "tier": 2
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 2,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "KC Concepcion"
+      },
+      "marketMedianRank": 4
+    },
+    {
+      "actualOverallPick": 7,
+      "round": 1,
+      "pickInRound": 7,
+      "ownerId": "jeffrey-hudgins",
+      "playerId": "13298",
+      "playerName": "KC Concepcion",
+      "position": "WR",
+      "nflTeam": "CLE",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-7",
+      "marketRank": 7,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 24,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 7,
+            "player": "Kenyon Sadiq",
+            "position": "TE",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 8,
+            "player": "Omar Cooper Jr.",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 8,
+          "player": "Omar Cooper Jr.",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 3,
+        "max": 8
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 7,
+        "fantasy-football-nerds-2026-05-24": 8,
+        "dynastyodds-2026-v9b-may": 3,
+        "first-down-studio-2026-05-06": 7
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 6,
+        "sports-illustrated-2026-05-19-top-50": 7,
+        "ffn-2026-05-24": 8,
+        "the-flex-spot-2026-05-14": 7
+      },
+      "marketMeanRank": 7,
+      "marketLowRank": 6,
+      "marketHighRank": 8,
+      "marketDifference": 0,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 6,
+          "tier": 3
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 3,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Kenyon Sadiq"
+      },
+      "marketMedianRank": 7
+    },
+    {
+      "actualOverallPick": 8,
+      "round": 1,
+      "pickInRound": 8,
+      "ownerId": "rob-jenkins",
+      "playerId": "13330",
+      "playerName": "Kenyon Sadiq",
+      "position": "TE",
+      "nflTeam": "NYJ",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-8",
+      "marketRank": 7,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 16,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 8,
+            "player": "Omar Cooper Jr.",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 12,
+            "player": "Eli Stowers",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 12,
+          "player": "Eli Stowers",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": {
+        "min": 6,
+        "max": 9
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 6,
+        "fantasy-football-nerds-2026-05-24": 7,
+        "dynastyodds-2026-v9b-may": 9,
+        "first-down-studio-2026-05-06": 8
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 9,
+        "sports-illustrated-2026-05-19-top-50": 6,
+        "ffn-2026-05-24": 7,
+        "the-flex-spot-2026-05-14": 6
+      },
+      "marketMeanRank": 7,
+      "marketLowRank": 6,
+      "marketHighRank": 9,
+      "marketDifference": 1,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 9,
+          "tier": 4
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 4,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Omar Cooper Jr."
+      },
+      "marketMedianRank": 7
+    },
+    {
+      "actualOverallPick": 9,
+      "round": 1,
+      "pickInRound": 9,
+      "ownerId": "ray-long",
+      "playerId": "13288",
+      "playerName": "Nicholas Singleton",
+      "position": "RB",
+      "nflTeam": "TEN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-9",
+      "marketRank": 22,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 5,
+        "overallPick": 165,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 8,
+            "player": "Omar Cooper Jr.",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 12,
+            "player": "Eli Stowers",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 15,
+          "player": "Jonah Coleman",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 22,
+        "sports-illustrated-2026-05-19-top-50": 11
+      },
+      "marketMeanRank": 16.5,
+      "marketLowRank": 11,
+      "marketHighRank": 22,
+      "marketDifference": -13,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 22,
+          "tier": 6
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 6,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Omar Cooper Jr."
+      },
+      "marketMedianRank": 22
+    },
+    {
+      "actualOverallPick": 10,
+      "round": 1,
+      "pickInRound": 10,
+      "ownerId": "ben-isbell",
+      "playerId": "13276",
+      "playerName": "Omar Cooper",
+      "position": "WR",
+      "nflTeam": "NYJ",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-10",
+      "marketRank": 8,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 30,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 12,
+            "player": "Eli Stowers",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 13,
+            "player": "De'Zhaun Stribling",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 7,
+        "max": 10
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 8,
+        "fantasy-football-nerds-2026-05-24": 10,
+        "dynastyodds-2026-v9b-may": 7
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 8,
+        "sports-illustrated-2026-05-19-top-50": 8,
+        "ffn-2026-05-24": 10,
+        "the-flex-spot-2026-05-14": 8
+      },
+      "marketMeanRank": 8.5,
+      "marketLowRank": 8,
+      "marketHighRank": 10,
+      "marketDifference": 2,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 8,
+          "tier": 3
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 3,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Denzel Boston"
+      },
+      "marketMedianRank": 8
+    },
+    {
+      "actualOverallPick": 11,
+      "round": 1,
+      "pickInRound": 11,
+      "ownerId": "mike-mcburnie",
+      "playerId": "13349",
+      "playerName": "Eli Stowers",
+      "position": "TE",
+      "nflTeam": "PHI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-11",
+      "marketRank": 12,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 2,
+        "overallPick": 54,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 13,
+            "player": "De'Zhaun Stribling",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 34,
+          "player": "Max Klare",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": {
+        "min": 5,
+        "max": 5
+      },
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [
+        "dynastyodds-2026-v9b-may"
+      ],
+      "marketRankBySource": {
+        "dynastyodds-2026-v9b-may": 5
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 11,
+        "sports-illustrated-2026-05-19-top-50": 12
+      },
+      "marketMeanRank": 11.5,
+      "marketLowRank": 11,
+      "marketHighRank": 12,
+      "marketDifference": -1,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 11,
+          "tier": 4
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 4,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Denzel Boston"
+      },
+      "marketMedianRank": 12
+    },
+    {
+      "actualOverallPick": 12,
+      "round": 1,
+      "pickInRound": 12,
+      "ownerId": "tyrone-poist",
+      "playerId": "13311",
+      "playerName": "Chris Bell",
+      "position": "WR",
+      "nflTeam": "MIA",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-12",
+      "marketRank": 17,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 94,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 13,
+            "player": "De'Zhaun Stribling",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 14,
+        "sports-illustrated-2026-05-19-top-50": 17
+      },
+      "marketMeanRank": 15.5,
+      "marketLowRank": 14,
+      "marketHighRank": 17,
+      "marketDifference": -5,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 14,
+          "tier": 5
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 5,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Denzel Boston"
+      },
+      "marketMedianRank": 17
+    },
+    {
+      "actualOverallPick": 13,
+      "round": 2,
+      "pickInRound": 1,
+      "ownerId": "loren-michaels",
+      "playerId": "13320",
+      "playerName": "Zachariah Branch",
+      "position": "WR",
+      "nflTeam": "ATL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-13",
+      "marketRank": 21,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 79,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 13,
+            "player": "De'Zhaun Stribling",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 20,
+        "sports-illustrated-2026-05-19-top-50": 21
+      },
+      "marketMeanRank": 20.5,
+      "marketLowRank": 20,
+      "marketHighRank": 21,
+      "marketDifference": -8,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 20,
+          "tier": 6
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 6,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Denzel Boston"
+      },
+      "marketMedianRank": 21
+    },
+    {
+      "actualOverallPick": 14,
+      "round": 2,
+      "pickInRound": 2,
+      "ownerId": "mike-estes",
+      "playerId": "13417",
+      "playerName": "De'Zhaun Stribling",
+      "position": "WR",
+      "nflTeam": "SF",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-14",
+      "marketRank": 13,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 2,
+        "overallPick": 33,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Germie Bernard",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 11,
+        "max": 11
+      },
+      "marketSourceCount": 3,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 11
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 16,
+        "sports-illustrated-2026-05-19-top-50": 13,
+        "the-flex-spot-2026-05-14": 11
+      },
+      "marketMeanRank": 13.33,
+      "marketLowRank": 11,
+      "marketHighRank": 16,
+      "marketDifference": 1,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 16,
+          "tier": 5
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 5,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Denzel Boston"
+      },
+      "marketMedianRank": 13
+    },
+    {
+      "actualOverallPick": 15,
+      "round": 2,
+      "pickInRound": 3,
+      "ownerId": "rob-jenkins",
+      "playerId": "13317",
+      "playerName": "Ted Hurst",
+      "position": "WR",
+      "nflTeam": "TB",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-15",
+      "marketRank": 24,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 84,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Germie Bernard",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 21,
+        "sports-illustrated-2026-05-19-top-50": 24
+      },
+      "marketMeanRank": 22.5,
+      "marketLowRank": 21,
+      "marketHighRank": 24,
+      "marketDifference": -9,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 21,
+          "tier": 6
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 6,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Denzel Boston"
+      },
+      "marketMedianRank": 24
+    },
+    {
+      "actualOverallPick": 16,
+      "round": 2,
+      "pickInRound": 4,
+      "ownerId": "ray-long",
+      "playerId": "13346",
+      "playerName": "Denzel Boston",
+      "position": "WR",
+      "nflTeam": "CLE",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-16",
+      "marketRank": 10,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 2,
+        "overallPick": 39,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Germie Bernard",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 15,
+            "player": "Jonah Coleman",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 14,
+          "player": "Antonio Williams",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 9,
+        "max": 11
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 9,
+        "fantasy-football-nerds-2026-05-24": 11
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 10,
+        "sports-illustrated-2026-05-19-top-50": 9,
+        "ffn-2026-05-24": 11,
+        "the-flex-spot-2026-05-14": 9
+      },
+      "marketMeanRank": 9.75,
+      "marketLowRank": 9,
+      "marketHighRank": 11,
+      "marketDifference": 6,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 10,
+          "tier": 4
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 4,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Antonio Williams"
+      },
+      "marketMedianRank": 10
+    },
+    {
+      "actualOverallPick": 17,
+      "round": 2,
+      "pickInRound": 5,
+      "ownerId": "anthony-martinez",
+      "playerId": "13274",
+      "playerName": "Germie Bernard",
+      "position": "WR",
+      "nflTeam": "PIT",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-17",
+      "marketRank": 14,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 2,
+        "overallPick": 47,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 15,
+            "player": "Jonah Coleman",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 17,
+            "player": "Ty Simpson",
+            "position": "QB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 14,
+          "player": "Antonio Williams",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 13,
+        "sports-illustrated-2026-05-19-top-50": 14
+      },
+      "marketMeanRank": 13.5,
+      "marketLowRank": 13,
+      "marketHighRank": 14,
+      "marketDifference": 3,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 13,
+          "tier": 4
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 4,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Antonio Williams"
+      },
+      "marketMedianRank": 14
+    },
+    {
+      "actualOverallPick": 18,
+      "round": 2,
+      "pickInRound": 6,
+      "ownerId": "keith-winder",
+      "playerId": "13345",
+      "playerName": "Jonah Coleman",
+      "position": "RB",
+      "nflTeam": "DEN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-18",
+      "marketRank": 15,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 4,
+        "overallPick": 108,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 17,
+            "player": "Ty Simpson",
+            "position": "QB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 18,
+            "player": "Chris Brazzell II",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 19,
+          "player": "Kaelon Black",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": {
+        "min": 10,
+        "max": 13
+      },
+      "marketSourceCount": 3,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may"
+      ],
+      "marketRankBySource": {
+        "fantasy-football-nerds-2026-05-24": 13,
+        "dynastyodds-2026-v9b-may": 10
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 15,
+        "sports-illustrated-2026-05-19-top-50": 16,
+        "ffn-2026-05-24": 13
+      },
+      "marketMeanRank": 14.67,
+      "marketLowRank": 13,
+      "marketHighRank": 16,
+      "marketDifference": 3,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 15,
+          "tier": 5
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 5,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Antonio Williams"
+      },
+      "marketMedianRank": 15
+    },
+    {
+      "actualOverallPick": 19,
+      "round": 2,
+      "pickInRound": 7,
+      "ownerId": "jeffrey-hudgins",
+      "playerId": "13301",
+      "playerName": "Antonio Williams",
+      "position": "WR",
+      "nflTeam": "WAS",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-19",
+      "marketRank": 14,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 71,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 17,
+            "player": "Ty Simpson",
+            "position": "QB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 18,
+            "player": "Chris Brazzell II",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 18,
+          "player": "Chris Brazzell II",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 3,
+      "marketConfidence": "HIGH",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 12,
+        "sports-illustrated-2026-05-19-top-50": 18,
+        "ffn-2026-05-24": 14
+      },
+      "marketMeanRank": 14.67,
+      "marketLowRank": 12,
+      "marketHighRank": 18,
+      "marketDifference": 5,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 12,
+          "tier": 4
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 4,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Ty Simpson"
+      },
+      "marketMedianRank": 14
+    },
+    {
+      "actualOverallPick": 20,
+      "round": 2,
+      "pickInRound": 8,
+      "ownerId": "rob-jenkins",
+      "playerId": "13285",
+      "playerName": "Malachi Fields",
+      "position": "WR",
+      "nflTeam": "NYG",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-20",
+      "marketRank": 24,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 74,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 17,
+            "player": "Ty Simpson",
+            "position": "QB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 18,
+            "player": "Chris Brazzell II",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 18,
+          "player": "Chris Brazzell II",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 24,
+        "sports-illustrated-2026-05-19-top-50": 20
+      },
+      "marketMeanRank": 22,
+      "marketLowRank": 20,
+      "marketHighRank": 24,
+      "marketDifference": -4,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 24,
+          "tier": 6
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 6,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Ty Simpson"
+      },
+      "marketMedianRank": 24
+    },
+    {
+      "actualOverallPick": 21,
+      "round": 2,
+      "pickInRound": 9,
+      "ownerId": "ray-long",
+      "playerId": "13275",
+      "playerName": "Ty Simpson",
+      "position": "QB",
+      "nflTeam": "LAR",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-21",
+      "marketRank": 17,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 1,
+        "overallPick": 13,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 18,
+            "player": "Chris Brazzell II",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 35,
+          "player": "Carson Beck",
+          "position": "QB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": {
+        "min": 9,
+        "max": 9
+      },
+      "marketSourceCount": 3,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "fantasy-football-nerds-2026-05-24",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "fantasy-football-nerds-2026-05-24": 9,
+        "first-down-studio-2026-05-06": 9
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 17,
+        "sports-illustrated-2026-05-19-top-50": 26,
+        "ffn-2026-05-24": 9
+      },
+      "marketMeanRank": 17.33,
+      "marketLowRank": 9,
+      "marketHighRank": 26,
+      "marketDifference": 4,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 17,
+          "tier": 5
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 5,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Chris Brazzell II"
+      },
+      "marketMedianRank": 17
+    },
+    {
+      "actualOverallPick": 22,
+      "round": 2,
+      "pickInRound": 10,
+      "ownerId": "ben-isbell",
+      "playerId": "13353",
+      "playerName": "Chris Brazzell",
+      "position": "WR",
+      "nflTeam": "CAR",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-22",
+      "marketRank": 18,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 83,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 28,
+            "player": "Emmett Johnson",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 29,
+          "player": "Ja'Kobi Lane",
+          "position": "WR",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": {
+        "min": 12,
+        "max": 12
+      },
+      "marketSourceCount": 3,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 12
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 18,
+        "sports-illustrated-2026-05-19-top-50": 19,
+        "the-flex-spot-2026-05-14": 12
+      },
+      "marketMeanRank": 16.33,
+      "marketLowRank": 12,
+      "marketHighRank": 19,
+      "marketDifference": 4,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 18,
+          "tier": 5
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 5,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 18
+    },
+    {
+      "actualOverallPick": 23,
+      "round": 2,
+      "pickInRound": 11,
+      "ownerId": "mike-mcburnie",
+      "playerId": "13402",
+      "playerName": "Skyler Bell",
+      "position": "WR",
+      "nflTeam": "BUF",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-23",
+      "marketRank": 31,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 4,
+        "overallPick": 125,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 28,
+            "player": "Emmett Johnson",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 29,
+          "player": "Ja'Kobi Lane",
+          "position": "WR",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 31,
+        "sports-illustrated-2026-05-19-top-50": 25
+      },
+      "marketMeanRank": 28,
+      "marketLowRank": 25,
+      "marketHighRank": 31,
+      "marketDifference": -8,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 31,
+          "tier": 7
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 7,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 31
+    },
+    {
+      "actualOverallPick": 24,
+      "round": 2,
+      "pickInRound": 12,
+      "ownerId": "tyrone-poist",
+      "playerId": "13337",
+      "playerName": "Emmett Johnson",
+      "position": "RB",
+      "nflTeam": "KC",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-24",
+      "marketRank": 28,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 5,
+        "overallPick": 161,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 29,
+            "player": "Ja'Kobi Lane",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 19,
+          "player": "Kaelon Black",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 23,
+        "sports-illustrated-2026-05-19-top-50": 28
+      },
+      "marketMeanRank": 25.5,
+      "marketLowRank": 23,
+      "marketHighRank": 28,
+      "marketDifference": -4,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 23,
+          "tier": 6
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 6,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 28
+    },
+    {
+      "actualOverallPick": 25,
+      "round": 3,
+      "pickInRound": 1,
+      "ownerId": "loren-michaels",
+      "playerId": "13272",
+      "playerName": "Carson Beck",
+      "position": "QB",
+      "nflTeam": "ARI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-25",
+      "marketRank": 35,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 65,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 29,
+            "player": "Ja'Kobi Lane",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 37,
+          "player": "Drew Allar",
+          "position": "QB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 35,
+        "sports-illustrated-2026-05-19-top-50": 35
+      },
+      "marketMeanRank": 35,
+      "marketLowRank": 35,
+      "marketHighRank": 35,
+      "marketDifference": -10,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 35,
+          "tier": 8
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 8,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 35
+    },
+    {
+      "actualOverallPick": 26,
+      "round": 3,
+      "pickInRound": 2,
+      "ownerId": "mike-estes",
+      "playerId": "13405",
+      "playerName": "Kaytron Allen",
+      "position": "RB",
+      "nflTeam": "WAS",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-26",
+      "marketRank": 29,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 6,
+        "overallPick": 187,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 29,
+            "player": "Ja'Kobi Lane",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 19,
+          "player": "Kaelon Black",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 29,
+        "sports-illustrated-2026-05-19-top-50": 15
+      },
+      "marketMeanRank": 22,
+      "marketLowRank": 15,
+      "marketHighRank": 29,
+      "marketDifference": -3,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 29,
+          "tier": 7
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 7,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 29
+    },
+    {
+      "actualOverallPick": 27,
+      "round": 3,
+      "pickInRound": 3,
+      "ownerId": "earl-perkins",
+      "playerId": "13268",
+      "playerName": "Elijah Sarratt",
+      "position": "WR",
+      "nflTeam": "BAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-27",
+      "marketRank": 31,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 4,
+        "overallPick": 115,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 29,
+            "player": "Ja'Kobi Lane",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 29,
+          "player": "Ja'Kobi Lane",
+          "position": "WR",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 26,
+        "sports-illustrated-2026-05-19-top-50": 31
+      },
+      "marketMeanRank": 28.5,
+      "marketLowRank": 26,
+      "marketHighRank": 31,
+      "marketDifference": -4,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 26,
+          "tier": 7
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 7,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 31
+    },
+    {
+      "actualOverallPick": 28,
+      "round": 3,
+      "pickInRound": 4,
+      "ownerId": "bill-gross",
+      "playerId": "13293",
+      "playerName": "Ja'Kobi Lane",
+      "position": "WR",
+      "nflTeam": "BAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-28",
+      "marketRank": 29,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 80,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 36,
+          "player": "Kevin Coleman Jr.",
+          "position": "WR",
+          "confidence": "LOW"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 27,
+        "sports-illustrated-2026-05-19-top-50": 29
+      },
+      "marketMeanRank": 28,
+      "marketLowRank": 27,
+      "marketHighRank": 29,
+      "marketDifference": -1,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 27,
+          "tier": 7
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 7,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 29
+    },
+    {
+      "actualOverallPick": 29,
+      "round": 3,
+      "pickInRound": 5,
+      "ownerId": "anthony-martinez",
+      "playerId": "13421",
+      "playerName": "Eli Raridon",
+      "position": "TE",
+      "nflTeam": "NE",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-29",
+      "marketRank": 47,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 95,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 34,
+          "player": "Max Klare",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 42,
+        "sports-illustrated-2026-05-19-top-50": 47
+      },
+      "marketMeanRank": 44.5,
+      "marketLowRank": 42,
+      "marketHighRank": 47,
+      "marketDifference": -18,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 42,
+          "tier": 9
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 9,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 47
+    },
+    {
+      "actualOverallPick": 30,
+      "round": 3,
+      "pickInRound": 6,
+      "ownerId": "keith-winder",
+      "playerId": "13305",
+      "playerName": "Mike Washington",
+      "position": "RB",
+      "nflTeam": "LV",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-30",
+      "marketRank": 25,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 4,
+        "overallPick": 122,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 19,
+          "player": "Kaelon Black",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 25,
+        "sports-illustrated-2026-05-19-top-50": 23
+      },
+      "marketMeanRank": 24,
+      "marketLowRank": 23,
+      "marketHighRank": 25,
+      "marketDifference": 5,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 25,
+          "tier": 7
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 7,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kaelon Black"
+      },
+      "marketMedianRank": 25
+    },
+    {
+      "actualOverallPick": 31,
+      "round": 3,
+      "pickInRound": 7,
+      "ownerId": "jeffrey-hudgins",
+      "playerId": "13414",
+      "playerName": "Kaelon Black",
+      "position": "RB",
+      "nflTeam": "SF",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-31",
+      "marketRank": 19,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR VALUE",
+      "marketEvidenceStatus": "HIGH",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 90,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": {
+        "min": 12,
+        "max": 12
+      },
+      "marketSourceCount": 3,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "fantasy-football-nerds-2026-05-24"
+      ],
+      "marketRankBySource": {
+        "fantasy-football-nerds-2026-05-24": 12
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 19,
+        "sports-illustrated-2026-05-19-top-50": 22,
+        "ffn-2026-05-24": 12
+      },
+      "marketMeanRank": 17.67,
+      "marketLowRank": 12,
+      "marketHighRank": 22,
+      "marketDifference": 12,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 19,
+          "tier": 5
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 5,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 19
+    },
+    {
+      "actualOverallPick": 32,
+      "round": 3,
+      "pickInRound": 8,
+      "ownerId": "rob-jenkins",
+      "playerId": "13411",
+      "playerName": "Zavion Thomas",
+      "position": "WR",
+      "nflTeam": "CHI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-32",
+      "marketRank": 41,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 89,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 36,
+          "player": "Kevin Coleman Jr.",
+          "position": "WR",
+          "confidence": "LOW"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 40,
+        "sports-illustrated-2026-05-19-top-50": 41
+      },
+      "marketMeanRank": 40.5,
+      "marketLowRank": 40,
+      "marketHighRank": 41,
+      "marketDifference": -9,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 40,
+          "tier": 9
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 9,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 41
+    },
+    {
+      "actualOverallPick": 33,
+      "round": 3,
+      "pickInRound": 9,
+      "ownerId": "ray-long",
+      "playerId": "13319",
+      "playerName": "Oscar Delp",
+      "position": "TE",
+      "nflTeam": "NO",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-33",
+      "marketRank": 39,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 73,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 34,
+          "player": "Max Klare",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 39,
+        "sports-illustrated-2026-05-19-top-50": 34
+      },
+      "marketMeanRank": 36.5,
+      "marketLowRank": 34,
+      "marketHighRank": 39,
+      "marketDifference": -6,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 39,
+          "tier": 8
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 8,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 39
+    },
+    {
+      "actualOverallPick": 34,
+      "round": 3,
+      "pickInRound": 10,
+      "ownerId": "ben-isbell",
+      "playerId": "13347",
+      "playerName": "Demond Claiborne",
+      "position": "RB",
+      "nflTeam": "MIN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-34",
+      "marketRank": 40,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "POSSIBLE REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 6,
+        "overallPick": 198,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 30,
+        "sports-illustrated-2026-05-19-top-50": 40
+      },
+      "marketMeanRank": 35,
+      "marketLowRank": 30,
+      "marketHighRank": 40,
+      "marketDifference": -6,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 30,
+          "tier": 7
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 7,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 40
+    },
+    {
+      "actualOverallPick": 35,
+      "round": 3,
+      "pickInRound": 11,
+      "ownerId": "anthony-martinez",
+      "playerId": "13423",
+      "playerName": "Eli Heidenreich",
+      "position": "RB",
+      "nflTeam": "PIT",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-35",
+      "marketRank": 50,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 7,
+        "overallPick": 230,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 41,
+        "sports-illustrated-2026-05-19-top-50": 50
+      },
+      "marketMeanRank": 45.5,
+      "marketLowRank": 41,
+      "marketHighRank": 50,
+      "marketDifference": -15,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 41,
+          "tier": 9
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 9,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 50
+    },
+    {
+      "actualOverallPick": 36,
+      "round": 3,
+      "pickInRound": 12,
+      "ownerId": "tyrone-poist",
+      "playerId": "13278",
+      "playerName": "Max Klare",
+      "position": "TE",
+      "nflTeam": "LAR",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-36",
+      "marketRank": 34,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 2,
+        "overallPick": 61,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Brenen Thompson",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 50,
+          "player": "Justin Joly",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": {
+        "min": 11,
+        "max": 11
+      },
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [
+        "dynastyodds-2026-v9b-may"
+      ],
+      "marketRankBySource": {
+        "dynastyodds-2026-v9b-may": 11
+      },
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 34,
+        "sports-illustrated-2026-05-19-top-50": 32
+      },
+      "marketMeanRank": 33,
+      "marketLowRank": 32,
+      "marketHighRank": 34,
+      "marketDifference": 2,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 34,
+          "tier": 8
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 8,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 34
+    },
+    {
+      "actualOverallPick": 37,
+      "round": 4,
+      "pickInRound": 1,
+      "ownerId": "loren-michaels",
+      "playerId": "13282",
+      "playerName": "Jack Endries",
+      "position": "TE",
+      "nflTeam": "CIN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-37",
+      "marketRank": 69,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "MARKET UNCERTAIN",
+      "marketEvidenceStatus": "LOW",
+      "nflDraftCapital": {
+        "round": 7,
+        "overallPick": 221,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Brenen Thompson",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 50,
+          "player": "Justin Joly",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 69
+      },
+      "marketMeanRank": 69,
+      "marketLowRank": 69,
+      "marketHighRank": 69,
+      "marketDifference": -32,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 69,
+          "tier": 11
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 11,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 69
+    },
+    {
+      "actualOverallPick": 38,
+      "round": 4,
+      "pickInRound": 2,
+      "ownerId": "mike-estes",
+      "playerId": "13403",
+      "playerName": "Jam Miller",
+      "position": "RB",
+      "nflTeam": "NE",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-38",
+      "marketRank": 51,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "MARKET UNCERTAIN",
+      "marketEvidenceStatus": "LOW",
+      "nflDraftCapital": {
+        "round": 7,
+        "overallPick": 245,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Brenen Thompson",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 51
+      },
+      "marketMeanRank": 51,
+      "marketLowRank": 51,
+      "marketHighRank": 51,
+      "marketDifference": -13,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 51,
+          "tier": 9
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 9,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 51
+    },
+    {
+      "actualOverallPick": 39,
+      "round": 4,
+      "pickInRound": 3,
+      "ownerId": "earl-perkins",
+      "playerId": "13380",
+      "playerName": "Brenen Thompson",
+      "position": "WR",
+      "nflTeam": "LAC",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-39",
+      "marketRank": 37,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 4,
+        "overallPick": 105,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Drew Allar",
+            "position": "QB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 36,
+          "player": "Kevin Coleman Jr.",
+          "position": "WR",
+          "confidence": "LOW"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 28,
+        "sports-illustrated-2026-05-19-top-50": 37
+      },
+      "marketMeanRank": 32.5,
+      "marketLowRank": 28,
+      "marketHighRank": 37,
+      "marketDifference": 2,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 28,
+          "tier": 7
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 7,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 37
+    },
+    {
+      "actualOverallPick": 40,
+      "round": 4,
+      "pickInRound": 4,
+      "ownerId": "bill-gross",
+      "playerId": "13401",
+      "playerName": "Michael Trigg",
+      "position": "TE",
+      "nflTeam": "DAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-40",
+      "marketRank": 71,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR REACH",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED_UNDRAFTED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Drew Allar",
+            "position": "QB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 50,
+          "player": "Justin Joly",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 71,
+        "sports-illustrated-2026-05-19-top-50": 48
+      },
+      "marketMeanRank": 59.5,
+      "marketLowRank": 48,
+      "marketHighRank": 71,
+      "marketDifference": -31,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 71,
+          "tier": 11
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 11,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 71
+    },
+    {
+      "actualOverallPick": 41,
+      "round": 4,
+      "pickInRound": 5,
+      "ownerId": "anthony-martinez",
+      "playerId": "13289",
+      "playerName": "Drew Allar",
+      "position": "QB",
+      "nflTeam": "PIT",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-41",
+      "marketRank": 37,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 3,
+        "overallPick": 76,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Bryce Lance",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 43,
+          "player": "Taylen Green",
+          "position": "QB",
+          "confidence": "LOW"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 37,
+        "sports-illustrated-2026-05-19-top-50": 36
+      },
+      "marketMeanRank": 36.5,
+      "marketLowRank": 36,
+      "marketHighRank": 37,
+      "marketDifference": 4,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 37,
+          "tier": 8
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 8,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 37
+    },
+    {
+      "actualOverallPick": 42,
+      "round": 4,
+      "pickInRound": 6,
+      "ownerId": "keith-winder",
+      "playerId": "13404",
+      "playerName": "Garrett Nussmeier",
+      "position": "QB",
+      "nflTeam": "KC",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-42",
+      "marketRank": 59,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "MARKET UNCERTAIN",
+      "marketEvidenceStatus": "LOW",
+      "nflDraftCapital": {
+        "round": 7,
+        "overallPick": 249,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Bryce Lance",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 43,
+          "player": "Taylen Green",
+          "position": "QB",
+          "confidence": "LOW"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 59
+      },
+      "marketMeanRank": 59,
+      "marketLowRank": 59,
+      "marketHighRank": 59,
+      "marketDifference": -17,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 59,
+          "tier": 10
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 10,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 59
+    },
+    {
+      "actualOverallPick": 43,
+      "round": 4,
+      "pickInRound": 7,
+      "ownerId": "jeffrey-hudgins",
+      "playerId": "13420",
+      "playerName": "Bryce Lance",
+      "position": "WR",
+      "nflTeam": "NO",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-43",
+      "marketRank": 38,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "FAIR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 4,
+        "overallPick": 136,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 36,
+          "player": "Kevin Coleman Jr.",
+          "position": "WR",
+          "confidence": "LOW"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 32,
+        "sports-illustrated-2026-05-19-top-50": 38
+      },
+      "marketMeanRank": 35,
+      "marketLowRank": 32,
+      "marketHighRank": 38,
+      "marketDifference": 5,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 32,
+          "tier": 8
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 8,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 38
+    },
+    {
+      "actualOverallPick": 44,
+      "round": 4,
+      "pickInRound": 8,
+      "ownerId": "rob-jenkins",
+      "playerId": "13303",
+      "playerName": "Cade Klubnik",
+      "position": "QB",
+      "nflTeam": "NYJ",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-44",
+      "marketRank": 52,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "MARKET UNCERTAIN",
+      "marketEvidenceStatus": "LOW",
+      "nflDraftCapital": {
+        "round": 4,
+        "overallPick": 110,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 43,
+          "player": "Taylen Green",
+          "position": "QB",
+          "confidence": "LOW"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 52
+      },
+      "marketMeanRank": 52,
+      "marketLowRank": 52,
+      "marketHighRank": 52,
+      "marketDifference": -8,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 52,
+          "tier": 10
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 10,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 52
+    },
+    {
+      "actualOverallPick": 45,
+      "round": 4,
+      "pickInRound": 9,
+      "ownerId": "ray-long",
+      "playerId": "13416",
+      "playerName": "Roman Hemby",
+      "position": "RB",
+      "nflTeam": "LV",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-45",
+      "marketRank": 54,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "MARKET UNCERTAIN",
+      "marketEvidenceStatus": "LOW",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED_UNDRAFTED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 54
+      },
+      "marketMeanRank": 54,
+      "marketLowRank": 54,
+      "marketHighRank": 54,
+      "marketDifference": -9,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 54,
+          "tier": 10
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 10,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Adam Randall"
+      },
+      "marketMedianRank": 54
+    },
+    {
+      "actualOverallPick": 46,
+      "round": 4,
+      "pickInRound": 10,
+      "ownerId": "ben-isbell",
+      "playerId": "13302",
+      "playerName": "Adam Randall",
+      "position": "RB",
+      "nflTeam": "BAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-46",
+      "marketRank": 33,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "CLEAR VALUE",
+      "marketEvidenceStatus": "MEDIUM",
+      "nflDraftCapital": {
+        "round": 5,
+        "overallPick": 174,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 43,
+            "player": "Taylen Green",
+            "position": "QB",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 44,
+          "player": "Seth McGowan",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 33,
+        "sports-illustrated-2026-05-19-top-50": 27
+      },
+      "marketMeanRank": 30,
+      "marketLowRank": 27,
+      "marketHighRank": 33,
+      "marketDifference": 13,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 33,
+          "tier": 8
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 8,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Kevin Coleman Jr."
+      },
+      "marketMedianRank": 33
+    },
+    {
+      "actualOverallPick": 47,
+      "round": 4,
+      "pickInRound": 11,
+      "ownerId": "bill-gross",
+      "playerId": "13350",
+      "playerName": "Joe Fagnano",
+      "position": "QB",
+      "nflTeam": "BAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-47",
+      "marketRank": null,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "MARKET UNCERTAIN",
+      "marketEvidenceStatus": "UNRANKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED_UNDRAFTED"
+      },
+      "opportunityCost": {
+        "status": "BLOCKED",
+        "topThreeRemaining": [
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 43,
+            "player": "Taylen Green",
+            "position": "QB",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 43,
+          "player": "Taylen Green",
+          "position": "QB",
+          "confidence": "LOW"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {},
+      "marketMeanRank": null,
+      "marketLowRank": null,
+      "marketHighRank": null,
+      "marketDifference": null,
+      "providerTiers": {},
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": null,
+        "higherTierPlayersRemain": false,
+        "highestRemainingRoto": "Kevin Coleman Jr."
+      },
+      "marketMedianRank": null
+    },
+    {
+      "actualOverallPick": 48,
+      "round": 4,
+      "pickInRound": 12,
+      "ownerId": "tyrone-poist",
+      "playerId": "13348",
+      "playerName": "J'Mari Taylor",
+      "position": "RB",
+      "nflTeam": "JAX",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-48",
+      "marketRank": 62,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": "MARKET UNCERTAIN",
+      "marketEvidenceStatus": "LOW",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED_UNDRAFTED"
+      },
+      "opportunityCost": {
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 43,
+            "player": "Taylen Green",
+            "position": "QB",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 44,
+          "player": "Seth McGowan",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      "marketRange": null,
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [],
+      "marketRankBySource": {},
+      "providerRanks": {
+        "rotoballer-2026-05-13-top-100": 62
+      },
+      "marketMeanRank": 62,
+      "marketLowRank": 62,
+      "marketHighRank": 62,
+      "marketDifference": -14,
+      "providerTiers": {
+        "rotoballer-2026-05-13-top-100": {
+          "rank": 62,
+          "tier": 10
+        }
+      },
+      "tierOpportunityCost": {
+        "provider": "RotoBaller",
+        "selectedTier": 10,
+        "higherTierPlayersRemain": true,
+        "highestRemainingRoto": "Kevin Coleman Jr."
+      },
+      "marketMedianRank": 62
+    }
+  ],
+  "teams": [
+    {
+      "ownerId": "anthony-martinez",
+      "pickCount": 4,
+      "rounds": [
+        2,
+        3,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 1,
+        "TE": 1,
+        "RB": 1,
+        "QB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 1,
+        "tradedAwayPicks": 1,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "ben-isbell",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 2,
+        "RB": 2
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "bill-gross",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        3,
+        4,
+        4
+      ],
+      "positionsDrafted": {
+        "RB": 1,
+        "WR": 1,
+        "TE": 1,
+        "QB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 2,
+        "tradedAwayPicks": 2,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "earl-perkins",
+      "pickCount": 3,
+      "rounds": [
+        1,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 3
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 1,
+        "selectionsMade": 3,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "jeffrey-hudgins",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 3,
+        "RB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "keith-winder",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 1,
+        "RB": 2,
+        "QB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "loren-michaels",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "RB": 1,
+        "WR": 1,
+        "QB": 1,
+        "TE": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "mike-estes",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "QB": 1,
+        "WR": 1,
+        "RB": 2
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "mike-mcburnie",
+      "pickCount": 3,
+      "rounds": [
+        1,
+        1,
+        2
+      ],
+      "positionsDrafted": {
+        "WR": 2,
+        "TE": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 1,
+        "tradedAwayPicks": 2,
+        "selectionsMade": 3,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "ray-long",
+      "pickCount": 5,
+      "rounds": [
+        1,
+        2,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "RB": 2,
+        "WR": 1,
+        "QB": 1,
+        "TE": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 1,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 5,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "rob-jenkins",
+      "pickCount": 5,
+      "rounds": [
+        1,
+        2,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "TE": 1,
+        "WR": 3,
+        "QB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 1,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 5,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "tyrone-poist",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 1,
+        "RB": 2,
+        "TE": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    }
+  ],
+  "positionRuns": [
+    {
+      "position": "WR",
+      "startPick": 12,
+      "endPick": 17,
+      "playerNames": [
+        "Chris Bell",
+        "Zachariah Branch",
+        "De'Zhaun Stribling",
+        "Ted Hurst",
+        "Denzel Boston",
+        "Germie Bernard"
+      ],
+      "ownerIds": [
+        "tyrone-poist",
+        "loren-michaels",
+        "mike-estes",
+        "rob-jenkins",
+        "ray-long",
+        "anthony-martinez"
+      ],
+      "initiatingSelection": "Chris Bell",
+      "detectionRule": "Three consecutive selections at the same position; a five-pick rolling window establishes the run and overlapping windows are merged into one maximal episode."
+    }
+  ],
+  "tierRuns": {
+    "status": "BLOCKED",
+    "reason": "The registered market source provides no supported tiers and is not draft-cutoff valid."
+  },
+  "historicalOwnerTendencies": {
+    "anthony-martinez": {
+      "totalPicks": 18,
+      "positionCounts": {
+        "QB": 4,
+        "RB": 7,
+        "TE": 2,
+        "WR": 5
+      },
+      "averageRoundByPosition": {
+        "QB": 2.25,
+        "RB": 3.29,
+        "WR": 2.2,
+        "TE": 3
+      }
+    },
+    "ben-isbell": {
+      "totalPicks": 20,
+      "positionCounts": {
+        "RB": 8,
+        "WR": 10,
+        "QB": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 2,
+        "RB": 2.38,
+        "WR": 2.7,
+        "TE": null
+      }
+    },
+    "bill-gross": {
+      "totalPicks": 21,
+      "positionCounts": {
+        "QB": 4,
+        "WR": 6,
+        "TE": 3,
+        "RB": 8
+      },
+      "averageRoundByPosition": {
+        "QB": 2,
+        "RB": 2.75,
+        "WR": 2,
+        "TE": 3.67
+      }
+    },
+    "dan-lowery": {
+      "totalPicks": 4,
+      "positionCounts": {
+        "RB": 2,
+        "WR": 2
+      },
+      "averageRoundByPosition": {
+        "QB": null,
+        "RB": 2.5,
+        "WR": 2.5,
+        "TE": null
+      }
+    },
+    "earl-perkins": {
+      "totalPicks": 23,
+      "positionCounts": {
+        "WR": 13,
+        "RB": 9,
+        "QB": 1
+      },
+      "averageRoundByPosition": {
+        "QB": 2,
+        "RB": 2.33,
+        "WR": 2.54,
+        "TE": null
+      }
+    },
+    "jeffrey-hudgins": {
+      "totalPicks": 20,
+      "positionCounts": {
+        "RB": 9,
+        "QB": 2,
+        "WR": 7,
+        "TE": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 1.5,
+        "RB": 3.11,
+        "WR": 2,
+        "TE": 3
+      }
+    },
+    "keith-winder": {
+      "totalPicks": 20,
+      "positionCounts": {
+        "RB": 5,
+        "QB": 4,
+        "WR": 9,
+        "TE": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 2.5,
+        "RB": 2.2,
+        "WR": 3,
+        "TE": 1
+      }
+    },
+    "loren-michaels": {
+      "totalPicks": 20,
+      "positionCounts": {
+        "WR": 7,
+        "RB": 5,
+        "TE": 3,
+        "QB": 3,
+        "K": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 3.33,
+        "RB": 2.4,
+        "WR": 2.14,
+        "TE": 3
+      }
+    },
+    "mike-estes": {
+      "totalPicks": 15,
+      "positionCounts": {
+        "WR": 7,
+        "RB": 4,
+        "QB": 2,
+        "TE": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 2.5,
+        "RB": 3.25,
+        "WR": 2.57,
+        "TE": 1.5
+      }
+    },
+    "mike-mcburnie": {
+      "totalPicks": 22,
+      "positionCounts": {
+        "RB": 8,
+        "WR": 7,
+        "QB": 3,
+        "TE": 4
+      },
+      "averageRoundByPosition": {
+        "QB": 3.33,
+        "RB": 2,
+        "WR": 2.14,
+        "TE": 3
+      }
+    },
+    "ray-long": {
+      "totalPicks": 18,
+      "positionCounts": {
+        "TE": 4,
+        "WR": 7,
+        "RB": 4,
+        "QB": 3
+      },
+      "averageRoundByPosition": {
+        "QB": 2.33,
+        "RB": 2.5,
+        "WR": 1.86,
+        "TE": 1.75
+      }
+    },
+    "rob-jenkins": {
+      "totalPicks": 21,
+      "positionCounts": {
+        "WR": 8,
+        "QB": 2,
+        "RB": 7,
+        "TE": 3,
+        "K": 1
+      },
+      "averageRoundByPosition": {
+        "QB": 1.5,
+        "RB": 2.43,
+        "WR": 2.25,
+        "TE": 3
+      }
+    },
+    "tyrone-poist": {
+      "totalPicks": 18,
+      "positionCounts": {
+        "WR": 9,
+        "RB": 5,
+        "TE": 4
+      },
+      "averageRoundByPosition": {
+        "QB": null,
+        "RB": 2.6,
+        "WR": 2.11,
+        "TE": 3.75
+      }
+    }
+  },
+  "gradingArchitecture": {
+    "status": "DESIGN_ONLY",
+    "components": [
+      "MARKET_VALUE",
+      "ROSTER_FIT",
+      "LONG_TERM_UPSIDE",
+      "DRAFT_CAPITAL_EFFICIENCY",
+      "OPPORTUNITY_COST",
+      "CLASS_COHERENCE"
+    ],
+    "recommendedWeights": {
+      "marketValue": 0.25,
+      "rosterFit": 0.2,
+      "longTermUpside": 0.2,
+      "capitalEfficiency": 0.15,
+      "opportunityCost": 0.1,
+      "classCoherence": 0.1
+    },
+    "immediateImpactTreatment": "Display separately from long-term dynasty outlook; do not combine until cutoff-safe role evidence exists.",
+    "falsePrecisionTreatment": "Use integer component grades or letter bands only after evidence coverage is approved; never publish unsupported decimal precision.",
+    "humorGuardrail": "NO_FACT_NO_ROAST"
+  },
+  "sourceGaps": [
+    "RotoBaller and Sports Illustrated are dynasty boards without an explicit 1QB label; both are retained with accurate roles rather than falsely labeled 1QB.",
+    "Late-round source disagreement and single-source coverage remain uncertainty, especially for fourth-round selections.",
+    "No trustworthy cutoff-safe pre-draft roster boundary exists; roster fit is permanently excluded from the formal 2026 class grade.",
+    "August Fantasy Orphans market remains a separate since-draft lens."
+  ],
+  "marketAtDraft": {
+    "sourceManifest": "data/source/market/dynasty-rookie/2026/source-manifest.json",
+    "boardArtifact": "data/source/market/dynasty-rookie/2026/a4-market-board.json",
+    "cutoffSafePrimarySource": true,
+    "consensusReady": true,
+    "gradingReady": true,
+    "status": "READY_WITH_ROSTER_FIT_EXCLUSION",
+    "providerCount": 4,
+    "coverage": {
+      "round1": {
+        "total": 12,
+        "usable": 12,
+        "anyEvidence": 12
+      },
+      "round2": {
+        "total": 12,
+        "usable": 12,
+        "anyEvidence": 12
+      },
+      "round3": {
+        "total": 12,
+        "usable": 12,
+        "anyEvidence": 12
+      },
+      "round4": {
+        "total": 12,
+        "usable": 5,
+        "anyEvidence": 11
+      },
+      "totalMarketEvidence": 47,
+      "high": 16,
+      "medium": 25,
+      "low": 6,
+      "unranked": 1
+    },
+    "medianConvention": "marketMedianRank is the median of captured eligible provider ranks; omitted rows are not imputed.",
+    "marketDifferenceConvention": "actualOverallPick - marketMedianRank; positive is VALUE and negative is REACH"
+  },
+  "currentMarketReference": {
+    "source": "Fantasy Orphans",
+    "snapshotDate": "2026-08-19",
+    "timingClassification": "POST_DRAFT_PRESEASON",
+    "daysFromDraft": 82,
+    "format": "1QB_DYNASTY_ROOKIE",
+    "playerCount": 47,
+    "resolvedPickCount": 47,
+    "tiersAvailable": false,
+    "adpAvailable": true,
+    "usableForDraftDayGrading": false,
+    "reason": "The only registered market snapshot is post-draft/preseason and cannot judge what was knowable at the draft cutoff."
+  },
+  "nflDraftCapital": {
+    "sourceReference": "data/source/nfl-draft-2026-skill-position-capital.json",
+    "source": "NFL.com 2026 Draft Tracker",
+    "coverage": {
+      "lccPicks": 48,
+      "records": 48,
+      "drafted": 44,
+      "undrafted": 4,
+      "status": "COMPLETE_FOR_LCC_PICK_SET"
+    },
+    "status": "COMPLETE_FOR_LCC_PICK_SET"
+  },
+  "pickValueCurve": {
+    "source": "data/source/market/dynasty-rookie/2026/fantasypros-may-2026-1qb-pick-values.json",
+    "sourceType": "PICK_VALUE_CURVE",
+    "format": "1QB_DYNASTY",
+    "bucketCount": 21,
+    "imported": true,
+    "usedForPlayerRanking": false
+  },
+  "ageAtDraft": {
+    "date": "2026-05-29",
+    "sourceReference": "data/history/matchups/sleeper/players.json",
+    "coverage": 47,
+    "totalDraftedPlayers": 48,
+    "unresolved": [
+      "Jam Miller"
+    ],
+    "skillPositionCoverage": 47,
+    "skillPositionAverages": {
+      "QB": 23,
+      "RB": 22.23,
+      "WR": 21.85,
+      "TE": 22.14
+    },
+    "status": "PARTIAL"
+  },
+  "draftCapitalContext": {
+    "sourceReference": "data/source/market/dynasty-rookie/2026/fantasypros-may-2026-1qb-pick-values.json",
+    "bucketValues": {
+      "1.01": {
+        "oneQB": 69,
+        "superflex": 69
+      },
+      "1.02": {
+        "oneQB": 64,
+        "superflex": 64
+      },
+      "1.03": {
+        "oneQB": 59,
+        "superflex": 62
+      },
+      "1.04": {
+        "oneQB": 58,
+        "superflex": 59
+      },
+      "1.05": {
+        "oneQB": 54,
+        "superflex": 58
+      },
+      "1.06": {
+        "oneQB": 48,
+        "superflex": 54
+      },
+      "1.07": {
+        "oneQB": 46,
+        "superflex": 48
+      },
+      "1.08": {
+        "oneQB": 44,
+        "superflex": 46
+      },
+      "1.09": {
+        "oneQB": 42,
+        "superflex": 44
+      },
+      "1.10": {
+        "oneQB": 40,
+        "superflex": 42
+      },
+      "1.11": {
+        "oneQB": 38,
+        "superflex": 40
+      },
+      "1.12": {
+        "oneQB": 34,
+        "superflex": 38
+      },
+      "2.early": {
+        "oneQB": 31,
+        "superflex": 34
+      },
+      "2.mid": {
+        "oneQB": 26,
+        "superflex": 28
+      },
+      "2.late": {
+        "oneQB": 21,
+        "superflex": 23
+      },
+      "3.early": {
+        "oneQB": 17,
+        "superflex": 19
+      },
+      "3.mid": {
+        "oneQB": 14,
+        "superflex": 16
+      },
+      "3.late": {
+        "oneQB": 12,
+        "superflex": 14
+      },
+      "4.early": {
+        "oneQB": 7,
+        "superflex": 9
+      },
+      "4.late": {
+        "oneQB": 5,
+        "superflex": 7
+      },
+      "5.plus": {
+        "oneQB": 2,
+        "superflex": 3
+      }
+    },
+    "ownerAccounts": {
+      "loren-michaels": {
+        "selections": 4,
+        "capitalSpent": 124,
+        "picks": [
+          {
+            "overallPick": 1,
+            "bucket": "1.01",
+            "oneQBValue": 69
+          },
+          {
+            "overallPick": 13,
+            "bucket": "2.early",
+            "oneQBValue": 31
+          },
+          {
+            "overallPick": 25,
+            "bucket": "3.early",
+            "oneQBValue": 17
+          },
+          {
+            "overallPick": 37,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      },
+      "mike-estes": {
+        "selections": 4,
+        "capitalSpent": 119,
+        "picks": [
+          {
+            "overallPick": 2,
+            "bucket": "1.02",
+            "oneQBValue": 64
+          },
+          {
+            "overallPick": 14,
+            "bucket": "2.early",
+            "oneQBValue": 31
+          },
+          {
+            "overallPick": 26,
+            "bucket": "3.early",
+            "oneQBValue": 17
+          },
+          {
+            "overallPick": 38,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      },
+      "earl-perkins": {
+        "selections": 3,
+        "capitalSpent": 83,
+        "picks": [
+          {
+            "overallPick": 3,
+            "bucket": "1.03",
+            "oneQBValue": 59
+          },
+          {
+            "overallPick": 27,
+            "bucket": "3.early",
+            "oneQBValue": 17
+          },
+          {
+            "overallPick": 39,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      },
+      "mike-mcburnie": {
+        "selections": 3,
+        "capitalSpent": 117,
+        "picks": [
+          {
+            "overallPick": 4,
+            "bucket": "1.04",
+            "oneQBValue": 58
+          },
+          {
+            "overallPick": 11,
+            "bucket": "1.11",
+            "oneQBValue": 38
+          },
+          {
+            "overallPick": 23,
+            "bucket": "2.late",
+            "oneQBValue": 21
+          }
+        ]
+      },
+      "bill-gross": {
+        "selections": 4,
+        "capitalSpent": 83,
+        "picks": [
+          {
+            "overallPick": 5,
+            "bucket": "1.05",
+            "oneQBValue": 54
+          },
+          {
+            "overallPick": 28,
+            "bucket": "3.early",
+            "oneQBValue": 17
+          },
+          {
+            "overallPick": 40,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          },
+          {
+            "overallPick": 47,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "keith-winder": {
+        "selections": 4,
+        "capitalSpent": 95,
+        "picks": [
+          {
+            "overallPick": 6,
+            "bucket": "1.06",
+            "oneQBValue": 48
+          },
+          {
+            "overallPick": 18,
+            "bucket": "2.mid",
+            "oneQBValue": 26
+          },
+          {
+            "overallPick": 30,
+            "bucket": "3.mid",
+            "oneQBValue": 14
+          },
+          {
+            "overallPick": 42,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      },
+      "jeffrey-hudgins": {
+        "selections": 4,
+        "capitalSpent": 91,
+        "picks": [
+          {
+            "overallPick": 7,
+            "bucket": "1.07",
+            "oneQBValue": 46
+          },
+          {
+            "overallPick": 19,
+            "bucket": "2.mid",
+            "oneQBValue": 26
+          },
+          {
+            "overallPick": 31,
+            "bucket": "3.mid",
+            "oneQBValue": 14
+          },
+          {
+            "overallPick": 43,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "rob-jenkins": {
+        "selections": 5,
+        "capitalSpent": 120,
+        "picks": [
+          {
+            "overallPick": 8,
+            "bucket": "1.08",
+            "oneQBValue": 44
+          },
+          {
+            "overallPick": 15,
+            "bucket": "2.early",
+            "oneQBValue": 31
+          },
+          {
+            "overallPick": 20,
+            "bucket": "2.mid",
+            "oneQBValue": 26
+          },
+          {
+            "overallPick": 32,
+            "bucket": "3.mid",
+            "oneQBValue": 14
+          },
+          {
+            "overallPick": 44,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "ray-long": {
+        "selections": 5,
+        "capitalSpent": 111,
+        "picks": [
+          {
+            "overallPick": 9,
+            "bucket": "1.09",
+            "oneQBValue": 42
+          },
+          {
+            "overallPick": 16,
+            "bucket": "2.early",
+            "oneQBValue": 31
+          },
+          {
+            "overallPick": 21,
+            "bucket": "2.late",
+            "oneQBValue": 21
+          },
+          {
+            "overallPick": 33,
+            "bucket": "3.late",
+            "oneQBValue": 12
+          },
+          {
+            "overallPick": 45,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "ben-isbell": {
+        "selections": 4,
+        "capitalSpent": 78,
+        "picks": [
+          {
+            "overallPick": 10,
+            "bucket": "1.10",
+            "oneQBValue": 40
+          },
+          {
+            "overallPick": 22,
+            "bucket": "2.late",
+            "oneQBValue": 21
+          },
+          {
+            "overallPick": 34,
+            "bucket": "3.late",
+            "oneQBValue": 12
+          },
+          {
+            "overallPick": 46,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "tyrone-poist": {
+        "selections": 4,
+        "capitalSpent": 72,
+        "picks": [
+          {
+            "overallPick": 12,
+            "bucket": "1.12",
+            "oneQBValue": 34
+          },
+          {
+            "overallPick": 24,
+            "bucket": "2.late",
+            "oneQBValue": 21
+          },
+          {
+            "overallPick": 36,
+            "bucket": "3.late",
+            "oneQBValue": 12
+          },
+          {
+            "overallPick": 48,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "anthony-martinez": {
+        "selections": 4,
+        "capitalSpent": 59,
+        "picks": [
+          {
+            "overallPick": 17,
+            "bucket": "2.mid",
+            "oneQBValue": 26
+          },
+          {
+            "overallPick": 29,
+            "bucket": "3.mid",
+            "oneQBValue": 14
+          },
+          {
+            "overallPick": 35,
+            "bucket": "3.late",
+            "oneQBValue": 12
+          },
+          {
+            "overallPick": 41,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      }
+    },
+    "status": "CONTEXT_ONLY_NO_PLAYER_RETURN_SCORE"
+  },
+  "reconstructionAudit": {
+    "baseline": {
+      "source": "data/history/matchups/sleeper/2025/rosters.json",
+      "captureTimestamp": null,
+      "timestampConfidence": "UNKNOWN",
+      "rosterCount": 12,
+      "playerCount": 294
+    },
+    "transactionCoverage": {
+      "source": "data/source/sleeper-2026-roster-reconstruction-evidence.json",
+      "earliestChecked": "2026-05-15T18:47:22.598Z",
+      "cutoff": "2026-05-29T11:54:55.518Z",
+      "preDraftRows": 25,
+      "coverageStatus": "INCOMPLETE_OR_UNPROVABLE",
+      "reason": "The retrieved feed begins after the season baseline boundary cannot be established; no complete offseason feed can be proven."
+    },
+    "invariants": {
+      "owners": 12,
+      "uniqueOwnership": "NOT_PROVEN",
+      "impossibleAddSequence": "NOT_PROVEN",
+      "plausibleRosterCounts": "NOT_PROVEN",
+      "forwardReconciliation": "NOT_AVAILABLE"
+    },
+    "forwardTarget": "No trustworthy timestamped immediate post-draft roster snapshot is available",
+    "mismatchCount": null,
+    "preDraftConfidence": "NONE",
+    "postDraftConfidence": "NONE",
+    "rosterFitEnabled": false
+  },
+  "diagnosticGates": {
+    "draftBoard": "READY",
+    "nflCapital": "READY",
+    "marketRound1": "PARTIAL",
+    "marketRound2": "BLOCKED",
+    "marketRound3to4": "PARTIAL",
+    "pickValueCurve": "READY",
+    "preDraftRoster": "BLOCKED",
+    "postDraftRoster": "BLOCKED",
+    "age": "PARTIAL",
+    "opportunityCost": "BLOCKED",
+    "positionRuns": "READY",
+    "provenance": "PARTIAL",
+    "overall": "NOT GRADING READY"
+  },
+  "rosterFitGradeAvailable": false,
+  "rosterFitExclusionReason": "No trustworthy cutoff-safe May 29 pre-draft roster boundary or complete offseason transaction history exists; roster fit is excluded from the formal 2026 class grade.",
+  "marketThresholds": {
+    "round1": {
+      "fair": "0–2",
+      "possible": "3–5",
+      "clear": "6+"
+    },
+    "round2": {
+      "fair": "0–3",
+      "possible": "4–7",
+      "clear": "8+"
+    },
+    "rounds3to4": {
+      "fair": "0–5",
+      "possible": "6–11",
+      "clear": "12+"
+    },
+    "wideDispersionRule": "A wide provider range suppresses a strong label unless the round threshold is exceeded."
+  },
+  "opportunityCost": {
+    "status": "READY_FOR_EVIDENCE_ONLY",
+    "fields": [
+      "topThreeRemaining",
+      "bestRemainingSamePosition"
+    ],
+    "byPick": [
+      {
+        "pick": 1,
+        "ownerId": "loren-michaels",
+        "player": "Jeremiyah Love",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 2,
+            "player": "Carnell Tate",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 3,
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 5,
+          "player": "Jadarian Price",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 2,
+        "ownerId": "mike-estes",
+        "player": "Fernando Mendoza",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 2,
+            "player": "Carnell Tate",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 3,
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 17,
+          "player": "Ty Simpson",
+          "position": "QB",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 3,
+        "ownerId": "earl-perkins",
+        "player": "Carnell Tate",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 3,
+            "player": "Jordyn Tyson",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 5,
+            "player": "Jadarian Price",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 3,
+          "player": "Jordyn Tyson",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 4,
+        "ownerId": "mike-mcburnie",
+        "player": "Jordyn Tyson",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 5,
+            "player": "Jadarian Price",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 7,
+            "player": "KC Concepcion",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 4,
+          "player": "Makai Lemon",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 5,
+        "ownerId": "bill-gross",
+        "player": "Jadarian Price",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 4,
+            "player": "Makai Lemon",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 7,
+            "player": "KC Concepcion",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 7,
+            "player": "Kenyon Sadiq",
+            "position": "TE",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 15,
+          "player": "Jonah Coleman",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 6,
+        "ownerId": "keith-winder",
+        "player": "Makai Lemon",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 7,
+            "player": "KC Concepcion",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 7,
+            "player": "Kenyon Sadiq",
+            "position": "TE",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 8,
+            "player": "Omar Cooper Jr.",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 7,
+          "player": "KC Concepcion",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 7,
+        "ownerId": "jeffrey-hudgins",
+        "player": "KC Concepcion",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 7,
+            "player": "Kenyon Sadiq",
+            "position": "TE",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 8,
+            "player": "Omar Cooper Jr.",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 8,
+          "player": "Omar Cooper Jr.",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 8,
+        "ownerId": "rob-jenkins",
+        "player": "Kenyon Sadiq",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 8,
+            "player": "Omar Cooper Jr.",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 12,
+            "player": "Eli Stowers",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 12,
+          "player": "Eli Stowers",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 9,
+        "ownerId": "ray-long",
+        "player": "Nicholas Singleton",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 8,
+            "player": "Omar Cooper Jr.",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 12,
+            "player": "Eli Stowers",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 15,
+          "player": "Jonah Coleman",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 10,
+        "ownerId": "ben-isbell",
+        "player": "Omar Cooper",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 12,
+            "player": "Eli Stowers",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 13,
+            "player": "De'Zhaun Stribling",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 11,
+        "ownerId": "mike-mcburnie",
+        "player": "Eli Stowers",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 13,
+            "player": "De'Zhaun Stribling",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 34,
+          "player": "Max Klare",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 12,
+        "ownerId": "tyrone-poist",
+        "player": "Chris Bell",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 13,
+            "player": "De'Zhaun Stribling",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 13,
+        "ownerId": "loren-michaels",
+        "player": "Zachariah Branch",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 13,
+            "player": "De'Zhaun Stribling",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 14,
+        "ownerId": "mike-estes",
+        "player": "De'Zhaun Stribling",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Germie Bernard",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 15,
+        "ownerId": "rob-jenkins",
+        "player": "Ted Hurst",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 10,
+            "player": "Denzel Boston",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 4
+          },
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Germie Bernard",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 10,
+          "player": "Denzel Boston",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 16,
+        "ownerId": "ray-long",
+        "player": "Denzel Boston",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 14,
+            "player": "Germie Bernard",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 15,
+            "player": "Jonah Coleman",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 14,
+          "player": "Antonio Williams",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 17,
+        "ownerId": "anthony-martinez",
+        "player": "Germie Bernard",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 15,
+            "player": "Jonah Coleman",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 17,
+            "player": "Ty Simpson",
+            "position": "QB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 14,
+          "player": "Antonio Williams",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 18,
+        "ownerId": "keith-winder",
+        "player": "Jonah Coleman",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 14,
+            "player": "Antonio Williams",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 17,
+            "player": "Ty Simpson",
+            "position": "QB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 18,
+            "player": "Chris Brazzell II",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 19,
+          "player": "Kaelon Black",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 19,
+        "ownerId": "jeffrey-hudgins",
+        "player": "Antonio Williams",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 17,
+            "player": "Ty Simpson",
+            "position": "QB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 18,
+            "player": "Chris Brazzell II",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 18,
+          "player": "Chris Brazzell II",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 20,
+        "ownerId": "rob-jenkins",
+        "player": "Malachi Fields",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 17,
+            "player": "Ty Simpson",
+            "position": "QB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 18,
+            "player": "Chris Brazzell II",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 18,
+          "player": "Chris Brazzell II",
+          "position": "WR",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 21,
+        "ownerId": "ray-long",
+        "player": "Ty Simpson",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 18,
+            "player": "Chris Brazzell II",
+            "position": "WR",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 35,
+          "player": "Carson Beck",
+          "position": "QB",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 22,
+        "ownerId": "ben-isbell",
+        "player": "Chris Brazzell",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 28,
+            "player": "Emmett Johnson",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 29,
+          "player": "Ja'Kobi Lane",
+          "position": "WR",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 23,
+        "ownerId": "mike-mcburnie",
+        "player": "Skyler Bell",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 28,
+            "player": "Emmett Johnson",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 29,
+          "player": "Ja'Kobi Lane",
+          "position": "WR",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 24,
+        "ownerId": "tyrone-poist",
+        "player": "Emmett Johnson",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 29,
+            "player": "Ja'Kobi Lane",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 19,
+          "player": "Kaelon Black",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 25,
+        "ownerId": "loren-michaels",
+        "player": "Carson Beck",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 29,
+            "player": "Ja'Kobi Lane",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 37,
+          "player": "Drew Allar",
+          "position": "QB",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 26,
+        "ownerId": "mike-estes",
+        "player": "Kaytron Allen",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 29,
+            "player": "Ja'Kobi Lane",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 19,
+          "player": "Kaelon Black",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 27,
+        "ownerId": "earl-perkins",
+        "player": "Elijah Sarratt",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 29,
+            "player": "Ja'Kobi Lane",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 29,
+          "player": "Ja'Kobi Lane",
+          "position": "WR",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 28,
+        "ownerId": "bill-gross",
+        "player": "Ja'Kobi Lane",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 36,
+          "player": "Kevin Coleman Jr.",
+          "position": "WR",
+          "confidence": "LOW"
+        }
+      },
+      {
+        "pick": 29,
+        "ownerId": "anthony-martinez",
+        "player": "Eli Raridon",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 25,
+            "player": "Mike Washington Jr.",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 34,
+          "player": "Max Klare",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 30,
+        "ownerId": "keith-winder",
+        "player": "Mike Washington",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 19,
+            "player": "Kaelon Black",
+            "position": "RB",
+            "confidence": "HIGH",
+            "sourceCount": 3
+          },
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 19,
+          "player": "Kaelon Black",
+          "position": "RB",
+          "confidence": "HIGH"
+        }
+      },
+      {
+        "pick": 31,
+        "ownerId": "jeffrey-hudgins",
+        "player": "Kaelon Black",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 32,
+        "ownerId": "rob-jenkins",
+        "player": "Zavion Thomas",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 36,
+          "player": "Kevin Coleman Jr.",
+          "position": "WR",
+          "confidence": "LOW"
+        }
+      },
+      {
+        "pick": 33,
+        "ownerId": "ray-long",
+        "player": "Oscar Delp",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 34,
+          "player": "Max Klare",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 34,
+        "ownerId": "ben-isbell",
+        "player": "Demond Claiborne",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 35,
+        "ownerId": "anthony-martinez",
+        "player": "Eli Heidenreich",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 34,
+            "player": "Max Klare",
+            "position": "TE",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 36,
+        "ownerId": "tyrone-poist",
+        "player": "Max Klare",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Brenen Thompson",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 50,
+          "player": "Justin Joly",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 37,
+        "ownerId": "loren-michaels",
+        "player": "Jack Endries",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Brenen Thompson",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 50,
+          "player": "Justin Joly",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 38,
+        "ownerId": "mike-estes",
+        "player": "Jam Miller",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Brenen Thompson",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 39,
+        "ownerId": "earl-perkins",
+        "player": "Brenen Thompson",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Drew Allar",
+            "position": "QB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 36,
+          "player": "Kevin Coleman Jr.",
+          "position": "WR",
+          "confidence": "LOW"
+        }
+      },
+      {
+        "pick": 40,
+        "ownerId": "bill-gross",
+        "player": "Michael Trigg",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 37,
+            "player": "Drew Allar",
+            "position": "QB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 50,
+          "player": "Justin Joly",
+          "position": "TE",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 41,
+        "ownerId": "anthony-martinez",
+        "player": "Drew Allar",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Bryce Lance",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 43,
+          "player": "Taylen Green",
+          "position": "QB",
+          "confidence": "LOW"
+        }
+      },
+      {
+        "pick": 42,
+        "ownerId": "keith-winder",
+        "player": "Garrett Nussmeier",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Bryce Lance",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 43,
+          "player": "Taylen Green",
+          "position": "QB",
+          "confidence": "LOW"
+        }
+      },
+      {
+        "pick": 43,
+        "ownerId": "jeffrey-hudgins",
+        "player": "Bryce Lance",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 36,
+          "player": "Kevin Coleman Jr.",
+          "position": "WR",
+          "confidence": "LOW"
+        }
+      },
+      {
+        "pick": 44,
+        "ownerId": "rob-jenkins",
+        "player": "Cade Klubnik",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 43,
+          "player": "Taylen Green",
+          "position": "QB",
+          "confidence": "LOW"
+        }
+      },
+      {
+        "pick": 45,
+        "ownerId": "ray-long",
+        "player": "Roman Hemby",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 33,
+            "player": "Adam Randall",
+            "position": "RB",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 33,
+          "player": "Adam Randall",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 46,
+        "ownerId": "ben-isbell",
+        "player": "Adam Randall",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 43,
+            "player": "Taylen Green",
+            "position": "QB",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 44,
+          "player": "Seth McGowan",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      },
+      {
+        "pick": 47,
+        "ownerId": "bill-gross",
+        "player": "Joe Fagnano",
+        "status": "BLOCKED",
+        "topThreeRemaining": [
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 43,
+            "player": "Taylen Green",
+            "position": "QB",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 43,
+          "player": "Taylen Green",
+          "position": "QB",
+          "confidence": "LOW"
+        }
+      },
+      {
+        "pick": 48,
+        "ownerId": "tyrone-poist",
+        "player": "J'Mari Taylor",
+        "status": "READY",
+        "topThreeRemaining": [
+          {
+            "rank": 36,
+            "player": "Kevin Coleman Jr.",
+            "position": "WR",
+            "confidence": "LOW",
+            "sourceCount": 1
+          },
+          {
+            "rank": 38,
+            "player": "Caleb Douglas",
+            "position": "WR",
+            "confidence": "MEDIUM",
+            "sourceCount": 2
+          },
+          {
+            "rank": 43,
+            "player": "Taylen Green",
+            "position": "QB",
+            "confidence": "LOW",
+            "sourceCount": 1
+          }
+        ],
+        "bestRemainingSamePosition": {
+          "rank": 44,
+          "player": "Seth McGowan",
+          "position": "RB",
+          "confidence": "MEDIUM"
+        }
+      }
+    ]
+  },
+  "tierEvidence": {
+    "status": "READY_PROVIDER_SEPARATE",
+    "provider": "RotoBaller",
+    "tierRanges": [
+      {
+        "tier": 1,
+        "start": 1,
+        "end": 1
+      },
+      {
+        "tier": 2,
+        "start": 2,
+        "end": 4
+      },
+      {
+        "tier": 3,
+        "start": 5,
+        "end": 8
+      },
+      {
+        "tier": 4,
+        "start": 9,
+        "end": 13
+      },
+      {
+        "tier": 5,
+        "start": 14,
+        "end": 19
+      },
+      {
+        "tier": 6,
+        "start": 20,
+        "end": 24
+      },
+      {
+        "tier": 7,
+        "start": 25,
+        "end": 31
+      },
+      {
+        "tier": 8,
+        "start": 32,
+        "end": 39
+      },
+      {
+        "tier": 9,
+        "start": 40,
+        "end": 51
+      },
+      {
+        "tier": 10,
+        "start": 52,
+        "end": 64
+      },
+      {
+        "tier": 11,
+        "start": 65,
+        "end": 71
+      },
+      {
+        "tier": 10,
+        "start": 72,
+        "end": 72
+      },
+      {
+        "tier": 11,
+        "start": 73,
+        "end": 79
+      },
+      {
+        "tier": 12,
+        "start": 80,
+        "end": 91
+      },
+      {
+        "tier": 13,
+        "start": 92,
+        "end": 100
+      }
+    ],
+    "syntheticConsensusTiers": false
+  },
+  "positionRunMarketEnrichment": {
+    "position": "WR",
+    "startPick": 12,
+    "endPick": 17,
+    "picks": [
+      {
+        "actualPick": 12,
+        "player": "Chris Bell",
+        "marketMedianRank": 17,
+        "marketDifference": -5,
+        "marketClassification": "POSSIBLE REACH",
+        "confidence": "MEDIUM",
+        "rotoTier": 5
+      },
+      {
+        "actualPick": 13,
+        "player": "Zachariah Branch",
+        "marketMedianRank": 21,
+        "marketDifference": -8,
+        "marketClassification": "CLEAR REACH",
+        "confidence": "MEDIUM",
+        "rotoTier": 6
+      },
+      {
+        "actualPick": 14,
+        "player": "De'Zhaun Stribling",
+        "marketMedianRank": 13,
+        "marketDifference": 1,
+        "marketClassification": "FAIR VALUE",
+        "confidence": "HIGH",
+        "rotoTier": 5
+      },
+      {
+        "actualPick": 15,
+        "player": "Ted Hurst",
+        "marketMedianRank": 24,
+        "marketDifference": -9,
+        "marketClassification": "CLEAR REACH",
+        "confidence": "MEDIUM",
+        "rotoTier": 6
+      },
+      {
+        "actualPick": 16,
+        "player": "Denzel Boston",
+        "marketMedianRank": 10,
+        "marketDifference": 6,
+        "marketClassification": "POSSIBLE VALUE",
+        "confidence": "HIGH",
+        "rotoTier": 4
+      },
+      {
+        "actualPick": 17,
+        "player": "Germie Bernard",
+        "marketMedianRank": 14,
+        "marketDifference": 3,
+        "marketClassification": "FAIR VALUE",
+        "confidence": "MEDIUM",
+        "rotoTier": 4
+      }
+    ]
+  },
+  "gradingInputs": {
+    "marketValue": "READY",
+    "nflCapitalLongTermUpside": "READY",
+    "draftCapitalEfficiency": "READY",
+    "opportunityCost": "READY_WHERE_MARKET_EXISTS",
+    "positionTierBehavior": "READY",
+    "historicalOwnerPatterns": "READY",
+    "rosterFit": "NOT_GRADED",
+    "classCoherence": "SLICE_B_REDESIGN_REQUIRED"
+  },
+  "finalMarketBoard": {
+    "providerRanks": "Preserved on every pick in providerRanks.",
+    "providerTiers": "Preserved on every pick in providerTiers; RotoBaller tiers remain provider-specific.",
+    "consensus": "Median of eligible cutoff-safe player-ranking sources.",
+    "noImputedRanks": true
+  }
+}
