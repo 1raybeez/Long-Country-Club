@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "methodologyVersion": "rookie-draft-intelligence-slice-a2-v1",
+  "methodologyVersion": "rookie-draft-intelligence-slice-a3-v1",
   "status": "BLOCKED",
   "generatedAt": "2026-08-26T00:00:00.000Z",
   "season": 2026,
@@ -92,11 +92,11 @@
       "position": "RB",
       "nflTeam": "ARI",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-1",
-      "marketRank": null,
+      "marketRank": 1,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 3,
@@ -107,6 +107,24 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 1,
+        "max": 1
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 1,
+        "fantasy-football-nerds-2026-05-24": 1,
+        "dynastyodds-2026-v9b-may": 1,
+        "first-down-studio-2026-05-06": 1
       }
     },
     {
@@ -119,11 +137,11 @@
       "position": "QB",
       "nflTeam": "LV",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-2",
-      "marketRank": null,
+      "marketRank": 6,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 1,
@@ -134,6 +152,24 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 3,
+        "max": 10
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 10,
+        "fantasy-football-nerds-2026-05-24": 5,
+        "dynastyodds-2026-v9b-may": 6,
+        "first-down-studio-2026-05-06": 3
       }
     },
     {
@@ -146,11 +182,11 @@
       "position": "WR",
       "nflTeam": "TEN",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-3",
-      "marketRank": null,
+      "marketRank": 2,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 4,
@@ -161,6 +197,24 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 2,
+        "max": 8
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 2,
+        "fantasy-football-nerds-2026-05-24": 2,
+        "dynastyodds-2026-v9b-may": 8,
+        "first-down-studio-2026-05-06": 2
       }
     },
     {
@@ -173,11 +227,11 @@
       "position": "WR",
       "nflTeam": "NO",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-4",
-      "marketRank": null,
+      "marketRank": 3,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 8,
@@ -188,6 +242,24 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 2,
+        "max": 4
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 3,
+        "fantasy-football-nerds-2026-05-24": 3,
+        "dynastyodds-2026-v9b-may": 2,
+        "first-down-studio-2026-05-06": 4
       }
     },
     {
@@ -200,11 +272,11 @@
       "position": "RB",
       "nflTeam": "SEA",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-5",
-      "marketRank": null,
+      "marketRank": 6,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 32,
@@ -215,6 +287,24 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 5,
+        "max": 12
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 5,
+        "fantasy-football-nerds-2026-05-24": 6,
+        "dynastyodds-2026-v9b-may": 12,
+        "first-down-studio-2026-05-06": 6
       }
     },
     {
@@ -227,11 +317,11 @@
       "position": "WR",
       "nflTeam": "PHI",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-6",
-      "marketRank": null,
+      "marketRank": 4,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 20,
@@ -242,6 +332,24 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 4,
+        "max": 5
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 4,
+        "fantasy-football-nerds-2026-05-24": 4,
+        "dynastyodds-2026-v9b-may": 4,
+        "first-down-studio-2026-05-06": 5
       }
     },
     {
@@ -254,11 +362,11 @@
       "position": "WR",
       "nflTeam": "CLE",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-7",
-      "marketRank": null,
+      "marketRank": 7,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 24,
@@ -269,6 +377,24 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 3,
+        "max": 8
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 7,
+        "fantasy-football-nerds-2026-05-24": 8,
+        "dynastyodds-2026-v9b-may": 3,
+        "first-down-studio-2026-05-06": 7
       }
     },
     {
@@ -281,11 +407,11 @@
       "position": "TE",
       "nflTeam": "NYJ",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-8",
-      "marketRank": null,
+      "marketRank": 8,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 16,
@@ -296,6 +422,24 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 6,
+        "max": 9
+      },
+      "marketSourceCount": 4,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 6,
+        "fantasy-football-nerds-2026-05-24": 7,
+        "dynastyodds-2026-v9b-may": 9,
+        "first-down-studio-2026-05-06": 8
       }
     },
     {
@@ -312,7 +456,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 5,
         "overallPick": 165,
@@ -323,7 +467,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 10,
@@ -335,11 +484,11 @@
       "position": "WR",
       "nflTeam": "NYJ",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-10",
-      "marketRank": null,
+      "marketRank": 8,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "HIGH",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 30,
@@ -350,6 +499,22 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 7,
+        "max": 10
+      },
+      "marketSourceCount": 3,
+      "marketConfidence": "HIGH",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 8,
+        "fantasy-football-nerds-2026-05-24": 10,
+        "dynastyodds-2026-v9b-may": 7
       }
     },
     {
@@ -362,11 +527,11 @@
       "position": "TE",
       "nflTeam": "PHI",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-11",
-      "marketRank": null,
+      "marketRank": 5,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "LOW",
       "nflDraftCapital": {
         "round": 2,
         "overallPick": 54,
@@ -377,6 +542,18 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 5,
+        "max": 5
+      },
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [
+        "dynastyodds-2026-v9b-may"
+      ],
+      "marketRankBySource": {
+        "dynastyodds-2026-v9b-may": 5
       }
     },
     {
@@ -393,7 +570,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 94,
@@ -404,7 +581,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 13,
@@ -420,7 +602,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 79,
@@ -431,7 +613,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 14,
@@ -443,11 +630,11 @@
       "position": "WR",
       "nflTeam": "SF",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-14",
-      "marketRank": null,
+      "marketRank": 11,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "LOW",
       "nflDraftCapital": {
         "round": 2,
         "overallPick": 33,
@@ -458,6 +645,18 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 11,
+        "max": 11
+      },
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [
+        "the-flex-spot-2026-05-14"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 11
       }
     },
     {
@@ -474,7 +673,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 84,
@@ -485,7 +684,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 16,
@@ -497,11 +701,11 @@
       "position": "WR",
       "nflTeam": "CLE",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-16",
-      "marketRank": null,
+      "marketRank": 11,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "MEDIUM",
       "nflDraftCapital": {
         "round": 2,
         "overallPick": 39,
@@ -512,6 +716,20 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 9,
+        "max": 11
+      },
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [
+        "the-flex-spot-2026-05-14",
+        "fantasy-football-nerds-2026-05-24"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 9,
+        "fantasy-football-nerds-2026-05-24": 11
       }
     },
     {
@@ -528,7 +746,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 2,
         "overallPick": 47,
@@ -539,7 +757,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 18,
@@ -551,11 +774,11 @@
       "position": "RB",
       "nflTeam": "DEN",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-18",
-      "marketRank": null,
+      "marketRank": 13,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "MEDIUM",
       "nflDraftCapital": {
         "round": 4,
         "overallPick": 108,
@@ -566,6 +789,20 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 10,
+        "max": 13
+      },
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [
+        "fantasy-football-nerds-2026-05-24",
+        "dynastyodds-2026-v9b-may"
+      ],
+      "marketRankBySource": {
+        "fantasy-football-nerds-2026-05-24": 13,
+        "dynastyodds-2026-v9b-may": 10
       }
     },
     {
@@ -582,7 +819,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 71,
@@ -593,7 +830,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 20,
@@ -609,7 +851,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 74,
@@ -620,7 +862,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 21,
@@ -632,11 +879,11 @@
       "position": "QB",
       "nflTeam": "LAR",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-21",
-      "marketRank": null,
+      "marketRank": 9,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "MEDIUM",
       "nflDraftCapital": {
         "round": 1,
         "overallPick": 13,
@@ -647,6 +894,20 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 9,
+        "max": 9
+      },
+      "marketSourceCount": 2,
+      "marketConfidence": "MEDIUM",
+      "marketSources": [
+        "fantasy-football-nerds-2026-05-24",
+        "first-down-studio-2026-05-06"
+      ],
+      "marketRankBySource": {
+        "fantasy-football-nerds-2026-05-24": 9,
+        "first-down-studio-2026-05-06": 9
       }
     },
     {
@@ -659,11 +920,11 @@
       "position": "WR",
       "nflTeam": "CAR",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-22",
-      "marketRank": null,
+      "marketRank": 12,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "LOW",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 83,
@@ -674,6 +935,18 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 12,
+        "max": 12
+      },
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [
+        "the-flex-spot-2026-05-14"
+      ],
+      "marketRankBySource": {
+        "the-flex-spot-2026-05-14": 12
       }
     },
     {
@@ -690,7 +963,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 4,
         "overallPick": 125,
@@ -701,7 +974,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 24,
@@ -717,7 +995,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 5,
         "overallPick": 161,
@@ -728,7 +1006,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 25,
@@ -744,7 +1027,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 65,
@@ -755,7 +1038,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 26,
@@ -771,7 +1059,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 6,
         "overallPick": 187,
@@ -782,7 +1070,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 27,
@@ -798,7 +1091,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 4,
         "overallPick": 115,
@@ -809,7 +1102,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 28,
@@ -825,7 +1123,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 80,
@@ -836,7 +1134,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 29,
@@ -852,7 +1155,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 95,
@@ -863,7 +1166,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 30,
@@ -879,7 +1187,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 4,
         "overallPick": 122,
@@ -890,7 +1198,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 31,
@@ -902,11 +1215,11 @@
       "position": "RB",
       "nflTeam": "SF",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-31",
-      "marketRank": null,
+      "marketRank": 12,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "LOW",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 90,
@@ -917,6 +1230,18 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 12,
+        "max": 12
+      },
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [
+        "fantasy-football-nerds-2026-05-24"
+      ],
+      "marketRankBySource": {
+        "fantasy-football-nerds-2026-05-24": 12
       }
     },
     {
@@ -933,7 +1258,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 89,
@@ -944,7 +1269,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 33,
@@ -960,7 +1290,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 73,
@@ -971,7 +1301,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 34,
@@ -987,7 +1322,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 6,
         "overallPick": 198,
@@ -998,7 +1333,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 35,
@@ -1014,7 +1354,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 7,
         "overallPick": 230,
@@ -1025,7 +1365,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 36,
@@ -1037,11 +1382,11 @@
       "position": "TE",
       "nflTeam": "LAR",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-36",
-      "marketRank": null,
+      "marketRank": 11,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "LOW",
       "nflDraftCapital": {
         "round": 2,
         "overallPick": 61,
@@ -1052,6 +1397,18 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
+      },
+      "marketRange": {
+        "min": 11,
+        "max": 11
+      },
+      "marketSourceCount": 1,
+      "marketConfidence": "LOW",
+      "marketSources": [
+        "dynastyodds-2026-v9b-may"
+      ],
+      "marketRankBySource": {
+        "dynastyodds-2026-v9b-may": 11
       }
     },
     {
@@ -1068,7 +1425,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 7,
         "overallPick": 221,
@@ -1079,7 +1436,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 38,
@@ -1095,7 +1457,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 7,
         "overallPick": 245,
@@ -1106,7 +1468,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 39,
@@ -1122,7 +1489,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 4,
         "overallPick": 105,
@@ -1133,7 +1500,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 40,
@@ -1149,7 +1521,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": null,
         "overallPick": null,
@@ -1160,7 +1532,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 41,
@@ -1176,7 +1553,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 3,
         "overallPick": 76,
@@ -1187,7 +1564,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 42,
@@ -1203,7 +1585,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 7,
         "overallPick": 249,
@@ -1214,7 +1596,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 43,
@@ -1230,7 +1617,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 4,
         "overallPick": 136,
@@ -1241,7 +1628,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 44,
@@ -1257,7 +1649,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 4,
         "overallPick": 110,
@@ -1268,7 +1660,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 45,
@@ -1284,7 +1681,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": null,
         "overallPick": null,
@@ -1295,7 +1692,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 46,
@@ -1311,7 +1713,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": 5,
         "overallPick": 174,
@@ -1322,7 +1724,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 47,
@@ -1338,7 +1745,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": null,
         "overallPick": null,
@@ -1349,7 +1756,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     },
     {
       "actualOverallPick": 48,
@@ -1365,7 +1777,7 @@
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
-      "marketEvidenceStatus": "BLOCKED",
+      "marketEvidenceStatus": "UNRANKED",
       "nflDraftCapital": {
         "round": null,
         "overallPick": null,
@@ -1376,7 +1788,12 @@
         "topAvailableMarketPlayers": [],
         "bestAvailableMarketGap": null,
         "status": "BLOCKED"
-      }
+      },
+      "marketRange": null,
+      "marketSourceCount": 0,
+      "marketConfidence": "UNRANKED",
+      "marketSources": [],
+      "marketRankBySource": {}
     }
   ],
   "teams": [
@@ -1938,22 +2355,34 @@
     "humorGuardrail": "NO_FACT_NO_ROAST"
   },
   "sourceGaps": [
-    "No cutoff-safe full-coverage 1QB market snapshot or consensus exists.",
-    "The registered Fantasy Orphans market snapshot is 82 days after draft start and explicitly POST_DRAFT_PRESEASON.",
-    "Only partial dated supporting market sources were found; no market tiers are approved.",
-    "Pre-draft roster reconstruction is diagnostic-only because the 2025 baseline timestamp is unknown and replay has 25 ownership-mismatch anomalies.",
-    "No timestamped immediate post-draft 2026 roster snapshot is available.",
-    "Four LCC selections were undrafted in the NFL; their capital is explicitly represented as null/RESOLVED_UNDRAFTED.",
-    "The player registry is current and not cutoff-safe for role/team context."
+    "A3 recovers dated partial player-ranking and talent-board evidence, but Round 1 and Round 2 market gates remain unmet.",
+    "FantasyPros pick values are imported as a separate 1QB pick-value curve, not player market rank.",
+    "The 2025 baseline has no authoritative capture timestamp.",
+    "The available transaction evidence begins 2026-05-15 and cannot prove complete offseason coverage through the draft cutoff.",
+    "No trustworthy timestamped immediate post-draft 2026 roster snapshot is available.",
+    "Roster-fit metrics remain disabled because reconstruction confidence is NONE.",
+    "Current August market remains a separate since-draft lens and is not used for draft-day grading."
   ],
   "marketAtDraft": {
     "sourceManifest": "data/source/market/dynasty-rookie/2026/source-manifest.json",
+    "boardArtifact": "data/source/market/dynasty-rookie/2026/a3-market-board.json",
     "cutoffSafePrimarySource": false,
     "consensusReady": false,
     "gradingReady": false,
-    "supportingSourceCount": 1,
-    "status": "BLOCKED",
-    "reason": "Only partial dated supporting evidence was found; no cutoff-safe, full-coverage 1QB market source or consensus was established."
+    "supportingSourceCount": 4,
+    "status": "PARTIAL",
+    "coverage": {
+      "round1MediumHigh": 9,
+      "round2MediumHigh": 3,
+      "round3MediumHigh": 0,
+      "round4MediumHigh": 0,
+      "totalRankedPlayers": 17,
+      "high": 9,
+      "medium": 3,
+      "low": 5,
+      "unranked": 31
+    },
+    "reason": "A3 recovers a reproducible partial board from dated sources, but it does not meet the Round 1/Round 2 evidence gates for grading."
   },
   "currentMarketReference": {
     "source": "Fantasy Orphans",
@@ -1979,5 +2408,478 @@
       "status": "COMPLETE_FOR_LCC_PICK_SET"
     },
     "status": "COMPLETE_FOR_LCC_PICK_SET"
+  },
+  "pickValueCurve": {
+    "source": "data/source/market/dynasty-rookie/2026/fantasypros-may-2026-1qb-pick-values.json",
+    "sourceType": "PICK_VALUE_CURVE",
+    "format": "1QB_DYNASTY",
+    "bucketCount": 21,
+    "imported": true,
+    "usedForPlayerRanking": false
+  },
+  "ageAtDraft": {
+    "date": "2026-05-29",
+    "sourceReference": "data/history/matchups/sleeper/players.json",
+    "coverage": 47,
+    "totalDraftedPlayers": 48,
+    "unresolved": [
+      "Jam Miller"
+    ],
+    "skillPositionCoverage": 47,
+    "skillPositionAverages": {
+      "QB": 23,
+      "RB": 22.23,
+      "WR": 21.85,
+      "TE": 22.14
+    },
+    "status": "PARTIAL"
+  },
+  "draftCapitalContext": {
+    "sourceReference": "data/source/market/dynasty-rookie/2026/fantasypros-may-2026-1qb-pick-values.json",
+    "bucketValues": {
+      "1.01": {
+        "oneQB": 69,
+        "superflex": 69
+      },
+      "1.02": {
+        "oneQB": 64,
+        "superflex": 64
+      },
+      "1.03": {
+        "oneQB": 59,
+        "superflex": 62
+      },
+      "1.04": {
+        "oneQB": 58,
+        "superflex": 59
+      },
+      "1.05": {
+        "oneQB": 54,
+        "superflex": 58
+      },
+      "1.06": {
+        "oneQB": 48,
+        "superflex": 54
+      },
+      "1.07": {
+        "oneQB": 46,
+        "superflex": 48
+      },
+      "1.08": {
+        "oneQB": 44,
+        "superflex": 46
+      },
+      "1.09": {
+        "oneQB": 42,
+        "superflex": 44
+      },
+      "1.10": {
+        "oneQB": 40,
+        "superflex": 42
+      },
+      "1.11": {
+        "oneQB": 38,
+        "superflex": 40
+      },
+      "1.12": {
+        "oneQB": 34,
+        "superflex": 38
+      },
+      "2.early": {
+        "oneQB": 31,
+        "superflex": 34
+      },
+      "2.mid": {
+        "oneQB": 26,
+        "superflex": 28
+      },
+      "2.late": {
+        "oneQB": 21,
+        "superflex": 23
+      },
+      "3.early": {
+        "oneQB": 17,
+        "superflex": 19
+      },
+      "3.mid": {
+        "oneQB": 14,
+        "superflex": 16
+      },
+      "3.late": {
+        "oneQB": 12,
+        "superflex": 14
+      },
+      "4.early": {
+        "oneQB": 7,
+        "superflex": 9
+      },
+      "4.late": {
+        "oneQB": 5,
+        "superflex": 7
+      },
+      "5.plus": {
+        "oneQB": 2,
+        "superflex": 3
+      }
+    },
+    "ownerAccounts": {
+      "loren-michaels": {
+        "selections": 4,
+        "capitalSpent": 124,
+        "picks": [
+          {
+            "overallPick": 1,
+            "bucket": "1.01",
+            "oneQBValue": 69
+          },
+          {
+            "overallPick": 13,
+            "bucket": "2.early",
+            "oneQBValue": 31
+          },
+          {
+            "overallPick": 25,
+            "bucket": "3.early",
+            "oneQBValue": 17
+          },
+          {
+            "overallPick": 37,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      },
+      "mike-estes": {
+        "selections": 4,
+        "capitalSpent": 119,
+        "picks": [
+          {
+            "overallPick": 2,
+            "bucket": "1.02",
+            "oneQBValue": 64
+          },
+          {
+            "overallPick": 14,
+            "bucket": "2.early",
+            "oneQBValue": 31
+          },
+          {
+            "overallPick": 26,
+            "bucket": "3.early",
+            "oneQBValue": 17
+          },
+          {
+            "overallPick": 38,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      },
+      "earl-perkins": {
+        "selections": 3,
+        "capitalSpent": 83,
+        "picks": [
+          {
+            "overallPick": 3,
+            "bucket": "1.03",
+            "oneQBValue": 59
+          },
+          {
+            "overallPick": 27,
+            "bucket": "3.early",
+            "oneQBValue": 17
+          },
+          {
+            "overallPick": 39,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      },
+      "mike-mcburnie": {
+        "selections": 3,
+        "capitalSpent": 117,
+        "picks": [
+          {
+            "overallPick": 4,
+            "bucket": "1.04",
+            "oneQBValue": 58
+          },
+          {
+            "overallPick": 11,
+            "bucket": "1.11",
+            "oneQBValue": 38
+          },
+          {
+            "overallPick": 23,
+            "bucket": "2.late",
+            "oneQBValue": 21
+          }
+        ]
+      },
+      "bill-gross": {
+        "selections": 4,
+        "capitalSpent": 83,
+        "picks": [
+          {
+            "overallPick": 5,
+            "bucket": "1.05",
+            "oneQBValue": 54
+          },
+          {
+            "overallPick": 28,
+            "bucket": "3.early",
+            "oneQBValue": 17
+          },
+          {
+            "overallPick": 40,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          },
+          {
+            "overallPick": 47,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "keith-winder": {
+        "selections": 4,
+        "capitalSpent": 95,
+        "picks": [
+          {
+            "overallPick": 6,
+            "bucket": "1.06",
+            "oneQBValue": 48
+          },
+          {
+            "overallPick": 18,
+            "bucket": "2.mid",
+            "oneQBValue": 26
+          },
+          {
+            "overallPick": 30,
+            "bucket": "3.mid",
+            "oneQBValue": 14
+          },
+          {
+            "overallPick": 42,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      },
+      "jeffrey-hudgins": {
+        "selections": 4,
+        "capitalSpent": 91,
+        "picks": [
+          {
+            "overallPick": 7,
+            "bucket": "1.07",
+            "oneQBValue": 46
+          },
+          {
+            "overallPick": 19,
+            "bucket": "2.mid",
+            "oneQBValue": 26
+          },
+          {
+            "overallPick": 31,
+            "bucket": "3.mid",
+            "oneQBValue": 14
+          },
+          {
+            "overallPick": 43,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "rob-jenkins": {
+        "selections": 5,
+        "capitalSpent": 120,
+        "picks": [
+          {
+            "overallPick": 8,
+            "bucket": "1.08",
+            "oneQBValue": 44
+          },
+          {
+            "overallPick": 15,
+            "bucket": "2.early",
+            "oneQBValue": 31
+          },
+          {
+            "overallPick": 20,
+            "bucket": "2.mid",
+            "oneQBValue": 26
+          },
+          {
+            "overallPick": 32,
+            "bucket": "3.mid",
+            "oneQBValue": 14
+          },
+          {
+            "overallPick": 44,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "ray-long": {
+        "selections": 5,
+        "capitalSpent": 111,
+        "picks": [
+          {
+            "overallPick": 9,
+            "bucket": "1.09",
+            "oneQBValue": 42
+          },
+          {
+            "overallPick": 16,
+            "bucket": "2.early",
+            "oneQBValue": 31
+          },
+          {
+            "overallPick": 21,
+            "bucket": "2.late",
+            "oneQBValue": 21
+          },
+          {
+            "overallPick": 33,
+            "bucket": "3.late",
+            "oneQBValue": 12
+          },
+          {
+            "overallPick": 45,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "ben-isbell": {
+        "selections": 4,
+        "capitalSpent": 78,
+        "picks": [
+          {
+            "overallPick": 10,
+            "bucket": "1.10",
+            "oneQBValue": 40
+          },
+          {
+            "overallPick": 22,
+            "bucket": "2.late",
+            "oneQBValue": 21
+          },
+          {
+            "overallPick": 34,
+            "bucket": "3.late",
+            "oneQBValue": 12
+          },
+          {
+            "overallPick": 46,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "tyrone-poist": {
+        "selections": 4,
+        "capitalSpent": 72,
+        "picks": [
+          {
+            "overallPick": 12,
+            "bucket": "1.12",
+            "oneQBValue": 34
+          },
+          {
+            "overallPick": 24,
+            "bucket": "2.late",
+            "oneQBValue": 21
+          },
+          {
+            "overallPick": 36,
+            "bucket": "3.late",
+            "oneQBValue": 12
+          },
+          {
+            "overallPick": 48,
+            "bucket": "4.late",
+            "oneQBValue": 5
+          }
+        ]
+      },
+      "anthony-martinez": {
+        "selections": 4,
+        "capitalSpent": 59,
+        "picks": [
+          {
+            "overallPick": 17,
+            "bucket": "2.mid",
+            "oneQBValue": 26
+          },
+          {
+            "overallPick": 29,
+            "bucket": "3.mid",
+            "oneQBValue": 14
+          },
+          {
+            "overallPick": 35,
+            "bucket": "3.late",
+            "oneQBValue": 12
+          },
+          {
+            "overallPick": 41,
+            "bucket": "4.early",
+            "oneQBValue": 7
+          }
+        ]
+      }
+    },
+    "status": "CONTEXT_ONLY_NO_PLAYER_RETURN_SCORE"
+  },
+  "reconstructionAudit": {
+    "baseline": {
+      "source": "data/history/matchups/sleeper/2025/rosters.json",
+      "captureTimestamp": null,
+      "timestampConfidence": "UNKNOWN",
+      "rosterCount": 12,
+      "playerCount": 294
+    },
+    "transactionCoverage": {
+      "source": "data/source/sleeper-2026-roster-reconstruction-evidence.json",
+      "earliestChecked": "2026-05-15T18:47:22.598Z",
+      "cutoff": "2026-05-29T11:54:55.518Z",
+      "preDraftRows": 25,
+      "coverageStatus": "INCOMPLETE_OR_UNPROVABLE",
+      "reason": "The retrieved feed begins after the season baseline boundary cannot be established; no complete offseason feed can be proven."
+    },
+    "invariants": {
+      "owners": 12,
+      "uniqueOwnership": "NOT_PROVEN",
+      "impossibleAddSequence": "NOT_PROVEN",
+      "plausibleRosterCounts": "NOT_PROVEN",
+      "forwardReconciliation": "NOT_AVAILABLE"
+    },
+    "forwardTarget": "No trustworthy timestamped immediate post-draft roster snapshot is available",
+    "mismatchCount": null,
+    "preDraftConfidence": "NONE",
+    "postDraftConfidence": "NONE",
+    "rosterFitEnabled": false
+  },
+  "diagnosticGates": {
+    "draftBoard": "READY",
+    "nflCapital": "READY",
+    "marketRound1": "PARTIAL",
+    "marketRound2": "BLOCKED",
+    "marketRound3to4": "PARTIAL",
+    "pickValueCurve": "READY",
+    "preDraftRoster": "BLOCKED",
+    "postDraftRoster": "BLOCKED",
+    "age": "PARTIAL",
+    "opportunityCost": "BLOCKED",
+    "positionRuns": "READY",
+    "provenance": "PARTIAL",
+    "overall": "NOT GRADING READY"
   }
 }

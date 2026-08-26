@@ -5,6 +5,39 @@
   "formatContract": "1QB_DYNASTY_NON_TEP",
   "sources": [
     {
+      "sourceId": "fantasypros-may-2026-1qb-pick-values",
+      "provider": "FantasyPros",
+      "publishedAt": "2026-05",
+      "url": "https://www.fantasypros.com/2026/05/fantasy-football-rankings-dynasty-trade-value-chart-may-2026-update/",
+      "format": "1QB_DYNASTY",
+      "coverage": 21,
+      "fields": ["pick_value_curve"],
+      "status": "ADOPTED_PICK_VALUE_ONLY",
+      "decision": "Imported as a separate 1QB rookie pick-value curve; never treated as player ADP or player ranking."
+    },
+    {
+      "sourceId": "belly-up-sports-2026-05-11",
+      "provider": "Belly Up Sports",
+      "publishedAt": "2026-05-11",
+      "url": "https://bellyupsports.com/2026/05/2026-fantasy-football-rookie-rankings/",
+      "format": "FANTASY_FORMAT_NOT_EXPLICIT",
+      "coverage": 20,
+      "fields": ["ranking"],
+      "status": "SECONDARY_REVIEW",
+      "decision": "Retained as a cutoff-safe top-20 secondary ranking, but not admitted to the normalized consensus because the complete ordered rows and 1QB contract were not reproducibly captured."
+    },
+    {
+      "sourceId": "dynastyodds-2026-v9b-may",
+      "provider": "DynastyOdds",
+      "publishedAt": "2026-05",
+      "url": "https://www.dynastyodds.com/",
+      "format": "DYNASTY_FORMAT_NOT_EXPLICIT",
+      "coverage": 144,
+      "fields": ["probability_board", "ranking"],
+      "status": "ADOPTED_TALENT_SUPPORTING",
+      "decision": "Preserved as a locked probability/talent board supporting evidence, not as a 1QB market-rank authority."
+    },
+    {
       "sourceId": "the-flex-spot-2026-05-14",
       "provider": "The Flex Spot",
       "publishedAt": "2026-05-14",
@@ -21,10 +54,10 @@
       "publishedAt": "2026-05-24",
       "url": "https://fantasyfootballnerds.org/dynasty-rookie-rankings",
       "format": "MIXED_DYNASTY",
-      "coverage": null,
+      "coverage": 13,
       "fields": ["ranking", "draft_capital", "landing_spot"],
       "status": "SECONDARY_REVIEW",
-      "decision": "Not adopted as primary market evidence because the page is a post-draft hub with mixed superflex/1QB framing and extractable full coverage is not established."
+      "decision": "Retained as dated secondary review evidence for the captured top 13 rows; mixed superflex/1QB framing and incomplete extractable coverage prevent primary-market admission."
     },
     {
       "sourceId": "rookieradar-sleeper-search-rank-2026-05-28",

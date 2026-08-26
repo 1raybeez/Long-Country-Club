@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "cutoff": "2026-05-29T11:54:55.518Z",
+  "formatContract": "1QB_DYNASTY_NON_TEP",
+  "methodology": "A dated source contributes a player rank only when the source type and format are preserved. Median/range are calculated only from captured source rows; no rank is imputed from draft order, ADP, or pick value.",
+  "sources": [
+    {
+      "sourceId": "the-flex-spot-2026-05-14",
+      "provider": "The Flex Spot",
+      "publishedAt": "2026-05-14",
+      "sourceType": "PLAYER_RANKING",
+      "format": "1QB_PPR_DYNASTY",
+      "url": "https://theflexspot.com/articles/ppr-2026-dynasty-rookie-mock",
+      "coverage": 12,
+      "rows": ["Jeremiyah Love", "Carnell Tate", "Jordyn Tyson", "Makai Lemon", "Jadarian Price", "Kenyon Sadiq", "KC Concepcion", "Omar Cooper", "Denzel Boston", "Fernando Mendoza", "De'Zhaun Stribling", "Chris Brazzell"]
+    },
+    {
+      "sourceId": "fantasy-football-nerds-2026-05-24",
+      "provider": "Fantasy Football Nerds",
+      "publishedAt": "2026-05-24",
+      "sourceType": "PLAYER_RANKING",
+      "format": "MIXED_DYNASTY",
+      "url": "https://fantasyfootballnerds.org/dynasty-rookie-rankings",
+      "coverage": 13,
+      "rows": ["Jeremiyah Love", "Carnell Tate", "Jordyn Tyson", "Makai Lemon", "Fernando Mendoza", "Jadarian Price", "Kenyon Sadiq", "KC Concepcion", "Ty Simpson", "Omar Cooper", "Denzel Boston", "Kaelon Black", "Jonah Coleman"]
+    },
+    {
+      "sourceId": "dynastyodds-2026-v9b-may",
+      "provider": "DynastyOdds",
+      "publishedAt": "2026-05",
+      "sourceType": "TALENT_PROBABILITY_BOARD",
+      "format": "DYNASTY_FORMAT_NOT_EXPLICIT",
+      "url": "https://www.dynastyodds.com/",
+      "coverage": 12,
+      "boardSize": 144,
+      "rows": ["Jeremiyah Love", "Jordyn Tyson", "KC Concepcion", "Makai Lemon", "Eli Stowers", "Fernando Mendoza", "Omar Cooper", "Carnell Tate", "Kenyon Sadiq", "Jonah Coleman", "Max Klare", "Jadarian Price"],
+      "modelStatus": "V9B_MODEL_LOCKED_MAY_2026"
+    },
+    {
+      "sourceId": "first-down-studio-2026-05-06",
+      "provider": "First Down Studio",
+      "publishedAt": "2026-05-06",
+      "sourceType": "PLAYER_RANKING_SUPPORTING",
+      "format": "FORMAT_NOT_EXPLICIT",
+      "url": "https://www.firstdown.studio/board",
+      "coverage": 9,
+      "rows": ["Jeremiyah Love", "Carnell Tate", "Fernando Mendoza", "Jordyn Tyson", "Makai Lemon", "Jadarian Price", "KC Concepcion", "Kenyon Sadiq", "Ty Simpson"]
+    }
+  ],
+  "rejectedSources": [
+    { "provider": "Belly Up Sports", "publishedAt": "2026-05-11", "url": "https://bellyupsports.com/2026/05/2026-fantasy-football-rookie-rankings/", "reason": "Top-20 article is cutoff-safe and retained as secondary review, but the complete ordered rows and 1QB format contract were not reproducibly extractable." },
+    { "provider": "TWSN", "publishedAt": "2026-05-26", "url": "https://twsn.net/2026/01/22/dynasty-fantasy-football-rookie-rankings-big-board", "reason": "Format-neutral supporting board; not admitted to the 1QB market consensus." },
+    { "provider": "PFF", "publishedAt": "2026-06-01", "url": "https://www.pff.com/news/fantasy-football-2026-top-60-dynasty-rookie-1qb-rankings", "reason": "Published after the LCC draft-day cutoff." },
+    { "provider": "Fantasy Orphans", "publishedAt": "2026-08-19", "url": "https://www.fantasyorphans.com/rookie-draft-adp", "reason": "Post-draft preseason ADP; retained only as a separate current-market lens." }
+  ]
+}

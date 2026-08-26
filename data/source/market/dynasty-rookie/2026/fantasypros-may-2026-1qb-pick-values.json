@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "provider": "FantasyPros",
+  "sourceType": "PICK_VALUE_CURVE",
+  "sourceUrl": "https://www.fantasypros.com/2026/05/fantasy-football-rankings-dynasty-trade-value-chart-may-2026-update/",
+  "publishedAt": "2026-05",
+  "cutoffSafe": true,
+  "format": "1QB_DYNASTY",
+  "note": "Values are pick-value buckets, not player rankings or ADP.",
+  "values": {
+    "1.01": { "oneQB": 69, "superflex": 69 },
+    "1.02": { "oneQB": 64, "superflex": 64 },
+    "1.03": { "oneQB": 59, "superflex": 62 },
+    "1.04": { "oneQB": 58, "superflex": 59 },
+    "1.05": { "oneQB": 54, "superflex": 58 },
+    "1.06": { "oneQB": 48, "superflex": 54 },
+    "1.07": { "oneQB": 46, "superflex": 48 },
+    "1.08": { "oneQB": 44, "superflex": 46 },
+    "1.09": { "oneQB": 42, "superflex": 44 },
+    "1.10": { "oneQB": 40, "superflex": 42 },
+    "1.11": { "oneQB": 38, "superflex": 40 },
+    "1.12": { "oneQB": 34, "superflex": 38 },
+    "2.early": { "oneQB": 31, "superflex": 34 },
+    "2.mid": { "oneQB": 26, "superflex": 28 },
+    "2.late": { "oneQB": 21, "superflex": 23 },
+    "3.early": { "oneQB": 17, "superflex": 19 },
+    "3.mid": { "oneQB": 14, "superflex": 16 },
+    "3.late": { "oneQB": 12, "superflex": 14 },
+    "4.early": { "oneQB": 7, "superflex": 9 },
+    "4.late": { "oneQB": 5, "superflex": 7 },
+    "5.plus": { "oneQB": 2, "superflex": 3 }
+  }
+}
