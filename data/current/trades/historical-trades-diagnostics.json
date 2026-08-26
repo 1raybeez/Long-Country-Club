@@ -1,0 +1,14 @@
+{
+  "intendedSeasonsQueried": true,
+  "onlyCompletedTradesPromoted": true,
+  "transactionIdsUnique": true,
+  "participantMappingsValid": true,
+  "playerIdsAccountedFor": true,
+  "pickLineageAccountedFor": true,
+  "noMissingAssetsSilentlyValuedAsZero": true,
+  "timestampsValid": true,
+  "rawSourceProvenancePresent": true,
+  "participantAccountingBalances": true,
+  "generatedAt": "2026-08-26T21:21:29.699Z",
+  "artifact": "data/current/trades/historical-trades-2021-2026.json"
+}

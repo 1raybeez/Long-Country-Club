@@ -1,0 +1,4070 @@
+{
+  "schemaVersion": 1,
+  "status": "HISTORICAL_TRADES_NORMALIZED_NO_VALUATION",
+  "methodology": "Only Sleeper transactions with type=trade and status=complete were promoted. No values, fairness, grades, or retrospective market inputs were applied.",
+  "sourceManifest": "data/source/sleeper/transactions/source-manifest.json",
+  "seasons": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "seasonSummary": {
+    "2021": {
+      "rawRecords": 388,
+      "tradeRecords": 2,
+      "completedTrades": 2,
+      "excludedNonTrades": 386,
+      "weeksQueried": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "2022": {
+      "rawRecords": 350,
+      "tradeRecords": 3,
+      "completedTrades": 3,
+      "excludedNonTrades": 347,
+      "weeksQueried": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "2023": {
+      "rawRecords": 342,
+      "tradeRecords": 10,
+      "completedTrades": 10,
+      "excludedNonTrades": 332,
+      "weeksQueried": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "2024": {
+      "rawRecords": 327,
+      "tradeRecords": 6,
+      "completedTrades": 6,
+      "excludedNonTrades": 321,
+      "weeksQueried": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "2025": {
+      "rawRecords": 276,
+      "tradeRecords": 3,
+      "completedTrades": 3,
+      "excludedNonTrades": 273,
+      "weeksQueried": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "2026": {
+      "rawRecords": 55,
+      "tradeRecords": 2,
+      "completedTrades": 2,
+      "excludedNonTrades": 53,
+      "weeksQueried": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  },
+  "trades": [
+    {
+      "transactionId": "736403826692767744",
+      "season": 2021,
+      "week": 1,
+      "createdAt": 1629934863306,
+      "statusUpdatedAt": 1629943352776,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        7
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "5000",
+            "6130"
+          ],
+          "playersReceived": [
+            "4962",
+            "6828"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 7,
+          "sleeperUserId": "466645950710935552",
+          "ownerId": "loren-michaels",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "4962",
+            "6828"
+          ],
+          "playersReceived": [
+            "5000",
+            "6130"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "4962",
+          "playerName": "Sony Michel",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 7,
+          "toRosterId": 1
+        },
+        {
+          "playerId": "5000",
+          "playerName": "Chase Edmonds",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 7
+        },
+        {
+          "playerId": "6130",
+          "playerName": "Devin Singletary",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 7
+        },
+        {
+          "playerId": "6828",
+          "playerName": "AJ Dillon",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 7,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_ONLY"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2021-08-25T23:41:03.306Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2021.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/682304920455544832/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "700716047665270784",
+      "season": 2021,
+      "week": 1,
+      "createdAt": 1621426233739,
+      "statusUpdatedAt": 1621426273856,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        6
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [],
+          "picksSent": [
+            {
+              "season": 2021,
+              "round": 4,
+              "originalRosterId": 1
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2021,
+              "round": 4,
+              "originalRosterId": 6
+            }
+          ],
+          "faabSent": [
+            {
+              "senderRosterId": 1,
+              "receiverRosterId": 6,
+              "amount": 5
+            }
+          ],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 6,
+          "sleeperUserId": "356621920969555968",
+          "ownerId": "jeffrey-hudgins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [],
+          "picksSent": [
+            {
+              "season": 2021,
+              "round": 4,
+              "originalRosterId": 6
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2021,
+              "round": 4,
+              "originalRosterId": 1
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": [
+            {
+              "senderRosterId": 1,
+              "receiverRosterId": 6,
+              "amount": 5
+            }
+          ]
+        }
+      ],
+      "players": [],
+      "draftPicks": [
+        {
+          "season": 2021,
+          "round": 4,
+          "originalRosterId": 1,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 6,
+          "sourceRaw": {
+            "round": 4,
+            "season": "2021",
+            "league_id": null,
+            "roster_id": 1,
+            "owner_id": 6,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2021,
+              "draftId": "688839693487374336",
+              "round": 4,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 6,
+              "sourceReference": "data/source/sleeper/drafts/2021/688839693487374336/traded-picks.json#round-4-roster-1"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2021,
+              "draftId": "688839693487374336",
+              "round": 4,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 6,
+              "sourceReference": "data/source/sleeper/drafts/2021/688839693487374336/traded-picks.json#round-4-roster-1"
+            }
+          ]
+        },
+        {
+          "season": 2021,
+          "round": 4,
+          "originalRosterId": 6,
+          "previousOwnerRosterId": 6,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 4,
+            "season": "2021",
+            "league_id": null,
+            "roster_id": 6,
+            "owner_id": 1,
+            "previous_owner_id": 6
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2021,
+              "draftId": "688839693487374336",
+              "round": 4,
+              "originalRosterId": 6,
+              "previousOwnerRosterId": 6,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2021/688839693487374336/traded-picks.json#round-4-roster-6"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2021,
+              "draftId": "688839693487374336",
+              "round": 4,
+              "originalRosterId": 6,
+              "previousOwnerRosterId": 6,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2021/688839693487374336/traded-picks.json#round-4-roster-6"
+            }
+          ]
+        }
+      ],
+      "faab": [
+        {
+          "senderRosterId": 1,
+          "receiverRosterId": 6,
+          "amount": 5
+        }
+      ],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PICK_ONLY",
+        "FAAB_INCLUDED",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2021-05-19T12:10:33.739Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2021.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/682304920455544832/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "836362981322375168",
+      "season": 2022,
+      "week": 1,
+      "createdAt": 1653766982921,
+      "statusUpdatedAt": 1653768535770,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        7
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "4962"
+          ],
+          "playersReceived": [],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2022,
+              "round": 2,
+              "originalRosterId": 7
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 7,
+          "sleeperUserId": "466645950710935552",
+          "ownerId": "loren-michaels",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [
+            "4962"
+          ],
+          "picksSent": [
+            {
+              "season": 2022,
+              "round": 2,
+              "originalRosterId": 7
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "4962",
+          "playerName": "Sony Michel",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 7
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2022,
+          "round": 2,
+          "originalRosterId": 7,
+          "previousOwnerRosterId": 7,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2022",
+            "league_id": null,
+            "roster_id": 7,
+            "owner_id": 1,
+            "previous_owner_id": 7
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2022,
+              "draftId": "817078396659036161",
+              "round": 2,
+              "originalRosterId": 7,
+              "previousOwnerRosterId": 7,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2022/817078396659036161/traded-picks.json#round-2-roster-7"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2022,
+              "draftId": "817078396659036161",
+              "round": 2,
+              "originalRosterId": 7,
+              "previousOwnerRosterId": 7,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2022/817078396659036161/traded-picks.json#round-2-roster-7"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2022-05-28T19:43:02.921Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2022.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/817078396659036160/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "879870499122319360",
+      "season": 2022,
+      "week": 3,
+      "createdAt": 1664139983495,
+      "statusUpdatedAt": 1664226296212,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        5
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "7567"
+          ],
+          "playersReceived": [
+            "8154"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 5,
+          "sleeperUserId": "466645286870052864",
+          "ownerId": "earl-perkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "8154"
+          ],
+          "playersReceived": [
+            "7567"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "7567",
+          "playerName": "Kenny Gainwell",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 5
+        },
+        {
+          "playerId": "8154",
+          "playerName": "Brian Robinson",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 5,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_ONLY"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2022-09-25T21:06:23.495Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2022.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/817078396659036160/transactions/3",
+        "sourceWeek": 3
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "883842804525367296",
+      "season": 2022,
+      "week": 5,
+      "createdAt": 1665087054905,
+      "statusUpdatedAt": 1665088594741,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        4,
+        10
+      ],
+      "participants": [
+        {
+          "rosterId": 4,
+          "sleeperUserId": "817056809218080768",
+          "ownerId": "mike-estes",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "7543"
+          ],
+          "playersReceived": [
+            "6886"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 10,
+          "sleeperUserId": "467786127214899200",
+          "ownerId": "rob-jenkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "6886"
+          ],
+          "playersReceived": [
+            "7543"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "6886",
+          "playerName": "Chase Claypool",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 10,
+          "toRosterId": 4
+        },
+        {
+          "playerId": "7543",
+          "playerName": "Travis Etienne",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 4,
+          "toRosterId": 10
+        }
+      ],
+      "draftPicks": [],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_ONLY"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2022-10-06T20:10:54.905Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2022.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/817078396659036160/transactions/5",
+        "sourceWeek": 5
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "968666035026997248",
+      "season": 2023,
+      "week": 1,
+      "createdAt": 1685310488996,
+      "statusUpdatedAt": 1685310522110,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        7
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "5880",
+            "6945",
+            "8154"
+          ],
+          "playersReceived": [
+            "2197",
+            "6130",
+            "8132"
+          ],
+          "picksSent": [
+            {
+              "season": 2023,
+              "round": 3,
+              "originalRosterId": 1
+            },
+            {
+              "season": 2023,
+              "round": 4,
+              "originalRosterId": 1
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 7
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 7,
+          "sleeperUserId": "466645950710935552",
+          "ownerId": "loren-michaels",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "2197",
+            "6130",
+            "8132"
+          ],
+          "playersReceived": [
+            "5880",
+            "6945",
+            "8154"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 7
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2023,
+              "round": 3,
+              "originalRosterId": 1
+            },
+            {
+              "season": 2023,
+              "round": 4,
+              "originalRosterId": 1
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "2197",
+          "playerName": "Brandin Cooks",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 7,
+          "toRosterId": 1
+        },
+        {
+          "playerId": "5880",
+          "playerName": "Parris Campbell",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 7
+        },
+        {
+          "playerId": "6130",
+          "playerName": "Devin Singletary",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 7,
+          "toRosterId": 1
+        },
+        {
+          "playerId": "6945",
+          "playerName": "Antonio Gibson",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 7
+        },
+        {
+          "playerId": "8132",
+          "playerName": "Tyler Allgeier",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 7,
+          "toRosterId": 1
+        },
+        {
+          "playerId": "8154",
+          "playerName": "Brian Robinson",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 7
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2023,
+          "round": 3,
+          "originalRosterId": 1,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 7,
+          "sourceRaw": {
+            "round": 3,
+            "season": "2023",
+            "league_id": null,
+            "roster_id": 1,
+            "owner_id": 7,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2023,
+              "draftId": "918202561050685441",
+              "round": 3,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 7,
+              "sourceReference": "data/source/sleeper/drafts/2023/918202561050685441/traded-picks.json#round-3-roster-1"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2023,
+              "draftId": "918202561050685441",
+              "round": 3,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 7,
+              "sourceReference": "data/source/sleeper/drafts/2023/918202561050685441/traded-picks.json#round-3-roster-1"
+            }
+          ]
+        },
+        {
+          "season": 2023,
+          "round": 4,
+          "originalRosterId": 1,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 7,
+          "sourceRaw": {
+            "round": 4,
+            "season": "2023",
+            "league_id": null,
+            "roster_id": 1,
+            "owner_id": 7,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2023,
+              "draftId": "918202561050685441",
+              "round": 4,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 7,
+              "sourceReference": "data/source/sleeper/drafts/2023/918202561050685441/traded-picks.json#round-4-roster-1"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2023,
+              "draftId": "918202561050685441",
+              "round": 4,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 7,
+              "sourceReference": "data/source/sleeper/drafts/2023/918202561050685441/traded-picks.json#round-4-roster-1"
+            }
+          ]
+        },
+        {
+          "season": 2024,
+          "round": 1,
+          "originalRosterId": 7,
+          "previousOwnerRosterId": 7,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 7,
+            "owner_id": 1,
+            "previous_owner_id": 7
+          },
+          "lineageStatus": "DISAGREEMENT",
+          "lineageMatches": [],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 7,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 5,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-7"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-05-28T21:48:08.996Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "967843797625344000",
+      "season": 2023,
+      "week": 1,
+      "createdAt": 1685114452323,
+      "statusUpdatedAt": 1685114472047,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        10
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "1992"
+          ],
+          "playersReceived": [
+            "7564"
+          ],
+          "picksSent": [
+            {
+              "season": 2023,
+              "round": 1,
+              "originalRosterId": 1
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2023,
+              "round": 1,
+              "originalRosterId": 10
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 10,
+          "sleeperUserId": "467786127214899200",
+          "ownerId": "rob-jenkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "7564"
+          ],
+          "playersReceived": [
+            "1992"
+          ],
+          "picksSent": [
+            {
+              "season": 2023,
+              "round": 1,
+              "originalRosterId": 10
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2023,
+              "round": 1,
+              "originalRosterId": 1
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "1992",
+          "playerName": "Allen Robinson",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 10
+        },
+        {
+          "playerId": "7564",
+          "playerName": "Ja'Marr Chase",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 10,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2023,
+          "round": 1,
+          "originalRosterId": 1,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 10,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2023",
+            "league_id": null,
+            "roster_id": 1,
+            "owner_id": 10,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2023,
+              "draftId": "918202561050685441",
+              "round": 1,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 10,
+              "sourceReference": "data/source/sleeper/drafts/2023/918202561050685441/traded-picks.json#round-1-roster-1"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2023,
+              "draftId": "918202561050685441",
+              "round": 1,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 10,
+              "sourceReference": "data/source/sleeper/drafts/2023/918202561050685441/traded-picks.json#round-1-roster-1"
+            }
+          ]
+        },
+        {
+          "season": 2023,
+          "round": 1,
+          "originalRosterId": 10,
+          "previousOwnerRosterId": 10,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2023",
+            "league_id": null,
+            "roster_id": 10,
+            "owner_id": 1,
+            "previous_owner_id": 10
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2023,
+              "draftId": "918202561050685441",
+              "round": 1,
+              "originalRosterId": 10,
+              "previousOwnerRosterId": 10,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2023/918202561050685441/traded-picks.json#round-1-roster-10"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2023,
+              "draftId": "918202561050685441",
+              "round": 1,
+              "originalRosterId": 10,
+              "previousOwnerRosterId": 10,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2023/918202561050685441/traded-picks.json#round-1-roster-10"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-05-26T15:20:52.323Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1012896684097056768",
+      "season": 2023,
+      "week": 4,
+      "createdAt": 1695855897500,
+      "statusUpdatedAt": 1695914901751,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        4,
+        5
+      ],
+      "participants": [
+        {
+          "rosterId": 4,
+          "sleeperUserId": "817056809218080768",
+          "ownerId": "mike-estes",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "6790"
+          ],
+          "playersReceived": [
+            "9226"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 3,
+              "originalRosterId": 4
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 5,
+          "sleeperUserId": "466645286870052864",
+          "ownerId": "earl-perkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "9226"
+          ],
+          "playersReceived": [
+            "6790"
+          ],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 3,
+              "originalRosterId": 4
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "6790",
+          "playerName": "D'Andre Swift",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 4,
+          "toRosterId": 5
+        },
+        {
+          "playerId": "9226",
+          "playerName": "De'Von Achane",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 5,
+          "toRosterId": 4
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 3,
+          "originalRosterId": 4,
+          "previousOwnerRosterId": 4,
+          "destinationRosterId": 5,
+          "sourceRaw": {
+            "round": 3,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 4,
+            "owner_id": 5,
+            "previous_owner_id": 4
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 3,
+              "originalRosterId": 4,
+              "previousOwnerRosterId": 4,
+              "currentOwnerRosterId": 5,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-3-roster-4"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 3,
+              "originalRosterId": 4,
+              "previousOwnerRosterId": 4,
+              "currentOwnerRosterId": 5,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-3-roster-4"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-09-27T23:04:57.500Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/4",
+        "sourceWeek": 4
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1017673988077723648",
+      "season": 2023,
+      "week": 5,
+      "createdAt": 1696994895527,
+      "statusUpdatedAt": 1696997968682,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        4,
+        10
+      ],
+      "participants": [
+        {
+          "rosterId": 4,
+          "sleeperUserId": "817056809218080768",
+          "ownerId": "mike-estes",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "9502"
+          ],
+          "playersReceived": [],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 4
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 10,
+          "sleeperUserId": "467786127214899200",
+          "ownerId": "rob-jenkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [
+            "9502"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 4
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "9502",
+          "playerName": "Tank Dell",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 4,
+          "toRosterId": 10
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 2,
+          "originalRosterId": 4,
+          "previousOwnerRosterId": 10,
+          "destinationRosterId": 4,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 4,
+            "owner_id": 4,
+            "previous_owner_id": 10
+          },
+          "lineageStatus": "DISAGREEMENT",
+          "lineageMatches": [],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 2,
+              "originalRosterId": 4,
+              "previousOwnerRosterId": 4,
+              "currentOwnerRosterId": 6,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-2-roster-4"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-10-11T03:28:15.527Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/5",
+        "sourceWeek": 5
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1016786724167200768",
+      "season": 2023,
+      "week": 5,
+      "createdAt": 1696783355326,
+      "statusUpdatedAt": 1696784085744,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        11
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "7564"
+          ],
+          "playersReceived": [
+            "8137"
+          ],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 11
+            },
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 11
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 11,
+          "sleeperUserId": "466797853767888896",
+          "ownerId": "tyrone-poist",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "8137"
+          ],
+          "playersReceived": [
+            "7564"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 11
+            },
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 11
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "7564",
+          "playerName": "Ja'Marr Chase",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 11
+        },
+        {
+          "playerId": "8137",
+          "playerName": "George Pickens",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 11,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 1,
+          "originalRosterId": 11,
+          "previousOwnerRosterId": 11,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 11,
+            "owner_id": 1,
+            "previous_owner_id": 11
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 11,
+              "previousOwnerRosterId": 11,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-11"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 11,
+              "previousOwnerRosterId": 11,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-11"
+            }
+          ]
+        },
+        {
+          "season": 2024,
+          "round": 2,
+          "originalRosterId": 11,
+          "previousOwnerRosterId": 11,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 11,
+            "owner_id": 1,
+            "previous_owner_id": 11
+          },
+          "lineageStatus": "DISAGREEMENT",
+          "lineageMatches": [],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 2,
+              "originalRosterId": 11,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 5,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-2-roster-11"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-10-08T16:42:35.326Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/5",
+        "sourceWeek": 5
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1016786713555107840",
+      "season": 2023,
+      "week": 5,
+      "createdAt": 1696783352796,
+      "statusUpdatedAt": 1696784158910,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        4,
+        10
+      ],
+      "participants": [
+        {
+          "rosterId": 4,
+          "sleeperUserId": "817056809218080768",
+          "ownerId": "mike-estes",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [
+            "9502"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 4
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 10,
+          "sleeperUserId": "467786127214899200",
+          "ownerId": "rob-jenkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "9502"
+          ],
+          "playersReceived": [],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 4
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "9502",
+          "playerName": "Tank Dell",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 10,
+          "toRosterId": 4
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 2,
+          "originalRosterId": 4,
+          "previousOwnerRosterId": 4,
+          "destinationRosterId": 10,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 4,
+            "owner_id": 10,
+            "previous_owner_id": 4
+          },
+          "lineageStatus": "DISAGREEMENT",
+          "lineageMatches": [],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 2,
+              "originalRosterId": 4,
+              "previousOwnerRosterId": 4,
+              "currentOwnerRosterId": 6,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-2-roster-4"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-10-08T16:42:32.796Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/5",
+        "sourceWeek": 5
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1016778678220607488",
+      "season": 2023,
+      "week": 5,
+      "createdAt": 1696781437023,
+      "statusUpdatedAt": 1696782545960,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        4
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "4199",
+            "4950",
+            "6828"
+          ],
+          "playersReceived": [
+            "8112",
+            "9226"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 4,
+              "originalRosterId": 1
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 4
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 4,
+          "sleeperUserId": "817056809218080768",
+          "ownerId": "mike-estes",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "8112",
+            "9226"
+          ],
+          "playersReceived": [
+            "4199",
+            "4950",
+            "6828"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 4
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 4,
+              "originalRosterId": 1
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "4199",
+          "playerName": "Aaron Jones",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 4
+        },
+        {
+          "playerId": "4950",
+          "playerName": "Christian Kirk",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 4
+        },
+        {
+          "playerId": "6828",
+          "playerName": "AJ Dillon",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 4
+        },
+        {
+          "playerId": "8112",
+          "playerName": "Drake London",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 4,
+          "toRosterId": 1
+        },
+        {
+          "playerId": "9226",
+          "playerName": "De'Von Achane",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 4,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 4,
+          "originalRosterId": 1,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 4,
+          "sourceRaw": {
+            "round": 4,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 1,
+            "owner_id": 4,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 4,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 4,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-4-roster-1"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 4,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 4,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-4-roster-1"
+            }
+          ]
+        },
+        {
+          "season": 2024,
+          "round": 1,
+          "originalRosterId": 4,
+          "previousOwnerRosterId": 4,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 4,
+            "owner_id": 1,
+            "previous_owner_id": 4
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 4,
+              "previousOwnerRosterId": 4,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-4"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 4,
+              "previousOwnerRosterId": 4,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-4"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-10-08T16:10:37.023Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/5",
+        "sourceWeek": 5
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1015728781442617344",
+      "season": 2023,
+      "week": 5,
+      "createdAt": 1696531122125,
+      "statusUpdatedAt": 1696531141365,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        9
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "2449",
+            "7553"
+          ],
+          "playersReceived": [
+            "8144"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 3,
+              "originalRosterId": 1
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 9
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 9,
+          "sleeperUserId": "468192726756618240",
+          "ownerId": "anthony-martinez",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "8144"
+          ],
+          "playersReceived": [
+            "2449",
+            "7553"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 9
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 3,
+              "originalRosterId": 1
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "2449",
+          "playerName": "Stefon Diggs",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 9
+        },
+        {
+          "playerId": "7553",
+          "playerName": "Kyle Pitts",
+          "position": "TE",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 9
+        },
+        {
+          "playerId": "8144",
+          "playerName": "Chris Olave",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 9,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 3,
+          "originalRosterId": 1,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 9,
+          "sourceRaw": {
+            "round": 3,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 1,
+            "owner_id": 9,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 3,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 9,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-3-roster-1"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 3,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 9,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-3-roster-1"
+            }
+          ]
+        },
+        {
+          "season": 2024,
+          "round": 1,
+          "originalRosterId": 9,
+          "previousOwnerRosterId": 9,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 9,
+            "owner_id": 1,
+            "previous_owner_id": 9
+          },
+          "lineageStatus": "DISAGREEMENT",
+          "lineageMatches": [],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 10,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-9"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-10-05T18:38:42.125Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/5",
+        "sourceWeek": 5
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1027458139736084480",
+      "season": 2023,
+      "week": 9,
+      "createdAt": 1699327619063,
+      "statusUpdatedAt": 1699327770232,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        4,
+        6
+      ],
+      "participants": [
+        {
+          "rosterId": 4,
+          "sleeperUserId": "817056809218080768",
+          "ownerId": "mike-estes",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "4881",
+            "5248"
+          ],
+          "playersReceived": [
+            "8162"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 4
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 6
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 6,
+          "sleeperUserId": "356621920969555968",
+          "ownerId": "jeffrey-hudgins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "8162"
+          ],
+          "playersReceived": [
+            "4881",
+            "5248"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 6
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 4
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "4881",
+          "playerName": "Lamar Jackson",
+          "position": "QB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 4,
+          "toRosterId": 6
+        },
+        {
+          "playerId": "5248",
+          "playerName": "Gus Edwards",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 4,
+          "toRosterId": 6
+        },
+        {
+          "playerId": "8162",
+          "playerName": "Sam Howell",
+          "position": "QB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 6,
+          "toRosterId": 4
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 2,
+          "originalRosterId": 4,
+          "previousOwnerRosterId": 4,
+          "destinationRosterId": 6,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 4,
+            "owner_id": 6,
+            "previous_owner_id": 4
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 2,
+              "originalRosterId": 4,
+              "previousOwnerRosterId": 4,
+              "currentOwnerRosterId": 6,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-2-roster-4"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 2,
+              "originalRosterId": 4,
+              "previousOwnerRosterId": 4,
+              "currentOwnerRosterId": 6,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-2-roster-4"
+            }
+          ]
+        },
+        {
+          "season": 2024,
+          "round": 1,
+          "originalRosterId": 6,
+          "previousOwnerRosterId": 6,
+          "destinationRosterId": 4,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 6,
+            "owner_id": 4,
+            "previous_owner_id": 6
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 6,
+              "previousOwnerRosterId": 6,
+              "currentOwnerRosterId": 4,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-6"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 6,
+              "previousOwnerRosterId": 6,
+              "currentOwnerRosterId": 4,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-6"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-11-07T03:26:59.063Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/9",
+        "sourceWeek": 9
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1027434363103047680",
+      "season": 2023,
+      "week": 9,
+      "createdAt": 1699321950272,
+      "statusUpdatedAt": 1699324358508,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        6,
+        7
+      ],
+      "participants": [
+        {
+          "rosterId": 6,
+          "sleeperUserId": "356621920969555968",
+          "ownerId": "jeffrey-hudgins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "8129"
+          ],
+          "playersReceived": [
+            "8162"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 7,
+          "sleeperUserId": "466645950710935552",
+          "ownerId": "loren-michaels",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "8162"
+          ],
+          "playersReceived": [
+            "8129"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "8129",
+          "playerName": "Dameon Pierce",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 6,
+          "toRosterId": 7
+        },
+        {
+          "playerId": "8162",
+          "playerName": "Sam Howell",
+          "position": "QB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 7,
+          "toRosterId": 6
+        }
+      ],
+      "draftPicks": [],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_ONLY"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2023-11-07T01:52:30.272Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2023.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/918202561050685440/transactions/9",
+        "sourceWeek": 9
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1104569077172891648",
+      "season": 2024,
+      "week": 1,
+      "createdAt": 1717712299200,
+      "statusUpdatedAt": 1717739298528,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        5
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [
+            "6813"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 11
+            },
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 7
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 5,
+          "sleeperUserId": "466645286870052864",
+          "ownerId": "earl-perkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "6813"
+          ],
+          "playersReceived": [],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 2,
+              "originalRosterId": 11
+            },
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 7
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "6813",
+          "playerName": "Jonathan Taylor",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 5,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 2,
+          "originalRosterId": 11,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 5,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 11,
+            "owner_id": 5,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 2,
+              "originalRosterId": 11,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 5,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-2-roster-11"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 2,
+              "originalRosterId": 11,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 5,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-2-roster-11"
+            }
+          ]
+        },
+        {
+          "season": 2024,
+          "round": 1,
+          "originalRosterId": 7,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 5,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 7,
+            "owner_id": 5,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 7,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 5,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-7"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 7,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 5,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-7"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2024-06-06T22:18:19.200Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2024.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1048290254903463936/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1104565931155591168",
+      "season": 2024,
+      "week": 1,
+      "createdAt": 1717711549131,
+      "statusUpdatedAt": 1717711570264,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        10
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [
+            "1466"
+          ],
+          "picksSent": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 9
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 10,
+          "sleeperUserId": "467786127214899200",
+          "ownerId": "rob-jenkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "1466"
+          ],
+          "playersReceived": [],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2024,
+              "round": 1,
+              "originalRosterId": 9
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "1466",
+          "playerName": "Travis Kelce",
+          "position": "TE",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 10,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2024,
+          "round": 1,
+          "originalRosterId": 9,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 10,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2024",
+            "league_id": null,
+            "roster_id": 9,
+            "owner_id": 10,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 10,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-9"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2024,
+              "draftId": "1048290254903463937",
+              "round": 1,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 10,
+              "sourceReference": "data/source/sleeper/drafts/2024/1048290254903463937/traded-picks.json#round-1-roster-9"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2024-06-06T22:05:49.131Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2024.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1048290254903463936/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1104183865561821184",
+      "season": 2024,
+      "week": 1,
+      "createdAt": 1717620457595,
+      "statusUpdatedAt": 1717631496086,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        4,
+        5
+      ],
+      "participants": [
+        {
+          "rosterId": 4,
+          "sleeperUserId": "817056809218080768",
+          "ownerId": "mike-estes",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "6801"
+          ],
+          "playersReceived": [
+            "8183"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 5,
+          "sleeperUserId": "466645286870052864",
+          "ownerId": "earl-perkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "8183"
+          ],
+          "playersReceived": [
+            "6801"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "6801",
+          "playerName": "Tee Higgins",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 4,
+          "toRosterId": 5
+        },
+        {
+          "playerId": "8183",
+          "playerName": "Brock Purdy",
+          "position": "QB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 5,
+          "toRosterId": 4
+        }
+      ],
+      "draftPicks": [],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_ONLY"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2024-06-05T20:47:37.595Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2024.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1048290254903463936/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1142495309634027520",
+      "season": 2024,
+      "week": 3,
+      "createdAt": 1726754617654,
+      "statusUpdatedAt": 1726776310176,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        5,
+        7
+      ],
+      "participants": [
+        {
+          "rosterId": 5,
+          "sleeperUserId": "466645286870052864",
+          "ownerId": "earl-perkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "3163",
+            "6801"
+          ],
+          "playersReceived": [
+            "7525"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 7,
+          "sleeperUserId": "466645950710935552",
+          "ownerId": "loren-michaels",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "7525"
+          ],
+          "playersReceived": [
+            "3163",
+            "6801"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "3163",
+          "playerName": "Jared Goff",
+          "position": "QB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 5,
+          "toRosterId": 7
+        },
+        {
+          "playerId": "6801",
+          "playerName": "Tee Higgins",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 5,
+          "toRosterId": 7
+        },
+        {
+          "playerId": "7525",
+          "playerName": "DeVonta Smith",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 7,
+          "toRosterId": 5
+        }
+      ],
+      "draftPicks": [],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_ONLY"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2024-09-19T14:03:37.654Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2024.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1048290254903463936/transactions/3",
+        "sourceWeek": 3
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1152112310325145600",
+      "season": 2024,
+      "week": 6,
+      "createdAt": 1729047489294,
+      "statusUpdatedAt": 1729047958447,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        8,
+        9
+      ],
+      "participants": [
+        {
+          "rosterId": 8,
+          "sleeperUserId": "466659300316540928",
+          "ownerId": "mike-mcburnie",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "2309"
+          ],
+          "playersReceived": [
+            "5967"
+          ],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2025,
+              "round": 2,
+              "originalRosterId": 9
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 9,
+          "sleeperUserId": "468192726756618240",
+          "ownerId": "anthony-martinez",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "5967"
+          ],
+          "playersReceived": [
+            "2309"
+          ],
+          "picksSent": [
+            {
+              "season": 2025,
+              "round": 2,
+              "originalRosterId": 9
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "2309",
+          "playerName": "Amari Cooper",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 8,
+          "toRosterId": 9
+        },
+        {
+          "playerId": "5967",
+          "playerName": "Tony Pollard",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 9,
+          "toRosterId": 8
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2025,
+          "round": 2,
+          "originalRosterId": 9,
+          "previousOwnerRosterId": 9,
+          "destinationRosterId": 8,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2025",
+            "league_id": null,
+            "roster_id": 9,
+            "owner_id": 8,
+            "previous_owner_id": 9
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2025,
+              "draftId": "1199899847038087168",
+              "round": 2,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 9,
+              "currentOwnerRosterId": 8,
+              "sourceReference": "data/source/sleeper/drafts/2025/1199899847038087168/traded-picks.json#round-2-roster-9"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2025,
+              "draftId": "1199899847038087168",
+              "round": 2,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 9,
+              "currentOwnerRosterId": 8,
+              "sourceReference": "data/source/sleeper/drafts/2025/1199899847038087168/traded-picks.json#round-2-roster-9"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2024-10-16T02:58:09.294Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2024.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1048290254903463936/transactions/6",
+        "sourceWeek": 6
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1154550798949457920",
+      "season": 2024,
+      "week": 7,
+      "createdAt": 1729628870287,
+      "statusUpdatedAt": 1729628953544,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        8,
+        9
+      ],
+      "participants": [
+        {
+          "rosterId": 8,
+          "sleeperUserId": "466659300316540928",
+          "ownerId": "mike-mcburnie",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "4866"
+          ],
+          "playersReceived": [
+            "7553",
+            "7594",
+            "11638"
+          ],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2025,
+              "round": 1,
+              "originalRosterId": 9
+            },
+            {
+              "season": 2026,
+              "round": 1,
+              "originalRosterId": 9
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 9,
+          "sleeperUserId": "468192726756618240",
+          "ownerId": "anthony-martinez",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "7553",
+            "7594",
+            "11638"
+          ],
+          "playersReceived": [
+            "4866"
+          ],
+          "picksSent": [
+            {
+              "season": 2025,
+              "round": 1,
+              "originalRosterId": 9
+            },
+            {
+              "season": 2026,
+              "round": 1,
+              "originalRosterId": 9
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "4866",
+          "playerName": "Saquon Barkley",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 8,
+          "toRosterId": 9
+        },
+        {
+          "playerId": "7553",
+          "playerName": "Kyle Pitts",
+          "position": "TE",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 9,
+          "toRosterId": 8
+        },
+        {
+          "playerId": "7594",
+          "playerName": "Chuba Hubbard",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 9,
+          "toRosterId": 8
+        },
+        {
+          "playerId": "11638",
+          "playerName": "Ricky Pearsall",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 9,
+          "toRosterId": 8
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2025,
+          "round": 1,
+          "originalRosterId": 9,
+          "previousOwnerRosterId": 9,
+          "destinationRosterId": 8,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2025",
+            "league_id": null,
+            "roster_id": 9,
+            "owner_id": 8,
+            "previous_owner_id": 9
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2025,
+              "draftId": "1199899847038087168",
+              "round": 1,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 9,
+              "currentOwnerRosterId": 8,
+              "sourceReference": "data/source/sleeper/drafts/2025/1199899847038087168/traded-picks.json#round-1-roster-9"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2025,
+              "draftId": "1199899847038087168",
+              "round": 1,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 9,
+              "currentOwnerRosterId": 8,
+              "sourceReference": "data/source/sleeper/drafts/2025/1199899847038087168/traded-picks.json#round-1-roster-9"
+            }
+          ]
+        },
+        {
+          "season": 2026,
+          "round": 1,
+          "originalRosterId": 9,
+          "previousOwnerRosterId": 9,
+          "destinationRosterId": 8,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2026",
+            "league_id": null,
+            "roster_id": 9,
+            "owner_id": 8,
+            "previous_owner_id": 9
+          },
+          "lineageStatus": "DISAGREEMENT",
+          "lineageMatches": [],
+          "relatedLineage": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 1,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 8,
+              "currentOwnerRosterId": 12,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-1-roster-9"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2024-10-22T20:27:50.287Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2024.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1048290254903463936/transactions/7",
+        "sourceWeek": 7
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1262754637916688384",
+      "season": 2025,
+      "week": 1,
+      "createdAt": 1755426675828,
+      "statusUpdatedAt": 1755458637843,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        5,
+        10
+      ],
+      "participants": [
+        {
+          "rosterId": 5,
+          "sleeperUserId": "466645286870052864",
+          "ownerId": "earl-perkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "7525"
+          ],
+          "playersReceived": [
+            "9224"
+          ],
+          "picksSent": [
+            {
+              "season": 2026,
+              "round": 2,
+              "originalRosterId": 5
+            }
+          ],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 10,
+          "sleeperUserId": "467786127214899200",
+          "ownerId": "rob-jenkins",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "9224"
+          ],
+          "playersReceived": [
+            "7525"
+          ],
+          "picksSent": [],
+          "picksReceived": [
+            {
+              "season": 2026,
+              "round": 2,
+              "originalRosterId": 5
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "7525",
+          "playerName": "DeVonta Smith",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 5,
+          "toRosterId": 10
+        },
+        {
+          "playerId": "9224",
+          "playerName": "Chase Brown",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 10,
+          "toRosterId": 5
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2026,
+          "round": 2,
+          "originalRosterId": 5,
+          "previousOwnerRosterId": 5,
+          "destinationRosterId": 10,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2026",
+            "league_id": null,
+            "roster_id": 5,
+            "owner_id": 10,
+            "previous_owner_id": 5
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 2,
+              "originalRosterId": 5,
+              "previousOwnerRosterId": 5,
+              "currentOwnerRosterId": 10,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-2-roster-5"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 2,
+              "originalRosterId": 5,
+              "previousOwnerRosterId": 5,
+              "currentOwnerRosterId": 10,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-2-roster-5"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2025-08-17T10:31:15.828Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2025.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1199899847029698560/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1232415008181207040",
+      "season": 2025,
+      "week": 1,
+      "createdAt": 1748193144417,
+      "statusUpdatedAt": 1748193185925,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        1,
+        12
+      ],
+      "participants": [
+        {
+          "rosterId": 1,
+          "sleeperUserId": "342828350391230464",
+          "ownerId": "ray-long",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "6804"
+          ],
+          "playersReceived": [
+            "11559"
+          ],
+          "picksSent": [
+            {
+              "season": 2025,
+              "round": 3,
+              "originalRosterId": 1
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2026,
+              "round": 2,
+              "originalRosterId": 12
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 12,
+          "sleeperUserId": "466780021365665792",
+          "ownerId": "bill-gross",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "11559"
+          ],
+          "playersReceived": [
+            "6804"
+          ],
+          "picksSent": [
+            {
+              "season": 2026,
+              "round": 2,
+              "originalRosterId": 12
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2025,
+              "round": 3,
+              "originalRosterId": 1
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "6804",
+          "playerName": "Jordan Love",
+          "position": "QB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 1,
+          "toRosterId": 12
+        },
+        {
+          "playerId": "11559",
+          "playerName": "Michael Penix",
+          "position": "QB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 12,
+          "toRosterId": 1
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2025,
+          "round": 3,
+          "originalRosterId": 1,
+          "previousOwnerRosterId": 1,
+          "destinationRosterId": 12,
+          "sourceRaw": {
+            "round": 3,
+            "season": "2025",
+            "league_id": null,
+            "roster_id": 1,
+            "owner_id": 12,
+            "previous_owner_id": 1
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2025,
+              "draftId": "1199899847038087168",
+              "round": 3,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 12,
+              "sourceReference": "data/source/sleeper/drafts/2025/1199899847038087168/traded-picks.json#round-3-roster-1"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2025,
+              "draftId": "1199899847038087168",
+              "round": 3,
+              "originalRosterId": 1,
+              "previousOwnerRosterId": 1,
+              "currentOwnerRosterId": 12,
+              "sourceReference": "data/source/sleeper/drafts/2025/1199899847038087168/traded-picks.json#round-3-roster-1"
+            }
+          ]
+        },
+        {
+          "season": 2026,
+          "round": 2,
+          "originalRosterId": 12,
+          "previousOwnerRosterId": 12,
+          "destinationRosterId": 1,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2026",
+            "league_id": null,
+            "roster_id": 12,
+            "owner_id": 1,
+            "previous_owner_id": 12
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 2,
+              "originalRosterId": 12,
+              "previousOwnerRosterId": 12,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-2-roster-12"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 2,
+              "originalRosterId": 12,
+              "previousOwnerRosterId": 12,
+              "currentOwnerRosterId": 1,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-2-roster-12"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2025-05-25T17:12:24.417Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2025.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1199899847029698560/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1274525959424331776",
+      "season": 2025,
+      "week": 3,
+      "createdAt": 1758233177576,
+      "statusUpdatedAt": 1758234257806,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        3,
+        9
+      ],
+      "participants": [
+        {
+          "rosterId": 3,
+          "sleeperUserId": "346727603970973696",
+          "ownerId": "ben-isbell",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "5927"
+          ],
+          "playersReceived": [
+            "11563"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 9,
+          "sleeperUserId": "468192726756618240",
+          "ownerId": "anthony-martinez",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "11563"
+          ],
+          "playersReceived": [
+            "5927"
+          ],
+          "picksSent": [],
+          "picksReceived": [],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "5927",
+          "playerName": "Terry McLaurin",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 3,
+          "toRosterId": 9
+        },
+        {
+          "playerId": "11563",
+          "playerName": "Bo Nix",
+          "position": "QB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 9,
+          "toRosterId": 3
+        }
+      ],
+      "draftPicks": [],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_ONLY"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2025-09-18T22:06:17.576Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2025.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1199899847029698560/transactions/3",
+        "sourceWeek": 3
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1367196612094328832",
+      "season": 2026,
+      "week": 1,
+      "createdAt": 1780327582910,
+      "statusUpdatedAt": 1780328125174,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        8,
+        9
+      ],
+      "participants": [
+        {
+          "rosterId": 8,
+          "sleeperUserId": "466659300316540928",
+          "ownerId": "mike-mcburnie",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "5947"
+          ],
+          "playersReceived": [],
+          "picksSent": [
+            {
+              "season": 2026,
+              "round": 3,
+              "originalRosterId": 8
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2027,
+              "round": 2,
+              "originalRosterId": 9
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 9,
+          "sleeperUserId": "468192726756618240",
+          "ownerId": "anthony-martinez",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [
+            "5947"
+          ],
+          "picksSent": [
+            {
+              "season": 2027,
+              "round": 2,
+              "originalRosterId": 9
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2026,
+              "round": 3,
+              "originalRosterId": 8
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "5947",
+          "playerName": "Jakobi Meyers",
+          "position": "WR",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 8,
+          "toRosterId": 9
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2026,
+          "round": 3,
+          "originalRosterId": 8,
+          "previousOwnerRosterId": 8,
+          "destinationRosterId": 9,
+          "sourceRaw": {
+            "round": 3,
+            "season": "2026",
+            "league_id": null,
+            "roster_id": 8,
+            "owner_id": 9,
+            "previous_owner_id": 8
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 3,
+              "originalRosterId": 8,
+              "previousOwnerRosterId": 8,
+              "currentOwnerRosterId": 9,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-3-roster-8"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 3,
+              "originalRosterId": 8,
+              "previousOwnerRosterId": 8,
+              "currentOwnerRosterId": 9,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-3-roster-8"
+            }
+          ]
+        },
+        {
+          "season": 2027,
+          "round": 2,
+          "originalRosterId": 9,
+          "previousOwnerRosterId": 9,
+          "destinationRosterId": 8,
+          "sourceRaw": {
+            "round": 2,
+            "season": "2027",
+            "league_id": null,
+            "roster_id": 9,
+            "owner_id": 8,
+            "previous_owner_id": 9
+          },
+          "lineageStatus": "NO_DRAFT_LINEAGE_RECORD",
+          "lineageMatches": [],
+          "relatedLineage": []
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2026-06-01T15:26:22.910Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2026.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1312148925091692544/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    },
+    {
+      "transactionId": "1366127049533579264",
+      "season": 2026,
+      "week": 1,
+      "createdAt": 1780072579324,
+      "statusUpdatedAt": 1780086945976,
+      "transactionType": "trade",
+      "status": "complete",
+      "rosterIds": [
+        8,
+        12
+      ],
+      "participants": [
+        {
+          "rosterId": 8,
+          "sleeperUserId": "466659300316540928",
+          "ownerId": "mike-mcburnie",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [
+            "7594"
+          ],
+          "playersReceived": [],
+          "picksSent": [
+            {
+              "season": 2026,
+              "round": 4,
+              "originalRosterId": 8
+            },
+            {
+              "season": 2026,
+              "round": 1,
+              "originalRosterId": 9
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2026,
+              "round": 1,
+              "originalRosterId": 12
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        },
+        {
+          "rosterId": 12,
+          "sleeperUserId": "466780021365665792",
+          "ownerId": "bill-gross",
+          "resolutionStatus": "RESOLVED",
+          "playersSent": [],
+          "playersReceived": [
+            "7594"
+          ],
+          "picksSent": [
+            {
+              "season": 2026,
+              "round": 1,
+              "originalRosterId": 12
+            }
+          ],
+          "picksReceived": [
+            {
+              "season": 2026,
+              "round": 4,
+              "originalRosterId": 8
+            },
+            {
+              "season": 2026,
+              "round": 1,
+              "originalRosterId": 9
+            }
+          ],
+          "faabSent": [],
+          "faabReceived": []
+        }
+      ],
+      "players": [
+        {
+          "playerId": "7594",
+          "playerName": "Chuba Hubbard",
+          "position": "RB",
+          "resolutionStatus": "RESOLVED",
+          "isDefense": false,
+          "fromRosterId": 8,
+          "toRosterId": 12
+        }
+      ],
+      "draftPicks": [
+        {
+          "season": 2026,
+          "round": 1,
+          "originalRosterId": 12,
+          "previousOwnerRosterId": 12,
+          "destinationRosterId": 8,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2026",
+            "league_id": null,
+            "roster_id": 12,
+            "owner_id": 8,
+            "previous_owner_id": 12
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 1,
+              "originalRosterId": 12,
+              "previousOwnerRosterId": 12,
+              "currentOwnerRosterId": 8,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-1-roster-12"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 1,
+              "originalRosterId": 12,
+              "previousOwnerRosterId": 12,
+              "currentOwnerRosterId": 8,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-1-roster-12"
+            }
+          ]
+        },
+        {
+          "season": 2026,
+          "round": 4,
+          "originalRosterId": 8,
+          "previousOwnerRosterId": 8,
+          "destinationRosterId": 12,
+          "sourceRaw": {
+            "round": 4,
+            "season": "2026",
+            "league_id": null,
+            "roster_id": 8,
+            "owner_id": 12,
+            "previous_owner_id": 8
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 4,
+              "originalRosterId": 8,
+              "previousOwnerRosterId": 8,
+              "currentOwnerRosterId": 12,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-4-roster-8"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 4,
+              "originalRosterId": 8,
+              "previousOwnerRosterId": 8,
+              "currentOwnerRosterId": 12,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-4-roster-8"
+            }
+          ]
+        },
+        {
+          "season": 2026,
+          "round": 1,
+          "originalRosterId": 9,
+          "previousOwnerRosterId": 8,
+          "destinationRosterId": 12,
+          "sourceRaw": {
+            "round": 1,
+            "season": "2026",
+            "league_id": null,
+            "roster_id": 9,
+            "owner_id": 12,
+            "previous_owner_id": 8
+          },
+          "lineageStatus": "MATCH",
+          "lineageMatches": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 1,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 8,
+              "currentOwnerRosterId": 12,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-1-roster-9"
+            }
+          ],
+          "relatedLineage": [
+            {
+              "season": 2026,
+              "draftId": "1312148925104259072",
+              "round": 1,
+              "originalRosterId": 9,
+              "previousOwnerRosterId": 8,
+              "currentOwnerRosterId": 12,
+              "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/traded-picks.json#round-1-roster-9"
+            }
+          ]
+        }
+      ],
+      "faab": [],
+      "participantCount": 2,
+      "classificationFlags": [
+        "PLAYER_FOR_PICK",
+        "PLAYER_AND_PICK",
+        "MULTI_ASSET"
+      ],
+      "rosterContext": {
+        "status": "PARTIAL",
+        "reason": "Committed LCC roster snapshots are weekly and are not timestamped at the transaction boundary; no future snapshot was used."
+      },
+      "leakageCutoff": "2026-05-29T16:36:19.324Z",
+      "sourceProvenance": {
+        "rawArtifact": "data/source/sleeper/transactions/2026.json",
+        "sourceEndpoint": "https://api.sleeper.app/v1/league/1312148925091692544/transactions/1",
+        "sourceWeek": 1
+      },
+      "reviewStatus": "VALID"
+    }
+  ],
+  "coverage": {
+    "rawTransactionRecords": 1738,
+    "completedTrades": 26,
+    "uniqueTradedPlayers": 45,
+    "playerReferences": 57,
+    "playerReferencesResolved": 57,
+    "playerReferencesUnresolved": 0,
+    "retiredOrInactiveStillResolvable": 0,
+    "defenseReferences": 0,
+    "malformedOrUnknownPlayerIds": 0,
+    "draftPickAssets": 33,
+    "draftPickLineageMatches": 26,
+    "draftPickLineageDisagreements": 6,
+    "draftPickLineageNoRecord": 1,
+    "historicalOwnerMappingsResolved": 52,
+    "historicalOwnerMappingsUnresolved": 0,
+    "rosterContexts": {
+      "exact": 0,
+      "reconstructable": 0,
+      "partial": 26,
+      "unavailable": 0
+    },
+    "diagnostics": {
+      "intendedSeasonsQueried": true,
+      "onlyCompletedTradesPromoted": true,
+      "transactionIdsUnique": true,
+      "participantMappingsValid": true,
+      "playerIdsAccountedFor": true,
+      "pickLineageAccountedFor": true,
+      "noMissingAssetsSilentlyValuedAsZero": true,
+      "timestampsValid": true,
+      "rawSourceProvenancePresent": true,
+      "participantAccountingBalances": true
+    }
+  }
+}
