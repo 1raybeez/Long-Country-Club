@@ -10,7 +10,8 @@ const orphans = read("data/source/market/dynasty-rookie/2026/snapshots/2026-08-1
 const curve = read("data/source/market/dynasty-rookie/2026/fantasypros-may-2026-1qb-pick-values.json");
 const rosters = read("data/current/rosters/2026.json");
 const players = read("data/history/matchups/sleeper/players.json");
-const ownerNames = Object.fromEntries(Object.values(current.owners).map((o) => [o.ownerId, o.ownerName]));
+const selectingOwnerIds = new Set(current.picks.map((p) => p.ownerId));
+const ownerNames = Object.fromEntries(Object.values(current.owners).filter((o) => selectingOwnerIds.has(o.ownerId)).map((o) => [o.ownerId, o.ownerName]));
 const normalize = (name) => name.toLowerCase().replace(/[’'.-]/g, "").replace(/\b(jr|ii|iii)\b/g, "").replace(/[^a-z0-9]/g, "");
 const playerByKey = new Map(Object.values(players).filter((p) => p.full_name).map((p) => [normalize(p.full_name), p]));
 const draftByKey = new Map(current.picks.map((p) => [normalize(p.playerName), p]));
