@@ -51,6 +51,8 @@ check('awardWinnersUnchanged', JSON.stringify(recap.awards.map((award) => [award
   ['😴 Most Boringly Competent Draft', 'Bill Gross', null],
 ]));
 check('publicAwardCopyHasNoEngineJargon', !recapComponent.includes('capital-weighted result') && !recapComponent.includes('approved roast hook'));
+check('responsiveHeroAndQuickReadBreakpoints', recapComponent.includes('grid-cols-2 gap-3 lg:grid-cols-4') && recapComponent.includes('grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5'));
+check('earlCopyFinalWording', owners.find((owner) => owner.owner === 'Earl Perkins')?.copy.includes('Three picks do not earn a top grade just by avoiding mistakes'));
 const passed = Object.values(checks).every(Boolean);
 console.log(JSON.stringify({ status: passed ? 'PASS' : 'FAIL', checks, recapPath, publicAwardCount: recap.awards.length }, null, 2));
 if (!passed) process.exit(1);
