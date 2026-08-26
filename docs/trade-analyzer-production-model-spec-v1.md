@@ -47,7 +47,7 @@ warnings: string[]
 
 `rawValue = sum(baseValue)` across valued and fallback assets only. Preserve asset counts by status, `knownValueSubtotal`, and warnings. Do not silently omit missing assets.
 
-An otherwise complete trade with K/DST fallback may remain HIGH evidence because the fallback is approved, deterministic, and immaterial to premium-asset evidence; the fallback annotation remains visible.
+An otherwise complete trade containing the approved K/DST fallback is complete but labeled MEDIUM evidence with an explicit fallback annotation; it is not automatically downgraded to LOW.
 
 Result states:
 
@@ -76,8 +76,8 @@ Fairness bands use exact lower bounds: VERY EVEN `[97,100]`; FAIR `[92,97)`; SLI
 
 Trade evidence precedence is `INCOMPLETE` > `LOW` > `MEDIUM` > `HIGH`.
 
-- HIGH: complete direct exact-ID values, fresh snapshot, unambiguous pick classes; approved K/DST fallback may carry an annotation without lowering this label.
-- MEDIUM: complete values with aging freshness or an approved non-K/DST fallback.
+- HIGH: complete direct exact-ID values, fresh snapshot, and unambiguous pick classes without fallback values.
+- MEDIUM: complete values with aging freshness, an approved fallback including K/DST, or another documented degradation that remains numerically complete.
 - LOW: complete values with stale freshness or an approved low-confidence fallback.
 - INCOMPLETE: any material UNVALUED/UNSUPPORTED asset, unresolved identity, ambiguous pick, missing side value, or unapproved source.
 
