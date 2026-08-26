@@ -25,6 +25,7 @@
     "draft:pre-roster-diagnostics": "node scripts/preDraftRosterDiagnostics.mjs",
     "future-pick:diagnostics": "node scripts/futurePickDiagnostics.mjs",
     "draft-records:diagnostics": "node scripts/draftRecordsDiagnostics.mjs",
+    "rookie-recap:diagnostics": "node scripts/rookieRecapDiagnostics.mjs",
     "draft-intelligence:diagnostics": "node scripts/draftIntelligenceDiagnostics.mjs",
     "draft-intelligence:generate": "node scripts/generateDraftIntelligence.mjs",
     "draft-intelligence:methodology": "node scripts/draftIntelligenceMethodologyDiagnostics.mjs",

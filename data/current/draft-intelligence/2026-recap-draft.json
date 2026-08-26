@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "status": "COMMISSIONER_REVIEW_CONTENT_DRAFT",
-  "publicationStatus": "COMMISSIONER_REVIEW",
+  "publicationStatus": "PUBLIC",
   "season": 2026,
   "sourceArtifact": "data/current/draft-intelligence/2026.json",
   "sourceMethodologyVersion": "rookie-draft-intelligence-n2.4b-commissioner-grades-v1",

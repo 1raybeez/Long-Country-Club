@@ -99,6 +99,9 @@ export default function DraftRoomPage() {
             <DraftMetricCard icon={<CalendarDays className="h-5 w-5" aria-hidden="true" />} label="Latest Completed Draft" value={String(CURRENT_DRAFT_YEAR)} helperText="Current league season: 2026" status="Available" />
             <DraftMetricCard icon={<Clock className="h-5 w-5" aria-hidden="true" />} label="Next Draft Event" value="TBD" helperText="2027 draft date not set" status="TBD" />
           </div>
+          <Link href="/league-info/drafts/2026-recap" className="mt-4 flex items-center justify-between gap-4 rounded-xl border border-[var(--lcc-brand-primary)] bg-[color-mix(in_srgb,var(--lcc-brand-primary)_8%,transparent)] p-4 transition-colors hover:bg-[color-mix(in_srgb,var(--lcc-brand-primary)_14%,transparent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lcc-interactive-focus)]">
+            <div><p className="lcc2-label text-[var(--lcc-brand-primary)]">Featured history</p><p className="mt-1 font-ui text-lg font-black text-[var(--lcc-color-text)]">2026 Rookie Draft Recap</p><p className="mt-1 font-ui text-sm font-semibold text-[var(--lcc-color-text-muted)]">Grades, values, reaches, awards, and receipts.</p></div><ArrowUpRight className="h-5 w-5 shrink-0 text-[var(--lcc-interactive)]" aria-hidden="true" />
+          </Link>
         </DraftSection>
 
         <DraftTabs activeTab={activeTab} onChange={setActiveTab} />
