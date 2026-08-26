@@ -110,3 +110,32 @@ export interface FairnessEngineResult {
   trade: FairnessTradeResult;
   research: FairnessResearchResult;
 }
+
+export interface CurrentCatalogAsset extends NormalizedAsset {
+  ownerId?: string;
+}
+
+export interface CurrentAssetCatalog {
+  snapshotDate: string;
+  assets: CurrentCatalogAsset[];
+  byAssetId: Record<string, CurrentCatalogAsset>;
+  integrity: { valid: boolean; errors: string[] };
+}
+
+export interface CurrentTradeRequest {
+  sideA: string[];
+  sideB: string[];
+  evaluatedAt: string;
+  leaguePhase: LeaguePhase;
+  publicOutput?: boolean;
+  ownership?: { sideAOwnerId?: string; sideBOwnerId?: string };
+}
+
+export type OwnershipDiagnostic = "CURRENTLY_OWNED" | "NOT_CURRENTLY_OWNED" | "OWNERSHIP_UNKNOWN";
+
+export interface CurrentTradeResult {
+  adapterStatus: "VALID" | "INVALID";
+  validationErrors: string[];
+  ownership: { sideA: OwnershipDiagnostic; sideB: OwnershipDiagnostic };
+  engineResult: FairnessEngineResult | null;
+}

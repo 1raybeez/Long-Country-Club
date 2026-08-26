@@ -33,6 +33,7 @@
     "trade-model-spec:diagnostics": "node scripts/tradeModelSpecDiagnostics.mjs",
     "trade-engine:diagnostics": "node --experimental-strip-types scripts/tradeFairnessEngineDiagnostics.ts",
     "trade-shadow:diagnostics": "node --experimental-strip-types scripts/tradeShadowDiagnostics.ts",
+    "trade-current-adapter:diagnostics": "node --experimental-strip-types scripts/tradeCurrentAdapterDiagnostics.ts",
     "draft-records:diagnostics": "node scripts/draftRecordsDiagnostics.mjs",
     "rookie-recap:diagnostics": "node scripts/rookieRecapDiagnostics.mjs",
     "draft-intelligence:diagnostics": "node scripts/draftIntelligenceDiagnostics.mjs",
