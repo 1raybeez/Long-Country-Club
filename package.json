@@ -31,6 +31,7 @@
     "trade-fairness:diagnostics": "node scripts/tradeFairnessDiagnostics.mjs",
     "trade-consolidation:diagnostics": "node scripts/tradeConsolidationDiagnostics.mjs",
     "trade-model-spec:diagnostics": "node scripts/tradeModelSpecDiagnostics.mjs",
+    "trade-engine:diagnostics": "node --experimental-strip-types scripts/tradeFairnessEngineDiagnostics.ts",
     "draft-records:diagnostics": "node scripts/draftRecordsDiagnostics.mjs",
     "rookie-recap:diagnostics": "node scripts/rookieRecapDiagnostics.mjs",
     "draft-intelligence:diagnostics": "node scripts/draftIntelligenceDiagnostics.mjs",
