@@ -1,197 +1,77 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "status": "COMMISSIONER_REVIEW_CONTENT_DRAFT",
   "publicationStatus": "COMMISSIONER_REVIEW",
   "season": 2026,
   "sourceArtifact": "data/current/draft-intelligence/2026.json",
   "sourceMethodologyVersion": "rookie-draft-intelligence-n2.4b-commissioner-grades-v1",
-  "methodologyBlurb": "For this year's recap, we are using today's dynasty market and asking a simple question: if we made these exact 48 picks last night, how would they look now? The draft took place May 29–June 3, 2026; this is a current-market retrospective with a few months of hindsight, not a claim about what the market knew in May. Beginning in 2027, the intended process is to grade the draft approximately one week after the LCC rookie draft.",
-  "opening": "The 2026 LCC Rookie Draft was 48 picks, 12 owners, four rounds, and one very LCC reminder that a draft can be entertaining without producing a total winner or a total disaster. In dynasty terms, this was a market-and-capital exercise: Round 1 was generally efficient, Round 2 became more volatile, Round 3 mixed good process with a few adventurous detours, and Round 4 delivered the largest reaches and the most optimistic moonshots. Nobody aced every corner of the board, and nobody burned the league to the ground. Looking at the class today, Earl Perkins made the cleanest use of limited capital, Tyrone Poist added the most total impact, and the middle of the league stayed close enough that one or two different late-round bets could have changed the conversation.",
-  "draftStoryline": [
-    "The opening premium picks tracked closely with today's market. The early board did not immediately produce a dramatic reach, and the first round stayed mostly efficient.",
-    "The first meaningful turbulence arrived in Round 2. Value and fair selections still appeared, but the board began to separate from the normalized current-market order more often.",
-    "Picks 12–17 became the draft's clearest mini-story: Chris Bell started the chronological WR sequence, but the evidence does not show that he caused panic. Ted Hurst was the weakest market selection in the run, while Denzel Boston was the best value.",
-    "Round 3 mixed useful current-market outcomes with a few selections that carried more hindsight risk. Denzel Boston, Antonio Williams, and Kaelon Black supplied positive or near-neutral evidence, while several later picks became more difficult to defend against the market.",
-    "Round 4 supplied the biggest receipts. Adam Randall and the other positive late-round values showed that useful players remained available, while Jack Endries, Roman Hemby, Zavion Thomas, Cade Klubnik, and Garrett Nussmeier became the largest current-market reaches. Several higher-ranked same-position assets also went undrafted, creating specific opportunity-cost evidence without rewriting the May draft story."
+  "methodology": "If these exact 48 picks happened last night, how would they look today? This is a current-market retrospective using the August 2026 dynasty market, not a claim about what the market knew when the draft happened May 29–June 3. Positive numbers mean a player looks better today than where he was picked; negative numbers mean the player was picked earlier than today's market would suggest. Beginning in 2027, the intended process is to grade the rookie draft approximately one week after the LCC rookie draft.",
+  "opening": "The LCC rookie draft gave us 48 picks, 12 owners, four rounds, and exactly the kind of ending this league enjoys: a mostly disciplined start followed by a late-round argument with reality. Round 1 stayed close to today's market. By Round 2, the board was beginning to separate. Round 3 mixed useful hits with a few bets that needed a little more faith. Then Round 4 arrived with several of the draft's biggest receipts—and a couple of the best values hiding in the same neighborhood. Nobody got a perfect score, but nobody set the league on fire either. That feels very LCC.",
+  "draftIn60Seconds": [
+    "Round 1 was businesslike: the premium picks mostly landed where today's market expected them.",
+    "Round 2 loosened the screws. The board still had good values, but the gaps between picks and current opinion became easier to see.",
+    "Picks 12–17 turned into a six-player WR run. Chris Bell started it chronologically; there is no evidence he caused panic. Ted Hurst was the weakest result in the sequence, while Denzel Boston was the escape hatch at +3.",
+    "Round 3 was a mixed bag of useful values and riskier bets.",
+    "Round 4 delivered the receipts: Jack Endries, Roman Hemby, Zavion Thomas, Cade Klubnik, and Garrett Nussmeier were among the largest reaches, while Adam Randall and other late picks showed the board still had value left in it."
   ],
   "wrRun": {
     "title": "The WR Run: Picks 12–17",
-    "summary": "Chris Bell started the run chronologically. There is no supported evidence that he caused panic or that the league lost its mind at pick 12. The sequence simply became a concentrated stretch of WR selections with mixed current-market results.",
+    "copy": "Six wide receivers came off the board in a row, beginning with Chris Bell at pick 12. That makes Bell the chronological starter, not the cause of a panic. The run mostly held together until Ted Hurst went at 15, the weakest result at -4. Then Ray Long found the escape hatch: Denzel Boston at 16, a +3 value pick and the best market result of the sequence. Germie Bernard closed the run at 17 with a low-confidence -1.",
     "picks": [
-      { "pick": 12, "player": "Chris Bell", "delta": 0, "confidence": "LOW", "note": "Started the sequence; no causation claim." },
+      { "pick": 12, "player": "Chris Bell", "delta": 0, "confidence": "LOW", "note": "Started the sequence chronologically; no causation claim." },
       { "pick": 13, "player": "Zachariah Branch", "delta": -1, "confidence": "HIGH" },
       { "pick": 14, "player": "De'Zhaun Stribling", "delta": -2, "confidence": "HIGH" },
-      { "pick": 15, "player": "Ted Hurst", "delta": -4, "confidence": "HIGH", "note": "Weakest current-market selection in the run." },
-      { "pick": 16, "player": "Denzel Boston", "delta": 3, "confidence": "HIGH", "note": "Best current-market value in the run." },
+      { "pick": 15, "player": "Ted Hurst", "delta": -4, "confidence": "HIGH", "note": "Weakest result in the run." },
+      { "pick": 16, "player": "Denzel Boston", "delta": 3, "confidence": "HIGH", "note": "Best result in the run; WR Run Winner." },
       { "pick": 17, "player": "Germie Bernard", "delta": -1, "confidence": "LOW" }
     ]
   },
   "teamReportCards": [
-    {
-      "owner": "Earl Perkins", "team": "The People's Team", "grade": "B+", "draftGradeRank": 1, "classImpactRank": 2, "numberOfPicks": 3,
-      "bestPick": "Elijah Sarratt", "biggestConcern": "NO CLEAR REACH",
-      "whatWentRight": "Earl produced three positive current-market selections: Carnell Tate at 3 was close to market, while Elijah Sarratt and Brenen Thompson each landed three slots later than today's normalized rank. The class was efficient even though it had one fewer selection than most owners.",
-      "whatHurt": "There is no meaningful negative selection to force into this report. The only limitation is ceiling: a clean three-pick class is not automatically an A or A+ without more premium impact or a stronger total profile.",
-      "classImpact": "Class Impact rank #2 reflects three meaningful current-market assets and a major supported result.",
-      "bottomLine": "Earl won the Draft Grade by making efficient use of only three picks. It was the cleanest capital-use performance in the league, even if it was more precise than spectacular."
-    },
-    {
-      "owner": "Ben Isbell", "team": "Benl", "grade": "B+", "draftGradeRank": 2, "classImpactRank": 4, "numberOfPicks": 4,
-      "bestPick": "Adam Randall", "biggestConcern": "NO CLEAR REACH",
-      "whatWentRight": "Adam Randall at pick 46 was the draft's largest positive current-market delta at +7. Demond Claiborne added another positive late-round result, and Ben's four selections produced value without a negative market selection. The class also added useful depth across WR and RB.",
-      "whatHurt": "There is no supported reach to manufacture into the card. Ben's class did not dominate total Class Impact, but the evidence shows a balanced, efficient build rather than a single lucky hit.",
-      "classImpact": "Class Impact rank #4 marks a major supported asset result.",
-      "bottomLine": "Ben combined the draft's best value pick with a remarkably clean board. The +7 Randall pick is the headline, but the absence of a clear reach is what makes the whole class work."
-    },
-    {
-      "owner": "Jeffrey Hudgins", "team": "CeeDees....Cousins", "grade": "B", "draftGradeRank": 3, "classImpactRank": 5, "numberOfPicks": 4,
-      "bestPick": "Antonio Williams", "biggestConcern": "NO CLEAR REACH",
-      "whatWentRight": "Antonio Williams at pick 19 supplied a positive two-slot current-market result, and Kaelon Black at 31 was also slightly ahead of today's normalized rank. Jeffrey used four picks across WR and RB and kept the class generally close to market.",
-      "whatHurt": "Bryce Lance at pick 43 was neutral on market delta, not a reach. That means the class lacks a dramatic negative, but it also lacks the kind of premium value that would push the grade into the top tier.",
-      "classImpact": "Class Impact rank #5 is a major supported result, separate from the efficiency grade.",
-      "bottomLine": "This was a solid draft: two positive selections, no clear reach, and no need for a heroic explanation. Jeffrey stayed in the top three through steady process rather than fireworks."
-    },
-    {
-      "owner": "Mike McBurnie", "team": "CookieMonsters", "grade": "B", "draftGradeRank": 4, "classImpactRank": 7, "numberOfPicks": 3,
-      "bestPick": "Jordyn Tyson", "biggestConcern": "Skyler Bell",
-      "whatWentRight": "Jordyn Tyson at pick 4 was a positive one-slot current-market result, and the early capital was used efficiently. Mike's three-pick class also avoided a major premium-round mistake and kept its overall profile respectable.",
-      "whatHurt": "Skyler Bell was the class's clearest negative market result. The later selection did not erase the value of the early picks, but it kept a short class from building more momentum.",
-      "classImpact": "Class Impact rank #7 is a major supported result, though below the grade rank because total asset impact was more modest.",
-      "bottomLine": "Mike's draft was efficient enough to land fourth in Draft Grade. Jordyn Tyson did the early heavy lifting; the remaining question is whether the short class has enough total depth."
-    },
-    {
-      "owner": "Bill Gross", "team": "Chicago Cutlers", "grade": "B", "draftGradeRank": 5, "classImpactRank": 8, "numberOfPicks": 4,
-      "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "NO CLEAR REACH",
-      "whatWentRight": "Bill's selections stayed neutral against today's normalized market. That is the actual story: four picks, no positive market delta, but also no negative market delta. The class was steady and broadly distributed across positions.",
-      "whatHurt": "There is no supported concern to elevate. A neutral class does not need a negative joke attached to it, and Jadarian Price is not both the best and worst pick simply because every market delta landed at zero.",
-      "classImpact": "Class Impact rank #8 is a solid supported result, separate from the neutral efficiency profile.",
-      "bottomLine": "Maybe the least dramatic draft in the league—and that is not necessarily an insult. Bill did his job, stayed close to market, and declined to provide the recap with an obvious villain."
-    },
-    {
-      "owner": "Keith Winder", "team": "Off Constantly", "grade": "B", "draftGradeRank": 6, "classImpactRank": 6, "numberOfPicks": 4,
-      "bestPick": "Jonah Coleman", "biggestConcern": "Garrett Nussmeier",
-      "whatWentRight": "Jonah Coleman at pick 18 was a positive three-slot result, and the class added enough total supported assets to finish sixth in Class Impact. Keith's early and middle selections gave the class a credible foundation.",
-      "whatHurt": "Garrett Nussmeier at pick 42 landed ten slots later than today's normalized market rank. The same-position opportunity-cost check also identified Mike Washington Jr. as a materially better available RB alternative, with a 23-slot gap.",
-      "classImpact": "Class Impact rank #6 matches the Draft Grade rank and reflects a strong supported class.",
-      "bottomLine": "Keith had a good draft with one late-round receipt attached. Jonah Coleman helped the class; Garrett Nussmeier made sure the fourth round still had a plot."
-    },
-    {
-      "owner": "Tyrone Poist", "team": "Won't You be my Nabers", "grade": "B", "draftGradeRank": 7, "classImpactRank": 1, "numberOfPicks": 4,
-      "bestPick": "Max Klare", "biggestConcern": "J'Mari Taylor",
-      "whatWentRight": "Tyrone led the league in both Market Efficiency and Class Impact. Max Klare at pick 36 was +5 against today's normalized market, Emmett Johnson was +4, and the class produced the highest total supported impact in the league.",
-      "whatHurt": "J'Mari Taylor at pick 48 was two slots below market and carried the class's clearest same-position opportunity cost: Mike Washington Jr. remained available 23 normalized slots higher. That late miss matters, but it does not erase the rest of the class.",
-      "classImpact": "Class Impact rank #1 and Market Efficiency rank #1 are the headline results.",
-      "bottomLine": "Tyrone's #7 Draft Grade is not a contradiction. The complete grade includes broader capital, prospect-quality, upside, and depth components; the class still won the market-efficiency and total-impact races."
-    },
-    {
-      "owner": "Ray Long", "team": "Bower Rangers", "grade": "C+", "draftGradeRank": 8, "classImpactRank": 3, "numberOfPicks": 5,
-      "bestPick": "Denzel Boston", "biggestConcern": "Roman Hemby",
-      "whatWentRight": "Ray added the league's third-highest Class Impact with five selections. Denzel Boston at pick 16 was +3 and the best value inside the WR run. The class added several meaningful assets and was not short on ambition.",
-      "whatHurt": "Roman Hemby at pick 45 was -11, tied for the largest reach. The corrected same-position comparison points to Mike Washington Jr. as the better available RB, 29 normalized slots higher. The class's total impact was real, but capital use was inconsistent.",
-      "classImpact": "Class Impact rank #3 is substantially stronger than the Draft Grade rank #8.",
-      "bottomLine": "The commissioner added a lot of dynasty impact, then made the market work too hard to explain every pick. A C+ is fair: productive class, uneven draft-day decisions."
-    },
-    {
-      "owner": "Loren Michaels", "team": "ICOR 4 Lyfe", "grade": "C+", "draftGradeRank": 9, "classImpactRank": 9, "numberOfPicks": 4,
-      "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "Jack Endries",
-      "whatWentRight": "Loren's class covered all four primary positions and produced enough supported assets to finish ninth in both Draft Grade and Class Impact. The broader class was not empty of useful players.",
-      "whatHurt": "Jack Endries at pick 37 was -11, tied for the largest current-market reach. The corrected same-position check found no qualifying TE penalty; Chris Brazzell II remains cross-position narrative context only. That keeps the criticism specific rather than inflated.",
-      "classImpact": "Class Impact rank #9 is a solid supported result.",
-      "bottomLine": "Loren's card is a classic hindsight C+: enough structure to avoid disaster, but Jack Endries provides the obvious late-round receipt."
-    },
-    {
-      "owner": "Mike Estes", "team": "Redneck Rebels", "grade": "C+", "draftGradeRank": 10, "classImpactRank": 11, "numberOfPicks": 4,
-      "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "Jam Miller",
-      "whatWentRight": "Mike's four picks supplied a complete QB/WR/RB profile and avoided a total class collapse. The overall grade remains above the lower tier because the broader capital and prospect components provided support.",
-      "whatHurt": "Jam Miller at pick 38 was -8 against today's normalized market. The corrected same-position Opportunity Cost comparison identifies Mike Washington Jr. as a better available RB, 19 normalized slots higher. There was no qualifying positive market selection to offset the concern.",
-      "classImpact": "Class Impact rank #11 shows that the total supported asset result lagged the league.",
-      "bottomLine": "Mike's draft did not produce a clear value winner, and Jam Miller left the strongest receipt. Light roast, proportional criticism, no career verdict."
-    },
-    {
-      "owner": "Anthony Martinez", "team": "Sycamore Bishops", "grade": "C", "draftGradeRank": 11, "classImpactRank": 10, "numberOfPicks": 4,
-      "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "Eli Raridon",
-      "whatWentRight": "Anthony spread four selections across WR, TE, RB, and QB, and the class finished tenth in Class Impact. That gives the roster a broad evidence base even though no selection qualified as a clear positive market value.",
-      "whatHurt": "Eli Raridon at pick 29 was the largest individual negative delta at -5. Eli Heidenreich and Drew Allar were also below today's normalized market, so the class never found a clear value counterweight.",
-      "classImpact": "Class Impact rank #10 is slightly better than the Draft Grade rank and remains a supported result.",
-      "bottomLine": "Anthony's class was broad but not especially efficient. The C is criticism of the draft evidence, not a forecast of the players' careers."
-    },
-    {
-      "owner": "Rob Jenkins", "team": "Roaring 20", "grade": "C-", "draftGradeRank": 12, "classImpactRank": 12, "numberOfPicks": 5,
-      "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "Zavion Thomas",
-      "whatWentRight": "Rob made five selections and added positional breadth. Kenyon Sadiq was the closest thing to a stabilizing pick, and the class had enough prospect-quality support to avoid an even harsher grade.",
-      "whatHurt": "Five selections created neither strong efficiency nor strong Class Impact. Zavion Thomas at pick 32 was -10 and owns the only approved STRONG roast hook; Cade Klubnik was another -10. The corrected same-position Opportunity Cost for Zavion points to Chris Brazzell II, 21 normalized slots higher.",
-      "classImpact": "Class Impact rank #12 confirms that quantity did not become total supported impact.",
-      "bottomLine": "Rob supplied the recap with the cleanest quantity-versus-quality joke: five picks, zero clear value picks, and a full set of receipts. The roast is about the board, not the person."
-    }
+    { "owner": "Earl Perkins", "team": "The People's Team", "grade": "B+", "draftGradeRank": 1, "classImpactRank": 2, "numberOfPicks": 3, "bestPick": "Elijah Sarratt", "biggestConcern": "NO CLEAR REACH", "copy": "Earl won the Draft Grade with three picks and no wasted motion. Carnell Tate was nearly right on schedule, then Elijah Sarratt at 27 and Brenen Thompson at 39 each beat today's market by three spots. That is an unusually clean use of limited capital.\n\nThere is no forced villain here, and that is the point. Three picks are not automatically an A+ just because they avoided a mistake, but Earl turned a smaller class into the league's most efficient class. Precise rather than spectacular, and first place is first place.", "classImpactCopy": "Class Impact #2: three meaningful assets and a major contribution despite making one fewer selection than most owners." },
+    { "owner": "Ben Isbell", "team": "Benl", "grade": "B+", "draftGradeRank": 2, "classImpactRank": 4, "numberOfPicks": 4, "bestPick": "Adam Randall", "biggestConcern": "NO CLEAR REACH", "copy": "Ben found the draft's best value and then built a whole class around not messing it up. Adam Randall at 46 was +7 against today's market, the largest positive delta in the room. Demond Claiborne added another positive late-round pick, and none of Ben's four selections produced a negative market result.\n\nThe Randall pick gets the headline, but the balanced board is what makes the class work. Ben did not need one miracle to rescue the draft; he simply kept finding useful places to put his capital.", "classImpactCopy": "Class Impact #4: a major asset result from a balanced four-player WR/RB class." },
+    { "owner": "Jeffrey Hudgins", "team": "CeeDees....Cousins", "grade": "B", "draftGradeRank": 3, "classImpactRank": 5, "numberOfPicks": 4, "bestPick": "Antonio Williams", "biggestConcern": "NO CLEAR REACH", "copy": "Jeffrey stayed in the top three by refusing to make the draft weird. Antonio Williams at 19 was +2, Kaelon Black at 31 was +1, and Bryce Lance at 43 was neutral rather than a reach. Four picks, two modest wins, no major mistake.\n\nThis was more precision than fireworks. It will not dominate the highlight reel, but it also does not need a heroic explanation, which is usually a good sign when the commissioner is writing the recap.", "classImpactCopy": "Class Impact #5: a major result that tracks closely with the steady Draft Grade." },
+    { "owner": "Mike McBurnie", "team": "CookieMonsters", "grade": "B", "draftGradeRank": 4, "classImpactRank": 7, "numberOfPicks": 3, "bestPick": "Jordyn Tyson", "biggestConcern": "Skyler Bell", "copy": "Mike used his premium capital well. Jordyn Tyson at pick 4 was a +1 result, and the early part of this three-pick class did the heavy lifting. The short class still landed fourth in Draft Grade because it avoided a premium-round disaster.\n\nSkyler Bell is the one drag on the card: the clearest negative market result in the class. It does not erase Tyson, but with only three selections there was not much room for a later miss to hide.", "classImpactCopy": "Class Impact #7: respectable supported impact, but less total depth than the owners above him." },
+    { "owner": "Bill Gross", "team": "Chicago Cutlers", "grade": "B", "draftGradeRank": 5, "classImpactRank": 8, "numberOfPicks": 4, "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "NO CLEAR REACH", "copy": "Bill Gross produced the rarest kind of draft recap: almost nothing happened. All four selections landed essentially neutral against today's market. No clear value pick, no clear reach, no dramatic turn, no obvious villain.\n\nThat is not a complaint. Bill quietly did the job, spread the class around, and left the commissioner with no choice but to award him the affectionate title of Most Boringly Competent Draft. Jadarian Price is not suddenly both the best and worst pick just because the board refused to provide a punchline.", "classImpactCopy": "Class Impact #8: a solid, neutral class rather than a high-impact one." },
+    { "owner": "Keith Winder", "team": "Off Constantly", "grade": "B", "draftGradeRank": 6, "classImpactRank": 6, "numberOfPicks": 4, "bestPick": "Jonah Coleman", "biggestConcern": "Garrett Nussmeier", "copy": "Keith built a good class from the middle out. Jonah Coleman at 18 was +3, and the early and middle picks gave the roster a credible foundation. The class finished sixth in both Draft Grade and Class Impact, which is the definition of a solid day.\n\nGarrett Nussmeier at 42 is the late-round receipt: a ten-spot gap against today's market and a very visible disagreement with the board. There is no numeric same-position Opportunity Cost claim attached to that pick; the QB selection stands on its own. One late miss gave Round 4 a plot without turning the whole class into a punchline.", "classImpactCopy": "Class Impact #6: the impact and efficiency stories land in the same place." },
+    { "owner": "Tyrone Poist", "team": "Won't You be my Nabers", "grade": "B", "draftGradeRank": 7, "classImpactRank": 1, "marketEfficiencyRank": 1, "numberOfPicks": 4, "bestPick": "Max Klare", "biggestConcern": "J'Mari Taylor", "copy": "Tyrone's class won two important races. Max Klare at 36 was +5, Emmett Johnson at 24 was +4, and the group finished first in both Market Efficiency and Class Impact. In other words, Tyrone got more current-market value out of his capital and added the most total supported impact.\n\nSo why is the complete Draft Grade #7? Because Draft Grade is the wider score: it considers the full set of capital, prospect-quality, upside, depth, and other locked grading components. Class Impact asks how much useful dynasty value the class added; Market Efficiency asks how it performed against today's market. Tyrone can lead those two narrower categories and still finish seventh in the complete grade. J'Mari Taylor at 48 was the one late miss, but it did not undo the rest of the class.", "classImpactCopy": "Class Impact #1 at 88.6: the league's highest total supported impact." },
+    { "owner": "Ray Long", "team": "Bower Rangers", "grade": "C+", "draftGradeRank": 8, "classImpactRank": 3, "numberOfPicks": 5, "bestPick": "Denzel Boston", "biggestConcern": "Roman Hemby", "copy": "The commissioner drafted five players and finished third in Class Impact, which is the polite way of saying the class has real substance. Denzel Boston at 16 was +3 and escaped the WR run as its best result. There was plenty of ambition here.\n\nThen I picked Roman Hemby at 45, eleven spots before today's market wanted him, and the league's receipt printer warmed up. The same-position comparison points to Mike Washington Jr., 29 spots higher. So yes: productive class, uneven capital use, and a C+ that I will be forced to defend at the next league meeting.", "classImpactCopy": "Class Impact #3: strong total impact, substantially better than the Draft Grade #8." },
+    { "owner": "Loren Michaels", "team": "ICOR 4 Lyfe", "grade": "C+", "draftGradeRank": 9, "classImpactRank": 9, "numberOfPicks": 4, "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "Jack Endries", "copy": "Loren covered all four primary positions and avoided a total collapse. That is the good news. The less good news is that none of the four picks became a clear value winner, leaving the class ninth in both Draft Grade and Class Impact.\n\nJack Endries at 37 was the largest reach in the draft at -11, so the fourth round supplied its own receipt. There is no qualifying same-position numeric Opportunity Cost penalty attached to Endries; the joke is simply that the market saw a very different draft board. A classic hindsight C+: enough structure to survive, one pick everyone will remember.", "classImpactCopy": "Class Impact #9: enough useful structure to avoid disaster, but no impact spike." },
+    { "owner": "Mike Estes", "team": "Redneck Rebels", "grade": "C+", "draftGradeRank": 10, "classImpactRank": 11, "numberOfPicks": 4, "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "Jam Miller", "copy": "Mike's four picks gave him a complete QB/WR/RB class, but the board never handed him a clear value win. Jam Miller at 38 was -8 against today's market, the strongest negative receipt on the card.\n\nThe same-position alternative was Mike Washington Jr., 19 spots higher and still available. That is enough for a proportional light roast, not a career obituary. The C+ says the draft evidence was inefficient; it does not say the players are doomed.", "classImpactCopy": "Class Impact #11: the total asset result lagged the league despite broad positional coverage." },
+    { "owner": "Anthony Martinez", "team": "Sycamore Bishops", "grade": "C", "draftGradeRank": 11, "classImpactRank": 10, "numberOfPicks": 4, "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "Eli Raridon", "copy": "Anthony spread four picks across WR, TE, RB, and QB, giving the class range even if it never found a clear market win. Eli Raridon at 29 was the biggest individual negative delta at -5, and Eli Heidenreich and Drew Allar also landed below today's market.\n\nThat makes this a broad but inefficient class, not a disaster. Anthony finished tenth in Class Impact, one place ahead of the Draft Grade, and the C is a verdict on the picks at this checkpoint—not a prediction about anyone's career.", "classImpactCopy": "Class Impact #10: broad evidence base, but no positive market counterweight." },
+    { "owner": "Rob Jenkins", "team": "Roaring 20", "grade": "C-", "draftGradeRank": 12, "classImpactRank": 12, "numberOfPicks": 5, "bestPick": "NO CLEAR VALUE PICK", "biggestConcern": "Zavion Thomas", "copy": "Rob made five selections and added positional breadth, but quantity never became impact. Kenyon Sadiq was the closest thing to a stabilizer, while the class finished last in both Draft Grade and Class Impact with no clear value pick.\n\nThe one line worth keeping is the one the fourth round wrote for us: Rob's fourth round was less a draft and more a sustained argument with the rankings. Zavion Thomas at 32 was -10, Cade Klubnik at 44 was also -10, and Zavion's same-position alternative was Chris Brazzell II, 21 spots higher. That is one memorable roast and enough evidence; the joke is about the board, not Rob as a person.", "classImpactCopy": "Class Impact #12: five picks, but not enough supported impact to make the volume count." }
   ],
-  "valueLeaderboard": {
-    "title": "Best Current-Market Values",
-    "disclaimer": "These are current-market retrospective deltas, not May draft-day consensus.",
-    "entries": [
-      ["Adam Randall", 46, 7], ["Max Klare", 36, 5], ["Emmett Johnson", 24, 4], ["Elijah Sarratt", 27, 3], ["Brenen Thompson", 39, 3], ["Denzel Boston", 16, 3], ["Demond Claiborne", 34, 2], ["Antonio Williams", 19, 2]
-    ]
-  },
-  "reachLeaderboard": {
-    "title": "Largest Current-Market Reaches",
-    "disclaimer": "These are current-market retrospective deltas, not May draft-day consensus.",
-    "entries": [
-      ["Jack Endries", 37, -11], ["Roman Hemby", 45, -11], ["Zavion Thomas", 32, -10], ["Cade Klubnik", 44, -10], ["Garrett Nussmeier", 42, -10], ["Jam Miller", 38, -8]
-    ]
-  },
-  "opportunityCost": [
-    { "selected": "Zavion Thomas", "pick": 32, "position": "WR", "alternative": "Chris Brazzell II", "alternativePosition": "WR", "gap": 21, "confidence": "HIGH" },
-    { "selected": "Eli Heidenreich", "pick": 35, "position": "RB", "alternative": "Mike Washington Jr.", "alternativePosition": "RB", "gap": 11, "confidence": "HIGH" },
-    { "selected": "Jam Miller", "pick": 38, "position": "RB", "alternative": "Mike Washington Jr.", "alternativePosition": "RB", "gap": 19, "confidence": "HIGH" },
-    { "selected": "Brenen Thompson", "pick": 39, "position": "WR", "alternative": "Chris Brazzell II", "alternativePosition": "WR", "gap": 15, "confidence": "HIGH" },
-    { "selected": "Bryce Lance", "pick": 43, "position": "WR", "alternative": "Chris Brazzell II", "alternativePosition": "WR", "gap": 22, "confidence": "HIGH" },
-    { "selected": "Roman Hemby", "pick": 45, "position": "RB", "alternative": "Mike Washington Jr.", "alternativePosition": "RB", "gap": 29, "confidence": "HIGH" },
-    { "selected": "Adam Randall", "pick": 46, "position": "RB", "alternative": "Mike Washington Jr.", "alternativePosition": "RB", "gap": 12, "confidence": "HIGH" },
-    { "selected": "J'Mari Taylor", "pick": 48, "position": "RB", "alternative": "Mike Washington Jr.", "alternativePosition": "RB", "gap": 23, "confidence": "HIGH" }
-  ],
+  "valueLeaderboard": { "title": "Best Current-Market Values", "explanation": "Positive means the player looks better today than where he was selected. These are August 2026 retrospective deltas, not May draft-day consensus.", "entries": [ { "player": "Adam Randall", "pick": 46, "delta": 7 }, { "player": "Max Klare", "pick": 36, "delta": 5 }, { "player": "Emmett Johnson", "pick": 24, "delta": 4 }, { "player": "Elijah Sarratt", "pick": 27, "delta": 3 }, { "player": "Brenen Thompson", "pick": 39, "delta": 3 }, { "player": "Denzel Boston", "pick": 16, "delta": 3 }, { "player": "Demond Claiborne", "pick": 34, "delta": 2 }, { "player": "Antonio Williams", "pick": 19, "delta": 2 } ] },
+  "reachLeaderboard": { "title": "Largest Current-Market Reaches", "explanation": "Negative means the player was selected earlier than today's market would suggest. These are August 2026 retrospective deltas, not May draft-day consensus.", "entries": [ { "player": "Jack Endries", "pick": 37, "delta": -11 }, { "player": "Roman Hemby", "pick": 45, "delta": -11 }, { "player": "Zavion Thomas", "pick": 32, "delta": -10 }, { "player": "Cade Klubnik", "pick": 44, "delta": -10 }, { "player": "Garrett Nussmeier", "pick": 42, "delta": -10 }, { "player": "Jam Miller", "pick": 38, "delta": -8 } ] },
+  "opportunityCostNarrative": "The cleanest What Could Have Been receipt belongs to Roman Hemby: at pick 45, Mike Washington Jr. was 29 same-position market slots higher and still available. Zavion Thomas at 32 had Chris Brazzell II available 21 slots higher. Jam Miller at 38 had the same-position Washington alternative 19 slots higher. These comparisons are used only where the locked artifact identifies a high-confidence same-position alternative; cross-position names are not numeric penalties. Garrett Nussmeier is a QB, so the old Mike Washington Jr. Opportunity Cost claim has been removed.",
   "awards": [
-    { "award": "Draft Champion", "winner": "Earl Perkins", "runnerUp": "Ben Isbell", "reason": "Highest Draft Grade at 82.5 through efficient use of three picks.", "confidence": "HIGH" },
-    { "award": "Best Overall Pick", "winner": "Adam Randall", "runnerUp": "Max Klare", "reason": "Pick 46 against normalized market rank 39, a +7 delta.", "confidence": "HIGH" },
-    { "award": "Best Value", "winner": "Adam Randall", "runnerUp": "Max Klare", "reason": "Largest positive supported current-market delta in the draft.", "confidence": "HIGH" },
-    { "award": "Biggest Reach", "winner": "Jack Endries and Roman Hemby", "runnerUp": "Zavion Thomas", "reason": "Both finished at -11 against today's normalized market.", "confidence": "HIGH" },
-    { "award": "Best Late-Round Pick", "winner": "Adam Randall", "runnerUp": "Elijah Sarratt", "reason": "Late-round value at +7, followed by Sarratt at +3.", "confidence": "HIGH" },
-    { "award": "Best Draft Capital Usage", "winner": "Tyrone Poist", "runnerUp": "Earl Perkins", "reason": "#1 Market Efficiency with capital-weighted result 1.942.", "confidence": "HIGH" },
-    { "award": "Worst Draft Capital Usage", "winner": "Rob Jenkins", "runnerUp": "Anthony Martinez", "reason": "Lowest Market Efficiency and five selections without a clear value pick.", "confidence": "HIGH" },
-    { "award": "Biggest Opportunity Cost", "winner": "Roman Hemby", "runnerUp": "Zavion Thomas", "reason": "Largest corrected same-position gap: Mike Washington Jr. 29 normalized slots higher.", "confidence": "HIGH" },
-    { "award": "Best Class Impact", "winner": "Tyrone Poist", "runnerUp": "Earl Perkins", "reason": "#1 Class Impact at 88.6, classified TRANSFORMATIVE.", "confidence": "HIGH" },
-    { "award": "Best Position-Run Escape", "winner": "Denzel Boston", "runnerUp": "Chris Bell", "reason": "Boston was +3 inside the picks 12–17 WR sequence.", "confidence": "HIGH" }
-  ],
-  "withheldAwards": [
-    { "award": "Biggest Steal", "result": "NONE", "reason": "No supported clear-value threshold was met." },
-    { "award": "Position-Run Instigator", "result": "WITHHELD", "reason": "No evidence establishes causation." },
-    { "award": "Most On-Brand Draft", "result": "WITHHELD", "reason": "Historical tendencies remain narrative-only." },
-    { "award": "WTF Pick", "result": "NONE", "reason": "No supported premium-pick threshold was met." }
+    { "award": "🏆 Draft Champion", "winner": "Earl Perkins", "runnerUp": "Ben Isbell", "reason": "Highest Draft Grade at 82.5 through efficient use of three picks.", "confidence": "HIGH" },
+    { "award": "🚀 Best Pick", "winner": "Adam Randall / Ben Isbell", "runnerUp": "Max Klare / Tyrone Poist", "reason": "Randall was the draft's largest positive delta at +7; Klare followed at +5.", "confidence": "HIGH" },
+    { "award": "📈 Best Draft Capital Usage", "winner": "Tyrone Poist", "runnerUp": "Earl Perkins", "reason": "Tyrone finished #1 in Market Efficiency with a capital-weighted result of 1.942.", "confidence": "HIGH" },
+    { "award": "💥 Best Class Impact", "winner": "Tyrone Poist", "runnerUp": "Earl Perkins", "reason": "Tyrone finished #1 in Class Impact at 88.6.", "confidence": "HIGH" },
+    { "award": "😬 Biggest Reach", "winner": "Jack Endries / Loren Michaels and Roman Hemby / Ray Long", "runnerUp": null, "reason": "Both picks finished at -11 against today's market.", "confidence": "HIGH" },
+    { "award": "🏃 WR Run Winner", "winner": "Denzel Boston / Ray Long", "runnerUp": null, "reason": "Boston was +3 at pick 16, the best result in the picks 12–17 WR sequence.", "confidence": "HIGH" },
+    { "award": "🧾 The Receipt", "winner": "Zavion Thomas / Rob Jenkins", "runnerUp": null, "reason": "Pick 32 against a current-market rank of 42 produced the strongest approved roast hook.", "confidence": "HIGH" },
+    { "award": "😴 Most Boringly Competent Draft", "winner": "Bill Gross", "runnerUp": null, "reason": "Four essentially neutral selections, no clear value pick, and no clear reach. Affectionate, not punitive.", "confidence": "HIGH" }
   ],
   "roastCandidates": [
-    { "owner": "Rob Jenkins", "player": "Zavion Thomas", "severity": "STRONG", "setup": "Pick 32 versus normalized market rank 42, a -10 delta.", "draftLines": ["Rob drafted Zavion Thomas at 32, proving that sometimes the market's biggest disagreement is simply a cry for attention.", "The market had Zavion at 42. Rob saw 32. Somewhere between those numbers, a fifth pick became a sixth sense.", "Rob did not chase the market. He challenged it to a duel—and the market brought receipts."], "evidence": "HIGH-confidence current-market mismatch; approved STRONG roast hook." },
-    { "owner": "Loren Michaels", "player": "Jack Endries", "severity": "LIGHT", "setup": "Pick 37 versus normalized market rank 48, a -11 delta.", "draftLines": ["Loren took Jack Endries at 37, giving the late-round market one more mystery to solve.", "Jack Endries at 37: the pick that asked the market to check its own work.", "Loren's fourth round came with a receipt already printed."], "evidence": "HIGH-confidence current-market mismatch; approved LIGHT roast hook." },
-    { "owner": "Ray Long", "player": "Roman Hemby", "severity": "LIGHT", "setup": "Pick 45 versus normalized market rank 56, a -11 delta; Mike Washington Jr. was the corrected same-position alternative.", "draftLines": ["Ray took Roman Hemby at 45, because apparently the market's 56 was not optimistic enough.", "Roman Hemby at 45: a commissioner-issued reminder that self-scouting remains optional.", "The good news for Ray is that Roman was a choice. The bad news is that the market had a different choice."], "evidence": "HIGH-confidence current-market mismatch; approved LIGHT roast hook." },
-    { "owner": "Keith Winder", "player": "Garrett Nussmeier", "severity": "LIGHT", "setup": "Pick 42 versus normalized market rank 52, a -10 delta.", "draftLines": ["Keith selected Garrett Nussmeier at 42 and gave Round 4 one last quarterback subplot.", "Garrett Nussmeier at 42: Off Constantly was not going to let the market end the night quietly.", "Keith found a late-round QB, and the market found a late-round question."], "evidence": "HIGH-confidence current-market mismatch; approved LIGHT roast hook." },
-    { "owner": "Rob Jenkins", "player": "Cade Klubnik", "severity": "LIGHT", "setup": "Pick 44 versus normalized market rank 54, a -10 delta.", "draftLines": ["Rob followed Zavion with Cade Klubnik, refusing to let one market disagreement feel lonely.", "Cade Klubnik at 44: the sequel nobody asked the current market to review.", "Rob's fourth round was less a draft and more a sustained argument with the rankings."], "evidence": "HIGH-confidence current-market mismatch; approved LIGHT roast hook." },
-    { "owner": "Mike Estes", "player": "Jam Miller", "severity": "LIGHT", "setup": "Pick 38 versus normalized market rank 46, a -8 delta.", "draftLines": ["Mike took Jam Miller at 38, leaving the market to wonder if it had missed a meeting.", "Jam Miller at 38: a light receipt, responsibly filed in Round 4.", "Mike did not reach for the moon—just eight spots past the mailbox."], "evidence": "HIGH-confidence current-market mismatch; approved LIGHT roast hook." }
+    { "owner": "Rob Jenkins", "player": "Zavion Thomas", "severity": "STRONG", "line": "Rob's fourth round was less a draft and more a sustained argument with the rankings.", "evidence": "Pick 32 versus normalized market rank 42, a -10 delta; HIGH-confidence mismatch." },
+    { "owner": "Loren Michaels", "player": "Jack Endries", "severity": "LIGHT", "line": "Loren's fourth round produced the draft's biggest tie: Jack Endries at 37, eleven spots before today's market was ready for him.", "evidence": "Pick 37 versus normalized market rank 48, a -11 delta; HIGH-confidence mismatch." },
+    { "owner": "Ray Long", "player": "Roman Hemby", "severity": "LIGHT", "line": "I took Roman Hemby at 45, which is one way to make sure the commissioner has a receipt before the recap is even written.", "evidence": "Pick 45 versus normalized market rank 56, a -11 delta; HIGH-confidence mismatch." },
+    { "owner": "Keith Winder", "player": "Garrett Nussmeier", "severity": "LIGHT", "line": "Keith found a late-round quarterback and gave Round 4 one last plot twist.", "evidence": "Pick 42 versus normalized market rank 52, a -10 delta; HIGH-confidence mismatch." },
+    { "owner": "Rob Jenkins", "player": "Cade Klubnik", "severity": "LIGHT", "line": "Rob's fourth round did not merely disagree with the rankings; it kept the argument going.", "evidence": "Pick 44 versus normalized market rank 54, a -10 delta; HIGH-confidence mismatch." },
+    { "owner": "Mike Estes", "player": "Jam Miller", "severity": "LIGHT", "line": "Mike did not reach for the moon—just far enough into Round 4 for the market to notice.", "evidence": "Pick 38 versus normalized market rank 46, a -8 delta; HIGH-confidence mismatch." }
   ],
   "praiseCandidates": [
-    { "player": "Adam Randall", "line": "Ben found the draft's biggest positive market receipt: +7 at pick 46." },
-    { "player": "Max Klare", "line": "Tyrone's Max Klare pick at 36 was five slots better than today's market expected." },
-    { "player": "Emmett Johnson", "line": "Emmett Johnson gave Tyrone another clean +4 value result at pick 24." },
-    { "player": "Elijah Sarratt", "line": "Earl's three-pick class stayed efficient, with Sarratt providing a useful +3 at 27." },
-    { "player": "Brenen Thompson", "line": "Brenen Thompson made Earl's limited capital count with another +3 result." },
-    { "player": "Denzel Boston", "line": "Denzel Boston was the best value inside the WR run and a +3 pick at 16." },
-    { "player": "Jonah Coleman", "line": "Jonah Coleman gave Keith a +3 foundation at pick 18." },
-    { "player": "Antonio Williams", "line": "Antonio Williams quietly delivered Jeffrey a positive result at pick 19." }
+    { "owner": "Ben Isbell", "player": "Adam Randall", "line": "Ben found the draft's biggest positive receipt: Adam Randall at 46, now viewed seven spots higher." },
+    { "owner": "Tyrone Poist", "player": "Max Klare", "line": "Tyrone's Max Klare pick turned the back half of the draft into a source of actual profit: +5 at pick 36." },
+    { "owner": "Tyrone Poist", "player": "Emmett Johnson", "line": "Emmett Johnson gave Tyrone a second clean late-round win, with +4 value at pick 24." },
+    { "owner": "Earl Perkins", "player": "Elijah Sarratt", "line": "Earl did not need extra volume; Elijah Sarratt at 27 gave the three-pick class a +3 anchor." },
+    { "owner": "Earl Perkins", "player": "Brenen Thompson", "line": "Brenen Thompson made Earl's limited capital count again, beating the market by three at pick 39." },
+    { "owner": "Ray Long", "player": "Denzel Boston", "line": "Denzel Boston was the best escape from the WR run and a +3 hit at pick 16." },
+    { "owner": "Keith Winder", "player": "Jonah Coleman", "line": "Jonah Coleman gave Keith a +3 foundation at pick 18 and helped the class finish sixth overall." },
+    { "owner": "Jeffrey Hudgins", "player": "Antonio Williams", "line": "Antonio Williams quietly made Jeffrey's second round work, landing two spots better than today's market." }
   ],
-  "optionalFunLabels": [
-    { "label": "Most Efficient Without Making Noise", "candidate": "Earl Perkins" },
-    { "label": "Quietly Did His Job", "candidate": "Bill Gross" },
-    { "label": "Quantity ≠ Quality", "candidate": "Rob Jenkins" },
-    { "label": "Best Escape From the WR Run", "candidate": "Denzel Boston" },
-    { "label": "Market Said Nope", "candidate": "Jack Endries" },
-    { "label": "Late-Round Receipt", "candidate": "Roman Hemby" }
-  ],
-  "conclusion": "Who drafted best? Earl Perkins, by the approved Draft Grade. Who added the most total impact? Tyrone Poist, who led both Class Impact and Market Efficiency. Who found the best value? Ben Isbell's Adam Randall at +7. Who had the roughest day in hindsight? Rob Jenkins finished last in both Draft Grade and Class Impact, though the criticism belongs to the evidence, not the people. The draft's defining trend was the gap between efficient early decisions and increasingly adventurous late-round swings. Round 4 taught the league that useful players remained available—and that a reach can become a story very quickly. Owners should feel good about the positive hits and the classes that added real impact, while remembering that today's August market is not a career forecast. These grades can and will age.",
-  "futureRegradeHook": "Receipts saved. This 2026 retrospective should be revisited at the end of 2026, one year later, and three years later. Future regrades must remain separate retrospective layers; they must never overwrite the original 2026 grade or erase what the league believed at this checkpoint."
+  "conclusion": "The draft ended where LCC drafts usually end: with a few owners feeling clever, a few owners checking the receipts, and everyone insisting the players will make the spreadsheet look foolish. Earl Perkins drafted most efficiently. Tyrone Poist added the most total impact and won the market-efficiency race. Ben Isbell found the best individual value in Adam Randall. Rob Jenkins supplied the cleanest fourth-round argument with the rankings, while Bill Gross somehow turned four neutral picks into a complete absence of drama. Some of these grades will look brilliant in a year. Some will look ridiculous. Players develop, situations change, and dynasty takes time. These are August 2026 checkpoint grades, not career verdicts. Receipts saved.",
+  "futureRegrade": "The 2026 grade is a permanent historical checkpoint and must never be overwritten. Revisit this retrospective at the end of the 2026 season, one year later, and three years later, with each evaluation preserved as a separate layer. Beginning with the 2027 rookie draft, create the original recap approximately one week after the draft rather than months later.",
+  "editorialMetadata": { "version": "N2.5A", "audit": { "lockedSource": "data/current/draft-intelligence/2026.json", "result": "PASS_WITH_ONE_STALE_RECAP_STATEMENT_CORRECTED", "staleStatementsFound": ["Keith Winder's old claim that Garrett Nussmeier had a same-position Opportunity Cost alternative of Mike Washington Jr."], "staleStatementsCorrected": ["Removed the invalid QB-to-RB Opportunity Cost claim; no numeric Opportunity Cost is shown for Garrett Nussmeier."], "otherInvalidOpportunityCost": "None found in the recap's numeric Opportunity Cost claims.", "gradesPreserved": true, "methodologyChanged": false, "marketDataChanged": false, "wrRunFactsPreserved": true }, "publicAwardsExclude": ["Biggest Steal", "WTF Pick", "Position-Run Instigator", "Most On-Brand Draft"], "duplicateAwardsRemoved": ["Best Overall Pick", "Best Value"], "analyticsPhrasesRewrittenOrRemoved": 35, "remainingFlags": ["Award winner formatting uses owner/player pairs and should be rendered consistently in a later UI.", "The exact distinction among Draft Grade, Class Impact, and Market Efficiency is explained in Tyrone's card and may also merit a compact visual treatment.", "Current-market retrospective language remains intentionally present where needed to prevent readers from treating the recap as a May draft-day judgment."] }
 }
