@@ -22,5 +22,13 @@ check("rubric_provisional", x.provisionalRubricTest.status === "PROVISIONAL_NOT_
 check("no_final_grades", x.blockedFields.includes("FINAL_GRADES") && x.currentMarketDecision.finalGradesPublished === false);
 check("may_separate", x.marketMovement.comparisonMode === "CURRENT_VS_MAY_EVIDENCE");
 check("roast_levels", x.roastHooks.every((h) => ["STRONG ROAST", "LIGHT ROAST", "NO ROAST"].includes(h.confidence)));
+check("market_scale_audit", x.marketScaleAudit?.status === "N2.3A_MARKET_SCALE_AUDIT_COMPLETE_NO_RUBRIC_CHANGE");
+check("raw_universe_documented", x.marketScaleAudit?.rawUniverses?.fpTrack?.observedRows > 0 && x.marketScaleAudit?.rawUniverses?.fantasyOrphans?.observedRows > 0);
+check("normalized_universe_documented", x.marketScaleAudit?.normalizedBoard?.boardSize === x.marketScaleAudit?.rawUniverses?.combinedUniqueRows);
+check("omitted_players_documented", Array.isArray(x.marketScaleAudit?.omittedPlayers));
+check("eligible_undrafted_preserved", x.marketScaleAudit?.normalizedBoard?.removalPolicy === "REMOVE_NONE");
+check("source_disagreement_preserved", x.picks.every((p) => Object.hasOwn(p, "sourceSpecificRanks") && Object.hasOwn(p, "sourceSpread")));
+check("source_disagreement_reduces_scale_confidence", x.picks.filter((p) => p.sourceSpread >= 8).every((p) => p.scaleAuditConfidence === "REDUCED_FOR_SCALE_DISAGREEMENT"));
+check("retrospective_label", x.marketScaleAudit?.scaleDecision?.retrospectiveLabel?.includes("CURRENT_MARKET_RETROSPECTIVE"));
 assert.equal(fail.length, 0, fail.join(", "));
 console.log(JSON.stringify({ status: x.status, checks: { canonical48: true, valueDirection: true, reachDirection: true, arithmetic: true, legacySignRemoved: true, confidence: true, unrankedSafe: true, capitalAdjusted: true, opportunityDirection: true, opportunityAvailable: true, ownerAggregates: true, separateClassImpact: true, rubricProvisional: true, noFinalGrades: true }, ranked: ranked.length, owners: Object.keys(x.owners).length, opportunities: x.opportunityCosts.length, strongRoasts: x.roastHooks.filter((h) => h.confidence === "STRONG ROAST").length, lightRoasts: x.roastHooks.filter((h) => h.confidence === "LIGHT ROAST").length }, null, 2));

@@ -213,7 +213,16 @@
       "capitalBucket": "1.01",
       "capitalValue": 69,
       "capitalAdjustmentFactor": 1,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 1,
+      "lccPoolCurrentMarketRank": 1,
+      "sourceSpecificRanks": {
+        "fpTrack": 1,
+        "fantasyOrphans": 1
+      },
+      "sourceSpread": 0,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 2,
@@ -363,7 +372,16 @@
       "capitalBucket": "1.02",
       "capitalValue": 64,
       "capitalAdjustmentFactor": 0.928,
-      "capitalAdjustedValue": -5.568
+      "capitalAdjustedValue": -5.568,
+      "rawCurrentMarketRank": 8,
+      "lccPoolCurrentMarketRank": 4,
+      "sourceSpecificRanks": {
+        "fpTrack": 8,
+        "fantasyOrphans": 2
+      },
+      "sourceSpread": 6,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 3,
@@ -465,7 +483,16 @@
       "capitalBucket": "1.03",
       "capitalValue": 59,
       "capitalAdjustmentFactor": 0.855,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 3,
+      "lccPoolCurrentMarketRank": 2,
+      "sourceSpecificRanks": {
+        "fpTrack": 2,
+        "fantasyOrphans": 3
+      },
+      "sourceSpread": 1,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 4,
@@ -567,7 +594,16 @@
       "capitalBucket": "1.04",
       "capitalValue": 58,
       "capitalAdjustmentFactor": 0.841,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 4,
+      "lccPoolCurrentMarketRank": 3,
+      "sourceSpecificRanks": {
+        "fpTrack": 3,
+        "fantasyOrphans": 4
+      },
+      "sourceSpread": 1,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 5,
@@ -669,7 +705,16 @@
       "capitalBucket": "1.05",
       "capitalValue": 54,
       "capitalAdjustmentFactor": 0.783,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 5,
+      "lccPoolCurrentMarketRank": 5,
+      "sourceSpecificRanks": {
+        "fpTrack": 5,
+        "fantasyOrphans": 5
+      },
+      "sourceSpread": 0,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 6,
@@ -771,7 +816,16 @@
       "capitalBucket": "1.06",
       "capitalValue": 48,
       "capitalAdjustmentFactor": 0.696,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 6,
+      "lccPoolCurrentMarketRank": 6,
+      "sourceSpecificRanks": {
+        "fpTrack": 4,
+        "fantasyOrphans": 6
+      },
+      "sourceSpread": 2,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 7,
@@ -873,7 +927,16 @@
       "capitalBucket": "1.07",
       "capitalValue": 46,
       "capitalAdjustmentFactor": 0.667,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 7,
+      "lccPoolCurrentMarketRank": 7,
+      "sourceSpecificRanks": {
+        "fpTrack": 6,
+        "fantasyOrphans": 7
+      },
+      "sourceSpread": 1,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 8,
@@ -975,7 +1038,16 @@
       "capitalBucket": "1.08",
       "capitalValue": 44,
       "capitalAdjustmentFactor": 0.638,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 8,
+      "lccPoolCurrentMarketRank": 8,
+      "sourceSpecificRanks": {
+        "fpTrack": 7,
+        "fantasyOrphans": 8
+      },
+      "sourceSpread": 1,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 9,
@@ -1074,7 +1146,16 @@
       "capitalBucket": "1.09",
       "capitalValue": 42,
       "capitalAdjustmentFactor": 0.609,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 9,
+      "lccPoolCurrentMarketRank": 9,
+      "sourceSpecificRanks": {
+        "fpTrack": null,
+        "fantasyOrphans": 9
+      },
+      "sourceSpread": null,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "LOW"
     },
     {
       "actualOverallPick": 10,
@@ -1176,7 +1257,16 @@
       "capitalBucket": "1.10",
       "capitalValue": 40,
       "capitalAdjustmentFactor": 0.58,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 10,
+      "lccPoolCurrentMarketRank": 10,
+      "sourceSpecificRanks": {
+        "fpTrack": 9,
+        "fantasyOrphans": 10
+      },
+      "sourceSpread": 1,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 11,
@@ -1278,7 +1368,16 @@
       "capitalBucket": "1.11",
       "capitalValue": 38,
       "capitalAdjustmentFactor": 0.551,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 11,
+      "lccPoolCurrentMarketRank": 11,
+      "sourceSpecificRanks": {
+        "fpTrack": 11,
+        "fantasyOrphans": 11
+      },
+      "sourceSpread": 0,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 12,
@@ -1377,7 +1476,16 @@
       "capitalBucket": "1.12",
       "capitalValue": 34,
       "capitalAdjustmentFactor": 0.493,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 12,
+      "lccPoolCurrentMarketRank": 12,
+      "sourceSpecificRanks": {
+        "fpTrack": null,
+        "fantasyOrphans": 12
+      },
+      "sourceSpread": null,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "LOW"
     },
     {
       "actualOverallPick": 13,
@@ -1479,7 +1587,16 @@
       "capitalBucket": "2.early",
       "capitalValue": 31,
       "capitalAdjustmentFactor": 0.449,
-      "capitalAdjustedValue": -0.898
+      "capitalAdjustedValue": -0.898,
+      "rawCurrentMarketRank": 15,
+      "lccPoolCurrentMarketRank": 14,
+      "sourceSpecificRanks": {
+        "fpTrack": 15,
+        "fantasyOrphans": 13
+      },
+      "sourceSpread": 2,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 14,
@@ -1605,7 +1722,16 @@
       "capitalBucket": "2.early",
       "capitalValue": 31,
       "capitalAdjustmentFactor": 0.449,
-      "capitalAdjustedValue": -1.347
+      "capitalAdjustedValue": -1.347,
+      "rawCurrentMarketRank": 17,
+      "lccPoolCurrentMarketRank": 16,
+      "sourceSpecificRanks": {
+        "fpTrack": 17,
+        "fantasyOrphans": 14
+      },
+      "sourceSpread": 3,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 15,
@@ -1755,7 +1881,16 @@
       "capitalBucket": "2.early",
       "capitalValue": 31,
       "capitalAdjustmentFactor": 0.449,
-      "capitalAdjustedValue": -2.694
+      "capitalAdjustedValue": -2.694,
+      "rawCurrentMarketRank": 21,
+      "lccPoolCurrentMarketRank": 19,
+      "sourceSpecificRanks": {
+        "fpTrack": 21,
+        "fantasyOrphans": 15
+      },
+      "sourceSpread": 6,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 16,
@@ -1857,7 +1992,16 @@
       "capitalBucket": "2.early",
       "capitalValue": 31,
       "capitalAdjustmentFactor": 0.449,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 16,
+      "lccPoolCurrentMarketRank": 13,
+      "sourceSpecificRanks": {
+        "fpTrack": 10,
+        "fantasyOrphans": 16
+      },
+      "sourceSpread": 6,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 17,
@@ -1956,7 +2100,16 @@
       "capitalBucket": "2.mid",
       "capitalValue": 26,
       "capitalAdjustmentFactor": 0.377,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 17,
+      "lccPoolCurrentMarketRank": 18,
+      "sourceSpecificRanks": {
+        "fpTrack": null,
+        "fantasyOrphans": 17
+      },
+      "sourceSpread": null,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "LOW"
     },
     {
       "actualOverallPick": 18,
@@ -2058,7 +2211,16 @@
       "capitalBucket": "2.mid",
       "capitalValue": 26,
       "capitalAdjustmentFactor": 0.377,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 18,
+      "lccPoolCurrentMarketRank": 15,
+      "sourceSpecificRanks": {
+        "fpTrack": 12,
+        "fantasyOrphans": 18
+      },
+      "sourceSpread": 6,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 19,
@@ -2160,7 +2322,16 @@
       "capitalBucket": "2.mid",
       "capitalValue": 26,
       "capitalAdjustmentFactor": 0.377,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 19,
+      "lccPoolCurrentMarketRank": 17,
+      "sourceSpecificRanks": {
+        "fpTrack": 13,
+        "fantasyOrphans": 19
+      },
+      "sourceSpread": 6,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 20,
@@ -2259,7 +2430,16 @@
       "capitalBucket": "2.mid",
       "capitalValue": 26,
       "capitalAdjustmentFactor": 0.377,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 20,
+      "lccPoolCurrentMarketRank": 22,
+      "sourceSpecificRanks": {
+        "fpTrack": null,
+        "fantasyOrphans": 20
+      },
+      "sourceSpread": null,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "LOW"
     },
     {
       "actualOverallPick": 21,
@@ -2361,7 +2541,16 @@
       "capitalBucket": "2.late",
       "capitalValue": 21,
       "capitalAdjustmentFactor": 0.304,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 21,
+      "lccPoolCurrentMarketRank": 23,
+      "sourceSpecificRanks": {
+        "fpTrack": 20,
+        "fantasyOrphans": 21
+      },
+      "sourceSpread": 1,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 22,
@@ -2463,7 +2652,16 @@
       "capitalBucket": "2.late",
       "capitalValue": 21,
       "capitalAdjustmentFactor": 0.304,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 22,
+      "lccPoolCurrentMarketRank": 21,
+      "sourceSpecificRanks": {
+        "fpTrack": 18,
+        "fantasyOrphans": 22
+      },
+      "sourceSpread": 4,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 23,
@@ -2565,7 +2763,16 @@
       "capitalBucket": "2.late",
       "capitalValue": 21,
       "capitalAdjustmentFactor": 0.304,
-      "capitalAdjustedValue": -0.304
+      "capitalAdjustedValue": -0.304,
+      "rawCurrentMarketRank": 24,
+      "lccPoolCurrentMarketRank": 25,
+      "sourceSpecificRanks": {
+        "fpTrack": 24,
+        "fantasyOrphans": 23
+      },
+      "sourceSpread": 1,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 24,
@@ -2667,7 +2874,16 @@
       "capitalBucket": "2.late",
       "capitalValue": 21,
       "capitalAdjustmentFactor": 0.304,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 24,
+      "lccPoolCurrentMarketRank": 20,
+      "sourceSpecificRanks": {
+        "fpTrack": 14,
+        "fantasyOrphans": 24
+      },
+      "sourceSpread": 10,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 25,
@@ -2817,7 +3033,16 @@
       "capitalBucket": "3.early",
       "capitalValue": 17,
       "capitalAdjustmentFactor": 0.246,
-      "capitalAdjustedValue": -1.476
+      "capitalAdjustedValue": -1.476,
+      "rawCurrentMarketRank": 31,
+      "lccPoolCurrentMarketRank": 29,
+      "sourceSpecificRanks": {
+        "fpTrack": 31,
+        "fantasyOrphans": 25
+      },
+      "sourceSpread": 6,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 26,
@@ -2919,7 +3144,16 @@
       "capitalBucket": "3.early",
       "capitalValue": 17,
       "capitalAdjustmentFactor": 0.246,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 26,
+      "lccPoolCurrentMarketRank": 26,
+      "sourceSpecificRanks": {
+        "fpTrack": 22,
+        "fantasyOrphans": 26
+      },
+      "sourceSpread": 4,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 27,
@@ -3021,7 +3255,16 @@
       "capitalBucket": "3.early",
       "capitalValue": 17,
       "capitalAdjustmentFactor": 0.246,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 27,
+      "lccPoolCurrentMarketRank": 24,
+      "sourceSpecificRanks": {
+        "fpTrack": 16,
+        "fantasyOrphans": 27
+      },
+      "sourceSpread": 11,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 28,
@@ -3123,7 +3366,16 @@
       "capitalBucket": "3.early",
       "capitalValue": 17,
       "capitalAdjustmentFactor": 0.246,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 28,
+      "lccPoolCurrentMarketRank": 28,
+      "sourceSpecificRanks": {
+        "fpTrack": 23,
+        "fantasyOrphans": 28
+      },
+      "sourceSpread": 5,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 29,
@@ -3273,7 +3525,16 @@
       "capitalBucket": "3.mid",
       "capitalValue": 14,
       "capitalAdjustmentFactor": 0.203,
-      "capitalAdjustedValue": -1.015
+      "capitalAdjustedValue": -1.015,
+      "rawCurrentMarketRank": 34,
+      "lccPoolCurrentMarketRank": 34,
+      "sourceSpecificRanks": {
+        "fpTrack": 34,
+        "fantasyOrphans": 29
+      },
+      "sourceSpread": 5,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 30,
@@ -3375,7 +3636,16 @@
       "capitalBucket": "3.mid",
       "capitalValue": 14,
       "capitalAdjustmentFactor": 0.203,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 30,
+      "lccPoolCurrentMarketRank": 27,
+      "sourceSpecificRanks": {
+        "fpTrack": 19,
+        "fantasyOrphans": 30
+      },
+      "sourceSpread": 11,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 31,
@@ -3477,7 +3747,16 @@
       "capitalBucket": "3.mid",
       "capitalValue": 14,
       "capitalAdjustmentFactor": 0.203,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 31,
+      "lccPoolCurrentMarketRank": 30,
+      "sourceSpecificRanks": {
+        "fpTrack": 26,
+        "fantasyOrphans": 31
+      },
+      "sourceSpread": 5,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 32,
@@ -3627,7 +3906,16 @@
       "capitalBucket": "3.mid",
       "capitalValue": 14,
       "capitalAdjustmentFactor": 0.203,
-      "capitalAdjustedValue": -2.842
+      "capitalAdjustedValue": -2.842,
+      "rawCurrentMarketRank": 46,
+      "lccPoolCurrentMarketRank": 42,
+      "sourceSpecificRanks": {
+        "fpTrack": 46,
+        "fantasyOrphans": 32
+      },
+      "sourceSpread": 14,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 33,
@@ -3753,7 +4041,16 @@
       "capitalBucket": "3.late",
       "capitalValue": 12,
       "capitalAdjustmentFactor": 0.174,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 33,
+      "lccPoolCurrentMarketRank": 33,
+      "sourceSpecificRanks": {
+        "fpTrack": 29,
+        "fantasyOrphans": 33
+      },
+      "sourceSpread": 4,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 34,
@@ -3879,7 +4176,16 @@
       "capitalBucket": "3.late",
       "capitalValue": 12,
       "capitalAdjustmentFactor": 0.174,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 34,
+      "lccPoolCurrentMarketRank": 32,
+      "sourceSpecificRanks": {
+        "fpTrack": 28,
+        "fantasyOrphans": 34
+      },
+      "sourceSpread": 6,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 35,
@@ -4017,7 +4323,16 @@
       "capitalBucket": "3.late",
       "capitalValue": 12,
       "capitalAdjustmentFactor": 0.174,
-      "capitalAdjustedValue": -0.174
+      "capitalAdjustedValue": -0.174,
+      "rawCurrentMarketRank": 36,
+      "lccPoolCurrentMarketRank": 38,
+      "sourceSpecificRanks": {
+        "fpTrack": 36,
+        "fantasyOrphans": 35
+      },
+      "sourceSpread": 1,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 36,
@@ -4155,7 +4470,16 @@
       "capitalBucket": "3.late",
       "capitalValue": 12,
       "capitalAdjustmentFactor": 0.174,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 36,
+      "lccPoolCurrentMarketRank": 31,
+      "sourceSpecificRanks": {
+        "fpTrack": 25,
+        "fantasyOrphans": 36
+      },
+      "sourceSpread": 11,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 37,
@@ -4305,7 +4629,16 @@
       "capitalBucket": "4.early",
       "capitalValue": 7,
       "capitalAdjustmentFactor": 0.101,
-      "capitalAdjustedValue": -1.01
+      "capitalAdjustedValue": -1.01,
+      "rawCurrentMarketRank": 47,
+      "lccPoolCurrentMarketRank": 48,
+      "sourceSpecificRanks": {
+        "fpTrack": 47,
+        "fantasyOrphans": 37
+      },
+      "sourceSpread": 10,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 38,
@@ -4455,7 +4788,16 @@
       "capitalBucket": "4.early",
       "capitalValue": 7,
       "capitalAdjustmentFactor": 0.101,
-      "capitalAdjustedValue": -0.505
+      "capitalAdjustedValue": -0.505,
+      "rawCurrentMarketRank": 43,
+      "lccPoolCurrentMarketRank": 46,
+      "sourceSpecificRanks": {
+        "fpTrack": 43,
+        "fantasyOrphans": 38
+      },
+      "sourceSpread": 5,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 39,
@@ -4605,7 +4947,16 @@
       "capitalBucket": "4.early",
       "capitalValue": 7,
       "capitalAdjustmentFactor": 0.101,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 39,
+      "lccPoolCurrentMarketRank": 36,
+      "sourceSpecificRanks": {
+        "fpTrack": 30,
+        "fantasyOrphans": 39
+      },
+      "sourceSpread": 9,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 40,
@@ -4755,7 +5106,16 @@
       "capitalBucket": "4.early",
       "capitalValue": 7,
       "capitalAdjustmentFactor": 0.101,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 40,
+      "lccPoolCurrentMarketRank": 40,
+      "sourceSpecificRanks": {
+        "fpTrack": 33,
+        "fantasyOrphans": 40
+      },
+      "sourceSpread": 7,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 41,
@@ -4905,7 +5265,16 @@
       "capitalBucket": "4.early",
       "capitalValue": 7,
       "capitalAdjustmentFactor": 0.101,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 41,
+      "lccPoolCurrentMarketRank": 44,
+      "sourceSpecificRanks": {
+        "fpTrack": 39,
+        "fantasyOrphans": 41
+      },
+      "sourceSpread": 2,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 42,
@@ -5055,7 +5424,16 @@
       "capitalBucket": "4.early",
       "capitalValue": 7,
       "capitalAdjustmentFactor": 0.101,
-      "capitalAdjustedValue": -0.808
+      "capitalAdjustedValue": -0.808,
+      "rawCurrentMarketRank": 50,
+      "lccPoolCurrentMarketRank": 52,
+      "sourceSpecificRanks": {
+        "fpTrack": 50,
+        "fantasyOrphans": 42
+      },
+      "sourceSpread": 8,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 43,
@@ -5205,7 +5583,16 @@
       "capitalBucket": "4.late",
       "capitalValue": 5,
       "capitalAdjustmentFactor": 0.072,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 43,
+      "lccPoolCurrentMarketRank": 43,
+      "sourceSpecificRanks": {
+        "fpTrack": 37,
+        "fantasyOrphans": 43
+      },
+      "sourceSpread": 6,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     },
     {
       "actualOverallPick": 44,
@@ -5355,7 +5742,16 @@
       "capitalBucket": "4.late",
       "capitalValue": 5,
       "capitalAdjustmentFactor": 0.072,
-      "capitalAdjustedValue": -0.72
+      "capitalAdjustedValue": -0.72,
+      "rawCurrentMarketRank": 54,
+      "lccPoolCurrentMarketRank": 54,
+      "sourceSpecificRanks": {
+        "fpTrack": 54,
+        "fantasyOrphans": 44
+      },
+      "sourceSpread": 10,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 45,
@@ -5505,7 +5901,16 @@
       "capitalBucket": "4.late",
       "capitalValue": 5,
       "capitalAdjustmentFactor": 0.072,
-      "capitalAdjustedValue": -0.72
+      "capitalAdjustedValue": -0.72,
+      "rawCurrentMarketRank": 55,
+      "lccPoolCurrentMarketRank": 56,
+      "sourceSpecificRanks": {
+        "fpTrack": 55,
+        "fantasyOrphans": 45
+      },
+      "sourceSpread": 10,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 46,
@@ -5655,7 +6060,16 @@
       "capitalBucket": "4.late",
       "capitalValue": 5,
       "capitalAdjustmentFactor": 0.072,
-      "capitalAdjustedValue": 0
+      "capitalAdjustedValue": 0,
+      "rawCurrentMarketRank": 46,
+      "lccPoolCurrentMarketRank": 39,
+      "sourceSpecificRanks": {
+        "fpTrack": 27,
+        "fantasyOrphans": 46
+      },
+      "sourceSpread": 19,
+      "marketDisagreement": true,
+      "scaleAuditConfidence": "REDUCED_FOR_SCALE_DISAGREEMENT"
     },
     {
       "actualOverallPick": 47,
@@ -5740,7 +6154,16 @@
       "capitalBucket": "4.late",
       "capitalValue": 5,
       "capitalAdjustmentFactor": 0.072,
-      "capitalAdjustedValue": null
+      "capitalAdjustedValue": null,
+      "rawCurrentMarketRank": null,
+      "lccPoolCurrentMarketRank": null,
+      "sourceSpecificRanks": {
+        "fpTrack": null,
+        "fantasyOrphans": null
+      },
+      "sourceSpread": null,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "UNRANKED"
     },
     {
       "actualOverallPick": 48,
@@ -5890,7 +6313,16 @@
       "capitalBucket": "4.late",
       "capitalValue": 5,
       "capitalAdjustmentFactor": 0.072,
-      "capitalAdjustedValue": 0.072
+      "capitalAdjustedValue": 0.072,
+      "rawCurrentMarketRank": 47,
+      "lccPoolCurrentMarketRank": 50,
+      "sourceSpecificRanks": {
+        "fpTrack": 42,
+        "fantasyOrphans": 47
+      },
+      "sourceSpread": 5,
+      "marketDisagreement": false,
+      "scaleAuditConfidence": "HIGH"
     }
   ],
   "teams": [
@@ -13617,7 +14049,8 @@
     "marketConsensusReady": true,
     "gradingRubricReady": true,
     "currentMarketSufficientForRubric": true,
-    "finalGradesPublished": false
+    "finalGradesPublished": false,
+    "marketScaleAudited": true
   },
   "ownerComponents": [
     {
@@ -14281,5 +14714,1974 @@
         "totalMarketValueAdded": -30
       }
     ]
+  },
+  "marketScaleAudit": {
+    "status": "N2.3A_MARKET_SCALE_AUDIT_COMPLETE_NO_RUBRIC_CHANGE",
+    "rawUniverses": {
+      "fpTrack": {
+        "observedRows": 63,
+        "declaredCoverage": 67,
+        "positions": {
+          "WR": 27,
+          "RB": 16,
+          "TE": 12,
+          "QB": 7,
+          "UNRESOLVED": 1
+        },
+        "includesKickers": false,
+        "includesDst": false,
+        "allOverallRookieRanks": true,
+        "format": "1QB_DYNASTY_NON_TEP",
+        "actualMockAdp": true,
+        "undraftedIncluded": "NOT_PROVABLE_FROM_CAPTURED_ARTIFACT",
+        "nflRookieUniverse": "ROOKIE_MARKET_ARTIFACT; ONE PLAYER METADATA UNRESOLVED"
+      },
+      "fantasyOrphans": {
+        "observedRows": 47,
+        "positions": {
+          "WR": 20,
+          "RB": 14,
+          "TE": 7,
+          "QB": 6
+        },
+        "includesKickers": false,
+        "includesDst": false,
+        "allOverallRookieRanks": true,
+        "format": "1QB_DYNASTY_ROOKIE",
+        "actualMockAdp": true,
+        "undraftedIncluded": "NOT_PROVABLE_FROM_CAPTURED_ARTIFACT",
+        "nflRookieUniverse": "ROOKIE MARKET ARTIFACT"
+      },
+      "combinedUniqueRows": 67,
+      "sourceRowCount": 110
+    },
+    "normalizedBoard": {
+      "removalPolicy": "REMOVE_NONE",
+      "removedPlayers": [],
+      "reason": "All captured rows are eligible rookie-market candidates; undrafted eligible rookies remain in the comparison universe.",
+      "boardSize": 67,
+      "board": [
+        {
+          "player": "Jeremiyah Love",
+          "rawCurrentMarketRank": 1,
+          "consensusRank": 1,
+          "lccPoolCurrentMarketRank": 1,
+          "fptrackRank": 1,
+          "fantasyOrphansRank": 1,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Carnell Tate",
+          "rawCurrentMarketRank": 3,
+          "consensusRank": 2.5,
+          "lccPoolCurrentMarketRank": 2,
+          "fptrackRank": 2,
+          "fantasyOrphansRank": 3,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Jordyn Tyson",
+          "rawCurrentMarketRank": 4,
+          "consensusRank": 3.5,
+          "lccPoolCurrentMarketRank": 3,
+          "fptrackRank": 3,
+          "fantasyOrphansRank": 4,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Fernando Mendoza",
+          "rawCurrentMarketRank": 8,
+          "consensusRank": 5,
+          "lccPoolCurrentMarketRank": 4,
+          "fptrackRank": 8,
+          "fantasyOrphansRank": 2,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Jadarian Price",
+          "rawCurrentMarketRank": 5,
+          "consensusRank": 5,
+          "lccPoolCurrentMarketRank": 5,
+          "fptrackRank": 5,
+          "fantasyOrphansRank": 5,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Makai Lemon",
+          "rawCurrentMarketRank": 6,
+          "consensusRank": 5,
+          "lccPoolCurrentMarketRank": 6,
+          "fptrackRank": 4,
+          "fantasyOrphansRank": 6,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "KC Concepcion",
+          "rawCurrentMarketRank": 7,
+          "consensusRank": 6.5,
+          "lccPoolCurrentMarketRank": 7,
+          "fptrackRank": 6,
+          "fantasyOrphansRank": 7,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Kenyon Sadiq",
+          "rawCurrentMarketRank": 8,
+          "consensusRank": 7.5,
+          "lccPoolCurrentMarketRank": 8,
+          "fptrackRank": 7,
+          "fantasyOrphansRank": 8,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Nicholas Singleton",
+          "rawCurrentMarketRank": 9,
+          "consensusRank": 9,
+          "lccPoolCurrentMarketRank": 9,
+          "fptrackRank": null,
+          "fantasyOrphansRank": 9,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Omar Cooper",
+          "rawCurrentMarketRank": 10,
+          "consensusRank": 9.5,
+          "lccPoolCurrentMarketRank": 10,
+          "fptrackRank": 9,
+          "fantasyOrphansRank": 10,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Eli Stowers",
+          "rawCurrentMarketRank": 11,
+          "consensusRank": 11,
+          "lccPoolCurrentMarketRank": 11,
+          "fptrackRank": 11,
+          "fantasyOrphansRank": 11,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Chris Bell",
+          "rawCurrentMarketRank": 12,
+          "consensusRank": 12,
+          "lccPoolCurrentMarketRank": 12,
+          "fptrackRank": null,
+          "fantasyOrphansRank": 12,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Denzel Boston",
+          "rawCurrentMarketRank": 16,
+          "consensusRank": 13,
+          "lccPoolCurrentMarketRank": 13,
+          "fptrackRank": 10,
+          "fantasyOrphansRank": 16,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Zachariah Branch",
+          "rawCurrentMarketRank": 15,
+          "consensusRank": 14,
+          "lccPoolCurrentMarketRank": 14,
+          "fptrackRank": 15,
+          "fantasyOrphansRank": 13,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Jonah Coleman",
+          "rawCurrentMarketRank": 18,
+          "consensusRank": 15,
+          "lccPoolCurrentMarketRank": 15,
+          "fptrackRank": 12,
+          "fantasyOrphansRank": 18,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "De'Zhaun Stribling",
+          "rawCurrentMarketRank": 17,
+          "consensusRank": 15.5,
+          "lccPoolCurrentMarketRank": 16,
+          "fptrackRank": 17,
+          "fantasyOrphansRank": 14,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Antonio Williams",
+          "rawCurrentMarketRank": 19,
+          "consensusRank": 16,
+          "lccPoolCurrentMarketRank": 17,
+          "fptrackRank": 13,
+          "fantasyOrphansRank": 19,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Germie Bernard",
+          "rawCurrentMarketRank": 17,
+          "consensusRank": 17,
+          "lccPoolCurrentMarketRank": 18,
+          "fptrackRank": null,
+          "fantasyOrphansRank": 17,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Ted Hurst",
+          "rawCurrentMarketRank": 21,
+          "consensusRank": 18,
+          "lccPoolCurrentMarketRank": 19,
+          "fptrackRank": 21,
+          "fantasyOrphansRank": 15,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Emmett Johnson",
+          "rawCurrentMarketRank": 24,
+          "consensusRank": 19,
+          "lccPoolCurrentMarketRank": 20,
+          "fptrackRank": 14,
+          "fantasyOrphansRank": 24,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Chris Brazzell II",
+          "rawCurrentMarketRank": 22,
+          "consensusRank": 20,
+          "lccPoolCurrentMarketRank": 21,
+          "fptrackRank": 18,
+          "fantasyOrphansRank": 22,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Malachi Fields",
+          "rawCurrentMarketRank": 20,
+          "consensusRank": 20,
+          "lccPoolCurrentMarketRank": 22,
+          "fptrackRank": null,
+          "fantasyOrphansRank": 20,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Ty Simpson",
+          "rawCurrentMarketRank": 21,
+          "consensusRank": 20.5,
+          "lccPoolCurrentMarketRank": 23,
+          "fptrackRank": 20,
+          "fantasyOrphansRank": 21,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Elijah Sarratt",
+          "rawCurrentMarketRank": 27,
+          "consensusRank": 21.5,
+          "lccPoolCurrentMarketRank": 24,
+          "fptrackRank": 16,
+          "fantasyOrphansRank": 27,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Skyler Bell",
+          "rawCurrentMarketRank": 24,
+          "consensusRank": 23.5,
+          "lccPoolCurrentMarketRank": 25,
+          "fptrackRank": 24,
+          "fantasyOrphansRank": 23,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Kaytron Allen",
+          "rawCurrentMarketRank": 26,
+          "consensusRank": 24,
+          "lccPoolCurrentMarketRank": 26,
+          "fptrackRank": 22,
+          "fantasyOrphansRank": 26,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Mike Washington Jr.",
+          "rawCurrentMarketRank": 30,
+          "consensusRank": 24.5,
+          "lccPoolCurrentMarketRank": 27,
+          "fptrackRank": 19,
+          "fantasyOrphansRank": 30,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Ja'Kobi Lane",
+          "rawCurrentMarketRank": 28,
+          "consensusRank": 25.5,
+          "lccPoolCurrentMarketRank": 28,
+          "fptrackRank": 23,
+          "fantasyOrphansRank": 28,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Carson Beck",
+          "rawCurrentMarketRank": 31,
+          "consensusRank": 28,
+          "lccPoolCurrentMarketRank": 29,
+          "fptrackRank": 31,
+          "fantasyOrphansRank": 25,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Kaelon Black",
+          "rawCurrentMarketRank": 31,
+          "consensusRank": 28.5,
+          "lccPoolCurrentMarketRank": 30,
+          "fptrackRank": 26,
+          "fantasyOrphansRank": 31,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Max Klare",
+          "rawCurrentMarketRank": 36,
+          "consensusRank": 30.5,
+          "lccPoolCurrentMarketRank": 31,
+          "fptrackRank": 25,
+          "fantasyOrphansRank": 36,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Demond Claiborne",
+          "rawCurrentMarketRank": 34,
+          "consensusRank": 31,
+          "lccPoolCurrentMarketRank": 32,
+          "fptrackRank": 28,
+          "fantasyOrphansRank": 34,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Oscar Delp",
+          "rawCurrentMarketRank": 33,
+          "consensusRank": 31,
+          "lccPoolCurrentMarketRank": 33,
+          "fptrackRank": 29,
+          "fantasyOrphansRank": 33,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Eli Raridon",
+          "rawCurrentMarketRank": 34,
+          "consensusRank": 31.5,
+          "lccPoolCurrentMarketRank": 34,
+          "fptrackRank": 34,
+          "fantasyOrphansRank": 29,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Kevin Coleman Jr.",
+          "rawCurrentMarketRank": 32,
+          "consensusRank": 32,
+          "lccPoolCurrentMarketRank": 35,
+          "fptrackRank": 32,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Brenen Thompson",
+          "rawCurrentMarketRank": 39,
+          "consensusRank": 34.5,
+          "lccPoolCurrentMarketRank": 36,
+          "fptrackRank": 30,
+          "fantasyOrphansRank": 39,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Malik Benson",
+          "rawCurrentMarketRank": 35,
+          "consensusRank": 35,
+          "lccPoolCurrentMarketRank": 37,
+          "fptrackRank": 35,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Eli Heidenreich",
+          "rawCurrentMarketRank": 36,
+          "consensusRank": 35.5,
+          "lccPoolCurrentMarketRank": 38,
+          "fptrackRank": 36,
+          "fantasyOrphansRank": 35,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Adam Randall",
+          "rawCurrentMarketRank": 46,
+          "consensusRank": 36.5,
+          "lccPoolCurrentMarketRank": 39,
+          "fptrackRank": 27,
+          "fantasyOrphansRank": 46,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Michael Trigg",
+          "rawCurrentMarketRank": 40,
+          "consensusRank": 36.5,
+          "lccPoolCurrentMarketRank": 40,
+          "fptrackRank": 33,
+          "fantasyOrphansRank": 40,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Justin Joly",
+          "rawCurrentMarketRank": 38,
+          "consensusRank": 38,
+          "lccPoolCurrentMarketRank": 41,
+          "fptrackRank": 38,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Zavion Thomas",
+          "rawCurrentMarketRank": 46,
+          "consensusRank": 39,
+          "lccPoolCurrentMarketRank": 42,
+          "fptrackRank": 46,
+          "fantasyOrphansRank": 32,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Bryce Lance",
+          "rawCurrentMarketRank": 43,
+          "consensusRank": 40,
+          "lccPoolCurrentMarketRank": 43,
+          "fptrackRank": 37,
+          "fantasyOrphansRank": 43,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Drew Allar",
+          "rawCurrentMarketRank": 41,
+          "consensusRank": 40,
+          "lccPoolCurrentMarketRank": 44,
+          "fptrackRank": 39,
+          "fantasyOrphansRank": 41,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Le'Veon Moss",
+          "rawCurrentMarketRank": 40,
+          "consensusRank": 40,
+          "lccPoolCurrentMarketRank": 45,
+          "fptrackRank": 40,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Jam Miller",
+          "rawCurrentMarketRank": 43,
+          "consensusRank": 40.5,
+          "lccPoolCurrentMarketRank": 46,
+          "fptrackRank": 43,
+          "fantasyOrphansRank": 38,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "CJ Daniels",
+          "rawCurrentMarketRank": 41,
+          "consensusRank": 41,
+          "lccPoolCurrentMarketRank": 47,
+          "fptrackRank": 41,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Jack Endries",
+          "rawCurrentMarketRank": 47,
+          "consensusRank": 42,
+          "lccPoolCurrentMarketRank": 48,
+          "fptrackRank": 47,
+          "fantasyOrphansRank": 37,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Deion Burks",
+          "rawCurrentMarketRank": 44,
+          "consensusRank": 44,
+          "lccPoolCurrentMarketRank": 49,
+          "fptrackRank": 44,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "J'Mari Taylor",
+          "rawCurrentMarketRank": 47,
+          "consensusRank": 44.5,
+          "lccPoolCurrentMarketRank": 50,
+          "fptrackRank": 42,
+          "fantasyOrphansRank": 47,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Caleb Douglas",
+          "rawCurrentMarketRank": 45,
+          "consensusRank": 45,
+          "lccPoolCurrentMarketRank": 51,
+          "fptrackRank": 45,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Garrett Nussmeier",
+          "rawCurrentMarketRank": 50,
+          "consensusRank": 46,
+          "lccPoolCurrentMarketRank": 52,
+          "fptrackRank": 50,
+          "fantasyOrphansRank": 42,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Seth McGowan",
+          "rawCurrentMarketRank": 48,
+          "consensusRank": 48,
+          "lccPoolCurrentMarketRank": 53,
+          "fptrackRank": 48,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Cade Klubnik",
+          "rawCurrentMarketRank": 54,
+          "consensusRank": 49,
+          "lccPoolCurrentMarketRank": 54,
+          "fptrackRank": 54,
+          "fantasyOrphansRank": 44,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Will Kacmarek",
+          "rawCurrentMarketRank": 49,
+          "consensusRank": 49,
+          "lccPoolCurrentMarketRank": 55,
+          "fptrackRank": 49,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Roman Hemby",
+          "rawCurrentMarketRank": 55,
+          "consensusRank": 50,
+          "lccPoolCurrentMarketRank": 56,
+          "fptrackRank": 55,
+          "fantasyOrphansRank": 45,
+          "confidence": "HIGH"
+        },
+        {
+          "player": "Cyrus Allen",
+          "rawCurrentMarketRank": 51,
+          "consensusRank": 51,
+          "lccPoolCurrentMarketRank": 57,
+          "fptrackRank": 51,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Colbie Young",
+          "rawCurrentMarketRank": 52,
+          "consensusRank": 52,
+          "lccPoolCurrentMarketRank": 58,
+          "fptrackRank": 52,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Josh Cameron",
+          "rawCurrentMarketRank": 53,
+          "consensusRank": 53,
+          "lccPoolCurrentMarketRank": 59,
+          "fptrackRank": 53,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Tanner Koziol",
+          "rawCurrentMarketRank": 56,
+          "consensusRank": 56,
+          "lccPoolCurrentMarketRank": 60,
+          "fptrackRank": 56,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Marlin Klein",
+          "rawCurrentMarketRank": 57,
+          "consensusRank": 57,
+          "lccPoolCurrentMarketRank": 61,
+          "fptrackRank": 57,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Eric Rivers",
+          "rawCurrentMarketRank": 58,
+          "consensusRank": 58,
+          "lccPoolCurrentMarketRank": 62,
+          "fptrackRank": 58,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Taylen Green",
+          "rawCurrentMarketRank": 59,
+          "consensusRank": 59,
+          "lccPoolCurrentMarketRank": 63,
+          "fptrackRank": 59,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Matthew Hibner",
+          "rawCurrentMarketRank": 60,
+          "consensusRank": 60,
+          "lccPoolCurrentMarketRank": 64,
+          "fptrackRank": 60,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Jeff Caldwell",
+          "rawCurrentMarketRank": 61,
+          "consensusRank": 61,
+          "lccPoolCurrentMarketRank": 65,
+          "fptrackRank": 61,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Sam Roush",
+          "rawCurrentMarketRank": 62,
+          "consensusRank": 62,
+          "lccPoolCurrentMarketRank": 66,
+          "fptrackRank": 62,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        },
+        {
+          "player": "Robert Henry Jr.",
+          "rawCurrentMarketRank": 63,
+          "consensusRank": 63,
+          "lccPoolCurrentMarketRank": 67,
+          "fptrackRank": 63,
+          "fantasyOrphansRank": null,
+          "confidence": "LOW"
+        }
+      ]
+    },
+    "omittedPlayers": [
+      {
+        "player": "Kevin Coleman Jr.",
+        "position": "WR",
+        "rawCurrentMarketRank": 32,
+        "lccPoolCurrentMarketRank": 35,
+        "marketConfidence": "LOW",
+        "nflTeam": "MIA",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Malik Benson",
+        "position": "WR",
+        "rawCurrentMarketRank": 35,
+        "lccPoolCurrentMarketRank": 37,
+        "marketConfidence": "LOW",
+        "nflTeam": "LV",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Justin Joly",
+        "position": "TE",
+        "rawCurrentMarketRank": 38,
+        "lccPoolCurrentMarketRank": 41,
+        "marketConfidence": "LOW",
+        "nflTeam": "DEN",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Le'Veon Moss",
+        "position": "RB",
+        "rawCurrentMarketRank": 40,
+        "lccPoolCurrentMarketRank": 45,
+        "marketConfidence": "LOW",
+        "nflTeam": null,
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "CJ Daniels",
+        "position": "WR",
+        "rawCurrentMarketRank": 41,
+        "lccPoolCurrentMarketRank": 47,
+        "marketConfidence": "LOW",
+        "nflTeam": "LAR",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Deion Burks",
+        "position": "WR",
+        "rawCurrentMarketRank": 44,
+        "lccPoolCurrentMarketRank": 49,
+        "marketConfidence": "LOW",
+        "nflTeam": "IND",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Caleb Douglas",
+        "position": "WR",
+        "rawCurrentMarketRank": 45,
+        "lccPoolCurrentMarketRank": 51,
+        "marketConfidence": "LOW",
+        "nflTeam": "MIA",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Seth McGowan",
+        "position": "RB",
+        "rawCurrentMarketRank": 48,
+        "lccPoolCurrentMarketRank": 53,
+        "marketConfidence": "LOW",
+        "nflTeam": "IND",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Will Kacmarek",
+        "position": "TE",
+        "rawCurrentMarketRank": 49,
+        "lccPoolCurrentMarketRank": 55,
+        "marketConfidence": "LOW",
+        "nflTeam": "MIA",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Cyrus Allen",
+        "position": "WR",
+        "rawCurrentMarketRank": 51,
+        "lccPoolCurrentMarketRank": 57,
+        "marketConfidence": "LOW",
+        "nflTeam": "KC",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Colbie Young",
+        "position": "WR",
+        "rawCurrentMarketRank": 52,
+        "lccPoolCurrentMarketRank": 58,
+        "marketConfidence": "LOW",
+        "nflTeam": "CIN",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Josh Cameron",
+        "position": "WR",
+        "rawCurrentMarketRank": 53,
+        "lccPoolCurrentMarketRank": 59,
+        "marketConfidence": "LOW",
+        "nflTeam": "JAX",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Tanner Koziol",
+        "position": "TE",
+        "rawCurrentMarketRank": 56,
+        "lccPoolCurrentMarketRank": 60,
+        "marketConfidence": "LOW",
+        "nflTeam": "JAX",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Marlin Klein",
+        "position": "TE",
+        "rawCurrentMarketRank": 57,
+        "lccPoolCurrentMarketRank": 61,
+        "marketConfidence": "LOW",
+        "nflTeam": "HOU",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Eric Rivers",
+        "position": "WR",
+        "rawCurrentMarketRank": 58,
+        "lccPoolCurrentMarketRank": 62,
+        "marketConfidence": "LOW",
+        "nflTeam": "TB",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Taylen Green",
+        "position": "QB",
+        "rawCurrentMarketRank": 59,
+        "lccPoolCurrentMarketRank": 63,
+        "marketConfidence": "LOW",
+        "nflTeam": "CLE",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Matthew Hibner",
+        "position": "UNRESOLVED",
+        "rawCurrentMarketRank": 60,
+        "lccPoolCurrentMarketRank": 64,
+        "marketConfidence": "LOW",
+        "nflTeam": null,
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Jeff Caldwell",
+        "position": "WR",
+        "rawCurrentMarketRank": 61,
+        "lccPoolCurrentMarketRank": 65,
+        "marketConfidence": "LOW",
+        "nflTeam": "KC",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Sam Roush",
+        "position": "TE",
+        "rawCurrentMarketRank": 62,
+        "lccPoolCurrentMarketRank": 66,
+        "marketConfidence": "LOW",
+        "nflTeam": "CHI",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      },
+      {
+        "player": "Robert Henry Jr.",
+        "position": "RB",
+        "rawCurrentMarketRank": 63,
+        "lccPoolCurrentMarketRank": 67,
+        "marketConfidence": "LOW",
+        "nflTeam": "WAS",
+        "nflDraftCapital": "NOT_CAPTURED_IN_LCC_ARTIFACT",
+        "currentlyRostered": false,
+        "currentOwnerId": null,
+        "acquisition": "NOT_CAPTURED_IN_CURRENT_ROSTER_SNAPSHOT",
+        "legitimatelyAvailableDuringLccDraft": true
+      }
+    ],
+    "distributions": {
+      "raw": {
+        "overall": {
+          "value": 1,
+          "neutral": 32,
+          "reach": 14,
+          "mean": -1.83,
+          "median": 0
+        },
+        "rounds": {
+          "1": {
+            "value": 0,
+            "neutral": 11,
+            "reach": 1,
+            "mean": -0.5,
+            "median": 0
+          },
+          "2": {
+            "value": 0,
+            "neutral": 8,
+            "reach": 4,
+            "mean": -1,
+            "median": 0
+          },
+          "3": {
+            "value": 0,
+            "neutral": 8,
+            "reach": 4,
+            "mean": -2.17,
+            "median": 0
+          },
+          "4": {
+            "value": 1,
+            "neutral": 5,
+            "reach": 5,
+            "mean": -3.82,
+            "median": 0
+          }
+        }
+      },
+      "normalized": {
+        "overall": {
+          "value": 14,
+          "neutral": 14,
+          "reach": 19,
+          "mean": -1.15,
+          "median": 0
+        },
+        "rounds": {
+          "1": {
+            "value": 2,
+            "neutral": 9,
+            "reach": 1,
+            "mean": 0,
+            "median": 0
+          },
+          "2": {
+            "value": 5,
+            "neutral": 0,
+            "reach": 7,
+            "mean": -0.08,
+            "median": -1
+          },
+          "3": {
+            "value": 5,
+            "neutral": 3,
+            "reach": 4,
+            "mean": -0.67,
+            "median": 0
+          },
+          "4": {
+            "value": 2,
+            "neutral": 2,
+            "reach": 7,
+            "mean": -4.09,
+            "median": -3
+          }
+        }
+      }
+    },
+    "comparisons": {
+      "raw": [
+        {
+          "pick": 1,
+          "player": "Jeremiyah Love",
+          "rank": 1,
+          "delta": 0
+        },
+        {
+          "pick": 2,
+          "player": "Fernando Mendoza",
+          "rank": 8,
+          "delta": -6
+        },
+        {
+          "pick": 3,
+          "player": "Carnell Tate",
+          "rank": 3,
+          "delta": 0
+        },
+        {
+          "pick": 4,
+          "player": "Jordyn Tyson",
+          "rank": 4,
+          "delta": 0
+        },
+        {
+          "pick": 5,
+          "player": "Jadarian Price",
+          "rank": 5,
+          "delta": 0
+        },
+        {
+          "pick": 6,
+          "player": "Makai Lemon",
+          "rank": 6,
+          "delta": 0
+        },
+        {
+          "pick": 7,
+          "player": "KC Concepcion",
+          "rank": 7,
+          "delta": 0
+        },
+        {
+          "pick": 8,
+          "player": "Kenyon Sadiq",
+          "rank": 8,
+          "delta": 0
+        },
+        {
+          "pick": 9,
+          "player": "Nicholas Singleton",
+          "rank": 9,
+          "delta": 0
+        },
+        {
+          "pick": 10,
+          "player": "Omar Cooper",
+          "rank": 10,
+          "delta": 0
+        },
+        {
+          "pick": 11,
+          "player": "Eli Stowers",
+          "rank": 11,
+          "delta": 0
+        },
+        {
+          "pick": 12,
+          "player": "Chris Bell",
+          "rank": 12,
+          "delta": 0
+        },
+        {
+          "pick": 13,
+          "player": "Zachariah Branch",
+          "rank": 15,
+          "delta": -2
+        },
+        {
+          "pick": 14,
+          "player": "De'Zhaun Stribling",
+          "rank": 17,
+          "delta": -3
+        },
+        {
+          "pick": 15,
+          "player": "Ted Hurst",
+          "rank": 21,
+          "delta": -6
+        },
+        {
+          "pick": 16,
+          "player": "Denzel Boston",
+          "rank": 16,
+          "delta": 0
+        },
+        {
+          "pick": 17,
+          "player": "Germie Bernard",
+          "rank": 17,
+          "delta": 0
+        },
+        {
+          "pick": 18,
+          "player": "Jonah Coleman",
+          "rank": 18,
+          "delta": 0
+        },
+        {
+          "pick": 19,
+          "player": "Antonio Williams",
+          "rank": 19,
+          "delta": 0
+        },
+        {
+          "pick": 20,
+          "player": "Malachi Fields",
+          "rank": 20,
+          "delta": 0
+        },
+        {
+          "pick": 21,
+          "player": "Ty Simpson",
+          "rank": 21,
+          "delta": 0
+        },
+        {
+          "pick": 22,
+          "player": "Chris Brazzell",
+          "rank": 22,
+          "delta": 0
+        },
+        {
+          "pick": 23,
+          "player": "Skyler Bell",
+          "rank": 24,
+          "delta": -1
+        },
+        {
+          "pick": 24,
+          "player": "Emmett Johnson",
+          "rank": 24,
+          "delta": 0
+        },
+        {
+          "pick": 25,
+          "player": "Carson Beck",
+          "rank": 31,
+          "delta": -6
+        },
+        {
+          "pick": 26,
+          "player": "Kaytron Allen",
+          "rank": 26,
+          "delta": 0
+        },
+        {
+          "pick": 27,
+          "player": "Elijah Sarratt",
+          "rank": 27,
+          "delta": 0
+        },
+        {
+          "pick": 28,
+          "player": "Ja'Kobi Lane",
+          "rank": 28,
+          "delta": 0
+        },
+        {
+          "pick": 29,
+          "player": "Eli Raridon",
+          "rank": 34,
+          "delta": -5
+        },
+        {
+          "pick": 30,
+          "player": "Mike Washington",
+          "rank": 30,
+          "delta": 0
+        },
+        {
+          "pick": 31,
+          "player": "Kaelon Black",
+          "rank": 31,
+          "delta": 0
+        },
+        {
+          "pick": 32,
+          "player": "Zavion Thomas",
+          "rank": 46,
+          "delta": -14
+        },
+        {
+          "pick": 33,
+          "player": "Oscar Delp",
+          "rank": 33,
+          "delta": 0
+        },
+        {
+          "pick": 34,
+          "player": "Demond Claiborne",
+          "rank": 34,
+          "delta": 0
+        },
+        {
+          "pick": 35,
+          "player": "Eli Heidenreich",
+          "rank": 36,
+          "delta": -1
+        },
+        {
+          "pick": 36,
+          "player": "Max Klare",
+          "rank": 36,
+          "delta": 0
+        },
+        {
+          "pick": 37,
+          "player": "Jack Endries",
+          "rank": 47,
+          "delta": -10
+        },
+        {
+          "pick": 38,
+          "player": "Jam Miller",
+          "rank": 43,
+          "delta": -5
+        },
+        {
+          "pick": 39,
+          "player": "Brenen Thompson",
+          "rank": 39,
+          "delta": 0
+        },
+        {
+          "pick": 40,
+          "player": "Michael Trigg",
+          "rank": 40,
+          "delta": 0
+        },
+        {
+          "pick": 41,
+          "player": "Drew Allar",
+          "rank": 41,
+          "delta": 0
+        },
+        {
+          "pick": 42,
+          "player": "Garrett Nussmeier",
+          "rank": 50,
+          "delta": -8
+        },
+        {
+          "pick": 43,
+          "player": "Bryce Lance",
+          "rank": 43,
+          "delta": 0
+        },
+        {
+          "pick": 44,
+          "player": "Cade Klubnik",
+          "rank": 54,
+          "delta": -10
+        },
+        {
+          "pick": 45,
+          "player": "Roman Hemby",
+          "rank": 55,
+          "delta": -10
+        },
+        {
+          "pick": 46,
+          "player": "Adam Randall",
+          "rank": 46,
+          "delta": 0
+        },
+        {
+          "pick": 47,
+          "player": "Joe Fagnano",
+          "rank": null,
+          "delta": null
+        },
+        {
+          "pick": 48,
+          "player": "J'Mari Taylor",
+          "rank": 47,
+          "delta": 1
+        }
+      ],
+      "normalized": [
+        {
+          "pick": 1,
+          "player": "Jeremiyah Love",
+          "rank": 1,
+          "delta": 0
+        },
+        {
+          "pick": 2,
+          "player": "Fernando Mendoza",
+          "rank": 4,
+          "delta": -2
+        },
+        {
+          "pick": 3,
+          "player": "Carnell Tate",
+          "rank": 2,
+          "delta": 1
+        },
+        {
+          "pick": 4,
+          "player": "Jordyn Tyson",
+          "rank": 3,
+          "delta": 1
+        },
+        {
+          "pick": 5,
+          "player": "Jadarian Price",
+          "rank": 5,
+          "delta": 0
+        },
+        {
+          "pick": 6,
+          "player": "Makai Lemon",
+          "rank": 6,
+          "delta": 0
+        },
+        {
+          "pick": 7,
+          "player": "KC Concepcion",
+          "rank": 7,
+          "delta": 0
+        },
+        {
+          "pick": 8,
+          "player": "Kenyon Sadiq",
+          "rank": 8,
+          "delta": 0
+        },
+        {
+          "pick": 9,
+          "player": "Nicholas Singleton",
+          "rank": 9,
+          "delta": 0
+        },
+        {
+          "pick": 10,
+          "player": "Omar Cooper",
+          "rank": 10,
+          "delta": 0
+        },
+        {
+          "pick": 11,
+          "player": "Eli Stowers",
+          "rank": 11,
+          "delta": 0
+        },
+        {
+          "pick": 12,
+          "player": "Chris Bell",
+          "rank": 12,
+          "delta": 0
+        },
+        {
+          "pick": 13,
+          "player": "Zachariah Branch",
+          "rank": 14,
+          "delta": -1
+        },
+        {
+          "pick": 14,
+          "player": "De'Zhaun Stribling",
+          "rank": 16,
+          "delta": -2
+        },
+        {
+          "pick": 15,
+          "player": "Ted Hurst",
+          "rank": 19,
+          "delta": -4
+        },
+        {
+          "pick": 16,
+          "player": "Denzel Boston",
+          "rank": 13,
+          "delta": 3
+        },
+        {
+          "pick": 17,
+          "player": "Germie Bernard",
+          "rank": 18,
+          "delta": -1
+        },
+        {
+          "pick": 18,
+          "player": "Jonah Coleman",
+          "rank": 15,
+          "delta": 3
+        },
+        {
+          "pick": 19,
+          "player": "Antonio Williams",
+          "rank": 17,
+          "delta": 2
+        },
+        {
+          "pick": 20,
+          "player": "Malachi Fields",
+          "rank": 22,
+          "delta": -2
+        },
+        {
+          "pick": 21,
+          "player": "Ty Simpson",
+          "rank": 23,
+          "delta": -2
+        },
+        {
+          "pick": 22,
+          "player": "Chris Brazzell",
+          "rank": 21,
+          "delta": 1
+        },
+        {
+          "pick": 23,
+          "player": "Skyler Bell",
+          "rank": 25,
+          "delta": -2
+        },
+        {
+          "pick": 24,
+          "player": "Emmett Johnson",
+          "rank": 20,
+          "delta": 4
+        },
+        {
+          "pick": 25,
+          "player": "Carson Beck",
+          "rank": 29,
+          "delta": -4
+        },
+        {
+          "pick": 26,
+          "player": "Kaytron Allen",
+          "rank": 26,
+          "delta": 0
+        },
+        {
+          "pick": 27,
+          "player": "Elijah Sarratt",
+          "rank": 24,
+          "delta": 3
+        },
+        {
+          "pick": 28,
+          "player": "Ja'Kobi Lane",
+          "rank": 28,
+          "delta": 0
+        },
+        {
+          "pick": 29,
+          "player": "Eli Raridon",
+          "rank": 34,
+          "delta": -5
+        },
+        {
+          "pick": 30,
+          "player": "Mike Washington",
+          "rank": 27,
+          "delta": 3
+        },
+        {
+          "pick": 31,
+          "player": "Kaelon Black",
+          "rank": 30,
+          "delta": 1
+        },
+        {
+          "pick": 32,
+          "player": "Zavion Thomas",
+          "rank": 42,
+          "delta": -10
+        },
+        {
+          "pick": 33,
+          "player": "Oscar Delp",
+          "rank": 33,
+          "delta": 0
+        },
+        {
+          "pick": 34,
+          "player": "Demond Claiborne",
+          "rank": 32,
+          "delta": 2
+        },
+        {
+          "pick": 35,
+          "player": "Eli Heidenreich",
+          "rank": 38,
+          "delta": -3
+        },
+        {
+          "pick": 36,
+          "player": "Max Klare",
+          "rank": 31,
+          "delta": 5
+        },
+        {
+          "pick": 37,
+          "player": "Jack Endries",
+          "rank": 48,
+          "delta": -11
+        },
+        {
+          "pick": 38,
+          "player": "Jam Miller",
+          "rank": 46,
+          "delta": -8
+        },
+        {
+          "pick": 39,
+          "player": "Brenen Thompson",
+          "rank": 36,
+          "delta": 3
+        },
+        {
+          "pick": 40,
+          "player": "Michael Trigg",
+          "rank": 40,
+          "delta": 0
+        },
+        {
+          "pick": 41,
+          "player": "Drew Allar",
+          "rank": 44,
+          "delta": -3
+        },
+        {
+          "pick": 42,
+          "player": "Garrett Nussmeier",
+          "rank": 52,
+          "delta": -10
+        },
+        {
+          "pick": 43,
+          "player": "Bryce Lance",
+          "rank": 43,
+          "delta": 0
+        },
+        {
+          "pick": 44,
+          "player": "Cade Klubnik",
+          "rank": 54,
+          "delta": -10
+        },
+        {
+          "pick": 45,
+          "player": "Roman Hemby",
+          "rank": 56,
+          "delta": -11
+        },
+        {
+          "pick": 46,
+          "player": "Adam Randall",
+          "rank": 39,
+          "delta": 7
+        },
+        {
+          "pick": 47,
+          "player": "Joe Fagnano",
+          "rank": null,
+          "delta": null
+        },
+        {
+          "pick": 48,
+          "player": "J'Mari Taylor",
+          "rank": 50,
+          "delta": -2
+        }
+      ]
+    },
+    "sourceDisagreement": {
+      "threshold": 8,
+      "meaning": "spread of 8 or more rank slots reduces confidence and should not support a strong grade signal alone",
+      "largest": [
+        {
+          "pick": 46,
+          "player": "Adam Randall",
+          "fpTrackRank": 27,
+          "fantasyOrphansRank": 46,
+          "spread": 19,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 32,
+          "player": "Zavion Thomas",
+          "fpTrackRank": 46,
+          "fantasyOrphansRank": 32,
+          "spread": 14,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 27,
+          "player": "Elijah Sarratt",
+          "fpTrackRank": 16,
+          "fantasyOrphansRank": 27,
+          "spread": 11,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 30,
+          "player": "Mike Washington",
+          "fpTrackRank": 19,
+          "fantasyOrphansRank": 30,
+          "spread": 11,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 36,
+          "player": "Max Klare",
+          "fpTrackRank": 25,
+          "fantasyOrphansRank": 36,
+          "spread": 11,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 24,
+          "player": "Emmett Johnson",
+          "fpTrackRank": 14,
+          "fantasyOrphansRank": 24,
+          "spread": 10,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 37,
+          "player": "Jack Endries",
+          "fpTrackRank": 47,
+          "fantasyOrphansRank": 37,
+          "spread": 10,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 44,
+          "player": "Cade Klubnik",
+          "fpTrackRank": 54,
+          "fantasyOrphansRank": 44,
+          "spread": 10,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 45,
+          "player": "Roman Hemby",
+          "fpTrackRank": 55,
+          "fantasyOrphansRank": 45,
+          "spread": 10,
+          "confidence": "HIGH"
+        },
+        {
+          "pick": 39,
+          "player": "Brenen Thompson",
+          "fpTrackRank": 30,
+          "fantasyOrphansRank": 39,
+          "spread": 9,
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "opportunityCosts": [
+      {
+        "pick": 45,
+        "ownerId": "ray-long",
+        "selectedPlayer": "Roman Hemby",
+        "selectedMarketRank": 56,
+        "alternativePlayer": "Kevin Coleman Jr.",
+        "alternativeRank": 35,
+        "marketRankGap": 21,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 44,
+        "ownerId": "rob-jenkins",
+        "selectedPlayer": "Cade Klubnik",
+        "selectedMarketRank": 54,
+        "alternativePlayer": "Kevin Coleman Jr.",
+        "alternativeRank": 35,
+        "marketRankGap": 19,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 45,
+        "ownerId": "ray-long",
+        "selectedPlayer": "Roman Hemby",
+        "selectedMarketRank": 56,
+        "alternativePlayer": "Malik Benson",
+        "alternativeRank": 37,
+        "marketRankGap": 19,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 42,
+        "ownerId": "keith-winder",
+        "selectedPlayer": "Garrett Nussmeier",
+        "selectedMarketRank": 52,
+        "alternativePlayer": "Kevin Coleman Jr.",
+        "alternativeRank": 35,
+        "marketRankGap": 17,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 44,
+        "ownerId": "rob-jenkins",
+        "selectedPlayer": "Cade Klubnik",
+        "selectedMarketRank": 54,
+        "alternativePlayer": "Malik Benson",
+        "alternativeRank": 37,
+        "marketRankGap": 17,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 42,
+        "ownerId": "keith-winder",
+        "selectedPlayer": "Garrett Nussmeier",
+        "selectedMarketRank": 52,
+        "alternativePlayer": "Malik Benson",
+        "alternativeRank": 37,
+        "marketRankGap": 15,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 45,
+        "ownerId": "ray-long",
+        "selectedPlayer": "Roman Hemby",
+        "selectedMarketRank": 56,
+        "alternativePlayer": "Justin Joly",
+        "alternativeRank": 41,
+        "marketRankGap": 15,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 48,
+        "ownerId": "tyrone-poist",
+        "selectedPlayer": "J'Mari Taylor",
+        "selectedMarketRank": 50,
+        "alternativePlayer": "Kevin Coleman Jr.",
+        "alternativeRank": 35,
+        "marketRankGap": 15,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 37,
+        "ownerId": "loren-michaels",
+        "selectedPlayer": "Jack Endries",
+        "selectedMarketRank": 48,
+        "alternativePlayer": "Kevin Coleman Jr.",
+        "alternativeRank": 35,
+        "marketRankGap": 13,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      },
+      {
+        "pick": 44,
+        "ownerId": "rob-jenkins",
+        "selectedPlayer": "Cade Klubnik",
+        "selectedMarketRank": 54,
+        "alternativePlayer": "Justin Joly",
+        "alternativeRank": 41,
+        "marketRankGap": 13,
+        "alternativeConfidence": "LOW",
+        "laterLccPick": null,
+        "laterOwnerId": null
+      }
+    ],
+    "ownerEfficiency": {
+      "raw": {
+        "loren-michaels": {
+          "ownerId": "loren-michaels",
+          "ownerName": "Loren Michaels",
+          "rankedSelections": 4,
+          "marketValueCaptured": -18,
+          "averageDelta": -4.5
+        },
+        "mike-estes": {
+          "ownerId": "mike-estes",
+          "ownerName": "Mike Estes",
+          "rankedSelections": 4,
+          "marketValueCaptured": -14,
+          "averageDelta": -3.5
+        },
+        "earl-perkins": {
+          "ownerId": "earl-perkins",
+          "ownerName": "Earl Perkins",
+          "rankedSelections": 3,
+          "marketValueCaptured": 0,
+          "averageDelta": 0
+        },
+        "mike-mcburnie": {
+          "ownerId": "mike-mcburnie",
+          "ownerName": "Mike McBurnie",
+          "rankedSelections": 3,
+          "marketValueCaptured": -1,
+          "averageDelta": -0.33
+        },
+        "bill-gross": {
+          "ownerId": "bill-gross",
+          "ownerName": "Bill Gross",
+          "rankedSelections": 3,
+          "marketValueCaptured": 0,
+          "averageDelta": 0
+        },
+        "keith-winder": {
+          "ownerId": "keith-winder",
+          "ownerName": "Keith Winder",
+          "rankedSelections": 4,
+          "marketValueCaptured": -8,
+          "averageDelta": -2
+        },
+        "jeffrey-hudgins": {
+          "ownerId": "jeffrey-hudgins",
+          "ownerName": "Jeffrey Hudgins",
+          "rankedSelections": 4,
+          "marketValueCaptured": 0,
+          "averageDelta": 0
+        },
+        "rob-jenkins": {
+          "ownerId": "rob-jenkins",
+          "ownerName": "Rob Jenkins",
+          "rankedSelections": 5,
+          "marketValueCaptured": -30,
+          "averageDelta": -6
+        },
+        "ray-long": {
+          "ownerId": "ray-long",
+          "ownerName": "Ray Long",
+          "rankedSelections": 5,
+          "marketValueCaptured": -10,
+          "averageDelta": -2
+        },
+        "ben-isbell": {
+          "ownerId": "ben-isbell",
+          "ownerName": "Ben Isbell",
+          "rankedSelections": 4,
+          "marketValueCaptured": 0,
+          "averageDelta": 0
+        },
+        "tyrone-poist": {
+          "ownerId": "tyrone-poist",
+          "ownerName": "Tyrone Poist",
+          "rankedSelections": 4,
+          "marketValueCaptured": 1,
+          "averageDelta": 0.25
+        },
+        "anthony-martinez": {
+          "ownerId": "anthony-martinez",
+          "ownerName": "Anthony Martinez",
+          "rankedSelections": 4,
+          "marketValueCaptured": -6,
+          "averageDelta": -1.5
+        }
+      },
+      "normalized": {
+        "loren-michaels": {
+          "ownerId": "loren-michaels",
+          "ownerName": "Loren Michaels",
+          "rankedSelections": 4,
+          "marketValueCaptured": -16,
+          "averageDelta": -4
+        },
+        "mike-estes": {
+          "ownerId": "mike-estes",
+          "ownerName": "Mike Estes",
+          "rankedSelections": 4,
+          "marketValueCaptured": -12,
+          "averageDelta": -3
+        },
+        "earl-perkins": {
+          "ownerId": "earl-perkins",
+          "ownerName": "Earl Perkins",
+          "rankedSelections": 3,
+          "marketValueCaptured": 7,
+          "averageDelta": 2.33
+        },
+        "mike-mcburnie": {
+          "ownerId": "mike-mcburnie",
+          "ownerName": "Mike McBurnie",
+          "rankedSelections": 3,
+          "marketValueCaptured": -1,
+          "averageDelta": -0.33
+        },
+        "bill-gross": {
+          "ownerId": "bill-gross",
+          "ownerName": "Bill Gross",
+          "rankedSelections": 3,
+          "marketValueCaptured": 0,
+          "averageDelta": 0
+        },
+        "keith-winder": {
+          "ownerId": "keith-winder",
+          "ownerName": "Keith Winder",
+          "rankedSelections": 4,
+          "marketValueCaptured": -4,
+          "averageDelta": -1
+        },
+        "jeffrey-hudgins": {
+          "ownerId": "jeffrey-hudgins",
+          "ownerName": "Jeffrey Hudgins",
+          "rankedSelections": 4,
+          "marketValueCaptured": 3,
+          "averageDelta": 0.75
+        },
+        "rob-jenkins": {
+          "ownerId": "rob-jenkins",
+          "ownerName": "Rob Jenkins",
+          "rankedSelections": 5,
+          "marketValueCaptured": -26,
+          "averageDelta": -5.2
+        },
+        "ray-long": {
+          "ownerId": "ray-long",
+          "ownerName": "Ray Long",
+          "rankedSelections": 5,
+          "marketValueCaptured": -10,
+          "averageDelta": -2
+        },
+        "ben-isbell": {
+          "ownerId": "ben-isbell",
+          "ownerName": "Ben Isbell",
+          "rankedSelections": 4,
+          "marketValueCaptured": 10,
+          "averageDelta": 2.5
+        },
+        "tyrone-poist": {
+          "ownerId": "tyrone-poist",
+          "ownerName": "Tyrone Poist",
+          "rankedSelections": 4,
+          "marketValueCaptured": 7,
+          "averageDelta": 1.75
+        },
+        "anthony-martinez": {
+          "ownerId": "anthony-martinez",
+          "ownerName": "Anthony Martinez",
+          "rankedSelections": 4,
+          "marketValueCaptured": -12,
+          "averageDelta": -3
+        }
+      },
+      "n23Reference": {
+        "strongest": "Tyrone Poist",
+        "weakest": "Mike Estes"
+      }
+    },
+    "scaleDecision": {
+      "recommended": "LCC_POOL_CURRENT_MARKET_RANK",
+      "formula": "actualOverallPick - lccPoolCurrentMarketRank",
+      "reason": "The two providers do not expose identical row universes. No player is defensibly excluded, so the normalized board uses the union of both current 1QB rookie lists, orders by mean available source rank, preserves every eligible undrafted rookie, and retains raw N2.3 ranks for sensitivity.",
+      "retrospectiveLabel": "CURRENT_MARKET_RETROSPECTIVE; hindsight relative to August market, not May draft-day quality"
+    },
+    "rubricChange": "NONE"
   }
 }
