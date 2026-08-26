@@ -26,6 +26,7 @@
     "future-pick:diagnostics": "node scripts/futurePickDiagnostics.mjs",
     "draft-records:diagnostics": "node scripts/draftRecordsDiagnostics.mjs",
     "draft-intelligence:diagnostics": "node scripts/draftIntelligenceDiagnostics.mjs",
+    "draft-intelligence:generate": "node scripts/generateDraftIntelligence.mjs",
     "draft-intelligence:methodology": "node scripts/draftIntelligenceMethodologyDiagnostics.mjs",
     "draft-intelligence:evaluations": "node scripts/draftIntelligenceEvaluationDiagnostics.mjs",
     "draft-intelligence:calibration-audit": "node scripts/draftIntelligenceCalibrationAudit.mjs",

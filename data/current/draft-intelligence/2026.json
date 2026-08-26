@@ -1,0 +1,1946 @@
+{
+  "schemaVersion": 1,
+  "methodologyVersion": "rookie-draft-intelligence-slice-a-v1",
+  "status": "BLOCKED",
+  "generatedAt": "2026-08-26T00:40:04.672Z",
+  "season": 2026,
+  "draftId": "1312148925104259072",
+  "draftDate": "2026-05-29T11:54:55.518Z",
+  "evaluationCutoff": "2026-05-29T11:54:55.518Z",
+  "dataFlow": [
+    "CANONICAL_DRAFT_DATA",
+    "OWNER_MAPPING",
+    "PLAYER_METADATA",
+    "INTELLIGENCE_ENGINE"
+  ],
+  "canonicalDraft": {
+    "expectedPicks": 48,
+    "actualPicks": 48,
+    "uniqueOwners": 12,
+    "rounds": 4,
+    "verificationStatus": "full",
+    "sourceReference": "data/history/drafts/2026/drafts.json"
+  },
+  "format": {
+    "teams": 12,
+    "dynasty": true,
+    "quarterbackFormat": "1QB",
+    "scoringContext": "NON_TEP",
+    "lineupSlots": [
+      "QB1",
+      "RB1",
+      "RB2",
+      "WR1",
+      "WR2",
+      "WR3",
+      "TE1",
+      "FLEX1",
+      "FLEX2",
+      "K1",
+      "DST1"
+    ],
+    "rookieRounds": 4,
+    "sourceReferences": [
+      "data/source/market/dynasty-rookie/2026/snapshots/2026-08-19/provenance.json",
+      "lib/history/expectedLineup.ts"
+    ]
+  },
+  "marketReference": {
+    "source": "Fantasy Orphans",
+    "snapshotDate": "2026-08-19",
+    "timingClassification": "POST_DRAFT_PRESEASON",
+    "daysFromDraft": 82,
+    "format": "1QB_DYNASTY_ROOKIE",
+    "playerCount": 47,
+    "resolvedPickCount": 47,
+    "tiersAvailable": false,
+    "adpAvailable": true,
+    "usableForDraftDayGrading": false,
+    "reason": "The only registered market snapshot is post-draft/preseason and cannot judge what was knowable at the draft cutoff."
+  },
+  "rosterEvidence": {
+    "preDraft": {
+      "coverage": 0,
+      "source": null,
+      "confidence": "NONE"
+    },
+    "postDraft": {
+      "coverage": 0,
+      "source": null,
+      "confidence": "NONE"
+    },
+    "currentRosterExcluded": true,
+    "reason": "Available 2026 roster files are not timestamped to the draft boundary and are not used as pre- or post-draft evidence."
+  },
+  "playerMetadata": {
+    "resolvedPlayers": 48,
+    "totalPicks": 48,
+    "stableBirthDateCoverage": 47,
+    "sourceReference": "data/history/matchups/sleeper/players.json",
+    "cutoffSafeForRoleOrTeamContext": false
+  },
+  "picks": [
+    {
+      "actualOverallPick": 1,
+      "round": 1,
+      "pickInRound": 1,
+      "ownerId": "loren-michaels",
+      "playerId": "13287",
+      "playerName": "Jeremiyah Love",
+      "position": "RB",
+      "nflTeam": "ARI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-1",
+      "marketRank": 1,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 2,
+      "round": 1,
+      "pickInRound": 2,
+      "ownerId": "mike-estes",
+      "playerId": "13269",
+      "playerName": "Fernando Mendoza",
+      "position": "QB",
+      "nflTeam": "LV",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-2",
+      "marketRank": 2,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 3,
+      "round": 1,
+      "pickInRound": 3,
+      "ownerId": "earl-perkins",
+      "playerId": "13279",
+      "playerName": "Carnell Tate",
+      "position": "WR",
+      "nflTeam": "TEN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-3",
+      "marketRank": 3,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 4,
+      "round": 1,
+      "pickInRound": 4,
+      "ownerId": "mike-mcburnie",
+      "playerId": "13281",
+      "playerName": "Jordyn Tyson",
+      "position": "WR",
+      "nflTeam": "NO",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-4",
+      "marketRank": 4,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 5,
+      "round": 1,
+      "pickInRound": 5,
+      "ownerId": "bill-gross",
+      "playerId": "13286",
+      "playerName": "Jadarian Price",
+      "position": "RB",
+      "nflTeam": "SEA",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-5",
+      "marketRank": 5,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 6,
+      "round": 1,
+      "pickInRound": 6,
+      "ownerId": "keith-winder",
+      "playerId": "13294",
+      "playerName": "Makai Lemon",
+      "position": "WR",
+      "nflTeam": "PHI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-6",
+      "marketRank": 6,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 7,
+      "round": 1,
+      "pickInRound": 7,
+      "ownerId": "jeffrey-hudgins",
+      "playerId": "13298",
+      "playerName": "KC Concepcion",
+      "position": "WR",
+      "nflTeam": "CLE",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-7",
+      "marketRank": 7,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 8,
+      "round": 1,
+      "pickInRound": 8,
+      "ownerId": "rob-jenkins",
+      "playerId": "13330",
+      "playerName": "Kenyon Sadiq",
+      "position": "TE",
+      "nflTeam": "NYJ",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-8",
+      "marketRank": 8,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 9,
+      "round": 1,
+      "pickInRound": 9,
+      "ownerId": "ray-long",
+      "playerId": "13288",
+      "playerName": "Nicholas Singleton",
+      "position": "RB",
+      "nflTeam": "TEN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-9",
+      "marketRank": 9,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 10,
+      "round": 1,
+      "pickInRound": 10,
+      "ownerId": "ben-isbell",
+      "playerId": "13276",
+      "playerName": "Omar Cooper",
+      "position": "WR",
+      "nflTeam": "NYJ",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-10",
+      "marketRank": 10,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 11,
+      "round": 1,
+      "pickInRound": 11,
+      "ownerId": "mike-mcburnie",
+      "playerId": "13349",
+      "playerName": "Eli Stowers",
+      "position": "TE",
+      "nflTeam": "PHI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-11",
+      "marketRank": 11,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 12,
+      "round": 1,
+      "pickInRound": 12,
+      "ownerId": "tyrone-poist",
+      "playerId": "13311",
+      "playerName": "Chris Bell",
+      "position": "WR",
+      "nflTeam": "MIA",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-12",
+      "marketRank": 12,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 13,
+      "round": 2,
+      "pickInRound": 1,
+      "ownerId": "loren-michaels",
+      "playerId": "13320",
+      "playerName": "Zachariah Branch",
+      "position": "WR",
+      "nflTeam": "ATL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-13",
+      "marketRank": 13,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 14,
+      "round": 2,
+      "pickInRound": 2,
+      "ownerId": "mike-estes",
+      "playerId": "13417",
+      "playerName": "De'Zhaun Stribling",
+      "position": "WR",
+      "nflTeam": "SF",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-14",
+      "marketRank": 14,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 15,
+      "round": 2,
+      "pickInRound": 3,
+      "ownerId": "rob-jenkins",
+      "playerId": "13317",
+      "playerName": "Ted Hurst",
+      "position": "WR",
+      "nflTeam": "TB",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-15",
+      "marketRank": 15,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 16,
+      "round": 2,
+      "pickInRound": 4,
+      "ownerId": "ray-long",
+      "playerId": "13346",
+      "playerName": "Denzel Boston",
+      "position": "WR",
+      "nflTeam": "CLE",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-16",
+      "marketRank": 16,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 17,
+      "round": 2,
+      "pickInRound": 5,
+      "ownerId": "anthony-martinez",
+      "playerId": "13274",
+      "playerName": "Germie Bernard",
+      "position": "WR",
+      "nflTeam": "PIT",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-17",
+      "marketRank": 17,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 18,
+      "round": 2,
+      "pickInRound": 6,
+      "ownerId": "keith-winder",
+      "playerId": "13345",
+      "playerName": "Jonah Coleman",
+      "position": "RB",
+      "nflTeam": "DEN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-18",
+      "marketRank": 18,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 19,
+      "round": 2,
+      "pickInRound": 7,
+      "ownerId": "jeffrey-hudgins",
+      "playerId": "13301",
+      "playerName": "Antonio Williams",
+      "position": "WR",
+      "nflTeam": "WAS",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-19",
+      "marketRank": 19,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 20,
+      "round": 2,
+      "pickInRound": 8,
+      "ownerId": "rob-jenkins",
+      "playerId": "13285",
+      "playerName": "Malachi Fields",
+      "position": "WR",
+      "nflTeam": "NYG",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-20",
+      "marketRank": 20,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 21,
+      "round": 2,
+      "pickInRound": 9,
+      "ownerId": "ray-long",
+      "playerId": "13275",
+      "playerName": "Ty Simpson",
+      "position": "QB",
+      "nflTeam": "LAR",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-21",
+      "marketRank": 21,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 22,
+      "round": 2,
+      "pickInRound": 10,
+      "ownerId": "ben-isbell",
+      "playerId": "13353",
+      "playerName": "Chris Brazzell",
+      "position": "WR",
+      "nflTeam": "CAR",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-22",
+      "marketRank": 22,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 23,
+      "round": 2,
+      "pickInRound": 11,
+      "ownerId": "mike-mcburnie",
+      "playerId": "13402",
+      "playerName": "Skyler Bell",
+      "position": "WR",
+      "nflTeam": "BUF",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-23",
+      "marketRank": 23,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 24,
+      "round": 2,
+      "pickInRound": 12,
+      "ownerId": "tyrone-poist",
+      "playerId": "13337",
+      "playerName": "Emmett Johnson",
+      "position": "RB",
+      "nflTeam": "KC",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-24",
+      "marketRank": 24,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 25,
+      "round": 3,
+      "pickInRound": 1,
+      "ownerId": "loren-michaels",
+      "playerId": "13272",
+      "playerName": "Carson Beck",
+      "position": "QB",
+      "nflTeam": "ARI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-25",
+      "marketRank": 25,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 26,
+      "round": 3,
+      "pickInRound": 2,
+      "ownerId": "mike-estes",
+      "playerId": "13405",
+      "playerName": "Kaytron Allen",
+      "position": "RB",
+      "nflTeam": "WAS",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-26",
+      "marketRank": 26,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 27,
+      "round": 3,
+      "pickInRound": 3,
+      "ownerId": "earl-perkins",
+      "playerId": "13268",
+      "playerName": "Elijah Sarratt",
+      "position": "WR",
+      "nflTeam": "BAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-27",
+      "marketRank": 27,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 28,
+      "round": 3,
+      "pickInRound": 4,
+      "ownerId": "bill-gross",
+      "playerId": "13293",
+      "playerName": "Ja'Kobi Lane",
+      "position": "WR",
+      "nflTeam": "BAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-28",
+      "marketRank": 28,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 29,
+      "round": 3,
+      "pickInRound": 5,
+      "ownerId": "anthony-martinez",
+      "playerId": "13421",
+      "playerName": "Eli Raridon",
+      "position": "TE",
+      "nflTeam": "NE",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-29",
+      "marketRank": 29,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 30,
+      "round": 3,
+      "pickInRound": 6,
+      "ownerId": "keith-winder",
+      "playerId": "13305",
+      "playerName": "Mike Washington",
+      "position": "RB",
+      "nflTeam": "LV",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-30",
+      "marketRank": 30,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 31,
+      "round": 3,
+      "pickInRound": 7,
+      "ownerId": "jeffrey-hudgins",
+      "playerId": "13414",
+      "playerName": "Kaelon Black",
+      "position": "RB",
+      "nflTeam": "SF",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-31",
+      "marketRank": 31,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 32,
+      "round": 3,
+      "pickInRound": 8,
+      "ownerId": "rob-jenkins",
+      "playerId": "13411",
+      "playerName": "Zavion Thomas",
+      "position": "WR",
+      "nflTeam": "CHI",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-32",
+      "marketRank": 32,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 33,
+      "round": 3,
+      "pickInRound": 9,
+      "ownerId": "ray-long",
+      "playerId": "13319",
+      "playerName": "Oscar Delp",
+      "position": "TE",
+      "nflTeam": "NO",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-33",
+      "marketRank": 33,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 34,
+      "round": 3,
+      "pickInRound": 10,
+      "ownerId": "ben-isbell",
+      "playerId": "13347",
+      "playerName": "Demond Claiborne",
+      "position": "RB",
+      "nflTeam": "MIN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-34",
+      "marketRank": 34,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 35,
+      "round": 3,
+      "pickInRound": 11,
+      "ownerId": "anthony-martinez",
+      "playerId": "13423",
+      "playerName": "Eli Heidenreich",
+      "position": "RB",
+      "nflTeam": "PIT",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-35",
+      "marketRank": 35,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 36,
+      "round": 3,
+      "pickInRound": 12,
+      "ownerId": "tyrone-poist",
+      "playerId": "13278",
+      "playerName": "Max Klare",
+      "position": "TE",
+      "nflTeam": "LAR",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-36",
+      "marketRank": 36,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 37,
+      "round": 4,
+      "pickInRound": 1,
+      "ownerId": "loren-michaels",
+      "playerId": "13282",
+      "playerName": "Jack Endries",
+      "position": "TE",
+      "nflTeam": "CIN",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-37",
+      "marketRank": 37,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 38,
+      "round": 4,
+      "pickInRound": 2,
+      "ownerId": "mike-estes",
+      "playerId": "13403",
+      "playerName": "Jam Miller",
+      "position": "RB",
+      "nflTeam": "NE",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-38",
+      "marketRank": 38,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 39,
+      "round": 4,
+      "pickInRound": 3,
+      "ownerId": "earl-perkins",
+      "playerId": "13380",
+      "playerName": "Brenen Thompson",
+      "position": "WR",
+      "nflTeam": "LAC",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-39",
+      "marketRank": 39,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 40,
+      "round": 4,
+      "pickInRound": 4,
+      "ownerId": "bill-gross",
+      "playerId": "13401",
+      "playerName": "Michael Trigg",
+      "position": "TE",
+      "nflTeam": "DAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-40",
+      "marketRank": 40,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 41,
+      "round": 4,
+      "pickInRound": 5,
+      "ownerId": "anthony-martinez",
+      "playerId": "13289",
+      "playerName": "Drew Allar",
+      "position": "QB",
+      "nflTeam": "PIT",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-41",
+      "marketRank": 41,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 42,
+      "round": 4,
+      "pickInRound": 6,
+      "ownerId": "keith-winder",
+      "playerId": "13404",
+      "playerName": "Garrett Nussmeier",
+      "position": "QB",
+      "nflTeam": "KC",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-42",
+      "marketRank": 42,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 43,
+      "round": 4,
+      "pickInRound": 7,
+      "ownerId": "jeffrey-hudgins",
+      "playerId": "13420",
+      "playerName": "Bryce Lance",
+      "position": "WR",
+      "nflTeam": "NO",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-43",
+      "marketRank": 43,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 44,
+      "round": 4,
+      "pickInRound": 8,
+      "ownerId": "rob-jenkins",
+      "playerId": "13303",
+      "playerName": "Cade Klubnik",
+      "position": "QB",
+      "nflTeam": "NYJ",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-44",
+      "marketRank": 44,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 45,
+      "round": 4,
+      "pickInRound": 9,
+      "ownerId": "ray-long",
+      "playerId": "13416",
+      "playerName": "Roman Hemby",
+      "position": "RB",
+      "nflTeam": "LV",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-45",
+      "marketRank": 45,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 46,
+      "round": 4,
+      "pickInRound": 10,
+      "ownerId": "ben-isbell",
+      "playerId": "13302",
+      "playerName": "Adam Randall",
+      "position": "RB",
+      "nflTeam": "BAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-46",
+      "marketRank": 46,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 47,
+      "round": 4,
+      "pickInRound": 11,
+      "ownerId": "bill-gross",
+      "playerId": "13350",
+      "playerName": "Joe Fagnano",
+      "position": "QB",
+      "nflTeam": "BAL",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-47",
+      "marketRank": null,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    },
+    {
+      "actualOverallPick": 48,
+      "round": 4,
+      "pickInRound": 12,
+      "ownerId": "tyrone-poist",
+      "playerId": "13348",
+      "playerName": "J'Mari Taylor",
+      "position": "RB",
+      "nflTeam": "JAX",
+      "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-48",
+      "marketRank": 47,
+      "marketExpectedPick": null,
+      "pickDifference": null,
+      "marketClassification": null,
+      "marketEvidenceStatus": "BLOCKED",
+      "nflDraftCapital": {
+        "round": null,
+        "overallPick": null,
+        "source": null,
+        "status": "BLOCKED"
+      },
+      "opportunityCost": {
+        "topAvailableMarketPlayers": [],
+        "bestAvailableMarketGap": null,
+        "status": "BLOCKED"
+      }
+    }
+  ],
+  "teams": [
+    {
+      "ownerId": "anthony-martinez",
+      "pickCount": 4,
+      "rounds": [
+        2,
+        3,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 1,
+        "TE": 1,
+        "RB": 1,
+        "QB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 1,
+        "tradedAwayPicks": 1,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "ben-isbell",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 2,
+        "RB": 2
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "bill-gross",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        3,
+        4,
+        4
+      ],
+      "positionsDrafted": {
+        "RB": 1,
+        "WR": 1,
+        "TE": 1,
+        "QB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 2,
+        "tradedAwayPicks": 2,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "earl-perkins",
+      "pickCount": 3,
+      "rounds": [
+        1,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 3
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 1,
+        "selectionsMade": 3,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "jeffrey-hudgins",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 3,
+        "RB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "keith-winder",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 1,
+        "RB": 2,
+        "QB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "loren-michaels",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "RB": 1,
+        "WR": 1,
+        "QB": 1,
+        "TE": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "mike-estes",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "QB": 1,
+        "WR": 1,
+        "RB": 2
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "mike-mcburnie",
+      "pickCount": 3,
+      "rounds": [
+        1,
+        1,
+        2
+      ],
+      "positionsDrafted": {
+        "WR": 2,
+        "TE": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 1,
+        "tradedAwayPicks": 2,
+        "selectionsMade": 3,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "ray-long",
+      "pickCount": 5,
+      "rounds": [
+        1,
+        2,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "RB": 2,
+        "WR": 1,
+        "QB": 1,
+        "TE": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 1,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 5,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "rob-jenkins",
+      "pickCount": 5,
+      "rounds": [
+        1,
+        2,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "TE": 1,
+        "WR": 3,
+        "QB": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 1,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 5,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    },
+    {
+      "ownerId": "tyrone-poist",
+      "pickCount": 4,
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "positionsDrafted": {
+        "WR": 1,
+        "RB": 2,
+        "TE": 1
+      },
+      "capitalContext": {
+        "originallyAllocatedPicks": 4,
+        "acquiredPicks": 0,
+        "tradedAwayPicks": 0,
+        "selectionsMade": 4,
+        "status": "AVAILABLE"
+      },
+      "preDraftRoster": null,
+      "postDraftRoster": null,
+      "rosterImpact": null,
+      "grading": null
+    }
+  ],
+  "positionRuns": [
+    {
+      "position": "WR",
+      "startPick": 12,
+      "endPick": 17,
+      "playerNames": [
+        "Chris Bell",
+        "Zachariah Branch",
+        "De'Zhaun Stribling",
+        "Ted Hurst",
+        "Denzel Boston",
+        "Germie Bernard"
+      ],
+      "ownerIds": [
+        "tyrone-poist",
+        "loren-michaels",
+        "mike-estes",
+        "rob-jenkins",
+        "ray-long",
+        "anthony-martinez"
+      ],
+      "initiatingSelection": "Chris Bell",
+      "detectionRule": "Three consecutive selections at the same position; a five-pick rolling window establishes the run and overlapping windows are merged into one maximal episode."
+    }
+  ],
+  "tierRuns": {
+    "status": "BLOCKED",
+    "reason": "The registered market source provides no supported tiers and is not draft-cutoff valid."
+  },
+  "historicalOwnerTendencies": {
+    "anthony-martinez": {
+      "totalPicks": 18,
+      "positionCounts": {
+        "QB": 4,
+        "RB": 7,
+        "TE": 2,
+        "WR": 5
+      },
+      "averageRoundByPosition": {
+        "QB": 2.25,
+        "RB": 3.29,
+        "WR": 2.2,
+        "TE": 3
+      }
+    },
+    "ben-isbell": {
+      "totalPicks": 20,
+      "positionCounts": {
+        "RB": 8,
+        "WR": 10,
+        "QB": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 2,
+        "RB": 2.38,
+        "WR": 2.7,
+        "TE": null
+      }
+    },
+    "bill-gross": {
+      "totalPicks": 21,
+      "positionCounts": {
+        "QB": 4,
+        "WR": 6,
+        "TE": 3,
+        "RB": 8
+      },
+      "averageRoundByPosition": {
+        "QB": 2,
+        "RB": 2.75,
+        "WR": 2,
+        "TE": 3.67
+      }
+    },
+    "dan-lowery": {
+      "totalPicks": 4,
+      "positionCounts": {
+        "RB": 2,
+        "WR": 2
+      },
+      "averageRoundByPosition": {
+        "QB": null,
+        "RB": 2.5,
+        "WR": 2.5,
+        "TE": null
+      }
+    },
+    "earl-perkins": {
+      "totalPicks": 23,
+      "positionCounts": {
+        "WR": 13,
+        "RB": 9,
+        "QB": 1
+      },
+      "averageRoundByPosition": {
+        "QB": 2,
+        "RB": 2.33,
+        "WR": 2.54,
+        "TE": null
+      }
+    },
+    "jeffrey-hudgins": {
+      "totalPicks": 20,
+      "positionCounts": {
+        "RB": 9,
+        "QB": 2,
+        "WR": 7,
+        "TE": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 1.5,
+        "RB": 3.11,
+        "WR": 2,
+        "TE": 3
+      }
+    },
+    "keith-winder": {
+      "totalPicks": 20,
+      "positionCounts": {
+        "RB": 5,
+        "QB": 4,
+        "WR": 9,
+        "TE": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 2.5,
+        "RB": 2.2,
+        "WR": 3,
+        "TE": 1
+      }
+    },
+    "loren-michaels": {
+      "totalPicks": 20,
+      "positionCounts": {
+        "WR": 7,
+        "RB": 5,
+        "TE": 3,
+        "QB": 3,
+        "K": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 3.33,
+        "RB": 2.4,
+        "WR": 2.14,
+        "TE": 3
+      }
+    },
+    "mike-estes": {
+      "totalPicks": 15,
+      "positionCounts": {
+        "WR": 7,
+        "RB": 4,
+        "QB": 2,
+        "TE": 2
+      },
+      "averageRoundByPosition": {
+        "QB": 2.5,
+        "RB": 3.25,
+        "WR": 2.57,
+        "TE": 1.5
+      }
+    },
+    "mike-mcburnie": {
+      "totalPicks": 22,
+      "positionCounts": {
+        "RB": 8,
+        "WR": 7,
+        "QB": 3,
+        "TE": 4
+      },
+      "averageRoundByPosition": {
+        "QB": 3.33,
+        "RB": 2,
+        "WR": 2.14,
+        "TE": 3
+      }
+    },
+    "ray-long": {
+      "totalPicks": 18,
+      "positionCounts": {
+        "TE": 4,
+        "WR": 7,
+        "RB": 4,
+        "QB": 3
+      },
+      "averageRoundByPosition": {
+        "QB": 2.33,
+        "RB": 2.5,
+        "WR": 1.86,
+        "TE": 1.75
+      }
+    },
+    "rob-jenkins": {
+      "totalPicks": 21,
+      "positionCounts": {
+        "WR": 8,
+        "QB": 2,
+        "RB": 7,
+        "TE": 3,
+        "K": 1
+      },
+      "averageRoundByPosition": {
+        "QB": 1.5,
+        "RB": 2.43,
+        "WR": 2.25,
+        "TE": 3
+      }
+    },
+    "tyrone-poist": {
+      "totalPicks": 18,
+      "positionCounts": {
+        "WR": 9,
+        "RB": 5,
+        "TE": 4
+      },
+      "averageRoundByPosition": {
+        "QB": null,
+        "RB": 2.6,
+        "WR": 2.11,
+        "TE": 3.75
+      }
+    }
+  },
+  "gradingArchitecture": {
+    "status": "DESIGN_ONLY",
+    "components": [
+      "MARKET_VALUE",
+      "ROSTER_FIT",
+      "LONG_TERM_UPSIDE",
+      "DRAFT_CAPITAL_EFFICIENCY",
+      "OPPORTUNITY_COST",
+      "CLASS_COHERENCE"
+    ],
+    "recommendedWeights": {
+      "marketValue": 0.25,
+      "rosterFit": 0.2,
+      "longTermUpside": 0.2,
+      "capitalEfficiency": 0.15,
+      "opportunityCost": 0.1,
+      "classCoherence": 0.1
+    },
+    "immediateImpactTreatment": "Display separately from long-term dynasty outlook; do not combine until cutoff-safe role evidence exists.",
+    "falsePrecisionTreatment": "Use integer component grades or letter bands only after evidence coverage is approved; never publish unsupported decimal precision.",
+    "humorGuardrail": "NO_FACT_NO_ROAST"
+  },
+  "sourceGaps": [
+    "No pre-draft market snapshot exists on or before 2026-05-29T11:54:55.518Z.",
+    "The registered market snapshot is 82 days after draft start and explicitly POST_DRAFT_PRESEASON.",
+    "No supported market tiers are available.",
+    "No timestamped pre-draft or immediate post-draft 2026 roster snapshot is available.",
+    "No canonical NFL Draft round/overall-pick dataset is available for these players.",
+    "The player registry is current and not cutoff-safe for role/team context."
+  ]
+}
