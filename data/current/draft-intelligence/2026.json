@@ -174,7 +174,8 @@
         "selectedTier": 1,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Carnell Tate"
-      }
+      },
+      "marketMedianRank": 1
     },
     {
       "actualOverallPick": 2,
@@ -268,7 +269,8 @@
         "selectedTier": 3,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Carnell Tate"
-      }
+      },
+      "marketMedianRank": 10
     },
     {
       "actualOverallPick": 3,
@@ -362,7 +364,8 @@
         "selectedTier": 2,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Jordyn Tyson"
-      }
+      },
+      "marketMedianRank": 2
     },
     {
       "actualOverallPick": 4,
@@ -456,7 +459,8 @@
         "selectedTier": 2,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Makai Lemon"
-      }
+      },
+      "marketMedianRank": 3
     },
     {
       "actualOverallPick": 5,
@@ -550,7 +554,8 @@
         "selectedTier": 3,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Makai Lemon"
-      }
+      },
+      "marketMedianRank": 5
     },
     {
       "actualOverallPick": 6,
@@ -644,7 +649,8 @@
         "selectedTier": 2,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "KC Concepcion"
-      }
+      },
+      "marketMedianRank": 4
     },
     {
       "actualOverallPick": 7,
@@ -738,7 +744,8 @@
         "selectedTier": 3,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Kenyon Sadiq"
-      }
+      },
+      "marketMedianRank": 7
     },
     {
       "actualOverallPick": 8,
@@ -832,7 +839,8 @@
         "selectedTier": 4,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Omar Cooper Jr."
-      }
+      },
+      "marketMedianRank": 7
     },
     {
       "actualOverallPick": 9,
@@ -911,7 +919,8 @@
         "selectedTier": 6,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Omar Cooper Jr."
-      }
+      },
+      "marketMedianRank": 22
     },
     {
       "actualOverallPick": 10,
@@ -1003,7 +1012,8 @@
         "selectedTier": 3,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Denzel Boston"
-      }
+      },
+      "marketMedianRank": 8
     },
     {
       "actualOverallPick": 11,
@@ -1089,7 +1099,8 @@
         "selectedTier": 4,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Denzel Boston"
-      }
+      },
+      "marketMedianRank": 12
     },
     {
       "actualOverallPick": 12,
@@ -1168,7 +1179,8 @@
         "selectedTier": 5,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Denzel Boston"
-      }
+      },
+      "marketMedianRank": 17
     },
     {
       "actualOverallPick": 13,
@@ -1247,7 +1259,8 @@
         "selectedTier": 6,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Denzel Boston"
-      }
+      },
+      "marketMedianRank": 21
     },
     {
       "actualOverallPick": 14,
@@ -1334,7 +1347,8 @@
         "selectedTier": 5,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Denzel Boston"
-      }
+      },
+      "marketMedianRank": 13
     },
     {
       "actualOverallPick": 15,
@@ -1413,7 +1427,8 @@
         "selectedTier": 6,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Denzel Boston"
-      }
+      },
+      "marketMedianRank": 24
     },
     {
       "actualOverallPick": 16,
@@ -1503,7 +1518,8 @@
         "selectedTier": 4,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Antonio Williams"
-      }
+      },
+      "marketMedianRank": 10
     },
     {
       "actualOverallPick": 17,
@@ -1582,7 +1598,8 @@
         "selectedTier": 4,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Antonio Williams"
-      }
+      },
+      "marketMedianRank": 14
     },
     {
       "actualOverallPick": 18,
@@ -1671,7 +1688,8 @@
         "selectedTier": 5,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Antonio Williams"
-      }
+      },
+      "marketMedianRank": 15
     },
     {
       "actualOverallPick": 19,
@@ -1751,7 +1769,8 @@
         "selectedTier": 4,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Ty Simpson"
-      }
+      },
+      "marketMedianRank": 14
     },
     {
       "actualOverallPick": 20,
@@ -1830,7 +1849,8 @@
         "selectedTier": 6,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Ty Simpson"
-      }
+      },
+      "marketMedianRank": 24
     },
     {
       "actualOverallPick": 21,
@@ -1919,7 +1939,8 @@
         "selectedTier": 5,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Chris Brazzell II"
-      }
+      },
+      "marketMedianRank": 17
     },
     {
       "actualOverallPick": 22,
@@ -2006,7 +2027,8 @@
         "selectedTier": 5,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 18
     },
     {
       "actualOverallPick": 23,
@@ -2085,7 +2107,8 @@
         "selectedTier": 7,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 31
     },
     {
       "actualOverallPick": 24,
@@ -2164,7 +2187,8 @@
         "selectedTier": 6,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 28
     },
     {
       "actualOverallPick": 25,
@@ -2243,7 +2267,8 @@
         "selectedTier": 8,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 35
     },
     {
       "actualOverallPick": 26,
@@ -2322,7 +2347,8 @@
         "selectedTier": 7,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 29
     },
     {
       "actualOverallPick": 27,
@@ -2401,7 +2427,8 @@
         "selectedTier": 7,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 31
     },
     {
       "actualOverallPick": 28,
@@ -2480,7 +2507,8 @@
         "selectedTier": 7,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 29
     },
     {
       "actualOverallPick": 29,
@@ -2559,7 +2587,8 @@
         "selectedTier": 9,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 47
     },
     {
       "actualOverallPick": 30,
@@ -2638,7 +2667,8 @@
         "selectedTier": 7,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kaelon Black"
-      }
+      },
+      "marketMedianRank": 25
     },
     {
       "actualOverallPick": 31,
@@ -2725,7 +2755,8 @@
         "selectedTier": 5,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 19
     },
     {
       "actualOverallPick": 32,
@@ -2804,7 +2835,8 @@
         "selectedTier": 9,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 41
     },
     {
       "actualOverallPick": 33,
@@ -2883,7 +2915,8 @@
         "selectedTier": 8,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 39
     },
     {
       "actualOverallPick": 34,
@@ -2962,7 +2995,8 @@
         "selectedTier": 7,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 40
     },
     {
       "actualOverallPick": 35,
@@ -3041,7 +3075,8 @@
         "selectedTier": 9,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 50
     },
     {
       "actualOverallPick": 36,
@@ -3127,7 +3162,8 @@
         "selectedTier": 8,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 34
     },
     {
       "actualOverallPick": 37,
@@ -3205,7 +3241,8 @@
         "selectedTier": 11,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 69
     },
     {
       "actualOverallPick": 38,
@@ -3283,7 +3320,8 @@
         "selectedTier": 9,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 51
     },
     {
       "actualOverallPick": 39,
@@ -3362,7 +3400,8 @@
         "selectedTier": 7,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 37
     },
     {
       "actualOverallPick": 40,
@@ -3441,7 +3480,8 @@
         "selectedTier": 11,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 71
     },
     {
       "actualOverallPick": 41,
@@ -3520,7 +3560,8 @@
         "selectedTier": 8,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 37
     },
     {
       "actualOverallPick": 42,
@@ -3598,7 +3639,8 @@
         "selectedTier": 10,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 59
     },
     {
       "actualOverallPick": 43,
@@ -3677,7 +3719,8 @@
         "selectedTier": 8,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 38
     },
     {
       "actualOverallPick": 44,
@@ -3755,7 +3798,8 @@
         "selectedTier": 10,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 52
     },
     {
       "actualOverallPick": 45,
@@ -3833,7 +3877,8 @@
         "selectedTier": 10,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Adam Randall"
-      }
+      },
+      "marketMedianRank": 54
     },
     {
       "actualOverallPick": 46,
@@ -3912,7 +3957,8 @@
         "selectedTier": 8,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Kevin Coleman Jr."
-      }
+      },
+      "marketMedianRank": 33
     },
     {
       "actualOverallPick": 47,
@@ -3983,7 +4029,8 @@
         "selectedTier": null,
         "higherTierPlayersRemain": false,
         "highestRemainingRoto": "Kevin Coleman Jr."
-      }
+      },
+      "marketMedianRank": null
     },
     {
       "actualOverallPick": 48,
@@ -4061,7 +4108,8 @@
         "selectedTier": 10,
         "higherTierPlayersRemain": true,
         "highestRemainingRoto": "Kevin Coleman Jr."
-      }
+      },
+      "marketMedianRank": 62
     }
   ],
   "teams": [
@@ -6963,6 +7011,7 @@
       {
         "actualPick": 12,
         "player": "Chris Bell",
+        "marketMedianRank": 17,
         "marketDifference": -5,
         "marketClassification": "POSSIBLE REACH",
         "confidence": "MEDIUM",
@@ -6971,6 +7020,7 @@
       {
         "actualPick": 13,
         "player": "Zachariah Branch",
+        "marketMedianRank": 21,
         "marketDifference": -8,
         "marketClassification": "CLEAR REACH",
         "confidence": "MEDIUM",
@@ -6979,6 +7029,7 @@
       {
         "actualPick": 14,
         "player": "De'Zhaun Stribling",
+        "marketMedianRank": 13,
         "marketDifference": 1,
         "marketClassification": "FAIR VALUE",
         "confidence": "HIGH",
@@ -6987,6 +7038,7 @@
       {
         "actualPick": 15,
         "player": "Ted Hurst",
+        "marketMedianRank": 24,
         "marketDifference": -9,
         "marketClassification": "CLEAR REACH",
         "confidence": "MEDIUM",
@@ -6995,6 +7047,7 @@
       {
         "actualPick": 16,
         "player": "Denzel Boston",
+        "marketMedianRank": 10,
         "marketDifference": 6,
         "marketClassification": "POSSIBLE VALUE",
         "confidence": "HIGH",
@@ -7003,6 +7056,7 @@
       {
         "actualPick": 17,
         "player": "Germie Bernard",
+        "marketMedianRank": 14,
         "marketDifference": 3,
         "marketClassification": "FAIR VALUE",
         "confidence": "MEDIUM",

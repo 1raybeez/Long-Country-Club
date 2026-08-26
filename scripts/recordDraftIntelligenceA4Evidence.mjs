@@ -75,6 +75,7 @@ for (const pick of artifact.picks) {
   const highestRemainingRoto = available.find((player) => tierFor("rotoballer-2026-05-13-top-100", player.rankBySource?.["rotoballer-2026-05-13-top-100"]));
   pick.providerRanks = market.rankBySource;
   pick.marketRank = market.marketMedianRank;
+  pick.marketMedianRank = market.marketMedianRank;
   pick.marketMeanRank = market.marketMeanRank;
   pick.marketLowRank = market.marketLowRank;
   pick.marketHighRank = market.marketHighRank;
