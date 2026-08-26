@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "diagnosticOnly": true,
+  "draftCutoff": "2026-05-29T11:54:55.518Z",
+  "baseline": {
+    "season": 2025,
+    "source": "data/history/matchups/sleeper/2025/rosters.json",
+    "rosterCount": 12,
+    "playerCount": 294,
+    "captureTimestamp": null,
+    "timestampConfidence": "UNKNOWN"
+  },
+  "transactionEvidence": {
+    "source": "Sleeper public read-only API",
+    "retrievedAt": "2026-08-20T22:17:49.000Z",
+    "endpoint": "/v1/league/1312148925091692544/transactions/{round}",
+    "preservedResponse": "data/source/sleeper/transactions/2026/transactions-round-1.json",
+    "transactionCount": 53,
+    "earliestCreated": "2026-05-15T18:47:22.598Z",
+    "latestCreated": "2026-08-18T14:09:39.712Z",
+    "preDraftTransactionCount": 25,
+    "postDraftTransactionCount": 28
+  },
+  "reconstructionResult": {
+    "ownersCovered": 12,
+    "positionCountsReady": false,
+    "rosterFitReady": false,
+    "confidence": "LIMITED",
+    "status": "DIAGNOSTIC_ONLY_UNKNOWN_SNAPSHOT_BOUNDARY",
+    "blockingReasons": [
+      "The 2025 baseline has no authoritative capture timestamp.",
+      "The transaction response contains 25 ownership-mismatch anomalies when replayed against the baseline.",
+      "The available 2026 roster snapshot was retrieved after the draft and cannot establish immediate post-draft state."
+    ]
+  },
+  "canonicalUse": "Not admitted to grading or public presentation until a timestamped boundary snapshot and reconciled transaction history are available."
+}

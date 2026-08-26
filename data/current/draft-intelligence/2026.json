@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 1,
-  "methodologyVersion": "rookie-draft-intelligence-slice-a-v1",
+  "schemaVersion": 2,
+  "methodologyVersion": "rookie-draft-intelligence-slice-a2-v1",
   "status": "BLOCKED",
-  "generatedAt": "2026-08-26T00:40:04.672Z",
+  "generatedAt": "2026-08-26T00:00:00.000Z",
   "season": 2026,
   "draftId": "1312148925104259072",
   "draftDate": "2026-05-29T11:54:55.518Z",
@@ -60,17 +60,19 @@
   },
   "rosterEvidence": {
     "preDraft": {
-      "coverage": 0,
-      "source": null,
-      "confidence": "NONE"
+      "coverage": 12,
+      "source": "data/source/sleeper-2026-roster-reconstruction-evidence.json",
+      "confidence": "LIMITED",
+      "status": "DIAGNOSTIC_ONLY_UNKNOWN_SNAPSHOT_BOUNDARY"
     },
     "postDraft": {
       "coverage": 0,
       "source": null,
-      "confidence": "NONE"
+      "confidence": "NONE",
+      "status": "BLOCKED_NO_TIMESTAMPED_BOUNDARY_SNAPSHOT"
     },
     "currentRosterExcluded": true,
-    "reason": "Available 2026 roster files are not timestamped to the draft boundary and are not used as pre- or post-draft evidence."
+    "reason": "The reconstruction is diagnostic-only because the baseline boundary is unknown and transaction replay has material ownership mismatches."
   },
   "playerMetadata": {
     "resolvedPlayers": 48,
@@ -90,16 +92,16 @@
       "position": "RB",
       "nflTeam": "ARI",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-1",
-      "marketRank": 1,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 3,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -117,16 +119,16 @@
       "position": "QB",
       "nflTeam": "LV",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-2",
-      "marketRank": 2,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 1,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -144,16 +146,16 @@
       "position": "WR",
       "nflTeam": "TEN",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-3",
-      "marketRank": 3,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 4,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -171,16 +173,16 @@
       "position": "WR",
       "nflTeam": "NO",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-4",
-      "marketRank": 4,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 8,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -198,16 +200,16 @@
       "position": "RB",
       "nflTeam": "SEA",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-5",
-      "marketRank": 5,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 32,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -225,16 +227,16 @@
       "position": "WR",
       "nflTeam": "PHI",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-6",
-      "marketRank": 6,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 20,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -252,16 +254,16 @@
       "position": "WR",
       "nflTeam": "CLE",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-7",
-      "marketRank": 7,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 24,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -279,16 +281,16 @@
       "position": "TE",
       "nflTeam": "NYJ",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-8",
-      "marketRank": 8,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 16,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -306,16 +308,16 @@
       "position": "RB",
       "nflTeam": "TEN",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-9",
-      "marketRank": 9,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 5,
+        "overallPick": 165,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -333,16 +335,16 @@
       "position": "WR",
       "nflTeam": "NYJ",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-10",
-      "marketRank": 10,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 30,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -360,16 +362,16 @@
       "position": "TE",
       "nflTeam": "PHI",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-11",
-      "marketRank": 11,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 2,
+        "overallPick": 54,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -387,16 +389,16 @@
       "position": "WR",
       "nflTeam": "MIA",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-12",
-      "marketRank": 12,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 94,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -414,16 +416,16 @@
       "position": "WR",
       "nflTeam": "ATL",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-13",
-      "marketRank": 13,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 79,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -441,16 +443,16 @@
       "position": "WR",
       "nflTeam": "SF",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-14",
-      "marketRank": 14,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 2,
+        "overallPick": 33,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -468,16 +470,16 @@
       "position": "WR",
       "nflTeam": "TB",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-15",
-      "marketRank": 15,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 84,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -495,16 +497,16 @@
       "position": "WR",
       "nflTeam": "CLE",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-16",
-      "marketRank": 16,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 2,
+        "overallPick": 39,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -522,16 +524,16 @@
       "position": "WR",
       "nflTeam": "PIT",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-17",
-      "marketRank": 17,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 2,
+        "overallPick": 47,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -549,16 +551,16 @@
       "position": "RB",
       "nflTeam": "DEN",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-18",
-      "marketRank": 18,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 4,
+        "overallPick": 108,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -576,16 +578,16 @@
       "position": "WR",
       "nflTeam": "WAS",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-19",
-      "marketRank": 19,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 71,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -603,16 +605,16 @@
       "position": "WR",
       "nflTeam": "NYG",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-20",
-      "marketRank": 20,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 74,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -630,16 +632,16 @@
       "position": "QB",
       "nflTeam": "LAR",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-21",
-      "marketRank": 21,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 1,
+        "overallPick": 13,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -657,16 +659,16 @@
       "position": "WR",
       "nflTeam": "CAR",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-22",
-      "marketRank": 22,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 83,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -684,16 +686,16 @@
       "position": "WR",
       "nflTeam": "BUF",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-23",
-      "marketRank": 23,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 4,
+        "overallPick": 125,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -711,16 +713,16 @@
       "position": "RB",
       "nflTeam": "KC",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-24",
-      "marketRank": 24,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 5,
+        "overallPick": 161,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -738,16 +740,16 @@
       "position": "QB",
       "nflTeam": "ARI",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-25",
-      "marketRank": 25,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 65,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -765,16 +767,16 @@
       "position": "RB",
       "nflTeam": "WAS",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-26",
-      "marketRank": 26,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 6,
+        "overallPick": 187,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -792,16 +794,16 @@
       "position": "WR",
       "nflTeam": "BAL",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-27",
-      "marketRank": 27,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 4,
+        "overallPick": 115,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -819,16 +821,16 @@
       "position": "WR",
       "nflTeam": "BAL",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-28",
-      "marketRank": 28,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 80,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -846,16 +848,16 @@
       "position": "TE",
       "nflTeam": "NE",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-29",
-      "marketRank": 29,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 95,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -873,16 +875,16 @@
       "position": "RB",
       "nflTeam": "LV",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-30",
-      "marketRank": 30,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 4,
+        "overallPick": 122,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -900,16 +902,16 @@
       "position": "RB",
       "nflTeam": "SF",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-31",
-      "marketRank": 31,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 90,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -927,16 +929,16 @@
       "position": "WR",
       "nflTeam": "CHI",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-32",
-      "marketRank": 32,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 89,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -954,16 +956,16 @@
       "position": "TE",
       "nflTeam": "NO",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-33",
-      "marketRank": 33,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 73,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -981,16 +983,16 @@
       "position": "RB",
       "nflTeam": "MIN",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-34",
-      "marketRank": 34,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 6,
+        "overallPick": 198,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1008,16 +1010,16 @@
       "position": "RB",
       "nflTeam": "PIT",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-35",
-      "marketRank": 35,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 7,
+        "overallPick": 230,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1035,16 +1037,16 @@
       "position": "TE",
       "nflTeam": "LAR",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-36",
-      "marketRank": 36,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 2,
+        "overallPick": 61,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1062,16 +1064,16 @@
       "position": "TE",
       "nflTeam": "CIN",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-37",
-      "marketRank": 37,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 7,
+        "overallPick": 221,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1089,16 +1091,16 @@
       "position": "RB",
       "nflTeam": "NE",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-38",
-      "marketRank": 38,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 7,
+        "overallPick": 245,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1116,16 +1118,16 @@
       "position": "WR",
       "nflTeam": "LAC",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-39",
-      "marketRank": 39,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 4,
+        "overallPick": 105,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1143,7 +1145,7 @@
       "position": "TE",
       "nflTeam": "DAL",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-40",
-      "marketRank": 40,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
@@ -1151,8 +1153,8 @@
       "nflDraftCapital": {
         "round": null,
         "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED_UNDRAFTED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1170,16 +1172,16 @@
       "position": "QB",
       "nflTeam": "PIT",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-41",
-      "marketRank": 41,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 3,
+        "overallPick": 76,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1197,16 +1199,16 @@
       "position": "QB",
       "nflTeam": "KC",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-42",
-      "marketRank": 42,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 7,
+        "overallPick": 249,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1224,16 +1226,16 @@
       "position": "WR",
       "nflTeam": "NO",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-43",
-      "marketRank": 43,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 4,
+        "overallPick": 136,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1251,16 +1253,16 @@
       "position": "QB",
       "nflTeam": "NYJ",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-44",
-      "marketRank": 44,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 4,
+        "overallPick": 110,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1278,7 +1280,7 @@
       "position": "RB",
       "nflTeam": "LV",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-45",
-      "marketRank": 45,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
@@ -1286,8 +1288,8 @@
       "nflDraftCapital": {
         "round": null,
         "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED_UNDRAFTED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1305,16 +1307,16 @@
       "position": "RB",
       "nflTeam": "BAL",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-46",
-      "marketRank": 46,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
       "marketEvidenceStatus": "BLOCKED",
       "nflDraftCapital": {
-        "round": null,
-        "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "round": 5,
+        "overallPick": 174,
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1340,8 +1342,8 @@
       "nflDraftCapital": {
         "round": null,
         "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED_UNDRAFTED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1359,7 +1361,7 @@
       "position": "RB",
       "nflTeam": "JAX",
       "sourceReference": "data/source/sleeper/drafts/2026/1312148925104259072/picks.json#pick-48",
-      "marketRank": 47,
+      "marketRank": null,
       "marketExpectedPick": null,
       "pickDifference": null,
       "marketClassification": null,
@@ -1367,8 +1369,8 @@
       "nflDraftCapital": {
         "round": null,
         "overallPick": null,
-        "source": null,
-        "status": "BLOCKED"
+        "source": "https://www.nfl.com/draft/tracker/2026/rounds/1",
+        "status": "RESOLVED_UNDRAFTED"
       },
       "opportunityCost": {
         "topAvailableMarketPlayers": [],
@@ -1936,11 +1938,46 @@
     "humorGuardrail": "NO_FACT_NO_ROAST"
   },
   "sourceGaps": [
-    "No pre-draft market snapshot exists on or before 2026-05-29T11:54:55.518Z.",
-    "The registered market snapshot is 82 days after draft start and explicitly POST_DRAFT_PRESEASON.",
-    "No supported market tiers are available.",
-    "No timestamped pre-draft or immediate post-draft 2026 roster snapshot is available.",
-    "No canonical NFL Draft round/overall-pick dataset is available for these players.",
+    "No cutoff-safe full-coverage 1QB market snapshot or consensus exists.",
+    "The registered Fantasy Orphans market snapshot is 82 days after draft start and explicitly POST_DRAFT_PRESEASON.",
+    "Only partial dated supporting market sources were found; no market tiers are approved.",
+    "Pre-draft roster reconstruction is diagnostic-only because the 2025 baseline timestamp is unknown and replay has 25 ownership-mismatch anomalies.",
+    "No timestamped immediate post-draft 2026 roster snapshot is available.",
+    "Four LCC selections were undrafted in the NFL; their capital is explicitly represented as null/RESOLVED_UNDRAFTED.",
     "The player registry is current and not cutoff-safe for role/team context."
-  ]
+  ],
+  "marketAtDraft": {
+    "sourceManifest": "data/source/market/dynasty-rookie/2026/source-manifest.json",
+    "cutoffSafePrimarySource": false,
+    "consensusReady": false,
+    "gradingReady": false,
+    "supportingSourceCount": 1,
+    "status": "BLOCKED",
+    "reason": "Only partial dated supporting evidence was found; no cutoff-safe, full-coverage 1QB market source or consensus was established."
+  },
+  "currentMarketReference": {
+    "source": "Fantasy Orphans",
+    "snapshotDate": "2026-08-19",
+    "timingClassification": "POST_DRAFT_PRESEASON",
+    "daysFromDraft": 82,
+    "format": "1QB_DYNASTY_ROOKIE",
+    "playerCount": 47,
+    "resolvedPickCount": 47,
+    "tiersAvailable": false,
+    "adpAvailable": true,
+    "usableForDraftDayGrading": false,
+    "reason": "The only registered market snapshot is post-draft/preseason and cannot judge what was knowable at the draft cutoff."
+  },
+  "nflDraftCapital": {
+    "sourceReference": "data/source/nfl-draft-2026-skill-position-capital.json",
+    "source": "NFL.com 2026 Draft Tracker",
+    "coverage": {
+      "lccPicks": 48,
+      "records": 48,
+      "drafted": 44,
+      "undrafted": 4,
+      "status": "COMPLETE_FOR_LCC_PICK_SET"
+    },
+    "status": "COMPLETE_FOR_LCC_PICK_SET"
+  }
 }

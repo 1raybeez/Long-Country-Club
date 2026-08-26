@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "lccDraftCutoff": "2026-05-29T11:54:55.518Z",
+  "formatContract": "1QB_DYNASTY_NON_TEP",
+  "sources": [
+    {
+      "sourceId": "the-flex-spot-2026-05-14",
+      "provider": "The Flex Spot",
+      "publishedAt": "2026-05-14",
+      "url": "https://theflexspot.com/articles/ppr-2026-dynasty-rookie-mock",
+      "format": "1QB_PPR_DYNASTY",
+      "coverage": 12,
+      "fields": ["ranking", "tier_context"],
+      "status": "SECONDARY_PARTIAL",
+      "decision": "Retained as dated, format-matched supporting evidence; top-12 coverage cannot establish a full-draft consensus."
+    },
+    {
+      "sourceId": "ffn-2026-05-24",
+      "provider": "Fantasy Football Nerds",
+      "publishedAt": "2026-05-24",
+      "url": "https://fantasyfootballnerds.org/dynasty-rookie-rankings",
+      "format": "MIXED_DYNASTY",
+      "coverage": null,
+      "fields": ["ranking", "draft_capital", "landing_spot"],
+      "status": "SECONDARY_REVIEW",
+      "decision": "Not adopted as primary market evidence because the page is a post-draft hub with mixed superflex/1QB framing and extractable full coverage is not established."
+    },
+    {
+      "sourceId": "rookieradar-sleeper-search-rank-2026-05-28",
+      "provider": "RookieRadar",
+      "publishedAt": "2026-05-28",
+      "url": "https://rookieradar.win/mocks",
+      "format": "ALL_FORMAT_SEARCH_ORDER",
+      "coverage": 45,
+      "fields": ["search_order"],
+      "status": "REJECTED_PRIMARY",
+      "decision": "Date is before the LCC cutoff, but the index identifies Sleeper Search Rank rather than a documented observed ADP and does not establish a timestamp or 1QB dynasty methodology."
+    },
+    {
+      "sourceId": "fantasypros-2026-05-29-superflex",
+      "provider": "FantasyPros",
+      "publishedAt": "2026-05-29",
+      "url": "https://rookieradar.win/mocks",
+      "format": "SUPERFLEX_DYNASTY",
+      "coverage": 19,
+      "fields": ["ranking", "tier_context"],
+      "status": "REJECTED_PRIMARY",
+      "decision": "Wrong league format for the LCC 1QB contract and same-day publication time cannot be proven to precede the LCC draft start."
+    },
+    {
+      "sourceId": "fantasy-orphans-2026-08-19",
+      "provider": "Fantasy Orphans",
+      "publishedAt": "2026-08-19",
+      "url": "https://www.fantasyorphans.com/rookie-draft-adp",
+      "format": "1QB_DYNASTY_ROOKIE",
+      "coverage": 47,
+      "fields": ["adp"],
+      "status": "CURRENT_POST_DRAFT_EXCLUDED",
+      "decision": "Retained separately as the current/post-draft reference; not admitted to draft-day grading."
+    }
+  ],
+  "marketDecision": {
+    "cutoffSafePrimarySource": false,
+    "consensusReady": false,
+    "gradingReady": false,
+    "reason": "Only partial dated supporting evidence was found; no cutoff-safe, full-coverage 1QB market source or consensus was established."
+  }
+}
