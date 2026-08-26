@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "source": "FantasyCalc",
+  "sourceUrl": "https://api.fantasycalc.com/values/current?isDynasty=true&numQbs=1&numTeams=12&ppr=0.5&includeAdp=false",
+  "snapshotDate": "2026-08-26",
+  "retrievalTimestamp": "2026-08-26T21:48:36.707Z",
+  "requestConfiguration": {
+    "dynasty": true,
+    "teams": 12,
+    "qb": 1,
+    "scoring": "half-PPR",
+    "tePremium": false
+  },
+  "rawFile": "data/trade-analyzer/valuations/fantasycalc/raw/2026-08-26.json",
+  "normalizedFile": "data/trade-analyzer/valuations/fantasycalc/normalized/2026-08-26.json",
+  "rawResponseHash": "9d52c673a04597cc0ad00ffa46271d55dd365c36d312120d6df4167714a3d3d8",
+  "normalizedFileHash": "b3d8dd35baed978ef75ff1a502e02b60cd47be4335e50f74ac80cc8b9266ef38",
+  "rowCount": 474,
+  "playerCount": 398,
+  "pickCount": 76,
+  "attribution": "Player and pick market values sourced from FantasyCalc.",
+  "licensingRestrictionNotes": "FantasyCalc terms require attribution and restrict use; commissioner review is required before public redistribution or commercial use.",
+  "validationResult": "PASS",
+  "reviewStatus": "COMMISSIONER_REVIEW"
+}
