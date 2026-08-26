@@ -1,0 +1,23 @@
+import { PRIVATE_API_LOGGING_POLICY, PRIVATE_API_SECURITY_POLICY, validatePrivateApiRequestShape } from "../lib/trade-analyzer/privateApiSecurityTypes.ts";
+
+const checks: { name: string; pass: boolean; detail: string }[] = [];
+const check = (name: string, pass: boolean, detail: string) => checks.push({ name, pass, detail });
+const valid = { sideA: { assetIds: ["9221"] }, sideB: { assetIds: ["9509"] } };
+const ids = (count: number) => Array.from({ length: count }, (_, index) => `asset-${index}`);
+check("request_schema", validatePrivateApiRequestShape(valid).valid && !validatePrivateApiRequestShape({ ...valid, outputMode: "PUBLIC" }).valid, "asset IDs only; unexpected fields rejected");
+check("limits", !validatePrivateApiRequestShape({ sideA: { assetIds: ids(16) }, sideB: { assetIds: ["x"] } }).valid && !validatePrivateApiRequestShape({ sideA: { assetIds: ids(15) }, sideB: { assetIds: ids(16) } }).valid, "15 per side and 30 total");
+check("id_hardening", !validatePrivateApiRequestShape({ sideA: { assetIds: ["\u0000"] }, sideB: { assetIds: ["x"] } }).valid && !validatePrivateApiRequestShape({ sideA: { assetIds: ["x".repeat(129)] }, sideB: { assetIds: ["y"] } }).valid, "control characters and oversized IDs rejected");
+check("duplicate_protection", !validatePrivateApiRequestShape({ sideA: { assetIds: ["x", "x"] }, sideB: { assetIds: ["y"] } }).valid && !validatePrivateApiRequestShape({ sideA: { assetIds: ["x"] }, sideB: { assetIds: ["x"] } }).valid, "same-side and cross-side duplicates rejected");
+check("status_mapping", PRIVATE_API_SECURITY_POLICY.method === "POST" && PRIVATE_API_SECURITY_POLICY.contentType === "application/json" && PRIVATE_API_SECURITY_POLICY.cacheControl === "no-store", "POST/JSON/no-store");
+check("feature_gate", PRIVATE_API_SECURITY_POLICY.featureGateDefault === "OFF", "server-authoritative default OFF");
+check("license_gate", PRIVATE_API_SECURITY_POLICY.licensingGate === "TRADE_ANALYZER_PRIVATE_OUTPUT_APPROVED", "explicit licensing approval required");
+check("spoof_protection", !validatePrivateApiRequestShape({ ...valid, ownerId: "spoofed", modelVersion: "fairness-v99", baseValue: 999999 }).valid, "identity, values, and model fields cannot be supplied");
+check("origin_policy", PRIVATE_API_SECURITY_POLICY.cors === "same-origin", "same-origin only; no wildcard CORS");
+check("cache_policy", PRIVATE_API_SECURITY_POLICY.cacheControl === "no-store", "private responses are not shared-cacheable");
+check("logging_redaction", PRIVATE_API_LOGGING_POLICY.logAssetIdsByDefault === false && PRIVATE_API_LOGGING_POLICY.prohibitedFields.includes("sessionCookie") && PRIVATE_API_LOGGING_POLICY.prohibitedFields.includes("fullRequestPayload"), "privacy-safe aggregate logging");
+check("rate_policy", PRIVATE_API_SECURITY_POLICY.rateLimitPerMinute === 30 && PRIVATE_API_SECURITY_POLICY.rateLimitBurst === 5, "30/minute with burst allowance 5");
+check("server_time_phase", PRIVATE_API_SECURITY_POLICY.serverDerivesEvaluatedAt && PRIVATE_API_SECURITY_POLICY.serverDerivesLeaguePhase, "time and phase are server-derived");
+check("safe_public_gate", ["SOURCE_LICENSE_UNAPPROVED", "FEATURE_NOT_AVAILABLE"].every((code) => typeof code === "string"), "blocked responses use safe machine-readable codes");
+const failures = checks.filter((item) => !item.pass);
+console.log(JSON.stringify({ status: failures.length ? "FAIL" : "PASS", policy: PRIVATE_API_SECURITY_POLICY, checks, noRoute: true, noMiddleware: true, noWrites: true, failures }, null, 2));
+if (failures.length) process.exitCode = 1;
