@@ -98,7 +98,8 @@ required(api, ["outputMode", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_P
 required(api, ["One or more selected assets are no longer available."], "safe API error detail");
 required(rosterImpact, ["Roster Impact", "participant.status", "market fairness", "Draft picks have no immediate lineup impact"], "roster-impact fallback UI");
 required(analysisDetails, ["Analysis Details", "aria-expanded", "setExpanded", "Data Snapshot", "Evidence Quality", "Result Status", "Valuation Model", "Fairness Model", "Trade Verdict Model"], "analysis details disclosure");
-required(dynastyOutlook, ["Dynasty Outlook", "How this trade fits each franchise", "Trade Fit", "Confidence", "Direction", "Career Window", "Future Capital", "Asset Profile", "Win-now", "DYNASTY OUTLOOK UNAVAILABLE", "Detailed dynasty evidence is unavailable", "does not declare a winner"], "dynasty outlook");
+required(dynastyOutlook, ["Dynasty Outlook", "How this trade fits each franchise", "Confidence", "Direction", "Career Window", "Future Capital", "Long-Term Asset Profile", "Win-now", "DYNASTY OUTLOOK UNAVAILABLE", "Detailed dynasty evidence is unavailable", "Current roster depth and long-term asset profile describe different parts"], "dynasty outlook");
+assert.equal(dynastyOutlook.includes("Trade Fit ·"), false, "dynasty outlook does not duplicate trade fit");
 required(verdictPanel, ["Trade Verdict", "tradeType", "verdict", "explanation", "tradeOffs", "evidenceStatus"], "contextual verdict");
 assert.equal(verdictPanel.includes("winner") || verdictPanel.includes("accept") || verdictPanel.includes("reject"), false, "verdict UI avoids recommendation language");
 assert.equal(dynastyOutlook.includes("participant.presentation;") && dynastyOutlook.includes("if (!evidence)"), true, "missing presentation has an explicit safe branch");
