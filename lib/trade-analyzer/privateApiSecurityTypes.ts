@@ -6,6 +6,9 @@ export const PRIVATE_API_SECURITY_POLICY = Object.freeze({
   contentType: "application/json",
   maxAssetsPerSide: 15,
   maxTotalAssets: 30,
+  maxAssetsPerParticipant: 15,
+  maxMultiTeamTotalAssets: 40,
+  maxParticipants: 4,
   maxAssetIdLength: 128,
   maxBodyBytes: 16 * 1024,
   rateLimitPerMinute: 30,
@@ -17,14 +20,16 @@ export const PRIVATE_API_SECURITY_POLICY = Object.freeze({
   approvedSnapshotDate: "2026-08-26",
   valuationPolicyVersion: "valuation-v1",
   fairnessModelVersion: "fairness-v1",
+  multiTeamFairnessModelVersion: "fairness-multi-v1",
   serverDerivesEvaluatedAt: true,
   serverDerivesLeaguePhase: true,
   ownershipRequiredForAnalysis: false,
 } as const);
 
 export interface PrivateApiRequestBody {
-  sideA: { assetIds: string[] };
-  sideB: { assetIds: string[] };
+  sideA?: { assetIds: string[] };
+  sideB?: { assetIds: string[] };
+  participants?: Array<{ franchiseId: string; outgoingAssets: Array<{ assetId: string; destinationFranchiseId: string }> }>;
   validateOwnership?: boolean;
 }
 
@@ -62,7 +67,19 @@ export const validatePrivateApiRequestShape = (value: unknown): { valid: boolean
   const isObject = Boolean(value) && typeof value === "object" && !Array.isArray(value);
   if (!isObject) return { valid: false, errors: ["INVALID_TRADE_REQUEST"] };
   const request = value as Record<string, unknown>;
-  if (Object.keys(request).some((key) => !["sideA", "sideB", "validateOwnership"].includes(key))) errors.push("INVALID_TRADE_REQUEST");
+  if (Object.keys(request).some((key) => !["sideA", "sideB", "participants", "validateOwnership"].includes(key))) errors.push("INVALID_TRADE_REQUEST");
+  if (Array.isArray(request.participants)) {
+    if (request.participants.length < 3 || request.participants.length > PRIVATE_API_SECURITY_POLICY.maxParticipants) errors.push("INVALID_TRADE_REQUEST");
+    const franchiseIds = request.participants.map((participant) => typeof participant === "object" && participant !== null && !Array.isArray(participant) ? (participant as { franchiseId?: unknown }).franchiseId : undefined);
+    if (franchiseIds.some((id) => typeof id !== "string" || id.length === 0 || id.length > PRIVATE_API_SECURITY_POLICY.maxAssetIdLength) || new Set(franchiseIds).size !== franchiseIds.length) errors.push("INVALID_TRADE_REQUEST");
+    const assets = request.participants.flatMap((participant) => { if (!participant || typeof participant !== "object" || Array.isArray(participant) || Object.keys(participant).some((key) => !["franchiseId", "outgoingAssets"].includes(key)) || !Array.isArray((participant as { outgoingAssets?: unknown }).outgoingAssets)) { errors.push("INVALID_TRADE_REQUEST"); return []; } const outgoing = (participant as { outgoingAssets: unknown[] }).outgoingAssets; if (outgoing.length === 0 || outgoing.length > PRIVATE_API_SECURITY_POLICY.maxAssetsPerParticipant) errors.push("INVALID_TRADE_REQUEST"); return outgoing; });
+    request.participants.forEach((participant) => { if (!participant || typeof participant !== "object" || Array.isArray(participant)) return; const sender = (participant as { franchiseId?: unknown }).franchiseId; const outgoing = (participant as { outgoingAssets?: unknown }).outgoingAssets; if (!Array.isArray(outgoing)) return; outgoing.forEach((item) => { if (!item || typeof item !== "object" || Array.isArray(item)) return; const destination = (item as { destinationFranchiseId?: unknown }).destinationFranchiseId; if (destination === sender || !franchiseIds.includes(destination)) errors.push("INVALID_TRADE_REQUEST"); }); });
+    if (assets.length > PRIVATE_API_SECURITY_POLICY.maxMultiTeamTotalAssets) errors.push("INVALID_TRADE_REQUEST");
+    assets.forEach((outgoing) => { if (!outgoing || typeof outgoing !== "object" || Array.isArray(outgoing) || Object.keys(outgoing).some((key) => !["assetId", "destinationFranchiseId"].includes(key))) { errors.push("INVALID_TRADE_REQUEST"); return; } const item = outgoing as { assetId?: unknown; destinationFranchiseId?: unknown }; if ([item.assetId, item.destinationFranchiseId].some((id) => typeof id !== "string" || id.length === 0 || id.length > PRIVATE_API_SECURITY_POLICY.maxAssetIdLength || /[\u0000-\u001f\u007f]/.test(id))) errors.push("INVALID_TRADE_REQUEST"); });
+    if (new Set(assets.map((outgoing) => typeof outgoing === "object" && outgoing !== null ? (outgoing as { assetId?: unknown }).assetId : undefined)).size !== assets.length) errors.push("INVALID_TRADE_REQUEST");
+    if (request.validateOwnership !== undefined) errors.push("INVALID_TRADE_REQUEST");
+    return { valid: errors.length === 0, errors: [...new Set(errors)] };
+  }
   for (const sideName of ["sideA", "sideB"]) {
     const side = request[sideName];
     if (!side || typeof side !== "object" || Array.isArray(side) || Object.keys(side as object).some((key) => key !== "assetIds") || !Array.isArray((side as { assetIds?: unknown }).assetIds)) { errors.push("INVALID_TRADE_REQUEST"); continue; }

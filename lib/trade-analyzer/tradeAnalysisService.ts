@@ -2,12 +2,14 @@ import "node:fs";
 import { calculateCurrentTrade } from "./currentValuationAdapter.ts";
 import type { CurrentTradeRequest } from "./types";
 import type { ApprovedSnapshotReference, ServiceDependencies, ServiceOutputMode, ServiceValidationResult, TradeAnalysisServiceRequest, TradeAnalysisServiceResponse } from "./serviceTypes";
+import { calculateMultiTeamFairness } from "./multiTeamFairnessEngine.ts";
+import type { MultiTeamParticipantInput } from "./multiTeamTypes";
 
 export const APPROVED_SNAPSHOT_DATE = "2026-08-26" as const;
 export const EXPECTED_MODEL_VERSIONS = { valuationPolicyVersion: "valuation-v1", fairnessModelVersion: "fairness-v1" } as const;
 
 const unique = (values: string[]) => [...new Set(values)];
-const knownRootKeys = new Set(["sideA", "sideB", "evaluatedAt", "leaguePhase", "outputMode", "ownershipValidation"]);
+const knownRootKeys = new Set(["sideA", "sideB", "participants", "evaluatedAt", "leaguePhase", "outputMode", "ownershipValidation"]);
 const knownSideKeys = new Set(["assetIds", "ownerId"]);
 const validModes: ServiceOutputMode[] = ["INTERNAL", "PUBLIC"];
 const phaseValues = ["DRAFT_WINDOW", "IN_SEASON", "OFFSEASON"] as const;
@@ -35,7 +37,7 @@ export function validateTradeAnalysisRequest(request: unknown, catalog: ServiceD
   return { errors: unique(errors), warnings };
 }
 
-const emptyResponse = (status: TradeAnalysisServiceResponse["status"], errors: string[], model = EXPECTED_MODEL_VERSIONS, message?: string): TradeAnalysisServiceResponse => ({ success: false, status, engineStatus: null, model, snapshot: null, sideA: null, sideB: null, trade: null, ownership: null, warnings: [], errors: unique(errors), ...(message ? { message } : {}) });
+const emptyResponse = (status: TradeAnalysisServiceResponse["status"], errors: string[], model: TradeAnalysisServiceResponse["model"] = EXPECTED_MODEL_VERSIONS, message?: string): TradeAnalysisServiceResponse => ({ success: false, status, engineStatus: null, model, snapshot: null, sideA: null, sideB: null, trade: null, ownership: null, warnings: [], errors: unique(errors), multiTeam: null, ...(message ? { message } : {}) });
 
 const modelMatches = (dependencies: ServiceDependencies) => dependencies.modelVersions?.valuationPolicyVersion === EXPECTED_MODEL_VERSIONS.valuationPolicyVersion && dependencies.modelVersions?.fairnessModelVersion === EXPECTED_MODEL_VERSIONS.fairnessModelVersion;
 const snapshotMatches = (snapshot: ApprovedSnapshotReference, catalog: ServiceDependencies["catalog"]) => snapshot.date === APPROVED_SNAPSHOT_DATE && catalog.snapshotDate === APPROVED_SNAPSHOT_DATE && snapshot.integrityValid && snapshot.sourceLicenseStatus !== "";
@@ -46,12 +48,13 @@ function internalError(): TradeAnalysisServiceResponse {
 
 export function analyzeTradeInternal(request: unknown, dependencies: ServiceDependencies): TradeAnalysisServiceResponse {
   try {
+    if (safeObject(request) && Array.isArray(request.participants)) return analyzeMultiTeam(request.participants, request, dependencies);
     const validation = validateTradeAnalysisRequest(request, dependencies.catalog);
     if (validation.errors.length) return emptyResponse("INVALID_REQUEST", validation.errors);
     if (!modelMatches(dependencies)) return emptyResponse("INTERNAL_ERROR", ["MODEL_VERSION_MISMATCH"], EXPECTED_MODEL_VERSIONS, "Internal trade analysis is unavailable.");
     if (!snapshotMatches(dependencies.snapshot, dependencies.catalog)) return emptyResponse("INTERNAL_ERROR", [dependencies.snapshot.integrityValid ? "SNAPSHOT_NOT_FOUND" : "SNAPSHOT_INTEGRITY_FAILED"], EXPECTED_MODEL_VERSIONS, "Approved market snapshot is unavailable.");
     const typed = request as TradeAnalysisServiceRequest;
-    const adapterRequest: CurrentTradeRequest = { sideA: typed.sideA.assetIds, sideB: typed.sideB.assetIds, evaluatedAt: typed.evaluatedAt, leaguePhase: typed.leaguePhase, publicOutput: typed.outputMode === "PUBLIC", ownership: typed.ownershipValidation ? { sideAOwnerId: typed.sideA.ownerId, sideBOwnerId: typed.sideB.ownerId } : undefined };
+    const adapterRequest: CurrentTradeRequest = { sideA: typed.sideA!.assetIds, sideB: typed.sideB!.assetIds, evaluatedAt: typed.evaluatedAt, leaguePhase: typed.leaguePhase, publicOutput: typed.outputMode === "PUBLIC", ownership: typed.ownershipValidation ? { sideAOwnerId: typed.sideA!.ownerId, sideBOwnerId: typed.sideB!.ownerId } : undefined };
     const result = calculateCurrentTrade(dependencies.catalog, adapterRequest);
     if (result.adapterStatus === "INVALID") return emptyResponse("INVALID_REQUEST", result.validationErrors);
     const engine = result.engineResult;
@@ -59,10 +62,48 @@ export function analyzeTradeInternal(request: unknown, dependencies: ServiceDepe
     const ownership = result.ownership;
     const ownershipWarnings = typed.ownershipValidation && (ownership.sideA === "NOT_CURRENTLY_OWNED" || ownership.sideB === "NOT_CURRENTLY_OWNED") ? ["OWNERSHIP_MISMATCH"] : [];
     if (typed.outputMode === "PUBLIC" && engine.trade.errors.includes("SOURCE_LICENSE_UNAPPROVED")) return { success: false, status: "BLOCKED", engineStatus: null, model: { ...EXPECTED_MODEL_VERSIONS, availability: "BLOCKED" }, snapshot: null, sideA: null, sideB: null, trade: null, ownership: null, warnings: [], errors: ["SOURCE_LICENSE_UNAPPROVED"], message: "Trade analysis is unavailable for public output while source licensing is under review." };
-    return { success: true, status: "OK", engineStatus: engine.trade.resultStatus, model: engine.model, snapshot: { sourceName: engine.snapshot.sourceName, snapshotDate: engine.snapshot.snapshotDate, retrievedAt: engine.snapshot.snapshotRetrievedAt, sourceLicenseStatus: engine.snapshot.sourceLicenseStatus ?? "" }, sideA: engine.sideA, sideB: engine.sideB, trade: engine.trade, ownership: typed.ownershipValidation ? ownership : null, warnings: [...new Set([...engine.trade.warnings, ...ownershipWarnings])], errors: [] };
+    return { success: true, status: "OK", engineStatus: engine.trade.resultStatus, model: engine.model, snapshot: { sourceName: engine.snapshot.sourceName, snapshotDate: engine.snapshot.snapshotDate, retrievedAt: engine.snapshot.snapshotRetrievedAt, sourceLicenseStatus: engine.snapshot.sourceLicenseStatus ?? "" }, sideA: engine.sideA, sideB: engine.sideB, trade: engine.trade, ownership: typed.ownershipValidation ? ownership : null, warnings: [...new Set([...engine.trade.warnings, ...ownershipWarnings])], errors: [], multiTeam: null };
   } catch {
     return internalError();
   }
+}
+
+function analyzeMultiTeam(rawParticipants: unknown[], rawRequest: Record<string, unknown>, dependencies: ServiceDependencies): TradeAnalysisServiceResponse {
+  const errors: string[] = [];
+  if (rawParticipants.length < 3 || rawParticipants.length > 4) errors.push("INVALID_PARTICIPANT_COUNT");
+  if (!hasOnly(rawRequest, new Set(["participants", "evaluatedAt", "leaguePhase", "outputMode"]))) errors.push("INVALID_REQUEST");
+  if (typeof rawRequest.evaluatedAt !== "string" || Number.isNaN(Date.parse(rawRequest.evaluatedAt))) errors.push("INVALID_TIMESTAMP");
+  if (!phaseValues.includes(rawRequest.leaguePhase as typeof phaseValues[number])) errors.push("MISSING_PHASE");
+  if (rawRequest.outputMode !== "INTERNAL" && rawRequest.outputMode !== "PUBLIC") errors.push("INVALID_OUTPUT_MODE");
+  const participants = rawParticipants as MultiTeamParticipantInput[];
+  const franchiseIds = participants.map((participant) => participant?.franchiseId);
+  if (franchiseIds.some((id) => typeof id !== "string" || id.length === 0) || new Set(franchiseIds).size !== franchiseIds.length) errors.push("INVALID_PARTICIPANTS");
+  const participating = new Set(franchiseIds.filter((id): id is string => typeof id === "string"));
+  const seenAssets = new Set<string>();
+  const resolved = participants.map((participant) => {
+    if (!safeObject(participant) || !hasOnly(participant, new Set(["franchiseId", "outgoingAssets"])) || !Array.isArray(participant.outgoingAssets) || participant.outgoingAssets.length === 0 || participant.outgoingAssets.length > 15) { errors.push("INVALID_PARTICIPANTS"); return { franchiseId: String(participant?.franchiseId ?? ""), sends: [], receives: [] }; }
+    const sends = participant.outgoingAssets.flatMap((outgoing) => {
+      if (!safeObject(outgoing) || !hasOnly(outgoing, new Set(["assetId", "destinationFranchiseId"])) || typeof outgoing.assetId !== "string" || typeof outgoing.destinationFranchiseId !== "string") { errors.push("INVALID_ROUTING"); return []; }
+      const asset = dependencies.catalog.byAssetId[outgoing.assetId];
+      if (!asset) errors.push("UNKNOWN_ASSET");
+      if (seenAssets.has(outgoing.assetId)) errors.push("DUPLICATE_ASSET");
+      seenAssets.add(outgoing.assetId);
+      if (outgoing.destinationFranchiseId === participant.franchiseId || !participating.has(outgoing.destinationFranchiseId)) errors.push("INVALID_DESTINATION");
+      if (asset?.ownerId !== participant.franchiseId) errors.push("OWNERSHIP_MISMATCH");
+      return asset ? [{ asset, destinationFranchiseId: outgoing.destinationFranchiseId }] : [];
+    });
+    const receives = participants.flatMap((other) => other?.outgoingAssets?.flatMap((outgoing) => outgoing?.destinationFranchiseId === participant.franchiseId ? [dependencies.catalog.byAssetId[outgoing.assetId]].filter(Boolean) : []) ?? []);
+    return { franchiseId: participant.franchiseId, sends: sends.map((item) => item.asset), receives };
+  });
+  const totalAssets = participants.reduce((sum, participant) => sum + (Array.isArray(participant?.outgoingAssets) ? participant.outgoingAssets.length : 0), 0);
+  if (totalAssets > 40) errors.push("TOO_MANY_ASSETS");
+  if (errors.length) return emptyResponse("INVALID_REQUEST", errors, { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" });
+  if (!modelMatches(dependencies)) return emptyResponse("INTERNAL_ERROR", ["MODEL_VERSION_MISMATCH"], { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" });
+  if (!snapshotMatches(dependencies.snapshot, dependencies.catalog)) return emptyResponse("INTERNAL_ERROR", [dependencies.snapshot.integrityValid ? "SNAPSHOT_NOT_FOUND" : "SNAPSHOT_INTEGRITY_FAILED"], { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" });
+  const calculated = calculateMultiTeamFairness(resolved);
+  const multiTeam = { ...calculated, warnings: [...new Set([...calculated.warnings, ...(dependencies.snapshot.sourceLicenseStatus === "APPROVED" ? [] : ["SOURCE_LICENSE_UNAPPROVED"])])] };
+  if (rawRequest.outputMode === "PUBLIC" && multiTeam.warnings.includes("SOURCE_LICENSE_UNAPPROVED")) return emptyResponse("BLOCKED", ["SOURCE_LICENSE_UNAPPROVED"], { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1", availability: "BLOCKED" });
+  return { success: true, status: "OK", engineStatus: multiTeam.status, model: { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" }, snapshot: { sourceName: dependencies.snapshot.sourceName, snapshotDate: dependencies.snapshot.date, retrievedAt: dependencies.snapshot.retrievedAt, sourceLicenseStatus: dependencies.snapshot.sourceLicenseStatus }, sideA: null, sideB: null, trade: null, ownership: null, warnings: multiTeam.warnings, errors: multiTeam.errors, multiTeam };
 }
 
 export const createTradeAnalysisService = (dependencies: ServiceDependencies) => (request: unknown) => analyzeTradeInternal(request, dependencies);

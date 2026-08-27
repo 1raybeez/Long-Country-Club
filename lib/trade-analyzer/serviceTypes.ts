@@ -1,11 +1,13 @@
 import type { CurrentAssetCatalog, CurrentTradeResult, FairnessEngineResult, LeaguePhase, OwnershipDiagnostic } from "./types";
+import type { MultiTeamParticipantInput, MultiTeamFairnessResult } from "./multiTeamTypes";
 
 export type ServiceOutputMode = "INTERNAL" | "PUBLIC";
 export type ServiceStatus = "OK" | "BLOCKED" | "INVALID_REQUEST" | "INTERNAL_ERROR";
 
 export interface TradeAnalysisServiceRequest {
-  sideA: { assetIds: string[]; ownerId?: string };
-  sideB: { assetIds: string[]; ownerId?: string };
+  sideA?: { assetIds: string[]; ownerId?: string };
+  sideB?: { assetIds: string[]; ownerId?: string };
+  participants?: MultiTeamParticipantInput[];
   evaluatedAt: string;
   leaguePhase: LeaguePhase;
   outputMode: ServiceOutputMode;
@@ -37,7 +39,7 @@ export interface TradeAnalysisServiceResponse {
   success: boolean;
   status: ServiceStatus;
   engineStatus: FairnessEngineResult["trade"]["resultStatus"] | null;
-  model: { valuationPolicyVersion: string; fairnessModelVersion: string; availability?: "BLOCKED" };
+  model: { valuationPolicyVersion: string; fairnessModelVersion: string; availability?: "BLOCKED"; multiTeamModelVersion?: string };
   snapshot: { sourceName: string; snapshotDate: string; retrievedAt: string; sourceLicenseStatus: string } | null;
   sideA: FairnessEngineResult["sideA"] | null;
   sideB: FairnessEngineResult["sideB"] | null;
@@ -46,6 +48,7 @@ export interface TradeAnalysisServiceResponse {
   warnings: string[];
   errors: string[];
   message?: string;
+  multiTeam?: MultiTeamFairnessResult | null;
 }
 
 export interface ServiceValidationResult {
