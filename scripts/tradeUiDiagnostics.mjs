@@ -8,6 +8,7 @@ const api = await readFile("app/api/trade-analyzer/analyze/route.ts", "utf8");
 const rosterImpact = await readFile("app/trade-analyzer/RosterImpactPanel.tsx", "utf8");
 const dynastyOutlook = await readFile("app/trade-analyzer/DynastyOutlookPanel.tsx", "utf8");
 const analysisDetails = await readFile("app/trade-analyzer/AnalysisDetails.tsx", "utf8");
+const verdictPanel = await readFile("app/trade-analyzer/TradeVerdictPanel.tsx", "utf8");
 const docs = await readFile("docs/trade-analyzer-ui-prototype-v1.md", "utf8");
 const multiDocs = await readFile("docs/trade-analyzer-multi-team-model-v1.md", "utf8");
 const required = (text, values, label) => values.forEach((value) => assert.ok(text.includes(value), `${label} missing ${value}`));
@@ -22,7 +23,7 @@ assert.equal(client.includes("defaultOwnerId"), false, "authenticated owner is n
 assert.equal(client.includes("Current franchise assets"), false, "shared league asset section remains");
 assert.equal(client.includes("asset.ownerId !== ownerId"), true, "league ownership enforcement present");
 required(client, ["StickyAnalyze", "IntersectionObserver", "analyzeButtonRef", "topAnalyzeVisible", "packageIds.length > 0", "otherSelected > 0", "primaryName", "secondaryName", "primaryCount", "secondaryCount", "primaryCount === 1 ? \"asset\" : \"assets\""], "sticky analyze control");
-required(client, ["resultRef", "requestAnimationFrame", "scrollIntoView", "prefers-reduced-motion", "preventScroll: true", "[result, error]", "TradeReportHeroView", "LCC Trade Analyzer", "Current Market Value Split", "Market Value Edge", "Fairness measures how closely", "consolidation effects", "Trade Summary", "Package Details", "AnalysisDetails", "DynastyOutlookPanel", "dynastyOutlook", "VALUE UNAVAILABLE", "valuationPolicyVersion", "fairnessModelVersion"], "result discovery and report hero");
+required(client, ["resultRef", "requestAnimationFrame", "scrollIntoView", "prefers-reduced-motion", "preventScroll: true", "[result, error]", "TradeReportHeroView", "LCC Trade Analyzer", "Current Market Value Split", "Market Value Edge", "Fairness measures how closely", "consolidation effects", "Trade Summary", "Package Details", "AnalysisDetails", "DynastyOutlookPanel", "TradeVerdictPanel", "contextualVerdict", "VALUE UNAVAILABLE", "valuationPolicyVersion", "fairnessModelVersion"], "result discovery and report hero");
 assert.equal(client.includes("resultRef.current"), true, "result anchor is used for discovery");
 assert.equal((client.match(/scrollIntoView/g) ?? []).length, 1, "result discovery has one scroll path");
 assert.equal(client.includes("[result, error]"), true, "result discovery responds to completed result or error state");
@@ -57,7 +58,7 @@ assert.equal(client.includes('primaryName="Package A"'), true, "sandbox sticky a
 assert.equal(client.includes("!hasResult}"), true, "sandbox sticky hides after result");
 assert.equal(client.includes("!hasResult}") && (client.match(/!hasResult/g) ?? []).length >= 2, true, "league sticky hides after result");
 required(client, ["rosterImpact", "RosterImpactPanel", "validateOwnership: mode === \"LEAGUE\""], "roster impact integration and sticky lifecycle");
-required(multi, ["participants.length < 4", "addParticipant", "Remove Participant", "destinationFranchiseId", "Choose destination", "Multi-Team Trade Fairness", "Market Value Change", "Trade Routing", "Sends Value", "Receives Value", "current market value exchanged by every participant", "Team need", "consolidation effects", "future performance", "!result", "RosterImpactPanel", "DynastyOutlookPanel", "dynastyOutlook"], "multi-team client");
+required(multi, ["participants.length < 4", "addParticipant", "Remove Participant", "destinationFranchiseId", "Choose destination", "Multi-Team Trade Fairness", "Market Value Change", "Trade Routing", "Sends Value", "Receives Value", "current market value exchanged by every participant", "Team need", "consolidation effects", "future performance", "!result", "RosterImpactPanel", "DynastyOutlookPanel", "TradeVerdictPanel", "contextualVerdict", "dynastyOutlook"], "multi-team client");
 assert.equal(client.includes("MultiTeamTradeAnalyzerClient"), true, "participant client exposes multi-team mode");
 assert.equal(multi.includes("Winner") || multi.includes("Loser") || multi.includes("recommend"), false, "multi-team UI uses neutral market language");
 assert.equal(multi.includes("received share"), false, "received share is not primary UI copy");
@@ -96,8 +97,10 @@ assert.equal(Number(formatShare(41).replace("%", "")) + Number(formatShare(59).r
 required(api, ["outputMode", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_PRIVATE_OUTPUT_APPROVED"], "API");
 required(api, ["One or more selected assets are no longer available."], "safe API error detail");
 required(rosterImpact, ["Roster Impact", "participant.status", "market fairness", "Draft picks have no immediate lineup impact"], "roster-impact fallback UI");
-required(analysisDetails, ["Analysis Details", "aria-expanded", "setExpanded", "Data Snapshot", "Evidence Quality", "Result Status", "Valuation Model", "Fairness Model"], "analysis details disclosure");
+required(analysisDetails, ["Analysis Details", "aria-expanded", "setExpanded", "Data Snapshot", "Evidence Quality", "Result Status", "Valuation Model", "Fairness Model", "Trade Verdict Model"], "analysis details disclosure");
 required(dynastyOutlook, ["Dynasty Outlook", "How this trade fits each franchise", "Trade Fit", "Confidence", "Direction", "Career Window", "Future Capital", "Asset Profile", "Win-now", "DYNASTY OUTLOOK UNAVAILABLE", "Detailed dynasty evidence is unavailable", "does not declare a winner"], "dynasty outlook");
+required(verdictPanel, ["Trade Verdict", "tradeType", "verdict", "explanation", "tradeOffs", "evidenceStatus"], "contextual verdict");
+assert.equal(verdictPanel.includes("winner") || verdictPanel.includes("accept") || verdictPanel.includes("reject"), false, "verdict UI avoids recommendation language");
 assert.equal(dynastyOutlook.includes("participant.presentation;") && dynastyOutlook.includes("if (!evidence)"), true, "missing presentation has an explicit safe branch");
 assert.equal(client.includes('mode === "LEAGUE" ? result.dynastyOutlook : null'), false, "sandbox does not receive dynasty output");
 assert.equal(client.includes("Source approval is still pending"), false, "governance warning is not ordinary owner-facing copy");

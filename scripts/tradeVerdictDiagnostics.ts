@@ -1,0 +1,32 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { buildCurrentAssetCatalog } from "../lib/trade-analyzer/currentValuationAdapter.ts";
+import { analyzeTradeInternal } from "../lib/trade-analyzer/tradeAnalysisService.ts";
+import { calculateTradeVerdict } from "../lib/trade-analyzer/tradeVerdictEngine.ts";
+import type { DynastyParticipant } from "../lib/trade-analyzer/dynastyDirectionTypes.ts";
+import type { RosterImpactParticipant } from "../lib/trade-analyzer/rosterImpactTypes.ts";
+
+const read = async (file: string) => JSON.parse(await readFile(file, "utf8"));
+const profile = (direction: DynastyParticipant["before"]["direction"]) => ({ direction, confidence: "HIGH" as const, immediateStrength: { value: 100, available: true, detail: "" }, rosterStrengthDimension: { value: 100, available: true, detail: "" }, ageCareerWindow: { value: 27, available: true, detail: "" }, futureCapital: { value: 3000, available: true, detail: "" }, assetDistribution: { value: .5, available: true, detail: "" }, rosterValue: 5000, starterAge: 27, youngerCoreShare: .5, veteranCoreShare: .2, futurePickCount: 2, futurePickValue: 3000, warnings: [] });
+const dynasty = (direction: DynastyParticipant["before"]["direction"], age: DynastyParticipant["changes"]["age"], future: DynastyParticipant["changes"]["futureCapital"], fit: DynastyParticipant["tradeFit"]): DynastyParticipant => ({ franchiseId: direction, franchiseName: direction, before: profile(direction), after: profile(direction), directionChanged: false, tradeFit: fit, fitReasons: ["Deterministic test evidence."], changes: { rosterStrength: "UNCHANGED", lineupStrength: "UNCHANGED", age, futureCapital: future, rosterValue: future === "INCREASED" ? "INCREASED" : future === "DECREASED" ? "DECREASED" : "UNCHANGED" }, status: "COMPLETE", warnings: [] });
+const roster = (lineup: number): RosterImpactParticipant => ({ franchiseId: "team", franchiseName: "Team", before: {} as RosterImpactParticipant["before"], after: {} as RosterImpactParticipant["after"], delta: { rosterStrength: 0, expectedLineupStrength: lineup, projectedWeeklyPoints: lineup }, changes: { startersAdded: [], startersRemoved: [], lineupSlotChanges: [], positionalDepthChanges: [] }, status: "COMPLETE", warnings: [] });
+const one = (name: string, net: number, direction: DynastyParticipant["before"]["direction"], age: DynastyParticipant["changes"]["age"], future: DynastyParticipant["changes"]["futureCapital"], fit: DynastyParticipant["tradeFit"], lineup: number) => calculateTradeVerdict([{ franchiseId: name, franchiseName: name, market: { netValueChange: net, fairnessBand: "FAIR" }, rosterImpact: roster(lineup), dynasty: dynasty(direction, age, future, fit) }]).participants[0];
+assert.equal(one("contender-now", -300, "CONTENDER", "OLDER", "DECREASED", "FIT", 5).tradeType, "WIN-NOW MOVE");
+assert.equal(one("contender-value", 300, "CONTENDER", "YOUNGER", "UNCHANGED", "MIXED", -20).verdict, "QUESTIONABLE FIT");
+assert.equal(one("rebuild", -500, "REBUILDING", "YOUNGER", "INCREASED", "STRONG FIT", -12).verdict, "GOOD STRATEGIC FIT");
+assert.equal(one("balanced", 0, "BALANCED", "UNCHANGED", "UNCHANGED", "MIXED", 0).tradeType, "BALANCED MOVE");
+const incomplete = calculateTradeVerdict([{ franchiseId: "incomplete", franchiseName: "Incomplete", market: { netValueChange: 0, fairnessBand: "VERY EVEN" }, rosterImpact: null, dynasty: null }]).participants[0];
+assert.equal(incomplete.verdict, "INSUFFICIENT EVIDENCE");
+const repeat = one("deterministic", 0, "BALANCED", "UNCHANGED", "UNCHANGED", "MIXED", 0);
+assert.deepEqual(repeat, one("deterministic", 0, "BALANCED", "UNCHANGED", "UNCHANGED", "MIXED", 0));
+
+const root = process.cwd();
+const snapshot = await read(`${root}/data/trade-analyzer/valuations/fantasycalc/normalized/2026-08-26.json`);
+const manifest = await read(`${root}/data/trade-analyzer/valuations/fantasycalc/manifest.json`);
+const catalog = buildCurrentAssetCatalog({ snapshot, manifest, roster: await read(`${root}/data/current/rosters/2026.json`), playerCatalog: await read(`${root}/data/history/matchups/sleeper/players.json`), futurePicks: await read(`${root}/data/current/drafts/future-picks.json`), integrityVerified: true });
+const find = (name: string) => { const value = catalog.assets.find((asset) => asset.displayName === name); assert(value); return value; };
+const known = analyzeTradeInternal({ sideA: { assetIds: [find("Chuba Hubbard").assetId, find("Davante Adams").assetId], ownerId: "bill-gross" }, sideB: { assetIds: [find("Travis Etienne").assetId, find("Cole Kmet").assetId], ownerId: "rob-jenkins" }, evaluatedAt: "2026-08-26T21:48:36.707Z", leaguePhase: "DRAFT_WINDOW", outputMode: "INTERNAL" }, { catalog, snapshot: { date: "2026-08-26", sourceName: "FantasyCalc", sourceUrl: snapshot.sourceUrl, retrievedAt: snapshot.retrievalTimestamp, sourceLicenseStatus: "COMMISSIONER_REVIEW_REQUIRED", integrityValid: true }, modelVersions: { valuationPolicyVersion: "valuation-v1", fairnessModelVersion: "fairness-v1" } });
+assert(known.success && known.contextualVerdict?.participants.length === 2);
+assert(known.contextualVerdict.participants.every((participant) => !/winner|loser|accept|reject|score/i.test(JSON.stringify(participant))));
+assert.equal(known.contextualVerdict.modelVersion, "trade-verdict-v1");
+console.log(JSON.stringify({ status: "PASS", modelVersion: "trade-verdict-v1", syntheticCases: 5, knownQa: known.contextualVerdict.participants.map((participant) => ({ franchise: participant.franchiseName, verdict: participant.verdict, tradeType: participant.tradeType, tradeOffs: participant.tradeOffs })), noWinnerLanguage: true, noRecommendationLanguage: true, noMasterScore: true, noWrites: true }, null, 2));

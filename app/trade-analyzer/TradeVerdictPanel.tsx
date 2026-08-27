@@ -1,0 +1,8 @@
+import type { TradeVerdictResult, TradeVerdictParticipant } from "../../lib/trade-analyzer/tradeVerdictTypes";
+
+export default function TradeVerdictPanel({ result }: { result: TradeVerdictResult | null | undefined }) {
+  if (!result) return null;
+  return <section className="lcc2-card lcc2-card--raised p-5 sm:p-6" aria-labelledby="trade-verdict-heading"><p className="lcc2-label">Trade Verdict</p><h2 id="trade-verdict-heading" className="mt-1 font-ui text-2xl font-black text-[var(--lcc-color-text)]">{result.summary}</h2><div className="mt-5 grid gap-4 md:grid-cols-2">{result.participants.map((participant) => <VerdictCard key={participant.franchiseId} participant={participant} />)}</div></section>;
+}
+
+function VerdictCard({ participant }: { participant: TradeVerdictParticipant }) { return <article className="rounded-lg border border-[var(--lcc-color-border)] p-4"><h3 className="font-ui text-lg font-black text-[var(--lcc-color-text)]">{participant.franchiseName}</h3><div className="mt-3 flex flex-wrap gap-2"><span className="lcc2-badge lcc2-badge--info">{participant.tradeType}</span><span className="lcc2-label">{participant.evidenceStatus} EVIDENCE</span></div><p className="mt-3 font-ui text-lg font-black text-[var(--lcc-brand-primary)]">{participant.verdict}</p><p className="lcc2-body mt-2">{participant.explanation}</p><dl className="mt-4 grid gap-2 sm:grid-cols-2">{Object.entries(participant.tradeOffs).map(([label, value]) => <div key={label}><dt className="lcc2-label">{label.replace(/([A-Z])/g, " $1")}</dt><dd className="mt-1 text-sm font-bold uppercase text-[var(--lcc-color-text)]">{value}</dd></div>)}</dl></article>; }

@@ -41,6 +41,7 @@
     "trade-multi:diagnostics": "node --experimental-strip-types scripts/tradeMultiDiagnostics.mjs",
     "trade-roster-impact:diagnostics": "node --experimental-strip-types scripts/tradeRosterImpactDiagnostics.ts",
     "trade-dynasty-direction:diagnostics": "node --experimental-strip-types scripts/tradeDynastyDirectionDiagnostics.ts",
+    "trade-verdict:diagnostics": "node --experimental-strip-types scripts/tradeVerdictDiagnostics.ts",
     "draft-records:diagnostics": "node scripts/draftRecordsDiagnostics.mjs",
     "rookie-recap:diagnostics": "node scripts/rookieRecapDiagnostics.mjs",
     "draft-intelligence:diagnostics": "node scripts/draftIntelligenceDiagnostics.mjs",

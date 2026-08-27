@@ -8,9 +8,10 @@ type Props = {
   resultStatus: string;
   valuationModel: string;
   fairnessModel: string;
+  verdictModel?: string;
 };
 
-export default function AnalysisDetails({ snapshotDate, evidence, resultStatus, valuationModel, fairnessModel }: Props) {
+export default function AnalysisDetails({ snapshotDate, evidence, resultStatus, valuationModel, fairnessModel, verdictModel }: Props) {
   const [expanded, setExpanded] = useState(false);
   return <section className="border-t border-[var(--lcc-color-border)] pt-3" aria-label="Analysis details">
     <button type="button" aria-expanded={expanded} onClick={() => setExpanded((value) => !value)} className="flex min-h-11 w-full items-center justify-between gap-3 rounded-lg px-2 py-2 text-left outline-none transition hover:bg-[var(--lcc-color-surface-muted)] focus-visible:ring-2 focus-visible:ring-[var(--lcc-brand-primary)]">
@@ -23,6 +24,7 @@ export default function AnalysisDetails({ snapshotDate, evidence, resultStatus, 
       <Field label="Result Status" value={resultStatus} />
       <Field label="Valuation Model" value={valuationModel} />
       <Field label="Fairness Model" value={fairnessModel} />
+      {verdictModel ? <Field label="Trade Verdict Model" value={verdictModel} /> : null}
     </dl> : null}
   </section>;
 }
