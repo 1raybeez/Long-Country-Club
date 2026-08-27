@@ -51,11 +51,11 @@ function evaluate(snapshot: HistoricalRosterSnapshot) {
   const strength = getRosterStrengthForRoster({ ownerId: snapshot.ownerId ?? "hypothetical", rosterSnapshot: snapshot });
   const projection = getProjectedTeamForLineup(lineup);
   const rosterStrength = round(strength.positions.reduce((sum, group) => sum + group.topNBaselineAverageTotal, 0));
-  return { lineup, strength, projectedPoints: projection.complete ? projection.projectedScore : null, rosterStrength };
+  return { snapshot, lineup, strength, projectedPoints: projection.complete ? projection.projectedScore : null, rosterStrength };
 }
 
 function side(value: ReturnType<typeof evaluate>): RosterImpactSide {
-  return { rosterStrength: value.rosterStrength, expectedLineupStrength: value.projectedPoints, expectedLineup: value.lineup.selectedPlayers.map((player) => lineupPlayer(player.playerId, player.metadata?.name ?? `Player ${player.playerId}`, player.position, slotFor(value.lineup, player.playerId))), depth: Object.fromEntries(value.strength.positions.map((group) => [group.position, group.playerCount])), projectedWeeklyPoints: value.projectedPoints };
+  return { rosterPlayerIds: [...value.snapshot.playerIds], rosterStrength: value.rosterStrength, expectedLineupStrength: value.projectedPoints, expectedLineup: value.lineup.selectedPlayers.map((player) => lineupPlayer(player.playerId, player.metadata?.name ?? `Player ${player.playerId}`, player.position, slotFor(value.lineup, player.playerId))), depth: Object.fromEntries(value.strength.positions.map((group) => [group.position, group.playerCount])), projectedWeeklyPoints: value.projectedPoints };
 }
 
 function transformSnapshot(snapshot: HistoricalRosterSnapshot, sends: string[], receives: string[]): HistoricalRosterSnapshot {
@@ -86,4 +86,4 @@ function isRosterAsset(asset: CurrentCatalogAsset) { return PLAYER_TYPES.has(ass
 function slotFor(lineup: ExpectedLineup, playerId: string) { return lineup.slots.find((slot) => slot.player?.playerId === playerId)?.slot ?? ""; }
 function lineupPlayer(playerId: string, name: string, position: string | null, slot: string) { return { playerId, name, position, slot }; }
 function incomplete(input: RosterImpactParticipantInput, warnings: string[]) { return { franchiseId: input.franchiseId, franchiseName: input.franchiseName, before: emptySide(), after: emptySide(), delta: { rosterStrength: null, expectedLineupStrength: null, projectedWeeklyPoints: null }, changes: { startersAdded: [], startersRemoved: [], lineupSlotChanges: [], positionalDepthChanges: [] }, status: "INCOMPLETE" as const, warnings }; }
-function emptySide(): RosterImpactSide { return { rosterStrength: null, expectedLineupStrength: null, expectedLineup: [], depth: {}, projectedWeeklyPoints: null }; }
+function emptySide(): RosterImpactSide { return { rosterPlayerIds: [], rosterStrength: null, expectedLineupStrength: null, expectedLineup: [], depth: {}, projectedWeeklyPoints: null }; }

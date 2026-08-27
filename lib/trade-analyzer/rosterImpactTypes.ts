@@ -29,6 +29,7 @@ export type RosterImpactPosition = {
 };
 
 export type RosterImpactSide = {
+  rosterPlayerIds: string[];
   rosterStrength: number | null;
   expectedLineupStrength: number | null;
   expectedLineup: RosterImpactLineupPlayer[];
