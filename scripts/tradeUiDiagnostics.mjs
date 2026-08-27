@@ -16,10 +16,16 @@ assert.equal(client.includes("setTeamB(\"\")"), true, "participant two starts un
 assert.equal(client.includes("defaultOwnerId"), false, "authenticated owner is not preselected");
 assert.equal(client.includes("Current franchise assets"), false, "shared league asset section remains");
 assert.equal(client.includes("asset.ownerId !== ownerId"), true, "league ownership enforcement present");
-required(client, ["StickyAnalyze", "IntersectionObserver", "top?.click()", "!hasResult && !topVisible", "packageIds.length > 0", "otherSelected > 0", "primaryName", "secondaryName", "primaryCount", "secondaryCount", "primaryCount === 1 ? \"asset\" : \"assets\""], "sticky analyze control");
+required(client, ["StickyAnalyze", "IntersectionObserver", "analyzeButtonRef", "topAnalyzeVisible", "packageIds.length > 0", "otherSelected > 0", "primaryName", "secondaryName", "primaryCount", "secondaryCount", "primaryCount === 1 ? \"asset\" : \"assets\""], "sticky analyze control");
 assert.equal(client.includes("side === \"A\" && packageIds.length > 0"), true, "sticky control is league participant one scoped");
 assert.equal(client.includes("fixed inset-x-3 bottom-3"), true, "sticky control is fixed to the viewport bottom");
 assert.equal(client.includes("env(safe-area-inset-bottom)"), true, "sticky control accounts for mobile safe area");
+assert.equal(client.includes("onClick={analyze}"), true, "top analyze button uses analyze handler");
+assert.equal(client.includes("onAnalyze={analyze}"), true, "sticky receives analyze handler");
+assert.equal(client.includes("onClick={onAnalyze}"), true, "sticky uses received analyze handler");
+assert.equal(client.includes("querySelector"), false, "sticky implementation does not query the DOM");
+assert.equal(client.includes(".click()"), false, "sticky implementation does not programmatically click");
+assert.equal(client.includes("dispatchEvent"), false, "sticky implementation does not dispatch synthetic events");
 assert.equal(client.includes("marketValue"), true, "existing market values remain available outside sticky control");
 assert.equal((client.match(/fetch\(\"\/api\/trade-analyzer\/analyze/g) ?? []).length, 1, "sticky control does not add a second analyze fetch");
 assert.equal(client.includes("aria-label=\"Analyze selected trade\""), true, "sticky control is labeled for assistive technology");
