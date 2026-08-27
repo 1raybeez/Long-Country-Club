@@ -24,6 +24,11 @@ for (const count of [3, 4]) {
 }
 const route = await readFile("lib/routeConfig.ts", "utf8");
 const shell = await readFile("components/league/LeagueInfoShell.tsx", "utf8");
+const sandboxUi = await readFile("app/trade-analyzer/SandboxTradeBuilder.tsx", "utf8");
 assert(route.includes('id: "trade-analyzer"') && route.includes('/league-info/trade-analyzer'));
 assert(shell.includes("LCC_VISIBLE_LEAGUE_INFO_NAV_ITEMS") && shell.includes("getLccLeagueInfoActiveTab"));
+assert(sandboxUi.includes("const teamLetter") && sandboxUi.includes("Math.min(Math.max(index, 0), 3)"));
+assert(sandboxUi.includes("participants.length < 4") && sandboxUi.includes("participants.slice(2).map"));
+assert(sandboxUi.includes("Add Team ${teamLetter(participants.length)}") && sandboxUi.includes("Remove Team ${teamLetter(index + 2)}"));
+assert(sandboxUi.includes("removeTeam(index + 2)") && !sandboxUi.includes("Team E"));
 console.log(JSON.stringify({ status: "PASS", leagueInfoTab: true, canonicalRoute: "/league-info/trade-analyzer", compatibilityRoute: "/trade-analyzer", sandboxTeams: ["Team A", "Team B", "Team C", "Team D"], sandboxTwoTeam: "fairness-v1", sandboxMultiTeam: ["fairness-multi-v1", "fairness-multi-v1"], noContextualOutputs: true, genericPickAdapter: true, noWrites: true }, null, 2));
