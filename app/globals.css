@@ -357,6 +357,20 @@ body {
 
   .lcc-site-header__bar {
     min-height: 5rem;
+    display: contents;
+  }
+
+  .lcc-site-brand { order: 1; }
+
+  .lcc-primary-nav {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .lcc-account {
+    order: 3;
+    border-left: 1px solid var(--lcc-color-border-strong);
+    padding-left: 0.9rem;
   }
 
   .lcc-site-brand__mark {
