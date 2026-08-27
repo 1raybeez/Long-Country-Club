@@ -9,6 +9,9 @@ export type HistoricalPlayerMetadata = {
   readonly teamName: string | null;
   readonly isDefense: boolean;
   readonly imageUrl: string | null;
+  readonly age?: number | null;
+  readonly yearsExperience?: number | null;
+  readonly birthDate?: string | null;
 };
 
 type SleeperPlayerRecord = {
@@ -19,6 +22,9 @@ type SleeperPlayerRecord = {
   position?: string | null;
   fantasy_positions?: readonly string[] | null;
   team?: string | null;
+  age?: number | null;
+  years_exp?: number | null;
+  birth_date?: string | null;
 };
 
 type SleeperPlayerCatalog = Record<string, SleeperPlayerRecord>;
@@ -135,6 +141,9 @@ export function getPlayerById(playerId: string): HistoricalPlayerMetadata | null
     imageUrl: isDefense && team
       ? `https://sleepercdn.com/images/team_logos/nfl/${team.toLowerCase()}.png`
       : `https://sleepercdn.com/content/nfl/players/${id}.jpg`,
+    age: typeof player?.age === "number" ? player.age : null,
+    yearsExperience: typeof player?.years_exp === "number" ? player.years_exp : null,
+    birthDate: player?.birth_date ?? null,
   };
 }
 
@@ -148,6 +157,9 @@ export function resolvePlayer(playerId: string): HistoricalPlayerMetadata {
       teamName: null,
       isDefense: false,
       imageUrl: null,
+      age: null,
+      yearsExperience: null,
+      birthDate: null,
     }
   );
 }

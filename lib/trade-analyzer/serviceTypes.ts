@@ -1,6 +1,7 @@
 import type { CurrentAssetCatalog, CurrentTradeResult, FairnessEngineResult, LeaguePhase, OwnershipDiagnostic } from "./types";
 import type { MultiTeamParticipantInput, MultiTeamFairnessResult } from "./multiTeamTypes";
 import type { RosterImpactResult } from "./rosterImpactTypes";
+import type { DynastyDirectionResult } from "./dynastyDirectionTypes";
 
 export type ServiceOutputMode = "INTERNAL" | "PUBLIC";
 export type ServiceStatus = "OK" | "BLOCKED" | "INVALID_REQUEST" | "INTERNAL_ERROR";
@@ -51,6 +52,7 @@ export interface TradeAnalysisServiceResponse {
   message?: string;
   multiTeam?: MultiTeamFairnessResult | null;
   rosterImpact?: RosterImpactResult | null;
+  dynastyOutlook?: DynastyDirectionResult | null;
 }
 
 export interface ServiceValidationResult {
