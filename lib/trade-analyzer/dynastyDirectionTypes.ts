@@ -34,7 +34,7 @@ export type DynastyParticipant = {
   changes: { rosterStrength: RosterImpactChange | "UNAVAILABLE"; lineupStrength: RosterImpactChange | "UNAVAILABLE"; age: "YOUNGER" | "OLDER" | "UNCHANGED" | "UNAVAILABLE"; futureCapital: "INCREASED" | "DECREASED" | "UNCHANGED" | "UNAVAILABLE"; rosterValue: "INCREASED" | "DECREASED" | "UNCHANGED" | "UNAVAILABLE" };
   status: "COMPLETE" | "PARTIAL" | "INCOMPLETE";
   warnings: string[];
-  presentation: DynastyPresentation;
+  presentation?: DynastyPresentation;
 };
 export type DynastyPresentation = {
   winNow: string;

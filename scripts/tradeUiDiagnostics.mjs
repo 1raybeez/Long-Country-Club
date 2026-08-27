@@ -97,7 +97,8 @@ required(api, ["outputMode", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_P
 required(api, ["One or more selected assets are no longer available."], "safe API error detail");
 required(rosterImpact, ["Roster Impact", "participant.status", "market fairness", "Draft picks have no immediate lineup impact"], "roster-impact fallback UI");
 required(analysisDetails, ["Analysis Details", "aria-expanded", "setExpanded", "Data Snapshot", "Evidence Quality", "Result Status", "Valuation Model", "Fairness Model"], "analysis details disclosure");
-required(dynastyOutlook, ["Dynasty Outlook", "How this trade fits each franchise", "Trade Fit", "Confidence", "Direction", "Career Window", "Future Capital", "Asset Profile", "Win-now", "does not declare a winner"], "dynasty outlook");
+required(dynastyOutlook, ["Dynasty Outlook", "How this trade fits each franchise", "Trade Fit", "Confidence", "Direction", "Career Window", "Future Capital", "Asset Profile", "Win-now", "DYNASTY OUTLOOK UNAVAILABLE", "Detailed dynasty evidence is unavailable", "does not declare a winner"], "dynasty outlook");
+assert.equal(dynastyOutlook.includes("participant.presentation;") && dynastyOutlook.includes("if (!evidence)"), true, "missing presentation has an explicit safe branch");
 assert.equal(client.includes('mode === "LEAGUE" ? result.dynastyOutlook : null'), false, "sandbox does not receive dynasty output");
 assert.equal(client.includes("Source approval is still pending"), false, "governance warning is not ordinary owner-facing copy");
 required(docs, ["/trade-analyzer", "feature gate", "private-output", "Suppressed", "mobile", "deferred"], "documentation");

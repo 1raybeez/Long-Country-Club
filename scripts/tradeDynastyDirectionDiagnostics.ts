@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { buildCurrentAssetCatalog } from "../lib/trade-analyzer/currentValuationAdapter.ts";
-import { calculateDynastyDirection, classifyDynastyDirection } from "../lib/trade-analyzer/dynastyDirectionEngine.ts";
+import { calculateDynastyDirection, classifyDynastyDirection, ensureDynastyPresentation } from "../lib/trade-analyzer/dynastyDirectionEngine.ts";
 import { analyzeTradeInternal } from "../lib/trade-analyzer/tradeAnalysisService.ts";
 import type { CurrentCatalogAsset } from "../lib/trade-analyzer/types.ts";
 
@@ -38,8 +38,8 @@ const chicagoTrade = calculateDynastyDirection([input("bill-gross", [asset("Chub
 assert.equal(chicagoTrade.participants.length, 2);
 assert(chicagoTrade.participants.every((participant) => participant.before.direction === "CONTENDER"));
 assert(chicagoTrade.participants.every((participant) => participant.before.confidence === "HIGH"));
-assert(chicagoTrade.participants.every((participant) => participant.presentation.careerWindow.label !== "Unavailable"));
-assert(chicagoTrade.participants.every((participant) => participant.presentation.futureCapital.label === "No change"));
+assert(chicagoTrade.participants.every((participant) => participant.presentation?.careerWindow.label !== "Unavailable"));
+assert(chicagoTrade.participants.every((participant) => participant.presentation?.futureCapital.label === "No change"));
 
 const youthVeteran = calculateDynastyDirection([input(owners[0], [asset("Joe Fagnano")], [asset("Josh Allen")])]);
 assert(youthVeteran.participants[0].after.ageCareerWindow.available || youthVeteran.participants[0].warnings.includes("AGE_DATA_UNAVAILABLE"));
@@ -47,6 +47,8 @@ const four = calculateDynastyDirection(owners.slice(0, 4).map((ownerId: string) 
 assert.equal(four.participants.length, 4);
 const unavailable = calculateDynastyDirection([input("missing-owner", [], [])]);
 assert.equal(unavailable.participants[0].status, "INCOMPLETE");
+const missingPresentation = ensureDynastyPresentation({ ...twoTeam, participants: twoTeam.participants.map((participant) => ({ ...participant, presentation: undefined })) });
+assert(missingPresentation.participants.every((participant) => participant.presentation?.fitExplanation));
 
 const direct = analyzeTradeInternal({ sideA: { assetIds: [gibbs.assetId], ownerId: owners[0] }, sideB: { assetIds: [bijan.assetId], ownerId: owners[1] }, evaluatedAt: "2026-08-26T21:48:36.707Z", leaguePhase: "DRAFT_WINDOW", outputMode: "INTERNAL" }, dependencies);
 assert(direct.success && direct.dynastyOutlook?.participants.length === 2);
