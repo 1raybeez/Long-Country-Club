@@ -1,0 +1,18 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+
+const page = await readFile("app/trade-analyzer/page.tsx", "utf8");
+const client = await readFile("app/trade-analyzer/TradeAnalyzerClient.tsx", "utf8");
+const api = await readFile("app/api/trade-analyzer/analyze/route.ts", "utf8");
+const docs = await readFile("docs/trade-analyzer-ui-prototype-v1.md", "utf8");
+const required = (text, values, label) => values.forEach((value) => assert.ok(text.includes(value), `${label} missing ${value}`));
+required(page, ["getCurrentMemberSession", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_PRIVATE_OUTPUT_APPROVED", "TradeAnalyzerClient"], "page");
+required(client, ["sideA: { assetIds: sideA }", "sideB: { assetIds: sideB }", "/api/trade-analyzer/analyze", "< 15", "Swap Sides", "Reset Trade", "Fairness unavailable", "Provisional"], "client");
+assert.equal(client.includes("fairnessEngine"), false, "client imports fairness engine");
+assert.equal(client.includes("currentValuationAdapter"), false, "client imports valuation adapter");
+assert.equal(client.includes("tradeAnalysisService"), false, "client imports internal service");
+assert.equal(client.includes("Save Trade"), false, "client exposes save control");
+assert.equal(client.includes("Share Trade"), false, "client exposes share control");
+required(api, ["outputMode", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_PRIVATE_OUTPUT_APPROVED"], "API");
+required(docs, ["/trade-analyzer", "feature gate", "private-output", "Suppressed", "mobile", "deferred"], "documentation");
+console.log("TRADE_UI_DIAGNOSTICS_PASS");

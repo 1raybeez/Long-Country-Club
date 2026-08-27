@@ -37,6 +37,7 @@
     "trade-service:diagnostics": "node --experimental-strip-types scripts/tradeServiceDiagnostics.ts",
     "trade-api-security:diagnostics": "node --experimental-strip-types scripts/tradeApiSecurityDiagnostics.ts",
     "trade-api:diagnostics": "node --experimental-strip-types scripts/tradeApiDiagnostics.ts",
+    "trade-ui:diagnostics": "node scripts/tradeUiDiagnostics.mjs",
     "draft-records:diagnostics": "node scripts/draftRecordsDiagnostics.mjs",
     "rookie-recap:diagnostics": "node scripts/rookieRecapDiagnostics.mjs",
     "draft-intelligence:diagnostics": "node scripts/draftIntelligenceDiagnostics.mjs",
