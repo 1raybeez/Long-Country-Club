@@ -42,9 +42,13 @@ assert.equal(client.includes("border-[var(--lcc-brand-primary)]"), true, "select
 assert.equal(client.includes("action={selected.has(asset.assetId) ? \"Remove\" : \"Select\"}"), true, "selected roster rows remove directly");
 assert.equal(client.includes("asset.assetType === \"PICK\" ? \"Pick\""), true, "pick rows avoid redundant draft-capital text");
 assert.equal(client.includes("item.marketShare.display * 100"), false, "market share is not multiplied twice");
-required(multi, ["participants.length < 4", "addParticipant", "Remove Participant", "destinationFranchiseId", "Choose destination", "Multi-Team Trade Fairness", "Market Value Change", "Trade Routing Summary"], "multi-team client");
+required(multi, ["participants.length < 4", "addParticipant", "Remove Participant", "destinationFranchiseId", "Choose destination", "Multi-Team Trade Fairness", "Market Value Change", "Trade Routing", "Sends Value", "Receives Value", "current market value exchanged by every participant", "Team need", "consolidation effects", "future performance"], "multi-team client");
 assert.equal(client.includes("MultiTeamTradeAnalyzerClient"), true, "participant client exposes multi-team mode");
 assert.equal(multi.includes("Winner") || multi.includes("Loser") || multi.includes("recommend"), false, "multi-team UI uses neutral market language");
+assert.equal(multi.includes("received share"), false, "received share is not primary UI copy");
+required(multi, ["Sends", "Receives", "net gain", "net loss", "→", "←", "sent by", "received by", "Market Value Change is the difference"], "multi-team result interpretation");
+assert.equal(multi.includes("fairnessScore.toFixed"), true, "multi-team score is rendered from API result");
+assert.equal(multi.includes("calculateMultiTeamFairness"), false, "multi-team client does not calculate fairness");
 assert.equal(multi.includes("fetch(\"/api/trade-analyzer/analyze"), true, "multi-team UI uses the existing analysis endpoint");
 assert.equal(client.includes("Participant 3"), true, "multi-team participant entry exposed");
 assert.equal(client.includes("Random"), false, "random trade control exposed");
