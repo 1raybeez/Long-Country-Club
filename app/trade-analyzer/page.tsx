@@ -50,6 +50,7 @@ export default async function TradeAnalyzerPage() {
       nflTeam: playerImages.get(asset.assetId)?.teamName ?? undefined,
       rosterStatus: playerImages.get(asset.assetId)?.status,
     }));
+    const sandboxCatalog: TradeAnalyzerCatalogAsset[] = buildSandboxCatalog(catalog);
     const teams = ACTIVE_LCC_OWNERS.map((owner) => ({
       ownerId: owner.id,
       teamName: getOwnerById(owner.id)?.teamName ?? owner.displayName,
@@ -57,8 +58,19 @@ export default async function TradeAnalyzerPage() {
       imageUrl: getOwnerImagePath(owner.id),
       draftCapital: getWarRoomDraftCapital(owner.id)?.picks ?? [],
     }));
-    return <TradeAnalyzerParticipantClient catalog={catalog} teams={teams} snapshotDate={runtime.snapshot.date} />;
+    return <TradeAnalyzerParticipantClient catalog={catalog} sandboxCatalog={sandboxCatalog} teams={teams} snapshotDate={runtime.snapshot.date} />;
   }
+}
+
+function buildSandboxCatalog(catalog: TradeAnalyzerCatalogAsset[]): TradeAnalyzerCatalogAsset[] {
+  const players = catalog.filter((asset) => asset.assetType !== "PICK").map((asset) => ({ ...asset, ownerId: undefined, ownerName: undefined }));
+  const genericPicks = new Map<string, TradeAnalyzerCatalogAsset>();
+  for (const asset of catalog) {
+    if (asset.assetType !== "PICK" || asset.pickKind !== "GENERIC_ROUND" || asset.season === undefined || asset.round === undefined || genericPicks.has(`${asset.season}-${asset.round}`)) continue;
+    const suffix = asset.round === 1 ? "st" : asset.round === 2 ? "nd" : asset.round === 3 ? "rd" : "th";
+    genericPicks.set(`${asset.season}-${asset.round}`, { ...asset, assetId: `sandbox-pick-${asset.season}-${asset.round}`, displayName: `${asset.season} ${asset.round}${suffix}`, ownerId: undefined, ownerName: undefined, slot: undefined, pickKind: "GENERIC_ROUND" });
+  }
+  return [...players, ...genericPicks.values()];
 }
 
 function Unavailable({ reason }: { reason: string }) {

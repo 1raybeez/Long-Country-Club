@@ -9,6 +9,7 @@ const rosterImpact = await readFile("app/trade-analyzer/RosterImpactPanel.tsx", 
 const dynastyOutlook = await readFile("app/trade-analyzer/DynastyOutlookPanel.tsx", "utf8");
 const analysisDetails = await readFile("app/trade-analyzer/AnalysisDetails.tsx", "utf8");
 const verdictPanel = await readFile("app/trade-analyzer/TradeVerdictPanel.tsx", "utf8");
+const sandbox = await readFile("app/trade-analyzer/SandboxTradeBuilder.tsx", "utf8");
 const docs = await readFile("docs/trade-analyzer-ui-prototype-v1.md", "utf8");
 const multiDocs = await readFile("docs/trade-analyzer-multi-team-model-v1.md", "utf8");
 const required = (text, values, label) => values.forEach((value) => assert.ok(text.includes(value), `${label} missing ${value}`));
@@ -47,14 +48,14 @@ assert.equal(client.includes("action={selected.has(asset.assetId) ? \"Remove\" :
 assert.equal(client.includes("asset.assetType === \"PICK\" ? \"Pick\""), true, "pick rows avoid redundant draft-capital text");
 assert.equal(client.includes("item.marketShare.display * 100"), false, "market share is not multiplied twice");
 assert.equal(client.includes('mode === "LEAGUE" && participantCount === 2'), true, "participant control is league-only");
-assert.equal(client.includes(': ["Package A", "Package B"]'), true, "sandbox package terminology");
+assert.equal(client.includes(': ["Team A", "Team B"]'), true, "sandbox participant terminology");
 required(client, ["Search roster and picks", "Search by player, pick, or team", "SandboxAssetRow", "imageUrl", "nflTeam", "rosterStatus", "Add A", "Add B", "Remove A", "Remove B", "PackageSummary", "packageA={packageA}", "packageB={packageB}", "sandboxMatches", "discoveryActive", "slice(0, 25)", "max-h-[34rem]", "Showing first 25 results. Refine your search.", "Search for a player or choose a position to browse available assets.", "pickYear", "All Years"], "sandbox asset picker");
 assert.equal(client.includes("discoveryActive ? <>") || client.includes("discoveryActive ?"), true, "blank sandbox does not render catalog");
 assert.equal(client.includes("resultCount > 25"), true, "sandbox result cap is disclosed");
 assert.equal(client.includes("catalog={catalog} onRemove"), true, "sandbox summaries use full catalog");
 assert.equal(client.includes("disabled={selected && selectedSide !== \"A\"}"), true, "sandbox duplicate prevention");
 assert.equal(client.includes("selected && asset.marketValue !== undefined"), true, "sandbox only shows selected values");
-assert.equal(client.includes('primaryName="Package A"'), true, "sandbox sticky analyze labels");
+assert.equal(sandbox.includes("Team A") && sandbox.includes("Team B"), true, "sandbox sticky analyze labels are neutral");
 assert.equal(client.includes("!hasResult}"), true, "sandbox sticky hides after result");
 assert.equal(client.includes("!hasResult}") && (client.match(/!hasResult/g) ?? []).length >= 2, true, "league sticky hides after result");
 required(client, ["rosterImpact", "RosterImpactPanel", "validateOwnership: mode === \"LEAGUE\""], "roster impact integration and sticky lifecycle");
@@ -107,4 +108,6 @@ assert.equal(client.includes('mode === "LEAGUE" ? result.dynastyOutlook : null')
 assert.equal(client.includes("Source approval is still pending"), false, "governance warning is not ordinary owner-facing copy");
 required(docs, ["/trade-analyzer", "feature gate", "private-output", "Suppressed", "mobile", "deferred"], "documentation");
 required(multiDocs, ["fairness-v1", "fairness-multi-v1", "netDelta", "routing", "consolidation", "roster fit", "performance"], "multi-team documentation");
+required(sandbox, ["teamLabel", "participants.length < 4", "sandbox: true", "Market Fairness", "Team Details", "Analysis Details", "destination", "Choose destination", "do not use LCC ownership or roster context"], "sandbox integration");
+assert.equal(sandbox.includes("Package A") || sandbox.includes("Package B"), false, "sandbox has no package terminology");
 console.log("TRADE_UI_DIAGNOSTICS_PASS");

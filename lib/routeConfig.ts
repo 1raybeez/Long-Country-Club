@@ -155,6 +155,7 @@ export const LCC_LEAGUE_INFO_NAV_ITEMS: readonly LccLeagueInfoNavItem[] = [
   { id: "drafts", label: "Drafts", href: "/league-info/drafts", order: 6, availability: "active" },
   { id: "payouts", label: "Payouts", href: "/league-info/fees", order: 7, availability: "active" },
   { id: "resources", label: "Resources", href: "/league-info/resources", order: 8, availability: "active" },
+  { id: "trade-analyzer", label: "Trade Analyzer", href: "/league-info/trade-analyzer", order: 9, availability: "active" },
 ] as const;
 
 export const LCC_HISTORY_CHILD_ROUTES: readonly LccLeagueInfoNavItem[] = [

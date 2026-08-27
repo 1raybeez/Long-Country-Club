@@ -11,6 +11,7 @@ export interface TradeAnalysisServiceRequest {
   sideA?: { assetIds: string[]; ownerId?: string };
   sideB?: { assetIds: string[]; ownerId?: string };
   participants?: MultiTeamParticipantInput[];
+  sandbox?: boolean;
   evaluatedAt: string;
   leaguePhase: LeaguePhase;
   outputMode: ServiceOutputMode;

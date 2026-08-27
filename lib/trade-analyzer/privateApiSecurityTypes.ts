@@ -30,6 +30,7 @@ export interface PrivateApiRequestBody {
   sideA?: { assetIds: string[]; ownerId?: string };
   sideB?: { assetIds: string[]; ownerId?: string };
   participants?: Array<{ franchiseId: string; outgoingAssets: Array<{ assetId: string; destinationFranchiseId: string }> }>;
+  sandbox?: boolean;
   validateOwnership?: boolean;
 }
 
@@ -67,7 +68,7 @@ export const validatePrivateApiRequestShape = (value: unknown): { valid: boolean
   const isObject = Boolean(value) && typeof value === "object" && !Array.isArray(value);
   if (!isObject) return { valid: false, errors: ["INVALID_TRADE_REQUEST"] };
   const request = value as Record<string, unknown>;
-  if (Object.keys(request).some((key) => !["sideA", "sideB", "participants", "validateOwnership"].includes(key))) errors.push("INVALID_TRADE_REQUEST");
+  if (Object.keys(request).some((key) => !["sideA", "sideB", "participants", "validateOwnership", "sandbox"].includes(key))) errors.push("INVALID_TRADE_REQUEST");
   if (Array.isArray(request.participants)) {
     if (request.participants.length < 3 || request.participants.length > PRIVATE_API_SECURITY_POLICY.maxParticipants) errors.push("INVALID_TRADE_REQUEST");
     const franchiseIds = request.participants.map((participant) => typeof participant === "object" && participant !== null && !Array.isArray(participant) ? (participant as { franchiseId?: unknown }).franchiseId : undefined);
@@ -77,9 +78,10 @@ export const validatePrivateApiRequestShape = (value: unknown): { valid: boolean
     if (assets.length > PRIVATE_API_SECURITY_POLICY.maxMultiTeamTotalAssets) errors.push("INVALID_TRADE_REQUEST");
     assets.forEach((outgoing) => { if (!outgoing || typeof outgoing !== "object" || Array.isArray(outgoing) || Object.keys(outgoing).some((key) => !["assetId", "destinationFranchiseId"].includes(key))) { errors.push("INVALID_TRADE_REQUEST"); return; } const item = outgoing as { assetId?: unknown; destinationFranchiseId?: unknown }; if ([item.assetId, item.destinationFranchiseId].some((id) => typeof id !== "string" || id.length === 0 || id.length > PRIVATE_API_SECURITY_POLICY.maxAssetIdLength || /[\u0000-\u001f\u007f]/.test(id))) errors.push("INVALID_TRADE_REQUEST"); });
     if (new Set(assets.map((outgoing) => typeof outgoing === "object" && outgoing !== null ? (outgoing as { assetId?: unknown }).assetId : undefined)).size !== assets.length) errors.push("INVALID_TRADE_REQUEST");
-    if (request.validateOwnership !== undefined) errors.push("INVALID_TRADE_REQUEST");
+    if (request.validateOwnership !== undefined || (request.sandbox !== undefined && request.sandbox !== true)) errors.push("INVALID_TRADE_REQUEST");
     return { valid: errors.length === 0, errors: [...new Set(errors)] };
   }
+  if (request.sandbox !== undefined && request.sandbox !== true) errors.push("INVALID_TRADE_REQUEST");
   for (const sideName of ["sideA", "sideB"]) {
     const side = request[sideName];
     if (!side || typeof side !== "object" || Array.isArray(side) || Object.keys(side as object).some((key) => key !== "assetIds" && key !== "ownerId") || !Array.isArray((side as { assetIds?: unknown }).assetIds)) { errors.push("INVALID_TRADE_REQUEST"); continue; }

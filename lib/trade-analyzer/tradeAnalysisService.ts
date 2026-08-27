@@ -16,7 +16,7 @@ export const APPROVED_SNAPSHOT_DATE = "2026-08-26" as const;
 export const EXPECTED_MODEL_VERSIONS = { valuationPolicyVersion: "valuation-v1", fairnessModelVersion: "fairness-v1" } as const;
 
 const unique = (values: string[]) => [...new Set(values)];
-const knownRootKeys = new Set(["sideA", "sideB", "participants", "evaluatedAt", "leaguePhase", "outputMode", "ownershipValidation"]);
+const knownRootKeys = new Set(["sideA", "sideB", "participants", "evaluatedAt", "leaguePhase", "outputMode", "ownershipValidation", "sandbox"]);
 const knownSideKeys = new Set(["assetIds", "ownerId"]);
 const validModes: ServiceOutputMode[] = ["INTERNAL", "PUBLIC"];
 const phaseValues = ["DRAFT_WINDOW", "IN_SEASON", "OFFSEASON"] as const;
@@ -57,11 +57,12 @@ function internalError(): TradeAnalysisServiceResponse {
 export function analyzeTradeInternal(request: unknown, dependencies: ServiceDependencies): TradeAnalysisServiceResponse {
   try {
     if (safeObject(request) && Array.isArray(request.participants)) return analyzeMultiTeam(request.participants, request, dependencies);
-    const validation = validateTradeAnalysisRequest(request, dependencies.catalog);
+    const sandboxRequest = safeObject(request) && request.sandbox === true ? normalizeSandboxTwoTeamRequest(request as unknown as TradeAnalysisServiceRequest, dependencies.catalog) : request;
+    const validation = validateTradeAnalysisRequest(sandboxRequest, dependencies.catalog);
     if (validation.errors.length) return emptyResponse("INVALID_REQUEST", validation.errors);
     if (!modelMatches(dependencies)) return emptyResponse("INTERNAL_ERROR", ["MODEL_VERSION_MISMATCH"], EXPECTED_MODEL_VERSIONS, "Internal trade analysis is unavailable.");
     if (!snapshotMatches(dependencies.snapshot, dependencies.catalog)) return emptyResponse("INTERNAL_ERROR", [dependencies.snapshot.integrityValid ? "SNAPSHOT_NOT_FOUND" : "SNAPSHOT_INTEGRITY_FAILED"], EXPECTED_MODEL_VERSIONS, "Approved market snapshot is unavailable.");
-    const typed = request as TradeAnalysisServiceRequest;
+    const typed = sandboxRequest as TradeAnalysisServiceRequest;
     const adapterRequest: CurrentTradeRequest = { sideA: typed.sideA!.assetIds, sideB: typed.sideB!.assetIds, evaluatedAt: typed.evaluatedAt, leaguePhase: typed.leaguePhase, publicOutput: typed.outputMode === "PUBLIC", ownership: typed.ownershipValidation ? { sideAOwnerId: typed.sideA!.ownerId, sideBOwnerId: typed.sideB!.ownerId } : undefined };
     const result = calculateCurrentTrade(dependencies.catalog, adapterRequest);
     if (result.adapterStatus === "INVALID") return emptyResponse("INVALID_REQUEST", result.validationErrors);
@@ -80,28 +81,44 @@ export function analyzeTradeInternal(request: unknown, dependencies: ServiceDepe
   }
 }
 
+function normalizeSandboxTwoTeamRequest(request: TradeAnalysisServiceRequest, catalog: ServiceDependencies["catalog"]): TradeAnalysisServiceRequest {
+  const resolve = (assetId: string) => sandboxAssetId(assetId, catalog);
+  return { ...request, sideA: request.sideA ? { ...request.sideA, assetIds: request.sideA.assetIds.map(resolve) } : request.sideA, sideB: request.sideB ? { ...request.sideB, assetIds: request.sideB.assetIds.map(resolve) } : request.sideB, ownershipValidation: undefined };
+}
+
+function sandboxAssetId(assetId: string, catalog: ServiceDependencies["catalog"]): string {
+  if (catalog.byAssetId[assetId]) return assetId;
+  const match = /^sandbox-pick-(\d+)-(\d+)$/.exec(assetId);
+  if (!match) return assetId;
+  return catalog.assets.find((asset) => asset.assetType === "PICK" && asset.pickKind === "GENERIC_ROUND" && asset.season === Number(match[1]) && asset.round === Number(match[2]))?.assetId ?? assetId;
+}
+
 function analyzeMultiTeam(rawParticipants: unknown[], rawRequest: Record<string, unknown>, dependencies: ServiceDependencies): TradeAnalysisServiceResponse {
   const errors: string[] = [];
   if (rawParticipants.length < 3 || rawParticipants.length > 4) errors.push("INVALID_PARTICIPANT_COUNT");
-  if (!hasOnly(rawRequest, new Set(["participants", "evaluatedAt", "leaguePhase", "outputMode"]))) errors.push("INVALID_REQUEST");
+  if (!hasOnly(rawRequest, new Set(["participants", "evaluatedAt", "leaguePhase", "outputMode", "sandbox"]))) errors.push("INVALID_REQUEST");
   if (typeof rawRequest.evaluatedAt !== "string" || Number.isNaN(Date.parse(rawRequest.evaluatedAt))) errors.push("INVALID_TIMESTAMP");
   if (!phaseValues.includes(rawRequest.leaguePhase as typeof phaseValues[number])) errors.push("MISSING_PHASE");
   if (rawRequest.outputMode !== "INTERNAL" && rawRequest.outputMode !== "PUBLIC") errors.push("INVALID_OUTPUT_MODE");
   const participants = rawParticipants as MultiTeamParticipantInput[];
   const franchiseIds = participants.map((participant) => participant?.franchiseId);
+  const sandbox = rawRequest.sandbox === true;
   if (franchiseIds.some((id) => typeof id !== "string" || id.length === 0) || new Set(franchiseIds).size !== franchiseIds.length) errors.push("INVALID_PARTICIPANTS");
+  if (sandbox && franchiseIds.some((id) => !["Team A", "Team B", "Team C", "Team D"].includes(id))) errors.push("INVALID_PARTICIPANTS");
+  if (!sandbox && rawRequest.sandbox !== undefined) errors.push("INVALID_REQUEST");
   const participating = new Set(franchiseIds.filter((id): id is string => typeof id === "string"));
   const seenAssets = new Set<string>();
   const resolved = participants.map((participant) => {
     if (!safeObject(participant) || !hasOnly(participant, new Set(["franchiseId", "outgoingAssets"])) || !Array.isArray(participant.outgoingAssets) || participant.outgoingAssets.length === 0 || participant.outgoingAssets.length > 15) { errors.push("INVALID_PARTICIPANTS"); return { franchiseId: String(participant?.franchiseId ?? ""), sends: [], receives: [] }; }
     const sends = participant.outgoingAssets.flatMap((outgoing) => {
       if (!safeObject(outgoing) || !hasOnly(outgoing, new Set(["assetId", "destinationFranchiseId"])) || typeof outgoing.assetId !== "string" || typeof outgoing.destinationFranchiseId !== "string") { errors.push("INVALID_ROUTING"); return []; }
-      const asset = dependencies.catalog.byAssetId[outgoing.assetId];
+      const resolvedAssetId = sandbox ? sandboxAssetId(outgoing.assetId, dependencies.catalog) : outgoing.assetId;
+      const asset = dependencies.catalog.byAssetId[resolvedAssetId];
       if (!asset) errors.push("UNKNOWN_ASSET");
       if (seenAssets.has(outgoing.assetId)) errors.push("DUPLICATE_ASSET");
       seenAssets.add(outgoing.assetId);
       if (outgoing.destinationFranchiseId === participant.franchiseId || !participating.has(outgoing.destinationFranchiseId)) errors.push("INVALID_DESTINATION");
-      if (asset?.ownerId !== participant.franchiseId) errors.push("OWNERSHIP_MISMATCH");
+      if (!sandbox && asset?.ownerId !== participant.franchiseId) errors.push("OWNERSHIP_MISMATCH");
       return asset ? [{ asset, destinationFranchiseId: outgoing.destinationFranchiseId }] : [];
     });
     const receives = participants.flatMap((other) => other?.outgoingAssets?.flatMap((outgoing) => outgoing?.destinationFranchiseId === participant.franchiseId ? [dependencies.catalog.byAssetId[outgoing.assetId]].filter(Boolean) : []) ?? []);
@@ -114,10 +131,10 @@ function analyzeMultiTeam(rawParticipants: unknown[], rawRequest: Record<string,
   if (!snapshotMatches(dependencies.snapshot, dependencies.catalog)) return emptyResponse("INTERNAL_ERROR", [dependencies.snapshot.integrityValid ? "SNAPSHOT_NOT_FOUND" : "SNAPSHOT_INTEGRITY_FAILED"], { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" });
   const calculated = calculateMultiTeamFairness(resolved);
   const multiTeam = { ...calculated, warnings: [...new Set([...calculated.warnings, ...(dependencies.snapshot.sourceLicenseStatus === "APPROVED" ? [] : ["SOURCE_LICENSE_UNAPPROVED"])])] };
-  const rosterImpact = calculateRosterImpact(participants.map((participant, index) => ({ franchiseId: participant.franchiseId, franchiseName: franchiseNameFor(participant.franchiseId), sends: (resolved[index]?.sends ?? []) as CurrentCatalogAsset[], receives: (resolved[index]?.receives ?? []) as CurrentCatalogAsset[] })));
+  const rosterImpact = sandbox ? null : calculateRosterImpact(participants.map((participant, index) => ({ franchiseId: participant.franchiseId, franchiseName: franchiseNameFor(participant.franchiseId), sends: (resolved[index]?.sends ?? []) as CurrentCatalogAsset[], receives: (resolved[index]?.receives ?? []) as CurrentCatalogAsset[] })));
   if (rawRequest.outputMode === "PUBLIC" && multiTeam.warnings.includes("SOURCE_LICENSE_UNAPPROVED")) return emptyResponse("BLOCKED", ["SOURCE_LICENSE_UNAPPROVED"], { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1", availability: "BLOCKED" });
-  const dynastyOutlook = rawRequest.outputMode === "PUBLIC" ? null : ensureDynastyPresentation(calculateDynastyDirection(participants.map((participant, index) => dynastyInput(participant.franchiseId, (resolved[index]?.sends ?? []).map((asset) => asset.assetId), (resolved[index]?.receives ?? []).map((asset) => asset.assetId), dependencies.catalog.assets.filter((asset) => asset.ownerId === participant.franchiseId), dependencies.catalog.assets))));
-  const contextualVerdict = rawRequest.outputMode === "PUBLIC" ? null : calculateTradeVerdict(participants.map((participant, index) => ({ franchiseId: participant.franchiseId, franchiseName: franchiseNameFor(participant.franchiseId), market: { netValueChange: multiTeam.participants[index]?.netValueChange ?? 0, fairnessBand: multiTeam.fairnessBand }, rosterImpact: rosterImpact.participants[index] ?? null, dynasty: dynastyOutlook?.participants[index] ?? null })));
+  const dynastyOutlook = rawRequest.outputMode === "PUBLIC" || sandbox ? null : ensureDynastyPresentation(calculateDynastyDirection(participants.map((participant, index) => dynastyInput(participant.franchiseId, (resolved[index]?.sends ?? []).map((asset) => asset.assetId), (resolved[index]?.receives ?? []).map((asset) => asset.assetId), dependencies.catalog.assets.filter((asset) => asset.ownerId === participant.franchiseId), dependencies.catalog.assets))));
+  const contextualVerdict = rawRequest.outputMode === "PUBLIC" || sandbox ? null : calculateTradeVerdict(participants.map((participant, index) => ({ franchiseId: participant.franchiseId, franchiseName: franchiseNameFor(participant.franchiseId), market: { netValueChange: multiTeam.participants[index]?.netValueChange ?? 0, fairnessBand: multiTeam.fairnessBand }, rosterImpact: rosterImpact?.participants[index] ?? null, dynasty: dynastyOutlook?.participants[index] ?? null })));
   return { success: true, status: "OK", engineStatus: multiTeam.status, model: { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" }, snapshot: { sourceName: dependencies.snapshot.sourceName, snapshotDate: dependencies.snapshot.date, retrievedAt: dependencies.snapshot.retrievedAt, sourceLicenseStatus: dependencies.snapshot.sourceLicenseStatus }, sideA: null, sideB: null, trade: null, ownership: null, warnings: multiTeam.warnings, errors: multiTeam.errors, multiTeam, rosterImpact: rawRequest.outputMode === "PUBLIC" ? null : rosterImpact, dynastyOutlook, contextualVerdict };
 }
 
