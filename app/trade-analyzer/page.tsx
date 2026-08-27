@@ -6,7 +6,7 @@ import { getOwnerImagePath } from "@/lib/ownerImages";
 import { getWarRoomCurrentRoster } from "@/lib/warRoom/currentRoster";
 import { getWarRoomDraftCapital } from "@/lib/warRoom/draftCapital";
 import { getTradeAnalyzerRuntime } from "@/lib/trade-analyzer/tradeAnalyzerRuntime";
-import TradeAnalyzerOwnerClient, { type TradeAnalyzerCatalogAsset } from "./TradeAnalyzerOwnerClient";
+import TradeAnalyzerParticipantClient, { type TradeAnalyzerCatalogAsset } from "./TradeAnalyzerParticipantClient";
 
 export const dynamic = "force-dynamic";
 
@@ -57,7 +57,7 @@ export default async function TradeAnalyzerPage() {
       imageUrl: getOwnerImagePath(owner.id),
       draftCapital: getWarRoomDraftCapital(owner.id)?.picks ?? [],
     }));
-    return <TradeAnalyzerOwnerClient catalog={catalog} teams={teams} defaultOwnerId={session.member.ownerId} snapshotDate={runtime.snapshot.date} />;
+    return <TradeAnalyzerParticipantClient catalog={catalog} teams={teams} snapshotDate={runtime.snapshot.date} />;
   }
 }
 
