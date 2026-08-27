@@ -42,6 +42,13 @@ assert.equal(client.includes("border-[var(--lcc-brand-primary)]"), true, "select
 assert.equal(client.includes("action={selected.has(asset.assetId) ? \"Remove\" : \"Select\"}"), true, "selected roster rows remove directly");
 assert.equal(client.includes("asset.assetType === \"PICK\" ? \"Pick\""), true, "pick rows avoid redundant draft-capital text");
 assert.equal(client.includes("item.marketShare.display * 100"), false, "market share is not multiplied twice");
+assert.equal(client.includes('mode === "LEAGUE" && participantCount === 2'), true, "participant control is league-only");
+assert.equal(client.includes(': ["Package A", "Package B"]'), true, "sandbox package terminology");
+required(client, ["Search roster and picks", "Search by player, pick, or team", "SandboxAssetRow", "imageUrl", "nflTeam", "rosterStatus", "Add A", "Add B", "Remove A", "Remove B", "PackageSummary", "packageA={packageA}", "packageB={packageB}"], "sandbox alignment");
+assert.equal(client.includes("catalog={catalog} onRemove"), true, "sandbox summaries use full catalog");
+assert.equal(client.includes("disabled={selected && selectedSide !== \"A\"}"), true, "sandbox duplicate prevention");
+assert.equal(client.includes("selected && asset.marketValue !== undefined"), true, "sandbox only shows selected values");
+assert.equal(client.includes('primaryName="Package A"'), true, "sandbox sticky analyze labels");
 required(multi, ["participants.length < 4", "addParticipant", "Remove Participant", "destinationFranchiseId", "Choose destination", "Multi-Team Trade Fairness", "Market Value Change", "Trade Routing", "Sends Value", "Receives Value", "current market value exchanged by every participant", "Team need", "consolidation effects", "future performance"], "multi-team client");
 assert.equal(client.includes("MultiTeamTradeAnalyzerClient"), true, "participant client exposes multi-team mode");
 assert.equal(multi.includes("Winner") || multi.includes("Loser") || multi.includes("recommend"), false, "multi-team UI uses neutral market language");
