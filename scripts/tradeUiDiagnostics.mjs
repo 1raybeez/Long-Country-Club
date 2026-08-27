@@ -44,7 +44,9 @@ assert.equal(client.includes("asset.assetType === \"PICK\" ? \"Pick\""), true, "
 assert.equal(client.includes("item.marketShare.display * 100"), false, "market share is not multiplied twice");
 assert.equal(client.includes('mode === "LEAGUE" && participantCount === 2'), true, "participant control is league-only");
 assert.equal(client.includes(': ["Package A", "Package B"]'), true, "sandbox package terminology");
-required(client, ["Search roster and picks", "Search by player, pick, or team", "SandboxAssetRow", "imageUrl", "nflTeam", "rosterStatus", "Add A", "Add B", "Remove A", "Remove B", "PackageSummary", "packageA={packageA}", "packageB={packageB}"], "sandbox alignment");
+required(client, ["Search roster and picks", "Search by player, pick, or team", "SandboxAssetRow", "imageUrl", "nflTeam", "rosterStatus", "Add A", "Add B", "Remove A", "Remove B", "PackageSummary", "packageA={packageA}", "packageB={packageB}", "sandboxMatches", "discoveryActive", "slice(0, 25)", "max-h-[34rem]", "Showing first 25 results. Refine your search.", "Search for a player or choose a position to browse available assets.", "pickYear", "All Years"], "sandbox asset picker");
+assert.equal(client.includes("discoveryActive ? <>") || client.includes("discoveryActive ?"), true, "blank sandbox does not render catalog");
+assert.equal(client.includes("resultCount > 25"), true, "sandbox result cap is disclosed");
 assert.equal(client.includes("catalog={catalog} onRemove"), true, "sandbox summaries use full catalog");
 assert.equal(client.includes("disabled={selected && selectedSide !== \"A\"}"), true, "sandbox duplicate prevention");
 assert.equal(client.includes("selected && asset.marketValue !== undefined"), true, "sandbox only shows selected values");
