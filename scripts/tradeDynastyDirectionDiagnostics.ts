@@ -34,6 +34,12 @@ assert(twoTeam.participants.every((participant) => participant.before && partici
 assert(twoTeam.participants.some((participant) => participant.changes.futureCapital === "INCREASED"));
 assert(twoTeam.participants.some((participant) => participant.changes.futureCapital === "DECREASED"));
 assert(twoTeam.participants.every((participant) => ["COMPLETE", "PARTIAL", "INCOMPLETE"].includes(participant.status)));
+const chicagoTrade = calculateDynastyDirection([input("bill-gross", [asset("Chuba Hubbard"), asset("Davante Adams")], [asset("Travis Etienne"), asset("Cole Kmet")]), input("rob-jenkins", [asset("Travis Etienne"), asset("Cole Kmet")], [asset("Chuba Hubbard"), asset("Davante Adams")])]);
+assert.equal(chicagoTrade.participants.length, 2);
+assert(chicagoTrade.participants.every((participant) => participant.before.direction === "CONTENDER"));
+assert(chicagoTrade.participants.every((participant) => participant.before.confidence === "HIGH"));
+assert(chicagoTrade.participants.every((participant) => participant.presentation.careerWindow.label !== "Unavailable"));
+assert(chicagoTrade.participants.every((participant) => participant.presentation.futureCapital.label === "No change"));
 
 const youthVeteran = calculateDynastyDirection([input(owners[0], [asset("Joe Fagnano")], [asset("Josh Allen")])]);
 assert(youthVeteran.participants[0].after.ageCareerWindow.available || youthVeteran.participants[0].warnings.includes("AGE_DATA_UNAVAILABLE"));
@@ -49,4 +55,4 @@ const sandbox = analyzeTradeInternal({ sideA: { assetIds: [gibbs.assetId], owner
 assert(sandbox.success || sandbox.status === "BLOCKED");
 assert.equal(sandbox.dynastyOutlook ?? null, null);
 
-console.log(JSON.stringify({ status: "PASS", model: "dynasty-direction-v1", fitModel: "trade-fit-v1", participants: twoTeam.participants.map((participant) => ({ franchiseId: participant.franchiseId, before: participant.before.direction, after: participant.after.direction, fit: participant.tradeFit, status: participant.status })), multiTeamParticipants: four.participants.length, sandboxDynasty: sandbox.dynastyOutlook, marketFairnessUnchanged: typeof direct.trade?.fairnessScore?.internal === "number", noWrites: true }, null, 2));
+console.log(JSON.stringify({ status: "PASS", model: "dynasty-direction-v1", fitModel: "trade-fit-v1", participants: twoTeam.participants.map((participant) => ({ franchiseId: participant.franchiseId, before: participant.before.direction, after: participant.after.direction, fit: participant.tradeFit, status: participant.status })), knownQa: chicagoTrade.participants.map((participant) => ({ franchiseId: participant.franchiseId, direction: participant.before.direction, confidence: participant.before.confidence, fit: participant.tradeFit, presentation: participant.presentation })), multiTeamParticipants: four.participants.length, sandboxDynasty: sandbox.dynastyOutlook, marketFairnessUnchanged: typeof direct.trade?.fairnessScore?.internal === "number", noWrites: true }, null, 2));

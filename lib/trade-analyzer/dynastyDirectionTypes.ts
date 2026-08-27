@@ -34,5 +34,14 @@ export type DynastyParticipant = {
   changes: { rosterStrength: RosterImpactChange | "UNAVAILABLE"; lineupStrength: RosterImpactChange | "UNAVAILABLE"; age: "YOUNGER" | "OLDER" | "UNCHANGED" | "UNAVAILABLE"; futureCapital: "INCREASED" | "DECREASED" | "UNCHANGED" | "UNAVAILABLE"; rosterValue: "INCREASED" | "DECREASED" | "UNCHANGED" | "UNAVAILABLE" };
   status: "COMPLETE" | "PARTIAL" | "INCOMPLETE";
   warnings: string[];
+  presentation: DynastyPresentation;
+};
+export type DynastyPresentation = {
+  winNow: string;
+  careerWindow: { label: string; detail: string };
+  futureCapital: { label: string; detail: string; addedPicks: string[]; removedPicks: string[] };
+  assetProfile: { label: string; detail: string };
+  direction: string;
+  fitExplanation: string;
 };
 export type DynastyDirectionResult = { directionModelVersion: typeof DYNASTY_DIRECTION_MODEL_VERSION; tradeFitModelVersion: typeof TRADE_FIT_MODEL_VERSION; participants: DynastyParticipant[]; warnings: string[]; errors: string[] };
