@@ -6,6 +6,7 @@ const client = await readFile("app/trade-analyzer/TradeAnalyzerParticipantClient
 const multi = await readFile("app/trade-analyzer/MultiTeamTradeAnalyzerClient.tsx", "utf8");
 const api = await readFile("app/api/trade-analyzer/analyze/route.ts", "utf8");
 const rosterImpact = await readFile("app/trade-analyzer/RosterImpactPanel.tsx", "utf8");
+const analysisDetails = await readFile("app/trade-analyzer/AnalysisDetails.tsx", "utf8");
 const docs = await readFile("docs/trade-analyzer-ui-prototype-v1.md", "utf8");
 const multiDocs = await readFile("docs/trade-analyzer-multi-team-model-v1.md", "utf8");
 const required = (text, values, label) => values.forEach((value) => assert.ok(text.includes(value), `${label} missing ${value}`));
@@ -20,7 +21,7 @@ assert.equal(client.includes("defaultOwnerId"), false, "authenticated owner is n
 assert.equal(client.includes("Current franchise assets"), false, "shared league asset section remains");
 assert.equal(client.includes("asset.ownerId !== ownerId"), true, "league ownership enforcement present");
 required(client, ["StickyAnalyze", "IntersectionObserver", "analyzeButtonRef", "topAnalyzeVisible", "packageIds.length > 0", "otherSelected > 0", "primaryName", "secondaryName", "primaryCount", "secondaryCount", "primaryCount === 1 ? \"asset\" : \"assets\""], "sticky analyze control");
-required(client, ["resultRef", "requestAnimationFrame", "scrollIntoView", "prefers-reduced-motion", "preventScroll: true", "[result, error]", "TradeReportHeroView", "LCC Trade Analyzer", "Current Market Value Split", "Market Value Edge", "Fairness measures how closely", "consolidation effects", "Trade Summary", "Package Details", "Data / Evidence", "VALUE UNAVAILABLE", "valuationPolicyVersion", "fairnessModelVersion"], "result discovery and report hero");
+required(client, ["resultRef", "requestAnimationFrame", "scrollIntoView", "prefers-reduced-motion", "preventScroll: true", "[result, error]", "TradeReportHeroView", "LCC Trade Analyzer", "Current Market Value Split", "Market Value Edge", "Fairness measures how closely", "consolidation effects", "Trade Summary", "Package Details", "AnalysisDetails", "VALUE UNAVAILABLE", "valuationPolicyVersion", "fairnessModelVersion"], "result discovery and report hero");
 assert.equal(client.includes("resultRef.current"), true, "result anchor is used for discovery");
 assert.equal((client.match(/scrollIntoView/g) ?? []).length, 1, "result discovery has one scroll path");
 assert.equal(client.includes("[result, error]"), true, "result discovery responds to completed result or error state");
@@ -73,7 +74,7 @@ assert.equal(client.includes("Share Trade"), false, "client exposes share contro
 assert.equal(client.includes("Winner"), false, "client exposes winner language");
 assert.equal(client.includes("Consolidation"), false, "client exposes consolidation UI");
 assert.equal(client.includes("item.marketShare.display * 100"), false, "client multiplies display percentage twice");
-required(client, ["Trade Summary", "sends ${sent} and receives ${received}.", "LCC Trade Analyzer", "trade.fairnessScore", "trade?.fairnessBand", "Current Market Value Split", "sideA.marketShare.display", "Package Details", "Sends", "Receives", "asset.baseValue", "VALUE UNAVAILABLE", "Data / Evidence", "result.snapshot?.snapshotDate", "valuationPolicyVersion", "fairnessModelVersion", "PROVISIONAL", "friendlyWarning"], "trade report");
+required(client, ["Trade Summary", "sends ${sent} and receives ${received}.", "LCC Trade Analyzer", "trade.fairnessScore", "trade?.fairnessBand", "Current Market Value Split", "sideA.marketShare.display", "Package Details", "Sends", "Receives", "asset.baseValue", "VALUE UNAVAILABLE", "AnalysisDetails", "result.snapshot?.snapshotDate", "valuationPolicyVersion", "fairnessModelVersion", "PROVISIONAL"], "trade report");
 assert.equal(client.includes("trade?.fairnessScore?.display"), true, "fairness score is rendered from API result");
 assert.equal(client.includes("trade?.fairnessBand"), true, "fairness band is rendered from API result");
 assert.equal(client.includes("style={{ width: `${sideA.marketShare.display}%` }}"), true, "market split uses API display percentage");
@@ -94,6 +95,8 @@ assert.equal(Number(formatShare(41).replace("%", "")) + Number(formatShare(59).r
 required(api, ["outputMode", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_PRIVATE_OUTPUT_APPROVED"], "API");
 required(api, ["One or more selected assets are no longer available."], "safe API error detail");
 required(rosterImpact, ["Roster Impact", "participant.status", "market fairness", "Draft picks have no immediate lineup impact"], "roster-impact fallback UI");
+required(analysisDetails, ["Analysis Details", "aria-expanded", "setExpanded", "Data Snapshot", "Evidence Quality", "Result Status", "Valuation Model", "Fairness Model"], "analysis details disclosure");
+assert.equal(client.includes("Source approval is still pending"), false, "governance warning is not ordinary owner-facing copy");
 required(docs, ["/trade-analyzer", "feature gate", "private-output", "Suppressed", "mobile", "deferred"], "documentation");
 required(multiDocs, ["fairness-v1", "fairness-multi-v1", "netDelta", "routing", "consolidation", "roster fit", "performance"], "multi-team documentation");
 console.log("TRADE_UI_DIAGNOSTICS_PASS");
