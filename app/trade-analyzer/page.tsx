@@ -1,8 +1,12 @@
 import { redirect } from "next/navigation";
 import { getCurrentMemberSession } from "@/lib/auth/session";
 import { getOwnerById } from "@/lib/ownerRegistry";
+import { ACTIVE_LCC_OWNERS } from "@/lib/lccOwners";
+import { getOwnerImagePath } from "@/lib/ownerImages";
+import { getWarRoomCurrentRoster } from "@/lib/warRoom/currentRoster";
+import { getWarRoomDraftCapital } from "@/lib/warRoom/draftCapital";
 import { getTradeAnalyzerRuntime } from "@/lib/trade-analyzer/tradeAnalyzerRuntime";
-import TradeAnalyzerClient, { type TradeAnalyzerCatalogAsset } from "./TradeAnalyzerClient";
+import TradeAnalyzerOwnerClient, { type TradeAnalyzerCatalogAsset } from "./TradeAnalyzerOwnerClient";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +31,7 @@ export default async function TradeAnalyzerPage() {
     return <Unavailable reason="The approved valuation snapshot is temporarily unavailable." />;
   }
   {
+    const playerImages = new Map(ACTIVE_LCC_OWNERS.flatMap((owner) => (getWarRoomCurrentRoster(owner.id)?.players ?? []).map((player) => [player.id, { imageUrl: player.imageUrl, teamName: player.teamName ?? player.team, status: player.status }] as const)));
     const catalog: TradeAnalyzerCatalogAsset[] = runtime.catalog.assets.map((asset) => ({
       assetId: asset.assetId,
       displayName: asset.displayName,
@@ -36,12 +41,23 @@ export default async function TradeAnalyzerPage() {
       round: asset.round,
       slot: asset.slot,
       pickKind: asset.pickKind,
+      ownerId: asset.ownerId,
       ownerName: asset.ownerId ? getOwnerById(asset.ownerId)?.teamName : undefined,
       marketValue: asset.baseValue,
       valueStatus: asset.valueStatus,
       evidence: asset.evidence,
+      imageUrl: asset.assetType === "PLAYER" || asset.assetType === "K" || asset.assetType === "DST" ? playerImages.get(asset.assetId)?.imageUrl ?? undefined : undefined,
+      nflTeam: playerImages.get(asset.assetId)?.teamName ?? undefined,
+      rosterStatus: playerImages.get(asset.assetId)?.status,
     }));
-    return <TradeAnalyzerClient catalog={catalog} snapshotDate={runtime.snapshot.date} />;
+    const teams = ACTIVE_LCC_OWNERS.map((owner) => ({
+      ownerId: owner.id,
+      teamName: getOwnerById(owner.id)?.teamName ?? owner.displayName,
+      ownerName: owner.displayName,
+      imageUrl: getOwnerImagePath(owner.id),
+      draftCapital: getWarRoomDraftCapital(owner.id)?.picks ?? [],
+    }));
+    return <TradeAnalyzerOwnerClient catalog={catalog} teams={teams} defaultOwnerId={session.member.ownerId} snapshotDate={runtime.snapshot.date} />;
   }
 }
 
