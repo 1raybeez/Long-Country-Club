@@ -27,8 +27,8 @@ export const PRIVATE_API_SECURITY_POLICY = Object.freeze({
 } as const);
 
 export interface PrivateApiRequestBody {
-  sideA?: { assetIds: string[] };
-  sideB?: { assetIds: string[] };
+  sideA?: { assetIds: string[]; ownerId?: string };
+  sideB?: { assetIds: string[]; ownerId?: string };
   participants?: Array<{ franchiseId: string; outgoingAssets: Array<{ assetId: string; destinationFranchiseId: string }> }>;
   validateOwnership?: boolean;
 }
@@ -82,10 +82,12 @@ export const validatePrivateApiRequestShape = (value: unknown): { valid: boolean
   }
   for (const sideName of ["sideA", "sideB"]) {
     const side = request[sideName];
-    if (!side || typeof side !== "object" || Array.isArray(side) || Object.keys(side as object).some((key) => key !== "assetIds") || !Array.isArray((side as { assetIds?: unknown }).assetIds)) { errors.push("INVALID_TRADE_REQUEST"); continue; }
+    if (!side || typeof side !== "object" || Array.isArray(side) || Object.keys(side as object).some((key) => key !== "assetIds" && key !== "ownerId") || !Array.isArray((side as { assetIds?: unknown }).assetIds)) { errors.push("INVALID_TRADE_REQUEST"); continue; }
     const ids = (side as { assetIds: unknown[] }).assetIds;
     if (ids.length === 0 || ids.length > PRIVATE_API_SECURITY_POLICY.maxAssetsPerSide) errors.push("INVALID_TRADE_REQUEST");
     if (ids.some((id) => typeof id !== "string" || id.length === 0 || id.length > PRIVATE_API_SECURITY_POLICY.maxAssetIdLength || /[\u0000-\u001f\u007f]/.test(id))) errors.push("INVALID_TRADE_REQUEST");
+    const ownerId = (side as { ownerId?: unknown }).ownerId;
+    if (ownerId !== undefined && (typeof ownerId !== "string" || ownerId.length === 0 || ownerId.length > PRIVATE_API_SECURITY_POLICY.maxAssetIdLength || /[\u0000-\u001f\u007f]/.test(ownerId))) errors.push("INVALID_TRADE_REQUEST");
   }
   const a = (request.sideA as { assetIds?: unknown[] })?.assetIds ?? [];
   const b = (request.sideB as { assetIds?: unknown[] })?.assetIds ?? [];

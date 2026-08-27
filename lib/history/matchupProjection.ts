@@ -1,16 +1,16 @@
-import { LCC_CURRENT_SEASON } from "../leagueConstants";
+import { LCC_CURRENT_SEASON } from "../leagueConstants.ts";
 import {
   getPlayerPerformanceBefore,
   type HistoricalPlayerPerformance,
-} from "./playerPerformance";
+} from "./playerPerformance.ts";
 import {
   getCurrentExpectedLineup,
   getExpectedLineupBefore,
   type ExpectedLineup,
   type ExpectedLineupCandidate,
   type ExpectedLineupSlot,
-} from "./expectedLineup";
-import { getPlayerById } from "./playerRegistry";
+} from "./expectedLineup.ts";
+import { getPlayerById } from "./playerRegistry.ts";
 
 export type MatchupProjectionBaselineSource =
   | "recentRolling"
@@ -115,6 +115,11 @@ export function getCurrentMatchupProjection({
     lineupA,
     lineupB,
   });
+}
+
+/** Project a single in-memory lineup using the canonical current projection rules. */
+export function getProjectedTeamForLineup(lineup: ExpectedLineup): ProjectedTeamScore {
+  return projectTeam(lineup);
 }
 
 export function getPlayerProjectionBefore({

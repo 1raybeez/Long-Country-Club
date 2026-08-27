@@ -1,16 +1,16 @@
-import { LCC_CURRENT_SEASON } from "../leagueConstants";
+import { LCC_CURRENT_SEASON } from "../leagueConstants.ts";
 import {
   getPlayerPerformanceBefore,
   getPlayerRollingPerformanceBefore,
   getPlayerSeasonPerformance,
-} from "./playerPerformance";
+} from "./playerPerformance.ts";
 import {
   getCurrentRosterSnapshot,
   getRosterSnapshot,
   getRosterSnapshotBefore,
   type HistoricalRosterSnapshot,
-} from "./rosterSnapshots";
-import { getPlayerById, type HistoricalPlayerMetadata } from "./playerRegistry";
+} from "./rosterSnapshots.ts";
+import { getPlayerById, type HistoricalPlayerMetadata } from "./playerRegistry.ts";
 
 export type RosterStrengthBoundary = {
   readonly season: number;
@@ -157,6 +157,24 @@ export function getCurrentRosterStrength(
     season: LCC_CURRENT_SEASON,
     week: null,
     snapshot,
+    evaluation: "currentPreseason",
+    performanceCutoff: { season: LCC_CURRENT_SEASON, week: 1 },
+  });
+}
+
+/** Evaluate an in-memory hypothetical roster with the canonical roster-strength rules. */
+export function getRosterStrengthForRoster({
+  ownerId,
+  rosterSnapshot,
+}: {
+  readonly ownerId: string;
+  readonly rosterSnapshot: HistoricalRosterSnapshot;
+}): RosterStrength {
+  return buildRosterStrength({
+    ownerId,
+    season: LCC_CURRENT_SEASON,
+    week: null,
+    snapshot: rosterSnapshot,
     evaluation: "currentPreseason",
     performanceCutoff: { season: LCC_CURRENT_SEASON, week: 1 },
   });

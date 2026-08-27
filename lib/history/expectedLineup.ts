@@ -1,15 +1,15 @@
-import { LCC_CURRENT_SEASON } from "../leagueConstants";
+import { LCC_CURRENT_SEASON } from "../leagueConstants.ts";
 import {
   getPlayerPerformanceBefore,
   type HistoricalPlayerPerformance,
-} from "./playerPerformance";
+} from "./playerPerformance.ts";
 import {
   getCurrentRosterSnapshot,
   getRosterSnapshotBefore,
   getSeasonRosterSnapshot,
   type HistoricalRosterSnapshot,
-} from "./rosterSnapshots";
-import { getPlayerById, type HistoricalPlayerMetadata } from "./playerRegistry";
+} from "./rosterSnapshots.ts";
+import { getPlayerById, type HistoricalPlayerMetadata } from "./playerRegistry.ts";
 
 export type ExpectedLineupBoundary = {
   readonly season: number;
@@ -155,6 +155,23 @@ export function getCurrentExpectedLineup(ownerId: string): ExpectedLineup | null
   });
   expectedLineupCache.set(cacheKey, lineup);
   return lineup;
+}
+
+/** Evaluate an in-memory hypothetical roster with the canonical LCC lineup rules. */
+export function getExpectedLineupForRoster({
+  ownerId,
+  rosterSnapshot,
+}: {
+  readonly ownerId: string;
+  readonly rosterSnapshot: HistoricalRosterSnapshot;
+}): ExpectedLineup {
+  return buildExpectedLineup({
+    ownerId,
+    season: LCC_CURRENT_SEASON,
+    week: 1,
+    rosterSnapshot,
+    performanceCutoff: { season: LCC_CURRENT_SEASON, week: 1 },
+  });
 }
 
 function buildExpectedLineup({

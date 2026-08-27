@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { ALL_LCC_OWNERS } from "../lccOwners";
-import { LCC_CURRENT_SEASON } from "../leagueConstants";
+import { ALL_LCC_OWNERS } from "../lccOwners.ts";
+import { LCC_CURRENT_SEASON } from "../leagueConstants.ts";
 
 export type RosterSnapshotKind = "weeklyActual" | "seasonRoster";
 
@@ -37,6 +37,21 @@ type SleeperRoster = {
   starters?: string[] | null;
   reserve?: string[] | null;
   taxi?: string[] | null;
+};
+
+type CurrentRoster = {
+  rosterId: number;
+  ownerId: string;
+  sleeperUserId?: string | null;
+  players?: string[] | null;
+  starters?: string[] | null;
+  reserve?: string[] | null;
+  taxi?: string[] | null;
+};
+
+type CurrentRosterFile = {
+  season: number;
+  rosters: CurrentRoster[];
 };
 
 const DATA_ROOT = path.join(
@@ -115,10 +130,59 @@ export function getSeasonRosterSnapshot({
 export function getCurrentRosterSnapshot(
   ownerId: string
 ): HistoricalRosterSnapshot | null {
+  const current = getCurrentRosterSnapshots().find(
+    (snapshot) => snapshot.ownerId === ownerId
+  );
+  if (current) {
+    return current;
+  }
+
   return getSeasonRosterSnapshot({
     ownerId,
     season: LCC_CURRENT_SEASON,
   });
+}
+
+let currentRosterSnapshotCache: readonly HistoricalRosterSnapshot[] | null = null;
+
+function getCurrentRosterSnapshots(): readonly HistoricalRosterSnapshot[] {
+  if (currentRosterSnapshotCache) {
+    return currentRosterSnapshotCache;
+  }
+
+  const rosterPath = path.join(
+    process.cwd(),
+    "data/current/rosters/2026.json"
+  );
+  if (!fs.existsSync(rosterPath)) {
+    currentRosterSnapshotCache = [];
+    return currentRosterSnapshotCache;
+  }
+
+  const file = JSON.parse(fs.readFileSync(rosterPath, "utf8")) as CurrentRosterFile;
+  currentRosterSnapshotCache = file.rosters.map((roster) => {
+    const playerIds = uniqueIds(roster.players);
+    const starterIds = uniqueIds(roster.starters);
+
+    return {
+      season: file.season,
+      week: null,
+      ownerId: roster.ownerId,
+      sleeperUserId: roster.sleeperUserId ?? null,
+      rosterId: roster.rosterId,
+      playerIds,
+      starterIds,
+      nonstarterIds: playerIds.filter(
+        (playerId) => !starterIds.includes(playerId)
+      ),
+      reserveIds: roster.reserve ? uniqueIds(roster.reserve) : null,
+      taxiIds: roster.taxi ? uniqueIds(roster.taxi) : null,
+      snapshotKind: "seasonRoster",
+      source: "seasonRosters",
+      actualWeeklyLineupAvailable: false,
+    };
+  });
+  return currentRosterSnapshotCache;
 }
 
 function getWeeklySnapshotsByOwner(

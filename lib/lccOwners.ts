@@ -1,5 +1,5 @@
-import { LCC_CURRENT_SEASON } from "./leagueConstants";
-import managerProfileSurvey from "../data/current/manager-profiles.json";
+import { LCC_CURRENT_SEASON } from "./leagueConstants.ts";
+import managerProfileSurvey from "../data/current/manager-profiles.json" with { type: "json" };
 
 export const LCC_ERA_MODEL = {
   twoKeeper: {

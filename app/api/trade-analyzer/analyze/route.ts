@@ -7,6 +7,7 @@ import type { TradeAnalyzerRuntime } from "../../../../lib/trade-analyzer/tradeA
 
 const envEnabled = (name: string) => process.env[name] === "true";
 const methodResponse = () => errorResponse(405, "METHOD_NOT_ALLOWED", "Trade Analyzer accepts POST requests only.");
+const serviceErrorMessage = (code: string) => ({ UNKNOWN_ASSET: "One or more selected assets are no longer available.", EMPTY_SIDE: "Select at least one asset for each side of the trade.", DUPLICATE_ASSET: "An asset can only appear once in a trade package.", CROSS_SIDE_DUPLICATE: "The same asset cannot appear in both trade packages." }[code] ?? "The trade request is invalid.");
 const mapServiceError = (code: string) => code === "UNKNOWN_ASSET" ? "UNKNOWN_ASSET" : code === "EMPTY_SIDE" ? "EMPTY_SIDE" : code === "DUPLICATE_ASSET" ? "DUPLICATE_ASSET" : code === "CROSS_SIDE_DUPLICATE" ? "CROSS_SIDE_DUPLICATE" : "INVALID_REQUEST";
 
 export interface TradeAnalyzerRouteDependencies {
@@ -49,7 +50,7 @@ export function createTradeAnalyzerPostHandler(dependencies: TradeAnalyzerRouteD
       const typedBody = body as Record<string, unknown>;
       const serviceRequest: TradeAnalysisServiceRequest = Array.isArray(typedBody.participants) ? { participants: typedBody.participants as TradeAnalysisServiceRequest["participants"], evaluatedAt: now().toISOString(), leaguePhase: resolveTradeAnalyzerLeaguePhase(now()), outputMode: "INTERNAL" } : { sideA: typedBody.sideA as TradeAnalysisServiceRequest["sideA"], sideB: typedBody.sideB as TradeAnalysisServiceRequest["sideB"], evaluatedAt: now().toISOString(), leaguePhase: resolveTradeAnalyzerLeaguePhase(now()), outputMode: "INTERNAL", ownershipValidation: typedBody.validateOwnership === true };
       const result = analyzeTradeInternal(serviceRequest, { catalog: runtime.catalog, snapshot: runtime.snapshot, modelVersions: { valuationPolicyVersion: "valuation-v1", fairnessModelVersion: "fairness-v1" } });
-      if (result.status === "INVALID_REQUEST") return errorResponse(400, mapServiceError(result.errors[0] ?? "INVALID_REQUEST"), "The trade request is invalid.");
+      if (result.status === "INVALID_REQUEST") { const code = result.errors[0] ?? "INVALID_REQUEST"; return errorResponse(400, mapServiceError(code), serviceErrorMessage(code)); }
       if (result.status === "INTERNAL_ERROR") return errorResponse(503, result.errors.includes("SNAPSHOT_NOT_FOUND") || result.errors.includes("SNAPSHOT_INTEGRITY_FAILED") ? "SNAPSHOT_UNAVAILABLE" : "INTERNAL_ERROR", result.errors.includes("SNAPSHOT_NOT_FOUND") || result.errors.includes("SNAPSHOT_INTEGRITY_FAILED") ? "Trade Analyzer is temporarily unavailable." : "Trade analysis is temporarily unavailable.");
       return safeResponse({ ok: true, data: result });
     } catch { return errorResponse(500, "INTERNAL_ERROR", "Trade analysis is temporarily unavailable."); }

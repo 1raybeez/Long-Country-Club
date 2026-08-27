@@ -4,6 +4,8 @@ import type { CurrentTradeRequest } from "./types";
 import type { ApprovedSnapshotReference, ServiceDependencies, ServiceOutputMode, ServiceValidationResult, TradeAnalysisServiceRequest, TradeAnalysisServiceResponse } from "./serviceTypes";
 import { calculateMultiTeamFairness } from "./multiTeamFairnessEngine.ts";
 import type { MultiTeamParticipantInput } from "./multiTeamTypes";
+import { calculateRosterImpact } from "./rosterImpactEngine.ts";
+import type { CurrentCatalogAsset } from "./types";
 
 export const APPROVED_SNAPSHOT_DATE = "2026-08-26" as const;
 export const EXPECTED_MODEL_VERSIONS = { valuationPolicyVersion: "valuation-v1", fairnessModelVersion: "fairness-v1" } as const;
@@ -37,7 +39,7 @@ export function validateTradeAnalysisRequest(request: unknown, catalog: ServiceD
   return { errors: unique(errors), warnings };
 }
 
-const emptyResponse = (status: TradeAnalysisServiceResponse["status"], errors: string[], model: TradeAnalysisServiceResponse["model"] = EXPECTED_MODEL_VERSIONS, message?: string): TradeAnalysisServiceResponse => ({ success: false, status, engineStatus: null, model, snapshot: null, sideA: null, sideB: null, trade: null, ownership: null, warnings: [], errors: unique(errors), multiTeam: null, ...(message ? { message } : {}) });
+const emptyResponse = (status: TradeAnalysisServiceResponse["status"], errors: string[], model: TradeAnalysisServiceResponse["model"] = EXPECTED_MODEL_VERSIONS, message?: string): TradeAnalysisServiceResponse => ({ success: false, status, engineStatus: null, model, snapshot: null, sideA: null, sideB: null, trade: null, ownership: null, warnings: [], errors: unique(errors), multiTeam: null, rosterImpact: null, ...(message ? { message } : {}) });
 
 const modelMatches = (dependencies: ServiceDependencies) => dependencies.modelVersions?.valuationPolicyVersion === EXPECTED_MODEL_VERSIONS.valuationPolicyVersion && dependencies.modelVersions?.fairnessModelVersion === EXPECTED_MODEL_VERSIONS.fairnessModelVersion;
 const snapshotMatches = (snapshot: ApprovedSnapshotReference, catalog: ServiceDependencies["catalog"]) => snapshot.date === APPROVED_SNAPSHOT_DATE && catalog.snapshotDate === APPROVED_SNAPSHOT_DATE && snapshot.integrityValid && snapshot.sourceLicenseStatus !== "";
@@ -62,7 +64,8 @@ export function analyzeTradeInternal(request: unknown, dependencies: ServiceDepe
     const ownership = result.ownership;
     const ownershipWarnings = typed.ownershipValidation && (ownership.sideA === "NOT_CURRENTLY_OWNED" || ownership.sideB === "NOT_CURRENTLY_OWNED") ? ["OWNERSHIP_MISMATCH"] : [];
     if (typed.outputMode === "PUBLIC" && engine.trade.errors.includes("SOURCE_LICENSE_UNAPPROVED")) return { success: false, status: "BLOCKED", engineStatus: null, model: { ...EXPECTED_MODEL_VERSIONS, availability: "BLOCKED" }, snapshot: null, sideA: null, sideB: null, trade: null, ownership: null, warnings: [], errors: ["SOURCE_LICENSE_UNAPPROVED"], message: "Trade analysis is unavailable for public output while source licensing is under review." };
-    return { success: true, status: "OK", engineStatus: engine.trade.resultStatus, model: engine.model, snapshot: { sourceName: engine.snapshot.sourceName, snapshotDate: engine.snapshot.snapshotDate, retrievedAt: engine.snapshot.snapshotRetrievedAt, sourceLicenseStatus: engine.snapshot.sourceLicenseStatus ?? "" }, sideA: engine.sideA, sideB: engine.sideB, trade: engine.trade, ownership: typed.ownershipValidation ? ownership : null, warnings: [...new Set([...engine.trade.warnings, ...ownershipWarnings])], errors: [], multiTeam: null };
+    const rosterImpact = typed.outputMode === "PUBLIC" || !typed.sideA?.ownerId || !typed.sideB?.ownerId ? null : calculateRosterImpact([{ franchiseId: typed.sideA!.ownerId ?? "sideA", franchiseName: typed.sideA!.ownerId ?? "Package A", sends: typed.sideA!.assetIds.map((id) => dependencies.catalog.byAssetId[id]).filter(Boolean) as CurrentCatalogAsset[], receives: typed.sideB!.assetIds.map((id) => dependencies.catalog.byAssetId[id]).filter(Boolean) as CurrentCatalogAsset[] }, { franchiseId: typed.sideB!.ownerId ?? "sideB", franchiseName: typed.sideB!.ownerId ?? "Package B", sends: typed.sideB!.assetIds.map((id) => dependencies.catalog.byAssetId[id]).filter(Boolean) as CurrentCatalogAsset[], receives: typed.sideA!.assetIds.map((id) => dependencies.catalog.byAssetId[id]).filter(Boolean) as CurrentCatalogAsset[] }]);
+    return { success: true, status: "OK", engineStatus: engine.trade.resultStatus, model: engine.model, snapshot: { sourceName: engine.snapshot.sourceName, snapshotDate: engine.snapshot.snapshotDate, retrievedAt: engine.snapshot.snapshotRetrievedAt, sourceLicenseStatus: engine.snapshot.sourceLicenseStatus ?? "" }, sideA: engine.sideA, sideB: engine.sideB, trade: engine.trade, ownership: typed.ownershipValidation ? ownership : null, warnings: [...new Set([...engine.trade.warnings, ...ownershipWarnings])], errors: [], multiTeam: null, rosterImpact };
   } catch {
     return internalError();
   }
@@ -102,8 +105,9 @@ function analyzeMultiTeam(rawParticipants: unknown[], rawRequest: Record<string,
   if (!snapshotMatches(dependencies.snapshot, dependencies.catalog)) return emptyResponse("INTERNAL_ERROR", [dependencies.snapshot.integrityValid ? "SNAPSHOT_NOT_FOUND" : "SNAPSHOT_INTEGRITY_FAILED"], { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" });
   const calculated = calculateMultiTeamFairness(resolved);
   const multiTeam = { ...calculated, warnings: [...new Set([...calculated.warnings, ...(dependencies.snapshot.sourceLicenseStatus === "APPROVED" ? [] : ["SOURCE_LICENSE_UNAPPROVED"])])] };
+  const rosterImpact = calculateRosterImpact(participants.map((participant, index) => ({ franchiseId: participant.franchiseId, franchiseName: participant.franchiseId, sends: (resolved[index]?.sends ?? []) as CurrentCatalogAsset[], receives: (resolved[index]?.receives ?? []) as CurrentCatalogAsset[] })));
   if (rawRequest.outputMode === "PUBLIC" && multiTeam.warnings.includes("SOURCE_LICENSE_UNAPPROVED")) return emptyResponse("BLOCKED", ["SOURCE_LICENSE_UNAPPROVED"], { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1", availability: "BLOCKED" });
-  return { success: true, status: "OK", engineStatus: multiTeam.status, model: { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" }, snapshot: { sourceName: dependencies.snapshot.sourceName, snapshotDate: dependencies.snapshot.date, retrievedAt: dependencies.snapshot.retrievedAt, sourceLicenseStatus: dependencies.snapshot.sourceLicenseStatus }, sideA: null, sideB: null, trade: null, ownership: null, warnings: multiTeam.warnings, errors: multiTeam.errors, multiTeam };
+  return { success: true, status: "OK", engineStatus: multiTeam.status, model: { ...EXPECTED_MODEL_VERSIONS, multiTeamModelVersion: "fairness-multi-v1" }, snapshot: { sourceName: dependencies.snapshot.sourceName, snapshotDate: dependencies.snapshot.date, retrievedAt: dependencies.snapshot.retrievedAt, sourceLicenseStatus: dependencies.snapshot.sourceLicenseStatus }, sideA: null, sideB: null, trade: null, ownership: null, warnings: multiTeam.warnings, errors: multiTeam.errors, multiTeam, rosterImpact: rawRequest.outputMode === "PUBLIC" ? null : rosterImpact };
 }
 
 export const createTradeAnalysisService = (dependencies: ServiceDependencies) => (request: unknown) => analyzeTradeInternal(request, dependencies);

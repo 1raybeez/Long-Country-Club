@@ -1,11 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
-import { ALL_LCC_OWNERS } from "../lccOwners";
-import { LCC_CURRENT_SEASON } from "../leagueConstants";
+import { ALL_LCC_OWNERS } from "../lccOwners.ts";
+import { LCC_CURRENT_SEASON } from "../leagueConstants.ts";
 import {
   getPlayerById,
   type HistoricalPlayerMetadata,
-} from "./playerRegistry";
+} from "./playerRegistry.ts";
 
 export type PlayerPerformanceBoundary = {
   readonly season: number;
