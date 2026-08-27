@@ -13,6 +13,11 @@ assert.equal(client.includes("currentValuationAdapter"), false, "client imports 
 assert.equal(client.includes("tradeAnalysisService"), false, "client imports internal service");
 assert.equal(client.includes("Save Trade"), false, "client exposes save control");
 assert.equal(client.includes("Share Trade"), false, "client exposes share control");
+assert.equal(client.includes("item.marketShare.display * 100"), false, "client multiplies display percentage twice");
+const formatShare = (display) => `${display.toFixed(1)}%`;
+assert.equal(formatShare(41), "41.0%", "Side A market share presentation");
+assert.equal(formatShare(59), "59.0%", "Side B market share presentation");
+assert.equal(Number(formatShare(41).replace("%", "")) + Number(formatShare(59).replace("%", "")), 100, "display shares total 100");
 required(api, ["outputMode", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_PRIVATE_OUTPUT_APPROVED"], "API");
 required(docs, ["/trade-analyzer", "feature gate", "private-output", "Suppressed", "mobile", "deferred"], "documentation");
 console.log("TRADE_UI_DIAGNOSTICS_PASS");
