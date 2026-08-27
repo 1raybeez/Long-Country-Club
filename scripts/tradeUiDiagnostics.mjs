@@ -16,8 +16,18 @@ assert.equal(client.includes("setTeamB(\"\")"), true, "participant two starts un
 assert.equal(client.includes("defaultOwnerId"), false, "authenticated owner is not preselected");
 assert.equal(client.includes("Current franchise assets"), false, "shared league asset section remains");
 assert.equal(client.includes("asset.ownerId !== ownerId"), true, "league ownership enforcement present");
+required(client, ["StickyAnalyze", "IntersectionObserver", "top?.click()", "!hasResult && !topVisible", "packageIds.length > 0", "otherSelected > 0", "primaryName", "secondaryName", "primaryCount", "secondaryCount", "primaryCount === 1 ? \"asset\" : \"assets\""], "sticky analyze control");
+assert.equal(client.includes("side === \"A\" && packageIds.length > 0"), true, "sticky control is league participant one scoped");
+assert.equal(client.includes("fixed inset-x-3 bottom-3"), true, "sticky control is fixed to the viewport bottom");
+assert.equal(client.includes("env(safe-area-inset-bottom)"), true, "sticky control accounts for mobile safe area");
+assert.equal(client.includes("marketValue"), true, "existing market values remain available outside sticky control");
+assert.equal((client.match(/fetch\(\"\/api\/trade-analyzer\/analyze/g) ?? []).length, 1, "sticky control does not add a second analyze fetch");
+assert.equal(client.includes("aria-label=\"Analyze selected trade\""), true, "sticky control is labeled for assistive technology");
 assert.equal(client.includes("Draft picks"), true, "draft picks follow roster in participant column");
 assert.equal(client.includes("border-[var(--lcc-brand-primary)]"), true, "selected row treatment present");
+assert.equal(client.includes("action={selected.has(asset.assetId) ? \"Remove\" : \"Select\"}"), true, "selected roster rows remove directly");
+assert.equal(client.includes("asset.assetType === \"PICK\" ? \"Pick\""), true, "pick rows avoid redundant draft-capital text");
+assert.equal(client.includes("item.marketShare.display * 100"), false, "market share is not multiplied twice");
 assert.equal(client.includes("Participant 3"), false, "multi-team participant exposed");
 assert.equal(client.includes("Random"), false, "random trade control exposed");
 assert.equal(client.includes("fairnessEngine"), false, "client imports fairness engine");
