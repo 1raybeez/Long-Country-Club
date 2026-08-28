@@ -77,7 +77,7 @@
     "war-room-roster:refresh": "node scripts/refreshWarRoomRosterSnapshot.mjs",
     "war-room-roster:diagnostics": "node scripts/warRoomRosterDiagnostics.mjs",
     "war-room-draft-capital:diagnostics": "node scripts/warRoomDraftCapitalDiagnostics.mjs",
-    "auth:member-diagnostics": "node scripts/authMemberDiagnostics.mjs",
+    "auth:member-diagnostics": "tsx scripts/authMemberDiagnostics.ts",
     "feedback:diagnostics": "node scripts/feedbackDiagnostics.mjs",
     "commissioner-feedback:diagnostics": "node scripts/commissionerFeedbackDiagnostics.mjs",
     "commissioner-hub:diagnostics": "node scripts/commissionerHubDiagnostics.mjs",
@@ -104,6 +104,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
     "tailwindcss": "^4",
+    "tsx": "^4.23.12",
     "typescript": "^5"
   }
 }
