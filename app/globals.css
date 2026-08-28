@@ -358,7 +358,7 @@ body {
   color: #ffffff;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 1024px) {
   .lcc-site-header__inner {
     padding: 0 1.5rem;
   }
@@ -420,7 +420,7 @@ body {
   }
 }
 
-@media (max-width: 759px) {
+@media (max-width: 1023px) {
   .lcc-site-header__inner {
     display: block;
   }
