@@ -25,16 +25,14 @@ function isRouteActive(pathname: string, href: string) {
 export function SiteHeader({ session }: { session: SiteHeaderSession | null }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPathname, setMenuPathname] = useState<string | null>(null);
   const [accountOpen, setAccountOpen] = useState(false);
   const mobileAccountRef = useRef<HTMLDivElement>(null);
   const desktopAccountRef = useRef<HTMLDivElement>(null);
+  const menuVisible = menuOpen && menuPathname === pathname;
 
   useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!menuOpen) return;
+    if (!menuVisible) return;
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setMenuOpen(false);
@@ -42,7 +40,7 @@ export function SiteHeader({ session }: { session: SiteHeaderSession | null }) {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [menuOpen]);
+  }, [menuVisible]);
 
   useEffect(() => {
     if (!accountOpen) return;
@@ -140,12 +138,15 @@ export function SiteHeader({ session }: { session: SiteHeaderSession | null }) {
           <button
             type="button"
             className="lcc-mobile-menu-toggle"
-            aria-expanded={menuOpen}
+            aria-expanded={menuVisible}
             aria-controls={MOBILE_NAV_ID}
-            aria-label={menuOpen ? "Close primary navigation" : "Open primary navigation"}
-            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={menuVisible ? "Close primary navigation" : "Open primary navigation"}
+            onClick={() => {
+              setMenuPathname(pathname);
+              setMenuOpen(!menuVisible);
+            }}
           >
-            {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+            {menuVisible ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
 
           <div className="lcc-site-header__mobile-account">
@@ -156,7 +157,7 @@ export function SiteHeader({ session }: { session: SiteHeaderSession | null }) {
         <div className="lcc-site-header__desktop-actions">
           <nav
             id={MOBILE_NAV_ID}
-            className={`lcc-primary-nav${menuOpen ? " is-open" : ""}`}
+            className={`lcc-primary-nav${menuVisible ? " is-open" : ""}`}
             aria-label="Primary navigation"
           >
             {LCC_PRIMARY_NAV_ROUTES.map((route) => {
