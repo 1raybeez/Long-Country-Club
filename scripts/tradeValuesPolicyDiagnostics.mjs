@@ -1,10 +1,40 @@
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
-const date = process.env.SNAPSHOT_DATE ?? new Date().toISOString().slice(0, 10);
 const read = async (file) => JSON.parse(await readFile(path.join(root, file), "utf8"));
-const snapshot = await read(`data/trade-analyzer/valuations/fantasycalc/normalized/${date}.json`);
+const manifestPath = "data/trade-analyzer/valuations/fantasycalc/manifest.json";
+const manifest = await read(manifestPath);
+const snapshotDirectory = "data/trade-analyzer/valuations/fantasycalc/";
+const referencedFiles = [manifest.rawFile, manifest.normalizedFile];
+if (
+  manifest.validationResult !== "PASS" ||
+  !manifest.snapshotDate ||
+  referencedFiles.some((file) => typeof file !== "string" || !file.startsWith(snapshotDirectory))
+) {
+  throw new Error("APPROVED_SNAPSHOT_MANIFEST_INVALID");
+}
+
+const date = manifest.snapshotDate;
+const snapshot = await read(manifest.normalizedFile);
+const raw = await read(manifest.rawFile);
+const normalizedText = await readFile(path.join(root, manifest.normalizedFile), "utf8");
+const rawResponseText = raw.rawResponseBody;
+const rawResponse = JSON.parse(rawResponseText);
+const sha256 = (value) => createHash("sha256").update(value).digest("hex");
+if (
+  snapshot.snapshotDate !== date ||
+  raw.snapshotDate !== date ||
+  sha256(rawResponseText) !== manifest.rawResponseHash ||
+  sha256(normalizedText) !== manifest.normalizedFileHash ||
+  JSON.stringify(rawResponse) !== JSON.stringify(raw.response) ||
+  manifest.rowCount !== rawResponse.length ||
+  manifest.playerCount !== snapshot.players.length ||
+  manifest.pickCount !== snapshot.picks.length
+) {
+  throw new Error("APPROVED_SNAPSHOT_MANIFEST_INVALID");
+}
 const rosterFile = await read("data/current/rosters/2026.json");
 const playerCatalog = await read("data/history/matchups/sleeper/players.json");
 const picksFile = await read("data/current/drafts/future-picks.json");
