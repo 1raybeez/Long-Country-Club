@@ -135,6 +135,14 @@ body {
   gap: 1rem;
 }
 
+.lcc-site-header__desktop-actions {
+  display: contents;
+}
+
+.lcc-site-header__desktop-account {
+  display: none;
+}
+
 .lcc-site-brand {
   display: flex;
   align-items: center;
@@ -357,18 +365,21 @@ body {
 
   .lcc-site-header__bar {
     min-height: 5rem;
-    display: contents;
+    flex: 0 0 auto;
   }
 
-  .lcc-site-brand { order: 1; }
+  .lcc-site-header__mobile-account { display: none; }
 
-  .lcc-primary-nav {
-    order: 2;
+  .lcc-site-header__desktop-actions {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.9rem;
     margin-left: auto;
   }
 
-  .lcc-account {
-    order: 3;
+  .lcc-site-header__desktop-account {
+    display: block;
     border-left: 1px solid var(--lcc-color-border-strong);
     padding-left: 0.9rem;
   }
@@ -416,6 +427,10 @@ body {
 
   .lcc-site-header__bar {
     width: 100%;
+  }
+
+  .lcc-site-header__desktop-actions {
+    display: block;
   }
 
   .lcc-account__identity {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { LCC_PRIMARY_NAV_ROUTES } from "@/lib/routeConfig";
 import { LCC_BRAND } from "@/lib/lccBrand";
 import { GoogleAuthButton } from "./GoogleAuthButton";
@@ -26,7 +26,8 @@ export function SiteHeader({ session }: { session: SiteHeaderSession | null }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
-  const accountRef = useRef<HTMLDivElement>(null);
+  const mobileAccountRef = useRef<HTMLDivElement>(null);
+  const desktopAccountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -46,7 +47,13 @@ export function SiteHeader({ session }: { session: SiteHeaderSession | null }) {
   useEffect(() => {
     if (!accountOpen) return;
     function handlePointerDown(event: MouseEvent) {
-      if (!accountRef.current?.contains(event.target as Node)) setAccountOpen(false);
+      const target = event.target as Node;
+      if (
+        !mobileAccountRef.current?.contains(target) &&
+        !desktopAccountRef.current?.contains(target)
+      ) {
+        setAccountOpen(false);
+      }
     }
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setAccountOpen(false);
@@ -58,6 +65,54 @@ export function SiteHeader({ session }: { session: SiteHeaderSession | null }) {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [accountOpen]);
+
+  function renderAccountControl(ref: RefObject<HTMLDivElement | null>) {
+    return (
+      <div className="lcc-account" ref={ref}>
+        {session ? (
+          <>
+            <button
+              type="button"
+              className="lcc-account__trigger"
+              aria-haspopup="menu"
+              aria-expanded={accountOpen}
+              onClick={() => setAccountOpen((open) => !open)}
+            >
+              <span className="lcc-account__identity">
+                <strong>{session.member?.displayName ?? "Authenticated member"}</strong>
+                <small>{session.member?.teamName ?? "Member access not configured"}</small>
+              </span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            {accountOpen ? (
+              <div className="lcc-account__menu" role="menu" aria-label="Account menu">
+                {session.member?.capabilities.includes("war-room") ? (
+                  <Link href="/war-room" role="menuitem" onClick={() => setAccountOpen(false)}>
+                    My War Room
+                  </Link>
+                ) : null}
+                {session.member?.capabilities.includes("commissioner") ? (
+                  <Link href="/commish" role="menuitem" onClick={() => setAccountOpen(false)}>
+                    Commissioner Hub
+                  </Link>
+                ) : null}
+                <GoogleAuthButton
+                  mode="sign-out"
+                  className="lcc-account__menu-action"
+                />
+              </div>
+            ) : null}
+          </>
+        ) : (
+          <GoogleAuthButton
+            mode="sign-in"
+            returnTo={pathname}
+            className="lcc-account__sign-in"
+          />
+        )}
+      </div>
+    );
+  }
 
   return (
     <header className="lcc-site-header">
@@ -93,72 +148,37 @@ export function SiteHeader({ session }: { session: SiteHeaderSession | null }) {
             {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
 
-          <div className="lcc-account" ref={accountRef}>
-            {session ? (
-              <>
-                <button
-                  type="button"
-                  className="lcc-account__trigger"
-                  aria-haspopup="menu"
-                  aria-expanded={accountOpen}
-                  onClick={() => setAccountOpen((open) => !open)}
-                >
-                  <span className="lcc-account__identity">
-                    <strong>{session.member?.displayName ?? "Authenticated member"}</strong>
-                    <small>{session.member?.teamName ?? "Member access not configured"}</small>
-                  </span>
-                  <span aria-hidden="true">▾</span>
-                </button>
-                {accountOpen ? (
-                  <div className="lcc-account__menu" role="menu" aria-label="Account menu">
-                    {session.member?.capabilities.includes("war-room") ? (
-                      <Link href="/war-room" role="menuitem" onClick={() => setAccountOpen(false)}>
-                        My War Room
-                      </Link>
-                    ) : null}
-                    {session.member?.capabilities.includes("commissioner") ? (
-                      <Link href="/commish" role="menuitem" onClick={() => setAccountOpen(false)}>
-                        Commissioner Hub
-                      </Link>
-                    ) : null}
-                    <GoogleAuthButton
-                      mode="sign-out"
-                      className="lcc-account__menu-action"
-                    />
-                  </div>
-                ) : null}
-              </>
-            ) : (
-              <GoogleAuthButton
-                mode="sign-in"
-                returnTo={pathname}
-                className="lcc-account__sign-in"
-              />
-            )}
+          <div className="lcc-site-header__mobile-account">
+            {renderAccountControl(mobileAccountRef)}
           </div>
         </div>
 
-        <nav
-          id={MOBILE_NAV_ID}
-          className={`lcc-primary-nav${menuOpen ? " is-open" : ""}`}
-          aria-label="Primary navigation"
-        >
-          {LCC_PRIMARY_NAV_ROUTES.map((route) => {
-            const active = isRouteActive(pathname, route.href);
+        <div className="lcc-site-header__desktop-actions">
+          <nav
+            id={MOBILE_NAV_ID}
+            className={`lcc-primary-nav${menuOpen ? " is-open" : ""}`}
+            aria-label="Primary navigation"
+          >
+            {LCC_PRIMARY_NAV_ROUTES.map((route) => {
+              const active = isRouteActive(pathname, route.href);
 
-            return (
-              <Link
-                key={route.id}
-                href={route.href}
-                aria-current={active ? "page" : undefined}
-                className={`lcc-primary-nav__link${active ? " is-active" : ""}`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {route.navLabel || route.label}
-              </Link>
-            );
-          })}
-        </nav>
+              return (
+                <Link
+                  key={route.id}
+                  href={route.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`lcc-primary-nav__link${active ? " is-active" : ""}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {route.navLabel || route.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="lcc-site-header__desktop-account">
+            {renderAccountControl(desktopAccountRef)}
+          </div>
+        </div>
       </div>
     </header>
   );
