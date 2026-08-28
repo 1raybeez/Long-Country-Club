@@ -49,7 +49,11 @@ assert.equal(client.includes("asset.assetType === \"PICK\" ? \"Pick\""), true, "
 assert.equal(client.includes("item.marketShare.display * 100"), false, "market share is not multiplied twice");
 assert.equal(client.includes('mode === "LEAGUE" && participantCount === 2'), true, "participant control is league-only");
 assert.equal(client.includes(': ["Team A", "Team B"]'), true, "sandbox participant terminology");
-required(client, ["Search roster and picks", "Search by player, pick, or team", "SandboxAssetRow", "imageUrl", "nflTeam", "rosterStatus", "Add A", "Add B", "Remove A", "Remove B", "PackageSummary", "packageA={packageA}", "packageB={packageB}", "sandboxMatches", "discoveryActive", "slice(0, 25)", "max-h-[34rem]", "Showing first 25 results. Refine your search.", "Search for a player or choose a position to browse available assets.", "pickYear", "All Years"], "sandbox asset picker");
+required(client, ["Search roster and picks", "Search by player, pick, or team", "SandboxAssetRow", "imageUrl", "nflTeam", "rosterStatus", "Add to Team A", "Add to Team B", "Remove from Team A", "Remove from Team B", "PackageSummary", "packageA={packageA}", "packageB={packageB}", "sandboxMatches", "discoveryActive", "slice(0, 25)", "max-h-[34rem]", "Showing first 25 results. Refine your search.", "Search for a player or choose a position to browse available assets.", "pickYear", "All Years"], "sandbox asset picker");
+const sandboxPicker = client.slice(client.indexOf("function SandboxPicker"), client.indexOf("function TradeReportHeroView"));
+assert.equal(sandboxPicker.includes("Package A") || sandboxPicker.includes("Package B"), false, "sandbox has no package labels");
+assert.equal(sandboxPicker.includes("Side A") || sandboxPicker.includes("Side B"), false, "sandbox has no side labels");
+required(sandboxPicker, ["Team A", "Team B", "Add to Team A", "Add to Team B", "Remove from Team A", "Remove from Team B"], "sandbox owner-facing team labels");
 assert.equal(client.includes("discoveryActive ? <>") || client.includes("discoveryActive ?"), true, "blank sandbox does not render catalog");
 assert.equal(client.includes("resultCount > 25"), true, "sandbox result cap is disclosed");
 assert.equal(client.includes("catalog={catalog} onRemove"), true, "sandbox summaries use full catalog");
