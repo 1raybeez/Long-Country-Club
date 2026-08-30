@@ -86,6 +86,7 @@
     "firebase:package-matchup-archive": "node scripts/packageMatchupArchive.mjs",
     "firebase:package-trade-valuations": "node scripts/packageTradeAnalyzerValuationAssets.mjs",
     "firebase:trade-valuations-package-diagnostics": "node scripts/tradeValuationPackageDiagnostics.mjs",
+    "firebase:runtime-diagnostics": "node --experimental-strip-types scripts/tradeFirebaseRuntimeDiagnostics.mjs",
     "records:diagnostics": "node scripts/recordsDiagnostics.mjs"
   },
   "dependencies": {
