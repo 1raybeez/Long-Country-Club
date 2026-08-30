@@ -14,7 +14,14 @@ if (!fs.existsSync(backendRoot)) fail('Generated Firebase backend directory is m
 const sourceManifest = readJson(sourceManifestPath);
 if (sourceManifest.snapshotDate !== '2026-08-26') fail('Approved valuation identity is not 2026-08-26');
 if (!sourceManifest.normalizedFile || !sourceManifest.rawFile) fail('Manifest does not select the complete runtime asset set');
-const requiredFiles = [manifestRelative, sourceManifest.normalizedFile, sourceManifest.rawFile];
+const requiredFiles = [
+  manifestRelative,
+  sourceManifest.normalizedFile,
+  sourceManifest.rawFile,
+  'data/current/rosters/2026.json',
+  'data/current/drafts/future-picks.json',
+  'data/history/matchups/sleeper/players.json',
+];
 for (const relative of requiredFiles) {
   const source = path.join(projectRoot, relative);
   const generated = path.join(backendRoot, relative);
@@ -25,7 +32,13 @@ for (const relative of requiredFiles) {
 const generatedManifest = readJson(path.join(backendRoot, manifestRelative));
 if (generatedManifest.snapshotDate !== '2026-08-26') fail('Generated valuation identity is not 2026-08-26');
 if (generatedManifest.normalizedFile !== sourceManifest.normalizedFile || generatedManifest.rawFile !== sourceManifest.rawFile) fail('Generated manifest authority differs from source manifest');
+const generatedRoster = readJson(path.join(backendRoot, 'data/current/rosters/2026.json'));
+if (generatedRoster.season !== 2026) fail('Generated roster identity is not 2026');
+const generatedFuturePicks = readJson(path.join(backendRoot, 'data/current/drafts/future-picks.json'));
+if (!Array.isArray(generatedFuturePicks.assets) || !Array.isArray(generatedFuturePicks.supportedFutureSeasons)) fail('Generated future-pick inventory is invalid');
+const generatedPlayers = readJson(path.join(backendRoot, 'data/history/matchups/sleeper/players.json'));
+if (!generatedPlayers || typeof generatedPlayers !== 'object' || Array.isArray(generatedPlayers)) fail('Generated player catalog is invalid');
 const generatedRoot = path.join(backendRoot, 'data', 'trade-analyzer', 'valuations', 'fantasycalc');
 const generatedFiles = fs.readdirSync(generatedRoot, { recursive: true }).filter((entry) => fs.statSync(path.join(generatedRoot, entry)).isFile()).sort().map((entry) => path.join('data', 'trade-analyzer', 'valuations', 'fantasycalc', entry));
-if (generatedFiles.length !== requiredFiles.length || requiredFiles.some((relative) => !generatedFiles.includes(relative))) fail('Generated valuation directory contains an unexpected or missing asset');
-console.log(JSON.stringify({ status: 'PASS', approvedSnapshotDate: generatedManifest.snapshotDate, runtimeAssetCount: requiredFiles.length, checksums: 'PASS', serverOnlyDestination: 'PASS' }, null, 2));
+if (generatedFiles.length !== 3 || !generatedFiles.includes(manifestRelative) || !generatedFiles.includes(sourceManifest.normalizedFile) || !generatedFiles.includes(sourceManifest.rawFile)) fail('Generated valuation directory contains an unexpected or missing asset');
+console.log(JSON.stringify({ status: 'PASS', approvedSnapshotDate: generatedManifest.snapshotDate, runtimeAssetCount: requiredFiles.length, checksums: 'PASS', contextIdentity: 'PASS', serverOnlyDestination: 'PASS' }, null, 2));

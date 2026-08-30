@@ -9,10 +9,20 @@ const manifest = readJson(path.join(sourceRoot, 'manifest.json'));
 
 if (manifest.snapshotDate !== '2026-08-26') throw new Error('Approved valuation manifest identity is not 2026-08-26');
 if (!manifest.normalizedFile || !manifest.rawFile) throw new Error('Approved valuation manifest does not select both runtime snapshot files');
-const requiredFiles = ['data/trade-analyzer/valuations/fantasycalc/manifest.json', manifest.normalizedFile, manifest.rawFile];
-for (const relative of requiredFiles.slice(1)) {
+const requiredFiles = [
+  'data/trade-analyzer/valuations/fantasycalc/manifest.json',
+  manifest.normalizedFile,
+  manifest.rawFile,
+  'data/current/rosters/2026.json',
+  'data/current/drafts/future-picks.json',
+  'data/history/matchups/sleeper/players.json',
+];
+for (const relative of requiredFiles.slice(1, 3)) {
   if (!path.normalize(relative).startsWith('data/trade-analyzer/valuations/fantasycalc/')) throw new Error(`Manifest file is outside the approved valuation directory: ${relative}`);
   if (!fs.existsSync(path.join(projectRoot, relative))) throw new Error(`Approved valuation file is missing: ${relative}`);
+}
+for (const relative of requiredFiles.slice(3)) {
+  if (!fs.existsSync(path.join(projectRoot, relative))) throw new Error(`Required Trade Analyzer runtime context file is missing: ${relative}`);
 }
 if (!fs.existsSync(backendRoot)) throw new Error('Generated Firebase backend directory is unavailable');
 fs.rmSync(path.join(backendRoot, 'data', 'trade-analyzer', 'valuations', 'fantasycalc'), { recursive: true, force: true });
