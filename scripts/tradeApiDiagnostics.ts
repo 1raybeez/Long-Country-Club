@@ -1,11 +1,13 @@
 import { createTradeAnalyzerPostHandler } from "../app/api/trade-analyzer/analyze/route.ts";
 import { BestEffortRateLimiter } from "../lib/trade-analyzer/tradeAnalyzerRouteSupport.ts";
+import { requestOriginAllowed } from "../lib/trade-analyzer/tradeAnalyzerRouteSupport.ts";
 import { analyzeTradeInternal } from "../lib/trade-analyzer/tradeAnalysisService.ts";
 import type { CurrentAssetCatalog, CurrentCatalogAsset } from "../lib/trade-analyzer/types.ts";
 import type { LccMemberSession } from "../lib/auth/types.ts";
 
 const checks: { name: string; pass: boolean; detail: string }[] = [];
 const check = (name: string, pass: boolean, detail: string) => checks.push({ name, pass, detail });
+process.env.NEXT_PUBLIC_APP_URL ??= "https://long-country-club-ffl.web.app";
 const asset = (id: string, value: number): CurrentCatalogAsset => ({ assetId: id, assetType: "PLAYER", displayName: id, position: "WR", baseValue: value, valueStatus: "VALUED", valueMethod: "FANTASYCALC_DIRECT", sourceName: "FantasyCalc", sourceRowId: id, snapshotDate: "2026-08-26", evidence: "HIGH", ownerId: "active-owner" });
 const assets = [asset("a", 5000), asset("b", 4500), asset("c", 3000), asset("d", 2500), asset("e", 1500), asset("f", 1000)];
 const catalog: CurrentAssetCatalog = { snapshotDate: "2026-08-26", assets, byAssetId: Object.fromEntries(assets.map((item) => [item.assetId, item])), integrity: { valid: true, errors: [] } };
@@ -13,7 +15,7 @@ const runtime = { catalog, snapshot: { date: "2026-08-26", sourceName: "FantasyC
 const member = (ownerId = "active-owner"): LccMemberSession => ({ identity: { uid: `${ownerId}-uid`, email: `${ownerId}@example.invalid`, name: ownerId, picture: null }, member: { memberId: ownerId, ownerId, displayName: ownerId, teamName: "Test Team", capabilities: [] } });
 const unauthenticated = (): Promise<LccMemberSession | null> => Promise.resolve(null);
 const enabled = { featureEnabled: () => true, licenseApproved: () => true, loadRuntime: async () => runtime, getSession: async () => member(), now: () => new Date("2026-08-26T12:00:00.000Z") };
-const request = (body: string, init: RequestInit = {}) => new Request("http://localhost/api/trade-analyzer/analyze", { method: "POST", headers: { "content-type": "application/json" }, body, ...init });
+const request = (body: string, init: RequestInit = {}) => new Request("http://localhost/api/trade-analyzer/analyze", { method: "POST", headers: { "content-type": "application/json", origin: "https://long-country-club-ffl.web.app" }, body, ...init });
 const json = (sideA = ["a"], sideB = ["b"], extra: Record<string, unknown> = {}) => JSON.stringify({ sideA: { assetIds: sideA }, sideB: { assetIds: sideB }, ...extra });
 const bodyOf = async (response: Response) => response.text();
 const responseOf = async (handler: ReturnType<typeof createTradeAnalyzerPostHandler>, body: string, init?: RequestInit) => handler(request(body, init));
@@ -30,7 +32,7 @@ const rosterImpactUnavailableBody = JSON.parse(await bodyOf(rosterImpactUnavaila
 check("roster_impact_non_blocking", rosterImpactUnavailable.status === 200 && rosterImpactUnavailableBody.ok === true && rosterImpactUnavailableBody.data.rosterImpact?.participants.every((participant: { status: string }) => participant.status === "INCOMPLETE"), "valid market analysis remains available when roster impact is incomplete");
 check("auth_matrix", (await responseOf(createTradeAnalyzerPostHandler({ ...enabled, getSession: unauthenticated }), json())).status === 401 && (await responseOf(createTradeAnalyzerPostHandler({ ...enabled, getSession: async () => ({ ...member(), member: null }) }), json())).status === 403 && (await responseOf(createTradeAnalyzerPostHandler({ ...enabled, getSession: async () => member("commissioner") }), json())).status === 200, "unauthenticated/unknown/retired deny; active and commissioner allow");
 check("method", (await createTradeAnalyzerPostHandler(enabled)(new Request("http://localhost/api/trade-analyzer/analyze", { method: "GET" }))).status === 405, "GET cannot calculate");
-check("content_type", (await responseOf(createTradeAnalyzerPostHandler(enabled), json(), { headers: { "content-type": "text/plain" } })).status === 415 && (await responseOf(createTradeAnalyzerPostHandler(enabled), json(), { headers: { "content-type": "application/json; charset=utf-8" } })).status === 200, "JSON required; charset accepted");
+check("content_type", (await responseOf(createTradeAnalyzerPostHandler(enabled), json(), { headers: { "content-type": "text/plain", origin: "https://long-country-club-ffl.web.app" } })).status === 415 && (await responseOf(createTradeAnalyzerPostHandler(enabled), json(), { headers: { "content-type": "application/json; charset=utf-8", origin: "https://long-country-club-ffl.web.app" } })).status === 200, "JSON required; charset accepted");
 check("body_limit", (await responseOf(createTradeAnalyzerPostHandler(enabled), "x".repeat(16 * 1024 + 1))).status === 413, "16 KB body limit");
 check("malformed_json", (await responseOf(createTradeAnalyzerPostHandler(enabled), "{bad")).status === 400, "malformed JSON returns 400");
 check("schema_limits", (await responseOf(createTradeAnalyzerPostHandler(enabled), json([], ["b"]))).status === 400 && (await responseOf(createTradeAnalyzerPostHandler(enabled), json(Array.from({ length: 16 }, (_, index) => String(index)), ["b"]))).status === 400 && (await responseOf(createTradeAnalyzerPostHandler(enabled), json(["a"], ["b"], { ownerId: "spoofed" }))).status === 400, "empty, oversized, and unexpected fields rejected");
@@ -40,6 +42,16 @@ const unknownResponse = await responseOf(createTradeAnalyzerPostHandler(enabled)
 const unknownBody = await bodyOf(unknownResponse);
 check("safe_error_detail", unknownResponse.status === 400 && unknownBody.includes("selected assets are no longer available") && !unknownBody.includes("at /"), "deterministic validation errors map to safe owner-facing messages");
 check("origin", (await responseOf(createTradeAnalyzerPostHandler(enabled), json(), { headers: { "content-type": "application/json", origin: "https://evil.example" } })).status === 403, "cross-origin request rejected");
+const proxiedOriginRequest = new Request("https://ssrlongcountryclubffl-tfhicrqlta-uc.a.run.app/api/trade-analyzer/analyze", { method: "POST", headers: { "content-type": "application/json", origin: "https://long-country-club-ffl.web.app" }, body: json() });
+check("firebase_proxy_origin", requestOriginAllowed(proxiedOriginRequest) && (await createTradeAnalyzerPostHandler(enabled)(proxiedOriginRequest)).status === 200, "canonical Hosting Origin is accepted when request.url is the internal SSR origin");
+const missingOriginRequest = new Request("https://ssrlong-country-club-ffl-tfhicrqlta-uc.a.run.app/api/trade-analyzer/analyze", { method: "POST", headers: { "content-type": "application/json" }, body: json() });
+check("missing_origin", !requestOriginAllowed(missingOriginRequest), "missing Origin fails closed");
+const previousConfiguredOrigin = process.env.NEXT_PUBLIC_APP_URL;
+process.env.NEXT_PUBLIC_APP_URL = "https://wrong.example";
+check("configured_origin_mismatch", !requestOriginAllowed(proxiedOriginRequest), "mismatched configured origin is rejected");
+process.env.NEXT_PUBLIC_APP_URL = previousConfiguredOrigin;
+const spoofedForwardedHostRequest = new Request("https://ssrlongcountryclubffl-tfhicrqlta-uc.a.run.app/api/trade-analyzer/analyze", { method: "POST", headers: { "content-type": "application/json", origin: "https://long-country-club-ffl.web.app", host: "evil.example", "x-forwarded-host": "evil.example", "x-forwarded-proto": "http" }, body: json() });
+check("forwarded_host_not_authority", requestOriginAllowed(spoofedForwardedHostRequest), "Host and forwarded headers do not override configured Origin authority");
 const limited = new BestEffortRateLimiter();
 const limitedHandler = createTradeAnalyzerPostHandler({ ...enabled, limiter: limited });
 let lastRateResponse: Response | null = null;

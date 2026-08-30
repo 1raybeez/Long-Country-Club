@@ -6,11 +6,11 @@ export const errorResponse = (status: number, code: string, message: string) => 
 
 export function requestOriginAllowed(request: Request): boolean {
   const origin = request.headers.get("origin");
-  if (!origin) return true;
+  if (!origin) return false;
   try {
-    const requestOrigin = new URL(request.url).origin;
-    const configured = process.env.NEXT_PUBLIC_APP_URL ? new URL(process.env.NEXT_PUBLIC_APP_URL).origin : requestOrigin;
-    return origin === requestOrigin && origin === configured;
+    const configured = process.env.NEXT_PUBLIC_APP_URL;
+    if (!configured) return false;
+    return origin === new URL(configured).origin;
   } catch { return false; }
 }
 
