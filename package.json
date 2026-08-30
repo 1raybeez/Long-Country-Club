@@ -84,6 +84,8 @@
     "predictor:diagnostics": "node scripts/predictorDiagnostics.mjs",
     "predictor:snapshot": "node scripts/predictorSnapshot.mjs",
     "firebase:package-matchup-archive": "node scripts/packageMatchupArchive.mjs",
+    "firebase:package-trade-valuations": "node scripts/packageTradeAnalyzerValuationAssets.mjs",
+    "firebase:trade-valuations-package-diagnostics": "node scripts/tradeValuationPackageDiagnostics.mjs",
     "records:diagnostics": "node scripts/recordsDiagnostics.mjs"
   },
   "dependencies": {

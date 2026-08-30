@@ -74,5 +74,5 @@ function buildSandboxCatalog(catalog: TradeAnalyzerCatalogAsset[]): TradeAnalyze
 }
 
 function Unavailable({ reason }: { reason: string }) {
-  return <main className="lcc2-page-shell"><div className="lcc2-page-container"><section className="lcc2-card lcc2-card--raised max-w-3xl p-6 sm:p-8" aria-labelledby="trade-analyzer-unavailable"><p className="lcc2-label text-[var(--lcc-brand-primary)]">Private Dynasty Operations</p><h1 id="trade-analyzer-unavailable" className="mt-2 font-ui text-4xl font-black tracking-[-0.04em] text-[var(--lcc-color-text)]">Trade Analyzer</h1><p className="lcc2-body mt-4">{reason}</p><p className="lcc2-body mt-2">This private testing surface is not enabled for public use.</p></section></div></main>;
+  return <main className="lcc2-page-shell"><div className="lcc2-page-container"><section className="lcc2-card lcc2-card--raised max-w-3xl p-6 sm:p-8" aria-labelledby="trade-analyzer-unavailable"><p className="lcc2-label text-[var(--lcc-brand-primary)]">Private Dynasty Operations</p><h1 id="trade-analyzer-unavailable" className="mt-2 font-ui text-4xl font-black tracking-[-0.04em] text-[var(--lcc-color-text)] sm:text-5xl">Trade Analyzer</h1><p className="lcc2-body mt-4">{reason}</p><p className="lcc2-body mt-2">Available only to authenticated active LCC league members.</p></section></div></main>;
 }

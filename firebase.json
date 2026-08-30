@@ -11,7 +11,9 @@
       "memory": "512MiB"
     },
     "predeploy": [
-      "npm run firebase:package-matchup-archive"
+      "npm run firebase:package-matchup-archive",
+      "npm run firebase:package-trade-valuations",
+      "npm run firebase:trade-valuations-package-diagnostics"
     ]
   },
   "firestore": {
