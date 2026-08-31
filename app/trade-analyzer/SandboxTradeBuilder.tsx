@@ -3,8 +3,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { TradeAnalyzerCatalogAsset } from "./TradeAnalyzerParticipantClient";
 import { sortCompactAssets } from "./CompactMultiParticipantColumn";
+import { isSandboxTradeValid, type SandboxParticipantState } from "@/lib/trade-analyzer/sandboxValidation";
 
-type SandboxParticipant = { assets: string[]; destinations: Record<string, string> };
+type SandboxParticipant = SandboxParticipantState;
 type TwoResult = { sideA: SideResult | null; sideB: SideResult | null; trade: TradeResult | null; snapshot?: { snapshotDate?: string }; warnings?: string[]; multiTeam?: null; rosterImpact?: null; dynastyOutlook?: null; contextualVerdict?: null; model?: { valuationPolicyVersion?: string; fairnessModelVersion?: string } };
 type SideResult = { assets: Array<{ assetId: string; displayName: string; baseValue?: number }>; rawValue: number; marketShare: { display: number } | null; evidence: string };
 type TradeResult = { fairnessScore: { display: number } | null; fairnessBand: string | null; marketEdgeSide: string | null; evidence: string; resultStatus: string };
@@ -23,7 +24,7 @@ export default function SandboxTradeBuilder({ catalog, snapshotDate, onLeagueTra
   const selected = useMemo(() => new Set(participants.flatMap((participant) => participant.assets)), [participants]);
   const pickYears = useMemo(() => [...new Set(catalog.filter((asset) => asset.assetType === "PICK" && asset.season).map((asset) => asset.season as number))].sort(), [catalog]);
   const matches = useMemo(() => sortCompactAssets(catalog).filter((asset) => (group === "PICKS" ? asset.assetType === "PICK" : asset.assetType !== "PICK") && (!query.trim() || `${asset.displayName} ${asset.nflTeam ?? ""}`.toLowerCase().includes(query.trim().toLowerCase())) && (group === "PICKS" ? pickYear === "ALL" || String(asset.season) === pickYear : position === "ALL" || asset.position === position)), [catalog, group, pickYear, position, query]);
-  const validRouting = participants.every((participant, index) => participant.assets.length > 0 && participant.assets.every((assetId) => { const destination = participant.destinations[assetId]; return destination && destination !== teamLabel(index) && participants.some((_, destinationIndex) => destination === teamLabel(destinationIndex)); }));
+  const validRouting = useMemo(() => isSandboxTradeValid(participants, new Set(catalog.map((asset) => asset.assetId))), [catalog, participants]);
   useEffect(() => { const button = analyzeRef.current; if (!button) return; const observer = new IntersectionObserver(([entry]) => setTopVisible(entry?.isIntersecting ?? true)); observer.observe(button); return () => observer.disconnect(); }, []);
   useEffect(() => { if (!result && !error) return; const frame = requestAnimationFrame(() => { const target = resultRef.current; if (!target) return; const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); target.focus({ preventScroll: true }); }); return () => cancelAnimationFrame(frame); }, [result, error]);
   const reset = () => { setParticipants([{ assets: [], destinations: {} }, { assets: [], destinations: {} }]); setResult(null); setError(""); };
