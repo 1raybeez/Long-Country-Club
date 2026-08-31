@@ -11,7 +11,9 @@ process.env.NEXT_PUBLIC_APP_URL ??= "https://long-country-club-ffl.web.app";
 const asset = (id: string, value: number): CurrentCatalogAsset => ({ assetId: id, assetType: "PLAYER", displayName: id, position: "WR", baseValue: value, valueStatus: "VALUED", valueMethod: "FANTASYCALC_DIRECT", sourceName: "FantasyCalc", sourceRowId: id, snapshotDate: "2026-08-26", evidence: "HIGH", ownerId: "active-owner" });
 const assets = [asset("a", 5000), asset("b", 4500), asset("c", 3000), asset("d", 2500), asset("e", 1500), asset("f", 1000)];
 const catalog: CurrentAssetCatalog = { snapshotDate: "2026-08-26", assets, byAssetId: Object.fromEntries(assets.map((item) => [item.assetId, item])), integrity: { valid: true, errors: [] } };
-const runtime = { catalog, snapshot: { date: "2026-08-26", sourceName: "FantasyCalc", sourceUrl: "https://example.invalid/source", retrievedAt: "2026-08-26T00:00:00.000Z", sourceLicenseStatus: "APPROVED", integrityValid: true } };
+const sandboxPick = { ...asset("sandbox-pick-2027-2", 1518), assetType: "PICK" as const, displayName: "2027 2nd", position: undefined, ownerId: undefined, pickKind: "GENERIC_ROUND" as const, season: 2027, round: 2 };
+const sandboxCatalog: CurrentAssetCatalog = { snapshotDate: "2026-08-26", assets: [...assets, sandboxPick], byAssetId: Object.fromEntries([...assets, sandboxPick].map((item) => [item.assetId, item])), integrity: { valid: true, errors: [] } };
+const runtime = { catalog, sandboxCatalog, snapshot: { date: "2026-08-26", sourceName: "FantasyCalc", sourceUrl: "https://example.invalid/source", retrievedAt: "2026-08-26T00:00:00.000Z", sourceLicenseStatus: "APPROVED", integrityValid: true } };
 const member = (ownerId = "active-owner"): LccMemberSession => ({ identity: { uid: `${ownerId}-uid`, email: `${ownerId}@example.invalid`, name: ownerId, picture: null }, member: { memberId: ownerId, ownerId, displayName: ownerId, teamName: "Test Team", capabilities: [] } });
 const unauthenticated = (): Promise<LccMemberSession | null> => Promise.resolve(null);
 const enabled = { featureEnabled: () => true, licenseApproved: () => true, loadRuntime: async () => runtime, getSession: async () => member(), now: () => new Date("2026-08-26T12:00:00.000Z") };
@@ -36,12 +38,16 @@ const league4 = await responseOf(multiHandler, JSON.stringify(uiMultiPayload(["A
 const sandbox2 = await responseOf(createTradeAnalyzerPostHandler({ ...enabled, loadRuntime: async () => multiRuntime }), json(["a"], ["b"], { sandbox: true }));
 const sandbox3 = await responseOf(createTradeAnalyzerPostHandler({ ...enabled, loadRuntime: async () => multiRuntime }), JSON.stringify(uiMultiPayload(["Team A", "Team B", "Team C"], [1, 1, 1], true)));
 const sandbox4 = await responseOf(createTradeAnalyzerPostHandler({ ...enabled, loadRuntime: async () => multiRuntime }), JSON.stringify(uiMultiPayload(["Team A", "Team B", "Team C", "Team D"], [1, 2, 1, 1], true)));
+const sandboxCatalogHandler = createTradeAnalyzerPostHandler({ ...enabled, loadRuntime: async () => runtime });
+const sandboxPickResponse = await responseOf(sandboxCatalogHandler, json(["a"], ["sandbox-pick-2027-2"], { sandbox: true }));
+const leagueSandboxPickResponse = await responseOf(sandboxCatalogHandler, json(["a"], ["sandbox-pick-2027-2"]));
 const leagueWithFalseSandbox = analyzeTradeInternal({ ...uiMultiPayload(["A", "B", "C"], [1, 1, 1]), evaluatedAt: "2026-08-26T12:00:00.000Z", leaguePhase: "DRAFT_WINDOW", outputMode: "INTERNAL", sandbox: false }, { catalog: multiRuntime.catalog, snapshot: runtime.snapshot, modelVersions: { valuationPolicyVersion: "valuation-v1", fairnessModelVersion: "fairness-v1" } });
 check("league_multi_3_route", league3.status === 200 && (await bodyOf(league3)).includes('"multiTeam"'), "UI-shaped 3-team League request reaches fairness-multi-v1");
 check("league_multi_4_route", league4.status === 200 && (await bodyOf(league4)).includes('"multiTeam"'), "UI-shaped 4-team League request reaches fairness-multi-v1");
 check("sandbox_two_team", sandbox2.status === 200, "2-team Sandbox request remains valid");
 check("sandbox_multi_3_route", sandbox3.status === 200 && (await bodyOf(sandbox3)).includes('"multiTeam"'), "3-team Sandbox forwards sandbox true");
 check("sandbox_multi_4_route", sandbox4.status === 200 && (await bodyOf(sandbox4)).includes('"multiTeam"'), "4-team Sandbox forwards sandbox true");
+check("sandbox_catalog_selection", sandboxPickResponse.status === 200 && leagueSandboxPickResponse.status === 400, "Sandbox uses its own catalog while League rejects Sandbox-only IDs");
 check("sandbox_false_service_contract", leagueWithFalseSandbox.status === "INVALID_REQUEST", "League multi-team sandbox false remains invalid at the service boundary");
 const invalidMultiCases = [
   { name: "duplicate_franchise", payload: uiMultiPayload(["A", "A", "C"], [1, 1, 1]) },

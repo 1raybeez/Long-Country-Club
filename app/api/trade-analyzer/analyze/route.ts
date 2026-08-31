@@ -48,8 +48,10 @@ export function createTradeAnalyzerPostHandler(dependencies: TradeAnalyzerRouteD
       let runtime: TradeAnalyzerRuntime;
       try { runtime = await loadRuntime(); } catch { return errorResponse(503, "SNAPSHOT_UNAVAILABLE", "Trade Analyzer is temporarily unavailable."); }
       const typedBody = body as Record<string, unknown>;
+      const analysisCatalog = typedBody.sandbox === true ? runtime.sandboxCatalog : runtime.catalog;
+      if (!analysisCatalog) return errorResponse(503, "SNAPSHOT_UNAVAILABLE", "Trade Analyzer is temporarily unavailable.");
       const serviceRequest: TradeAnalysisServiceRequest = Array.isArray(typedBody.participants) ? { participants: typedBody.participants as TradeAnalysisServiceRequest["participants"], ...(typedBody.sandbox === true ? { sandbox: true } : {}), evaluatedAt: now().toISOString(), leaguePhase: resolveTradeAnalyzerLeaguePhase(now()), outputMode: "INTERNAL" } : { sideA: typedBody.sideA as TradeAnalysisServiceRequest["sideA"], sideB: typedBody.sideB as TradeAnalysisServiceRequest["sideB"], evaluatedAt: now().toISOString(), leaguePhase: resolveTradeAnalyzerLeaguePhase(now()), outputMode: "INTERNAL", ownershipValidation: typedBody.validateOwnership === true };
-      const result = analyzeTradeInternal(serviceRequest, { catalog: runtime.catalog, snapshot: runtime.snapshot, modelVersions: { valuationPolicyVersion: "valuation-v1", fairnessModelVersion: "fairness-v1" } });
+      const result = analyzeTradeInternal(serviceRequest, { catalog: analysisCatalog, snapshot: runtime.snapshot, modelVersions: { valuationPolicyVersion: "valuation-v1", fairnessModelVersion: "fairness-v1" } });
       if (result.status === "INVALID_REQUEST") { const code = result.errors[0] ?? "INVALID_REQUEST"; return errorResponse(400, mapServiceError(code), serviceErrorMessage(code)); }
       if (result.status === "INTERNAL_ERROR") return errorResponse(503, result.errors.includes("SNAPSHOT_NOT_FOUND") || result.errors.includes("SNAPSHOT_INTEGRITY_FAILED") ? "SNAPSHOT_UNAVAILABLE" : "INTERNAL_ERROR", result.errors.includes("SNAPSHOT_NOT_FOUND") || result.errors.includes("SNAPSHOT_INTEGRITY_FAILED") ? "Trade Analyzer is temporarily unavailable." : "Trade analysis is temporarily unavailable.");
       return safeResponse({ ok: true, data: result });
