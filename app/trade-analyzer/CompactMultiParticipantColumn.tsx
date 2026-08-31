@@ -6,6 +6,17 @@ import type { TradeAnalyzerCatalogAsset, TradeAnalyzerTeam } from "./TradeAnalyz
 type Participant = { franchiseId: string; assets: string[]; destinations: Record<string, string> };
 const positions = ["QB", "RB", "WR", "TE", "K", "DST"];
 const money = (value: number) => value >= 1000 ? `${(value / 1000).toFixed(1)}K` : Math.round(value).toLocaleString();
+const positionRank: Record<string, number> = { QB: 0, RB: 1, WR: 2, TE: 3, K: 4, DST: 5 };
+
+export const sortCompactAssets = (assets: TradeAnalyzerCatalogAsset[]) => [...assets].sort((left, right) => {
+  const leftPick = left.assetType === "PICK";
+  const rightPick = right.assetType === "PICK";
+  if (leftPick !== rightPick) return leftPick ? 1 : -1;
+  if (leftPick && rightPick) return (left.season ?? Number.MAX_SAFE_INTEGER) - (right.season ?? Number.MAX_SAFE_INTEGER) || (left.round ?? Number.MAX_SAFE_INTEGER) - (right.round ?? Number.MAX_SAFE_INTEGER) || (left.slot ?? Number.MAX_SAFE_INTEGER) - (right.slot ?? Number.MAX_SAFE_INTEGER) || left.displayName.localeCompare(right.displayName) || left.assetId.localeCompare(right.assetId);
+  const leftPosition = left.assetType === "DST" ? "DST" : left.position ?? "";
+  const rightPosition = right.assetType === "DST" ? "DST" : right.position ?? "";
+  return (positionRank[leftPosition] ?? 99) - (positionRank[rightPosition] ?? 99) || (right.marketValue ?? Number.NEGATIVE_INFINITY) - (left.marketValue ?? Number.NEGATIVE_INFINITY) || left.displayName.localeCompare(right.displayName) || left.assetId.localeCompare(right.assetId);
+});
 
 export default function CompactMultiParticipantColumn({ index, participant, participants, labels, teams, catalog, selected, onTeamChange, onToggle, onDestination }: {
   index: number;
@@ -25,7 +36,7 @@ export default function CompactMultiParticipantColumn({ index, participant, part
   const owned = useMemo(() => catalog.filter((asset) => asset.ownerId === participant.franchiseId), [catalog, participant.franchiseId]);
   const availableDestinations = participants.map((candidate, candidateIndex) => ({ label: labels[candidateIndex], id: candidate.franchiseId })).filter((candidate, candidateIndex) => candidateIndex !== index && candidate.id);
   const selectedAssets = participant.assets.map((assetId) => catalog.find((asset) => asset.assetId === assetId)).filter((asset): asset is TradeAnalyzerCatalogAsset => Boolean(asset));
-  const matches = owned.filter((asset) => !selected.has(asset.assetId) && (position === "ALL" || asset.position === position || (position === "DST" && asset.assetType === "DST")) && (!query.trim() || `${asset.displayName} ${asset.position ?? ""} ${asset.nflTeam ?? ""}`.toLowerCase().includes(query.trim().toLowerCase()))).slice(0, 40);
+  const matches = sortCompactAssets(owned).filter((asset) => !selected.has(asset.assetId) && (position === "ALL" || asset.position === position || (position === "DST" && asset.assetType === "DST")) && (!query.trim() || `${asset.displayName} ${asset.position ?? ""} ${asset.nflTeam ?? ""}`.toLowerCase().includes(query.trim().toLowerCase()))).slice(0, 40);
 
   return <article className="lcc2-card lcc2-card--raised min-w-0 p-4 sm:p-5">
     <p className="lcc2-label">Participant {index + 1}</p>
