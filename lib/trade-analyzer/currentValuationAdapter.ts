@@ -2,7 +2,7 @@ import { calculateFairnessV1 } from "./fairnessEngine.ts";
 import type { CurrentAssetCatalog, CurrentCatalogAsset, CurrentTradeRequest, CurrentTradeResult, SnapshotContext } from "./types";
 
 interface SourcePlayerRow { sleeperId: string; fantasyCalcId: number; playerName: string; position: "QB" | "RB" | "WR" | "TE"; rawValue: number; sourceSnapshotDate: string; }
-interface SourcePickRow { pickLabel: string; season: number; round: number | null; slot: number | null; tier: string | null; rawValue: number; sourceSnapshotDate: string; }
+interface SourcePickRow { pickLabel: string; season: number; round: number | null; slot: number | null; tier: string | null; rawValue: number; sourceSnapshotDate: string; roundLevel?: boolean; }
 interface RosterRow { ownerId: string; players?: string[]; }
 interface PlayerMeta { full_name?: string; position?: string; }
 interface FuturePickAsset { id: string; season: number; round: number; slot?: number; tier?: "EARLY" | "MID" | "LATE"; currentOwnerId?: string; currentOwner?: string; currentManagerName?: string; currentTeamName?: string; }
@@ -63,6 +63,18 @@ export function buildCurrentAssetCatalog(input: AdapterInput): CurrentAssetCatal
   if (assets.some((asset) => !["PLAYER", "PICK", "K", "DST"].includes(asset.assetType))) integrityErrors.push("UNSUPPORTED_CURRENT_ASSET");
   const byAssetId = Object.fromEntries(assets.map((asset) => [asset.assetId, asset]));
   return { snapshotDate: input.snapshot.snapshotDate, assets, byAssetId, integrity: { valid: unique(integrityErrors).length === 0, errors: unique(integrityErrors) } };
+}
+
+export function buildApprovedSandboxCatalog(input: AdapterInput): CurrentAssetCatalog {
+  const assets: CurrentCatalogAsset[] = input.snapshot.players.map(directPlayerAsset);
+  const genericPicks = input.snapshot.picks.filter((row) => row.roundLevel && /^(2027|2028|2029) (1st|2nd|3rd|4th)$/.test(row.pickLabel)).sort((left, right) => left.season - right.season || Number(left.tier) - Number(right.tier));
+  for (const row of genericPicks) {
+    const round = row.round ?? Number(row.tier);
+    assets.push({ assetId: `sandbox-pick-${row.season}-${round}`, assetType: "PICK", displayName: row.pickLabel, season: row.season, round, pickKind: "GENERIC_ROUND", baseValue: row.rawValue, valueStatus: "VALUED", valueMethod: "FANTASYCALC_PICK_SOURCE", sourceName: "FantasyCalc", sourceRowId: row.pickLabel, snapshotDate: row.sourceSnapshotDate, evidence: "HIGH" });
+  }
+  const assetIds = assets.map((asset) => asset.assetId);
+  const errors = unique(assetIds).length === assetIds.length ? [] : ["DUPLICATE_SANDBOX_ASSET_ID"];
+  return { snapshotDate: input.snapshot.snapshotDate, assets, byAssetId: Object.fromEntries(assets.map((asset) => [asset.assetId, asset])), integrity: { valid: errors.length === 0, errors } };
 }
 
 const ownershipFor = (assets: CurrentCatalogAsset[], ownerId: string | undefined): "CURRENTLY_OWNED" | "NOT_CURRENTLY_OWNED" | "OWNERSHIP_UNKNOWN" => ownerId === undefined ? "OWNERSHIP_UNKNOWN" : assets.every((asset) => asset.ownerId === ownerId) ? "CURRENTLY_OWNED" : "NOT_CURRENTLY_OWNED";

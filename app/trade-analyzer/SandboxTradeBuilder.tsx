@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { TradeAnalyzerCatalogAsset } from "./TradeAnalyzerParticipantClient";
+import { sortCompactAssets } from "./CompactMultiParticipantColumn";
 
 type SandboxParticipant = { assets: string[]; destinations: Record<string, string> };
 type TwoResult = { sideA: SideResult | null; sideB: SideResult | null; trade: TradeResult | null; snapshot?: { snapshotDate?: string }; warnings?: string[]; multiTeam?: null; rosterImpact?: null; dynastyOutlook?: null; contextualVerdict?: null; model?: { valuationPolicyVersion?: string; fairnessModelVersion?: string } };
@@ -21,7 +22,7 @@ export default function SandboxTradeBuilder({ catalog, snapshotDate, onLeagueTra
   const analyzeRef = useRef<HTMLButtonElement>(null); const resultRef = useRef<HTMLDivElement>(null);
   const selected = useMemo(() => new Set(participants.flatMap((participant) => participant.assets)), [participants]);
   const pickYears = useMemo(() => [...new Set(catalog.filter((asset) => asset.assetType === "PICK" && asset.season).map((asset) => asset.season as number))].sort(), [catalog]);
-  const matches = useMemo(() => catalog.filter((asset) => (group === "PICKS" ? asset.assetType === "PICK" : asset.assetType !== "PICK") && (!query.trim() || `${asset.displayName} ${asset.nflTeam ?? ""}`.toLowerCase().includes(query.trim().toLowerCase())) && (group === "PICKS" ? pickYear === "ALL" || String(asset.season) === pickYear : position === "ALL" || asset.position === position)), [catalog, group, pickYear, position, query]);
+  const matches = useMemo(() => sortCompactAssets(catalog).filter((asset) => (group === "PICKS" ? asset.assetType === "PICK" : asset.assetType !== "PICK") && (!query.trim() || `${asset.displayName} ${asset.nflTeam ?? ""}`.toLowerCase().includes(query.trim().toLowerCase())) && (group === "PICKS" ? pickYear === "ALL" || String(asset.season) === pickYear : position === "ALL" || asset.position === position)), [catalog, group, pickYear, position, query]);
   const validRouting = participants.every((participant, index) => participant.assets.length > 0 && participant.assets.every((assetId) => { const destination = participant.destinations[assetId]; return destination && destination !== teamLabel(index) && participants.some((_, destinationIndex) => destination === teamLabel(destinationIndex)); }));
   useEffect(() => { const button = analyzeRef.current; if (!button) return; const observer = new IntersectionObserver(([entry]) => setTopVisible(entry?.isIntersecting ?? true)); observer.observe(button); return () => observer.disconnect(); }, []);
   useEffect(() => { if (!result && !error) return; const frame = requestAnimationFrame(() => { const target = resultRef.current; if (!target) return; const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); target.focus({ preventScroll: true }); }); return () => cancelAnimationFrame(frame); }, [result, error]);

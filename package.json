@@ -34,6 +34,7 @@
     "trade-engine:diagnostics": "node --experimental-strip-types scripts/tradeFairnessEngineDiagnostics.ts",
     "trade-shadow:diagnostics": "node --experimental-strip-types scripts/tradeShadowDiagnostics.ts",
     "trade-current-adapter:diagnostics": "node --experimental-strip-types scripts/tradeCurrentAdapterDiagnostics.ts",
+    "trade-sandbox-catalog:diagnostics": "node --experimental-strip-types scripts/tradeSandboxCatalogDiagnostics.ts",
     "trade-service:diagnostics": "node --experimental-strip-types scripts/tradeServiceDiagnostics.ts",
     "trade-api-security:diagnostics": "node --experimental-strip-types scripts/tradeApiSecurityDiagnostics.ts",
     "trade-api:diagnostics": "node --experimental-strip-types scripts/tradeApiDiagnostics.ts",

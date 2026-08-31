@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { buildCurrentAssetCatalog, validateApprovedSnapshot } from "./currentValuationAdapter.ts";
+import { buildApprovedSandboxCatalog, buildCurrentAssetCatalog, validateApprovedSnapshot } from "./currentValuationAdapter.ts";
 import type { CurrentAssetCatalog } from "./types";
 import type { ApprovedSnapshotReference } from "./serviceTypes";
 
@@ -12,6 +12,7 @@ const readJson = async (relative: string) => JSON.parse(await readFile(file(rela
 
 export interface TradeAnalyzerRuntime {
   catalog: CurrentAssetCatalog;
+  sandboxCatalog?: CurrentAssetCatalog;
   snapshot: ApprovedSnapshotReference;
 }
 
@@ -34,8 +35,9 @@ async function loadRuntime(): Promise<TradeAnalyzerRuntime> {
   const manifestErrors = validateApprovedSnapshot(adapterInput);
   if (manifestErrors.length) throw new Error("SNAPSHOT_INTEGRITY_FAILED");
   const catalog = buildCurrentAssetCatalog(adapterInput);
-  if (!catalog.integrity.valid) throw new Error("SNAPSHOT_INTEGRITY_FAILED");
-  return { catalog, snapshot: { date: APPROVED_DATE, sourceName: snapshot.source, sourceUrl: snapshot.sourceUrl, retrievedAt: snapshot.retrievalTimestamp, sourceLicenseStatus: "COMMISSIONER_REVIEW_REQUIRED", integrityValid: true } };
+  const sandboxCatalog = buildApprovedSandboxCatalog(adapterInput);
+  if (!catalog.integrity.valid || !sandboxCatalog.integrity.valid) throw new Error("SNAPSHOT_INTEGRITY_FAILED");
+  return { catalog, sandboxCatalog, snapshot: { date: APPROVED_DATE, sourceName: snapshot.source, sourceUrl: snapshot.sourceUrl, retrievedAt: snapshot.retrievalTimestamp, sourceLicenseStatus: "COMMISSIONER_REVIEW_REQUIRED", integrityValid: true } };
 }
 
 export function getTradeAnalyzerRuntime(): Promise<TradeAnalyzerRuntime> {

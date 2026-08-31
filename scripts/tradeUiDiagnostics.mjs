@@ -14,7 +14,7 @@ const sandbox = await readFile("app/trade-analyzer/SandboxTradeBuilder.tsx", "ut
 const docs = await readFile("docs/trade-analyzer-ui-prototype-v1.md", "utf8");
 const multiDocs = await readFile("docs/trade-analyzer-multi-team-model-v1.md", "utf8");
 const required = (text, values, label) => values.forEach((value) => assert.ok(text.includes(value), `${label} missing ${value}`));
-required(page, ["getCurrentMemberSession", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_PRIVATE_OUTPUT_APPROVED", "TradeAnalyzerParticipantClient"], "page");
+required(page, ["getCurrentMemberSession", "TRADE_ANALYZER_FEATURE_ENABLED", "TRADE_ANALYZER_PRIVATE_OUTPUT_APPROVED", "TradeAnalyzerParticipantClient", "runtime.sandboxCatalog?.assets"], "page");
 required(client, ["League Trade", "Trade Sandbox", "Participant 1", "Participant 2", "Choose a franchise", "ParticipantColumn", "Draft picks", "DraftPickGroups", "sideA: { assetIds: packageA, ownerId", "sideB: { assetIds: packageB, ownerId", "/api/trade-analyzer/analyze", "< 15", "Swap Teams", "Reset Trade", "Fairness unavailable", "PROVISIONAL"], "client");
 assert.equal((client.match(/Participant [12]/g) ?? []).length >= 2, true, "two participants present");
 assert.equal(client.includes("ownerId === teamA"), true, "league ownership filtering present");
@@ -60,7 +60,7 @@ assert.equal(client.includes("resultCount > 25"), true, "sandbox result cap is d
 assert.equal(client.includes("catalog={catalog} onRemove"), true, "sandbox summaries use full catalog");
 assert.equal(client.includes("disabled={selected && selectedSide !== \"A\"}"), true, "sandbox duplicate prevention");
 assert.equal(client.includes("selected && asset.marketValue !== undefined"), true, "sandbox only shows selected values");
-assert.equal(sandbox.includes("Team A") && sandbox.includes("Team B"), true, "sandbox sticky analyze labels are neutral");
+assert.equal(sandbox.includes("Team A") && sandbox.includes("Team B") && sandbox.includes("sortCompactAssets(catalog)"), true, "sandbox picker ordering and labels are neutral");
 assert.equal(client.includes("!hasResult}"), true, "sandbox sticky hides after result");
 assert.equal(client.includes("!hasResult}") && (client.match(/!hasResult/g) ?? []).length >= 2, true, "league sticky hides after result");
 required(client, ["rosterImpact", "RosterImpactPanel", "validateOwnership: mode === \"LEAGUE\""], "roster impact integration and sticky lifecycle");
