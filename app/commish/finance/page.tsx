@@ -13,13 +13,15 @@ import { getOperationalReconciliation } from '@/lib/finance/operationalReconcili
 import { ReconciliationChecks } from '@/components/commish/ReconciliationChecks';
 import { getSeasonCloseReadiness } from '@/lib/finance/seasonClose';
 import { SeasonCloseReadiness } from '@/components/commish/SeasonCloseReadiness';
+import { WeeklyHighOverride } from '@/components/commish/WeeklyHighOverride';
+import { getWeeklyHighBoard } from '@/lib/finance/weeklyHigh';
 
 export const dynamic = 'force-dynamic';
 
 export default async function CommissionerFinancePage() {
   const session = await getCurrentMemberSession();
   if (!session?.member?.capabilities.includes('commissioner')) redirect('/?access=commissioner-required');
-  const [snapshot, weeklyProposals, postseasonProposals, awardProjection, reconciliation, seasonClose] = await Promise.all([getCommissionerFinanceSnapshot(), getWeeklyAwardProposals(2026), getPostseasonAwardProposals(2026), getPrivateAwardProjection(2026), getOperationalReconciliation(2026), getSeasonCloseReadiness(2026)]);
+  const [snapshot, weeklyProposals, postseasonProposals, awardProjection, reconciliation, seasonClose, weeklyHighBoard] = await Promise.all([getCommissionerFinanceSnapshot(), getWeeklyAwardProposals(2026), getPostseasonAwardProposals(2026), getPrivateAwardProjection(2026), getOperationalReconciliation(2026), getSeasonCloseReadiness(2026), getWeeklyHighBoard(2026)]);
   const awardProposals = [...weeklyProposals, ...postseasonProposals];
 
   return <main className="lcc2-page-shell"><div className="lcc2-page-container">
@@ -28,6 +30,7 @@ export default async function CommissionerFinancePage() {
     <section className="lcc2-card mt-6 p-5 sm:p-6"><div className="grid grid-cols-1 gap-3 sm:grid-cols-2"><div><p className="lcc2-label">Reconciliation</p><p className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">{snapshot?.reconciliationStatus ?? 'pending'}</p></div><div><p className="lcc2-label">Restricted VACU Reserve</p><p className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">${(LCC_RESTRICTED_VACU_RESERVE_CENTS / 100).toFixed(2)}</p><p className="lcc2-body mt-1">Future-season deposits · restricted custody</p></div></div></section>
     <FinanceClient initialSnapshot={snapshot} />
     <AwardReview season={2026} ringExpenseCents={snapshot?.ringExpenseCents ?? 1377} proposals={awardProposals} />
+    <WeeklyHighOverride season={2026} board={weeklyHighBoard} />
     <ApprovedAwardProjection snapshot={snapshot} projection={awardProjection} />
     <ReconciliationChecks result={reconciliation} />
     <SeasonCloseReadiness readiness={seasonClose} />

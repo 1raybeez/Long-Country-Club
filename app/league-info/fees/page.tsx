@@ -30,6 +30,7 @@ import {
 } from '@/lib/history/financialProjections';
 import type { AwardRecord, ReconciliationStatus, SeasonFinancialData } from '@/lib/types/financial';
 import type { PublicOperationalFinance } from '@/lib/types/operationalFinance';
+import type { WeeklyHighResult } from '@/lib/finance/weeklyHigh';
 import { LCC_CURRENT_SEASON } from '@/lib/leagueConstants';
 import { LeagueInfoShell } from '@/components/league/LeagueInfoShell';
 
@@ -43,10 +44,17 @@ export default function LeaguePayoutsPage() {
   const [selectedSeason, setSelectedSeason] = useState<number>(HISTORICAL_SEASONS[0]);
   const currentFinanceBase = getPublicCurrentSeasonFinance();
   const [operationalFinance, setOperationalFinance] = useState<PublicOperationalFinance | null>(null);
+  const [weeklyHighBoard, setWeeklyHighBoard] = useState<readonly WeeklyHighResult[]>([]);
   useEffect(() => {
     fetch('/api/finance/public')
       .then((response) => response.ok ? response.json() : null)
       .then((finance: PublicOperationalFinance | null) => { if (finance) setOperationalFinance(finance); })
+      .catch(() => undefined);
+  }, []);
+  useEffect(() => {
+    fetch('/api/finance/weekly-high', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : [])
+      .then((board: readonly WeeklyHighResult[]) => setWeeklyHighBoard(board))
       .catch(() => undefined);
   }, []);
   const currentFinance = currentFinanceBase && operationalFinance ? {
@@ -164,6 +172,8 @@ export default function LeaguePayoutsPage() {
           </PayoutSection>
         </div>
 
+        <WeeklyHighSection board={weeklyHighBoard} />
+
         <PayoutSection
           eyebrow="Current awards"
           title="2026 Weekly Awards"
@@ -249,6 +259,14 @@ export default function LeaguePayoutsPage() {
       </main>
     </LeagueInfoShell>
   );
+}
+
+function WeeklyHighSection({ board }: { board: readonly WeeklyHighResult[] }) {
+  return <PayoutSection eyebrow="Regular season awards" title="2026 Weekly High Scores" supporting="Sleeper matchup totals determine the leader. Current or unresolved weeks are not treated as paid awards." action={<Trophy className="h-5 w-5 text-[var(--lcc-semantic-achievement)]" aria-hidden="true" />} className="mt-6">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {(board.length ? board : Array.from({ length: 14 }, (_, index) => ({ week: index + 1 }))).map((item) => <div key={item.week} className="rounded-xl border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-4"><div className="flex items-center justify-between gap-3"><p className="lcc2-label">Week {item.week}</p><span className="lcc2-badge lcc2-badge--neutral">{'status' in item ? item.status : 'UNAVAILABLE'}</span></div>{'franchiseName' in item && item.franchiseName ? <><p className="mt-3 font-ui text-base font-black text-[var(--lcc-color-text)]">{item.franchiseName}</p><p className="mt-1 font-ui text-xl font-black text-[var(--lcc-color-text)]">{item.score?.toFixed(2)} · {formatMoney(item.awardAmountCents / 100)}</p>{item.tie ? <p className="lcc2-body mt-1">Tie requires commissioner decision.</p> : null}</> : <p className="lcc2-body mt-3">Pending authoritative Sleeper result.</p>}</div>)}
+    </div>
+  </PayoutSection>;
 }
 
 function PayoutSection({ eyebrow, title, supporting, action, className = '', children }: { eyebrow: string; title: string; supporting?: string; action?: ReactNode; className?: string; children: ReactNode }) {
