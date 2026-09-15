@@ -7,7 +7,7 @@ import { getOwnerById } from '@/lib/ownerRegistry';
 import { LCC_RESTRICTED_VACU_RESERVE_CENTS } from '@/lib/financeRules';
 import type { LccMemberIdentity } from '@/lib/auth/types';
 import type { PaymentStatus } from '@/lib/types/financial';
-import type { PublicOperationalFinance, PublicOperationalOwnerStatus } from '@/lib/types/operationalFinance';
+import type { PublicOperationalFinance } from '@/lib/types/operationalFinance';
 import { getPublicAwardProjection } from '@/lib/finance/publicAwardProjection';
 
 export const OPERATIONAL_SEASON = 2026;
@@ -106,7 +106,8 @@ export async function getPublicOperationalFinance(): Promise<PublicOperationalFi
     const data = assessment.data();
     const ownerId = String(data.ownerId);
     const assessedCents = cents(data.amountCents);
-    return { ownerId, displayName: getOwnerById(ownerId)?.displayName ?? ownerId, paymentStatus: statusFor(paymentTotals.get(ownerId) ?? 0, assessedCents) };
+    const owner = getOwnerById(ownerId);
+    return { ownerId, displayName: owner?.displayName ?? ownerId, teamName: owner?.teamName ?? ownerId, paymentStatus: statusFor(paymentTotals.get(ownerId) ?? 0, assessedCents) };
   });
   const duesAssessed = assessments.docs.reduce((sum, assessment) => sum + cents(assessment.data().amountCents), 0);
   const duesCollected = Array.from(paymentTotals.values()).reduce((sum, value) => sum + value, 0);

@@ -85,6 +85,7 @@ export default function RulesOfPlay() {
           <RuleBlock title="Prize Money">
             <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
               <li>$10 to the weekly high scorer during the 14-week regular season.</li>
+              <li>If the highest Sleeper matchup total is tied, the weekly-high prize is not split; the franchise named as the weekly high scorer in Sleeper&apos;s official weekly report receives the full award.</li>
               <li>$25 to 4th place.</li>
               <li>$50 to 3rd place.</li>
               <li>$100 to the runner-up.</li>

@@ -8,6 +8,10 @@ import { LCC_CURRENT_LEAGUE_ID, LCC_CURRENT_SEASON } from '@/lib/leagueConstants
 
 export type WeeklyHighStatus = 'PROVISIONAL' | 'FINAL' | 'MANUAL' | 'UNAVAILABLE';
 
+// NOT PROVEN: the repository's Sleeper adapter exposes matchup totals but no
+// official weekly-report winner endpoint or designation. Ties stay unresolved.
+export const SLEEPER_WEEKLY_REPORT_API_STATUS = 'NOT PROVEN' as const;
+
 export interface WeeklyHighResult {
   readonly season: number;
   readonly week: number;
@@ -22,6 +26,7 @@ export interface WeeklyHighResult {
   readonly tie: boolean;
   readonly decisionRequired: boolean;
   readonly note?: string;
+  readonly tiedFranchises?: readonly { readonly franchiseId: string; readonly franchiseName: string; readonly score: number }[];
   readonly rosterTotals: readonly { readonly rosterId: number; readonly franchiseId: string | null; readonly franchiseName: string | null; readonly score: number | null }[];
 }
 
@@ -36,7 +41,8 @@ export function selectWeeklyHighFromTotals(totals: readonly WeeklyHighRosterTota
   const scored = totals.filter((row): row is WeeklyHighRosterTotal & { score: number; franchiseId: string; franchiseName: string } => row.score !== null && row.franchiseId !== null && row.franchiseName !== null).sort((a, b) => b.score - a.score);
   const highest = scored[0];
   const tie = Boolean(highest && scored.filter((row) => row.score === highest.score).length > 1);
-  return { winner: tie || !highest ? null : highest, tie, status: tie || !highest ? 'UNAVAILABLE' as const : completed ? 'FINAL' as const : 'PROVISIONAL' as const, decisionRequired: tie || !completed || !highest };
+  const tiedFranchises = tie ? scored.filter((row) => row.score === highest.score).map((row) => ({ franchiseId: row.franchiseId, franchiseName: row.franchiseName, score: row.score })) : [];
+  return { winner: tie || !highest ? null : highest, tie, tiedFranchises, status: tie || !highest ? 'UNAVAILABLE' as const : completed ? 'FINAL' as const : 'PROVISIONAL' as const, decisionRequired: tie || !completed || !highest };
 }
 
 export async function deriveWeeklyHigh(season: number, week: number): Promise<WeeklyHighResult> {
@@ -59,7 +65,7 @@ export async function deriveWeeklyHigh(season: number, week: number): Promise<We
     const currentWeek = league.settings?.leg;
     const completed = league.status === 'complete' || (typeof currentWeek === 'number' && currentWeek > week);
     const selected = selectWeeklyHighFromTotals(rosterTotals, completed);
-    return { season, week, franchiseId: selected.winner?.franchiseId ?? null, franchiseName: selected.winner?.franchiseName ?? null, ownerDisplayName: selected.winner ? getLccOwnerById(selected.winner.franchiseId)?.displayName ?? null : null, score: selected.winner?.score ?? null, awardAmountCents, status: selected.status, source: 'sleeper', observedAt, tie: selected.tie, decisionRequired: selected.decisionRequired, rosterTotals };
+    return { season, week, franchiseId: selected.winner?.franchiseId ?? null, franchiseName: selected.winner?.franchiseName ?? null, ownerDisplayName: selected.winner ? getLccOwnerById(selected.winner.franchiseId)?.displayName ?? null : null, score: selected.winner?.score ?? null, awardAmountCents, status: selected.status, source: 'sleeper', observedAt, tie: selected.tie, decisionRequired: selected.decisionRequired, tiedFranchises: selected.tiedFranchises, rosterTotals };
   } catch {
     return { season, week, franchiseId: null, franchiseName: null, ownerDisplayName: null, score: null, awardAmountCents, status: 'UNAVAILABLE', source: 'unavailable', observedAt, tie: false, decisionRequired: true, rosterTotals: [] };
   }
@@ -88,7 +94,7 @@ export async function saveWeeklyHighOverride(input: { season: number; week: numb
   if (!session?.member?.capabilities.includes('commissioner')) throw new Error('Commissioner authorization required.');
   const owner = getLccOwnerById(input.franchiseId);
   const rules = getFinancialRules();
-  if (!owner || input.season !== LCC_CURRENT_SEASON || !Number.isInteger(input.week) || input.week < 1 || input.week > (rules.regularSeasonWeeks ?? 14) || !Number.isFinite(input.score) || input.score < 0 || input.score > 1000 || (input.note?.length ?? 0) > 500) throw new Error('Invalid weekly-high override.');
+  if (!owner || input.season !== LCC_CURRENT_SEASON || !Number.isInteger(input.week) || input.week < 1 || input.week > (rules.regularSeasonWeeks ?? 14) || !Number.isFinite(input.score) || input.score < 0 || input.score > 1000 || !input.note?.trim() || input.note.trim().length > 500) throw new Error('Invalid weekly-high override.');
   const db = getFirebaseAdminFirestore();
   if (!db) throw new Error('Operational finance storage is unavailable.');
   const ref = db.collection('financeSeasons').doc(String(input.season)).collection('weeklyHighOverrides').doc(String(input.week));

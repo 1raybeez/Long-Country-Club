@@ -28,7 +28,7 @@ import {
   getPublicCurrentSeasonFinance,
   getPublicSeasonFinance,
 } from '@/lib/history/financialProjections';
-import type { AwardRecord, ReconciliationStatus, SeasonFinancialData } from '@/lib/types/financial';
+import type { ReconciliationStatus, SeasonFinancialData } from '@/lib/types/financial';
 import type { PublicOperationalFinance } from '@/lib/types/operationalFinance';
 import type { WeeklyHighResult } from '@/lib/finance/weeklyHigh';
 import { LCC_CURRENT_SEASON } from '@/lib/leagueConstants';
@@ -62,7 +62,7 @@ export default function LeaguePayoutsPage() {
     duesAssessed: operationalFinance.duesAssessed,
     duesCollected: operationalFinance.duesCollected,
     duesOutstanding: operationalFinance.duesOutstanding,
-    ownerPaymentStatuses: operationalFinance.ownerPaymentStatuses.map((owner) => ({ managerId: owner.ownerId, managerName: owner.displayName, paymentStatus: owner.paymentStatus })),
+    ownerPaymentStatuses: operationalFinance.ownerPaymentStatuses.map((owner) => ({ managerId: owner.ownerId, managerName: owner.teamName, paymentStatus: owner.paymentStatus })),
   } : currentFinanceBase;
   const selectedFinance = getSeasonFinance(selectedSeason);
   const historicalFinance = loadAllSeasonFinancialData().filter(
@@ -111,6 +111,7 @@ export default function LeaguePayoutsPage() {
             <PayoutMetric label="Dues Collected" value={formatAmount(currentFinance?.duesCollected)} helper={currentFinance?.duesCollected == null ? 'Not yet recorded' : undefined} icon={<CircleDollarSign className="h-5 w-5" aria-hidden="true" />} />
             <PayoutMetric label="Dues Outstanding" value={formatAmount(currentFinance?.duesOutstanding)} helper={currentFinance?.duesOutstanding == null ? 'Not yet recorded' : undefined} icon={<WalletCards className="h-5 w-5" aria-hidden="true" />} />
           </div>
+          {weeklyHighBoard.length ? <div className="mt-4"><RuleCard label="Weekly highs finalized" value={`${weeklyHighBoard.filter((item) => item.status === 'FINAL' || item.status === 'MANUAL').length}/${RULES.regularSeasonWeeks}`} helper="Derived results and explicit commissioner confirmations" /></div> : null}
           {currentFinance ? <DuesStatusList statuses={currentFinance.ownerPaymentStatuses} /> : null}
           <div className="mt-4 flex flex-col gap-3 rounded-xl border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -262,9 +263,14 @@ export default function LeaguePayoutsPage() {
 }
 
 function WeeklyHighSection({ board }: { board: readonly WeeklyHighResult[] }) {
-  return <PayoutSection eyebrow="Regular season awards" title="2026 Weekly High Scores" supporting="Sleeper matchup totals determine the leader. Current or unresolved weeks are not treated as paid awards." action={<Trophy className="h-5 w-5 text-[var(--lcc-semantic-achievement)]" aria-hidden="true" />} className="mt-6">
+  return <PayoutSection eyebrow="Regular season awards" title="2026 Weekly High Scores" supporting="Sleeper matchup totals are the source. A provisional result is not a paid or finalized award." action={<Trophy className="h-5 w-5 text-[var(--lcc-semantic-achievement)]" aria-hidden="true" />} className="mt-6">
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      {(board.length ? board : Array.from({ length: 14 }, (_, index) => ({ week: index + 1 }))).map((item) => <div key={item.week} className="rounded-xl border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-4"><div className="flex items-center justify-between gap-3"><p className="lcc2-label">Week {item.week}</p><span className="lcc2-badge lcc2-badge--neutral">{'status' in item ? item.status : 'UNAVAILABLE'}</span></div>{'franchiseName' in item && item.franchiseName ? <><p className="mt-3 font-ui text-base font-black text-[var(--lcc-color-text)]">{item.franchiseName}</p><p className="mt-1 font-ui text-xl font-black text-[var(--lcc-color-text)]">{item.score?.toFixed(2)} · {formatMoney(item.awardAmountCents / 100)}</p>{item.tie ? <p className="lcc2-body mt-1">Tie requires commissioner decision.</p> : null}</> : <p className="lcc2-body mt-3">Pending authoritative Sleeper result.</p>}</div>)}
+      {(board.length ? board : Array.from({ length: 14 }, (_, index) => ({ week: index + 1 }))).map((item) => {
+        if (!('status' in item)) return <div key={item.week} className="rounded-xl border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-4"><p className="lcc2-label">Week {item.week}</p><p className="lcc2-body mt-3">Pending</p></div>;
+        const status = item.tie ? 'Sleeper report confirmation needed' : item.status === 'FINAL' ? 'Final' : item.status === 'PROVISIONAL' ? 'Provisional' : item.status === 'MANUAL' ? 'Commissioner confirmed' : 'Pending';
+        const tied = item.tiedFranchises?.length ? item.tiedFranchises : item.rosterTotals.filter((row) => row.score !== null && row.score === Math.max(...item.rosterTotals.flatMap((row) => row.score === null ? [] : [row.score]))).map((row) => ({ franchiseId: row.franchiseId ?? row.franchiseName ?? '', franchiseName: row.franchiseName ?? 'Unmapped franchise', score: row.score as number }));
+        return <div key={item.week} className="rounded-xl border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] p-4"><div className="flex items-start justify-between gap-3"><p className="lcc2-label">Week {item.week}</p><span className="lcc2-badge lcc2-badge--neutral text-right">{status}</span></div>{item.tie ? <><p className="mt-3 font-ui text-sm font-black text-[var(--lcc-color-text)]">{tied.map((row) => `${row.franchiseName} · ${row.score.toFixed(2)}`).join(' / ')}</p><p className="lcc2-body mt-1">Sleeper report confirmation needed. No split.</p></> : item.franchiseName ? <><p className="mt-3 font-ui text-base font-black text-[var(--lcc-color-text)]">{item.franchiseName}</p><p className="mt-1 font-ui text-xl font-black text-[var(--lcc-color-text)]">{item.score?.toFixed(2)} · {formatMoney(item.awardAmountCents / 100)} {item.status === 'PROVISIONAL' ? 'weekly prize' : item.status === 'FINAL' ? 'final award' : ''}</p></> : <p className="lcc2-body mt-3">Pending</p>}</div>;
+      })}
     </div>
   </PayoutSection>;
 }

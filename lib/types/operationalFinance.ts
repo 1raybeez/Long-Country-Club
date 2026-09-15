@@ -35,6 +35,7 @@ export type {
 export interface PublicOperationalOwnerStatus {
   readonly ownerId: string;
   readonly displayName: string;
+  readonly teamName: string;
   readonly paymentStatus: PaymentStatus;
 }
 

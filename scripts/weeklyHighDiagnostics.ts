@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { getAwardAmountCents } from '../lib/finance/awardObligations.ts';
-import { deriveWeeklyHigh, selectWeeklyHighFromTotals } from '../lib/finance/weeklyHigh.ts';
+import { deriveWeeklyHigh, selectWeeklyHighFromTotals, SLEEPER_WEEKLY_REPORT_API_STATUS } from '../lib/finance/weeklyHigh.ts';
 
 async function main() {
 const weekOne = await deriveWeeklyHigh(2026, 1);
@@ -21,12 +21,19 @@ const tie = selectWeeklyHighFromTotals([
 assert.equal(tie.tie, true);
 assert.equal(tie.status, 'UNAVAILABLE');
 assert.equal(tie.decisionRequired, true);
+assert.equal(tie.winner, null);
+assert.equal(tie.tiedFranchises.length, 2);
+assert.equal(SLEEPER_WEEKLY_REPORT_API_STATUS, 'NOT PROVEN');
 assert.equal(selectWeeklyHighFromTotals([{ rosterId: 1, franchiseId: 'ray-long', franchiseName: 'Bower Rangers', score: 150 }], true).status, 'FINAL');
 
 const overrideRoute = await import('../app/api/commish/finance/awards/weekly-high-override/route.ts');
 assert.ok(overrideRoute.POST);
 assert.match((await import('node:fs')).readFileSync('lib/finance/weeklyHigh.ts', 'utf8'), /capabilities\.includes\('commissioner'\)/);
 assert.match((await import('node:fs')).readFileSync('lib/finance/weeklyHigh.ts', 'utf8'), /weeklyHighOverrides/);
+assert.match((await import('node:fs')).readFileSync('lib/finance/weeklyHigh.ts', 'utf8'), /!input\.note\?\.trim\(\)/);
+assert.match((await import('node:fs')).readFileSync('components/commish/WeeklyHighOverride.tsx', 'utf8'), /Enter manual result/);
+assert.match((await import('node:fs')).readFileSync('components/commish/WeeklyHighOverride.tsx', 'utf8'), /!existingOverride/);
+assert.equal((await import('node:fs')).readFileSync('lib/finance/publicAwardProjection.ts', 'utf8').includes('weeklyHighOverrides'), false);
 assert.match((await import('node:fs')).readFileSync('lib/finance/publicAwardProjection.ts', 'utf8'), /approved/);
 
 console.log(`LCC weekly-high diagnostics passed: ${weekOne.rosterTotals.map((row) => `${row.franchiseName ?? 'Unresolved'}=${row.score ?? '—'}`).join(', ')} | max=${weekOne.score} ${weekOne.franchiseName}, Sleeper-derived $10, provisional completion safety, tie escalation, and commissioner-only override surface.`);
