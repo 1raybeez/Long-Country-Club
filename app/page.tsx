@@ -43,7 +43,7 @@ export default async function HomePage() {
         <HomeDashboardIdentity />
         <HomeDashboardTopRow nextEvent={nextEvent.event} currentView={currentView} />
         <HomePredictorPreview />
-        <SeasonReadiness />
+        <SeasonReadiness currentView={currentView} />
       </div>
     </main>
   );
@@ -254,8 +254,13 @@ function formatCurrentSeasonMessage(view: Awaited<ReturnType<typeof loadHomeCurr
   return "Current-season matchup data is not available yet.";
 }
 
-function SeasonReadiness() {
+function SeasonReadiness({ currentView }: { currentView: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>> }) {
   const draftComplete = CURRENT_ROOKIE_DRAFT?.status === "complete";
+  const matchupStatus = currentView.week.week
+    ? currentView.week.phase === "SEASON_COMPLETE"
+      ? { value: "Complete", detail: `Through Week ${currentView.week.week}` }
+      : { value: `Week ${currentView.week.week}`, detail: "Current league week" }
+    : { value: "Not yet available", detail: "Current week unavailable" };
 
   return (
     <section className="mt-8 sm:mt-10" aria-labelledby="season-readiness-heading">
@@ -292,8 +297,8 @@ function SeasonReadiness() {
         />
         <ReadinessCard
           label="Matchups"
-          value="Not yet available"
-          detail="No scored 2026 week"
+          value={matchupStatus.value}
+          detail={matchupStatus.detail}
           href="/matchups"
         />
         <ReadinessCard
