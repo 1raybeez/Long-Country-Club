@@ -591,7 +591,7 @@ body {
 .lcc2-home-container {
   width: min(100%, var(--lcc-container));
   margin: 0 auto;
-  padding: 2rem clamp(1rem, 4vw, 2rem) 3rem;
+  padding: clamp(2.25rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2rem) 3rem;
 }
 
 .lcc2-home-identity {
@@ -626,7 +626,15 @@ body {
 }
 
 .lcc2-home-top-card {
-  min-height: 13rem;
+  min-height: 0;
+}
+
+.lcc2-home-live-action {
+  min-height: 15rem;
+}
+
+.lcc2-home-deadline-card {
+  min-height: 0;
 }
 
 .lcc2-home-lower-grid {
@@ -765,11 +773,15 @@ body {
 
 @media (min-width: 760px) {
   .lcc2-home-container {
-    padding-top: 2.5rem;
+    padding-top: clamp(2.5rem, 5vw, 3.5rem);
   }
 
   .lcc2-home-top-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lcc2-home-top-row--live {
+    grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 0.825fr));
   }
 
   .lcc2-home-lower-grid {
@@ -779,9 +791,60 @@ body {
 }
 
 @media (max-width: 639px) {
+  .lcc-site-header__inner {
+    padding-inline: 0.7rem;
+  }
+
+  .lcc-site-header__bar {
+    min-height: 4rem;
+    gap: 0.45rem;
+  }
+
+  .lcc-site-brand {
+    gap: 0.5rem;
+  }
+
+  .lcc-site-brand__mark {
+    width: 2.65rem;
+    height: 2.65rem;
+  }
+
+  .lcc-site-brand__title {
+    font-size: 0.78rem;
+    letter-spacing: 0.025em;
+  }
+
+  .lcc-site-brand__meta {
+    display: none;
+  }
+
+  .lcc-account__identity {
+    max-width: 5.5rem;
+  }
+
+  .lcc-account__trigger,
+  .lcc-account__sign-in {
+    gap: 0.35rem;
+    padding-inline: 0.5rem;
+  }
+
   .lcc2-home-identity {
     align-items: flex-start;
     flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .lcc2-home-identity__supporting {
+    font-size: 0.88rem;
+  }
+
+  .lcc2-home-top-row {
+    gap: 0.75rem;
+  }
+
+  .lcc2-home-live-action {
+    min-height: 0;
   }
 }
 
