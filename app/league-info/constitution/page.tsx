@@ -46,29 +46,29 @@ export default function RulesOfPlay() {
           isOpen={activeChapter === 'financial'}
           toggle={() => toggleChapter('financial')}
         >
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="Financial Transparency">
             <p>
-              Financial details are published on the official Caddy Fees page. That ledger is where the league tracks
+              Financial details are published on the official League Fees page. That ledger is where the league tracks
               current payments, balances, weekly highs, and payout notes.
             </p>
             <Link
               href="/league-info/fees"
               className="mt-2 inline-flex font-ui font-bold text-[var(--lcc-interactive)] underline decoration-[var(--lcc-interactive)] underline-offset-4"
             >
-              View Caddy Fees Ledger
+              View League Fees Ledger
             </Link>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="Website as Source of Truth">
             <p>
               The website is the source of truth for published league financial rules and the current ledger. If a
-              payment detail needs clarification, owners should reference the Caddy Fees ledger first.
+              payment detail needs clarification, owners should reference the League Fees ledger first.
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="Ownership Expectations">
             <p>
               The annual league fee is <strong>$50</strong>. New owners pay <strong>$75</strong> in Year 1: $50 for the
@@ -76,12 +76,12 @@ export default function RulesOfPlay() {
             </p>
             <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
               <li>Entry fees must be paid before the start of each season.</li>
-              <li>If an owner leaves, they do not recoup the future-season fee.</li>
-              <li>The forfeited future-season fee is awarded to the next Champion.</li>
+              <li>If an owner leaves, they do not recoup the future-season deposit.</li>
+              <li>The forfeited future-season deposit is awarded to the next Champion.</li>
             </ul>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="Prize Money">
             <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
               <li>$10 to the weekly high scorer during the 14-week regular season.</li>
@@ -102,17 +102,17 @@ export default function RulesOfPlay() {
           isOpen={activeChapter === 'h1'}
           toggle={() => toggleChapter('h1')}
         >
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="1.1 Owner Commitment">
             <p>
-              Paying league dues is an ownership commitment, not just an entry transaction. Fee amounts, new-owner
+              Paying league fees is an ownership commitment, not just an entry transaction. Fee amounts, new-owner
               deposits, forfeiture rules, and current balances are maintained in the{' '}
               <Link href="#financial" className="font-bold text-[var(--lcc-interactive)] underline underline-offset-4">
                 Financial Rules
               </Link>{' '}
               section and on the{' '}
               <Link href="/league-info/fees" className="font-bold text-[var(--lcc-interactive)] underline underline-offset-4">
-                Caddy Fees page
+                League Fees page
               </Link>
               .
             </p>
@@ -123,7 +123,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="1.2 Team Abandonment">
             <p>
               Owners must provide at least <strong>30 days&apos; notice before the draft</strong> if they plan to leave
@@ -136,7 +136,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="1.3 Winter Owner's Meeting">
             <p>
               Any rule changes or votes for the upcoming season must be voted on after the Champion is crowned and
@@ -153,7 +153,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="1.4 Financial Rules Reference">
             <p>
               The official payout schedule lives in the Financial Rules section so the same dollar amounts are not
@@ -164,13 +164,13 @@ export default function RulesOfPlay() {
               The current payment ledger, owner balances, future-season deposits, and weekly high-score records are
               maintained on the{' '}
               <Link href="/league-info/fees" className="font-bold text-[var(--lcc-interactive)] underline underline-offset-4">
-                Caddy Fees page
+                League Fees page
               </Link>
               .
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="1.5 Rookie Hazing">
             <p>
               The rest of the league chooses the team name for any first-year owner before the season begins. If the
@@ -229,7 +229,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="2.4 Taxi Squad">
             <p>
               Each team has a <strong>5-player Taxi Squad</strong>. Eligible players are rookies or sophomores after the
@@ -294,7 +294,7 @@ export default function RulesOfPlay() {
           isOpen={activeChapter === 'h3'}
           toggle={() => toggleChapter('h3')}
         >
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="3.1 Inaugural Draft">
             <p>
               The inaugural draft is split into two parts: a Veterans Draft and a Rookie Draft. The Veterans Draft takes
@@ -313,7 +313,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="3.2 Future Rookie Drafts">
             <p>
               Beginning in Year Two and beyond, the annual Rookie Draft will occur approximately{' '}
@@ -506,7 +506,7 @@ export default function RulesOfPlay() {
             </ul>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="5.3 Playoff Game Tiebreakers">
             <p>
               If a playoff matchup ends in a tie, the winner is determined by the team with the{' '}
@@ -517,13 +517,13 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="5.4 Prize Eligibility & The Ring">
             <p>
               Payout amounts, weekly high-score rules, forfeited future-season fees, and the Champion ring reserve are
               defined in the Financial Rules section and reflected on the{' '}
               <Link href="/league-info/fees" className="font-bold text-[var(--lcc-interactive)] underline underline-offset-4">
-                Caddy Fees ledger
+                League Fees ledger
               </Link>
               .
             </p>
@@ -541,7 +541,7 @@ export default function RulesOfPlay() {
           isOpen={activeChapter === 'h6'}
           toggle={() => toggleChapter('h6')}
         >
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="6.1 Official Season Determination">
             <p>
               A season is considered <strong>official</strong> if <strong>9 weeks</strong> of NFL games are completed.
@@ -549,7 +549,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="6.2 Entry Fees During Emergency Seasons">
             <p>
               Entry fee amounts are defined in the Financial Rules section. Emergency seasons only affect whether
@@ -561,7 +561,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="6.3 Emergency Payout Structure">
             <p>
               If an <strong>unofficial season</strong> occurs (fewer than 9 weeks played), the season is null and void.
@@ -588,7 +588,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="6.4 Emergency IR Expansion">
             <p>
               The league&apos;s baseline IR settings are defined in Rule 2.3. For any season affected by a pandemic or
@@ -606,7 +606,7 @@ export default function RulesOfPlay() {
             </p>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="6.5 Game Postponement or Cancellation">
             <p>
               If the NFL postpones or cancels games for specific teams due to a pandemic or natural disaster, the
@@ -628,7 +628,7 @@ export default function RulesOfPlay() {
           isOpen={activeChapter === 'h7'}
           toggle={() => toggleChapter('h7')}
         >
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="7.1 Revision History">
             <p>
               The Long Country Club FFL maintains a revision history to track rule changes voted on by the league. This
@@ -714,7 +714,7 @@ export default function RulesOfPlay() {
             </ul>
           </RuleBlock>
 
-          <Tag type="club">Club Rule</Tag>
+          <Tag type="club">League Rule</Tag>
           <RuleBlock title="7.2 Document Approval Log">
             <p>The following approvals certify the revisions to the Long Country Club FFL Rule Book:</p>
             <ul style={{ paddingLeft: '1.25rem' }}>

@@ -116,7 +116,7 @@ export const LCC_ROUTES: Record<string, LccRoute> = {
   },
   fees: {
     id: "fees",
-    label: "Caddy Fees",
+    label: "Fees & Payouts",
     href: "/league-info/fees",
     status: "active",
     icon: "💰",

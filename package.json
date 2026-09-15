@@ -96,7 +96,8 @@
     "matchup:identity-diagnostics": "tsx scripts/matchupIdentityDiagnostics.ts",
     "preseason:snapshot-integrity": "tsx scripts/preseasonSnapshotIntegrityDiagnostics.ts",
     "historical-matchups:regression": "tsx scripts/historicalMatchupsRegressionDiagnostics.ts",
-    "live-refresh:diagnostics": "tsx scripts/liveRefreshDiagnostics.ts"
+    "live-refresh:diagnostics": "tsx scripts/liveRefreshDiagnostics.ts",
+    "constitution:diagnostics": "tsx scripts/constitutionDiagnostics.ts"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",
