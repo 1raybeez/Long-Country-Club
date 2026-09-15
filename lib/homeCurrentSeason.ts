@@ -107,7 +107,6 @@ export function buildCurrentSeasonMatchups(
     const ownerAScore = scoreFor(entryA);
     const ownerBScore = scoreFor(entryB);
     if (!ownerAId || !ownerBId || ownerAScore === null || ownerBScore === null) return [];
-    const winnerOwnerId = ownerAScore === ownerBScore ? null : ownerAScore > ownerBScore ? ownerAId : ownerBId;
     return [{
       season: LCC_CURRENT_SEASON,
       week,
@@ -116,8 +115,8 @@ export function buildCurrentSeasonMatchups(
       ownerBId,
       ownerAScore,
       ownerBScore,
-      winnerOwnerId,
-      loserOwnerId: winnerOwnerId === null ? null : winnerOwnerId === ownerAId ? ownerBId : ownerAId,
+      winnerOwnerId: null,
+      loserOwnerId: null,
       ownerAStarters: lineupFor(entryA, entryA.starters ?? []),
       ownerBStarters: lineupFor(entryB, entryB.starters ?? []),
       ownerABench: lineupFor(entryA, (entryA.players ?? []).filter((player) => !(entryA.starters ?? []).includes(player))),
@@ -125,6 +124,7 @@ export function buildCurrentSeasonMatchups(
       ownerABenchDataAvailable: Array.isArray(entryA.players),
       ownerBBenchDataAvailable: Array.isArray(entryB.players),
       notes: ["Loaded from the current Sleeper matchup runtime."],
+      currentStatus: ownerAScore === 0 && ownerBScore === 0 ? "UPCOMING" : "UNKNOWN",
     } satisfies HistoricalMatchup];
   });
 }
@@ -222,8 +222,7 @@ export function buildHomeMatchupViewFromCurrentMatchups(
   const opponent = matchup.ownerAId === member.ownerId ? getLccOwnerByIdSafe(matchup.ownerBId) : getLccOwnerByIdSafe(matchup.ownerAId);
   const ownerScore = matchup.ownerAId === member.ownerId ? matchup.ownerAScore : matchup.ownerBScore;
   const opponentScore = matchup.ownerAId === member.ownerId ? matchup.ownerBScore : matchup.ownerAScore;
-  const complete = ownerScore !== null && opponentScore !== null && (ownerScore > 0 || opponentScore > 0);
-  return { state: complete ? "complete" : "scheduled", week, ownerId: member.ownerId, ownerName: owner?.managerPage.sleeperName ?? member.teamName, ownerDisplayName: ownerA?.displayName ?? member.displayName, opponentOwnerId: opponent?.id ?? null, opponentName: opponent?.managerPage.sleeperName ?? null, opponentDisplayName: opponent?.displayName ?? null, ownerScore: complete ? ownerScore : null, opponentScore: complete ? opponentScore : null, href: "/matchups" };
+  return { state: "current", week, ownerId: member.ownerId, ownerName: owner?.managerPage.sleeperName ?? member.teamName, ownerDisplayName: ownerA?.displayName ?? member.displayName, opponentOwnerId: opponent?.id ?? null, opponentName: opponent?.managerPage.sleeperName ?? null, opponentDisplayName: opponent?.displayName ?? null, ownerScore, opponentScore, href: "/matchups" };
 }
 
 function getLccOwnerByIdSafe(ownerId: string) {

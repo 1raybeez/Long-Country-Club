@@ -47,6 +47,7 @@ type HistoricalMatchup = {
   ownerBBench?: readonly HistoricalLineupPlayer[];
   ownerABenchDataAvailable?: boolean;
   ownerBBenchDataAvailable?: boolean;
+  currentStatus?: "UPCOMING" | "LIVE" | "FINAL" | "UNKNOWN";
 };
 
 export function MatchupCenterClient({

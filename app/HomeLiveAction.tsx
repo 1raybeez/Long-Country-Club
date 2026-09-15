@@ -23,9 +23,8 @@ export function HomeLiveAction({ initialView }: { initialView: HomeCurrentSeason
         const opponent = matchup.ownerAId === ownerId ? getOwnerById(matchup.ownerBId) : getOwnerById(matchup.ownerAId);
         const ownerScore = matchup.ownerAId === ownerId ? matchup.ownerAScore : matchup.ownerBScore;
         const opponentScore = matchup.ownerAId === ownerId ? matchup.ownerBScore : matchup.ownerAScore;
-        const complete = ownerScore !== null && opponentScore !== null && (ownerScore > 0 || opponentScore > 0);
         lastRefreshAt.current = Date.parse(snapshot.fetchedAt ?? "") || Date.now();
-        setView((previous) => ({ week: snapshot.state!, matchup: { ...previous.matchup, state: complete ? "complete" : "scheduled", week: snapshot.week!, ownerName: owner?.teamName ?? previous.matchup.ownerName, opponentName: opponent?.teamName ?? previous.matchup.opponentName, ownerScore: complete ? ownerScore : null, opponentScore: complete ? opponentScore : null } }));
+        setView((previous) => ({ week: snapshot.state!, matchup: { ...previous.matchup, state: "current", week: snapshot.week!, ownerName: owner?.teamName ?? previous.matchup.ownerName, opponentName: opponent?.teamName ?? previous.matchup.opponentName, ownerScore, opponentScore } }));
       } catch {
         // Preserve the last good Home snapshot.
       }
@@ -37,7 +36,7 @@ export function HomeLiveAction({ initialView }: { initialView: HomeCurrentSeason
     window.addEventListener("focus", onFocus);
     return () => { window.clearInterval(interval); document.removeEventListener("visibilitychange", onVisibility); window.removeEventListener("focus", onFocus); };
   }, [initialView.matchup.ownerId]);
-  const message = view.matchup.state === "complete" && view.matchup.opponentName
+  const message = (view.matchup.state === "complete" || view.matchup.state === "current") && view.matchup.opponentName && view.matchup.ownerScore !== null && view.matchup.opponentScore !== null
     ? `Week ${view.week.week}: ${view.matchup.ownerName} ${view.matchup.ownerScore} · ${view.matchup.opponentName} ${view.matchup.opponentScore}.`
     : view.matchup.state === "scheduled" && view.matchup.opponentName
       ? `Week ${view.week.week}: scheduled against ${view.matchup.opponentName}. Scores will appear when available.`

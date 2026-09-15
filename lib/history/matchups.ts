@@ -31,6 +31,7 @@ export interface HistoricalMatchup {
   readonly ownerABenchDataAvailable?: boolean;
   readonly ownerBBenchDataAvailable?: boolean;
   readonly notes?: readonly string[];
+  readonly currentStatus?: "UPCOMING" | "LIVE" | "FINAL" | "UNKNOWN";
 }
 
 import { generateHistoricalMatchups } from "./generateMatchups";

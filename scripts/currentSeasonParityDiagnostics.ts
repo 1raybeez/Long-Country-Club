@@ -25,6 +25,8 @@ const current = buildCurrentSeasonMatchups(
 assert.equal(current.length, 1);
 assert.deepEqual([current[0].ownerAId, current[0].ownerBId], [ray.id, rob.id]);
 assert.deepEqual([current[0].ownerAScore, current[0].ownerBScore], [140.41, 162.34]);
+assert.equal(current[0].winnerOwnerId, null);
+assert.equal(current[0].currentStatus, "UNKNOWN");
 assert.equal(buildCurrentSeasonMatchups(
   [{ matchup_id: 2, roster_id: 1, points: 0 }, { matchup_id: 2, roster_id: 2, points: 0 }],
   [{ roster_id: 1, owner_id: ray.sleeperUserId! }, { roster_id: 2, owner_id: rob.sleeperUserId! }],
