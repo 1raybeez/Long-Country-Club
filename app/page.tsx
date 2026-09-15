@@ -14,6 +14,9 @@ import { loadDraftEventsBySeason } from "@/lib/history/drafts";
 import { LCC_CURRENT_SEASON } from "@/lib/leagueConstants";
 import { getOwnerById } from "@/lib/ownerRegistry";
 import { getOwnerImagePath } from "@/lib/ownerImages";
+import { getCurrentMemberSession } from "@/lib/auth/session";
+import { getHomeEvents, selectNextHomeEvent } from "@/lib/homeEvents";
+import { loadHomeCurrentSeasonView } from "@/lib/homeCurrentSeason";
 import {
   getApprovedPreseasonTeamStrengthForecasts,
   type PredictorTeamForecast,
@@ -30,12 +33,15 @@ const CURRENT_ROOKIE_DRAFT = loadDraftEventsBySeason(LCC_CURRENT_SEASON).find(
 );
 const CURRENT_STANDINGS = loadStandingsBySeason(LCC_CURRENT_SEASON);
 
-export default function HomePage() {
+export default async function HomePage() {
+  const session = await getCurrentMemberSession();
+  const currentView = await loadHomeCurrentSeasonView(session?.member ?? null);
+  const nextEvent = selectNextHomeEvent(getHomeEvents(LCC_CURRENT_SEASON));
   return (
     <main className="lcc2-home-shell">
       <div className="lcc2-home-container">
         <HomeDashboardIdentity />
-        <HomeDashboardTopRow />
+        <HomeDashboardTopRow nextEvent={nextEvent.event} currentView={currentView} />
         <HomePredictorPreview />
         <SeasonReadiness />
       </div>
@@ -126,7 +132,7 @@ function HomeDashboardIdentity() {
   );
 }
 
-function HomeDashboardTopRow() {
+function HomeDashboardTopRow({ nextEvent, currentView }: { nextEvent: ReturnType<typeof selectNextHomeEvent>["event"]; currentView: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>> }) {
   const championOwner = REIGNING_CHAMPION?.ownerId
     ? getOwnerById(REIGNING_CHAMPION.ownerId)
     : null;
@@ -140,23 +146,18 @@ function HomeDashboardTopRow() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="lcc2-label">Next league deadline</p>
-            <h2 className="mt-3 lcc2-home-card-title">NFL kickoff</h2>
+            <h2 className="mt-3 lcc2-home-card-title">{nextEvent?.title ?? "No upcoming league deadline"}</h2>
           </div>
           <CalendarDays
             className="h-5 w-5 shrink-0 text-[var(--lcc-interactive)]"
             aria-hidden="true"
           />
         </div>
-        <time
-          className="mt-5 block font-ui text-base font-black uppercase leading-tight text-[var(--lcc-color-text)]"
-          dateTime={`${CURRENT_HOME_CONFIG.kickoffDate}T20:20:00-04:00`}
-        >
+        {nextEvent ? <time className="mt-5 block font-ui text-base font-black uppercase leading-tight text-[var(--lcc-color-text)]" dateTime={nextEvent.timestamp ?? undefined}>
           {CURRENT_HOME_CONFIG.kickoffDisplay}
-          <span className="mt-1 block text-sm text-[var(--lcc-color-text-muted)]">
-            {CURRENT_HOME_CONFIG.kickoffTime}
-          </span>
-        </time>
-        <div className="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:justify-between sm:gap-2">
+          <span className="mt-1 block text-sm text-[var(--lcc-color-text-muted)]">{CURRENT_HOME_CONFIG.kickoffTime}</span>
+        </time> : <p className="mt-5 lcc2-body">No dated league event is currently scheduled.</p>}
+        {nextEvent ? <div className="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:justify-between sm:gap-2">
           <div className="flex w-full max-w-[11rem] items-center gap-2 sm:min-w-0 sm:max-w-none sm:flex-1">
             <img
               src={getHomeTeamLogoUrl(CURRENT_HOME_CONFIG.kickoffAwayTeam)}
@@ -185,7 +186,7 @@ function HomeDashboardTopRow() {
               className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12"
             />
           </div>
-        </div>
+        </div> : null}
         <div className="mt-5 flex items-center justify-between gap-3 border-t border-slate-200 pt-4">
           <span className="lcc2-label">League fees due</span>
           <span className="lcc2-badge lcc2-badge--neutral">
@@ -234,10 +235,7 @@ function HomeDashboardTopRow() {
             aria-hidden="true"
           />
         </div>
-        <p className="mt-5 lcc2-body">
-          Season schedule is not yet available. Week 1 LCC pairings will appear here
-          when they are ready.
-        </p>
+        <p className="mt-5 lcc2-body">{formatCurrentSeasonMessage(currentView)}</p>
         <Link href="/matchups" className="lcc2-button lcc2-button--primary mt-6 w-full">
           Open Matchups
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -245,6 +243,15 @@ function HomeDashboardTopRow() {
       </article>
     </section>
   );
+}
+
+function formatCurrentSeasonMessage(view: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>>) {
+  if (view.matchup.state === "complete" && view.matchup.opponentName) return `Week ${view.week.week}: ${view.matchup.ownerName} ${view.matchup.ownerScore} · ${view.matchup.opponentName} ${view.matchup.opponentScore}.`;
+  if (view.matchup.state === "scheduled" && view.matchup.opponentName) return `Week ${view.week.week}: scheduled against ${view.matchup.opponentName}. Scores will appear when available.`;
+  if (view.week.phase === "REGULAR_SEASON" && view.week.week) return `Week ${view.week.week} is underway. Open Matchups for the league board.`;
+  if (view.week.phase === "POSTSEASON" && view.week.week) return `Postseason week ${view.week.week} is underway. Open Matchups for the current bracket.`;
+  if (view.week.phase === "SEASON_COMPLETE") return "The 2026 season is complete. Visit History for the final record.";
+  return "Current-season matchup data is not available yet.";
 }
 
 function SeasonReadiness() {

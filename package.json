@@ -90,7 +90,8 @@
     "firebase:package-trade-valuations": "node scripts/packageTradeAnalyzerValuationAssets.mjs",
     "firebase:trade-valuations-package-diagnostics": "node scripts/tradeValuationPackageDiagnostics.mjs",
     "firebase:runtime-diagnostics": "node --experimental-strip-types scripts/tradeFirebaseRuntimeDiagnostics.mjs",
-    "records:diagnostics": "node scripts/recordsDiagnostics.mjs"
+    "records:diagnostics": "node scripts/recordsDiagnostics.mjs",
+    "home:current-season:diagnostics": "tsx scripts/homeCurrentSeasonDiagnostics.ts"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",
