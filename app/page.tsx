@@ -228,7 +228,7 @@ function getLiveActionTitle(view: Awaited<ReturnType<typeof loadHomeCurrentSeaso
   return "Current-season status";
 }
 
-function formatCurrentSeasonMessage(view: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>>) {
+export function formatCurrentSeasonMessage(view: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>>) {
   if (view.matchup.state === "complete" && view.matchup.opponentName) return `Week ${view.week.week}: ${view.matchup.ownerName} ${view.matchup.ownerScore} · ${view.matchup.opponentName} ${view.matchup.opponentScore}.`;
   if (view.matchup.state === "scheduled" && view.matchup.opponentName) return `Week ${view.week.week}: scheduled against ${view.matchup.opponentName}. Scores will appear when available.`;
   if (view.week.phase === "REGULAR_SEASON" && view.week.week) return `Week ${view.week.week} is underway. Open Matchups for the league board.`;

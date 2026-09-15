@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { formatCurrentSeasonMessage } from "../app/page.tsx";
 import { buildCurrentSeasonMatchups, buildHomeMatchupView, resolveHomeCurrentWeek } from "../lib/homeCurrentSeason.ts";
 import { getLccOwnerBySleeperUserId } from "../lib/lccOwners.ts";
 
@@ -34,5 +35,6 @@ const home = buildHomeMatchupView(
 assert.equal(home.ownerName, "Bower Rangers");
 assert.equal(home.opponentName, "Roaring 20");
 assert.deepEqual([home.ownerScore, home.opponentScore], [140.41, 162.34]);
+assert.equal(formatCurrentSeasonMessage({ week, matchup: home }), "Week 1: Bower Rangers 140.41 · Roaring 20 162.34.");
 
 console.log("LCC current-season parity diagnostics passed: shared week state, runtime matchup mapping, scores, and Home franchise identity.");
