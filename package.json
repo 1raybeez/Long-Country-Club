@@ -91,7 +91,11 @@
     "firebase:trade-valuations-package-diagnostics": "node scripts/tradeValuationPackageDiagnostics.mjs",
     "firebase:runtime-diagnostics": "node --experimental-strip-types scripts/tradeFirebaseRuntimeDiagnostics.mjs",
     "records:diagnostics": "node scripts/recordsDiagnostics.mjs",
-    "home:current-season:diagnostics": "tsx scripts/homeCurrentSeasonDiagnostics.ts"
+    "home:current-season:diagnostics": "tsx scripts/homeCurrentSeasonDiagnostics.ts",
+    "current-season:parity-diagnostics": "tsx scripts/currentSeasonParityDiagnostics.ts",
+    "matchup:identity-diagnostics": "tsx scripts/matchupIdentityDiagnostics.ts",
+    "preseason:snapshot-integrity": "tsx scripts/preseasonSnapshotIntegrityDiagnostics.ts",
+    "historical-matchups:regression": "tsx scripts/historicalMatchupsRegressionDiagnostics.ts"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",

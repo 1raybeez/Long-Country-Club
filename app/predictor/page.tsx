@@ -41,13 +41,13 @@ export default function PredictorPage() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--lcc-color-midnight)] text-[var(--lcc-brand-primary)]"><TrendingUp className="h-5 w-5" aria-hidden="true" /></span>
                 <p className="lcc2-label text-[var(--lcc-brand-primary)]">Predictor</p>
               </div>
-              <h1 className="lcc2-home-identity__title mt-3">2026 Team Strength Forecast</h1>
+              <h1 className="lcc2-home-identity__title mt-3">2026 Preseason Team Strength Forecast</h1>
               <p className="lcc2-home-identity__supporting mt-2 max-w-3xl">A league-relative preseason read of the current drafted LCC rosters using expected lineup strength, active depth, and positional balance.</p>
             </div>
             <div className="lcc2-metric-card"><p className="lcc2-metric-card__label">Teams ranked</p><p className="lcc2-metric-card__value">{views.length}</p><p className="mt-1 font-ui text-[0.65rem] font-black uppercase tracking-[0.08em] text-[var(--lcc-color-text-muted)]">Preseason forecast</p></div>
           </div>
           <div className="grid gap-3 border-t border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-4">
-            <div><p className="lcc2-label text-[var(--lcc-brand-secondary)]">Preseason forecast</p><p className="lcc2-body mt-1 max-w-3xl">No 2026 LCC games have been played. This forecast uses roster construction and available historical/player baseline evidence; it will evolve when 2026 scoring and matchup data exist.</p></div>
+            <div><p className="lcc2-label text-[var(--lcc-brand-secondary)]">Locked preseason archive</p><p className="lcc2-body mt-1 max-w-3xl">This is the approved 2026 preseason forecast baseline, preserved before Week 1 for future comparison. It is not a live in-season ranking.</p></div>
             <div className="flex flex-wrap gap-x-5 gap-y-2 font-ui text-[0.65rem] font-black uppercase tracking-[0.06em] text-[var(--lcc-color-text-muted)]"><span>Model · {snapshot.modelVersion}</span><span>Data cutoff · {dataCutoff}</span></div>
           </div>
         </header>

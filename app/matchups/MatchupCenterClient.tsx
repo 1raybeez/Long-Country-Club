@@ -8,6 +8,7 @@ import {
   Swords,
   Trophy,
 } from "lucide-react";
+import type { HomeCurrentWeekState } from "@/lib/homeCurrentSeason";
 import {
   useEffect,
   useMemo,
@@ -52,11 +53,13 @@ export function MatchupCenterClient({
   seasons,
   owners,
   matchups,
+  currentSeasonState,
 }: {
   currentSeason: number;
   seasons: readonly number[];
   owners: readonly OwnerOption[];
   matchups: readonly HistoricalMatchup[];
+  currentSeasonState: HomeCurrentWeekState;
 }) {
   const [season, setSeason] = useState(String(currentSeason));
   const [gameView, setGameView] =
@@ -92,6 +95,8 @@ export function MatchupCenterClient({
   const latestWeek = availableWeeks.at(-1);
 
   useEffect(() => {
+    // Reset dependent controls when the view scope changes.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setWeek("latest");
     setExpandedMatchups(new Set());
     setExpandedBenches(new Set());
@@ -282,7 +287,9 @@ export function MatchupCenterClient({
             <div className="lcc2-card mt-5 bg-slate-50">
               <p className="lcc2-label">
                 {seasonNumber === currentSeason
-                  ? `${season} season has not started yet.`
+                  ? currentSeasonState.week
+                    ? `${season} Week ${currentSeasonState.week} matchup data is not available right now.`
+                    : `${season} current-season matchup data is not available right now.`
                   : "No completed games found for this season and week."}
               </p>
             </div>

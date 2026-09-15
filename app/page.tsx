@@ -59,7 +59,7 @@ function HomePredictorPreview() {
           <h2 id="home-predictor-heading" className="lcc2-section-heading__title">
             2026 Preseason Top 5
           </h2>
-          <p className="lcc2-body mt-2">Current Team Strength forecast based on drafted 2026 rosters.</p>
+          <p className="lcc2-body mt-2">Locked 2026 preseason Team Strength baseline based on drafted rosters, preserved for future comparison.</p>
         </div>
         <p className="lcc2-label">Preseason only · Team Strength index</p>
       </div>
