@@ -12,6 +12,7 @@ assert.equal(selectNextHomeEvent([], afterKickoff).reason, "no-timestamped-event
 assert.equal(selectNextHomeEvent([{ ...events[0], timestamp: null }], afterKickoff).reason, "no-timestamped-event");
 
 assert.equal(resolveHomeCurrentWeek({ season: "2026", settings: { leg: 1 } }).phase, "REGULAR_SEASON");
+assert.equal(resolveHomeCurrentWeek({ season: "2026", status: "pre_draft", settings: { leg: 1 } }).phase, "PRESEASON");
 assert.equal(resolveHomeCurrentWeek({ season: "2026", settings: { leg: 15, playoff_week_start: 15 } }).phase, "POSTSEASON");
 assert.equal(resolveHomeCurrentWeek({ season: "2025", settings: { leg: 1 } }).phase, "UNKNOWN");
 

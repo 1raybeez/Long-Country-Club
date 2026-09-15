@@ -45,6 +45,10 @@ export function resolveHomeCurrentWeek(
     return { season, phase: "UNKNOWN", week: null, source: "unavailable" };
   }
 
+  if (["pre_draft", "preseason", "offseason"].includes(league.status ?? "")) {
+    return { season, phase: "PRESEASON", week: null, source: "sleeper-league" };
+  }
+
   if (league.status === "complete" || week > 17) {
     return { season, phase: "SEASON_COMPLETE", week, source: "sleeper-league" };
   }
