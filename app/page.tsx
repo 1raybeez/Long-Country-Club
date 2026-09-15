@@ -4,7 +4,6 @@ import {
   CalendarDays,
   CheckCircle2,
   ClipboardCheck,
-  Trophy,
   Users,
 } from "lucide-react";
 import { ACTIVE_LCC_OWNERS } from "@/lib/lccOwners";
@@ -24,6 +23,7 @@ import {
 import {
   HOME_SEASON_CONFIG,
 } from "@/lib/homeSeasonConfig";
+import { HomeLiveAction } from "./HomeLiveAction";
 
 const CURRENT_HOME_CONFIG = HOME_SEASON_CONFIG[LCC_CURRENT_SEASON];
 const REIGNING_CHAMPION = getLccChampionBySeason(LCC_CURRENT_SEASON - 1);
@@ -154,20 +154,7 @@ function HomeDashboardTopRow({ nextEvent, currentView }: { nextEvent: ReturnType
 
   return (
     <section className={`lcc2-home-top-row${isLiveHomeState(currentView) ? " lcc2-home-top-row--live" : ""}`} aria-label="Current season overview">
-      <article className="lcc2-card lcc2-card--dark lcc2-home-top-card lcc2-home-live-action">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="lcc2-label">{currentView.week.week ? `Week ${currentView.week.week}` : "Current league action"}</p>
-            <h2 className="mt-3 lcc2-home-card-title">{getLiveActionTitle(currentView)}</h2>
-          </div>
-          <Trophy className="h-5 w-5 shrink-0 text-[var(--lcc-color-blue-hover)]" aria-hidden="true" />
-        </div>
-        <p className="mt-5 lcc2-body">{formatCurrentSeasonMessage(currentView)}</p>
-        <Link href="/matchups" className="lcc2-button lcc2-button--primary mt-6 w-full">
-          View Matchups
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
-      </article>
+      <HomeLiveAction initialView={currentView} />
 
       {nextEvent ? <article className="lcc2-card lcc2-home-top-card lcc2-home-deadline-card">
         <div className="flex items-start justify-between gap-4">
@@ -218,14 +205,6 @@ function HomeDashboardTopRow({ nextEvent, currentView }: { nextEvent: ReturnType
 
 function isLiveHomeState(view: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>>) {
   return view.week.phase === "REGULAR_SEASON" || view.week.phase === "POSTSEASON";
-}
-
-function getLiveActionTitle(view: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>>) {
-  if (view.matchup.state === "complete") return "Your matchup result";
-  if (view.matchup.state === "scheduled" && view.matchup.opponentName) return "Your matchup";
-  if (view.week.phase === "SEASON_COMPLETE") return "Season complete";
-  if (isLiveHomeState(view)) return "Matchups underway";
-  return "Current-season status";
 }
 
 export function formatCurrentSeasonMessage(view: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>>) {

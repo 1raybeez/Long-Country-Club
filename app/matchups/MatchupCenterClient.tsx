@@ -13,6 +13,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useRef,
   type ReactNode,
 } from "react";
 
@@ -69,11 +70,13 @@ export function MatchupCenterClient({
     useState<Set<string>>(new Set());
   const [expandedBenches, setExpandedBenches] =
     useState<Set<string>>(new Set());
+  const [liveMatchups, setLiveMatchups] = useState(matchups);
+  const lastRefreshAt = useRef(0);
 
   const seasonNumber = Number(season);
 
   const availableWeeks = useMemo(() => {
-    const weeks = matchups
+    const weeks = liveMatchups
       .filter((matchup) => matchup.season === seasonNumber)
       .filter((matchup) =>
         gameView === "regular"
@@ -90,7 +93,7 @@ export function MatchupCenterClient({
     return Array.from(new Set(weeks)).sort(
       (a, b) => a - b
     );
-  }, [gameView, matchups, seasonNumber]);
+  }, [gameView, liveMatchups, seasonNumber]);
 
   const latestWeek = availableWeeks.at(-1);
 
@@ -105,8 +108,32 @@ export function MatchupCenterClient({
   const selectedWeek =
     week === "latest" ? latestWeek : Number(week);
 
+  useEffect(() => {
+    if (seasonNumber !== currentSeason || currentSeasonState.week === null || selectedWeek !== currentSeasonState.week) return;
+    let active = true;
+    const refresh = async () => {
+      try {
+        const response = await fetch("/api/current-week", { cache: "no-store" });
+        if (!response.ok) return;
+        const snapshot = await response.json() as { state?: HomeCurrentWeekState; week?: number | null; matchups?: readonly HistoricalMatchup[]; fetchedAt?: string };
+        if (!active || snapshot.week !== currentSeasonState.week || snapshot.state?.source !== "sleeper-league" || !snapshot.matchups?.length) return;
+        lastRefreshAt.current = Date.parse(snapshot.fetchedAt ?? "") || Date.now();
+        setLiveMatchups((previous) => [...previous.filter((item) => !(item.season === currentSeason && item.week === snapshot.week)), ...snapshot.matchups!]);
+      } catch {
+        // Keep the last valid snapshot; the next interval retries normally.
+      }
+    };
+    const onVisibility = () => { if (document.visibilityState === "visible") void refresh(); };
+    const onFocus = () => { if (Date.now() - lastRefreshAt.current >= 30_000) void refresh(); };
+    const interval = window.setInterval(() => { if (document.visibilityState === "visible") void refresh(); }, 60_000);
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("focus", onFocus);
+    void refresh();
+    return () => { active = false; window.clearInterval(interval); document.removeEventListener("visibilitychange", onVisibility); window.removeEventListener("focus", onFocus); };
+  }, [currentSeason, currentSeasonState.week, seasonNumber, selectedWeek]);
+
   const filteredMatchups = useMemo(() => {
-    return matchups
+    return liveMatchups
       .filter(
         (matchup) => matchup.season === seasonNumber
       )
@@ -128,7 +155,7 @@ export function MatchupCenterClient({
       );
   }, [
     gameView,
-    matchups,
+    liveMatchups,
     owners,
     seasonNumber,
     selectedWeek,
