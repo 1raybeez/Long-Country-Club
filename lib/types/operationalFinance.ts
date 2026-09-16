@@ -1,6 +1,6 @@
 import type { PaymentStatus } from './financial';
 
-export type PublicAwardStatus = 'approved' | 'paid';
+export type PublicAwardStatus = 'approved' | 'paid' | 'forfeited';
 
 export interface PublicAwardRecord {
   readonly season: number;

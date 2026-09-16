@@ -94,6 +94,7 @@
     "home:current-season:diagnostics": "tsx scripts/homeCurrentSeasonDiagnostics.ts",
     "current-season:parity-diagnostics": "tsx scripts/currentSeasonParityDiagnostics.ts",
     "week-state:diagnostics": "tsx scripts/weekStateDiagnostics.ts",
+    "weekly-high:eligibility-diagnostics": "tsx scripts/weeklyHighEligibilityDiagnostics.ts",
     "matchup:identity-diagnostics": "tsx scripts/matchupIdentityDiagnostics.ts",
     "preseason:snapshot-integrity": "tsx scripts/preseasonSnapshotIntegrityDiagnostics.ts",
     "historical-matchups:regression": "tsx scripts/historicalMatchupsRegressionDiagnostics.ts",

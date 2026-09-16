@@ -184,7 +184,7 @@ export default function LeaguePayoutsPage() {
         >
           {operationalFinance?.publicAwards.awards.filter((award) => award.category === 'weekly-high').length ? (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {operationalFinance.publicAwards.awards.filter((award) => award.category === 'weekly-high').map((award) => <AwardRow key={`${award.season}-${award.week}-${award.ownerId ?? award.displayName}`} label={award.week ? `Week ${award.week}` : 'Weekly high'} value={`${award.displayName} · ${award.teamName} · ${formatMoney(award.amountCents / 100)} · ${award.status === 'paid' ? 'Paid' : 'Approved'}`} />)}
+              {operationalFinance.publicAwards.awards.filter((award) => award.category === 'weekly-high').map((award) => <AwardRow key={`${award.season}-${award.week}-${award.ownerId ?? award.displayName}`} label={award.week ? `Week ${award.week}` : 'Weekly high'} value={`${award.displayName} · ${award.teamName} · ${formatMoney(award.amountCents / 100)} · ${award.status === 'paid' ? 'Paid' : award.status === 'forfeited' ? 'Forfeited under league-fee eligibility rule' : 'Approved'}`} />)}
             </div>
           ) : (
             <EmptyState text="No 2026 weekly awards have been approved yet." />

@@ -6,8 +6,9 @@ import { getLccOwnerById, getLccOwnerBySleeperUserId } from '@/lib/lccOwners';
 import { getFinancialRules } from '@/lib/financeRules';
 import { LCC_CURRENT_LEAGUE_ID, LCC_CURRENT_SEASON } from '@/lib/leagueConstants';
 import { isWeekSafelyCompleted, loadLccSeasonWeekState } from '@/lib/weekState';
+import { getWeeklyHighEligibility, type WeeklyHighEligibility } from '@/lib/finance/weeklyHighEligibility';
 
-export type WeeklyHighStatus = 'PROVISIONAL' | 'FINAL' | 'MANUAL' | 'UNAVAILABLE';
+export type WeeklyHighStatus = 'PROVISIONAL' | 'FINAL' | 'MANUAL' | 'FORFEITED' | 'UNAVAILABLE';
 
 // NOT PROVEN: the repository's Sleeper adapter exposes matchup totals but no
 // official weekly-report winner endpoint or designation. Ties stay unresolved.
@@ -26,6 +27,7 @@ export interface WeeklyHighResult {
   readonly observedAt: string;
   readonly tie: boolean;
   readonly decisionRequired: boolean;
+  readonly eligibility: WeeklyHighEligibility;
   readonly note?: string;
   readonly tiedFranchises?: readonly { readonly franchiseId: string; readonly franchiseName: string; readonly score: number }[];
   readonly rosterTotals: readonly { readonly rosterId: number; readonly franchiseId: string | null; readonly franchiseName: string | null; readonly score: number | null }[];
@@ -66,9 +68,11 @@ export async function deriveWeeklyHigh(season: number, week: number): Promise<We
     const weekState = await loadLccSeasonWeekState(season);
     const completed = isWeekSafelyCompleted(weekState, week);
     const selected = selectWeeklyHighFromTotals(rosterTotals, completed);
-    return { season, week, franchiseId: selected.winner?.franchiseId ?? null, franchiseName: selected.winner?.franchiseName ?? null, ownerDisplayName: selected.winner ? getLccOwnerById(selected.winner.franchiseId)?.displayName ?? null : null, score: selected.winner?.score ?? null, awardAmountCents, status: selected.status, source: 'sleeper', observedAt, tie: selected.tie, decisionRequired: selected.decisionRequired, tiedFranchises: selected.tiedFranchises, rosterTotals };
+    const eligibility = selected.winner && !selected.tie ? await getWeeklyHighEligibility(season, selected.winner.franchiseId, week) : 'UNKNOWN';
+    const forfeited = eligibility === 'INELIGIBLE_UNPAID';
+    return { season, week, franchiseId: selected.winner?.franchiseId ?? null, franchiseName: selected.winner?.franchiseName ?? null, ownerDisplayName: selected.winner ? getLccOwnerById(selected.winner.franchiseId)?.displayName ?? null : null, score: selected.winner?.score ?? null, awardAmountCents, status: forfeited ? 'FORFEITED' : selected.status, source: 'sleeper', observedAt, tie: selected.tie, decisionRequired: selected.decisionRequired || eligibility === 'UNKNOWN', eligibility, note: forfeited ? 'Forfeited under league-fee eligibility rule. Redistribution policy not yet defined.' : undefined, tiedFranchises: selected.tiedFranchises, rosterTotals };
   } catch {
-    return { season, week, franchiseId: null, franchiseName: null, ownerDisplayName: null, score: null, awardAmountCents, status: 'UNAVAILABLE', source: 'unavailable', observedAt, tie: false, decisionRequired: true, rosterTotals: [] };
+    return { season, week, franchiseId: null, franchiseName: null, ownerDisplayName: null, score: null, awardAmountCents, status: 'UNAVAILABLE', source: 'unavailable', observedAt, tie: false, decisionRequired: true, eligibility: 'UNKNOWN', rosterTotals: [] };
   }
 }
 
@@ -115,4 +119,4 @@ export async function revertWeeklyHighOverride(season: number, week: number) {
   return { ok: true };
 }
 
-function unavailableWeeklyHigh(season: number, week: number): WeeklyHighResult { return { season, week, franchiseId: null, franchiseName: null, ownerDisplayName: null, score: null, awardAmountCents: (getFinancialRules().weeklyHighPayout ?? 0) * 100, status: 'UNAVAILABLE', source: 'unavailable', observedAt: new Date().toISOString(), tie: false, decisionRequired: false, rosterTotals: [] }; }
+function unavailableWeeklyHigh(season: number, week: number): WeeklyHighResult { return { season, week, franchiseId: null, franchiseName: null, ownerDisplayName: null, score: null, awardAmountCents: (getFinancialRules().weeklyHighPayout ?? 0) * 100, status: 'UNAVAILABLE', source: 'unavailable', observedAt: new Date().toISOString(), tie: false, decisionRequired: false, eligibility: 'UNKNOWN', rosterTotals: [] }; }

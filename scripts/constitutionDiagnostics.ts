@@ -13,7 +13,7 @@ assert.equal((baseline.match(/Club Rule/g) ?? []).length, 21);
 assert.equal((constitution.match(/Caddy Fees/g) ?? []).length, 0);
 assert.equal((constitution.match(/Club Rule/g) ?? []).length, 0);
 assert.ok(constitution.includes("League Fees"));
-assert.equal((constitution.match(/League Rule/g) ?? []).length, 21);
+assert.equal((constitution.match(/League Rule/g) ?? []).length, 22);
 assert.ok(routeConfig.includes('label: "Fees & Payouts"'));
 assert.ok(routeConfig.includes('href: "/league-info/fees"'));
 assert.deepEqual(dollars(baseline), dollars(constitution));

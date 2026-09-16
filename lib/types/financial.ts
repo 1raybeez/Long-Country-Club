@@ -59,6 +59,15 @@ export interface SeasonFinancialRules {
   readonly playoffPayouts: SeasonPlayoffPayouts;
   readonly ringReserve: FinancialAmount;
   readonly actualRingCost: FinancialAmount;
+  readonly weeklyHighEligibility?: WeeklyHighEligibilityPolicy;
+}
+
+export interface WeeklyHighEligibilityPolicy {
+  readonly enabledFromSeason: number;
+  readonly requiresCurrentSeasonFeePaidBeforeFirstRegularSeasonGame: boolean;
+  readonly forfeitsAwardsWhileIneligible: boolean;
+  readonly restoresFutureEligibilityAfterPayment: boolean;
+  readonly retroactiveRestoration: boolean;
 }
 
 export interface ManagerFinancialRecord {

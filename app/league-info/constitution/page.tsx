@@ -81,6 +81,16 @@ export default function RulesOfPlay() {
             </ul>
           </RuleBlock>
 
+          <Tag type="club">League Rule · Effective 2027</Tag>
+          <RuleBlock title="League Fee Eligibility">
+            <p>Effective beginning with the <strong>2027 season</strong>, the current-season league fee must be paid in full before the start of the first regular-season game.</p>
+            <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
+              <li>A franchise whose current-season league fee remains unpaid at kickoff is ineligible for weekly-high awards until the league fee is paid.</li>
+              <li>Any weekly-high prize earned while the franchise is ineligible is forfeited.</li>
+              <li>Payment after the season begins restores eligibility for future weekly-high awards only and does not restore previously forfeited awards.</li>
+            </ul>
+          </RuleBlock>
+
           <Tag type="club">League Rule</Tag>
           <RuleBlock title="Prize Money">
             <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
@@ -691,6 +701,11 @@ export default function RulesOfPlay() {
                 Rule 5.1.1: Playoff seeds updated to be the 2 division winners, the next 2 best records, and the top 2
                 teams in points not in the first 4 seeds. (Passed 10–0)
               </li>
+            </ul>
+
+            <p><strong>Version 5 — Effective beginning with the 2027 season</strong></p>
+            <ul style={{ paddingLeft: '1.25rem' }}>
+              <li>Historical LCC rules previously imposed consequences for unpaid league fees before Week 1; weekly-high eligibility consequences are formally reinstated prospectively beginning in 2027.</li>
             </ul>
 
             <p>
