@@ -5,6 +5,11 @@ import { LCC_CURRENT_SEASON } from "@/lib/leagueConstants";
 import { ACTIVE_LCC_OWNERS, LCC_ERA_MODEL, getLccOwnerById } from "@/lib/lccOwners";
 import { getLccChampionBySeason, LCC_SLEEPER_MIGRATION_SEASON } from "@/lib/lccFinalPlacements";
 
+export const metadata = {
+  title: "League Info | Long Country Club FFL",
+  description: "Long Country Club rules, history, records, drafts, rivalries, fees, and member tools.",
+};
+
 const latestCompletedSeason = LCC_CURRENT_SEASON - 1;
 const reigningChampion = getLccChampionBySeason(latestCompletedSeason);
 const reigningChampionName = reigningChampion?.ownerId
@@ -29,7 +34,7 @@ export default function ClubhouseInfoPage() {
             <p className="lcc2-label text-[var(--lcc-brand-primary)]">Overview</p>
             <h2 className="lcc2-home-identity__title mt-2">Long Country Club at a Glance</h2>
             <p className="lcc2-home-identity__supporting mt-3 max-w-3xl">
-              The permanent reference point for what LCC is, how it is structured, and the history that connects its dynasty eras.
+              The LCC clubhouse for the rules, records, history, and tools behind the league.
             </p>
           </header>
 
@@ -74,11 +79,29 @@ export default function ClubhouseInfoPage() {
               <ReferenceLink href="/league-info/records" label="Explore League Records" />
             </OverviewContextCard>
           </section>
+          <section className="mt-6" aria-labelledby="league-destinations-heading">
+            <p className="lcc2-label text-[var(--lcc-brand-primary)]">Find your way around</p>
+            <h3 id="league-destinations-heading" className="mt-2 font-ui text-2xl font-black tracking-[-0.03em] text-[var(--lcc-color-text)]">League destinations</h3>
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {OVERVIEW_DESTINATIONS.map((destination) => <Link key={destination.href} href={destination.href} className="lcc2-card lcc2-card--interactive p-4"><p className="font-ui text-base font-black text-[var(--lcc-color-text)]">{destination.label}</p><p className="lcc2-body mt-1 text-sm">{destination.description}</p></Link>)}
+            </div>
+          </section>
         </div>
       </main>
     </LeagueInfoShell>
   );
 }
+
+const OVERVIEW_DESTINATIONS = [
+  { label: "Constitution", href: "/league-info/constitution", description: "Rules, scoring, roster standards, fees, and governance." },
+  { label: "Records", href: "/league-info/records", description: "League-wide records and complete Sleeper-era statistics." },
+  { label: "Rivalries", href: "/league-info/rivalries", description: "Head-to-head history and rivalry detail." },
+  { label: "Drafts", href: "/league-info/drafts", description: "Draft history, future picks, and draft records." },
+  { label: "Fees & Payouts", href: "/league-info/fees", description: "Current dues, weekly highs, and payout rules." },
+  { label: "Resources", href: "/league-info/resources", description: "League links, LCC tools, and fantasy research." },
+  { label: "Trade Analyzer", href: "/league-info/trade-analyzer", description: "Analyze a league trade with authenticated roster context." },
+  { label: "2026 Preseason Forecast", href: "/predictor", description: "Locked preseason team-strength archive for future comparison." },
+] as const;
 
 function OverviewContextCard({ eyebrow, title, icon, children }: { eyebrow: string; title: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (

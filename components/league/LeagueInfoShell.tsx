@@ -17,7 +17,7 @@ export function LeagueInfoShell({ children }: { children: React.ReactNode }) {
         <p className="lcc2-label text-[var(--lcc-brand-primary)]">League Info</p>
         <h1 className="mt-2 lcc2-home-identity__title">Long Country Club League Hub</h1>
         <p className="lcc2-home-identity__supporting max-w-3xl">
-          Rules, history, records, drafts, rivalries, and permanent league reference material.
+          LCC rules, history, records, drafts, rivalries, and the tools members use during the season.
         </p>
       </header>
 

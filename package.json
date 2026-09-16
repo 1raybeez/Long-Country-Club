@@ -98,7 +98,8 @@
     "historical-matchups:regression": "tsx scripts/historicalMatchupsRegressionDiagnostics.ts",
     "live-refresh:diagnostics": "tsx scripts/liveRefreshDiagnostics.ts",
     "constitution:diagnostics": "tsx scripts/constitutionDiagnostics.ts",
-    "weekly-high:diagnostics": "tsx scripts/weeklyHighDiagnostics.ts"
+    "weekly-high:diagnostics": "tsx scripts/weeklyHighDiagnostics.ts",
+    "league-info:resources-diagnostics": "node scripts/leagueInfoResourcesDiagnostics.mjs"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",

@@ -1,9 +1,32 @@
 'use client';
 
 import { useState } from "react";
-import { BarChart3, BookOpen, ExternalLink, Globe, Mic2 } from "lucide-react";
+import Link from "next/link";
+import { BarChart3, BookOpen, ExternalLink, Globe, Link2, Mic2 } from "lucide-react";
 import { LEAGUE_RESOURCE_GROUPS, type LeagueResource } from '@/lib/resources';
 import { LeagueInfoShell } from '@/components/league/LeagueInfoShell';
+
+const INTERNAL_RESOURCE_GROUPS = [
+  {
+    label: 'League',
+    resources: [
+      { name: 'Constitution', description: 'Rules, scoring, roster standards, fees, and governance.', url: '/league-info/constitution', external: false },
+      { name: 'Fees & Payouts', description: 'Current dues, weekly highs, payout rules, and recorded financial history.', url: '/league-info/fees', external: false },
+      { name: 'Records', description: 'League-wide records and complete Sleeper-era statistics.', url: '/league-info/records', external: false },
+      { name: 'Draft History', description: 'Draft events, picks, future capital, and draft records.', url: '/league-info/drafts', external: false },
+      { name: 'Sleeper League', description: 'Open the league’s live home on Sleeper.', url: 'https://sleeper.com/leagues/1312149033254416384', external: true },
+    ],
+  },
+  {
+    label: 'LCC Tools',
+    resources: [
+      { name: 'Matchups', description: 'Current-season schedules, scores, and matchup detail.', url: '/matchups', external: false },
+      { name: 'Rivalries', description: 'Head-to-head history and rivalry detail.', url: '/league-info/rivalries', external: false },
+      { name: '2026 Preseason Team Strength Forecast', description: 'Locked preseason archive preserved for future comparison; not live rankings.', url: '/predictor', external: false },
+      { name: 'Trade Analyzer', description: 'Authenticated league-trade analysis with current roster context.', url: '/league-info/trade-analyzer', external: false },
+    ],
+  },
+] as const;
 
 const RESOURCE_GROUPS = LEAGUE_RESOURCE_GROUPS.map((group) => ({
   ...group,
@@ -26,19 +49,23 @@ export default function ResourcesPage() {
             <p className="lcc2-label text-[var(--lcc-brand-primary)]">Resources</p>
             <h1 className="lcc2-home-identity__title mt-2">Resources</h1>
             <p className="lcc2-home-identity__supporting max-w-3xl">
-              Fantasy football tools, rankings, podcasts, research, and reference resources used around the league.
+              The useful links around LCC: league references, in-season tools, and approved fantasy research.
             </p>
           </div>
           <aside className="lcc2-card lcc2-card--raised p-4" aria-label="Resource directory summary">
             <BookOpen className="h-5 w-5 text-[var(--lcc-interactive)]" aria-hidden="true" />
             <p className="lcc2-label mt-3">League reference</p>
             <p className="mt-1 font-ui text-sm font-semibold text-[var(--lcc-color-text)]">
-              {RESOURCE_GROUPS.reduce((total, group) => total + group.resources.length, 0)} curated resources across three categories.
+              {INTERNAL_RESOURCE_GROUPS.reduce((total, group) => total + group.resources.length, 0) + RESOURCE_GROUPS.reduce((total, group) => total + group.resources.length, 0)} curated resources across league links, LCC tools, and fantasy research.
             </p>
           </aside>
         </header>
 
-        <div className="mt-6" role="tablist" aria-label="Resource categories">
+        <div className="mt-8 space-y-6">
+          {INTERNAL_RESOURCE_GROUPS.map((group) => <ResourceLinkGroup key={group.label} label={group.label} resources={group.resources} />)}
+        </div>
+
+        <div className="mt-8" role="tablist" aria-label="Fantasy research categories">
           <div className="flex flex-wrap gap-2">
             {RESOURCE_GROUPS.map((group) => {
               const Icon = group.icon;
@@ -104,4 +131,8 @@ function ResourceCard({ resource }: { resource: LeagueResource }) {
       <span className="mt-5 font-ui text-xs font-black uppercase tracking-[0.06em] text-[var(--lcc-interactive)]">Open resource</span>
     </a>
   );
+}
+
+function ResourceLinkGroup({ label, resources }: { label: string; resources: readonly { name: string; description: string; url: string; external: boolean }[] }) {
+  return <section aria-labelledby={`resource-group-${label.toLowerCase().replaceAll(' ', '-')}`}><div className="mb-4 flex items-center gap-2"><Link2 className="h-4 w-4 text-[var(--lcc-interactive)]" aria-hidden="true" /><h2 id={`resource-group-${label.toLowerCase().replaceAll(' ', '-')}`} className="font-ui text-xl font-black text-[var(--lcc-color-text)]">{label}</h2></div><div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">{resources.map((resource) => <Link key={resource.url} href={resource.url} target={resource.external ? '_blank' : undefined} rel={resource.external ? 'noopener noreferrer' : undefined} className="lcc2-card lcc2-card--interactive group flex min-h-[10rem] flex-col justify-between p-5"><div><div className="flex items-start justify-between gap-3"><span className={`lcc2-badge ${resource.external ? 'lcc2-badge--neutral' : 'lcc2-badge--info'}`}>{resource.external ? 'External' : 'Internal'}</span><ExternalLink className="h-4 w-4 shrink-0 text-[var(--lcc-color-text-muted)] group-hover:text-[var(--lcc-interactive)]" aria-hidden="true" /></div><h3 className="mt-4 font-ui text-lg font-black leading-tight text-[var(--lcc-color-text)]">{resource.name}</h3><p className="lcc2-body mt-2">{resource.description}</p></div><span className="mt-4 font-ui text-xs font-black uppercase tracking-[0.06em] text-[var(--lcc-interactive)]">Open link</span></Link>)}</div></section>;
 }

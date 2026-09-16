@@ -153,7 +153,7 @@ export const LCC_LEAGUE_INFO_NAV_ITEMS: readonly LccLeagueInfoNavItem[] = [
   { id: "records", label: "Records", href: "/league-info/records", order: 4, availability: "active" },
   { id: "rivalries", label: "Rivalries", href: "/league-info/rivalries", order: 5, availability: "active" },
   { id: "drafts", label: "Drafts", href: "/league-info/drafts", order: 6, availability: "active" },
-  { id: "payouts", label: "Payouts", href: "/league-info/fees", order: 7, availability: "active" },
+  { id: "payouts", label: "Fees & Payouts", href: "/league-info/fees", order: 7, availability: "active" },
   { id: "resources", label: "Resources", href: "/league-info/resources", order: 8, availability: "active" },
   { id: "trade-analyzer", label: "Trade Analyzer", href: "/league-info/trade-analyzer", order: 9, availability: "active" },
 ] as const;
