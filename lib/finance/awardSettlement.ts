@@ -4,8 +4,17 @@ import { getFirebaseAdminFirestore } from '@/lib/auth/firebaseAdmin';
 import { OPERATIONAL_SEASON } from '@/lib/finance/operationalLedger';
 import { getFinancialRules } from '@/lib/financeRules';
 import type { AwardSettlementMethod, OperationalAwardStatus } from '@/lib/types/awardObligation';
+import { deriveWeeklyHigh } from '@/lib/finance/weeklyHigh';
 
 const METHODS: readonly AwardSettlementMethod[] = ['venmo', 'paypal', 'other'];
+
+async function derivedAwardFor(obligationId: string, season: number) {
+  const match = obligationId.match(/^(\d{4})-weekly-high-(\d{2})$/);
+  if (!match || Number(match[1]) !== season) return null;
+  const result = await deriveWeeklyHigh(season, Number(match[2]));
+  if (!['FINAL', 'MANUAL'].includes(result.status) || !result.franchiseId || result.score === null) return null;
+  return { obligationId, season, category: 'weekly-high', amountCents: result.awardAmountCents, ownerId: result.franchiseId, week: Number(match[2]), source: 'sleeper-authoritative-weekly-high', sourceReference: `sleeper:${season}:regular-season-week-${match[2]}`, status: 'approved' };
+}
 
 export async function applyAwardToLeagueFees(input: { season: number; obligationId: string; requestId: string; notes?: string }) {
   const session = await getCurrentMemberSession();
@@ -18,10 +27,11 @@ export async function applyAwardToLeagueFees(input: { season: number; obligation
   const award = season.collection('awards').doc(input.obligationId);
   const settlement = season.collection('awardSettlements').doc(`award-credit-${input.obligationId}`);
   const event = season.collection('events').doc(`award-credit-${input.obligationId}`);
+  const derived = await derivedAwardFor(input.obligationId, input.season);
   await db.runTransaction(async (transaction) => {
     const awardSnapshot = await transaction.get(award);
-    if (!awardSnapshot.exists) throw new Error('Award obligation not found.');
-    const data = awardSnapshot.data() ?? {};
+    if (!awardSnapshot.exists && !derived) throw new Error('Award obligation not found or not final.');
+    const data = awardSnapshot.data() ?? derived ?? {};
     if (data.status !== 'approved' || typeof data.ownerId !== 'string' || !Number.isInteger(data.amountCents) || data.amountCents <= 0) throw new Error('Only an earned approved award may be credited.');
     if ((await transaction.get(settlement)).exists) throw new Error('Award credit already exists.');
     const assessments = await transaction.get(season.collection('assessments').where('ownerId', '==', data.ownerId).limit(1));
@@ -35,6 +45,7 @@ export async function applyAwardToLeagueFees(input: { season: number; obligation
     const amountCents = Math.min(Number(data.amountCents), remaining);
     if (amountCents <= 0) throw new Error('Owner has no outstanding league-fee balance.');
     const now = FieldValue.serverTimestamp();
+    if (!awardSnapshot.exists) transaction.create(award, { ...derived, derivedAtSettlement: true, derivedByMemberId: actor.memberId });
     transaction.create(settlement, { settlementId: settlement.id, season: input.season, obligationId: input.obligationId, ownerId: data.ownerId, amountCents, method: 'league-fee-credit', settlementType: 'APPLIED_TO_LEAGUE_FEES', effectiveDate: new Date().toISOString().slice(0, 10), recordedAt: now, recordedByMemberId: actor.memberId, source: 'commissioner-award-to-dues-credit', requestId: input.requestId, ...(input.notes?.trim() ? { notes: input.notes.trim() } : {}) });
     if ((await transaction.get(event)).exists) throw new Error('Award-credit event already exists.');
     transaction.create(event, { eventType: 'award-credit-applied', season: input.season, obligationId: input.obligationId, ownerId: data.ownerId, amountCents, actorMemberId: actor.memberId, createdAt: now, referenceId: settlement.id, summary: 'Award credit applied to league fees' });
@@ -65,13 +76,14 @@ export async function settleApprovedAward(input: { season: number; obligationId:
   const settlementId = `award-settlement-${input.obligationId}`;
   const settlement = season.collection('awardSettlements').doc(settlementId);
   const event = season.collection('events').doc(`award-paid-${input.obligationId}`);
+  const derived = await derivedAwardFor(input.obligationId, input.season);
   let alreadySettled = false;
   let existingSettlementId: string | null = null;
 
   await db.runTransaction(async (transaction) => {
     const [awardSnapshot, settlementSnapshot, eventSnapshot] = await transaction.getAll(award, settlement, event);
-    if (!awardSnapshot.exists) throw new Error('Award obligation not found.');
-    const data = awardSnapshot.data() ?? {};
+    if (!awardSnapshot.exists && !derived) throw new Error('Award obligation not found or not final.');
+    const data = awardSnapshot.data() ?? derived ?? {};
     const status = data.status as OperationalAwardStatus;
     if (status === 'paid') {
       if (!settlementSnapshot.exists) throw new Error('Paid award has no settlement record.');
@@ -87,6 +99,7 @@ export async function settleApprovedAward(input: { season: number; obligationId:
     const cashAmountCents = Number(data.amountCents) - creditedCents;
     if (cashAmountCents <= 0) throw new Error('Award is already fully settled through league-fee credit.');
     const now = FieldValue.serverTimestamp();
+    if (!awardSnapshot.exists) transaction.create(award, { ...derived, derivedAtSettlement: true, derivedByMemberId: actor.memberId });
     transaction.create(settlement, { settlementId, season: input.season, obligationId: input.obligationId, ownerId: data.ownerId, amountCents: cashAmountCents, method: input.method, settlementType: 'CASH_PAID', effectiveDate: input.effectiveDate, recordedAt: now, recordedByMemberId: actor.memberId, source: 'commissioner-award-settlement', requestId: input.requestId, ...(input.notes?.trim() ? { notes: input.notes.trim() } : {}) });
     transaction.update(award, { status: 'paid', settlementReference: settlementId, paidAt: now, paidByMemberId: actor.memberId });
     if (eventSnapshot.exists) throw new Error('Award-paid event already exists.');

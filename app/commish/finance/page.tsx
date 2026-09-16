@@ -32,7 +32,7 @@ export default async function CommissionerFinancePage() {
     <section className="lcc2-card mt-6 p-5 sm:p-6"><div className="grid grid-cols-1 gap-3 sm:grid-cols-2"><div><p className="lcc2-label">Reconciliation</p><p className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">{snapshot?.reconciliationStatus ?? 'pending'}</p></div><div><p className="lcc2-label">Restricted VACU Reserve</p><p className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">${(LCC_RESTRICTED_VACU_RESERVE_CENTS / 100).toFixed(2)}</p><p className="lcc2-body mt-1">Future-season deposits · restricted custody</p></div></div></section>
     <FinanceClient initialSnapshot={snapshot} />
     {snapshot?.initialized ? <PaymentArrangementControls rows={snapshot.rows} arrangements={arrangements} /> : null}
-    <AwardReview season={2026} ringExpenseCents={snapshot?.ringExpenseCents ?? 1377} proposals={awardProposals} />
+    <AwardReview season={2026} ringExpenseCents={snapshot?.ringExpenseCents ?? 1377} proposals={awardProposals} weeklyHighBoard={weeklyHighBoard} />
     <WeeklyHighOverride season={2026} board={weeklyHighBoard} />
     <ApprovedAwardProjection snapshot={snapshot} projection={awardProjection} />
     <ReconciliationChecks result={reconciliation} />

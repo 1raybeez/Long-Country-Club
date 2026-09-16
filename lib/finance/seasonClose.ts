@@ -4,6 +4,7 @@ import { getOperationalReconciliation, type OperationalReconciliationResult } fr
 import { getAwardAmountCents } from '@/lib/finance/awardObligations';
 import { getOwnerById } from '@/lib/ownerRegistry';
 import { OPERATIONAL_SEASON } from '@/lib/finance/operationalLedger';
+import { getWeeklyHighBoard } from '@/lib/finance/weeklyHigh';
 
 export interface YearEndFinanceSnapshotPreview {
   readonly snapshotVersion: '2026-v1';
@@ -39,7 +40,6 @@ export interface SeasonCloseReadiness {
 
 const money = (cents: number) => `$${(cents / 100).toFixed(2)}`;
 const asCents = (value: unknown) => Number.isInteger(value) ? Number(value) : 0;
-const asDate = (value: unknown) => typeof value === 'string' ? value : value && typeof (value as { toDate?: unknown }).toDate === 'function' ? (value as { toDate(): Date }).toDate().toISOString() : null;
 
 function emptyPreview(season: number, reconciliation: OperationalReconciliationResult): YearEndFinanceSnapshotPreview {
   return { snapshotVersion: '2026-v1', previewOnly: true, authoritative: false, season, closedAt: null, closedByMemberId: null, assessmentSummary: { assessedCents: 0, collectedCents: 0, outstandingCents: 0 }, ownerDues: [], awardObligations: [], awardSettlements: [], expenseSummary: { grossCents: 0, correctionCents: 0, netCents: 0, ringNetCents: 0 }, correctionSummary: { count: 0, byDomain: {}, netDuesPaymentCents: 0, netAwardSettlementCents: 0, netExpenseCents: 0 }, restrictedReserve: { amountCents: 0, custodian: 'VACU', label: 'Future-Season Deposits', restricted: true }, championshipAllocation: { baseCents: 0, ringReserveMaxCents: 0, ringExpenseCents: 0, projectedChampionCents: 0 }, totals: { approvedAwardCents: 0, paidAwardCents: 0, netSettledAwardCents: 0, netOperatingCashMovementCents: 0 }, reconciliation: { status: reconciliation.status, readyToClose: reconciliation.readyToClose, blockingIssues: reconciliation.blockingIssues }, provenance: { source: 'operational-firestore', archiveTarget: `financeArchives/${season}/snapshots/${season}-v1`, historicalFormat: 'legacy-financial-json-compatible', compatibilityNotes: ['Legacy financial JSON retains manager, award, expense, and reconciliation summaries.', 'Operational payment methods, correction lineage, and settlement events require this normalized snapshot extension.'], integrityStrategy: 'stable-version-and-future-content-hash' } };
@@ -55,6 +55,10 @@ export async function buildYearEndFinanceSnapshotPreview(season: number, reconci
   payments.docs.forEach((doc) => { const data = doc.data(); paymentByOwner.set(String(data.ownerId), (paymentByOwner.get(String(data.ownerId)) ?? 0) + asCents(data.amountCents)); });
   const ownerDues = assessments.docs.map((doc) => { const data = doc.data(); const ownerId = String(data.ownerId); const assessedCents = asCents(data.amountCents); const settledCents = paymentByOwner.get(ownerId) ?? 0; return { ownerId, displayName: getOwnerById(ownerId)?.displayName ?? ownerId, assessedCents, settledCents, outstandingCents: Math.max(0, assessedCents - settledCents) }; });
   const awardObligations = awards.docs.map((doc) => { const data = doc.data(); return { obligationId: doc.id, category: String(data.category), week: Number.isInteger(data.week) ? Number(data.week) : null, placement: Number.isInteger(data.placement) ? Number(data.placement) : null, ownerId: typeof data.ownerId === 'string' ? data.ownerId : null, amountCents: asCents(data.amountCents), status: String(data.status), source: String(data.source ?? 'unknown'), sourceReference: typeof data.sourceReference === 'string' ? data.sourceReference : null }; });
+  if (season === OPERATIONAL_SEASON) {
+    const board = await getWeeklyHighBoard(season);
+    board.filter((item) => (item.status === 'FINAL' || item.status === 'MANUAL') && item.franchiseId && item.week && !awardObligations.some((award) => award.category === 'weekly-high' && award.week === item.week)).forEach((item) => awardObligations.push({ obligationId: `${season}-weekly-high-${String(item.week).padStart(2, '0')}`, category: 'weekly-high', week: item.week, placement: null, ownerId: item.franchiseId, amountCents: item.awardAmountCents, status: 'approved', source: 'sleeper-authoritative-weekly-high', sourceReference: `sleeper:${season}:regular-season-week-${String(item.week).padStart(2, '0')}` }));
+  }
   const awardSettlements = settlements.docs.map((doc) => { const data = doc.data(); return { settlementId: doc.id, obligationId: String(data.obligationId), ownerId: String(data.ownerId), amountCents: asCents(data.amountCents), method: String(data.method), effectiveDate: String(data.effectiveDate), correctionType: typeof data.correctionType === 'string' ? data.correctionType : null, originalSettlementId: typeof data.originalSettlementId === 'string' ? data.originalSettlementId : null }; });
   const correctionByDomain: Record<string, number> = {};
   let netDuesPaymentCents = 0; let netAwardSettlementCents = 0; let netExpenseCents = 0;

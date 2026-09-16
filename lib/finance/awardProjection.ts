@@ -1,6 +1,8 @@
 import { getFirebaseAdminFirestore } from '@/lib/auth/firebaseAdmin';
 import { getOwnerById } from '@/lib/ownerRegistry';
 import type { OperationalAwardCategory, OperationalAwardStatus } from '@/lib/types/awardObligation';
+import { getWeeklyHighBoard } from '@/lib/finance/weeklyHigh';
+import { LCC_CURRENT_SEASON } from '@/lib/leagueConstants';
 
 export type AwardSettlementStatus = 'not-approved' | 'awaiting-payment' | 'paid' | 'applied-to-league-fees' | 'blocked';
 
@@ -99,6 +101,13 @@ export async function getPrivateAwardProjection(season: number): Promise<Private
   const [snapshot, settlementSnapshot] = await Promise.all([seasonRef.collection('awards').get(), seasonRef.collection('awardSettlements').get()]);
   const settlements = new Map(settlementSnapshot.docs.map((doc) => [String(doc.data().obligationId), doc.data()]));
   const awards = snapshot.docs.map((doc) => buildPrivateAwardProjectionItem(doc.data(), doc.id, settlements.get(doc.id)));
+  if (season === LCC_CURRENT_SEASON) {
+    const existingWeeks = new Set(awards.filter((award) => award.category === 'weekly-high').map((award) => award.week));
+    const board = await getWeeklyHighBoard(season);
+    board.filter((item) => (item.status === 'FINAL' || item.status === 'MANUAL') && item.franchiseId && item.week && !existingWeeks.has(item.week)).forEach((item) => {
+      awards.push(buildPrivateAwardProjectionItem({ season, category: 'weekly-high', week: item.week, ownerId: item.franchiseId, amountCents: item.awardAmountCents, status: 'approved', source: 'sleeper-authoritative-weekly-high', sourceReference: `sleeper:${season}:regular-season-week-${String(item.week).padStart(2, '0')}` }, `${season}-weekly-high-${String(item.week).padStart(2, '0')}`));
+    });
+  }
   const approvedAwards = awards.filter((award) => award.status === 'approved');
   const sum = (items: readonly PrivateAwardProjectionItem[]) => items.reduce((total, award) => total + award.amountCents, 0);
   return {

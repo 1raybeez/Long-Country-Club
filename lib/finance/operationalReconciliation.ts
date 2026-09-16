@@ -6,6 +6,7 @@ import { evaluateSeasonWeeklyAwardReadiness } from '@/lib/finance/awardReadiness
 import { getPostseasonAwardReadiness } from '@/lib/finance/postseasonReadiness';
 import { getFinancialRules, LCC_RESTRICTED_VACU_RESERVE_CENTS } from '@/lib/financeRules';
 import { OPERATIONAL_SEASON } from '@/lib/finance/operationalLedger';
+import { getWeeklyHighBoard } from '@/lib/finance/weeklyHigh';
 import type { LccSleeperSeason } from '@/lib/leagueConstants';
 import type { OperationalAwardStatus } from '@/lib/types/awardObligation';
 
@@ -98,11 +99,12 @@ export async function getOperationalReconciliation(season: number): Promise<Oper
   const duesStatus = duesIntegrityIssue ? 'issue' : duesOutstandingCents > 0 ? 'action-required' : 'pass';
 
   const readiness = evaluateSeasonWeeklyAwardReadiness(season);
+  const authoritativeBoard = season === OPERATIONAL_SEASON ? await getWeeklyHighBoard(season) : [];
   const awardData = awards.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
   const invalidAwardStatuses = awardData.filter((award) => !statusSet.has(award.data.status as OperationalAwardStatus));
   const weeklyAwards = awardData.filter((award) => award.data.category === 'weekly-high');
   const weeklyByWeek = new Map(weeklyAwards.map((award) => [Number(award.data.week), award.data]));
-  const weeklyWaitingCount = readiness.filter((item) => item.status === 'waiting' && !weeklyByWeek.has(item.week)).length;
+  const weeklyWaitingCount = season === OPERATIONAL_SEASON ? authoritativeBoard.filter((item) => item.status === 'UNAVAILABLE').length : readiness.filter((item) => item.status === 'waiting' && !weeklyByWeek.has(item.week)).length;
   const weeklyReadyCount = readiness.filter((item) => item.status === 'ready' && !weeklyByWeek.has(item.week)).length;
   const weeklyIssueCount = readiness.filter((item) => item.status === 'issue').length;
   const weeklyProposedCount = readiness.filter((item) => weeklyByWeek.get(item.week)?.status === 'proposed').length;
