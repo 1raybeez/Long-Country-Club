@@ -81,13 +81,13 @@ export default function RulesOfPlay() {
             </ul>
           </RuleBlock>
 
-          <Tag type="club">League Rule · Effective 2027</Tag>
-          <RuleBlock title="League Fee Eligibility">
-            <p>Effective beginning with the <strong>2027 season</strong>, the current-season league fee must be paid in full before the start of the first regular-season game.</p>
+          <Tag type="club">League Rule</Tag>
+          <RuleBlock title="League Fee Payment & Settlement">
+            <p>League fees are due according to the league&apos;s annual payment schedule. The Commissioner may approve alternate payment arrangements when appropriate.</p>
             <ul style={{ paddingLeft: '1.25rem', marginTop: '4px' }}>
-              <li>A franchise whose current-season league fee remains unpaid at kickoff is ineligible for weekly-high awards until the league fee is paid.</li>
-              <li>Any weekly-high prize earned while the franchise is ineligible is forfeited.</li>
-              <li>Payment after the season begins restores eligibility for future weekly-high awards only and does not restore previously forfeited awards.</li>
+              <li>An approved payment arrangement does not make an owner ineligible for league awards.</li>
+              <li>If an owner with an outstanding league-fee balance earns prize money, the Commissioner may apply some or all of those winnings as a credit toward the outstanding league-fee balance.</li>
+              <li>Any prize amount applied to league fees remains recorded as an earned award. Once the balance is satisfied, remaining or future winnings are settled normally.</li>
             </ul>
           </RuleBlock>
 
@@ -703,9 +703,9 @@ export default function RulesOfPlay() {
               </li>
             </ul>
 
-            <p><strong>Version 5 — Effective beginning with the 2027 season</strong></p>
+            <p><strong>Version 5 — Current operating rule</strong></p>
             <ul style={{ paddingLeft: '1.25rem' }}>
-              <li>Historical LCC rules previously imposed consequences for unpaid league fees before Week 1; weekly-high eligibility consequences are formally reinstated prospectively beginning in 2027.</li>
+              <li>Historical LCC rules previously imposed consequences for unpaid league fees before Week 1. The current operating rule permits commissioner-approved payment arrangements and award-to-fee settlement credits without award ineligibility.</li>
             </ul>
 
             <p>

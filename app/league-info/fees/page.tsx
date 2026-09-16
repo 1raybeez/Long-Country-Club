@@ -106,10 +106,11 @@ export default function LeaguePayoutsPage() {
           action={<Landmark className="h-5 w-5 text-[var(--lcc-brand-secondary)]" aria-hidden="true" />}
           className="mb-6"
         >
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
             <PayoutMetric label="Dues Assessed" value={formatAmount(currentFinance?.duesAssessed)} icon={<Receipt className="h-5 w-5" aria-hidden="true" />} />
             <PayoutMetric label="Dues Collected" value={formatAmount(currentFinance?.duesCollected)} helper={currentFinance?.duesCollected == null ? 'Not yet recorded' : undefined} icon={<CircleDollarSign className="h-5 w-5" aria-hidden="true" />} />
             <PayoutMetric label="Dues Outstanding" value={formatAmount(currentFinance?.duesOutstanding)} helper={currentFinance?.duesOutstanding == null ? 'Not yet recorded' : undefined} icon={<WalletCards className="h-5 w-5" aria-hidden="true" />} />
+            <PayoutMetric label="Award Credits Applied" value={formatAmount(operationalFinance?.awardCreditsApplied)} helper="Non-cash dues offset" icon={<CircleDollarSign className="h-5 w-5" aria-hidden="true" />} />
           </div>
           {weeklyHighBoard.length ? <div className="mt-4"><RuleCard label="Weekly highs finalized" value={`${weeklyHighBoard.filter((item) => item.status === 'FINAL' || item.status === 'MANUAL').length}/${RULES.regularSeasonWeeks}`} helper="Derived results and explicit commissioner confirmations" /></div> : null}
           {currentFinance ? <DuesStatusList statuses={currentFinance.ownerPaymentStatuses} /> : null}

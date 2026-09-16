@@ -44,6 +44,7 @@ export interface PublicOperationalFinance {
   readonly duesAssessed: number;
   readonly duesCollected: number;
   readonly duesOutstanding: number;
+  readonly awardCreditsApplied: number;
   readonly paidCount: number;
   readonly partialCount: number;
   readonly unpaidCount: number;

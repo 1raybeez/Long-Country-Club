@@ -12,7 +12,7 @@ export type OperationalAwardStatus =
   | 'rejected'
   | 'issue';
 
-export type AwardSettlementMethod = 'venmo' | 'paypal' | 'other';
+export type AwardSettlementMethod = 'venmo' | 'paypal' | 'other' | 'league-fee-credit';
 
 export interface OperationalAwardSettlement {
   readonly settlementId: string;

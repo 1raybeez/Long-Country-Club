@@ -2,7 +2,6 @@ import { FieldValue } from 'firebase-admin/firestore';
 import { getCurrentMemberSession } from '@/lib/auth/session';
 import { getFirebaseAdminFirestore } from '@/lib/auth/firebaseAdmin';
 import { OPERATIONAL_SEASON } from '@/lib/finance/operationalLedger';
-import type { OperationalAwardStatus } from '@/lib/types/awardObligation';
 import type { AwardSettlementMethod } from '@/lib/types/awardObligation';
 
 const correctionReason = (reason: string) => {
@@ -65,7 +64,8 @@ export async function reverseAwardSettlement(input: { season: number; settlement
   const db = dbOrThrow();
   const season = db.collection('financeSeasons').doc(String(input.season));
   const original = season.collection('awardSettlements').doc(input.settlementId);
-  const award = season.collection('awards').doc(input.settlementId.replace(/^award-settlement-/, ''));
+  const awardId = input.settlementId.replace(/^award-settlement-/, '').replace(/^award-credit-/, '');
+  const award = season.collection('awards').doc(awardId);
   const correctionId = `award-settlement-reversal-${input.settlementId}`;
   const reversal = season.collection('awardSettlements').doc(correctionId);
   const correction = season.collection('corrections').doc(correctionId);
@@ -77,14 +77,15 @@ export async function reverseAwardSettlement(input: { season: number; settlement
     if (requestSnapshot.exists) { alreadyExists = true; return; }
     if (!originalSnapshot.exists) throw new Error('Award settlement not found.');
     if (reversalSnapshot.exists) { alreadyExists = true; transaction.create(request, { requestId: input.requestId, correctionId, result: 'already-exists', createdAt: FieldValue.serverTimestamp() }); return; }
-    if (!awardSnapshot.exists || awardSnapshot.data()?.status !== 'paid') throw new Error('Only a paid award settlement may be reversed.');
+    if (!awardSnapshot.exists || !['paid', 'approved'].includes(String(awardSnapshot.data()?.status))) throw new Error('Only an active award settlement may be reversed.');
     const data = originalSnapshot.data() ?? {};
     const amountCents = Number(data.amountCents);
     if (!Number.isInteger(amountCents) || amountCents <= 0 || typeof data.ownerId !== 'string') throw new Error('Original award settlement is not reversible.');
     const now = FieldValue.serverTimestamp();
     transaction.create(reversal, { settlementId: correctionId, season: input.season, obligationId: data.obligationId, ownerId: data.ownerId, amountCents: -amountCents, method: data.method as AwardSettlementMethod, effectiveDate: data.effectiveDate, recordedAt: now, recordedByMemberId: actor.memberId, source: 'commissioner-award-correction', requestId: input.requestId, correctionType: 'reversal', originalSettlementId: input.settlementId, correctionId, notes: reason });
     transaction.create(correction, { correctionId, season: input.season, domain: 'award-settlement', originalRecordId: input.settlementId, correctionType: 'reversal', amountCents: -amountCents, reason, recordedAt: now, recordedByMemberId: actor.memberId, source: 'commissioner-award-correction', requestId: input.requestId, replacementRecordId: correctionId });
-    transaction.update(award, { status: 'approved', settlementReference: null, paidAt: null, paidByMemberId: null, reversedBySettlementId: correctionId });
+    if (data.method === 'league-fee-credit') transaction.update(award, { reversedBySettlementId: correctionId });
+    else transaction.update(award, { status: 'approved', settlementReference: null, paidAt: null, paidByMemberId: null, reversedBySettlementId: correctionId });
     transaction.create(event, { eventType: 'award-settlement-reversed', season: input.season, originalSettlementId: input.settlementId, reversalSettlementId: correctionId, obligationId: data.obligationId, ownerId: data.ownerId, amountCents: -amountCents, actorMemberId: actor.memberId, reason, createdAt: now, referenceId: correctionId });
     transaction.create(request, { requestId: input.requestId, correctionId, result: 'created', createdAt: now });
   });

@@ -46,6 +46,7 @@ export interface CommissionerFinanceSnapshot {
   readonly assessedCents: number;
   readonly collectedCents: number;
   readonly outstandingCents: number;
+  readonly awardCreditsAppliedCents: number;
   readonly rows: readonly CommissionerFinanceRow[];
   readonly restrictedReserveCents: number;
   readonly ringExpenseCents: number;
@@ -95,7 +96,7 @@ export async function getPublicOperationalFinance(): Promise<PublicOperationalFi
   const season = await seasonRef(db).get();
   if (!season.exists) return null;
 
-  const [assessments, payments, publicAwards] = await Promise.all([seasonRef(db).collection('assessments').get(), seasonRef(db).collection('payments').get(), getPublicAwardProjection(OPERATIONAL_SEASON)]);
+  const [assessments, payments, credits, publicAwards] = await Promise.all([seasonRef(db).collection('assessments').get(), seasonRef(db).collection('payments').get(), seasonRef(db).collection('awardSettlements').where('method', '==', 'league-fee-credit').get(), getPublicAwardProjection(OPERATIONAL_SEASON)]);
   const paymentTotals = new Map<string, number>();
   payments.docs.forEach((payment) => {
     const data = payment.data();
@@ -111,12 +112,14 @@ export async function getPublicOperationalFinance(): Promise<PublicOperationalFi
   });
   const duesAssessed = assessments.docs.reduce((sum, assessment) => sum + cents(assessment.data().amountCents), 0);
   const duesCollected = Array.from(paymentTotals.values()).reduce((sum, value) => sum + value, 0);
+  const awardCreditsApplied = Math.max(0, credits.docs.reduce((sum, doc) => sum + cents(doc.data().amountCents), 0));
 
   return {
     season: OPERATIONAL_SEASON,
     duesAssessed: duesAssessed / 100,
     duesCollected: duesCollected / 100,
-    duesOutstanding: Math.max(0, duesAssessed - duesCollected) / 100,
+    duesOutstanding: Math.max(0, duesAssessed - duesCollected - awardCreditsApplied) / 100,
+    awardCreditsApplied: awardCreditsApplied / 100,
     paidCount: ownerPaymentStatuses.filter((owner) => owner.paymentStatus === 'paid').length,
     partialCount: ownerPaymentStatuses.filter((owner) => owner.paymentStatus === 'partial').length,
     unpaidCount: ownerPaymentStatuses.filter((owner) => owner.paymentStatus === 'unpaid').length,
@@ -129,9 +132,9 @@ export async function getCommissionerFinanceSnapshot(): Promise<CommissionerFina
   const db = getFirebaseAdminFirestore();
   if (!db) return null;
   const season = await seasonRef(db).get();
-  if (!season.exists) return { initialized: false, season: OPERATIONAL_SEASON, reconciliationStatus: 'pending', assessedCents: 0, collectedCents: 0, outstandingCents: 0, rows: [], restrictedReserveCents: LCC_RESTRICTED_VACU_RESERVE_CENTS, ringExpenseCents: ACTUAL_RING_COST_CENTS };
+  if (!season.exists) return { initialized: false, season: OPERATIONAL_SEASON, reconciliationStatus: 'pending', assessedCents: 0, collectedCents: 0, outstandingCents: 0, awardCreditsAppliedCents: 0, rows: [], restrictedReserveCents: LCC_RESTRICTED_VACU_RESERVE_CENTS, ringExpenseCents: ACTUAL_RING_COST_CENTS };
 
-  const [assessments, payments] = await Promise.all([seasonRef(db).collection('assessments').get(), seasonRef(db).collection('payments').get()]);
+  const [assessments, payments, credits] = await Promise.all([seasonRef(db).collection('assessments').get(), seasonRef(db).collection('payments').get(), seasonRef(db).collection('awardSettlements').where('method', '==', 'league-fee-credit').get()]);
   const paymentsByOwner = new Map<string, OperationalPayment[]>();
   payments.docs.forEach((payment) => {
     const entry = paymentFromSnapshot(payment);
@@ -148,7 +151,8 @@ export async function getCommissionerFinanceSnapshot(): Promise<CommissionerFina
   });
   const assessedCents = rows.reduce((sum, row) => sum + row.assessedCents, 0);
   const collectedCents = rows.reduce((sum, row) => sum + row.settledCents, 0);
-  return { initialized: true, season: OPERATIONAL_SEASON, reconciliationStatus: 'pending', assessedCents, collectedCents, outstandingCents: Math.max(0, assessedCents - collectedCents), rows, restrictedReserveCents: LCC_RESTRICTED_VACU_RESERVE_CENTS, ringExpenseCents: ACTUAL_RING_COST_CENTS };
+  const awardCreditsAppliedCents = Math.max(0, credits.docs.reduce((sum, doc) => sum + Number(doc.data().amountCents || 0), 0));
+  return { initialized: true, season: OPERATIONAL_SEASON, reconciliationStatus: 'pending', assessedCents, collectedCents, outstandingCents: Math.max(0, assessedCents - collectedCents - awardCreditsAppliedCents), awardCreditsAppliedCents, rows, restrictedReserveCents: LCC_RESTRICTED_VACU_RESERVE_CENTS, ringExpenseCents: ACTUAL_RING_COST_CENTS };
 }
 
 export async function initializeOperationalFinance(actor: LccMemberIdentity) {

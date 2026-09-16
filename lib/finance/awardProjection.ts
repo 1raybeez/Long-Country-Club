@@ -2,7 +2,7 @@ import { getFirebaseAdminFirestore } from '@/lib/auth/firebaseAdmin';
 import { getOwnerById } from '@/lib/ownerRegistry';
 import type { OperationalAwardCategory, OperationalAwardStatus } from '@/lib/types/awardObligation';
 
-export type AwardSettlementStatus = 'not-approved' | 'awaiting-payment' | 'paid' | 'blocked';
+export type AwardSettlementStatus = 'not-approved' | 'awaiting-payment' | 'paid' | 'applied-to-league-fees' | 'blocked';
 
 export interface PrivateAwardProjectionItem {
   readonly obligationId: string;
@@ -57,6 +57,11 @@ function settlementStatus(status: OperationalAwardStatus): AwardSettlementStatus
   return 'not-approved';
 }
 
+function settlementStatusFor(status: OperationalAwardStatus, settlement?: Record<string, unknown>): AwardSettlementStatus {
+  if (settlement?.method === 'league-fee-credit') return 'applied-to-league-fees';
+  return settlementStatus(status);
+}
+
 export function buildPrivateAwardProjectionItem(data: Record<string, unknown>, obligationId: string, settlementData?: Record<string, unknown>): PrivateAwardProjectionItem {
   const ownerId = typeof data.ownerId === 'string' ? data.ownerId : null;
   const owner = ownerId ? getOwnerById(ownerId) : undefined;
@@ -82,7 +87,7 @@ export function buildPrivateAwardProjectionItem(data: Record<string, unknown>, o
     settlementEffectiveDate: typeof settlementData?.effectiveDate === 'string' ? settlementData.effectiveDate : null,
     settlementRecordedAt: isoTimestamp(settlementData?.recordedAt),
     ...(typeof data.rejectionReason === 'string' ? { rejectionReason: data.rejectionReason } : {}),
-    settlementStatus: settlementStatus(status),
+    settlementStatus: settlementStatusFor(status, settlementData),
   };
 }
 

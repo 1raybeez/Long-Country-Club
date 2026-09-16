@@ -18,13 +18,6 @@ export const LCC_CURRENT_FINANCIAL_RULES: SeasonFinancialRules = {
   },
   ringReserve: 80,
   actualRingCost: null,
-  weeklyHighEligibility: {
-    enabledFromSeason: 2027,
-    requiresCurrentSeasonFeePaidBeforeFirstRegularSeasonGame: true,
-    forfeitsAwardsWhileIneligible: true,
-    restoresFutureEligibilityAfterPayment: true,
-    retroactiveRestoration: false,
-  },
 };
 
 /** Restricted custody reserve in cents; not ordinary operating cash or owner dues. */
