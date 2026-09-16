@@ -93,6 +93,7 @@ body {
   color: var(--lcc-text);
   font-family: var(--lcc-font-display);
   margin: 0;
+  overflow-x: clip;
 }
 
 .lcc-app-body {
@@ -540,6 +541,43 @@ body {
   border-color: var(--lcc-border-strong);
   background: transparent;
   color: var(--lcc-text);
+}
+
+.lcc-button {
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, opacity 160ms ease;
+}
+
+.lcc-button:hover {
+  border-color: var(--lcc-gold);
+  background: var(--lcc-green);
+  color: var(--lcc-surface);
+}
+
+.lcc-button-secondary:hover {
+  background: var(--lcc-surface-muted);
+  color: var(--lcc-text);
+}
+
+.lcc-button:focus-visible {
+  outline: 3px solid var(--lcc-color-focus);
+  outline-offset: 3px;
+}
+
+.lcc-button:disabled,
+.lcc-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 639px) {
+  .lcc-page header h1 {
+    font-size: clamp(2.35rem, 12vw, 3.75rem);
+  }
+
+  .lcc-container {
+    padding-top: 1.75rem;
+    padding-bottom: 2.5rem;
+  }
 }
 
 /* LCC 2.0 primitives. Legacy .lcc-* classes remain unchanged for migration. */

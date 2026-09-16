@@ -99,7 +99,8 @@
     "live-refresh:diagnostics": "tsx scripts/liveRefreshDiagnostics.ts",
     "constitution:diagnostics": "tsx scripts/constitutionDiagnostics.ts",
     "weekly-high:diagnostics": "tsx scripts/weeklyHighDiagnostics.ts",
-    "league-info:resources-diagnostics": "node scripts/leagueInfoResourcesDiagnostics.mjs"
+    "league-info:resources-diagnostics": "node scripts/leagueInfoResourcesDiagnostics.mjs",
+    "site-wide:visual-diagnostics": "node scripts/siteWideVisualDiagnostics.mjs"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",
