@@ -9,6 +9,7 @@ import { OPERATIONAL_SEASON } from '@/lib/finance/operationalLedger';
 import { getWeeklyHighBoard } from '@/lib/finance/weeklyHigh';
 import type { LccSleeperSeason } from '@/lib/leagueConstants';
 import type { OperationalAwardStatus } from '@/lib/types/awardObligation';
+import { getPrivateAwardProjection } from '@/lib/finance/awardProjection';
 
 export type ReconciliationCheckStatus = 'pass' | 'waiting' | 'action-required' | 'issue' | 'blocking';
 
@@ -100,6 +101,7 @@ export async function getOperationalReconciliation(season: number): Promise<Oper
 
   const readiness = evaluateSeasonWeeklyAwardReadiness(season);
   const authoritativeBoard = season === OPERATIONAL_SEASON ? await getWeeklyHighBoard(season) : [];
+  const normalizedAwardProjection = await getPrivateAwardProjection(season);
   const awardData = awards.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
   const invalidAwardStatuses = awardData.filter((award) => !statusSet.has(award.data.status as OperationalAwardStatus));
   const weeklyAwards = awardData.filter((award) => award.data.category === 'weekly-high');
@@ -129,8 +131,8 @@ export async function getOperationalReconciliation(season: number): Promise<Oper
   const expectedAwardEventTypes: Record<string, string> = { proposed: 'award-proposed', approved: 'award-approved', rejected: 'award-rejected', paid: 'award-paid' };
   const missingAwardEvents = awardData.filter((award) => expectedAwardEventTypes[award.data.status as string] && !events.docs.some((event) => event.data().eventType === expectedAwardEventTypes[award.data.status as string] && event.data().obligationId === award.id));
   const settlementIntegrityIssue = orphanSettlements.length > 0 || settlementIssues.length > 0 || duplicatePaidEvents || missingPaidEvents.length > 0;
-  const approvedUnpaid = awardData.filter((award) => award.data.status === 'approved');
-  const settlementsCheck = settlementIntegrityIssue ? check('settlements', 'Award settlements', 'issue', 'Settlement records do not match award obligations/events.', `${settlementIssues.length + orphanSettlements.length} settlement issues.`, true) : approvedUnpaid.length > 0 ? check('settlements', 'Award settlements', 'action-required', 'Approved awards are awaiting settlement.', `${approvedUnpaid.length} approved but unpaid.`, true) : check('settlements', 'Award settlements', 'pass', 'No approved awards are awaiting settlement.', 'No settlement records require review.');
+  const approvedUnpaid = normalizedAwardProjection.awards.filter((award) => award.settlementStatus === 'awaiting-payment');
+  const settlementsCheck = settlementIntegrityIssue ? check('settlements', 'Award settlements', 'issue', 'Settlement records do not match award obligations/events.', `${settlementIssues.length + orphanSettlements.length} settlement issues.`, true) : approvedUnpaid.length > 0 ? check('settlements', 'Award settlements', 'action-required', 'Earned awards are awaiting settlement.', `${approvedUnpaid.length} award${approvedUnpaid.length === 1 ? '' : 's'} awaiting settlement · ${money(approvedUnpaid.reduce((sum, award) => sum + award.amountCents, 0))}.`, true) : check('settlements', 'Award settlements', 'pass', 'No earned awards are awaiting settlement.', 'All earned awards are settled.');
 
   const allRingExpenses = expenses.docs.filter((doc) => doc.data().type === 'ring');
   const ringExpenses = allRingExpenses.filter((doc) => doc.id === 'championship-ring-2026' || doc.data().originalExpenseId === 'championship-ring-2026');
@@ -156,7 +158,7 @@ export async function getOperationalReconciliation(season: number): Promise<Oper
   const warnings = checks.filter((item) => item.status === 'waiting').map((item) => `${item.label}: ${item.reason}`);
   const readyToClose = blockingIssues.length === 0;
   const status: ReconciliationCheckStatus = checks.some((item) => item.status === 'issue') ? 'issue' : actionRequired.length ? 'action-required' : warnings.length ? 'waiting' : 'pass';
-  return { season, status, readyToClose, blockingIssues, warnings, actionRequired, checks, summary: { duesAssessedCents: assessedCents, duesCollectedCents: collectedCents, duesOutstandingCents, paidOwnerCount, partialOwnerCount, unpaidOwnerCount, expectedAwardSlots: 18, weeklyWaitingCount, weeklyReadyCount, weeklyProposedCount, weeklyApprovedCount, weeklyPaidCount, weeklyRejectedCount, weeklyIssueCount, postseasonWaitingCount, approvedUnpaidCount: approvedUnpaid.length, approvedUnpaidAmountCents: approvedUnpaid.reduce((sum, award) => sum + (Number(award.data.amountCents) || 0), 0), settlementCount: settlements.size, verifiedExpenseCents: ringExpenseCents, ringReserveMaxCents, unusedRingReserveCents, projectedChampionCents, restrictedReserveCents: Number(seasonData.restrictedReserveCents) || 0 } };
+  return { season, status, readyToClose, blockingIssues, warnings, actionRequired, checks, summary: { duesAssessedCents: assessedCents, duesCollectedCents: collectedCents, duesOutstandingCents, paidOwnerCount, partialOwnerCount, unpaidOwnerCount, expectedAwardSlots: 18, weeklyWaitingCount, weeklyReadyCount, weeklyProposedCount, weeklyApprovedCount, weeklyPaidCount, weeklyRejectedCount, weeklyIssueCount, postseasonWaitingCount, approvedUnpaidCount: approvedUnpaid.length, approvedUnpaidAmountCents: approvedUnpaid.reduce((sum, award) => sum + award.amountCents, 0), settlementCount: settlements.size, verifiedExpenseCents: ringExpenseCents, ringReserveMaxCents, unusedRingReserveCents, projectedChampionCents, restrictedReserveCents: Number(seasonData.restrictedReserveCents) || 0 } };
 }
 
 function unavailableResult(season: number): OperationalReconciliationResult { return { season, status: 'blocking', readyToClose: false, blockingIssues: ['Operational finance storage is unavailable.'], warnings: [], actionRequired: [], checks: [check('storage', 'Operational storage', 'blocking', 'Read-only reconciliation could not access operational storage.', 'No close decision is possible.', true)], summary: { duesAssessedCents: 0, duesCollectedCents: 0, duesOutstandingCents: 0, paidOwnerCount: 0, partialOwnerCount: 0, unpaidOwnerCount: 0, expectedAwardSlots: 18, weeklyWaitingCount: 0, weeklyReadyCount: 0, weeklyProposedCount: 0, weeklyApprovedCount: 0, weeklyPaidCount: 0, weeklyRejectedCount: 0, weeklyIssueCount: 0, postseasonWaitingCount: 0, approvedUnpaidCount: 0, approvedUnpaidAmountCents: 0, settlementCount: 0, verifiedExpenseCents: 0, ringReserveMaxCents: 8000, unusedRingReserveCents: 0, projectedChampionCents: 20500, restrictedReserveCents: 0 } }; }
