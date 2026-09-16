@@ -5,6 +5,7 @@ import { getLeagueInfo, getLeagueRosters, getMatchupsForWeek } from '@/lib/sleep
 import { getLccOwnerById, getLccOwnerBySleeperUserId } from '@/lib/lccOwners';
 import { getFinancialRules } from '@/lib/financeRules';
 import { LCC_CURRENT_LEAGUE_ID, LCC_CURRENT_SEASON } from '@/lib/leagueConstants';
+import { isWeekSafelyCompleted, loadLccSeasonWeekState } from '@/lib/weekState';
 
 export type WeeklyHighStatus = 'PROVISIONAL' | 'FINAL' | 'MANUAL' | 'UNAVAILABLE';
 
@@ -62,8 +63,8 @@ export async function deriveWeeklyHigh(season: number, week: number): Promise<We
       const score = typeof row?.custom_points === 'number' ? row.custom_points : typeof row?.points === 'number' ? row.points : null;
       return { rosterId: roster.roster_id, franchiseId: owner?.id ?? null, franchiseName: owner?.managerPage.sleeperName ?? null, score };
     });
-    const currentWeek = league.settings?.leg;
-    const completed = league.status === 'complete' || (typeof currentWeek === 'number' && currentWeek > week);
+    const weekState = await loadLccSeasonWeekState(season);
+    const completed = isWeekSafelyCompleted(weekState, week);
     const selected = selectWeeklyHighFromTotals(rosterTotals, completed);
     return { season, week, franchiseId: selected.winner?.franchiseId ?? null, franchiseName: selected.winner?.franchiseName ?? null, ownerDisplayName: selected.winner ? getLccOwnerById(selected.winner.franchiseId)?.displayName ?? null : null, score: selected.winner?.score ?? null, awardAmountCents, status: selected.status, source: 'sleeper', observedAt, tie: selected.tie, decisionRequired: selected.decisionRequired, tiedFranchises: selected.tiedFranchises, rosterTotals };
   } catch {
@@ -73,15 +74,16 @@ export async function deriveWeeklyHigh(season: number, week: number): Promise<We
 
 export async function getWeeklyHighBoard(season = LCC_CURRENT_SEASON): Promise<readonly WeeklyHighResult[]> {
   const regularSeasonWeeks = getFinancialRules().regularSeasonWeeks ?? 14;
-  let activeWeek = 0;
-  try { activeWeek = Number((await getLeagueInfo(LCC_CURRENT_LEAGUE_ID) as { settings?: { leg?: number } }).settings?.leg) || 0; } catch { activeWeek = 0; }
+  const weekState = await loadLccSeasonWeekState(season);
+  const activeWeek = weekState.activeWeek ?? 0;
+  const derivedThrough = weekState.safeCompletedWeek ?? Math.max(0, activeWeek - 1);
   const derived = await Promise.all(Array.from({ length: Math.min(regularSeasonWeeks, Math.max(0, activeWeek)) }, (_, index) => deriveWeeklyHigh(season, index + 1)));
   const db = getFirebaseAdminFirestore();
   const overrides = db ? await db.collection('financeSeasons').doc(String(season)).collection('weeklyHighOverrides').get() : null;
   const byWeek = new Map((overrides?.docs ?? []).map((doc) => [Number(doc.data().week), doc.data()]));
   return Array.from({ length: regularSeasonWeeks }, (_, index) => {
     const week = index + 1;
-    const automatic = derived.find((item) => item.week === week) ?? unavailableWeeklyHigh(season, week);
+    const automatic = week <= derivedThrough ? derived.find((item) => item.week === week) ?? unavailableWeeklyHigh(season, week) : unavailableWeeklyHigh(season, week);
     const override = byWeek.get(week);
     if (!override) return automatic;
     const owner = typeof override.franchiseId === 'string' ? getLccOwnerById(override.franchiseId) : undefined;

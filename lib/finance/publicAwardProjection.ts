@@ -1,6 +1,7 @@
 import { getFirebaseAdminFirestore } from '@/lib/auth/firebaseAdmin';
 import { getOwnerById } from '@/lib/ownerRegistry';
 import type { PublicAwardProjection, PublicAwardRecord, PublicAwardStatus } from '@/lib/types/operationalFinance';
+import { getWeeklyHighBoard } from '@/lib/finance/weeklyHigh';
 
 const PUBLIC_STATUSES = new Set<PublicAwardStatus>(['approved', 'paid']);
 
@@ -27,5 +28,10 @@ export async function getPublicAwardProjection(season: number): Promise<PublicAw
   if (!db) return buildPublicAwardProjection([]);
   const snapshot = await db.collection('financeSeasons').doc(String(season)).collection('awards').get();
   const awards = snapshot.docs.map((doc) => serializePublicAward(doc.data())).filter((award): award is PublicAwardRecord => Boolean(award));
-  return buildPublicAwardProjection(awards);
+  const existingWeeks = new Set(awards.filter((award) => award.category === 'weekly-high' && award.season === season).map((award) => award.week));
+  const automatic = season === 2026 ? await getWeeklyHighBoard(season) : [];
+  const derivedAwards: PublicAwardRecord[] = automatic
+    .filter((item) => (item.status === 'FINAL' || item.status === 'MANUAL') && item.franchiseId && item.week && !existingWeeks.has(item.week))
+    .map((item) => ({ season, category: 'weekly-high', week: item.week, ownerId: item.franchiseId, displayName: item.ownerDisplayName ?? item.franchiseName ?? 'Award recipient unavailable', teamName: item.franchiseName ?? 'Team unavailable', amountCents: item.awardAmountCents, status: 'approved' }));
+  return buildPublicAwardProjection([...awards, ...derivedAwards]);
 }

@@ -24,6 +24,8 @@ import {
   HOME_SEASON_CONFIG,
 } from "@/lib/homeSeasonConfig";
 import { HomeLiveAction } from "./HomeLiveAction";
+import { getWeeklyHighBoard } from "@/lib/finance/weeklyHigh";
+import { loadCurrentSeasonStandings } from "@/lib/currentStandings";
 
 const CURRENT_HOME_CONFIG = HOME_SEASON_CONFIG[LCC_CURRENT_SEASON];
 const REIGNING_CHAMPION = getLccChampionBySeason(LCC_CURRENT_SEASON - 1);
@@ -36,36 +38,52 @@ export default async function HomePage() {
   const session = await getCurrentMemberSession();
   const currentView = await loadHomeCurrentSeasonView(session?.member ?? null);
   const nextEvent = selectNextHomeEvent(getHomeEvents(LCC_CURRENT_SEASON));
+  const weeklyHighBoard = await getWeeklyHighBoard(LCC_CURRENT_SEASON);
+  const standings = await loadCurrentSeasonStandings(currentView.week.safeCompletedWeek);
   return (
     <main className="lcc2-home-shell">
       <div className="lcc2-home-container">
         <HomeDashboardIdentityForState currentView={currentView} />
         <HomeDashboardTopRow nextEvent={nextEvent.event} currentView={currentView} />
-        <HomePredictorPreview />
+        <HomeLeagueHub currentView={currentView} weeklyHighBoard={weeklyHighBoard} standings={standings} />
+        <HomePredictorPreview currentView={currentView} />
         <SeasonReadiness currentView={currentView} />
       </div>
     </main>
   );
 }
 
-function HomePredictorPreview() {
+function HomeLeagueHub({ currentView, weeklyHighBoard, standings }: { currentView: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>>; weeklyHighBoard: Awaited<ReturnType<typeof getWeeklyHighBoard>>; standings: Awaited<ReturnType<typeof loadCurrentSeasonStandings>> }) {
+  const latestWeek = currentView.week.latestCompletedWeek;
+  const latestHigh = latestWeek ? weeklyHighBoard.find((item) => item.week === latestWeek) : null;
+  const latestMatchups = currentView.matchup.state === "complete" ? "Complete" : currentView.week.week ? `Week ${currentView.week.week}` : "Unavailable";
+  return <section className="mt-8" aria-labelledby="home-league-hub-heading">
+    <div className="lcc2-section-heading mb-5"><div><p className="lcc2-section-heading__eyebrow">In-season league hub</p><h2 id="home-league-hub-heading" className="lcc2-section-heading__title">The league at a glance</h2></div></div>
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <Link href="/matchups" className="lcc2-card lcc2-card--interactive block p-4"><p className="lcc2-label">Latest completed week</p><p className="mt-3 font-ui text-lg font-black text-[var(--lcc-color-text)]">{latestWeek ? `Week ${latestWeek}` : "Not available"}</p><p className="mt-2 lcc2-body">{latestMatchups} · Open the matchup board</p></Link>
+      <Link href="/league-info/fees" className="lcc2-card lcc2-card--interactive block p-4"><p className="lcc2-label">Weekly high</p><p className="mt-3 font-ui text-lg font-black text-[var(--lcc-color-text)]">{latestHigh?.franchiseName ?? "Awaiting finality"}</p><p className="mt-2 lcc2-body">{latestHigh?.score !== null && latestHigh?.score !== undefined ? `${latestHigh.score.toFixed(2)} · ${latestHigh.status}` : "No authoritative winner yet"}</p></Link>
+      <Link href="/matchups" className="lcc2-card lcc2-card--interactive block p-4"><p className="lcc2-label">Current standings</p><p className="mt-3 font-ui text-sm font-black text-[var(--lcc-color-text)]">{standings.length ? standings.slice(0, 3).map((team, index) => `${index + 1}. ${team.franchiseName} ${team.wins}-${team.losses}${team.ties ? `-${team.ties}` : ""}`).join(" · ") : "Awaiting completed week"}</p><p className="mt-2 lcc2-body">{currentView.week.nextWeek ? `Next: Week ${currentView.week.nextWeek}` : "Current-season standings"}</p></Link>
+    </div>
+  </section>;
+}
+
+function HomePredictorPreview({ currentView }: { currentView: Awaited<ReturnType<typeof loadHomeCurrentSeasonView>> }) {
   const forecasts = getHomePredictorForecasts();
+  const archived = isLiveHomeState(currentView) || currentView.week.phase === "SEASON_COMPLETE";
 
   return (
     <section className="mt-8" aria-labelledby="home-predictor-heading">
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="lcc2-section-heading__eyebrow">Preseason forecast</p>
-          <h2 id="home-predictor-heading" className="lcc2-section-heading__title">
-            2026 Preseason Top 5
-          </h2>
-          <p className="lcc2-body mt-2">Locked 2026 preseason Team Strength baseline based on drafted rosters, preserved for future comparison.</p>
+          <h2 id="home-predictor-heading" className="lcc2-section-heading__title">{archived ? "2026 Preseason Forecast Archive" : "2026 Preseason Top 5"}</h2>
+          <p className="lcc2-body mt-2">{archived ? "The preseason forecast is locked for comparison against the live season." : "Locked 2026 preseason Team Strength baseline based on drafted rosters."}</p>
         </div>
         <p className="lcc2-label">Preseason only · Team Strength index</p>
       </div>
 
       <div className="lcc2-card lcc2-card--raised overflow-hidden p-4 sm:p-5">
-        {forecasts.length > 0 ? (
+        {archived ? <div className="py-2"><p className="font-ui text-sm font-black text-[var(--lcc-color-text)]">Preseason model archived</p><p className="lcc2-body mt-1">Open Predictor to review the full forecast and compare it with the current season.</p></div> : forecasts.length > 0 ? (
           <ol aria-label="Top five preseason forecast teams" className="divide-y divide-[var(--lcc-color-border)]">
             {forecasts.map((forecast) => (
               <li key={forecast.ownerId} className="flex min-w-0 items-center gap-3 py-3 first:pt-0 last:pb-0 sm:gap-4">
@@ -118,8 +136,9 @@ function HomeDashboardIdentityForState({ currentView }: { currentView?: Awaited<
   const phase = currentView?.week.phase ?? "UNKNOWN";
   const live = phase === "REGULAR_SEASON" || phase === "POSTSEASON";
   const complete = phase === "SEASON_COMPLETE";
+  const completedWeek = currentView?.week.safeCompletedWeek;
   const eyebrow = live && currentView?.week.week
-    ? `${LCC_CURRENT_SEASON} Season · Week ${currentView.week.week}`
+    ? `${LCC_CURRENT_SEASON} Season · Week ${currentView.week.week}${completedWeek === currentView.week.week ? " Complete" : ""}`
     : complete
       ? `${LCC_CURRENT_SEASON} Season · Complete`
       : phase === "PRESEASON"
@@ -127,7 +146,7 @@ function HomeDashboardIdentityForState({ currentView }: { currentView?: Awaited<
         : `${LCC_CURRENT_SEASON} Season · Status unavailable`;
   const title = live ? "Long Country Club" : `${LCC_CURRENT_SEASON} League Dashboard`;
   const supporting = live
-    ? "The chase for the jacket is underway."
+    ? completedWeek === currentView?.week.week ? `Week ${completedWeek} is complete. The next league week is now the runway.` : "The chase for the jacket is underway."
     : complete
       ? "The season is complete. Revisit the year and the history behind it."
       : "The current-season front door for LCC dynasty football.";

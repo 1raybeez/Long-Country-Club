@@ -4,6 +4,7 @@ import { LCC_CURRENT_LEAGUE_ID, LCC_CURRENT_SEASON } from "./leagueConstants.ts"
 import type { LccMemberIdentity } from "./auth/types.ts";
 import { resolvePlayer } from "./history/playerRegistry.ts";
 import type { HistoricalLineupPlayer, HistoricalMatchup } from "./history/matchups.ts";
+import { resolveLccSeasonWeekState, type LccSeasonWeekState } from "./weekState.ts";
 
 export type HomeSeasonPhase = "PRESEASON" | "REGULAR_SEASON" | "POSTSEASON" | "SEASON_COMPLETE" | "UNKNOWN";
 
@@ -12,6 +13,10 @@ export interface HomeCurrentWeekState {
   readonly phase: HomeSeasonPhase;
   readonly week: number | null;
   readonly source: "sleeper-league" | "unavailable";
+  readonly state: LccSeasonWeekState["state"];
+  readonly latestCompletedWeek: number | null;
+  readonly nextWeek: number | null;
+  readonly safeCompletedWeek: number | null;
 }
 
 export interface HomeMatchupView {
@@ -36,34 +41,16 @@ export interface HomeCurrentSeasonView {
 export interface TrustedSleeperLeagueState {
   readonly season?: string | number | null;
   readonly status?: string | null;
-  readonly settings?: { readonly leg?: number | null; readonly playoff_week_start?: number | null } | null;
+  readonly settings?: { readonly leg?: number | null; readonly last_scored_leg?: number | null; readonly playoff_week_start?: number | null } | null;
 }
 
 export function resolveHomeCurrentWeek(
   league: TrustedSleeperLeagueState | null | undefined,
   season = LCC_CURRENT_SEASON
 ): HomeCurrentWeekState {
-  const sourceSeason = Number(league?.season);
-  if (!league || sourceSeason !== season) {
-    return { season, phase: "UNKNOWN", week: null, source: "unavailable" };
-  }
-
-  if (["pre_draft", "preseason", "offseason"].includes(league.status ?? "")) {
-    return { season, phase: "PRESEASON", week: null, source: "sleeper-league" };
-  }
-
-  const week = Number(league.settings?.leg);
-  if (!Number.isInteger(week) || week < 1) {
-    return { season, phase: "UNKNOWN", week: null, source: "unavailable" };
-  }
-
-  if (league.status === "complete" || week > 17) {
-    return { season, phase: "SEASON_COMPLETE", week, source: "sleeper-league" };
-  }
-  if (league.settings?.playoff_week_start && week >= league.settings.playoff_week_start) {
-    return { season, phase: "POSTSEASON", week, source: "sleeper-league" };
-  }
-  return { season, phase: "REGULAR_SEASON", week, source: "sleeper-league" };
+  const state = resolveLccSeasonWeekState(league, season);
+  const phase: HomeSeasonPhase = state.state === "PRESEASON" ? "PRESEASON" : state.state === "SEASON_COMPLETE" ? "SEASON_COMPLETE" : state.state === "UNKNOWN" ? "UNKNOWN" : state.playoffWeekStart && (state.activeWeek ?? 0) >= state.playoffWeekStart ? "POSTSEASON" : "REGULAR_SEASON";
+  return { season, phase, week: state.activeWeek, source: state.source, state: state.state, latestCompletedWeek: state.latestCompletedWeek, nextWeek: state.nextWeek, safeCompletedWeek: state.safeCompletedWeek };
 }
 
 type SleeperRoster = { readonly roster_id: number; readonly owner_id: string };
@@ -200,10 +187,11 @@ export async function loadHomeCurrentSeasonView(
   try {
     const { loadCurrentWeekSnapshot } = await import("./currentWeekSnapshot.ts");
     const snapshot = await loadCurrentWeekSnapshot();
-    return { week: snapshot.state, matchup: buildHomeMatchupViewFromCurrentMatchups(snapshot.matchups, member, snapshot.week) };
+    const matchup = buildHomeMatchupViewFromCurrentMatchups(snapshot.matchups, member, snapshot.week);
+    return { week: snapshot.state, matchup: snapshot.state.safeCompletedWeek !== null && snapshot.week !== null && snapshot.week <= snapshot.state.safeCompletedWeek ? { ...matchup, state: matchup.state === "unavailable" ? "unavailable" : "complete" } : matchup };
   } catch {
     return {
-      week: { season: LCC_CURRENT_SEASON, phase: "UNKNOWN", week: null, source: "unavailable" },
+      week: { season: LCC_CURRENT_SEASON, phase: "UNKNOWN", week: null, source: "unavailable", state: "UNKNOWN", latestCompletedWeek: null, nextWeek: null, safeCompletedWeek: null },
       matchup: unavailableMatchup(null, member),
     };
   }

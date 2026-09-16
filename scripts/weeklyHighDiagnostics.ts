@@ -9,7 +9,7 @@ assert.equal(weekOne.franchiseId, 'anthony-martinez');
 assert.equal(weekOne.franchiseName, 'Sycamore Bishops');
 assert.equal(weekOne.score, 196.8);
 assert.equal(weekOne.tie, false);
-assert.equal(weekOne.status, 'PROVISIONAL');
+assert.equal(weekOne.status, 'FINAL');
 assert.equal(weekOne.awardAmountCents, getAwardAmountCents('weekly-high'));
 assert.equal(weekOne.awardAmountCents, 1000);
 assert.equal((await import('node:fs')).readFileSync('lib/finance/weeklyHigh.ts', 'utf8').includes(".collection('awards')"), false);
@@ -36,7 +36,7 @@ assert.match((await import('node:fs')).readFileSync('components/commish/WeeklyHi
 assert.equal((await import('node:fs')).readFileSync('lib/finance/publicAwardProjection.ts', 'utf8').includes('weeklyHighOverrides'), false);
 assert.match((await import('node:fs')).readFileSync('lib/finance/publicAwardProjection.ts', 'utf8'), /approved/);
 
-console.log(`LCC weekly-high diagnostics passed: ${weekOne.rosterTotals.map((row) => `${row.franchiseName ?? 'Unresolved'}=${row.score ?? '—'}`).join(', ')} | max=${weekOne.score} ${weekOne.franchiseName}, Sleeper-derived $10, provisional completion safety, tie escalation, and commissioner-only override surface.`);
+console.log(`LCC weekly-high diagnostics passed: ${weekOne.rosterTotals.map((row) => `${row.franchiseName ?? 'Unresolved'}=${row.score ?? '—'}`).join(', ')} | max=${weekOne.score} ${weekOne.franchiseName}, Sleeper-derived $10, authoritative completion safety, tie escalation, and commissioner-only override surface.`);
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1; });

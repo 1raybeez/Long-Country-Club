@@ -24,7 +24,8 @@ export function HomeLiveAction({ initialView }: { initialView: HomeCurrentSeason
         const ownerScore = matchup.ownerAId === ownerId ? matchup.ownerAScore : matchup.ownerBScore;
         const opponentScore = matchup.ownerAId === ownerId ? matchup.ownerBScore : matchup.ownerAScore;
         lastRefreshAt.current = Date.parse(snapshot.fetchedAt ?? "") || Date.now();
-        setView((previous) => ({ week: snapshot.state!, matchup: { ...previous.matchup, state: "current", week: snapshot.week!, ownerName: owner?.teamName ?? previous.matchup.ownerName, opponentName: opponent?.teamName ?? previous.matchup.opponentName, ownerScore, opponentScore } }));
+        const complete = snapshot.state?.safeCompletedWeek !== null && snapshot.state?.safeCompletedWeek !== undefined && snapshot.week! <= snapshot.state.safeCompletedWeek;
+        setView((previous) => ({ week: snapshot.state!, matchup: { ...previous.matchup, state: complete ? "complete" : "current", week: snapshot.week!, ownerName: owner?.teamName ?? previous.matchup.ownerName, opponentName: opponent?.teamName ?? previous.matchup.opponentName, ownerScore, opponentScore } }));
       } catch {
         // Preserve the last good Home snapshot.
       }
