@@ -76,6 +76,16 @@ assert.match(invalidCoverage.seasons[0]?.errors.join(" ") ?? "", /Unable to pars
 const clientSource = readFileSync(path.join(root, "app/league-info/archives/ArchivesClient.tsx"), "utf8");
 assert.doesNotMatch(clientSource, /api\.sleeper\.app/);
 assert.doesNotMatch(clientSource, /useEffect[\s\S]*fetch\(/);
+assert.match(clientSource, /Season coverage/);
+assert.match(clientSource, /formatSeasonStatus/);
+for (const status of ["Complete", "Partial", "Failed"]) {
+  assert.match(clientSource, new RegExp(status));
+}
+for (const season of expectedSeasons) {
+  assert.match(clientSource, /archive\.seasons\.map/);
+  assert.ok(coverage.seasons.some((result) => result.season === season));
+}
+assert.match(clientSource, /season\.warnings\.join/);
 for (const metric of ["All-Time Wins", "All-Time Points", "Best Season", "Lowest Season", "Best Win %", "Lineup Efficiency"]) {
   assert.match(clientSource, new RegExp(metric.replace(/[ %]/g, "[ _%]")));
 }

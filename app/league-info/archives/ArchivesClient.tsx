@@ -96,9 +96,23 @@ function ArchiveCoverageNotice({ archive }: { archive: ArchiveCoverage }) {
   const partial = archive.seasons.filter((season) => season.status === "partial");
   const failed = archive.seasons.filter((season) => season.status === "failed");
   if (partial.length === 0 && failed.length === 0) {
-    return <div className="lcc2-card mb-6 border-[var(--lcc-semantic-success)]" role="status"><p className="lcc2-label text-[var(--lcc-semantic-success)]">Archive coverage complete</p><p className="lcc2-body mt-2">All expected Sleeper archive seasons from 2019–2025 loaded successfully.</p></div>;
+    return <><div className="lcc2-card mb-6 border-[var(--lcc-semantic-success)]" role="status"><p className="lcc2-label text-[var(--lcc-semantic-success)]">Archive coverage complete</p><p className="lcc2-body mt-2">All expected Sleeper archive seasons from 2019–2025 loaded successfully.</p></div><SeasonCoverageList archive={archive} /></>;
   }
-  return <div className="lcc2-card mb-6 border-[var(--lcc-semantic-warning)]" role="alert"><p className="lcc2-label text-[var(--lcc-semantic-warning)]">Archive coverage incomplete</p><div className="lcc2-body mt-2 space-y-1">{partial.map((season) => <p key={`partial-${season.season}`}>{season.season}: partial — {season.warnings.join(" ")}</p>)}{failed.map((season) => <p key={`failed-${season.season}`}>{season.season}: unavailable — {season.errors.join(" ")}</p>)}</div></div>;
+  return <><div className="lcc2-card mb-6 border-[var(--lcc-semantic-warning)]" role="alert"><p className="lcc2-label text-[var(--lcc-semantic-warning)]">Archive coverage incomplete</p><div className="lcc2-body mt-2 space-y-1">{partial.map((season) => <p key={`partial-${season.season}`}>{season.season}: partial — {season.warnings.join(" ")}</p>)}{failed.map((season) => <p key={`failed-${season.season}`}>{season.season}: unavailable — {season.errors.join(" ")}</p>)}</div></div><SeasonCoverageList archive={archive} /></>;
+}
+
+function SeasonCoverageList({ archive }: { archive: ArchiveCoverage }) {
+  return <section className="lcc2-card mb-6" aria-labelledby="archive-season-coverage-heading"><div className="flex items-end justify-between gap-3"><div><p className="lcc2-label text-[var(--lcc-brand-primary)]">Season coverage</p><h2 id="archive-season-coverage-heading" className="mt-1 font-ui text-lg font-black text-[var(--lcc-color-text)]">2019–2025 archive status</h2></div></div><div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">{archive.seasons.map((season) => <div key={season.season} className="flex items-center justify-between gap-3 rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface-muted)] px-3 py-3"><span className="font-ui text-sm font-black text-[var(--lcc-color-text)]">{season.season}</span><span className={`font-ui text-xs font-black uppercase ${season.status === "complete" ? "text-[var(--lcc-semantic-success)]" : season.status === "partial" ? "text-[var(--lcc-semantic-warning)]" : "text-[var(--lcc-semantic-danger)]"}`}>{formatSeasonStatus(season.status)}</span></div>)}</div></section>;
+}
+
+function formatSeasonStatus(status: ArchiveCoverage["seasons"][number]["status"]) {
+  const labels = {
+    complete: "Complete",
+    partial: "Partial",
+    failed: "Failed",
+  } as const;
+
+  return labels[status];
 }
 
 function buildLeaderCards(archive: ArchiveCoverage) {
