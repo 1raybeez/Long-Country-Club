@@ -5,10 +5,19 @@ export type LccRoute = {
   label: string;
   href: string;
   status: LccRouteStatus;
+  access?: "public" | "protected";
+  deferred?: boolean;
   navLabel?: string;
   icon?: string;
   showInPrimaryNav?: boolean;
   showInLeagueInfoHub?: boolean;
+  showInOverview?: boolean;
+  overviewOrder?: number;
+  overviewDescription?: string;
+  resourceGroup?: "league" | "tools";
+  resourceOrder?: number;
+  resourceLabel?: string;
+  resourceDescription?: string;
   staleReason?: string;
 };
 
@@ -36,6 +45,7 @@ export const LCC_ROUTES: Record<string, LccRoute> = {
     label: "League Info",
     href: "/league-info",
     status: "active",
+    navLabel: "Overview",
     showInPrimaryNav: true,
   },
   managers: {
@@ -79,8 +89,15 @@ export const LCC_ROUTES: Record<string, LccRoute> = {
     label: "The Rules of Play",
     href: "/league-info/constitution",
     status: "active",
+    navLabel: "Constitution",
     icon: "⚖️",
     showInLeagueInfoHub: true,
+    showInOverview: true,
+    overviewOrder: 1,
+    overviewDescription: "Rules, scoring, roster standards, fees, and governance.",
+    resourceGroup: "league",
+    resourceOrder: 1,
+    resourceDescription: "Rules, scoring, roster standards, fees, and governance.",
   },
   trophyRoom: {
     id: "trophy-room",
@@ -95,8 +112,15 @@ export const LCC_ROUTES: Record<string, LccRoute> = {
     label: "Rivalry Hub",
     href: "/league-info/rivalries",
     status: "active",
+    navLabel: "Rivalries",
     icon: "⚔️",
     showInLeagueInfoHub: true,
+    showInOverview: true,
+    overviewOrder: 3,
+    overviewDescription: "Head-to-head history and rivalry detail.",
+    resourceGroup: "tools",
+    resourceOrder: 5,
+    resourceDescription: "Head-to-head history and rivalry detail.",
   },
   archives: {
     id: "archives",
@@ -106,28 +130,75 @@ export const LCC_ROUTES: Record<string, LccRoute> = {
     icon: "📊",
     showInLeagueInfoHub: true,
   },
+  records: {
+    id: "records",
+    label: "Records",
+    href: "/league-info/records",
+    status: "active",
+    showInLeagueInfoHub: true,
+    showInOverview: true,
+    overviewOrder: 2,
+    overviewDescription: "League-wide records and complete Sleeper-era statistics.",
+    resourceGroup: "league",
+    resourceOrder: 3,
+    resourceDescription: "League-wide records and complete Sleeper-era statistics.",
+  },
   drafts: {
     id: "drafts",
     label: "Draft Room",
     href: "/league-info/drafts",
     status: "active",
+    navLabel: "Drafts",
     icon: "🏈",
     showInLeagueInfoHub: true,
+    showInOverview: true,
+    overviewOrder: 4,
+    overviewDescription: "Draft history, future picks, and draft records.",
+    resourceGroup: "league",
+    resourceOrder: 4,
+    resourceLabel: "Draft History",
+    resourceDescription: "Draft events, picks, future capital, and draft records.",
   },
   fees: {
     id: "fees",
     label: "Fees & Payouts",
     href: "/league-info/fees",
     status: "active",
+    navLabel: "Fees & Payouts",
     icon: "💰",
     showInLeagueInfoHub: true,
+    showInOverview: true,
+    overviewOrder: 5,
+    overviewDescription: "Current dues, weekly highs, and payout rules.",
+    resourceGroup: "league",
+    resourceOrder: 2,
+    resourceDescription: "Current dues, weekly highs, payout rules, and recorded financial history.",
   },
   resources: {
     id: "resources",
     label: "Resources",
     href: "/league-info/resources",
-    status: "hidden",
+    status: "active",
     icon: "📁",
+    showInLeagueInfoHub: true,
+    showInOverview: true,
+    overviewOrder: 6,
+    overviewDescription: "League links, LCC tools, and fantasy research.",
+  },
+  tradeAnalyzer: {
+    id: "trade-analyzer",
+    label: "Trade Analyzer",
+    href: "/league-info/trade-analyzer",
+    status: "active",
+    access: "protected",
+    deferred: true,
+    showInLeagueInfoHub: true,
+    showInOverview: true,
+    overviewOrder: 7,
+    overviewDescription: "Analyze a league trade with authenticated roster context.",
+    resourceGroup: "tools",
+    resourceOrder: 7,
+    resourceDescription: "Authenticated league-trade analysis with current roster context.",
   },
 };
 
@@ -146,17 +217,30 @@ export const LCC_LEAGUE_INFO_CARD_ROUTES = Object.values(LCC_ROUTES).filter(
   (route) => route.showInLeagueInfoHub && route.status === "active"
 );
 
-export const LCC_LEAGUE_INFO_NAV_ITEMS: readonly LccLeagueInfoNavItem[] = [
-  { id: "overview", label: "Overview", href: "/league-info", order: 1, availability: "active" },
-  { id: "constitution", label: "Constitution", href: "/league-info/constitution", order: 2, availability: "active" },
-  { id: "history", label: "History", href: "/history", order: 3, availability: "active" },
-  { id: "records", label: "Records", href: "/league-info/records", order: 4, availability: "active" },
-  { id: "rivalries", label: "Rivalries", href: "/league-info/rivalries", order: 5, availability: "active" },
-  { id: "drafts", label: "Drafts", href: "/league-info/drafts", order: 6, availability: "active" },
-  { id: "payouts", label: "Fees & Payouts", href: "/league-info/fees", order: 7, availability: "active" },
-  { id: "resources", label: "Resources", href: "/league-info/resources", order: 8, availability: "active" },
-  { id: "trade-analyzer", label: "Trade Analyzer", href: "/league-info/trade-analyzer", order: 9, availability: "active" },
+export const LCC_LEAGUE_INFO_OVERVIEW_ROUTES = LCC_LEAGUE_INFO_CARD_ROUTES.filter(
+  (route) => route.showInOverview
+).sort((a, b) => (a.overviewOrder ?? 999) - (b.overviewOrder ?? 999));
+
+export const LCC_LEAGUE_INFO_RESOURCE_ROUTES = [...LCC_LEAGUE_INFO_CARD_ROUTES.filter(
+  (route) => route.resourceGroup
+)].sort((a, b) => (a.resourceOrder ?? 999) - (b.resourceOrder ?? 999));
+
+const LCC_LEAGUE_INFO_NAV_ROUTE_IDS = [
+  { id: "overview", routeId: "leagueInfo", order: 1 },
+  { id: "constitution", routeId: "constitution", order: 2 },
+  { id: "history", routeId: "history", order: 3 },
+  { id: "records", routeId: "records", order: 4 },
+  { id: "rivalries", routeId: "rivalries", order: 5 },
+  { id: "drafts", routeId: "drafts", order: 6 },
+  { id: "payouts", routeId: "fees", order: 7 },
+  { id: "resources", routeId: "resources", order: 8 },
+  { id: "trade-analyzer", routeId: "tradeAnalyzer", order: 9 },
 ] as const;
+
+export const LCC_LEAGUE_INFO_NAV_ITEMS: readonly LccLeagueInfoNavItem[] = LCC_LEAGUE_INFO_NAV_ROUTE_IDS.map(({ id, routeId, order }) => {
+  const route = LCC_ROUTES[routeId];
+  return { id, label: route.navLabel ?? route.label, href: route.href, order, availability: "active" };
+});
 
 export const LCC_HISTORY_CHILD_ROUTES: readonly LccLeagueInfoNavItem[] = [
   { id: "trophy-room", label: "Trophy Room", href: "/league-info/trophy-room", order: 1, availability: "active", parent: "history" },

@@ -4,16 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { BarChart3, BookOpen, ExternalLink, Globe, Link2, Mic2 } from "lucide-react";
 import { LEAGUE_RESOURCE_GROUPS, type LeagueResource } from '@/lib/resources';
+import { LCC_LEAGUE_INFO_RESOURCE_ROUTES } from '@/lib/routeConfig';
 import { LeagueInfoShell } from '@/components/league/LeagueInfoShell';
 
 const INTERNAL_RESOURCE_GROUPS = [
   {
     label: 'League',
     resources: [
-      { name: 'Constitution', description: 'Rules, scoring, roster standards, fees, and governance.', url: '/league-info/constitution', external: false },
-      { name: 'Fees & Payouts', description: 'Current dues, weekly highs, payout rules, and recorded financial history.', url: '/league-info/fees', external: false },
-      { name: 'Records', description: 'League-wide records and complete Sleeper-era statistics.', url: '/league-info/records', external: false },
-      { name: 'Draft History', description: 'Draft events, picks, future capital, and draft records.', url: '/league-info/drafts', external: false },
+      ...LCC_LEAGUE_INFO_RESOURCE_ROUTES.filter((route) => route.resourceGroup === 'league').map((route) => ({ name: route.resourceLabel ?? route.navLabel ?? route.label, description: route.resourceDescription ?? route.label, url: route.href, external: false })),
       { name: 'Sleeper League', description: 'Open the league’s live home on Sleeper.', url: 'https://sleeper.com/leagues/1312149033254416384', external: true },
     ],
   },
@@ -21,9 +19,9 @@ const INTERNAL_RESOURCE_GROUPS = [
     label: 'LCC Tools',
     resources: [
       { name: 'Matchups', description: 'Current-season schedules, scores, and matchup detail.', url: '/matchups', external: false },
-      { name: 'Rivalries', description: 'Head-to-head history and rivalry detail.', url: '/league-info/rivalries', external: false },
+      ...LCC_LEAGUE_INFO_RESOURCE_ROUTES.filter((route) => route.resourceGroup === 'tools' && (route.resourceOrder ?? 999) < 7).map((route) => ({ name: route.navLabel ?? route.label, description: route.resourceDescription ?? route.label, url: route.href, external: false })),
       { name: '2026 Preseason Team Strength Forecast', description: 'Locked preseason archive preserved for future comparison; not live rankings.', url: '/predictor', external: false },
-      { name: 'Trade Analyzer', description: 'Authenticated league-trade analysis with current roster context.', url: '/league-info/trade-analyzer', external: false },
+      ...LCC_LEAGUE_INFO_RESOURCE_ROUTES.filter((route) => route.resourceGroup === 'tools' && (route.resourceOrder ?? 999) >= 7).map((route) => ({ name: route.navLabel ?? route.label, description: route.resourceDescription ?? route.label, url: route.href, external: false })),
     ],
   },
 ] as const;

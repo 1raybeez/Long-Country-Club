@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CalendarDays, History, Shield, Trophy } from "lucide-react";
 import { LeagueInfoShell } from "@/components/league/LeagueInfoShell";
+import { LCC_LEAGUE_INFO_OVERVIEW_ROUTES } from "@/lib/routeConfig";
 import { LCC_CURRENT_SEASON } from "@/lib/leagueConstants";
 import { ACTIVE_LCC_OWNERS, LCC_ERA_MODEL, getLccOwnerById } from "@/lib/lccOwners";
 import { getLccChampionBySeason, LCC_SLEEPER_MIGRATION_SEASON } from "@/lib/lccFinalPlacements";
@@ -83,7 +84,7 @@ export default function ClubhouseInfoPage() {
             <p className="lcc2-label text-[var(--lcc-brand-primary)]">Find your way around</p>
             <h3 id="league-destinations-heading" className="mt-2 font-ui text-2xl font-black tracking-[-0.03em] text-[var(--lcc-color-text)]">League destinations</h3>
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {OVERVIEW_DESTINATIONS.map((destination) => <Link key={destination.href} href={destination.href} className="lcc2-card lcc2-card--interactive p-4"><p className="font-ui text-base font-black text-[var(--lcc-color-text)]">{destination.label}</p><p className="lcc2-body mt-1 text-sm">{destination.description}</p></Link>)}
+              {[...OVERVIEW_DESTINATIONS, ...OVERVIEW_EXTERNAL_DESTINATIONS].map((destination) => <Link key={destination.href} href={destination.href} className="lcc2-card lcc2-card--interactive p-4"><p className="font-ui text-base font-black text-[var(--lcc-color-text)]">{destination.label}</p><p className="lcc2-body mt-1 text-sm">{destination.description}</p></Link>)}
             </div>
           </section>
         </div>
@@ -92,14 +93,13 @@ export default function ClubhouseInfoPage() {
   );
 }
 
-const OVERVIEW_DESTINATIONS = [
-  { label: "Constitution", href: "/league-info/constitution", description: "Rules, scoring, roster standards, fees, and governance." },
-  { label: "Records", href: "/league-info/records", description: "League-wide records and complete Sleeper-era statistics." },
-  { label: "Rivalries", href: "/league-info/rivalries", description: "Head-to-head history and rivalry detail." },
-  { label: "Drafts", href: "/league-info/drafts", description: "Draft history, future picks, and draft records." },
-  { label: "Fees & Payouts", href: "/league-info/fees", description: "Current dues, weekly highs, and payout rules." },
-  { label: "Resources", href: "/league-info/resources", description: "League links, LCC tools, and fantasy research." },
-  { label: "Trade Analyzer", href: "/league-info/trade-analyzer", description: "Analyze a league trade with authenticated roster context." },
+const OVERVIEW_DESTINATIONS = LCC_LEAGUE_INFO_OVERVIEW_ROUTES.map((route) => ({
+  label: route.navLabel ?? route.label,
+  href: route.href,
+  description: route.overviewDescription ?? route.label,
+}));
+
+const OVERVIEW_EXTERNAL_DESTINATIONS = [
   { label: "2026 Preseason Forecast", href: "/predictor", description: "Locked preseason team-strength archive for future comparison." },
 ] as const;
 
