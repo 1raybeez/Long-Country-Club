@@ -92,6 +92,7 @@
     "firebase:trade-valuations-package-diagnostics": "node scripts/tradeValuationPackageDiagnostics.mjs",
     "firebase:runtime-diagnostics": "node --experimental-strip-types scripts/tradeFirebaseRuntimeDiagnostics.mjs",
     "records:diagnostics": "node scripts/recordsDiagnostics.mjs",
+    "archive:diagnostics": "tsx scripts/archiveDiagnostics.ts",
     "home:current-season:diagnostics": "tsx scripts/homeCurrentSeasonDiagnostics.ts",
     "current-season:parity-diagnostics": "tsx scripts/currentSeasonParityDiagnostics.ts",
     "week-state:diagnostics": "tsx scripts/weekStateDiagnostics.ts",
