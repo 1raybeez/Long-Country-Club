@@ -9,6 +9,7 @@ import {
   Trophy,
 } from "lucide-react";
 import type { HomeCurrentWeekState } from "@/lib/homeCurrentSeason";
+import { formatMatchupStatus, type MatchupStatus } from "@/lib/matchupStatus";
 import {
   useEffect,
   useMemo,
@@ -424,12 +425,13 @@ function MatchupCard({
             name={ownerAName}
             score={matchup.ownerAScore}
             won={ownerAWon}
+            status={matchup.currentStatus}
           />
 
           <div className="lcc2-matchup-center flex items-center justify-center border-y px-4 py-4 md:border-x md:border-y-0">
             <div className="lcc2-matchup-toggle text-center">
               <span className="lcc2-label">
-                Final
+                {formatMatchupStatus(matchup.currentStatus)}
               </span>
 
               <div className="flex items-center justify-center text-[var(--lcc-interactive)]" aria-hidden="true">
@@ -446,6 +448,7 @@ function MatchupCard({
             name={ownerBName}
             score={matchup.ownerBScore}
             won={ownerBWon}
+            status={matchup.currentStatus}
             reverse
           />
         </div>
@@ -537,11 +540,13 @@ function TeamScore({
   name,
   score,
   won,
+  status,
   reverse = false,
 }: {
   name: string;
   score: number | null;
   won: boolean;
+  status?: MatchupStatus;
   reverse?: boolean;
 }) {
   return (
@@ -560,7 +565,7 @@ function TeamScore({
             "lcc2-matchup-status lcc2-label",
           ].join(" ")}
         >
-          {won ? "Winner" : "Final"}
+          {won ? "Winner" : formatMatchupStatus(status)}
         </p>
 
         <p className="mt-2 truncate font-ui text-xl font-black uppercase leading-none sm:text-2xl">
