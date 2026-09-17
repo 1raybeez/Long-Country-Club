@@ -29,11 +29,12 @@ export async function applyAwardToLeagueFees(input: { season: number; obligation
   const event = season.collection('events').doc(`award-credit-${input.obligationId}`);
   const derived = await derivedAwardFor(input.obligationId, input.season);
   await db.runTransaction(async (transaction) => {
-    const awardSnapshot = await transaction.get(award);
+    const [awardSnapshot, settlementSnapshot, eventSnapshot] = await transaction.getAll(award, settlement, event);
     if (!awardSnapshot.exists && !derived) throw new Error('Award obligation not found or not final.');
     const data = awardSnapshot.data() ?? derived ?? {};
     if (data.status !== 'approved' || typeof data.ownerId !== 'string' || !Number.isInteger(data.amountCents) || data.amountCents <= 0) throw new Error('Only an earned approved award may be credited.');
-    if ((await transaction.get(settlement)).exists) throw new Error('Award credit already exists.');
+    if (settlementSnapshot.exists) throw new Error('Award credit already exists.');
+    if (eventSnapshot.exists) throw new Error('Award-credit event already exists.');
     const assessments = await transaction.get(season.collection('assessments').where('ownerId', '==', data.ownerId).limit(1));
     if (assessments.empty) throw new Error('Owner league-fee assessment not found.');
     const assessed = Number(assessments.docs[0].data().amountCents);
@@ -47,7 +48,6 @@ export async function applyAwardToLeagueFees(input: { season: number; obligation
     const now = FieldValue.serverTimestamp();
     if (!awardSnapshot.exists) transaction.create(award, { ...derived, derivedAtSettlement: true, derivedByMemberId: actor.memberId });
     transaction.create(settlement, { settlementId: settlement.id, season: input.season, obligationId: input.obligationId, ownerId: data.ownerId, amountCents, method: 'league-fee-credit', settlementType: 'APPLIED_TO_LEAGUE_FEES', effectiveDate: new Date().toISOString().slice(0, 10), recordedAt: now, recordedByMemberId: actor.memberId, source: 'commissioner-award-to-dues-credit', requestId: input.requestId, ...(input.notes?.trim() ? { notes: input.notes.trim() } : {}) });
-    if ((await transaction.get(event)).exists) throw new Error('Award-credit event already exists.');
     transaction.create(event, { eventType: 'award-credit-applied', season: input.season, obligationId: input.obligationId, ownerId: data.ownerId, amountCents, actorMemberId: actor.memberId, createdAt: now, referenceId: settlement.id, summary: 'Award credit applied to league fees' });
   });
   return { obligationId: input.obligationId, status: 'applied-to-league-fees' as const };

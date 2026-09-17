@@ -12,6 +12,7 @@
     "finance:award-workflow-diagnostics": "node scripts/awardWorkflowDiagnostics.mjs",
     "finance:award-projection-diagnostics": "node scripts/awardProjectionDiagnostics.mjs",
     "finance:award-settlement-diagnostics": "node scripts/awardSettlementDiagnostics.mjs",
+    "finance:award-credit-diagnostics": "node scripts/awardCreditDiagnostics.mjs",
     "finance:reconciliation-diagnostics": "node scripts/reconciliationDiagnostics.mjs",
     "finance:public-award-projection-diagnostics": "node scripts/publicAwardProjectionDiagnostics.mjs",
     "finance:postseason-readiness": "node scripts/postseasonReadinessDiagnostics.mjs",
