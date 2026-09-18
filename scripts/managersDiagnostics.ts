@@ -13,6 +13,8 @@ import { getOwnerCareerSummary } from "../lib/history/career";
 import { getLccOwnerCareerSummary as getPlacementCareerSummary, LCC_FINAL_PLACEMENTS } from "../lib/lccFinalPlacements";
 import { resolveOwnerId } from "../lib/ownerRegistry";
 import { getOwnerImagePath } from "../lib/ownerImages";
+import { getVerifiedOwnerTenure } from "../lib/history/ownerHistory";
+import { LCC_CURRENT_SEASON } from "../lib/leagueConstants";
 
 const root = process.cwd();
 const activeIds = ACTIVE_LCC_OWNERS.map((owner) => owner.id);
@@ -53,6 +55,15 @@ for (const owner of ALL_LCC_OWNERS) {
   assert.equal(profileCareer.podiums, placementCareer.podiumCount, `${owner.id} podium parity`);
   assert.equal(profileCareer.playoffAppearances, placementCareer.playoffAppearances.length, `${owner.id} playoff parity`);
   assert.deepEqual(profileCareer.seasonPlacements.map((entry) => entry.season), placementCareer.seasons.map((entry) => entry.season), `${owner.id} season parity`);
+
+  const verifiedTenure = getVerifiedOwnerTenure(owner.id, owner.status);
+  const placementSeasons = placementCareer.seasons.map((entry) => entry.season);
+  const expectedSeasons = owner.status === "active"
+    ? [...new Set([...placementSeasons, LCC_CURRENT_SEASON])].sort((a, b) => a - b)
+    : placementSeasons;
+  assert.deepEqual(verifiedTenure.seasons, expectedSeasons, `${owner.id} verified tenure parity`);
+  assert.equal(verifiedTenure.isCurrent, owner.status === "active", `${owner.id} current status parity`);
+  assert.equal(verifiedTenure.isInterrupted, verifiedTenure.spans.length > 1, `${owner.id} interruption parity`);
 }
 
 const managersPage = readFileSync(path.join(root, "app/managers/page.tsx"), "utf8");
@@ -62,6 +73,8 @@ for (const source of [managersPage, directorySource, profileSource]) {
   assert.doesNotMatch(source, /managersData|ManagerCards|ManagerGrid/);
 }
 assert.doesNotMatch(profileSource, /currentStandings|currentWeek|loadCurrentSeason/);
+assert.doesNotMatch(profileSource, /coOwner|co-owner|co_owner/);
+assert.match(profileSource, /history\/\$\{season\.season\}/);
 assert.equal(readFileSync(path.join(root, "app/managers/page.tsx"), "utf8").includes("ACTIVE_LCC_OWNERS"), true);
 
 console.log("LCC Managers diagnostics: PASS");
@@ -69,3 +82,9 @@ console.log(`- ${ACTIVE_LCC_OWNERS.length} active owners and ${ALL_LCC_OWNERS.le
 console.log("- 2026 roster-to-owner mapping is unique and complete");
 console.log(`- ${historicalAliases.length} historical aliases resolve without guessing`);
 console.log("- career placement parity and legacy isolation checked");
+console.log("- verified tenure spans, active status, season links, and co-owner isolation checked");
+
+for (const owner of ALL_LCC_OWNERS) {
+  const tenure = getVerifiedOwnerTenure(owner.id, owner.status);
+  console.log(`- ${owner.id}: ${tenure.spans.map(({ startSeason, endSeason }) => startSeason === endSeason ? startSeason : `${startSeason}-${endSeason}`).join(", ") || "none"}`);
+}

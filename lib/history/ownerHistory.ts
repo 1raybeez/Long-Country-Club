@@ -1,5 +1,11 @@
 import { getOwnerCareerSummary } from "./career";
 import { loadAllSeasonSummaries } from "./seasonSummary";
+import {
+  getLccOwnerCareerSummary,
+  type LccFinalPlacementTenureSpan,
+} from "../lccFinalPlacements";
+import { LCC_CURRENT_SEASON } from "../leagueConstants";
+import type { LccOwnerStatus } from "../lccOwners";
 import type {
   ManagerFinancialRecord,
   SeasonFinancialData,
@@ -26,6 +32,59 @@ export type OwnerTimeline = {
   career: ReturnType<typeof getOwnerCareerSummary>;
   seasons: OwnerSeasonTimelineEntry[];
 };
+
+export type VerifiedOwnerTenure = {
+  seasons: readonly number[];
+  spans: readonly LccFinalPlacementTenureSpan[];
+  isCurrent: boolean;
+  isInterrupted: boolean;
+};
+
+/**
+ * Returns the verified ownership seasons represented by final placements,
+ * plus the current season for an active canonical owner.
+ */
+export function getVerifiedOwnerTenure(
+  ownerId: string,
+  status: LccOwnerStatus
+): VerifiedOwnerTenure {
+  const placementTenure = getLccOwnerCareerSummary(ownerId).tenureSpans;
+  const seasons = new Set(
+    placementTenure.flatMap(({ startSeason, endSeason }) =>
+      Array.from(
+        { length: endSeason - startSeason + 1 },
+        (_, index) => startSeason + index
+      )
+    )
+  );
+
+  if (status === "active") {
+    seasons.add(LCC_CURRENT_SEASON);
+  }
+
+  const sortedSeasons = [...seasons].sort((a, b) => a - b);
+  const spans = sortedSeasons.reduce<LccFinalPlacementTenureSpan[]>(
+    (result, season) => {
+      const previous = result.at(-1);
+
+      if (!previous || previous.endSeason + 1 !== season) {
+        result.push({ startSeason: season, endSeason: season });
+      } else {
+        result[result.length - 1] = { ...previous, endSeason: season };
+      }
+
+      return result;
+    },
+    []
+  );
+
+  return {
+    seasons: sortedSeasons,
+    spans,
+    isCurrent: status === "active",
+    isInterrupted: spans.length > 1,
+  };
+}
 
 function findManagerFinancialRecord(
   financial: SeasonFinancialData | null,

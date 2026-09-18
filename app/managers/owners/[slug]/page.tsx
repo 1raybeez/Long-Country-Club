@@ -22,7 +22,11 @@ import {
   isLccCoFounder,
   type LccOwner,
 } from "@/lib/lccOwners";
-import { getOwnerTimeline } from "@/lib/history/ownerHistory";
+import {
+  getOwnerTimeline,
+  getVerifiedOwnerTenure,
+} from "@/lib/history/ownerHistory";
+import { loadAllSeasonSummaries } from "@/lib/history/seasonSummary";
 import { getAwardsByOwner } from "@/lib/history/awards";
 import { getOwnerMatchupSummary } from "@/lib/history/ownerMatchupSummary";
 import { getHeadToHeadHref } from "@/lib/history/headToHead";
@@ -66,7 +70,13 @@ export default async function OwnerProfilePage({
   const ownerHistory = getOwnerTimeline(owner.id);
   const careerSummary = ownerHistory.career;
   const matchupSummary = getOwnerMatchupSummary(owner.id);
-  const tenure = formatTenure(owner, careerSummary.activeSeasonCount);
+  const verifiedTenure = getVerifiedOwnerTenure(owner.id, owner.status);
+  const tenure = formatTenure(verifiedTenure);
+  const validHistorySeasons = new Set(
+    loadAllSeasonSummaries()
+      .filter((summary) => summary.standings)
+      .map((summary) => summary.season)
+  );
   const almanacProfile = owner.almanacProfile;
   const awards = getAwardsByOwner(owner.id).filter(
     (award) =>
@@ -118,28 +128,62 @@ export default async function OwnerProfilePage({
           bio={almanacProfile?.bio}
         />
 
-        {franchiseHistory.length > 1 && (
-          <div className="mt-5">
-            <ProfileDisclosure
-              id={`${owner.id}-franchise-history`}
-              title="Franchise History"
-              summary={`${franchiseHistory.length} recorded franchise names`}
-              icon={<History className="h-4 w-4" aria-hidden="true" />}
-            >
-              <ol className="grid gap-2 sm:grid-cols-2">
-                {franchiseHistory.map((teamName, index) => (
-                  <li
-                    key={`${teamName}-${index}`}
-                    className="rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3"
-                  >
-                    <p className="lcc2-label">{index === franchiseHistory.length - 1 ? "Current Franchise" : "Historical Franchise"}</p>
-                    <p className="mt-1 break-words font-ui text-base font-black text-[var(--lcc-color-text)]">{teamName}</p>
-                  </li>
-                ))}
-              </ol>
-            </ProfileDisclosure>
-          </div>
-        )}
+        <div className="mt-5">
+          <ProfileDisclosure
+            id={`${owner.id}-ownership-lineage`}
+            title="Ownership & Franchise Lineage"
+            summary={`${verifiedTenure.seasons.length} verified LCC season${verifiedTenure.seasons.length === 1 ? "" : "s"}`}
+            icon={<Shield className="h-4 w-4" aria-hidden="true" />}
+          >
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3">
+                <p className="lcc2-label text-[var(--lcc-interactive)]">Owner Tenure</p>
+                <p className="mt-1 font-ui text-lg font-black text-[var(--lcc-color-text)]">
+                  {tenure}
+                </p>
+                <p className="mt-2 text-sm font-semibold text-[var(--lcc-color-text-muted)]">
+                  {owner.status === "active"
+                    ? "Active LCC owner"
+                    : "Retired LCC owner"}
+                  {verifiedTenure.isInterrupted
+                    ? " · Interrupted tenure"
+                    : " · Continuous verified tenure"}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {verifiedTenure.seasons.map((season) => (
+                    validHistorySeasons.has(season) ? (
+                      <Link
+                        key={season}
+                        href={`/history/${season}`}
+                        className="lcc2-badge lcc2-badge--neutral"
+                      >
+                        {season}
+                      </Link>
+                    ) : (
+                      <span key={season} className="lcc2-badge lcc2-badge--neutral">
+                        {season} · current
+                      </span>
+                    )
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3">
+                <p className="lcc2-label text-[var(--lcc-interactive)]">Franchise / Team Names</p>
+                <p className="mt-1 text-sm font-semibold text-[var(--lcc-color-text-muted)]">
+                  Recorded names are shown separately from ownership tenure; exact season-to-name assignments are not inferred.
+                </p>
+                <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {franchiseHistory.map((teamName, index) => (
+                    <li key={`${teamName}-${index}`} className="break-words font-ui text-sm font-black text-[var(--lcc-color-text)]">
+                      {teamName}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </ProfileDisclosure>
+        </div>
 
         <ProfileSection
           title="Career Snapshot"
@@ -366,9 +410,12 @@ function SeasonHistoryTable({
                 key={season.season}
                 className="grid min-w-[28rem] grid-cols-[4rem_minmax(8rem,1fr)_minmax(8rem,1fr)_5rem] items-center gap-x-4 px-4 py-3 font-ui text-sm"
               >
-                <div className="font-black text-[var(--lcc-color-text)]">
+                <Link
+                  href={`/history/${season.season}`}
+                  className="font-black text-[var(--lcc-interactive)] hover:underline"
+                >
                   {season.season}
-                </div>
+                </Link>
                 <div className="font-bold text-[var(--lcc-color-text-muted)]">
                   {formatEra(season.era)}
                 </div>
@@ -857,11 +904,20 @@ function formatStatus(status: LccOwner["status"]) {
   return status === "active" ? "Active" : "Retired";
 }
 
-function formatTenure(owner: LccOwner, activeSeasonCount: number) {
-  const startSeason = owner.joinedYear ?? "Unknown";
-  const endSeason = owner.status === "active" ? "present" : owner.lastSeason ?? "Unknown";
+function formatTenure(tenure: ReturnType<typeof getVerifiedOwnerTenure>) {
+  if (tenure.spans.length === 0) {
+    return "No verified seasons";
+  }
 
-  return `${startSeason}-${endSeason} (${activeSeasonCount} yrs)`;
+  const spanLabel = tenure.spans
+    .map(({ startSeason, endSeason }) =>
+      startSeason === endSeason
+        ? String(startSeason)
+        : `${startSeason}-${endSeason}`
+    )
+    .join(", ");
+
+  return `${spanLabel} (${tenure.seasons.length} season${tenure.seasons.length === 1 ? "" : "s"})`;
 }
 
 function formatRating(value: number | undefined, max: number) {
