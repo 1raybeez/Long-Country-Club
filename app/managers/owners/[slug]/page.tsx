@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import {
   Award,
+  CalendarDays,
   Crown,
   History,
   Medal,
@@ -43,6 +44,10 @@ import { TradeMeter } from "@/components/ui/TradeMeter";
 import { OwnerMatchupResumeCard } from "@/components/ui/OwnerMatchupResumeCard";
 import { ProfileDisclosure } from "@/components/ui/ProfileDisclosure";
 import { splitTeamSelections } from "@/lib/teamBranding";
+import {
+  loadCurrentManagerSeasonContext,
+  type CurrentManagerSeasonContext,
+} from "@/lib/currentManagerContext";
 
 export function generateStaticParams() {
   return ALL_LCC_OWNERS.map((owner) => ({
@@ -111,6 +116,10 @@ export default async function OwnerProfilePage({
   const collegeTeamSelections = splitTeamSelections(
     almanacProfile?.favoriteCollegeTeam
   );
+  const currentSeasonContext =
+    owner.status === "active"
+      ? await loadCurrentManagerSeasonContext(owner.id)
+      : null;
 
   return (
     <main className="lcc2-page-shell">
@@ -127,6 +136,10 @@ export default async function OwnerProfilePage({
           tenure={tenure}
           bio={almanacProfile?.bio}
         />
+
+        {currentSeasonContext && (
+          <CurrentSeasonSection context={currentSeasonContext} />
+        )}
 
         <div className="mt-5">
           <ProfileDisclosure
@@ -317,6 +330,91 @@ export default async function OwnerProfilePage({
         </section>
       </div>
     </main>
+  );
+}
+
+function CurrentSeasonSection({
+  context,
+}: {
+  context: CurrentManagerSeasonContext;
+}) {
+  return (
+    <ProfileSection
+      title={`${context.season} Current Season`}
+      icon={<CalendarDays className="h-4 w-4" aria-hidden="true" />}
+    >
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <CurrentSeasonFact
+          label="Current Franchise"
+          value={context.franchiseName}
+        />
+        <CurrentSeasonFact
+          label="Current Record"
+          value={
+            context.standing
+              ? `${context.standing.wins}-${context.standing.losses}${context.standing.ties ? `-${context.standing.ties}` : ""}`
+              : "Not available"
+          }
+        />
+        <CurrentSeasonFact
+          label="Current Standing"
+          value={context.standing ? formatOrdinalPlace(context.standing.rank) : "Not available"}
+        />
+        <CurrentSeasonFact
+          label="Current Week"
+          value={context.matchup ? `Week ${context.matchup.week}` : "Not available"}
+        />
+      </div>
+
+      <div className="mt-3 rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3">
+        {context.matchup ? (
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="lcc2-label text-[var(--lcc-interactive)]">
+                Week {context.matchup.week} Matchup
+              </p>
+              <p className="mt-1 font-ui text-base font-black text-[var(--lcc-color-text)]">
+                vs. {context.matchup.opponentName}
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[var(--lcc-color-text-muted)]">
+                {context.matchup.opponentDisplayName}
+                {context.matchup.ownerScore !== null &&
+                context.matchup.opponentScore !== null
+                  ? ` · ${context.matchup.ownerScore}–${context.matchup.opponentScore}`
+                  : " · Scores not available"}
+              </p>
+            </div>
+            <span className="lcc2-badge lcc2-badge--neutral">
+              {context.matchup.statusLabel}
+            </span>
+          </div>
+        ) : (
+          <p className="text-sm font-semibold text-[var(--lcc-color-text-muted)]">
+            Current matchup data is not available right now.
+          </p>
+        )}
+        <Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-3 w-full sm:w-auto">
+          View current matchups
+        </Link>
+      </div>
+    </ProfileSection>
+  );
+}
+
+function CurrentSeasonFact({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] p-3">
+      <p className="lcc2-label">{label}</p>
+      <p className="mt-1 break-words font-ui text-base font-black text-[var(--lcc-color-text)]">
+        {value}
+      </p>
+    </div>
   );
 }
 

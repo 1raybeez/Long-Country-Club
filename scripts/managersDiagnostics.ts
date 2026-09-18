@@ -15,6 +15,7 @@ import { resolveOwnerId } from "../lib/ownerRegistry";
 import { getOwnerImagePath } from "../lib/ownerImages";
 import { getVerifiedOwnerTenure } from "../lib/history/ownerHistory";
 import { LCC_CURRENT_SEASON } from "../lib/leagueConstants";
+import { buildCurrentManagerSeasonContext } from "../lib/currentManagerContext";
 
 const root = process.cwd();
 const activeIds = ACTIVE_LCC_OWNERS.map((owner) => owner.id);
@@ -66,6 +67,77 @@ for (const owner of ALL_LCC_OWNERS) {
   assert.equal(verifiedTenure.isInterrupted, verifiedTenure.spans.length > 1, `${owner.id} interruption parity`);
 }
 
+const currentStandings = ACTIVE_LCC_OWNERS.map((owner, index) => ({
+  franchiseId: owner.id,
+  franchiseName: owner.managerPage.sleeperName,
+  wins: index % 3,
+  losses: 1,
+  ties: 0,
+  pointsFor: 100 + index,
+}));
+const currentMatchups = ACTIVE_LCC_OWNERS.flatMap((owner, index) => {
+  if (index % 2 === 1) return [];
+  const opponent = ACTIVE_LCC_OWNERS[index + 1];
+  return opponent
+    ? [{ season: LCC_CURRENT_SEASON, week: 2, type: "regularSeason" as const, ownerAId: owner.id, ownerBId: opponent.id, ownerAScore: 0, ownerBScore: 0, winnerOwnerId: null, loserOwnerId: null, currentStatus: "UPCOMING" as const }]
+    : [];
+});
+const currentSnapshot = {
+  season: LCC_CURRENT_SEASON,
+  week: 2,
+  state: {
+    season: LCC_CURRENT_SEASON,
+    phase: "REGULAR_SEASON",
+    week: 2,
+    source: "sleeper-league",
+    state: "LIVE",
+    latestCompletedWeek: 1,
+    nextWeek: 2,
+    safeCompletedWeek: 1,
+  },
+  fetchedAt: "diagnostic",
+  matchups: currentMatchups,
+} as const;
+
+for (const owner of ACTIVE_LCC_OWNERS) {
+  const context = buildCurrentManagerSeasonContext(owner.id, currentStandings, currentSnapshot);
+  assert.equal(context.season, LCC_CURRENT_SEASON);
+  assert.equal(context.franchiseName, owner.managerPage.sleeperName);
+  assert.ok(context.standing);
+  assert.equal(context.matchup?.week, 2);
+  assert.equal(context.matchup?.statusLabel, "Scheduled");
+}
+
+for (const owner of ALL_LCC_OWNERS.filter((candidate) => candidate.status === "retired")) {
+  const context = buildCurrentManagerSeasonContext(owner.id, currentStandings, currentSnapshot);
+  assert.equal(context.standing, null);
+  assert.equal(context.matchup, null);
+}
+
+const statusExpectations = {
+  UPCOMING: "Scheduled",
+  LIVE: "Live",
+  FINAL: "Final",
+  UNKNOWN: "In Progress",
+} as const;
+for (const [status, label] of Object.entries(statusExpectations)) {
+  const context = buildCurrentManagerSeasonContext(
+    ACTIVE_LCC_OWNERS[0].id,
+    currentStandings,
+    { ...currentSnapshot, matchups: [{ ...currentMatchups[0], currentStatus: status as keyof typeof statusExpectations }] }
+  );
+  assert.equal(context.matchup?.statusLabel, label);
+}
+
+const unavailableContext = buildCurrentManagerSeasonContext(
+  ACTIVE_LCC_OWNERS[0].id,
+  [],
+  null
+);
+assert.equal(unavailableContext.standing, null);
+assert.equal(unavailableContext.matchup, null);
+assert.equal(unavailableContext.source, "unavailable");
+
 const managersPage = readFileSync(path.join(root, "app/managers/page.tsx"), "utf8");
 const directorySource = readFileSync(path.join(root, "app/managers/directoryComponents.tsx"), "utf8");
 const profileSource = readFileSync(path.join(root, "app/managers/owners/[slug]/page.tsx"), "utf8");
@@ -75,6 +147,9 @@ for (const source of [managersPage, directorySource, profileSource]) {
 assert.doesNotMatch(profileSource, /currentStandings|currentWeek|loadCurrentSeason/);
 assert.doesNotMatch(profileSource, /coOwner|co-owner|co_owner/);
 assert.match(profileSource, /history\/\$\{season\.season\}/);
+assert.match(profileSource, /Current Season/);
+assert.match(profileSource, /owner\.status === "active"/);
+assert.doesNotMatch(profileSource, /currentStandings|currentWeek|loadCurrentSeason/);
 assert.equal(readFileSync(path.join(root, "app/managers/page.tsx"), "utf8").includes("ACTIVE_LCC_OWNERS"), true);
 
 console.log("LCC Managers diagnostics: PASS");
@@ -83,6 +158,7 @@ console.log("- 2026 roster-to-owner mapping is unique and complete");
 console.log(`- ${historicalAliases.length} historical aliases resolve without guessing`);
 console.log("- career placement parity and legacy isolation checked");
 console.log("- verified tenure spans, active status, season links, and co-owner isolation checked");
+console.log("- active current-season context, retired-owner exclusion, and Scheduled status parity checked");
 
 for (const owner of ALL_LCC_OWNERS) {
   const tenure = getVerifiedOwnerTenure(owner.id, owner.status);
