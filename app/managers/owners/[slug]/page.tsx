@@ -585,7 +585,7 @@ function OwnerQuote({ value }: { value: string }) {
         </p>
       </div>
       <p className="font-serif text-base font-black italic leading-tight text-[var(--lcc-color-text)]">
-        "{value}"
+        &quot;{value}&quot;
       </p>
     </div>
   );

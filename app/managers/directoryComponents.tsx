@@ -348,16 +348,6 @@ function CompactBadge({ children, icon, tone }: { children: ReactNode; icon?: Re
   return <span className={`lcc2-badge lcc2-badge--${tone} gap-1`}>{icon}{children}</span>;
 }
 
-function CompactStat({ label, value, icon, tone }: { label: string; value: string; icon: ReactNode; tone: "achievement" | "info" | "neutral" }) {
-  return (
-    <div className="rounded-lg border border-[var(--lcc-color-border)] bg-[var(--lcc-color-surface)] px-2 py-2.5 text-center">
-      <div className={`mx-auto mb-1 flex h-6 w-6 items-center justify-center rounded-md ${tone === "achievement" ? "bg-[var(--lcc-color-surface)] text-[var(--lcc-semantic-achievement)]" : tone === "info" ? "bg-[var(--lcc-color-surface)] text-[var(--lcc-interactive)]" : "bg-[var(--lcc-color-surface-muted)] text-[var(--lcc-color-text-muted)]"}`}>{icon}</div>
-      <p className="font-ui text-lg font-black leading-none text-[var(--lcc-color-text)]">{value}</p>
-      <p className="mt-1 font-ui text-[0.58rem] font-black uppercase tracking-[0.06em] text-[var(--lcc-color-text-muted)]">{label}</p>
-    </div>
-  );
-}
-
 function DirectoryStat({
   label,
   value,
