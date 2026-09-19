@@ -130,6 +130,24 @@ export async function loadCurrentSeasonMatchups(week: number): Promise<readonly 
   }
 }
 
+export function applyAuthoritativeCurrentWeekFinality(
+  matchups: readonly HistoricalMatchup[],
+  state: Pick<HomeCurrentWeekState, "week" | "safeCompletedWeek">,
+): readonly HistoricalMatchup[] {
+  if (
+    state.week === null ||
+    state.safeCompletedWeek === null ||
+    state.week > state.safeCompletedWeek
+  ) {
+    return matchups;
+  }
+
+  return matchups.map((matchup) => ({
+    ...matchup,
+    currentStatus: "FINAL",
+  }));
+}
+
 function scoreFor(entry: CurrentSleeperMatchup): number | null {
   if (typeof entry.custom_points === "number") return entry.custom_points;
   return typeof entry.points === "number" ? entry.points : null;

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { formatCurrentSeasonMessage } from "../app/page.tsx";
-import { buildCurrentSeasonMatchups, buildHomeMatchupView, resolveHomeCurrentWeek } from "../lib/homeCurrentSeason.ts";
+import { applyAuthoritativeCurrentWeekFinality, buildCurrentSeasonMatchups, buildHomeMatchupView, resolveHomeCurrentWeek } from "../lib/homeCurrentSeason.ts";
 import { getLccOwnerBySleeperUserId } from "../lib/lccOwners.ts";
 import { formatMatchupStatus } from "../lib/matchupStatus.ts";
 
@@ -29,6 +29,16 @@ assert.deepEqual([current[0].ownerAId, current[0].ownerBId], [ray.id, rob.id]);
 assert.deepEqual([current[0].ownerAScore, current[0].ownerBScore], [140.41, 162.34]);
 assert.equal(current[0].winnerOwnerId, null);
 assert.equal(current[0].currentStatus, "UNKNOWN");
+const activeWeekState = resolveHomeCurrentWeek({ season: "2026", settings: { leg: 2 } });
+assert.equal(activeWeekState.safeCompletedWeek, 1);
+const activeWeekMatchups = applyAuthoritativeCurrentWeekFinality(current, activeWeekState);
+assert.equal(activeWeekMatchups[0].currentStatus, "UNKNOWN");
+assert.equal(formatMatchupStatus(activeWeekMatchups[0].currentStatus), "In Progress");
+const completedWeekState = resolveHomeCurrentWeek({ season: "2026", settings: { leg: 2, last_scored_leg: 2 } });
+assert.equal(completedWeekState.safeCompletedWeek, 2);
+const completedWeekMatchups = applyAuthoritativeCurrentWeekFinality(current, completedWeekState);
+assert.equal(completedWeekMatchups[0].currentStatus, "FINAL");
+assert.equal(formatMatchupStatus(completedWeekMatchups[0].currentStatus), "Final");
 const upcoming = buildCurrentSeasonMatchups(
   [{ matchup_id: 2, roster_id: 1, points: 0 }, { matchup_id: 2, roster_id: 2, points: 0 }],
   [{ roster_id: 1, owner_id: ray.sleeperUserId! }, { roster_id: 2, owner_id: rob.sleeperUserId! }],
@@ -36,11 +46,14 @@ const upcoming = buildCurrentSeasonMatchups(
 );
 assert.equal(upcoming.length, 1);
 assert.equal(upcoming[0].currentStatus, "UPCOMING");
+const completedUpcoming = applyAuthoritativeCurrentWeekFinality(upcoming, completedWeekState);
+assert.equal(completedUpcoming[0].currentStatus, "FINAL");
 assert.equal(formatMatchupStatus("UPCOMING"), "Scheduled");
 assert.equal(formatMatchupStatus("LIVE"), "Live");
 assert.equal(formatMatchupStatus("FINAL"), "Final");
 assert.equal(formatMatchupStatus("UNKNOWN"), "In Progress");
 assert.equal(formatMatchupStatus(undefined), "Final");
+assert.equal(formatMatchupStatus("FINAL"), "Final");
 
 const matchupCenterSource = readFileSync("app/matchups/MatchupCenterClient.tsx", "utf8");
 assert.match(matchupCenterSource, /formatMatchupStatus\(matchup\.currentStatus\)/);

@@ -1,6 +1,6 @@
 import { getLeagueInfo } from "./sleeper.ts";
 import { LCC_CURRENT_SEASON } from "./leagueConstants.ts";
-import { loadCurrentSeasonMatchups, resolveHomeCurrentWeek, type HomeCurrentWeekState } from "./homeCurrentSeason.ts";
+import { applyAuthoritativeCurrentWeekFinality, loadCurrentSeasonMatchups, resolveHomeCurrentWeek, type HomeCurrentWeekState } from "./homeCurrentSeason.ts";
 import type { HistoricalMatchup } from "./history/matchups.ts";
 
 export interface CurrentWeekSnapshot {
@@ -14,12 +14,13 @@ export interface CurrentWeekSnapshot {
 export async function loadCurrentWeekSnapshot(): Promise<CurrentWeekSnapshot> {
   try {
     const state = resolveHomeCurrentWeek(await getLeagueInfo(), LCC_CURRENT_SEASON);
+    const matchups = state.week === null ? [] : await loadCurrentSeasonMatchups(state.week);
     return {
       season: LCC_CURRENT_SEASON,
       week: state.week,
       state,
       fetchedAt: new Date().toISOString(),
-      matchups: state.week === null ? [] : await loadCurrentSeasonMatchups(state.week),
+      matchups: applyAuthoritativeCurrentWeekFinality(matchups, state),
     };
   } catch {
     const state = resolveHomeCurrentWeek(null, LCC_CURRENT_SEASON);
