@@ -34,6 +34,7 @@ export default async function MatchupsPage() {
       owners={owners}
       matchups={matchups}
       currentSeasonState={currentSeasonState}
+      postseason={currentSnapshot.postseason}
     />
   );
 }

@@ -10,6 +10,8 @@ import {
 import { formatMatchupStatus, type MatchupStatus } from "./matchupStatus";
 import { LCC_CURRENT_SEASON } from "./leagueConstants";
 import type { HomeSeasonPhase } from "./homeCurrentSeason";
+import type { PostseasonContext } from "./postseason/types";
+import { getCurrentPostseasonContext } from "./postseason/bracketAdapter";
 
 export type CurrentManagerStanding = CurrentStanding & {
   readonly rank: number;
@@ -24,6 +26,7 @@ export type CurrentManagerMatchup = {
   readonly opponentScore: number | null;
   readonly status: MatchupStatus;
   readonly statusLabel: string;
+  readonly postseason: PostseasonContext | null;
 };
 
 export type CurrentManagerSeasonContext = {
@@ -32,6 +35,7 @@ export type CurrentManagerSeasonContext = {
   readonly franchiseName: string;
   readonly standing: CurrentManagerStanding | null;
   readonly matchup: CurrentManagerMatchup | null;
+  readonly postseasonStatus: "complete" | "unresolved" | "unavailable" | null;
   readonly source: "snapshot" | "unavailable";
 };
 
@@ -59,6 +63,7 @@ export function buildCurrentManagerSeasonContext(
     : null;
   const opponent = opponentId ? getLccOwnerById(opponentId) : null;
   const status = currentMatchup?.currentStatus ?? null;
+  const postseason = getCurrentPostseasonContext(snapshot?.postseason, ownerId);
 
   return {
     season: snapshot?.season ?? LCC_CURRENT_SEASON,
@@ -66,22 +71,21 @@ export function buildCurrentManagerSeasonContext(
     franchiseName: owner?.managerPage.sleeperName ?? "Current franchise",
     standing,
     matchup:
-      currentMatchup && opponent && typeof currentMatchup.week === "number" && status
+      (currentMatchup && opponent && typeof currentMatchup.week === "number" && status)
+        || postseason?.isBye
         ? {
-            week: currentMatchup.week,
-            opponentOwnerId: opponent.id,
-            opponentName: opponent.managerPage.sleeperName,
-            opponentDisplayName: opponent.displayName,
-            ownerScore: ownerIsA
-              ? currentMatchup.ownerAScore
-              : currentMatchup.ownerBScore,
-            opponentScore: ownerIsA
-              ? currentMatchup.ownerBScore
-              : currentMatchup.ownerAScore,
-            status,
-            statusLabel: formatMatchupStatus(status),
+            week: currentMatchup?.week ?? snapshot?.week ?? 0,
+            opponentOwnerId: opponent?.id ?? "",
+            opponentName: opponent?.managerPage.sleeperName ?? "",
+            opponentDisplayName: opponent?.displayName ?? "",
+            ownerScore: currentMatchup ? (ownerIsA ? currentMatchup.ownerAScore : currentMatchup.ownerBScore) : null,
+            opponentScore: currentMatchup ? (ownerIsA ? currentMatchup.ownerBScore : currentMatchup.ownerAScore) : null,
+            status: status ?? "UNKNOWN",
+            statusLabel: postseason?.isBye ? "Bye" : formatMatchupStatus(status ?? undefined),
+            postseason,
           }
-        : null,
+      : null,
+    postseasonStatus: snapshot?.postseason?.sourceStatus ?? null,
     source: snapshot ? "snapshot" : "unavailable",
   };
 }

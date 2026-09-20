@@ -32,6 +32,7 @@ export interface HistoricalMatchup {
   readonly ownerBBenchDataAvailable?: boolean;
   readonly notes?: readonly string[];
   readonly currentStatus?: "UPCOMING" | "LIVE" | "FINAL" | "UNKNOWN";
+  readonly postseason?: import("../postseason/types").PostseasonContext;
 }
 
 import { generateHistoricalMatchups } from "./generateMatchups";

@@ -65,12 +65,13 @@ export default async function HomePage() {
 }
 
 function buildHomeView(snapshot: CurrentWeekSnapshot, member: Parameters<typeof buildHomeMatchupViewFromCurrentMatchups>[1]): HomeCurrentSeasonView {
-  const matchup = buildHomeMatchupViewFromCurrentMatchups(snapshot.matchups, member, snapshot.week);
+  const matchup = buildHomeMatchupViewFromCurrentMatchups(snapshot.matchups, member, snapshot.week, snapshot.postseason);
   return {
     week: snapshot.state,
     matchup: snapshot.week !== null && snapshot.state.safeCompletedWeek !== null && snapshot.week <= snapshot.state.safeCompletedWeek
       ? { ...matchup, state: matchup.state === "unavailable" ? "unavailable" : "complete" }
       : matchup,
+    postseasonStatus: snapshot.postseason?.sourceStatus,
   };
 }
 
@@ -181,13 +182,14 @@ function HomeDashboardTopRow({ currentView, snapshot, weeklyHighBoard, personalS
 
 function WeeklySpotlight({ currentView, snapshot, weeklyHighBoard }: { currentView: HomeCurrentSeasonView; snapshot: CurrentWeekSnapshot; weeklyHighBoard: Awaited<ReturnType<typeof getWeeklyHighBoard>> }) {
   const matchupSummary = summarizeHomeMatchups(snapshot.matchups);
+  const playoffRound = snapshot.matchups.find((matchup) => matchup.postseason)?.postseason?.roundLabel;
   const latestWeek = currentView.week.latestCompletedWeek;
   const latestHigh = latestWeek ? weeklyHighBoard.find((item) => item.week === latestWeek && item.status === "FINAL") : null;
   const weekLabel = currentView.week.week ? `Week ${currentView.week.week}` : "Current week";
   const statusLabel = formatWeekState(currentView.week.state);
   return <article className="lcc2-card lcc2-card--raised lcc2-home-top-card flex min-w-0 flex-col p-5" aria-labelledby="weekly-spotlight-heading">
     <div className="flex items-start justify-between gap-3"><div><p className="lcc2-label">Weekly spotlight</p><h2 id="weekly-spotlight-heading" className="mt-3 lcc2-home-card-title">{weekLabel} · {statusLabel}</h2></div><Swords className="h-5 w-5 shrink-0 text-[var(--lcc-interactive)]" aria-hidden="true" /></div>
-    <div className="mt-5 grid gap-3"><SpotlightFact label="League matchups" value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups · ${matchupSummary.ownerCount} teams` : "Unavailable"} /><SpotlightFact label="Latest completed week" value={latestWeek ? `Week ${latestWeek}` : "Not available"} /><SpotlightFact label="Latest weekly high" value={latestHigh?.franchiseName && latestHigh.score !== null ? `${latestHigh.franchiseName} · ${latestHigh.score.toFixed(2)}` : "Awaiting finality"} /></div>
+    <div className="mt-5 grid gap-3"><SpotlightFact label={currentView.week.phase === "POSTSEASON" ? "Active playoff matchups" : "League matchups"} value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups · ${matchupSummary.ownerCount} teams` : "Unavailable"} />{playoffRound ? <SpotlightFact label="Playoff round" value={playoffRound} /> : null}<SpotlightFact label="Latest completed week" value={latestWeek ? `Week ${latestWeek}` : "Not available"} /><SpotlightFact label="Latest weekly high" value={latestHigh?.franchiseName && latestHigh.score !== null ? `${latestHigh.franchiseName} · ${latestHigh.score.toFixed(2)}` : "Awaiting finality"} /></div>
     <Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">View {weekLabel} Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
   </article>;
 }
@@ -200,7 +202,8 @@ function CurrentStandingsCard({ standings, postseason }: { standings: readonly C
 
 function LeagueMatchupsCard({ currentView, snapshot }: { currentView: HomeCurrentSeasonView; snapshot: CurrentWeekSnapshot }) {
   const matchupSummary = summarizeHomeMatchups(snapshot.matchups);
-  return <article className="lcc2-card lcc2-card--raised flex min-w-0 flex-col p-4 sm:p-5" aria-labelledby="league-matchups-heading"><div><p className="lcc2-label">League board</p><h3 id="league-matchups-heading" className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">{LCC_CURRENT_SEASON} matchups</h3><p className="lcc2-body mt-1">{currentView.week.week ? `Week ${currentView.week.week} · ${formatWeekState(currentView.week.state)}` : "Current week unavailable"}</p></div><div className="mt-5 grid gap-3"><SpotlightFact label="Matchup count" value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups` : "Unavailable"} /><SpotlightFact label="Teams represented" value={matchupSummary.ownerCount ? `${matchupSummary.ownerCount} teams` : "Unavailable"} />{matchupSummary.highestScore !== null ? <SpotlightFact label="Highest current score" value={matchupSummary.highestScore.toFixed(2)} /> : null}</div><Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">Open Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
+  const playoffRound = snapshot.matchups.find((matchup) => matchup.postseason)?.postseason?.roundLabel;
+  return <article className="lcc2-card lcc2-card--raised flex min-w-0 flex-col p-4 sm:p-5" aria-labelledby="league-matchups-heading"><div><p className="lcc2-label">League board</p><h3 id="league-matchups-heading" className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">{LCC_CURRENT_SEASON} matchups</h3><p className="lcc2-body mt-1">{currentView.week.week ? `${currentView.week.phase === "POSTSEASON" ? `${playoffRound ?? "Postseason"} · ` : ""}Week ${currentView.week.week} · ${formatWeekState(currentView.week.state)}` : "Current week unavailable"}</p></div><div className="mt-5 grid gap-3"><SpotlightFact label="Matchup count" value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups` : "Unavailable"} /><SpotlightFact label="Teams represented" value={matchupSummary.ownerCount ? `${matchupSummary.ownerCount} teams` : "Unavailable"} />{matchupSummary.highestScore !== null ? <SpotlightFact label="Highest current score" value={matchupSummary.highestScore.toFixed(2)} /> : null}</div><Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">Open Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
 }
 
 export function summarizeHomeMatchups(matchups: readonly Pick<HistoricalMatchup, "ownerAId" | "ownerBId" | "ownerAScore" | "ownerBScore">[]) {

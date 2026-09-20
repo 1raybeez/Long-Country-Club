@@ -9,6 +9,7 @@ import {
   Trophy,
 } from "lucide-react";
 import type { HomeCurrentWeekState } from "@/lib/homeCurrentSeason";
+import type { PostseasonContext, PostseasonSnapshot } from "@/lib/postseason/types";
 import { formatMatchupStatus, type MatchupStatus } from "@/lib/matchupStatus";
 import {
   useEffect,
@@ -49,6 +50,7 @@ type HistoricalMatchup = {
   ownerABenchDataAvailable?: boolean;
   ownerBBenchDataAvailable?: boolean;
   currentStatus?: "UPCOMING" | "LIVE" | "FINAL" | "UNKNOWN";
+  postseason?: PostseasonContext;
 };
 
 export function MatchupCenterClient({
@@ -57,12 +59,14 @@ export function MatchupCenterClient({
   owners,
   matchups,
   currentSeasonState,
+  postseason = null,
 }: {
   currentSeason: number;
   seasons: readonly number[];
   owners: readonly OwnerOption[];
   matchups: readonly HistoricalMatchup[];
   currentSeasonState: HomeCurrentWeekState;
+  postseason?: PostseasonSnapshot | null;
 }) {
   const [season, setSeason] = useState(String(currentSeason));
   const [gameView, setGameView] =
@@ -292,6 +296,13 @@ export function MatchupCenterClient({
           </div>
         </section>
 
+        {seasonNumber === currentSeason && currentSeasonState.phase === "POSTSEASON" && postseason ? (
+          <PostseasonByes postseason={postseason} currentWeek={currentSeasonState.week} owners={owners} />
+        ) : null}
+        {seasonNumber === currentSeason && currentSeasonState.phase === "POSTSEASON" && !postseason ? (
+          <div className="lcc2-card mt-5"><p className="lcc2-label">Playoff bracket details temporarily unavailable.</p></div>
+        ) : null}
+
         <section className="lcc2-card mt-8">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -354,6 +365,13 @@ export function MatchupCenterClient({
       </div>
     </main>
   );
+}
+
+function PostseasonByes({ postseason, currentWeek, owners }: { postseason: PostseasonSnapshot; currentWeek: number | null; owners: readonly OwnerOption[] }) {
+  const round = currentWeek === null ? null : currentWeek - postseason.playoffWeekStart + 1;
+  const byes = postseason.contexts.filter((context) => context.isBye && (round === null || context.roundNumber === round));
+  if (!byes.length) return null;
+  return <section className="lcc2-card mt-5" aria-labelledby="postseason-byes-heading"><p className="lcc2-section-heading__eyebrow">Playoff context</p><h2 id="postseason-byes-heading" className="mt-2 lcc2-section-heading__title">First-round byes</h2><p className="lcc2-body mt-2">These teams advance automatically. No score is fabricated for a bye.</p><div className="mt-4 flex flex-wrap gap-2">{byes.map((bye) => <span key={`${bye.matchupId ?? "bye"}-${bye.ownerId ?? bye.rosterId}`} className="lcc2-badge lcc2-badge--info">{owners.find((owner) => owner.id === bye.ownerId)?.displayName ?? bye.ownerId ?? "Team pending"} · Bye</span>)}</div></section>;
 }
 
 function MatchupCard({
@@ -459,6 +477,19 @@ function MatchupCard({
           <span className={`lcc2-badge ${getTypeBadgeClass(matchup.type)}`}>
             {formatType(matchup.type)}
           </span>
+          {matchup.postseason ? (
+            <>
+              <span className="lcc2-badge lcc2-badge--info">
+                {matchup.postseason.roundLabel}
+              </span>
+              <span className="lcc2-badge lcc2-badge--neutral">
+                {matchup.postseason.bracketType === "winners" ? "Championship Bracket" : "Consolation Bracket"}
+              </span>
+              {matchup.postseason.isChampionship ? <span className="lcc2-badge lcc2-badge--achievement">Championship</span> : null}
+              {matchup.postseason.isPlacementGame && !matchup.postseason.isChampionship ? <span className="lcc2-badge lcc2-badge--neutral">Placement Game</span> : null}
+              {matchup.postseason.seed !== null ? <span className="lcc2-badge lcc2-badge--neutral">Seed {matchup.postseason.seed}</span> : null}
+            </>
+          ) : null}
         </div>
 
         <Link

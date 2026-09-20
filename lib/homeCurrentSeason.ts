@@ -6,6 +6,8 @@ import { resolvePlayer } from "./history/playerRegistry.ts";
 import type { HistoricalLineupPlayer, HistoricalMatchup } from "./history/matchups.ts";
 import { resolveLccSeasonWeekState, type LccSeasonWeekState } from "./weekState.ts";
 import type { MatchupStatus } from "./matchupStatus.ts";
+import type { PostseasonContext, PostseasonSnapshot } from "./postseason/types.ts";
+import { getCurrentPostseasonContext } from "./postseason/bracketAdapter.ts";
 
 export type HomeSeasonPhase = "PRESEASON" | "REGULAR_SEASON" | "POSTSEASON" | "SEASON_COMPLETE" | "UNKNOWN";
 
@@ -34,11 +36,13 @@ export interface HomeMatchupView {
   readonly ownerScore: number | null;
   readonly opponentScore: number | null;
   readonly href: "/matchups";
+  readonly postseason?: PostseasonContext | null;
 }
 
 export interface HomeCurrentSeasonView {
   readonly week: HomeCurrentWeekState;
   readonly matchup: HomeMatchupView;
+  readonly postseasonStatus?: "complete" | "unresolved" | "unavailable";
 }
 
 export interface TrustedSleeperLeagueState {
@@ -209,8 +213,8 @@ export async function loadHomeCurrentSeasonView(
   try {
     const { loadCurrentWeekSnapshot } = await import("./currentWeekSnapshot.ts");
     const snapshot = await loadCurrentWeekSnapshot();
-    const matchup = buildHomeMatchupViewFromCurrentMatchups(snapshot.matchups, member, snapshot.week);
-    return { week: snapshot.state, matchup: snapshot.state.safeCompletedWeek !== null && snapshot.week !== null && snapshot.week <= snapshot.state.safeCompletedWeek ? { ...matchup, state: matchup.state === "unavailable" ? "unavailable" : "complete" } : matchup };
+    const matchup = buildHomeMatchupViewFromCurrentMatchups(snapshot.matchups, member, snapshot.week, snapshot.postseason);
+    return { week: snapshot.state, matchup: snapshot.state.safeCompletedWeek !== null && snapshot.week !== null && snapshot.week <= snapshot.state.safeCompletedWeek ? { ...matchup, state: matchup.state === "unavailable" ? "unavailable" : "complete" } : matchup, postseasonStatus: snapshot.postseason?.sourceStatus };
   } catch {
     return {
       week: { season: LCC_CURRENT_SEASON, phase: "UNKNOWN", week: null, source: "unavailable", state: "UNKNOWN", latestCompletedWeek: null, nextWeek: null, safeCompletedWeek: null, playoffWeekStart: null },
@@ -223,16 +227,24 @@ export function buildHomeMatchupViewFromCurrentMatchups(
   matchups: readonly HistoricalMatchup[] | null | undefined,
   member: LccMemberIdentity | null,
   week: number | null,
+  postseason: PostseasonSnapshot | null = null,
 ): HomeMatchupView {
   if (!member || week === null) return unavailableMatchup(week, member);
   const matchup = matchups?.find((candidate) => candidate.ownerAId === member.ownerId || candidate.ownerBId === member.ownerId);
-  if (!matchup) return unavailableMatchup(week, member);
+  if (!matchup) {
+    const postseasonContext = getCurrentPostseasonContext(postseason, member.ownerId);
+    if (postseasonContext?.isBye) {
+      const owner = getLccOwnerByIdSafe(member.ownerId);
+      return { state: "current", currentStatus: undefined, week, ownerId: member.ownerId, ownerName: owner?.managerPage.sleeperName ?? member.teamName, ownerDisplayName: member.displayName, opponentOwnerId: null, opponentName: null, opponentDisplayName: null, ownerScore: null, opponentScore: null, href: "/matchups", postseason: postseasonContext };
+    }
+    return unavailableMatchup(week, member);
+  }
   const ownerA = getLccOwnerById(member.ownerId);
   const owner = matchup.ownerAId === member.ownerId ? getLccOwnerByIdSafe(matchup.ownerAId) : getLccOwnerByIdSafe(matchup.ownerBId);
   const opponent = matchup.ownerAId === member.ownerId ? getLccOwnerByIdSafe(matchup.ownerBId) : getLccOwnerByIdSafe(matchup.ownerAId);
   const ownerScore = matchup.ownerAId === member.ownerId ? matchup.ownerAScore : matchup.ownerBScore;
   const opponentScore = matchup.ownerAId === member.ownerId ? matchup.ownerBScore : matchup.ownerAScore;
-  return { state: "current", currentStatus: matchup.currentStatus, week, ownerId: member.ownerId, ownerName: owner?.managerPage.sleeperName ?? member.teamName, ownerDisplayName: ownerA?.displayName ?? member.displayName, opponentOwnerId: opponent?.id ?? null, opponentName: opponent?.managerPage.sleeperName ?? null, opponentDisplayName: opponent?.displayName ?? null, ownerScore, opponentScore, href: "/matchups" };
+  return { state: "current", currentStatus: matchup.currentStatus, week, ownerId: member.ownerId, ownerName: owner?.managerPage.sleeperName ?? member.teamName, ownerDisplayName: ownerA?.displayName ?? member.displayName, opponentOwnerId: opponent?.id ?? null, opponentName: opponent?.managerPage.sleeperName ?? null, opponentDisplayName: opponent?.displayName ?? null, ownerScore, opponentScore, href: "/matchups", postseason: matchup.postseason ?? getCurrentPostseasonContext(postseason, member.ownerId) };
 }
 
 function currentMatchupStatus(ownerScore: number | null, opponentScore: number | null): MatchupStatus {
@@ -249,6 +261,6 @@ function unavailableMatchup(week: number | null, member: LccMemberIdentity | nul
   return {
     state: "unavailable", week, ownerId: member?.ownerId ?? null, ownerName: member?.displayName ?? null,
     ownerDisplayName: member?.displayName ?? null, opponentOwnerId: null, opponentName: null,
-    opponentDisplayName: null, ownerScore: null, opponentScore: null, href: "/matchups",
+    opponentDisplayName: null, ownerScore: null, opponentScore: null, href: "/matchups", postseason: null,
   };
 }

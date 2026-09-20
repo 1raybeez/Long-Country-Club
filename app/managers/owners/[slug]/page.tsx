@@ -374,23 +374,28 @@ function CurrentSeasonSection({
                 Week {context.matchup.week} Matchup
               </p>
               <p className="mt-1 font-ui text-base font-black text-[var(--lcc-color-text)]">
-                vs. {context.matchup.opponentName}
+                {context.matchup.postseason?.isBye ? "First-round bye" : `vs. ${context.matchup.opponentName}`}
               </p>
               <p className="mt-1 text-sm font-semibold text-[var(--lcc-color-text-muted)]">
-                {context.matchup.opponentDisplayName}
+                {context.matchup.postseason?.isBye ? "You advance automatically to the next playoff round." : context.matchup.opponentDisplayName}
                 {context.matchup.ownerScore !== null &&
                 context.matchup.opponentScore !== null
                   ? ` · ${context.matchup.ownerScore}–${context.matchup.opponentScore}`
                   : " · Scores not available"}
               </p>
             </div>
-            <span className="lcc2-badge lcc2-badge--neutral">
-              {context.matchup.statusLabel}
-            </span>
+              <span className="lcc2-badge lcc2-badge--neutral">
+                {context.matchup.statusLabel}
+              </span>
+              {context.matchup.postseason && !context.matchup.postseason.isBye ? (
+                <span className="lcc2-badge lcc2-badge--neutral">
+                  {context.matchup.postseason.roundLabel} · {context.matchup.postseason.bracketType === "winners" ? "Championship Bracket" : "Consolation Bracket"}
+                </span>
+              ) : null}
           </div>
         ) : (
           <p className="text-sm font-semibold text-[var(--lcc-color-text-muted)]">
-            Current matchup data is not available right now.
+            {context.phase === "POSTSEASON" && context.postseasonStatus === "unavailable" ? "Playoff bracket details temporarily unavailable." : "Current matchup data is not available right now."}
           </p>
         )}
         <Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-3 w-full sm:w-auto">
