@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { formatCurrentSeasonMessage } from "../app/page.tsx";
+import { formatCurrentSeasonMessage, summarizeHomeMatchups } from "../app/page.tsx";
 import { applyAuthoritativeCurrentWeekFinality, buildCurrentSeasonMatchups, buildHomeMatchupView, resolveHomeCurrentWeek } from "../lib/homeCurrentSeason.ts";
 import { getLccOwnerBySleeperUserId } from "../lib/lccOwners.ts";
 import { formatMatchupStatus } from "../lib/matchupStatus.ts";
@@ -69,5 +69,7 @@ assert.equal(home.ownerName, "Bower Rangers");
 assert.equal(home.opponentName, "Roaring 20");
 assert.deepEqual([home.ownerScore, home.opponentScore], [140.41, 162.34]);
 assert.equal(formatCurrentSeasonMessage({ week, matchup: home }), "Week 1: Bower Rangers 140.41 · Roaring 20 162.34.");
+const productionShape = Array.from({ length: 6 }, (_, index) => ({ ownerAId: `owner-a-${index}`, ownerBId: `owner-b-${index}`, ownerAScore: index + 1, ownerBScore: index + 2 }));
+assert.deepEqual(summarizeHomeMatchups(productionShape), { matchupCount: 6, ownerCount: 12, highestScore: 7 });
 
 console.log("LCC current-season parity diagnostics passed: shared week state, runtime matchup mapping, scores, and Home franchise identity.");

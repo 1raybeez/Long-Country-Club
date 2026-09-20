@@ -61,10 +61,20 @@ for (const [status, label] of [["UPCOMING", "Scheduled"], ["LIVE", "Live"], ["UN
 assert.equal(buildHomeMatchupViewFromCurrentMatchups([], member, 2).state, "unavailable");
 
 const homeSource = readFileSync("app/HomeLiveAction.tsx", "utf8");
+const dashboardSource = readFileSync("app/page.tsx", "utf8");
 const routeSource = readFileSync("app/api/current-week/route.ts", "utf8");
 assert.equal((homeSource.match(/setInterval\(/g) ?? []).length, 1);
 assert.match(homeSource, /visibilitychange/);
 assert.match(homeSource, /window\.addEventListener\("focus"/);
 assert.match(homeSource, /formatMatchupStatus/);
 assert.match(routeSource, /no-store/);
-console.log("LCC Home current-season diagnostics passed: event expiration, shared matchup statuses, null-score pregame preservation, neutral fallbacks, and polling safeguards.");
+assert.match(dashboardSource, /WeeklySpotlight/);
+assert.match(dashboardSource, /CurrentStandingsCard/);
+assert.match(dashboardSource, /LeagueMatchupsCard/);
+assert.match(dashboardSource, /HomePredictorPreview/);
+assert.match(dashboardSource, /personalStanding/);
+assert.doesNotMatch(dashboardSource, /Power Rankings/);
+assert.doesNotMatch(dashboardSource, /HomeLeagueHub/);
+assert.match(dashboardSource, /league-info\/trophy-room/);
+assert.equal((homeSource.match(/setInterval\(/g) ?? []).length, 1, "Home dashboard composition keeps one polling loop");
+console.log("LCC Home current-season diagnostics passed: event expiration, shared matchup statuses, null-score pregame preservation, neutral fallbacks, polling safeguards, and Dashboard V2 composition.");

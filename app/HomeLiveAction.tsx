@@ -7,8 +7,9 @@ import { getOwnerById } from "@/lib/ownerRegistry";
 import type { HomeCurrentSeasonView } from "@/lib/homeCurrentSeason";
 import type { HistoricalMatchup } from "@/lib/history/matchups";
 import { formatMatchupStatus } from "@/lib/matchupStatus";
+import type { CurrentStanding } from "@/lib/currentStandings";
 
-export function HomeLiveAction({ initialView }: { initialView: HomeCurrentSeasonView }) {
+export function HomeLiveAction({ initialView, personalStanding }: { initialView: HomeCurrentSeasonView; personalStanding: (CurrentStanding & { rank: number }) | null }) {
   const [view, setView] = useState(initialView);
   const lastRefreshAt = useRef(0);
   useEffect(() => {
@@ -45,5 +46,5 @@ export function HomeLiveAction({ initialView }: { initialView: HomeCurrentSeason
     : view.matchup.currentStatus === "UPCOMING" && view.matchup.opponentName
       ? `Week ${view.week.week}: scheduled against ${view.matchup.opponentName}. Scores will appear when available.`
       : `Week ${view.week.week ?? "current"} is underway. Open Matchups for the league board.`;
-  return <article className="lcc2-card lcc2-card--dark lcc2-home-top-card lcc2-home-live-action"><div className="flex items-start justify-between gap-4"><div><p className="lcc2-label">{view.week.week ? `Week ${view.week.week}` : "Current league action"}</p><h2 className="mt-3 lcc2-home-card-title">{view.matchup.state === "complete" ? "Your matchup result" : "Your matchup"}</h2></div><Trophy className="h-5 w-5 shrink-0 text-[var(--lcc-color-blue-hover)]" aria-hidden="true" /></div>{statusLabel ? <p className="mt-3 font-ui text-sm font-black text-[var(--lcc-color-blue-hover)]" data-testid="home-matchup-status">{statusLabel}</p> : null}<p className="mt-3 lcc2-body">{message}</p><Link href="/matchups" className="lcc2-button lcc2-button--primary mt-6 w-full">View Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
+  return <article className="lcc2-card lcc2-card--dark lcc2-home-top-card lcc2-home-live-action"><div className="flex items-start justify-between gap-4"><div><p className="lcc2-label">{view.week.week ? `Week ${view.week.week}` : "Current league action"}</p><h2 className="mt-3 lcc2-home-card-title">{view.matchup.state === "complete" ? "Your matchup result" : "Your matchup"}</h2></div><Trophy className="h-5 w-5 shrink-0 text-[var(--lcc-color-blue-hover)]" aria-hidden="true" /></div>{statusLabel ? <p className="mt-3 font-ui text-sm font-black text-[var(--lcc-color-blue-hover)]" data-testid="home-matchup-status">{statusLabel}</p> : null}<p className="mt-3 lcc2-body">{message}</p>{personalStanding ? <p className="mt-3 font-ui text-xs font-black uppercase tracking-[0.08em] text-[var(--lcc-color-blue-hover)]">Record: {personalStanding.wins}-{personalStanding.losses}{personalStanding.ties ? `-${personalStanding.ties}` : ""} · Rank {personalStanding.rank ?? "—"}</p> : null}<Link href="/matchups" className="lcc2-button lcc2-button--primary mt-6 w-full">View Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
 }
