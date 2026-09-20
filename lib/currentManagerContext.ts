@@ -9,6 +9,7 @@ import {
 } from "./currentWeekSnapshot";
 import { formatMatchupStatus, type MatchupStatus } from "./matchupStatus";
 import { LCC_CURRENT_SEASON } from "./leagueConstants";
+import type { HomeSeasonPhase } from "./homeCurrentSeason";
 
 export type CurrentManagerStanding = CurrentStanding & {
   readonly rank: number;
@@ -27,6 +28,7 @@ export type CurrentManagerMatchup = {
 
 export type CurrentManagerSeasonContext = {
   readonly season: number;
+  readonly phase: HomeSeasonPhase;
   readonly franchiseName: string;
   readonly standing: CurrentManagerStanding | null;
   readonly matchup: CurrentManagerMatchup | null;
@@ -60,6 +62,7 @@ export function buildCurrentManagerSeasonContext(
 
   return {
     season: snapshot?.season ?? LCC_CURRENT_SEASON,
+    phase: snapshot?.state.phase ?? "UNKNOWN",
     franchiseName: owner?.managerPage.sleeperName ?? "Current franchise",
     standing,
     matchup:
@@ -89,7 +92,9 @@ export async function loadCurrentManagerSeasonContext(
   try {
     const snapshot = await loadCurrentWeekSnapshot();
     const standings = await loadCurrentSeasonStandings(
-      snapshot.state.safeCompletedWeek
+      snapshot.state.safeCompletedWeek,
+      snapshot.season,
+      snapshot.state.playoffWeekStart,
     );
 
     return buildCurrentManagerSeasonContext(ownerId, standings, snapshot);

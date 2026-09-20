@@ -1,16 +1,19 @@
 import { getLeagueRosters, getMatchupsForWeek } from "./sleeper.ts";
 import { getLccOwnerBySleeperUserId } from "./lccOwners.ts";
 import { LCC_CURRENT_LEAGUE_ID, LCC_CURRENT_SEASON } from "./leagueConstants.ts";
+import { getRegularSeasonStandingsThroughWeek } from "./weekState.ts";
 
 export interface CurrentStanding { readonly franchiseId: string; readonly franchiseName: string; readonly wins: number; readonly losses: number; readonly ties: number; readonly pointsFor: number; }
 
-export async function loadCurrentSeasonStandings(throughWeek: number | null, season = LCC_CURRENT_SEASON): Promise<readonly CurrentStanding[]> {
-  if (!throughWeek || throughWeek < 1) return [];
+export async function loadCurrentSeasonStandings(throughWeek: number | null, season = LCC_CURRENT_SEASON, playoffWeekStart: number | null = null): Promise<readonly CurrentStanding[]> {
+  void season;
+  const standingsThroughWeek = getRegularSeasonStandingsThroughWeek(throughWeek, playoffWeekStart);
+  if (!standingsThroughWeek || standingsThroughWeek < 1) return [];
   try {
     const rosters = await getLeagueRosters(LCC_CURRENT_LEAGUE_ID) as readonly { roster_id: number; owner_id: string }[];
     const owners = new Map(rosters.map((roster) => [roster.roster_id, getLccOwnerBySleeperUserId(roster.owner_id)]));
     const totals = new Map<string, { owner: NonNullable<ReturnType<typeof getLccOwnerBySleeperUserId>>; wins: number; losses: number; ties: number; pointsFor: number }>();
-    for (let week = 1; week <= throughWeek; week += 1) {
+    for (let week = 1; week <= standingsThroughWeek; week += 1) {
       const rows = await getMatchupsForWeek(week, LCC_CURRENT_LEAGUE_ID) as readonly { matchup_id: number | null; roster_id: number; points?: number | null; custom_points?: number | null }[];
       const grouped = new Map<number, typeof rows[number][]>();
       rows.forEach((row) => { if (typeof row.matchup_id === "number") grouped.set(row.matchup_id, [...(grouped.get(row.matchup_id) ?? []), row]); });

@@ -18,6 +18,7 @@ export interface HomeCurrentWeekState {
   readonly latestCompletedWeek: number | null;
   readonly nextWeek: number | null;
   readonly safeCompletedWeek: number | null;
+  readonly playoffWeekStart: number | null;
 }
 
 export interface HomeMatchupView {
@@ -52,7 +53,7 @@ export function resolveHomeCurrentWeek(
 ): HomeCurrentWeekState {
   const state = resolveLccSeasonWeekState(league, season);
   const phase: HomeSeasonPhase = state.state === "PRESEASON" ? "PRESEASON" : state.state === "SEASON_COMPLETE" ? "SEASON_COMPLETE" : state.state === "UNKNOWN" ? "UNKNOWN" : state.playoffWeekStart && (state.activeWeek ?? 0) >= state.playoffWeekStart ? "POSTSEASON" : "REGULAR_SEASON";
-  return { season, phase, week: state.activeWeek, source: state.source, state: state.state, latestCompletedWeek: state.latestCompletedWeek, nextWeek: state.nextWeek, safeCompletedWeek: state.safeCompletedWeek };
+  return { season, phase, week: state.activeWeek, source: state.source, state: state.state, latestCompletedWeek: state.latestCompletedWeek, nextWeek: state.nextWeek, safeCompletedWeek: state.safeCompletedWeek, playoffWeekStart: state.playoffWeekStart };
 }
 
 type SleeperRoster = { readonly roster_id: number; readonly owner_id: string };
@@ -212,7 +213,7 @@ export async function loadHomeCurrentSeasonView(
     return { week: snapshot.state, matchup: snapshot.state.safeCompletedWeek !== null && snapshot.week !== null && snapshot.week <= snapshot.state.safeCompletedWeek ? { ...matchup, state: matchup.state === "unavailable" ? "unavailable" : "complete" } : matchup };
   } catch {
     return {
-      week: { season: LCC_CURRENT_SEASON, phase: "UNKNOWN", week: null, source: "unavailable", state: "UNKNOWN", latestCompletedWeek: null, nextWeek: null, safeCompletedWeek: null },
+      week: { season: LCC_CURRENT_SEASON, phase: "UNKNOWN", week: null, source: "unavailable", state: "UNKNOWN", latestCompletedWeek: null, nextWeek: null, safeCompletedWeek: null, playoffWeekStart: null },
       matchup: unavailableMatchup(null, member),
     };
   }

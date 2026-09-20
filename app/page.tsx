@@ -47,7 +47,7 @@ export default async function HomePage() {
   const snapshot = await loadCurrentWeekSnapshot();
   const currentView = buildHomeView(snapshot, session?.member ?? null);
   const weeklyHighBoard = await getWeeklyHighBoard(LCC_CURRENT_SEASON);
-  const standings = await loadCurrentSeasonStandings(currentView.week.safeCompletedWeek);
+  const standings = await loadCurrentSeasonStandings(currentView.week.safeCompletedWeek, LCC_CURRENT_SEASON, currentView.week.playoffWeekStart);
   const leagueContext = await loadHomeLeagueContext(LCC_CURRENT_SEASON);
   const recap = await loadHomeWeeklyRecap(currentView.week, weeklyHighBoard);
   const personalStanding = standings.reduce<CurrentStanding & { rank: number } | null>((found, standing, index) => found ?? (standing.franchiseId === session?.member?.ownerId ? { ...standing, rank: index + 1 } : null), null);
@@ -78,7 +78,7 @@ function HomeDashboardCompetition({ currentView, snapshot, standings }: { curren
   return <section className="mt-8" aria-labelledby="home-competition-heading">
     <div className="lcc2-section-heading mb-5"><div><p className="lcc2-section-heading__eyebrow">Competition</p><h2 id="home-competition-heading" className="lcc2-section-heading__title">The league at a glance</h2></div></div>
     <div className="grid gap-4 lg:grid-cols-3">
-      <CurrentStandingsCard standings={standings} />
+      <CurrentStandingsCard standings={standings} postseason={currentView.week.phase === "POSTSEASON" || currentView.week.phase === "SEASON_COMPLETE"} />
       <LeagueMatchupsCard currentView={currentView} snapshot={snapshot} />
       <HomePredictorPreview />
     </div>
@@ -192,8 +192,10 @@ function WeeklySpotlight({ currentView, snapshot, weeklyHighBoard }: { currentVi
   </article>;
 }
 
-function CurrentStandingsCard({ standings }: { standings: readonly CurrentStanding[] }) {
-  return <article className="lcc2-card lcc2-card--raised flex min-w-0 flex-col p-4 sm:p-5" aria-labelledby="current-standings-heading"><div><p className="lcc2-label">Competition</p><h3 id="current-standings-heading" className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">Current standings</h3><p className="lcc2-body mt-1">Through the latest safely completed week.</p></div>{standings.length ? <ol className="mt-4 grid gap-2" aria-label="Top five current standings">{standings.slice(0, 5).map((standing, index) => <li key={standing.franchiseId} className="grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 border-b border-[var(--lcc-color-border)] pb-2 last:border-0"><span className="font-ui text-xs font-black text-[var(--lcc-color-text-muted)]">{index + 1}</span><span className="min-w-0 truncate font-ui text-sm font-black text-[var(--lcc-color-text)]">{standing.franchiseName}</span><span className="font-ui text-xs font-black text-[var(--lcc-color-text)]">{formatRecord(standing)}</span></li>)}</ol> : <p className="lcc2-body mt-4">Standings appear after a week is safely complete.</p>}<Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">View Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
+function CurrentStandingsCard({ standings, postseason }: { standings: readonly CurrentStanding[]; postseason: boolean }) {
+  const title = postseason ? "Final regular-season standings" : "Current standings";
+  const description = postseason ? "Frozen through the regular-season cutoff." : "Through the latest safely completed week.";
+  return <article className="lcc2-card lcc2-card--raised flex min-w-0 flex-col p-4 sm:p-5" aria-labelledby="current-standings-heading"><div><p className="lcc2-label">Competition</p><h3 id="current-standings-heading" className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">{title}</h3><p className="lcc2-body mt-1">{description}</p></div>{standings.length ? <ol className="mt-4 grid gap-2" aria-label="Top five current standings">{standings.slice(0, 5).map((standing, index) => <li key={standing.franchiseId} className="grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 border-b border-[var(--lcc-color-border)] pb-2 last:border-0"><span className="font-ui text-xs font-black text-[var(--lcc-color-text-muted)]">{index + 1}</span><span className="min-w-0 truncate font-ui text-sm font-black text-[var(--lcc-color-text)]">{standing.franchiseName}</span><span className="font-ui text-xs font-black text-[var(--lcc-color-text)]">{formatRecord(standing)}</span></li>)}</ol> : <p className="lcc2-body mt-4">Standings appear after a week is safely complete.</p>}<Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">View Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
 }
 
 function LeagueMatchupsCard({ currentView, snapshot }: { currentView: HomeCurrentSeasonView; snapshot: CurrentWeekSnapshot }) {

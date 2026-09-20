@@ -349,7 +349,7 @@ function CurrentSeasonSection({
           value={context.franchiseName}
         />
         <CurrentSeasonFact
-          label="Current Record"
+          label={context.phase === "POSTSEASON" || context.phase === "SEASON_COMPLETE" ? "Regular-Season Record" : "Current Record"}
           value={
             context.standing
               ? `${context.standing.wins}-${context.standing.losses}${context.standing.ties ? `-${context.standing.ties}` : ""}`
@@ -357,7 +357,7 @@ function CurrentSeasonSection({
           }
         />
         <CurrentSeasonFact
-          label="Current Standing"
+          label={context.phase === "POSTSEASON" || context.phase === "SEASON_COMPLETE" ? "Regular-Season Finish" : "Current Standing"}
           value={context.standing ? formatOrdinalPlace(context.standing.rank) : "Not available"}
         />
         <CurrentSeasonFact

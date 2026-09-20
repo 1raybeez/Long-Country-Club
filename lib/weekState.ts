@@ -4,6 +4,11 @@ import { LCC_CURRENT_LEAGUE_ID, LCC_CURRENT_SEASON } from "./leagueConstants.ts"
 export type LccWeekStateName = "PRESEASON" | "UPCOMING" | "LIVE" | "COMPLETED" | "SEASON_COMPLETE" | "UNKNOWN";
 export interface LccSeasonWeekState { readonly season: number; readonly state: LccWeekStateName; readonly activeWeek: number | null; readonly latestCompletedWeek: number | null; readonly nextWeek: number | null; readonly safeCompletedWeek: number | null; readonly playoffWeekStart: number | null; readonly source: "sleeper-league" | "unavailable"; }
 export interface SleeperWeekStateLeague { readonly season?: string | number | null; readonly status?: string | null; readonly settings?: { readonly leg?: number | null; readonly last_scored_leg?: number | null; readonly playoff_week_start?: number | null } | null; }
+export function getRegularSeasonStandingsThroughWeek(throughWeek: number | null, playoffWeekStart: number | null): number | null {
+  if (throughWeek === null) return null;
+  if (playoffWeekStart !== null && playoffWeekStart > 1) return Math.min(throughWeek, playoffWeekStart - 1);
+  return throughWeek;
+}
 export function resolveLccSeasonWeekState(league: SleeperWeekStateLeague | null | undefined, season = LCC_CURRENT_SEASON): LccSeasonWeekState {
   if (!league || Number(league.season) !== season) return unavailable(season);
   const playoffWeekStart = integerOrNull(league.settings?.playoff_week_start);

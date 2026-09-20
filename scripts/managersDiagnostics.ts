@@ -94,6 +94,7 @@ const currentSnapshot = {
     latestCompletedWeek: 1,
     nextWeek: 2,
     safeCompletedWeek: 1,
+    playoffWeekStart: 15,
   },
   fetchedAt: "diagnostic",
   matchups: currentMatchups,
