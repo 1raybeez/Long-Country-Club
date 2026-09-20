@@ -1,18 +1,21 @@
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Landmark, ShieldCheck } from "lucide-react";
 import type { HomeLeagueContext as HomeLeagueContextData } from "@/lib/homeLeagueContext";
+import type { HomeWeeklyRecap as HomeWeeklyRecapData } from "@/lib/homeWeeklyRecap";
+import { HomeWeeklyRecap } from "./HomeWeeklyRecap";
 
-export function HomeLeagueContext({ context }: { context: HomeLeagueContextData }) {
+export function HomeLeagueContext({ context, recap }: { context: HomeLeagueContextData; recap: HomeWeeklyRecapData }) {
   return (
     <section className="mt-8" aria-labelledby="home-league-heading">
       <div className="lcc2-section-heading mb-5">
         <div><p className="lcc2-section-heading__eyebrow">League</p><h2 id="home-league-heading" className="lcc2-section-heading__title">The LCC context</h2></div>
       </div>
-      <div className={`grid gap-4 md:grid-cols-2 ${context.nextEvent ? "lg:grid-cols-3" : "lg:max-w-[66.666667%]"}`}>
+      <div className={`grid gap-4 md:grid-cols-2 ${context.nextEvent ? "lg:grid-cols-3" : "lg:grid-cols-3"}`}>
         <HomePayoutsCard payouts={context.payouts} />
         <HomeGovernanceCard governance={context.governance} />
-        {context.nextEvent ? <HomeNextEventCard event={context.nextEvent} /> : null}
+        <HomeWeeklyRecap recap={recap} />
       </div>
+      {context.nextEvent ? <div className="mt-4 grid gap-4 lg:grid-cols-3"><HomeNextEventCard event={context.nextEvent} /></div> : null}
     </section>
   );
 }
