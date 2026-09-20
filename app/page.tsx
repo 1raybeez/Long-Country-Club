@@ -31,6 +31,8 @@ import { getWeeklyHighBoard } from "@/lib/finance/weeklyHigh";
 import { loadCurrentSeasonStandings } from "@/lib/currentStandings";
 import type { CurrentStanding } from "@/lib/currentStandings";
 import type { HistoricalMatchup } from "@/lib/history/matchups";
+import { loadHomeLeagueContext } from "@/lib/homeLeagueContext";
+import { HomeLeagueContext } from "./HomeLeagueContext";
 
 const CURRENT_HOME_CONFIG = HOME_SEASON_CONFIG[LCC_CURRENT_SEASON];
 const REIGNING_CHAMPION = getLccChampionBySeason(LCC_CURRENT_SEASON - 1);
@@ -45,6 +47,7 @@ export default async function HomePage() {
   const currentView = buildHomeView(snapshot, session?.member ?? null);
   const weeklyHighBoard = await getWeeklyHighBoard(LCC_CURRENT_SEASON);
   const standings = await loadCurrentSeasonStandings(currentView.week.safeCompletedWeek);
+  const leagueContext = await loadHomeLeagueContext(LCC_CURRENT_SEASON);
   const personalStanding = standings.reduce<CurrentStanding & { rank: number } | null>((found, standing, index) => found ?? (standing.franchiseId === session?.member?.ownerId ? { ...standing, rank: index + 1 } : null), null);
   return (
     <main className="lcc2-home-shell">
@@ -52,6 +55,7 @@ export default async function HomePage() {
         <HomeDashboardIdentityForState currentView={currentView} />
         <HomeDashboardTopRow currentView={currentView} snapshot={snapshot} weeklyHighBoard={weeklyHighBoard} personalStanding={personalStanding} />
         <HomeDashboardCompetition currentView={currentView} snapshot={snapshot} standings={standings} />
+        <HomeLeagueContext context={leagueContext} />
         <SeasonReadiness currentView={currentView} />
       </div>
     </main>

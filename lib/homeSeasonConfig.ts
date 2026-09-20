@@ -22,7 +22,7 @@ export function getHomeTeamLogoUrl(team: HomeSeasonTeam): string {
 
 export const HOME_SEASON_CONFIG: Readonly<Record<number, HomeSeasonConfig>> = {
   2026: {
-    phase: "PRESEASON",
+    phase: "IN-SEASON",
     kickoffDate: "2026-09-09",
     kickoffDisplay: "Wednesday, September 9, 2026",
     kickoffTime: "8:20 PM ET",

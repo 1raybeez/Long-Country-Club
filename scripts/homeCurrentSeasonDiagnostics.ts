@@ -4,6 +4,8 @@ import { getHomeEvents, selectNextHomeEvent } from "../lib/homeEvents.ts";
 import { buildCurrentSeasonMatchups, buildHomeMatchupView, buildHomeMatchupViewFromCurrentMatchups, resolveHomeCurrentWeek } from "../lib/homeCurrentSeason.ts";
 import { getLccOwnerBySleeperUserId } from "../lib/lccOwners.ts";
 import { formatMatchupStatus } from "../lib/matchupStatus.ts";
+import { projectHomePayouts } from "../lib/homeLeagueContext.ts";
+import type { PublicOperationalFinance } from "../lib/types/operationalFinance.ts";
 
 const beforeKickoff = new Date("2026-09-09T19:00:00-04:00");
 const afterKickoff = new Date("2026-09-15T12:00:00-04:00");
@@ -77,4 +79,35 @@ assert.doesNotMatch(dashboardSource, /Power Rankings/);
 assert.doesNotMatch(dashboardSource, /HomeLeagueHub/);
 assert.match(dashboardSource, /league-info\/trophy-room/);
 assert.equal((homeSource.match(/setInterval\(/g) ?? []).length, 1, "Home dashboard composition keeps one polling loop");
+const publicFinanceFixture: PublicOperationalFinance = {
+  season: 2026,
+  duesAssessed: 600,
+  duesCollected: 500,
+  duesOutstanding: 90,
+  awardCreditsApplied: 10,
+  paidCount: 10,
+  partialCount: 0,
+  unpaidCount: 2,
+  ownerPaymentStatuses: [{ ownerId: "private-owner", displayName: "Private Owner", teamName: "Private Team", paymentStatus: "unpaid" }],
+  publicAwards: { awards: [{ season: 2026, category: "weekly-high", week: 1, ownerId: "sycamore-bishops", displayName: "Anthony Martinez", teamName: "Sycamore Bishops", amountCents: 1000, status: "approved" }], approvedAwardCount: 1, paidAwardCount: 0, approvedOutstandingAmountCents: 1000, paidAwardAmountCents: 0, confirmedAwardAmountCents: 1000 },
+};
+const payoutSummary = projectHomePayouts(publicFinanceFixture);
+assert.equal(payoutSummary?.duesAssessed, 600);
+assert.equal(payoutSummary?.duesCollected, 500);
+assert.equal(payoutSummary?.duesOutstanding, 90);
+assert.equal(payoutSummary?.awardCreditsApplied, 10);
+assert.equal(payoutSummary?.latestWeeklyHigh?.teamName, "Sycamore Bishops");
+assert.equal(payoutSummary?.latestWeeklyHigh?.amountCents, 1000);
+for (const privateField of ["ownerPaymentStatuses", "paymentArrangements", "settlementControls", "ledgerId", "notes"]) assert.equal(privateField in (payoutSummary ?? {}), false, `Home payout projection leaks ${privateField}`);
+const leagueContextSource = readFileSync("app/HomeLeagueContext.tsx", "utf8");
+const leagueContextModelSource = readFileSync("lib/homeLeagueContext.ts", "utf8");
+assert.match(leagueContextSource, /View Fees &amp; Payouts/);
+assert.match(leagueContextModelSource, /Read Constitution/);
+assert.doesNotMatch(leagueContextSource, /No active league business|No votes open|No proposals|Vote now|Apply to Fees|Cash Paid/);
+assert.equal(selectNextHomeEvent(events, afterKickoff).event, null, "Expired configured event does not render");
+const futureEvent = { ...events[0], timestamp: "2027-09-09T20:20:00-04:00" };
+assert.equal(selectNextHomeEvent([futureEvent], afterKickoff).event?.id, futureEvent.id, "Verified future event remains renderable");
+assert.match(dashboardSource, /HomeLeagueContext/);
+assert.match(dashboardSource, /loadHomeLeagueContext/);
+assert.match(leagueContextSource, /nextEvent \?/);
 console.log("LCC Home current-season diagnostics passed: event expiration, shared matchup statuses, null-score pregame preservation, neutral fallbacks, polling safeguards, and Dashboard V2 composition.");
