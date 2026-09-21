@@ -4,7 +4,7 @@ import { getLccChampionBySeason } from "../lib/lccFinalPlacements.ts";
 import { getOwnerById } from "../lib/ownerRegistry.ts";
 import { getOwnerImagePath } from "../lib/ownerImages.ts";
 import { selectWeeklyHighFromTotals } from "../lib/finance/weeklyHigh.ts";
-import { classifyPrimeTime, isRenderableNflScoreboard, normalizeNflEvents, selectNflGame, type NflGame, type NflScoreboardView } from "../lib/nflScoreboard.ts";
+import { classifyPrimeTime, isRenderableNflScoreboard, normalizeNflEvents, retainLastGoodNflScoreboard, selectNflGame, type NflGame, type NflScoreboardView } from "../lib/nflScoreboard.ts";
 
 function game(id: string, kickoff: string, state: NflGame["state"], primeTime: NflGame["primeTime"], away = "ATL", home = "GB"): NflGame {
   return { id, week: 2, season: 2026, kickoff, state, statusLabel: state, detail: state === "LIVE" ? "2nd Quarter · 11:42" : state === "FINAL" ? "Final" : "Scheduled", period: state === "LIVE" ? 2 : null, clock: state === "LIVE" ? "11:42" : null, broadcast: primeTime === "TNF" ? "Prime Video" : primeTime === "SNF" ? "NBC" : primeTime === "MNF" ? "ESPN" : "FOX", primeTime, away: { abbreviation: away, name: `${away} team`, logo: `https://example.test/${away}.png`, score: state === "UPCOMING" ? null : 10 }, home: { abbreviation: home, name: `${home} team`, logo: `https://example.test/${home}.png`, score: state === "UPCOMING" ? null : 10 } };
@@ -27,6 +27,7 @@ assert.equal(selectNflGame([mnf], now)?.state, "UPCOMING");
 const validApiResponse: NflScoreboardView = { sourceStatus: "ok", reasonCode: null, fetchedAt: now.toISOString(), selected: mnf, games: [mnf], favoriteTeam: null };
 assert.equal(isRenderableNflScoreboard(validApiResponse), true, "valid API response must be accepted by Home Card 1");
 assert.equal(isRenderableNflScoreboard({ ...validApiResponse, selected: null }), false, "response without a selected game must remain unavailable");
+assert.equal(retainLastGoodNflScoreboard(validApiResponse, { sourceStatus: "unavailable" }), validApiResponse, "refresh failure must preserve the last good game");
 
 const duplicateKickoffPayload = {
   events: [
@@ -86,7 +87,7 @@ assert.match(adapterSource, /cache: "no-store"/);
 assert.match(adapterSource, /typeof selected\.id === "string"/);
 assert.match(apiSource, /Cache-Control.*no-store/);
 assert.match(nflSource, /lastGood/);
-assert.match(nflSource, /isRenderableNflScoreboard/);
+assert.match(nflSource, /retainLastGoodNflScoreboard/);
 assert.match(nflSource, /setScoreboard\(lastGood\)/);
 assert.match(pageSource, /dynamic = "force-dynamic"/);
 assert.match(nflWeekClientSource, /shouldPoll/);

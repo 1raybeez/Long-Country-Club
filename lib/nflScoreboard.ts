@@ -56,6 +56,10 @@ export function isRenderableNflScoreboard(value: unknown): value is NflScoreboar
     && Array.isArray(scoreboard.games);
 }
 
+export function retainLastGoodNflScoreboard(lastGood: NflScoreboardView, next: unknown): NflScoreboardView {
+  return isRenderableNflScoreboard(next) ? next : lastGood;
+}
+
 interface RawScoreboard {
   readonly week?: { readonly number?: number };
   readonly leagues?: readonly { readonly season?: { readonly year?: number } }[];
