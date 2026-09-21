@@ -87,6 +87,12 @@ const cssSource = readFileSync(new URL("../app/globals.css", import.meta.url), "
 assert.match(pageSource, /HomeNflNow/);
 assert.match(pageSource, /HomeWeeklyHigh/);
 assert.match(pageSource, /getLccChampionBySeason/);
+assert.match(pageSource, /Trophy className/);
+assert.match(pageSource, /CalendarDays className/);
+assert.match(pageSource, /View Championship History/);
+assert.match(pageSource, /href="\/league-info\/trophy-room" className="lcc2-button lcc2-button--primary/);
+assert.match(pageSource, /View Week \{winner\?\.week \?\? "current"\} Results/);
+assert.match(pageSource, /href="\/matchups" className="lcc2-button lcc2-button--primary/);
 assert.match(nflSource, /nfl\/week/);
 assert.doesNotMatch(nflSource, /href=\"\/matchups\"/);
 assert.match(nflSource, /NFL Game Center/);

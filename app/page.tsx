@@ -3,6 +3,8 @@ import {
   ArrowRight,
   CheckCircle2,
   ClipboardCheck,
+  CalendarDays,
+  Trophy,
   Users,
 } from "lucide-react";
 import { ACTIVE_LCC_OWNERS } from "@/lib/lccOwners";
@@ -163,7 +165,7 @@ function HomeDashboardTopRow({ currentView, weeklyHighBoard, nflScoreboard }: { 
 
       <article className="lcc2-card lcc2-home-top-card lcc2-home-champion-card">
         <div className="flex items-center justify-between gap-3">
-          <p className="lcc2-label">Reigning champion</p>
+          <div className="flex min-w-0 items-center gap-2"><Trophy className="h-5 w-5 shrink-0 text-[var(--lcc-brand-primary)]" aria-hidden="true" /><p className="lcc2-label">Reigning champion</p></div>
           <span className="lcc2-badge lcc2-badge--achievement">
             {REIGNING_CHAMPION?.season ?? "Champion"}
           </span>
@@ -184,7 +186,7 @@ function HomeDashboardTopRow({ currentView, weeklyHighBoard, nflScoreboard }: { 
             </p>
           </div>
         </div>
-        <Link href="/league-info/trophy-room" className="lcc2-button lcc2-button--secondary mt-5 w-full">View Trophy Room<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+        <Link href="/league-info/trophy-room" className="lcc2-button lcc2-button--primary mt-5 w-full">View Championship History<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
       </article>
       <HomeWeeklyHigh board={weeklyHighBoard} phase={currentView.week.phase} />
     </section>
@@ -197,10 +199,10 @@ function HomeWeeklyHigh({ board, phase }: { board: readonly WeeklyHighResult[]; 
   const image = winner?.franchiseId ? getOwnerImagePath(winner.franchiseId) : null;
   const playoff = phase === "POSTSEASON" || phase === "SEASON_COMPLETE";
   return <article className="lcc2-card lcc2-card--raised lcc2-home-top-card lcc2-home-weekly-high flex min-w-0 flex-col p-5" aria-labelledby="home-weekly-high-heading">
-    <div className="flex items-start justify-between gap-3"><div><p className="lcc2-label">Weekly high score</p><h2 id="home-weekly-high-heading" className="mt-3 lcc2-home-card-title">{winner ? `Week ${winner.week} high score` : "Weekly high unavailable"}</h2></div><span className="lcc2-badge lcc2-badge--achievement">$10</span></div>
+    <div className="flex items-start justify-between gap-3"><div><div className="flex min-w-0 items-center gap-2"><CalendarDays className="h-5 w-5 shrink-0 text-[var(--lcc-brand-primary)]" aria-hidden="true" /><p className="lcc2-label">Weekly high score</p></div><h2 id="home-weekly-high-heading" className="mt-3 lcc2-home-card-title">{winner ? `Week ${winner.week} high score` : "Weekly high unavailable"}</h2></div><span className="lcc2-badge lcc2-badge--achievement">$10</span></div>
     {winner ? <div className="mt-5 flex items-center gap-4"><div className="h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-[var(--lcc-color-border)] bg-slate-100"><img src={image ?? getOwnerImagePath("")} alt={owner?.displayName ?? winner.ownerDisplayName ?? "Weekly high winner"} className="h-full w-full object-cover" /></div><div className="min-w-0"><p className="font-ui text-lg font-black text-[var(--lcc-color-text)]">{winner.franchiseName}</p><p className="mt-1 lcc2-body">{owner?.displayName ?? winner.ownerDisplayName ?? "Owner identity unavailable"}</p><p className="mt-2 font-ui text-2xl font-black text-[var(--lcc-color-text)]">{winner.score?.toFixed(2)}</p></div></div> : <p className="lcc2-body mt-5">The latest safely finalized regular-season winner is temporarily unavailable.</p>}
     <p className="mt-4 font-ui text-xs font-black uppercase tracking-[0.08em] text-[var(--lcc-color-text-muted)]">{playoff ? "Final regular-season weekly high" : winner ? "$10 weekly winner" : "Awaiting safe finality"}</p>
-    <Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">View Week {winner?.week ?? "current"} Results<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+    <Link href="/matchups" className="lcc2-button lcc2-button--primary mt-auto w-full">View Week {winner?.week ?? "current"} Results<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
   </article>;
 }
 
