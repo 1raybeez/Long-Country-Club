@@ -131,9 +131,14 @@ function normalizeTeam(team: RawCompetitor): NflTeam {
   return {
     abbreviation: team.team?.abbreviation ?? "—",
     name: team.team?.displayName ?? "Team unavailable",
-    logo: team.team?.logo ?? null,
+    logo: normalizeProviderLogo(team.team?.logo),
     score: team.score !== undefined && Number.isFinite(Number(team.score)) ? Number(team.score) : null,
   };
+}
+
+function normalizeProviderLogo(logo: string | undefined): string | null {
+  if (!logo) return null;
+  return logo.replace("/i/teamlogos/nfl/500/scoreboard/", "/i/teamlogos/nfl/500/");
 }
 
 export function classifyPrimeTime(kickoff: string, broadcast: string | null): NflPrimeTime {

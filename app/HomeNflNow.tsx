@@ -33,7 +33,7 @@ export function HomeNflNow({ initialScoreboard }: { initialScoreboard: NflScoreb
   return <article className="lcc2-card lcc2-home-top-card lcc2-home-nfl-card flex min-w-0 flex-col p-5" aria-labelledby="home-nfl-heading">
     <div className="flex items-start justify-between gap-3"><div><p className="lcc2-label">NFL Game Center</p><h2 id="home-nfl-heading" className="mt-3 lcc2-home-card-title">{game ? game.state === "LIVE" ? "Live" : game.state === "FINAL" ? "NFL complete" : "Next up" : "NFL unavailable"}</h2></div><Radio className="h-5 w-5 shrink-0 text-[var(--lcc-brand-primary)]" aria-hidden="true" /></div>
     {game ? <NflGameContent game={game} /> : <p className="mt-5 lcc2-body">The NFL schedule is temporarily unavailable. Check back shortly.</p>}
-    {game ? <Link href={`/nfl/week/${game.week ?? 1}`} className="lcc2-button lcc2-button--secondary mt-auto w-full">View Week {game.week ?? "current"} NFL Scores<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link> : null}
+    {game ? <Link href={`/nfl/week/${game.week ?? 1}`} className="lcc2-button lcc2-button--primary mt-auto w-full">View Week {game.week ?? "current"} NFL Scores<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link> : null}
   </article>;
 }
 

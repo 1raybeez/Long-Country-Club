@@ -40,6 +40,8 @@ const duplicateKickoffPayload = {
   ],
 };
 assert.equal(normalizeNflEvents(duplicateKickoffPayload).length, 4);
+const fullColorLogo = normalizeNflEvents({ events: [{ id: "rams", date: "2026-09-22T00:15:00Z", status: { type: { state: "pre", completed: false } }, competitions: [{ competitors: [{ homeAway: "away", team: { abbreviation: "NYG", displayName: "New York Giants", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png" } }, { homeAway: "home", team: { abbreviation: "LAR", displayName: "Los Angeles Rams", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png" } }] }] }] });
+assert.equal(fullColorLogo[0]?.home.logo, "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png", "provider scoreboard logos should use the standard full-color team asset");
 
 const sameIdLive = game("same", "2026-09-21T00:20:00Z", "LIVE", "SNF", "IND", "KC");
 const sameIdUpdated = { ...sameIdLive, home: { ...sameIdLive.home, score: 17 }, away: { ...sameIdLive.away, score: 10 }, period: 3, clock: "03:10", detail: "3rd Quarter · 03:10" };
@@ -80,7 +82,7 @@ assert.match(pageSource, /getLccChampionBySeason/);
 assert.match(nflSource, /nfl\/week/);
 assert.doesNotMatch(nflSource, /href=\"\/matchups\"/);
 assert.match(nflSource, /NFL Game Center/);
-assert.match(nflSource, /lcc2-button--secondary/);
+assert.match(nflSource, /lcc2-button--primary/);
 assert.doesNotMatch(nflSource, /lcc2-card--dark/);
 assert.match(nflSource, /Thursday Night Football/);
 assert.match(nflSource, /Sunday Night Football/);
