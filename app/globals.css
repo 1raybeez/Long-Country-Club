@@ -665,6 +665,8 @@ body {
 
 .lcc2-home-top-card {
   min-height: 0;
+  min-width: 0;
+  width: 100%;
 }
 
 .lcc2-home-nfl-card,
@@ -833,10 +835,6 @@ body {
 
   .lcc2-home-top-card > .lcc2-button {
     margin-top: auto;
-  }
-
-  .lcc2-home-top-row--live {
-    grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 0.825fr));
   }
 
   .lcc2-home-lower-grid {
