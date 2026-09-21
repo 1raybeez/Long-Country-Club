@@ -675,6 +675,28 @@ body {
   min-height: 18rem;
 }
 
+.lcc2-home-nfl-state {
+  color: var(--lcc-color-blue-hover);
+  font-family: var(--lcc-font-ui);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lcc2-home-nfl-state--live {
+  color: var(--lcc-brand-primary);
+}
+
+.lcc2-home-nfl-event {
+  color: var(--lcc-color-text);
+  font-family: var(--lcc-font-ui);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .lcc2-home-live-action {
   min-height: 15rem;
 }
