@@ -43,6 +43,7 @@ export interface HomeCurrentSeasonView {
   readonly week: HomeCurrentWeekState;
   readonly matchup: HomeMatchupView;
   readonly postseasonStatus?: "complete" | "unresolved" | "unavailable";
+  readonly postseason?: PostseasonSnapshot | null;
 }
 
 export interface TrustedSleeperLeagueState {
@@ -214,7 +215,7 @@ export async function loadHomeCurrentSeasonView(
     const { loadCurrentWeekSnapshot } = await import("./currentWeekSnapshot.ts");
     const snapshot = await loadCurrentWeekSnapshot();
     const matchup = buildHomeMatchupViewFromCurrentMatchups(snapshot.matchups, member, snapshot.week, snapshot.postseason);
-    return { week: snapshot.state, matchup: snapshot.state.safeCompletedWeek !== null && snapshot.week !== null && snapshot.week <= snapshot.state.safeCompletedWeek ? { ...matchup, state: matchup.state === "unavailable" ? "unavailable" : "complete" } : matchup, postseasonStatus: snapshot.postseason?.sourceStatus };
+    return { week: snapshot.state, matchup: snapshot.state.safeCompletedWeek !== null && snapshot.week !== null && snapshot.week <= snapshot.state.safeCompletedWeek ? { ...matchup, state: matchup.state === "unavailable" ? "unavailable" : "complete" } : matchup, postseasonStatus: snapshot.postseason?.sourceStatus, postseason: snapshot.postseason };
   } catch {
     return {
       week: { season: LCC_CURRENT_SEASON, phase: "UNKNOWN", week: null, source: "unavailable", state: "UNKNOWN", latestCompletedWeek: null, nextWeek: null, safeCompletedWeek: null, playoffWeekStart: null },

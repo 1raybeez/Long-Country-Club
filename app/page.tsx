@@ -49,7 +49,7 @@ export default async function HomePage() {
   const weeklyHighBoard = await getWeeklyHighBoard(LCC_CURRENT_SEASON);
   const standings = await loadCurrentSeasonStandings(currentView.week.safeCompletedWeek, LCC_CURRENT_SEASON, currentView.week.playoffWeekStart);
   const leagueContext = await loadHomeLeagueContext(LCC_CURRENT_SEASON);
-  const recap = await loadHomeWeeklyRecap(currentView.week, weeklyHighBoard);
+  const recap = await loadHomeWeeklyRecap(currentView.week, weeklyHighBoard, snapshot.postseason ?? null);
   const personalStanding = standings.reduce<CurrentStanding & { rank: number } | null>((found, standing, index) => found ?? (standing.franchiseId === session?.member?.ownerId ? { ...standing, rank: index + 1 } : null), null);
   return (
     <main className="lcc2-home-shell">
@@ -72,6 +72,7 @@ function buildHomeView(snapshot: CurrentWeekSnapshot, member: Parameters<typeof 
       ? { ...matchup, state: matchup.state === "unavailable" ? "unavailable" : "complete" }
       : matchup,
     postseasonStatus: snapshot.postseason?.sourceStatus,
+    postseason: snapshot.postseason,
   };
 }
 
@@ -111,16 +112,22 @@ function HomeDashboardIdentityForState({ currentView }: { currentView?: HomeCurr
   const live = phase === "REGULAR_SEASON" || phase === "POSTSEASON";
   const complete = phase === "SEASON_COMPLETE";
   const completedWeek = currentView?.week.safeCompletedWeek;
+  const playoffRound = currentView?.postseason?.contexts.find((context) => context.roundNumber === (currentView.week.week ?? 0) - (currentView.week.playoffWeekStart ?? 0) + 1)?.roundLabel ?? null;
+  const playoffIdentity = phase === "POSTSEASON" ? `${LCC_CURRENT_SEASON} Playoffs` : null;
   const eyebrow = live && currentView?.week.week
-      ? `${LCC_CURRENT_SEASON} League Dashboard · Week ${currentView.week.week}${completedWeek === currentView.week.week ? " · Complete" : " · Live"}`
+      ? phase === "POSTSEASON"
+        ? `${playoffIdentity} · ${playoffRound ?? `Week ${currentView.week.week}`} · ${completedWeek === currentView.week.week ? "Complete" : "Live"}`
+        : `${LCC_CURRENT_SEASON} League Dashboard · Week ${currentView.week.week}${completedWeek === currentView.week.week ? " · Complete" : " · Live"}`
     : complete
       ? `${LCC_CURRENT_SEASON} Season · Complete`
       : phase === "PRESEASON"
         ? `Long Country Club · Est. 2003`
         : `${LCC_CURRENT_SEASON} Season · Status unavailable`;
-  const title = live ? "Long Country Club FFL" : `${LCC_CURRENT_SEASON} League Dashboard`;
-  const supporting = live
-    ? completedWeek === currentView?.week.week ? `Week ${completedWeek} is complete. The next league week is now the runway.` : "The chase for the jacket is underway."
+  const title = phase === "POSTSEASON" ? playoffIdentity ?? `${LCC_CURRENT_SEASON} Playoffs` : live ? "Long Country Club FFL" : `${LCC_CURRENT_SEASON} League Dashboard`;
+  const supporting = phase === "POSTSEASON"
+    ? playoffRound ? `${playoffRound} is underway. The current bracket is the live league board.` : `Postseason week ${currentView?.week.week ?? "current"} is underway. The current bracket is the live league board.`
+    : live
+      ? completedWeek === currentView?.week.week ? `Week ${completedWeek} is complete. The next league week is now the runway.` : "The chase for the jacket is underway."
     : complete
       ? "The season is complete. Revisit the year and the history behind it."
       : "The current-season front door for LCC dynasty football.";
@@ -187,9 +194,10 @@ function WeeklySpotlight({ currentView, snapshot, weeklyHighBoard }: { currentVi
   const latestHigh = latestWeek ? weeklyHighBoard.find((item) => item.week === latestWeek && item.status === "FINAL") : null;
   const weekLabel = currentView.week.week ? `Week ${currentView.week.week}` : "Current week";
   const statusLabel = formatWeekState(currentView.week.state);
+  const playoffBrackets = [...new Set(snapshot.matchups.map((matchup) => matchup.postseason?.bracketType).filter((value): value is "winners" | "losers" | "placement" | "unknown" => Boolean(value)))];
   return <article className="lcc2-card lcc2-card--raised lcc2-home-top-card flex min-w-0 flex-col p-5" aria-labelledby="weekly-spotlight-heading">
     <div className="flex items-start justify-between gap-3"><div><p className="lcc2-label">Weekly spotlight</p><h2 id="weekly-spotlight-heading" className="mt-3 lcc2-home-card-title">{weekLabel} · {statusLabel}</h2></div><Swords className="h-5 w-5 shrink-0 text-[var(--lcc-interactive)]" aria-hidden="true" /></div>
-    <div className="mt-5 grid gap-3"><SpotlightFact label={currentView.week.phase === "POSTSEASON" ? "Active playoff matchups" : "League matchups"} value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups · ${matchupSummary.ownerCount} teams` : "Unavailable"} />{playoffRound ? <SpotlightFact label="Playoff round" value={playoffRound} /> : null}<SpotlightFact label="Latest completed week" value={latestWeek ? `Week ${latestWeek}` : "Not available"} /><SpotlightFact label="Latest weekly high" value={latestHigh?.franchiseName && latestHigh.score !== null ? `${latestHigh.franchiseName} · ${latestHigh.score.toFixed(2)}` : "Awaiting finality"} /></div>
+    <div className="mt-5 grid gap-3"><SpotlightFact label={currentView.week.phase === "POSTSEASON" ? "Active playoff matchups" : "League matchups"} value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups · ${matchupSummary.ownerCount} teams` : "Unavailable"} />{playoffRound ? <SpotlightFact label="Playoff round" value={playoffRound} /> : null}{currentView.week.phase === "POSTSEASON" && playoffBrackets.length ? <SpotlightFact label="Bracket scope" value={playoffBrackets.map((bracket) => bracket === "winners" ? "Winners" : "Consolation").join(" + ")} /> : null}<SpotlightFact label="Latest completed week" value={latestWeek ? `Week ${latestWeek}` : "Not available"} />{currentView.week.phase === "POSTSEASON" ? <SpotlightFact label="Weekly high" value="Regular-season awards ended after Week 14" /> : <SpotlightFact label="Latest weekly high" value={latestHigh?.franchiseName && latestHigh.score !== null ? `${latestHigh.franchiseName} · ${latestHigh.score.toFixed(2)}` : "Awaiting finality"} />}</div>
     <Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">View {weekLabel} Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
   </article>;
 }
@@ -203,7 +211,7 @@ function CurrentStandingsCard({ standings, postseason }: { standings: readonly C
 function LeagueMatchupsCard({ currentView, snapshot }: { currentView: HomeCurrentSeasonView; snapshot: CurrentWeekSnapshot }) {
   const matchupSummary = summarizeHomeMatchups(snapshot.matchups);
   const playoffRound = snapshot.matchups.find((matchup) => matchup.postseason)?.postseason?.roundLabel;
-  return <article className="lcc2-card lcc2-card--raised flex min-w-0 flex-col p-4 sm:p-5" aria-labelledby="league-matchups-heading"><div><p className="lcc2-label">League board</p><h3 id="league-matchups-heading" className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">{LCC_CURRENT_SEASON} matchups</h3><p className="lcc2-body mt-1">{currentView.week.week ? `${currentView.week.phase === "POSTSEASON" ? `${playoffRound ?? "Postseason"} · ` : ""}Week ${currentView.week.week} · ${formatWeekState(currentView.week.state)}` : "Current week unavailable"}</p></div><div className="mt-5 grid gap-3"><SpotlightFact label="Matchup count" value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups` : "Unavailable"} /><SpotlightFact label="Teams represented" value={matchupSummary.ownerCount ? `${matchupSummary.ownerCount} teams` : "Unavailable"} />{matchupSummary.highestScore !== null ? <SpotlightFact label="Highest current score" value={matchupSummary.highestScore.toFixed(2)} /> : null}</div><Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">Open Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
+  return <article className="lcc2-card lcc2-card--raised flex min-w-0 flex-col p-4 sm:p-5" aria-labelledby="league-matchups-heading"><div><p className="lcc2-label">League board</p><h3 id="league-matchups-heading" className="mt-2 font-ui text-xl font-black text-[var(--lcc-color-text)]">{currentView.week.phase === "POSTSEASON" ? "Playoff matchups" : `${LCC_CURRENT_SEASON} matchups`}</h3><p className="lcc2-body mt-1">{currentView.week.week ? `${currentView.week.phase === "POSTSEASON" ? `${playoffRound ?? "Postseason"} · ` : ""}Week ${currentView.week.week} · ${formatWeekState(currentView.week.state)}` : "Current week unavailable"}</p></div><div className="mt-5 grid gap-3"><SpotlightFact label="Matchup count" value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups` : "Unavailable"} /><SpotlightFact label="Teams represented" value={matchupSummary.ownerCount ? `${matchupSummary.ownerCount} teams` : "Unavailable"} />{matchupSummary.highestScore !== null ? <SpotlightFact label="Highest current score" value={matchupSummary.highestScore.toFixed(2)} /> : null}</div><Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">Open Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link></article>;
 }
 
 export function summarizeHomeMatchups(matchups: readonly Pick<HistoricalMatchup, "ownerAId" | "ownerBId" | "ownerAScore" | "ownerBScore">[]) {

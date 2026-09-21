@@ -99,6 +99,7 @@
     "current-season:parity-diagnostics": "tsx scripts/currentSeasonParityDiagnostics.ts",
     "week-state:diagnostics": "tsx scripts/weekStateDiagnostics.ts",
     "postseason:bracket-diagnostics": "tsx scripts/postseasonBracketDiagnostics.ts",
+    "postseason:home-recap-diagnostics": "tsx scripts/postseasonHomeRecapDiagnostics.ts",
     "postseason:standings-diagnostics": "tsx scripts/postseasonStandingsDiagnostics.ts",
     "payment-arrangement:diagnostics": "node scripts/paymentArrangementDiagnostics.mjs",
     "commissioner:weekly-award-diagnostics": "tsx scripts/commissionerWeeklyAwardDiagnostics.ts",

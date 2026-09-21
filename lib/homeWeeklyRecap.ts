@@ -5,6 +5,8 @@ import type { WeeklyHighResult } from "@/lib/finance/weeklyHigh";
 import type { HistoricalMatchup } from "@/lib/history/matchups";
 import type { HomeCurrentWeekState } from "@/lib/homeCurrentSeason";
 import { getOwnerById } from "@/lib/ownerRegistry";
+import type { PostseasonSnapshot } from "@/lib/postseason/types";
+import { attachPostseasonContext } from "@/lib/postseason/matchupContext";
 
 export type RecapAvailability = "complete" | "partial" | "unavailable";
 
@@ -18,6 +20,11 @@ export interface RecapMatchupSummary {
   readonly ownerBScore: number;
   readonly margin: number;
   readonly combinedScore: number;
+  readonly winnerOwnerId: string | null;
+  readonly roundLabel: string | null;
+  readonly bracketType: string | null;
+  readonly isChampionship: boolean;
+  readonly isPlacementGame: boolean;
 }
 export interface RecapTeamScore {
   readonly ownerId: string;
@@ -38,6 +45,13 @@ export interface HomeWeeklyRecap {
   readonly highestScoringMatchups: readonly RecapMatchupSummary[];
   readonly weeklyHighWinner: { readonly teamName: string; readonly score: number; readonly amountCents: number } | null;
   readonly note: string | null;
+  readonly phase: "REGULAR_SEASON" | "POSTSEASON";
+  readonly roundLabel: string | null;
+  readonly bracketTypes: readonly string[];
+  readonly byeCount: number;
+  readonly championshipMatchup: RecapMatchupSummary | null;
+  readonly placementMatchups: readonly RecapMatchupSummary[];
+  readonly bracketStatus: "complete" | "unresolved" | "unavailable" | null;
 }
 
 const EMPTY_RECAP = (season: number): HomeWeeklyRecap => ({
@@ -53,6 +67,13 @@ const EMPTY_RECAP = (season: number): HomeWeeklyRecap => ({
   highestScoringMatchups: [],
   weeklyHighWinner: null,
   note: "Recaps begin after a week is safely complete.",
+  phase: "REGULAR_SEASON",
+  roundLabel: null,
+  bracketTypes: [],
+  byeCount: 0,
+  championshipMatchup: null,
+  placementMatchups: [],
+  bracketStatus: null,
 });
 
 export function buildHomeWeeklyRecap(
@@ -61,16 +82,30 @@ export function buildHomeWeeklyRecap(
   matchups: readonly HistoricalMatchup[],
   weeklyHigh: WeeklyHighResult | null,
   expectedMatchups: number | null = null,
+  postseason: PostseasonSnapshot | null = null,
+  phase: "REGULAR_SEASON" | "POSTSEASON" = "REGULAR_SEASON",
 ): HomeWeeklyRecap {
   if (week === null) return EMPTY_RECAP(season);
-  const normalized = matchups
+  const bracketStatus = phase === "POSTSEASON" ? postseason?.sourceStatus ?? "unavailable" : null;
+  if (phase === "POSTSEASON" && bracketStatus === "unavailable") {
+    return { ...EMPTY_RECAP(season), week, phase, bracketStatus, availability: "partial", note: "This playoff recap is temporarily unavailable because playoff bracket details could not be verified." };
+  }
+  const enriched = phase === "POSTSEASON" ? attachPostseasonContext(matchups, postseason) : matchups;
+  const playable = phase === "POSTSEASON"
+    ? enriched.filter((matchup) => matchup.postseason && !matchup.postseason.isBye && matchup.postseason.sourceStatus === "complete")
+    : enriched;
+  const normalized = playable
     .filter((matchup) => matchup.ownerAScore !== null && matchup.ownerBScore !== null)
     .map((matchup) => summarizeMatchup(matchup));
   const complete = normalized.length > 0
     && normalized.every((matchup) => Number.isFinite(matchup.ownerAScore) && Number.isFinite(matchup.ownerBScore))
     && new Set(normalized.flatMap((matchup) => [matchup.ownerAId, matchup.ownerBId])).size === normalized.length * 2
     && (expectedMatchups === null || normalized.length === expectedMatchups);
-  if (!complete) return { ...EMPTY_RECAP(season), week, matchupCount: normalized.length, matchupCountExpected: expectedMatchups, availability: normalized.length ? "partial" : "unavailable", note: "Recap data is incomplete." };
+  const currentContexts = postseason?.contexts.filter((context) => context.activeWeek === week || phase !== "POSTSEASON") ?? [];
+  const roundLabel = normalized.find((matchup) => matchup.roundLabel)?.roundLabel ?? currentContexts.find((context) => context.roundLabel)?.roundLabel ?? null;
+  const bracketTypes = [...new Set(normalized.map((matchup) => matchup.bracketType).filter((value): value is string => Boolean(value)))];
+  const byeCount = phase === "POSTSEASON" ? postseason?.contexts.filter((context) => context.isBye).length ?? 0 : 0;
+  if (!complete) return { ...EMPTY_RECAP(season), week, phase, bracketStatus, roundLabel, bracketTypes, byeCount, matchupCount: normalized.length, matchupCountExpected: expectedMatchups, availability: normalized.length ? "partial" : "unavailable", note: phase === "POSTSEASON" ? "Playoff recap data is incomplete." : "Recap data is incomplete." };
 
   const teams = normalized.flatMap((matchup) => [
     { ownerId: matchup.ownerAId, teamName: matchup.ownerAName, score: matchup.ownerAScore },
@@ -79,9 +114,11 @@ export function buildHomeWeeklyRecap(
   const closestMatchups = tiedBy(normalized, (matchup) => matchup.margin, (a, b) => a - b);
   const largestMarginMatchups = tiedBy(normalized, (matchup) => matchup.margin, (a, b) => b - a);
   const highestScoringMatchups = tiedBy(normalized, (matchup) => matchup.combinedScore, (a, b) => b - a);
-  const authoritativeHigh = weeklyHigh && (weeklyHigh.status === "FINAL" || weeklyHigh.status === "MANUAL") && weeklyHigh.franchiseName && weeklyHigh.score !== null
+  const authoritativeHigh = phase === "REGULAR_SEASON" && weeklyHigh && (weeklyHigh.status === "FINAL" || weeklyHigh.status === "MANUAL") && weeklyHigh.franchiseName && weeklyHigh.score !== null
     ? { teamName: weeklyHigh.franchiseName, score: weeklyHigh.score, amountCents: weeklyHigh.awardAmountCents }
     : null;
+  const championshipMatchup = normalized.find((matchup) => matchup.isChampionship) ?? null;
+  const placementMatchups = normalized.filter((matchup) => matchup.isPlacementGame && !matchup.isChampionship);
 
   return {
     season,
@@ -95,20 +132,29 @@ export function buildHomeWeeklyRecap(
     largestMarginMatchups,
     highestScoringMatchups,
     weeklyHighWinner: authoritativeHigh,
-    note: authoritativeHigh ? null : "Weekly-high award is not finalized.",
+    note: phase === "POSTSEASON" ? "Regular-season weekly high awards ended after Week 14." : authoritativeHigh ? null : "Weekly-high award is not finalized.",
+    phase,
+    roundLabel,
+    bracketTypes,
+    byeCount,
+    championshipMatchup,
+    placementMatchups,
+    bracketStatus,
   };
 }
 
 export async function loadHomeWeeklyRecap(
-  state: Pick<HomeCurrentWeekState, "season" | "safeCompletedWeek">,
+  state: Pick<HomeCurrentWeekState, "season" | "safeCompletedWeek" | "phase">,
   weeklyHighBoard: readonly WeeklyHighResult[],
+  postseason: PostseasonSnapshot | null = null,
 ): Promise<HomeWeeklyRecap> {
   const week = state.safeCompletedWeek;
   if (week === null) return EMPTY_RECAP(state.season);
   const matchups = await loadCurrentSeasonMatchups(week);
   const regularSeasonWeeks = getFinancialRules().regularSeasonWeeks ?? 14;
-  const expectedMatchups = week <= regularSeasonWeeks ? Math.floor(ACTIVE_LCC_OWNERS.length / 2) : null;
-  return buildHomeWeeklyRecap(state.season, week, matchups, weeklyHighBoard.find((item) => item.week === week) ?? null, expectedMatchups);
+  const phase = state.phase === "POSTSEASON" || state.phase === "SEASON_COMPLETE" || week > regularSeasonWeeks ? "POSTSEASON" : "REGULAR_SEASON";
+  const expectedMatchups = phase === "REGULAR_SEASON" ? Math.floor(ACTIVE_LCC_OWNERS.length / 2) : null;
+  return buildHomeWeeklyRecap(state.season, week, matchups, weeklyHighBoard.find((item) => item.week === week) ?? null, expectedMatchups, postseason, phase);
 }
 
 function summarizeMatchup(matchup: HistoricalMatchup): RecapMatchupSummary {
@@ -124,6 +170,11 @@ function summarizeMatchup(matchup: HistoricalMatchup): RecapMatchupSummary {
     ownerBScore: matchup.ownerBScore!,
     margin: Math.abs(matchup.ownerAScore! - matchup.ownerBScore!),
     combinedScore: matchup.ownerAScore! + matchup.ownerBScore!,
+    winnerOwnerId: matchup.winnerOwnerId,
+    roundLabel: matchup.postseason?.roundLabel ?? null,
+    bracketType: matchup.postseason?.bracketType ?? null,
+    isChampionship: matchup.postseason?.isChampionship === true,
+    isPlacementGame: matchup.postseason?.isPlacementGame === true,
   };
 }
 
