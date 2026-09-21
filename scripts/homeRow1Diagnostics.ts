@@ -4,7 +4,7 @@ import { getLccChampionBySeason } from "../lib/lccFinalPlacements.ts";
 import { getOwnerById } from "../lib/ownerRegistry.ts";
 import { getOwnerImagePath } from "../lib/ownerImages.ts";
 import { selectWeeklyHighFromTotals } from "../lib/finance/weeklyHigh.ts";
-import { classifyPrimeTime, normalizeNflEvents, selectNflGame, type NflGame } from "../lib/nflScoreboard.ts";
+import { classifyPrimeTime, isRenderableNflScoreboard, normalizeNflEvents, selectNflGame, type NflGame, type NflScoreboardView } from "../lib/nflScoreboard.ts";
 
 function game(id: string, kickoff: string, state: NflGame["state"], primeTime: NflGame["primeTime"], away = "ATL", home = "GB"): NflGame {
   return { id, week: 2, season: 2026, kickoff, state, statusLabel: state, detail: state === "LIVE" ? "2nd Quarter · 11:42" : state === "FINAL" ? "Final" : "Scheduled", period: state === "LIVE" ? 2 : null, clock: state === "LIVE" ? "11:42" : null, broadcast: primeTime === "TNF" ? "Prime Video" : primeTime === "SNF" ? "NBC" : primeTime === "MNF" ? "ESPN" : "FOX", primeTime, away: { abbreviation: away, name: `${away} team`, logo: `https://example.test/${away}.png`, score: state === "UPCOMING" ? null : 10 }, home: { abbreviation: home, name: `${home} team`, logo: `https://example.test/${home}.png`, score: state === "UPCOMING" ? null : 10 } };
@@ -24,6 +24,9 @@ assert.equal(selectNflGame([snf, tnf], new Date("2026-09-23T00:00:00Z"))?.id, "t
 assert.equal(selectNflGame([sundayLive], now)?.id, "sun-1");
 assert.equal(selectNflGame([sundayLive, game("fav", sundayLive.kickoff, "LIVE", null, "PIT", "CLE")], now, "PIT")?.id, "fav");
 assert.equal(selectNflGame([mnf], now)?.state, "UPCOMING");
+const validApiResponse: NflScoreboardView = { sourceStatus: "ok", reasonCode: null, fetchedAt: now.toISOString(), selected: mnf, games: [mnf], favoriteTeam: null };
+assert.equal(isRenderableNflScoreboard(validApiResponse), true, "valid API response must be accepted by Home Card 1");
+assert.equal(isRenderableNflScoreboard({ ...validApiResponse, selected: null }), false, "response without a selected game must remain unavailable");
 
 const duplicateKickoffPayload = {
   events: [
@@ -80,8 +83,12 @@ assert.match(nflWeekClientSource, /getNflGamesForWeek/);
 assert.doesNotMatch(nflWeekClientSource, /fantasy|lineup|head-to-head/i);
 for (const reason of ["PROVIDER_FETCH_FAILED", "HTTP_ERROR", "INVALID_PROVIDER_RESPONSE", "NO_EVENTS", "NO_VALID_GAMES", "NO_SELECTION", "PRESENTATION_MAPPING_FAILED"]) assert.match(adapterSource, new RegExp(reason));
 assert.match(adapterSource, /cache: "no-store"/);
+assert.match(adapterSource, /typeof selected\.id === "string"/);
 assert.match(apiSource, /Cache-Control.*no-store/);
 assert.match(nflSource, /lastGood/);
+assert.match(nflSource, /isRenderableNflScoreboard/);
+assert.match(nflSource, /setScoreboard\(lastGood\)/);
+assert.match(pageSource, /dynamic = "force-dynamic"/);
 assert.match(nflWeekClientSource, /shouldPoll/);
 assert.equal((nflSource.match(/setInterval/g) ?? []).length, 1);
 assert.equal((readFileSync(new URL("../app/HomeLiveAction.tsx", import.meta.url), "utf8").match(/setInterval/g) ?? []).length, 1);

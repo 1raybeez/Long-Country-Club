@@ -37,6 +37,8 @@ import { loadNflScoreboard } from "@/lib/nflScoreboard";
 import type { WeeklyHighResult } from "@/lib/finance/weeklyHigh";
 import { HomeNflNow } from "./HomeNflNow";
 
+export const dynamic = "force-dynamic";
+
 const CURRENT_HOME_CONFIG = HOME_SEASON_CONFIG[LCC_CURRENT_SEASON];
 const REIGNING_CHAMPION = getLccChampionBySeason(LCC_CURRENT_SEASON - 1);
 const CURRENT_ROOKIE_DRAFT = loadDraftEventsBySeason(LCC_CURRENT_SEASON).find(

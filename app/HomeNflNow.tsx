@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Radio } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { NflGame, NflScoreboardView } from "@/lib/nflScoreboard";
-import { formatNflContext, formatNflKickoff } from "@/lib/nflScoreboard";
+import { formatNflContext, formatNflKickoff, isRenderableNflScoreboard } from "@/lib/nflScoreboard";
 
 export function HomeNflNow({ initialScoreboard }: { initialScoreboard: NflScoreboardView }) {
   const [scoreboard, setScoreboard] = useState(initialScoreboard);
@@ -14,8 +14,8 @@ export function HomeNflNow({ initialScoreboard }: { initialScoreboard: NflScoreb
       try {
         const response = await fetch("/api/nfl-scoreboard", { cache: "no-store" });
         if (!response.ok) return;
-        const next = await response.json() as NflScoreboardView;
-        if (next.sourceStatus === "ok") { lastGood = next; setScoreboard(next); }
+        const next = await response.json() as unknown;
+        if (isRenderableNflScoreboard(next)) { lastGood = next; setScoreboard(next); }
       } catch {
         setScoreboard(lastGood);
       }

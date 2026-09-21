@@ -44,6 +44,18 @@ export type NflScoreboardReasonCode =
   | "NO_SELECTION"
   | "PRESENTATION_MAPPING_FAILED";
 
+export function isRenderableNflScoreboard(value: unknown): value is NflScoreboardView {
+  if (!value || typeof value !== "object") return false;
+  const scoreboard = value as Partial<NflScoreboardView>;
+  const selected = scoreboard.selected;
+  if (!selected || typeof selected !== "object") return false;
+  return scoreboard.sourceStatus === "ok"
+    && typeof selected.id === "string"
+    && typeof selected.state === "string"
+    && typeof selected.week === "number"
+    && Array.isArray(scoreboard.games);
+}
+
 interface RawScoreboard {
   readonly week?: { readonly number?: number };
   readonly leagues?: readonly { readonly season?: { readonly year?: number } }[];
