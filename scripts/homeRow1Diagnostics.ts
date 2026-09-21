@@ -4,7 +4,7 @@ import { getLccChampionBySeason } from "../lib/lccFinalPlacements.ts";
 import { getOwnerById } from "../lib/ownerRegistry.ts";
 import { getOwnerImagePath } from "../lib/ownerImages.ts";
 import { selectWeeklyHighFromTotals } from "../lib/finance/weeklyHigh.ts";
-import { classifyPrimeTime, isRenderableNflScoreboard, isRetryableProviderStatus, normalizeNflEvents, retainLastGoodNflScoreboard, selectNflGame, type NflGame, type NflScoreboardView } from "../lib/nflScoreboard.ts";
+import { classifyPrimeTime, isRenderableNflScoreboard, isRetryableProviderStatus, normalizeNflEvents, retainLastGoodNflScoreboard, selectNflGame, selectNflTeamLogo, type NflGame, type NflScoreboardView } from "../lib/nflScoreboard.ts";
 
 function game(id: string, kickoff: string, state: NflGame["state"], primeTime: NflGame["primeTime"], away = "ATL", home = "GB"): NflGame {
   return { id, week: 2, season: 2026, kickoff, state, statusLabel: state, detail: state === "LIVE" ? "2nd Quarter · 11:42" : state === "FINAL" ? "Final" : "Scheduled", period: state === "LIVE" ? 2 : null, clock: state === "LIVE" ? "11:42" : null, broadcast: primeTime === "TNF" ? "Prime Video" : primeTime === "SNF" ? "NBC" : primeTime === "MNF" ? "ESPN" : "FOX", primeTime, away: { abbreviation: away, name: `${away} team`, logo: `https://example.test/${away}.png`, score: state === "UPCOMING" ? null : 10 }, home: { abbreviation: home, name: `${home} team`, logo: `https://example.test/${home}.png`, score: state === "UPCOMING" ? null : 10 } };
@@ -42,6 +42,14 @@ const duplicateKickoffPayload = {
 assert.equal(normalizeNflEvents(duplicateKickoffPayload).length, 4);
 const fullColorLogo = normalizeNflEvents({ events: [{ id: "rams", date: "2026-09-22T00:15:00Z", status: { type: { state: "pre", completed: false } }, competitions: [{ competitors: [{ homeAway: "away", team: { abbreviation: "NYG", displayName: "New York Giants", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png" } }, { homeAway: "home", team: { abbreviation: "LAR", displayName: "Los Angeles Rams", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png" } }] }] }] });
 assert.equal(fullColorLogo[0]?.home.logo, "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png", "provider scoreboard logos should use the standard full-color team asset");
+const teamLogoAssets = [
+  { href: "scoreboard-lar.png", rel: ["full", "scoreboard"] },
+  { href: "ram-head-lar.png", rel: ["full", "secondary_logo_on_white_color"] },
+  { href: "primary-lar.png", rel: ["full", "primary_logo_on_white_color"] },
+];
+assert.equal(selectNflTeamLogo(teamLogoAssets, "scoreboard-lar.png"), "ram-head-lar.png");
+for (const abbreviation of ["NYG", "KC", "IND", "ATL", "PHI", "DAL"]) assert.equal(selectNflTeamLogo([{ href: `${abbreviation.toLowerCase()}-primary.png`, rel: ["full", "primary_logo_on_white_color"] }, { href: `${abbreviation.toLowerCase()}-gray.png`, rel: ["full", "grayscale"] }], `${abbreviation.toLowerCase()}-scoreboard.png`), `${abbreviation.toLowerCase()}-primary.png`);
+assert.equal(selectNflTeamLogo(undefined, "scoreboard-fallback.png"), "scoreboard-fallback.png");
 
 const sameIdLive = game("same", "2026-09-21T00:20:00Z", "LIVE", "SNF", "IND", "KC");
 const sameIdUpdated = { ...sameIdLive, home: { ...sameIdLive.home, score: 17 }, away: { ...sameIdLive.away, score: 10 }, period: 3, clock: "03:10", detail: "3rd Quarter · 03:10" };
@@ -100,11 +108,15 @@ assert.match(adapterSource, /AbortController/);
 assert.match(adapterSource, /retryable/);
 assert.match(adapterSource, /dates=\$\{getNflDateKey\(\)\}/);
 assert.match(adapterSource, /week=\$\{requestedWeek\}/);
+assert.match(adapterSource, /secondary_logo_on_white_color/);
+assert.match(adapterSource, /primary_logo_on_white_color/);
+assert.match(adapterSource, /teams\?limit=100/);
 assert.match(adapterSource, /typeof selected\.id === "string"/);
 assert.match(apiSource, /Cache-Control.*no-store/);
 assert.match(nflSource, /lastGood/);
 assert.match(nflSource, /retainLastGoodNflScoreboard/);
 assert.match(nflSource, /setScoreboard\(lastGood\)/);
+assert.doesNotMatch(nflSource, /filter|grayscale|sepia|brightness|saturate/);
 assert.match(pageSource, /dynamic = "force-dynamic"/);
 assert.match(nflWeekClientSource, /shouldPoll/);
 assert.equal((nflSource.match(/setInterval/g) ?? []).length, 1);

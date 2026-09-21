@@ -1,4 +1,5 @@
 const ESPN_NFL_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
+const ESPN_NFL_TEAMS = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams?limit=100";
 
 export type NflGameState = "UPCOMING" | "LIVE" | "FINAL";
 export type NflPrimeTime = "TNF" | "SNF" | "MNF" | null;
@@ -37,6 +38,13 @@ export interface NflScoreboardView {
   readonly favoriteTeam: string | null;
 }
 
+export interface NflTeamLogoAsset {
+  readonly href?: string;
+  readonly rel?: readonly string[];
+  readonly width?: number;
+  readonly height?: number;
+}
+
 export type NflScoreboardReasonCode =
   | "PROVIDER_FETCH_FAILED"
   | "HTTP_ERROR"
@@ -51,7 +59,9 @@ const REQUEST_TIMEOUT_MS = 8_000;
 const RETRY_DELAY_MS = 250;
 const CACHE_MAX_AGE_MS = 5 * 60_000;
 const LIVE_CACHE_MAX_AGE_MS = 60_000;
+const TEAM_LOGO_CACHE_MAX_AGE_MS = 6 * 60 * 60_000;
 const successfulScoreboards = new Map<string, { view: NflScoreboardView; storedAt: number }>();
+let teamLogoCache: { logosById: ReadonlyMap<string, readonly NflTeamLogoAsset[]>; storedAt: number } | null = null;
 
 export function isRetryableProviderStatus(status: number): boolean {
   return status === 429 || status === 500 || status === 502 || status === 503 || status === 504;
@@ -92,10 +102,22 @@ interface RawEvent {
 interface RawCompetitor {
   readonly homeAway?: string;
   readonly score?: string;
-  readonly team?: { readonly abbreviation?: string; readonly displayName?: string; readonly logo?: string };
+  readonly team?: { readonly id?: string; readonly abbreviation?: string; readonly displayName?: string; readonly logo?: string; readonly logos?: readonly NflTeamLogoAsset[] };
 }
 
-export function normalizeNflEvents(payload: RawScoreboard): readonly NflGame[] {
+export function selectNflTeamLogo(assets: readonly NflTeamLogoAsset[] | undefined, fallback: string | null = null): string | null {
+  if (!assets?.length) return fallback;
+  const usable = assets.filter((asset) => typeof asset.href === "string" && asset.href.length > 0 && asset.rel?.includes("full"));
+  const preferred = ["secondary_logo_on_white_color", "primary_logo_on_white_color", "default"];
+  for (const rel of preferred) {
+    const match = usable.find((asset) => asset.rel?.includes(rel) && !asset.rel?.some((label) => ["scoreboard", "dark", "grayscale"].includes(label)));
+    if (match?.href) return match.href;
+  }
+  const safeFallback = usable.find((asset) => !asset.rel?.some((label) => ["scoreboard", "dark", "grayscale", "white", "black"].includes(label)));
+  return safeFallback?.href ?? fallback;
+}
+
+export function normalizeNflEvents(payload: RawScoreboard, logosByTeamId: ReadonlyMap<string, readonly NflTeamLogoAsset[]> = new Map()): readonly NflGame[] {
   return (payload.events ?? []).flatMap((event) => {
     const competition = event.competitions?.[0];
     const competitors = competition?.competitors ?? [];
@@ -117,8 +139,8 @@ export function normalizeNflEvents(payload: RawScoreboard): readonly NflGame[] {
       clock: event.status?.displayClock ?? null,
       broadcast,
       primeTime: classifyPrimeTime(event.date, broadcast),
-      away: normalizeTeam(away),
-      home: normalizeTeam(home),
+      away: normalizeTeam(away, logosByTeamId),
+      home: normalizeTeam(home, logosByTeamId),
     }];
   });
 }
@@ -127,11 +149,11 @@ export function getNflGamesForWeek(scoreboard: NflScoreboardView, week: number):
   return scoreboard.games.filter((game) => game.week === week);
 }
 
-function normalizeTeam(team: RawCompetitor): NflTeam {
+function normalizeTeam(team: RawCompetitor, logosByTeamId: ReadonlyMap<string, readonly NflTeamLogoAsset[]>): NflTeam {
   return {
     abbreviation: team.team?.abbreviation ?? "—",
     name: team.team?.displayName ?? "Team unavailable",
-    logo: normalizeProviderLogo(team.team?.logo),
+    logo: selectNflTeamLogo(team.team?.id ? logosByTeamId.get(team.team.id) : undefined, normalizeProviderLogo(team.team?.logo)),
     score: team.score !== undefined && Number.isFinite(Number(team.score)) ? Number(team.score) : null,
   };
 }
@@ -190,7 +212,7 @@ export async function loadNflScoreboard(favoriteTeam: string | null = null, requ
   for (const url of urls) {
     try {
       const result = await fetchProviderPayload(url);
-      const view = normalizeScoreboardPayload(result.payload, fetchedAt, favoriteTeam, result.status);
+      const view = normalizeScoreboardPayload(result.payload, fetchedAt, favoriteTeam, result.status, await fetchProviderTeamLogos(result.payload));
       if (view.sourceStatus === "ok") {
         successfulScoreboards.set(cacheKey, { view, storedAt: Date.now() });
         return view;
@@ -229,6 +251,27 @@ function getNflDateKey(date = new Date()): string {
 }
 
 async function fetchProviderPayload(url: string): Promise<{ payload: RawScoreboard; status: number }> {
+  return fetchProviderJson<RawScoreboard>(url);
+}
+
+async function fetchProviderTeamLogos(payload: RawScoreboard): Promise<ReadonlyMap<string, readonly NflTeamLogoAsset[]>> {
+  const teamIds = new Set((payload.events ?? []).flatMap((event) => event.competitions?.[0]?.competitors ?? []).map((competitor) => competitor.team?.id).filter((id): id is string => Boolean(id)));
+  if (!teamIds.size) return new Map();
+  if (teamLogoCache && Date.now() - teamLogoCache.storedAt <= TEAM_LOGO_CACHE_MAX_AGE_MS && [...teamIds].every((id) => teamLogoCache?.logosById.has(id))) return teamLogoCache.logosById;
+  try {
+    const response = await fetchProviderJson<{ sports?: Array<{ leagues?: Array<{ teams?: Array<{ team?: { id?: string; logos?: readonly NflTeamLogoAsset[] } }> }> }> }>(ESPN_NFL_TEAMS);
+    const logosById = new Map<string, readonly NflTeamLogoAsset[]>();
+    for (const teamEntry of response.payload.sports?.flatMap((sport) => sport.leagues ?? []).flatMap((league) => league.teams ?? []) ?? []) {
+      if (teamEntry.team?.id && teamEntry.team.logos) logosById.set(teamEntry.team.id, teamEntry.team.logos);
+    }
+    teamLogoCache = { logosById, storedAt: Date.now() };
+    return logosById;
+  } catch {
+    return new Map();
+  }
+}
+
+async function fetchProviderJson<T>(url: string): Promise<{ payload: T; status: number }> {
   for (let attempt = 0; attempt < 2; attempt += 1) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
@@ -238,7 +281,7 @@ async function fetchProviderPayload(url: string): Promise<{ payload: RawScoreboa
         headers: { Accept: "application/json", "User-Agent": "LCC-NFL-Scoreboard/1.0" },
         signal: controller.signal,
       });
-      if (response.ok) return { payload: await response.json() as RawScoreboard, status: response.status };
+      if (response.ok) return { payload: await response.json() as T, status: response.status };
       if (!isRetryableProviderStatus(response.status) || attempt === 1) throw providerError("HTTP_ERROR", response.status);
     } catch (error) {
       if (error instanceof ProviderError && error.retryable && attempt === 0) {
@@ -265,9 +308,9 @@ async function fetchProviderPayload(url: string): Promise<{ payload: RawScoreboa
   throw providerError("PROVIDER_FETCH_FAILED", null);
 }
 
-function normalizeScoreboardPayload(payload: RawScoreboard, fetchedAt: string, favoriteTeam: string | null, providerStatus: number): NflScoreboardView {
+function normalizeScoreboardPayload(payload: RawScoreboard, fetchedAt: string, favoriteTeam: string | null, providerStatus: number, logosByTeamId: ReadonlyMap<string, readonly NflTeamLogoAsset[]> = new Map()): NflScoreboardView {
   if (!payload || !Array.isArray(payload.events)) return { sourceStatus: "unavailable", reasonCode: "INVALID_PROVIDER_RESPONSE", fetchedAt, selected: null, games: [], favoriteTeam, providerStatus };
-  const games = normalizeNflEvents(payload);
+  const games = normalizeNflEvents(payload, logosByTeamId);
   if (!payload.events.length) return { sourceStatus: "unavailable", reasonCode: "NO_EVENTS", fetchedAt, selected: null, games: [], favoriteTeam, providerStatus };
   if (!games.length) return { sourceStatus: "unavailable", reasonCode: "NO_VALID_GAMES", fetchedAt, selected: null, games: [], favoriteTeam, providerStatus };
   const selected = selectNflGame(games, new Date(), favoriteTeam);
