@@ -96,6 +96,7 @@
     "archive:diagnostics": "tsx scripts/archiveDiagnostics.ts",
     "home:current-season:diagnostics": "tsx scripts/homeCurrentSeasonDiagnostics.ts",
     "home:weekly-recap-diagnostics": "tsx scripts/homeWeeklyRecapDiagnostics.ts",
+    "home:row1-diagnostics": "tsx scripts/homeRow1Diagnostics.ts",
     "current-season:parity-diagnostics": "tsx scripts/currentSeasonParityDiagnostics.ts",
     "week-state:diagnostics": "tsx scripts/weekStateDiagnostics.ts",
     "postseason:bracket-diagnostics": "tsx scripts/postseasonBracketDiagnostics.ts",

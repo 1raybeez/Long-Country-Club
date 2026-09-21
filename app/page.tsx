@@ -3,10 +3,10 @@ import {
   ArrowRight,
   CheckCircle2,
   ClipboardCheck,
-  Swords,
   Users,
 } from "lucide-react";
 import { ACTIVE_LCC_OWNERS } from "@/lib/lccOwners";
+import { getLccOwnerById } from "@/lib/lccOwners";
 import { getLccChampionBySeason } from "@/lib/lccFinalPlacements";
 import { loadStandingsBySeason } from "@/lib/history/standings";
 import { loadDraftEventsBySeason } from "@/lib/history/drafts";
@@ -26,7 +26,6 @@ import {
 import {
   HOME_SEASON_CONFIG,
 } from "@/lib/homeSeasonConfig";
-import { HomeLiveAction } from "./HomeLiveAction";
 import { getWeeklyHighBoard } from "@/lib/finance/weeklyHigh";
 import { loadCurrentSeasonStandings } from "@/lib/currentStandings";
 import type { CurrentStanding } from "@/lib/currentStandings";
@@ -34,6 +33,9 @@ import type { HistoricalMatchup } from "@/lib/history/matchups";
 import { loadHomeLeagueContext } from "@/lib/homeLeagueContext";
 import { HomeLeagueContext } from "./HomeLeagueContext";
 import { loadHomeWeeklyRecap } from "@/lib/homeWeeklyRecap";
+import { loadNflScoreboard } from "@/lib/nflScoreboard";
+import type { WeeklyHighResult } from "@/lib/finance/weeklyHigh";
+import { HomeNflNow } from "./HomeNflNow";
 
 const CURRENT_HOME_CONFIG = HOME_SEASON_CONFIG[LCC_CURRENT_SEASON];
 const REIGNING_CHAMPION = getLccChampionBySeason(LCC_CURRENT_SEASON - 1);
@@ -47,15 +49,16 @@ export default async function HomePage() {
   const snapshot = await loadCurrentWeekSnapshot();
   const currentView = buildHomeView(snapshot, session?.member ?? null);
   const weeklyHighBoard = await getWeeklyHighBoard(LCC_CURRENT_SEASON);
+  const favoriteTeam = session?.member?.ownerId ? getLccOwnerById(session.member.ownerId)?.almanacProfile?.favoriteNFLTeam?.trim().toUpperCase() ?? null : null;
+  const nflScoreboard = await loadNflScoreboard(favoriteTeam);
   const standings = await loadCurrentSeasonStandings(currentView.week.safeCompletedWeek, LCC_CURRENT_SEASON, currentView.week.playoffWeekStart);
   const leagueContext = await loadHomeLeagueContext(LCC_CURRENT_SEASON);
   const recap = await loadHomeWeeklyRecap(currentView.week, weeklyHighBoard, snapshot.postseason ?? null);
-  const personalStanding = standings.reduce<CurrentStanding & { rank: number } | null>((found, standing, index) => found ?? (standing.franchiseId === session?.member?.ownerId ? { ...standing, rank: index + 1 } : null), null);
   return (
     <main className="lcc2-home-shell">
       <div className="lcc2-home-container">
         <HomeDashboardIdentityForState currentView={currentView} />
-        <HomeDashboardTopRow currentView={currentView} snapshot={snapshot} weeklyHighBoard={weeklyHighBoard} personalStanding={personalStanding} />
+        <HomeDashboardTopRow currentView={currentView} weeklyHighBoard={weeklyHighBoard} nflScoreboard={nflScoreboard} />
         <HomeDashboardCompetition currentView={currentView} snapshot={snapshot} standings={standings} />
         <HomeLeagueContext context={leagueContext} recap={recap} />
         <SeasonReadiness currentView={currentView} />
@@ -144,7 +147,7 @@ function HomeDashboardIdentityForState({ currentView }: { currentView?: HomeCurr
   );
 }
 
-function HomeDashboardTopRow({ currentView, snapshot, weeklyHighBoard, personalStanding }: { currentView: HomeCurrentSeasonView; snapshot: CurrentWeekSnapshot; weeklyHighBoard: Awaited<ReturnType<typeof getWeeklyHighBoard>>; personalStanding: (CurrentStanding & { rank: number }) | null }) {
+function HomeDashboardTopRow({ currentView, weeklyHighBoard, nflScoreboard }: { currentView: HomeCurrentSeasonView; weeklyHighBoard: Awaited<ReturnType<typeof getWeeklyHighBoard>>; nflScoreboard: Awaited<ReturnType<typeof loadNflScoreboard>> }) {
   const championOwner = REIGNING_CHAMPION?.ownerId
     ? getOwnerById(REIGNING_CHAMPION.ownerId)
     : null;
@@ -153,11 +156,10 @@ function HomeDashboardTopRow({ currentView, snapshot, weeklyHighBoard, personalS
   const championImage = getOwnerImagePath(REIGNING_CHAMPION?.ownerId ?? "");
 
   return (
-    <section className={`lcc2-home-top-row${isLiveHomeState(currentView) ? " lcc2-home-top-row--live" : ""}`} aria-label="Current season overview">
-      <HomeLiveAction initialView={currentView} personalStanding={personalStanding} />
-      <WeeklySpotlight currentView={currentView} snapshot={snapshot} weeklyHighBoard={weeklyHighBoard} />
+    <section className={`lcc2-home-top-row${isLiveHomeState(currentView) ? " lcc2-home-top-row--live" : ""}`} aria-label="NFL and league overview">
+      <HomeNflNow initialScoreboard={nflScoreboard} />
 
-      <article className="lcc2-card lcc2-home-top-card">
+      <article className="lcc2-card lcc2-home-top-card lcc2-home-champion-card">
         <div className="flex items-center justify-between gap-3">
           <p className="lcc2-label">Reigning champion</p>
           <span className="lcc2-badge lcc2-badge--achievement">
@@ -182,23 +184,21 @@ function HomeDashboardTopRow({ currentView, snapshot, weeklyHighBoard, personalS
         </div>
         <Link href="/league-info/trophy-room" className="lcc2-button lcc2-button--secondary mt-5 w-full">View Trophy Room<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
       </article>
-
+      <HomeWeeklyHigh board={weeklyHighBoard} phase={currentView.week.phase} />
     </section>
   );
 }
 
-function WeeklySpotlight({ currentView, snapshot, weeklyHighBoard }: { currentView: HomeCurrentSeasonView; snapshot: CurrentWeekSnapshot; weeklyHighBoard: Awaited<ReturnType<typeof getWeeklyHighBoard>> }) {
-  const matchupSummary = summarizeHomeMatchups(snapshot.matchups);
-  const playoffRound = snapshot.matchups.find((matchup) => matchup.postseason)?.postseason?.roundLabel;
-  const latestWeek = currentView.week.latestCompletedWeek;
-  const latestHigh = latestWeek ? weeklyHighBoard.find((item) => item.week === latestWeek && item.status === "FINAL") : null;
-  const weekLabel = currentView.week.week ? `Week ${currentView.week.week}` : "Current week";
-  const statusLabel = formatWeekState(currentView.week.state);
-  const playoffBrackets = [...new Set(snapshot.matchups.map((matchup) => matchup.postseason?.bracketType).filter((value): value is "winners" | "losers" | "placement" | "unknown" => Boolean(value)))];
-  return <article className="lcc2-card lcc2-card--raised lcc2-home-top-card flex min-w-0 flex-col p-5" aria-labelledby="weekly-spotlight-heading">
-    <div className="flex items-start justify-between gap-3"><div><p className="lcc2-label">Weekly spotlight</p><h2 id="weekly-spotlight-heading" className="mt-3 lcc2-home-card-title">{weekLabel} · {statusLabel}</h2></div><Swords className="h-5 w-5 shrink-0 text-[var(--lcc-interactive)]" aria-hidden="true" /></div>
-    <div className="mt-5 grid gap-3"><SpotlightFact label={currentView.week.phase === "POSTSEASON" ? "Active playoff matchups" : "League matchups"} value={matchupSummary.matchupCount ? `${matchupSummary.matchupCount} matchups · ${matchupSummary.ownerCount} teams` : "Unavailable"} />{playoffRound ? <SpotlightFact label="Playoff round" value={playoffRound} /> : null}{currentView.week.phase === "POSTSEASON" && playoffBrackets.length ? <SpotlightFact label="Bracket scope" value={playoffBrackets.map((bracket) => bracket === "winners" ? "Winners" : "Consolation").join(" + ")} /> : null}<SpotlightFact label="Latest completed week" value={latestWeek ? `Week ${latestWeek}` : "Not available"} />{currentView.week.phase === "POSTSEASON" ? <SpotlightFact label="Weekly high" value="Regular-season awards ended after Week 14" /> : <SpotlightFact label="Latest weekly high" value={latestHigh?.franchiseName && latestHigh.score !== null ? `${latestHigh.franchiseName} · ${latestHigh.score.toFixed(2)}` : "Awaiting finality"} />}</div>
-    <Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">View {weekLabel} Matchups<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+function HomeWeeklyHigh({ board, phase }: { board: readonly WeeklyHighResult[]; phase: HomeCurrentSeasonView["week"]["phase"] }) {
+  const winner = [...board].filter((item) => (item.status === "FINAL" || item.status === "MANUAL") && item.franchiseId && item.score !== null).sort((a, b) => b.week - a.week)[0] ?? null;
+  const owner = winner?.franchiseId ? getOwnerById(winner.franchiseId) : null;
+  const image = winner?.franchiseId ? getOwnerImagePath(winner.franchiseId) : null;
+  const playoff = phase === "POSTSEASON" || phase === "SEASON_COMPLETE";
+  return <article className="lcc2-card lcc2-card--raised lcc2-home-top-card lcc2-home-weekly-high flex min-w-0 flex-col p-5" aria-labelledby="home-weekly-high-heading">
+    <div className="flex items-start justify-between gap-3"><div><p className="lcc2-label">Weekly high score</p><h2 id="home-weekly-high-heading" className="mt-3 lcc2-home-card-title">{winner ? `Week ${winner.week} high score` : "Weekly high unavailable"}</h2></div><span className="lcc2-badge lcc2-badge--achievement">$10</span></div>
+    {winner ? <div className="mt-5 flex items-center gap-4"><div className="h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-[var(--lcc-color-border)] bg-slate-100"><img src={image ?? getOwnerImagePath("")} alt={owner?.displayName ?? winner.ownerDisplayName ?? "Weekly high winner"} className="h-full w-full object-cover" /></div><div className="min-w-0"><p className="font-ui text-lg font-black text-[var(--lcc-color-text)]">{winner.franchiseName}</p><p className="mt-1 lcc2-body">{owner?.displayName ?? winner.ownerDisplayName ?? "Owner identity unavailable"}</p><p className="mt-2 font-ui text-2xl font-black text-[var(--lcc-color-text)]">{winner.score?.toFixed(2)}</p></div></div> : <p className="lcc2-body mt-5">The latest safely finalized regular-season winner is temporarily unavailable.</p>}
+    <p className="mt-4 font-ui text-xs font-black uppercase tracking-[0.08em] text-[var(--lcc-color-text-muted)]">{playoff ? "Final regular-season weekly high" : winner ? "$10 weekly winner" : "Awaiting safe finality"}</p>
+    <Link href="/matchups" className="lcc2-button lcc2-button--secondary mt-auto w-full">View Week {winner?.week ?? "current"} Results<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
   </article>;
 }
 

@@ -667,6 +667,12 @@ body {
   min-height: 0;
 }
 
+.lcc2-home-nfl-card,
+.lcc2-home-champion-card,
+.lcc2-home-weekly-high {
+  min-height: 18rem;
+}
+
 .lcc2-home-live-action {
   min-height: 15rem;
 }
@@ -879,6 +885,18 @@ body {
 
   .lcc2-home-top-row {
     gap: 0.75rem;
+  }
+
+  .lcc2-home-nfl-card {
+    order: 1;
+  }
+
+  .lcc2-home-weekly-high {
+    order: 2;
+  }
+
+  .lcc2-home-champion-card {
+    order: 3;
   }
 
   .lcc2-home-live-action {
