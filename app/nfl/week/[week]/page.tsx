@@ -8,5 +8,5 @@ export default async function NflWeekPage({ params }: NflWeekPageProps) {
   const { week: rawWeek } = await params;
   const week = Number(rawWeek);
   if (!Number.isInteger(week) || week < 1 || week > 25) notFound();
-  return <NflWeekScoreboard week={week} initialScoreboard={await loadNflScoreboard()} />;
+  return <NflWeekScoreboard week={week} initialScoreboard={await loadNflScoreboard(null, week)} />;
 }

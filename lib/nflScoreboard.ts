@@ -27,9 +27,11 @@ export interface NflTeam {
 }
 
 export interface NflScoreboardView {
-  readonly sourceStatus: "ok" | "unavailable";
+  readonly sourceStatus: "ok" | "stale" | "unavailable";
   readonly reasonCode: NflScoreboardReasonCode | null;
   readonly fetchedAt: string;
+  readonly ageSeconds?: number;
+  readonly providerStatus?: number | null;
   readonly selected: NflGame | null;
   readonly games: readonly NflGame[];
   readonly favoriteTeam: string | null;
@@ -42,14 +44,25 @@ export type NflScoreboardReasonCode =
   | "NO_EVENTS"
   | "NO_VALID_GAMES"
   | "NO_SELECTION"
-  | "PRESENTATION_MAPPING_FAILED";
+  | "PRESENTATION_MAPPING_FAILED"
+  | "PROVIDER_TIMEOUT";
+
+const REQUEST_TIMEOUT_MS = 8_000;
+const RETRY_DELAY_MS = 250;
+const CACHE_MAX_AGE_MS = 5 * 60_000;
+const LIVE_CACHE_MAX_AGE_MS = 60_000;
+const successfulScoreboards = new Map<string, { view: NflScoreboardView; storedAt: number }>();
+
+export function isRetryableProviderStatus(status: number): boolean {
+  return status === 429 || status === 500 || status === 502 || status === 503 || status === 504;
+}
 
 export function isRenderableNflScoreboard(value: unknown): value is NflScoreboardView {
   if (!value || typeof value !== "object") return false;
   const scoreboard = value as Partial<NflScoreboardView>;
   const selected = scoreboard.selected;
   if (!selected || typeof selected !== "object") return false;
-  return scoreboard.sourceStatus === "ok"
+  return (scoreboard.sourceStatus === "ok" || scoreboard.sourceStatus === "stale")
     && typeof selected.id === "string"
     && typeof selected.state === "string"
     && typeof selected.week === "number"
@@ -161,26 +174,112 @@ export function formatNflContext(game: NflGame): string {
   return game.primeTime ? `${game.primeTime} · Week ${game.week ?? "—"}` : `Week ${game.week ?? "—"}`;
 }
 
-export async function loadNflScoreboard(favoriteTeam: string | null = null): Promise<NflScoreboardView> {
+export async function loadNflScoreboard(favoriteTeam: string | null = null, requestedWeek: number | null = null): Promise<NflScoreboardView> {
   const fetchedAt = new Date().toISOString();
-  try {
-    // Scores/status/period/clock are mutable live fields. Keep the combined
-    // response uncached so each controlled client refresh reaches ESPN; failed
-    // responses are returned only to the current request and are never cached.
-    const response = await fetch(`${ESPN_NFL_SCOREBOARD}?limit=1000&dates=${getNflSeasonYear()}`, { cache: "no-store" });
-    if (!response.ok) throw new Error(`ESPN returned ${response.status}`);
-    const payload = await response.json() as RawScoreboard;
-    if (!payload || !Array.isArray(payload.events)) return { sourceStatus: "unavailable", reasonCode: "INVALID_PROVIDER_RESPONSE", fetchedAt, selected: null, games: [], favoriteTeam };
-    const games = normalizeNflEvents(payload);
-    if (!payload.events.length) return { sourceStatus: "unavailable", reasonCode: "NO_EVENTS", fetchedAt, selected: null, games: [], favoriteTeam };
-    if (!games.length) return { sourceStatus: "unavailable", reasonCode: "NO_VALID_GAMES", fetchedAt, selected: null, games: [], favoriteTeam };
-    const selected = selectNflGame(games, new Date(), favoriteTeam);
-    return { sourceStatus: selected ? "ok" : "unavailable", reasonCode: selected ? null : "NO_SELECTION", fetchedAt, selected, games, favoriteTeam };
-  } catch (error) {
-    return { sourceStatus: "unavailable", reasonCode: error instanceof Error && error.message.startsWith("ESPN returned") ? "HTTP_ERROR" : "PROVIDER_FETCH_FAILED", fetchedAt, selected: null, games: [], favoriteTeam };
+  const cacheKey = requestedWeek === null ? "home" : `week:${requestedWeek}`;
+  const urls = requestedWeek === null
+    ? [buildScoreboardUrl(`limit=100&dates=${getNflDateKey()}`), buildScoreboardUrl(`limit=1000&dates=${getNflSeasonYear()}`)]
+    : [buildScoreboardUrl(`limit=100&dates=${getNflSeasonYear()}&week=${requestedWeek}`)];
+  let lastFailure: ProviderFailure | null = null;
+
+  for (const url of urls) {
+    try {
+      const result = await fetchProviderPayload(url);
+      const view = normalizeScoreboardPayload(result.payload, fetchedAt, favoriteTeam, result.status);
+      if (view.sourceStatus === "ok") {
+        successfulScoreboards.set(cacheKey, { view, storedAt: Date.now() });
+        return view;
+      }
+      lastFailure = { reasonCode: view.reasonCode ?? "NO_SELECTION", providerStatus: result.status };
+    } catch (error) {
+      lastFailure = toProviderFailure(error);
+    }
   }
+
+  const cached = successfulScoreboards.get(cacheKey);
+  if (cached) {
+    const ageMs = Date.now() - cached.storedAt;
+    const live = cached.view.selected?.state === "LIVE";
+    const maxAge = live ? LIVE_CACHE_MAX_AGE_MS : CACHE_MAX_AGE_MS;
+    if (ageMs <= maxAge) {
+      return { ...cached.view, sourceStatus: "stale", reasonCode: lastFailure?.reasonCode ?? null, ageSeconds: Math.floor(ageMs / 1000), providerStatus: lastFailure?.providerStatus ?? null };
+    }
+  }
+
+  return { sourceStatus: "unavailable", reasonCode: lastFailure?.reasonCode ?? "PROVIDER_FETCH_FAILED", fetchedAt, selected: null, games: [], favoriteTeam, providerStatus: lastFailure?.providerStatus ?? null };
 }
 
 function getNflSeasonYear(date = new Date()): number {
   return date.getUTCMonth() <= 1 ? date.getUTCFullYear() - 1 : date.getUTCFullYear();
+}
+
+type ProviderFailure = { reasonCode: NflScoreboardReasonCode; providerStatus: number | null };
+
+function buildScoreboardUrl(query: string): string {
+  return `${ESPN_NFL_SCOREBOARD}?${query}`;
+}
+
+function getNflDateKey(date = new Date()): string {
+  return date.toISOString().slice(0, 10).replaceAll("-", "");
+}
+
+async function fetchProviderPayload(url: string): Promise<{ payload: RawScoreboard; status: number }> {
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    try {
+      const response = await fetch(url, {
+        cache: "no-store",
+        headers: { Accept: "application/json", "User-Agent": "LCC-NFL-Scoreboard/1.0" },
+        signal: controller.signal,
+      });
+      if (response.ok) return { payload: await response.json() as RawScoreboard, status: response.status };
+      if (!isRetryableProviderStatus(response.status) || attempt === 1) throw providerError("HTTP_ERROR", response.status);
+    } catch (error) {
+      if (error instanceof ProviderError && error.retryable && attempt === 0) {
+        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+        continue;
+      }
+      if (error instanceof ProviderError) throw error;
+      if (error instanceof Error && error.name === "AbortError") {
+        if (attempt === 0) {
+          await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+          continue;
+        }
+        throw providerError("PROVIDER_TIMEOUT", null);
+      }
+      if (attempt === 0) {
+        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+        continue;
+      }
+      throw providerError("PROVIDER_FETCH_FAILED", null);
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+  throw providerError("PROVIDER_FETCH_FAILED", null);
+}
+
+function normalizeScoreboardPayload(payload: RawScoreboard, fetchedAt: string, favoriteTeam: string | null, providerStatus: number): NflScoreboardView {
+  if (!payload || !Array.isArray(payload.events)) return { sourceStatus: "unavailable", reasonCode: "INVALID_PROVIDER_RESPONSE", fetchedAt, selected: null, games: [], favoriteTeam, providerStatus };
+  const games = normalizeNflEvents(payload);
+  if (!payload.events.length) return { sourceStatus: "unavailable", reasonCode: "NO_EVENTS", fetchedAt, selected: null, games: [], favoriteTeam, providerStatus };
+  if (!games.length) return { sourceStatus: "unavailable", reasonCode: "NO_VALID_GAMES", fetchedAt, selected: null, games: [], favoriteTeam, providerStatus };
+  const selected = selectNflGame(games, new Date(), favoriteTeam);
+  return { sourceStatus: selected ? "ok" : "unavailable", reasonCode: selected ? null : "NO_SELECTION", fetchedAt, selected, games, favoriteTeam, providerStatus };
+}
+
+class ProviderError extends Error {
+  constructor(readonly reasonCode: NflScoreboardReasonCode, readonly providerStatus: number | null, readonly retryable: boolean) {
+    super(reasonCode);
+  }
+}
+
+function providerError(reasonCode: NflScoreboardReasonCode, providerStatus: number | null): ProviderError {
+  return new ProviderError(reasonCode, providerStatus, providerStatus !== null && isRetryableProviderStatus(providerStatus));
+}
+
+function toProviderFailure(error: unknown): ProviderFailure {
+  if (error instanceof ProviderError) return { reasonCode: error.reasonCode, providerStatus: error.providerStatus };
+  return { reasonCode: "PROVIDER_FETCH_FAILED", providerStatus: null };
 }

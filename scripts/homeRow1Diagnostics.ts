@@ -4,7 +4,7 @@ import { getLccChampionBySeason } from "../lib/lccFinalPlacements.ts";
 import { getOwnerById } from "../lib/ownerRegistry.ts";
 import { getOwnerImagePath } from "../lib/ownerImages.ts";
 import { selectWeeklyHighFromTotals } from "../lib/finance/weeklyHigh.ts";
-import { classifyPrimeTime, isRenderableNflScoreboard, normalizeNflEvents, retainLastGoodNflScoreboard, selectNflGame, type NflGame, type NflScoreboardView } from "../lib/nflScoreboard.ts";
+import { classifyPrimeTime, isRenderableNflScoreboard, isRetryableProviderStatus, normalizeNflEvents, retainLastGoodNflScoreboard, selectNflGame, type NflGame, type NflScoreboardView } from "../lib/nflScoreboard.ts";
 
 function game(id: string, kickoff: string, state: NflGame["state"], primeTime: NflGame["primeTime"], away = "ATL", home = "GB"): NflGame {
   return { id, week: 2, season: 2026, kickoff, state, statusLabel: state, detail: state === "LIVE" ? "2nd Quarter · 11:42" : state === "FINAL" ? "Final" : "Scheduled", period: state === "LIVE" ? 2 : null, clock: state === "LIVE" ? "11:42" : null, broadcast: primeTime === "TNF" ? "Prime Video" : primeTime === "SNF" ? "NBC" : primeTime === "MNF" ? "ESPN" : "FOX", primeTime, away: { abbreviation: away, name: `${away} team`, logo: `https://example.test/${away}.png`, score: state === "UPCOMING" ? null : 10 }, home: { abbreviation: home, name: `${home} team`, logo: `https://example.test/${home}.png`, score: state === "UPCOMING" ? null : 10 } };
@@ -28,6 +28,8 @@ const validApiResponse: NflScoreboardView = { sourceStatus: "ok", reasonCode: nu
 assert.equal(isRenderableNflScoreboard(validApiResponse), true, "valid API response must be accepted by Home Card 1");
 assert.equal(isRenderableNflScoreboard({ ...validApiResponse, selected: null }), false, "response without a selected game must remain unavailable");
 assert.equal(retainLastGoodNflScoreboard(validApiResponse, { sourceStatus: "unavailable" }), validApiResponse, "refresh failure must preserve the last good game");
+for (const status of [429, 500, 502, 503, 504]) assert.equal(isRetryableProviderStatus(status), true);
+for (const status of [400, 401, 403, 404]) assert.equal(isRetryableProviderStatus(status), false);
 
 const duplicateKickoffPayload = {
   events: [
@@ -82,8 +84,13 @@ const nflWeekClientSource = readFileSync(new URL("../app/NflWeekScoreboard.tsx",
 assert.match(nflWeekSource, /loadNflScoreboard/);
 assert.match(nflWeekClientSource, /getNflGamesForWeek/);
 assert.doesNotMatch(nflWeekClientSource, /fantasy|lineup|head-to-head/i);
-for (const reason of ["PROVIDER_FETCH_FAILED", "HTTP_ERROR", "INVALID_PROVIDER_RESPONSE", "NO_EVENTS", "NO_VALID_GAMES", "NO_SELECTION", "PRESENTATION_MAPPING_FAILED"]) assert.match(adapterSource, new RegExp(reason));
+for (const reason of ["PROVIDER_FETCH_FAILED", "HTTP_ERROR", "INVALID_PROVIDER_RESPONSE", "NO_EVENTS", "NO_VALID_GAMES", "NO_SELECTION", "PRESENTATION_MAPPING_FAILED", "PROVIDER_TIMEOUT"]) assert.match(adapterSource, new RegExp(reason));
 assert.match(adapterSource, /cache: "no-store"/);
+assert.match(adapterSource, /User-Agent/);
+assert.match(adapterSource, /AbortController/);
+assert.match(adapterSource, /retryable/);
+assert.match(adapterSource, /dates=\$\{getNflDateKey\(\)\}/);
+assert.match(adapterSource, /week=\$\{requestedWeek\}/);
 assert.match(adapterSource, /typeof selected\.id === "string"/);
 assert.match(apiSource, /Cache-Control.*no-store/);
 assert.match(nflSource, /lastGood/);
