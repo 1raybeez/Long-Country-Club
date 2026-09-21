@@ -822,6 +822,17 @@ body {
 
   .lcc2-home-top-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .lcc2-home-top-card {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .lcc2-home-top-card > .lcc2-button {
+    margin-top: auto;
   }
 
   .lcc2-home-top-row--live {
