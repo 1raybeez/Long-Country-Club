@@ -8,8 +8,8 @@ const feedbackQueue = fs.readFileSync('components/commish/FeedbackQueue.tsx', 'u
 const failures = [];
 
 if (!hub.includes('getCurrentMemberSession') || !hub.includes("capabilities.includes('commissioner')")) failures.push('commissioner-route-guard');
-if (!hub.includes('href="/commish/feedback"') || !hub.includes('href="/commish/finance"') || !hub.includes('href="/war-room"')) failures.push('active-module-links');
-if (!hub.includes('getCommissionerFeedbackQueue') || !hub.includes('open') || !hub.includes('planned')) failures.push('feedback-summary');
+if (!hub.includes('href="/commish/feedback"') || !hub.includes('href="/commish/finance"') || !hub.includes('warRoom.route')) failures.push('active-module-links');
+if (!hub.includes('getCommissionerHubModel') || !hub.includes('model.attentionItems') || !hub.includes('model.weeklyOperations')) failures.push('normalized-model-consumption');
 if (!hub.includes('Post-Draft Intelligence') || !hub.includes('Not active')) failures.push('future-label');
 if (hub.includes('href="/commish"') || hub.includes('href="/commish/governance"') || hub.includes('href="/commish/maintenance"')) failures.push('stale-or-self-link');
 if (!queue.includes("capabilities.includes('commissioner')") || !finance.includes("capabilities.includes('commissioner')")) failures.push('private-route-guards');
@@ -20,7 +20,7 @@ if (/firebaseUid|auth claims|privateKey/i.test(hub)) failures.push('auth-metadat
 
 console.log('LCC Commissioner Hub 2.0 Slice D diagnostics');
 console.log('Commissioner route guard: ' + (failures.includes('commissioner-route-guard') ? 'FAIL' : 'PASS'));
-console.log('Active module links and summary: ' + (failures.some((item) => ['active-module-links', 'feedback-summary'].includes(item)) ? 'FAIL' : 'PASS'));
+console.log('Active module links and normalized model: ' + (failures.some((item) => ['active-module-links', 'normalized-model-consumption'].includes(item)) ? 'FAIL' : 'PASS'));
 console.log('Future/stale card treatment: ' + (failures.some((item) => ['future-label', 'stale-or-self-link'].includes(item)) ? 'FAIL' : 'PASS'));
 console.log('Private route and War Room guards: ' + (failures.some((item) => ['private-route-guards', 'war-room-capability'].includes(item)) ? 'FAIL' : 'PASS'));
 console.log('Privacy and feedback-message styling: ' + (failures.some((item) => ['email-exposure', 'auth-metadata-exposure', 'feedback-message-typography'].includes(item)) ? 'FAIL' : 'PASS'));

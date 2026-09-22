@@ -87,6 +87,7 @@
     "commissioner-feedback:diagnostics": "node scripts/commissionerFeedbackDiagnostics.mjs",
     "commissioner-hub:diagnostics": "node scripts/commissionerHubDiagnostics.mjs",
     "commissioner-hub:model-diagnostics": "tsx scripts/commissionerHubModelDiagnostics.ts",
+    "commissioner-hub:package2-diagnostics": "node scripts/commissionerHubPackage2Diagnostics.mjs",
     "predictor:diagnostics": "node scripts/predictorDiagnostics.mjs",
     "predictor:snapshot": "node scripts/predictorSnapshot.mjs",
     "firebase:package-matchup-archive": "node scripts/packageMatchupArchive.mjs",
